@@ -1,0 +1,100 @@
+/*==================     Subscribe Form     ======================*/
+.subscribe-form {
+  position: relative;
+  display: block;
+}
+.subscribe-form label {
+  display: inline-block;
+  position: relative;
+  padding: 23px 10px 23px;
+  background: #fdfdfd;
+  border: 1px solid #ededed;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+}
+.subscribe-form label.email {
+  width: 562px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.subscribe-form input {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  vertical-align: baseline;
+  box-shadow: none;
+  color: #838383;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  height: 26px;
+  text-align: center;
+  font-weight: 300;
+}
+.subscribe-form a[data-type="submit"] {
+  display: inline-block;
+  text-align: center;
+  color: #fa5254;
+  font-size: 24px;
+  line-height: 28px;
+}
+.subscribe-form a[data-type="submit"]:hover {
+  color: #302e33;
+}
+.subscribe-form * + a[data-type="submit"] {
+  margin-top: 35px;
+}
+
+.subscribe-form .error, .subscribe-form .success {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: -19px;
+  text-align: left;
+  padding: 4px 10px;
+  left: 5px;
+  right: 5px;
+  font-size: 10px;
+  line-height: 12px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+}
+.subscribe-form .error {
+  display: none;
+  color: #f00;
+  overflow: hidden;
+  -moz-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+.subscribe-form label.invalid .error {
+  display: block;
+}
+.subscribe-form .success {
+  display: none;
+  color: #0f0;
+}
+
+@media (max-width: 979px) {
+  .subscribe-form label.name,
+  .subscribe-form label.email {
+    display: block;
+    width: 75%;
+  }
+  .subscribe-form * + label,
+  .subscribe-form * + a[data-type='submit'] {
+    margin-top: 15px;
+  }
+}
