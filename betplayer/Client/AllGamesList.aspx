@@ -107,9 +107,7 @@
             </table>
         </a>
     </div>
-    <br>
-    &nbsp;<br>
-
+    
 
     
     
@@ -121,59 +119,9 @@
   
 
 
-    <div class="TeamName">
-        <a href="#">Galaxy Gladiators Lantau v Hung Hom JD Jaguars</a>
-    </div>
-    <div class="profile-details">
-        <a href="ODMSBetDetails_Declare.php?id=230">
-            <table width="100%" border="0" cellspacing="2" cellpadding="2">
-                <tbody>
-                    <tr>
-                        <td width="1%">&nbsp;</td>
-                        <td align="center" style="vertical-align: middle; text-align: center">
-
-                            <div class="profile_picture">
-                                <p align="center">
-                                    <img src="images/allgameslistimg/Team.jpg" alt=""></p>
-                            </div>
-
-                        </td>
-                        <td class="GameList" style="vertical-align: top;">
-
-                            <table width="99%" border="0" cellspacing="0" cellpadding="0">
-                                <tbody>
-                                    <tr>
-                                        <td class="GameList" align="center">11-02-2018 11:30:00 AM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="GameList" align="center">Match Bets : 0</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="GameList" align="center">Session Bets : 0</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="GameList" align="center">Declared : YES</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="GameList" align="center">Won By : Hung Hom JD Jaguars</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </td>
-                        <td align="center" style="vertical-align: middle;">
-                            <p align="center">
-                                <img src="images/allgameslistimg/Team.jpg" alt=""></p>
-                        </td>
-                        <td width="1%">&nbsp;</td>
-                    </tr>
-                </tbody>
-            </table>
-        </a>
-    </div>
-    <br>
-    &nbsp;<br>
-
+    
+    
+ 
 
     <div class="TeamName">
         <a href="#">Hong Kong Island United v Kowloon Cantons</a>
