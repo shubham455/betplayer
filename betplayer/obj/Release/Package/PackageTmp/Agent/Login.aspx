@@ -19,7 +19,7 @@
 <body id="login-body">
     <div class="login-header">
         <div id="logo" class="center">
-            <img src="./img/logo.png" alt="logo" class="center" /></div>
+            <a href="mob.34 Zone.com">Crick20</a></div>
     </div>
     <div id="login">
         <form id="loginform" class="form-vertical no-padding no-margin" action="index.html" />
@@ -56,7 +56,7 @@
             <div class="space20"></div>
         </div>
         <input type="button" id="forget-btn" class="btn btn-block login-btn" value="Submit" /></form></div>
-    <div id="login-copyright">2013 &copy; Admin Lab Dashboard. </div>
+    <div id="login-copyright">2018 &copy; Crick20.com </div>
     <script src="./js/jquery-1.8.3.min.js"></script>
     <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/jquery.blockui.js"></script>

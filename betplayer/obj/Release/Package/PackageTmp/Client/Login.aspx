@@ -53,7 +53,7 @@
                 <h3>Login</h3>
                 <form id="Form1" runat="server">
                     <span><i class="user"></i>
-                        <asp:TextBox ID="txtusername" runat="server"></asp:TextBox>>
+                        <asp:TextBox ID="txtusername" runat="server"></asp:TextBox>
                     </span><span><i class="lock"></i>
                         <asp:TextBox ID="txtpassword" runat="server" TextMode="Password"></asp:TextBox>
                     </span>
@@ -101,7 +101,7 @@
 
                                     <td>
 
-                                        <asp:TextBox ID="txtCaptcha" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtCaptcha" runat="server" placeholder ="text captcha"></asp:TextBox>
 
                                     </td>
 

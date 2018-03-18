@@ -794,7 +794,6 @@
     <Content Include="Super_Agent\CreateNewCollection.aspx" />
     <Content Include="Super_Agent\DashBoard.Master" />
     <Content Include="Client\Menu.Master" />
-    <None Include="Properties\PublishProfiles\Google Cloud.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1315,6 +1314,7 @@
     <Folder Include="Client\images\allgameslistimg\" />
     <Folder Include="Client\images\loginimg\" />
     <Folder Include="Models\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
