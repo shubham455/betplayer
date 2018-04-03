@@ -78,24 +78,7 @@
         }
     </style>
 
-    <script type="text/javascript" language="javascript">
-
-        function UpdateTC() {
-            document.KhaiLagai.TCChk.value = "1";
-            document.KhaiLagai.submit();
-        }
-
-        function TermsNConditions() {
-            if (document.getElementById("Terms").checked == true) {
-                location.replace("MainMenu.aspx");
-            }
-            else {
-                alert("Please Click on Terms and Conditions Check Box");
-            }
-        }
-
-</script>
-
+  
 
 </head>
 

@@ -36,7 +36,8 @@
                     <img data-src="/img/Homepage/slider1.jpg" alt="Second slide" src="../superagent/img/Homepage/slider1.jpg">
                 </div>
             </div>
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon carousel-control-left"></span></a><a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon carousel-control-right"></span></a>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon carousel-control-left"></span></a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon carousel-control-right"></span></a>
         </div>
     </section>
     <!--end of slider section-->

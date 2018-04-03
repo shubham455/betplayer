@@ -1601,7 +1601,7 @@ body{
 	width:26px;
 	height:26px;
 	display:inline-block;
-	background:url(../images/sprite.png) no-repeat;
+	background:url(../../images/loginimg/sprite.png) no-repeat;
 	vertical-align: sub;
 }
 .sign_in span i.user{
@@ -1632,13 +1632,13 @@ body{
 	cursor:pointer;
 	border:none;
 	outline:none;
-    background:#025a85 url(../images/login-arrow.png) no-repeat 10px;       
+    background:#025a85 url(../../images/loginimg/login-arrow.png) no-repeat 10px;       
 	-webkit-apperance:none;
 	font-family:Arial, Helvetica, sans-serif;
 }
 .LoginButton:hover{
 	   color:#FFF;
-       background:#004769 url(../images/login-arrow.png) no-repeat 10px;
+       background:#004769 url(../../images/loginimg/login-arrow.png) no-repeat 10px;
 }
 
 .HomeButton{
@@ -1650,13 +1650,13 @@ body{
 	cursor:pointer;
 	border:none;
 	outline:none;
-    background:#025a85 url(../images/login-arrow-left.png) no-repeat 10px;       
+    background:#025a85 url(../../images/loginimg/login-arrow-left.png) no-repeat 10px;       
 	-webkit-apperance:none;
 	font-family:Arial, Helvetica, sans-serif;
 }
 .HomeButton:hover{
 	   color:#FFF;
-       background:#004769 url(../images/login-arrow-left.png) no-repeat 10px;
+       background:#004769 url(../../images/loginimg/login-arrow-left.png) no-repeat 10px;
 }
 
 /******** skills ***********/

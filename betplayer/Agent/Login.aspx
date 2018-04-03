@@ -57,10 +57,7 @@
         </div>
         <input type="button" id="forget-btn" class="btn btn-block login-btn" value="Submit" /></form></div>
     <div id="login-copyright">2018 &copy; Crick20.com </div>
-    <script src="./js/jquery-1.8.3.min.js"></script>
-    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="./js/jquery.blockui.js"></script>
-    <script src="./js/scripts.js"></script>
-    <script>jQuery(document).ready(function () { App.initLogin() });</script>
+   
+   
 </body>
 </html>

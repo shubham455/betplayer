@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Super_Agent/DashBoard.Master" AutoEventWireup="true" CodeBehind="ModifyAgent.aspx.cs" Inherits="betplayer.Super_Agent.ModifyAgent" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/superagent/DashBoard.Master" AutoEventWireup="true" CodeBehind="ModifyAgent.aspx.cs" Inherits="betplayer.Super_Agent.ModifyAgent" %>
 
-<asp:Content ID ="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID ="Content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
 
      <div class="content-wrapper" style="height: 1200px">
         <!-- Content Header (Page header) -->

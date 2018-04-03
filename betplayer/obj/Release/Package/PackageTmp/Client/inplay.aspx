@@ -17,7 +17,7 @@
 
                                 <div class="profile_picture">
                                     <p align="left">
-                                        <img src="images/Team.jpg" alt="">
+                                        <img src="images/InplayImg/Team.jpg" alt="">
                                     </p>
                                 </div>
 

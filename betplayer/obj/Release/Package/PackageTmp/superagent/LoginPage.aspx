@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" class="gr__34zone_co_in">
+<html>
 <head>
     <meta charset="utf-8" />
     <title>Login page</title>
@@ -57,10 +57,6 @@
         </div>
         <input type="button" id="forget-btn" class="btn btn-block login-btn" value="Submit" /></form></div>
     <div id="login-copyright">2013 &copy; Admin Lab Dashboard. </div>
-    <script src="./js/jquery-1.8.3.min.js"></script>
-    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="./js/jquery.blockui.js"></script>
-    <script src="./js/scripts.js"></script>
-    <script>jQuery(document).ready(function () { App.initLogin() });</script>
+   
 </body>
 </html>

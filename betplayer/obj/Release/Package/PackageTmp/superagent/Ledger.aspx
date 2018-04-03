@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Super_Agent/DashBoard.Master" AutoEventWireup="true" CodeBehind="Ledger.aspx.cs" Inherits="betplayer.Super_Agent.Ledger" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/superagent/DashBoard.Master" AutoEventWireup="true" CodeBehind="Ledger.aspx.cs" Inherits="betplayer.Super_Agent.Ledger" %>
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
      <div id="main-content">
 			<!-- BEGIN PAGE CONTAINER-->
@@ -49,7 +49,7 @@
                     
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                        	<a href="Client_Ledger.aspx">
+                        	<a href="ClientLedger.aspx">
                                 <div class="stats-circle purple-color">
                                     <i class="icon-eye-open"></i>
                                 </div>

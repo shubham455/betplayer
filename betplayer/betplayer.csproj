@@ -132,6 +132,11 @@
     <Content Include="Agent\assets\jqvmap\jqvmap\jquery.vmap.min.js" />
     <Content Include="Agent\assets\jqvmap\jqvmap\jquery.vmap.packed.js" />
     <Content Include="Agent\assets\jqvmap\jqvmap\jqvmap.css" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.europe.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.germany.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.russia.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.usa.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.world.js" />
     <Content Include="Agent\assets\uniform\css\uniform.default.css" />
     <Content Include="Agent\assets\uniform\demo\demo.html" />
     <Content Include="Agent\assets\uniform\images\bg-input-focus.png" />
@@ -144,7 +149,7 @@
     <Content Include="Agent\Clientplusminus.aspx" />
     <Content Include="Agent\CreateClient.aspx" />
     <Content Include="Agent\ClientDetails.aspx" />
-    <Content Include="Agent\Client_Ledger.aspx" />
+    <Content Include="Agent\ClientLedger.aspx" />
     <Content Include="Agent\CollectionDetails.aspx" />
     <Content Include="Agent\CreateNewCollection.aspx" />
     <Content Include="Agent\css\HomePage\bootstrap.min.css" />
@@ -304,8 +309,9 @@
     <Content Include="superagent\AgentDetails.aspx" />
     <Content Include="superagent\AgentLimitReport.aspx" />
     <Content Include="superagent\AgentPlusMinus.aspx" />
-    <Content Include="superagent\Agent_Ledger.aspx" />
+    <Content Include="superagent\AgentLedger.aspx" />
     <Content Include="superagent\AllAgentLedger.aspx" />
+    <Content Include="superagent\AllClientLedger.aspx" />
     <Content Include="superagent\assets\bootstrap-colorpicker\css\colorpicker.css" />
     <Content Include="superagent\assets\bootstrap-colorpicker\img\alpha.png" />
     <Content Include="superagent\assets\bootstrap-colorpicker\img\hue.png" />
@@ -799,10 +805,14 @@
     <Content Include="superagent\assets\uniform\jquery.uniform.js" />
     <Content Include="superagent\assets\uniform\jquery.uniform.min.js" />
     <Content Include="superagent\Changepassword.aspx" />
+    <Content Include="superagent\ClientLedger.aspx" />
+    <Content Include="superagent\ClientPlusMinus.aspx" />
     <Content Include="superagent\CollectionDetail.aspx" />
     <Content Include="superagent\CollectionDetails.aspx" />
     <Content Include="superagent\CreateAgent.aspx" />
     <Content Include="superagent\CreateNewCollection.aspx" />
+    <Content Include="superagent\css\Homepage\bootstrap.min.css" />
+    <Content Include="superagent\css\Homepage\style.css" />
     <Content Include="superagent\css\style.css" />
     <Content Include="superagent\css\style.min.css" />
     <Content Include="superagent\css\style_default.css" />
@@ -934,6 +944,16 @@
     <Content Include="superagent\img\gallery\photo8.jpg" />
     <Content Include="superagent\img\gallery\photo9.jpg" />
     <Content Include="superagent\img\header_line.png" />
+    <Content Include="superagent\img\Homepage\img1.jpg" />
+    <Content Include="superagent\img\Homepage\img2.jpg" />
+    <Content Include="superagent\img\Homepage\img3.jpg" />
+    <Content Include="superagent\img\Homepage\line_bg_repeat.jpg" />
+    <Content Include="superagent\img\Homepage\next.png" />
+    <Content Include="superagent\img\Homepage\pic1.jpg" />
+    <Content Include="superagent\img\Homepage\pic2.jpg" />
+    <Content Include="superagent\img\Homepage\prev.png" />
+    <Content Include="superagent\img\Homepage\slider.jpg" />
+    <Content Include="superagent\img\Homepage\slider1.jpg" />
     <Content Include="superagent\img\loading.gif" />
     <Content Include="superagent\img\login-btn.jpg" />
     <Content Include="superagent\img\logo.png" />
@@ -948,6 +968,8 @@
     <Content Include="superagent\js\demo.gmaps.js" />
     <Content Include="superagent\js\excanvas.js" />
     <Content Include="superagent\js\gmaps.js" />
+    <Content Include="superagent\js\Homepage\bootstrap.min.js" />
+    <Content Include="superagent\js\Homepage\jquery.min.js" />
     <Content Include="superagent\js\jquery-1.8.2.min.js" />
     <Content Include="superagent\js\jquery-1.8.3.min.js" />
     <Content Include="superagent\js\jquery.blockui.js" />
@@ -1024,12 +1046,12 @@
     <Compile Include="Agent\ClientDetails.aspx.designer.cs">
       <DependentUpon>ClientDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Agent\Client_Ledger.aspx.cs">
-      <DependentUpon>Client_Ledger.aspx</DependentUpon>
+    <Compile Include="Agent\ClientLedger.aspx.cs">
+      <DependentUpon>ClientLedger.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Agent\Client_Ledger.aspx.designer.cs">
-      <DependentUpon>Client_Ledger.aspx</DependentUpon>
+    <Compile Include="Agent\ClientLedger.aspx.designer.cs">
+      <DependentUpon>ClientLedger.aspx</DependentUpon>
     </Compile>
     <Compile Include="Agent\CollectionDetails.aspx.cs">
       <DependentUpon>CollectionDetails.aspx</DependentUpon>
@@ -1287,12 +1309,12 @@
     <Compile Include="superagent\AgentPlusMinus.aspx.designer.cs">
       <DependentUpon>AgentPlusMinus.aspx</DependentUpon>
     </Compile>
-    <Compile Include="superagent\Agent_Ledger.aspx.cs">
-      <DependentUpon>Agent_Ledger.aspx</DependentUpon>
+    <Compile Include="superagent\AgentLedger.aspx.cs">
+      <DependentUpon>AgentLedger.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="superagent\Agent_Ledger.aspx.designer.cs">
-      <DependentUpon>Agent_Ledger.aspx</DependentUpon>
+    <Compile Include="superagent\AgentLedger.aspx.designer.cs">
+      <DependentUpon>AgentLedger.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\AllAgentLedger.aspx.cs">
       <DependentUpon>AllAgentLedger.aspx</DependentUpon>
@@ -1301,12 +1323,33 @@
     <Compile Include="superagent\AllAgentLedger.aspx.designer.cs">
       <DependentUpon>AllAgentLedger.aspx</DependentUpon>
     </Compile>
+    <Compile Include="superagent\AllClientLedger.aspx.cs">
+      <DependentUpon>AllClientLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\AllClientLedger.aspx.designer.cs">
+      <DependentUpon>AllClientLedger.aspx</DependentUpon>
+    </Compile>
     <Compile Include="superagent\Changepassword.aspx.cs">
       <DependentUpon>Changepassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="superagent\Changepassword.aspx.designer.cs">
       <DependentUpon>Changepassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\ClientLedger.aspx.cs">
+      <DependentUpon>ClientLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\ClientLedger.aspx.designer.cs">
+      <DependentUpon>ClientLedger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\ClientPlusMinus.aspx.cs">
+      <DependentUpon>ClientPlusMinus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\ClientPlusMinus.aspx.designer.cs">
+      <DependentUpon>ClientPlusMinus.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\CollectionDetail.aspx.cs">
       <DependentUpon>CollectionDetail.aspx</DependentUpon>
