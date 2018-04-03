@@ -15,10 +15,17 @@ namespace betplayer.Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
            
             if (!IsPostBack)
             {
                 FillCapctha();
+                if (Session["clientID"] != null )
+                {
+                    Session.Abandon();
+                }
+               
+               
                
             }
         }
@@ -64,7 +71,7 @@ namespace betplayer.Client
                         int ClientID = Convert.ToInt16(dt.Rows[0]["ClientID"]);
 
                         Session["ClientID"] = ClientID;
-                        Session["AdminUsername"] = txtusername.Text;
+                        Session["clientUsername"] = txtusername.Text;
                         Response.Redirect("~/Client/Terms_Condition.aspx");
                     }
                     else

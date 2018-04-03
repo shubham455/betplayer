@@ -11,7 +11,10 @@ namespace betplayer.Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["clientID"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
         }
     }
 }

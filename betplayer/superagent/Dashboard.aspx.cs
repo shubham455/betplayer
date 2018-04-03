@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace betplayer.Super_Agent
+namespace betplayer.SuperAgent
 {
     public partial class DashboardMaster : System.Web.UI.Page
     {
