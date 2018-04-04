@@ -15,14 +15,15 @@ namespace betplayer.Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
            
+
             if (!IsPostBack)
             {
                 FillCapctha();
                 if (Session["clientID"] != null )
                 {
-                    Session.Abandon();
+                    Session.Remove("ClientID");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Logout Successfully.....');", true);
                 }
                
                

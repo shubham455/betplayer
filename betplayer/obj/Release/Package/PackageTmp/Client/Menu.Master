@@ -38,7 +38,7 @@
                     </td>
                     <td width="55" align="center" class="FontTextWhite" style="padding: 8px;">
                         <div>
-                            <a href="Login.php?lg=1">
+                            <a href="Login.aspx">
                                 <img src="images/InplayImg/Logout.png" alt="" width="40" height="40"></a>
                         </div>
                         Logout

@@ -60,7 +60,7 @@ namespace betplayer.Super_Agent
             string constr = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                using (SqlCommand cmd = new SqlCommand("Select * From ClientMaster Where Name Like '%" + txtsearch.Text + "%'"))
+                using (SqlCommand cmd = new SqlCommand("Select * From ClientMaster Where Name Like '%"  + "%'"))
                 {
                     cmd.Connection = con;
 
