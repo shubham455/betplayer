@@ -19,45 +19,45 @@
 <body id="login-body">
     <div class="login-header">
         <div id="logo" class="center">
-            <a href="mob.34 Zone.com">Crick20</a></div>
+            <a href="agent.crick20.com">Crick20</a>
+        </div>
     </div>
     <div id="login">
-        <form id="loginform" class="form-vertical no-padding no-margin" action="index.html" />
-        <div class="lock"><i class="icon-lock"></i></div>
-        <div class="control-wrap">
-            <h4>User Login</h4>
-            <div class="control-group">
-                <div class="controls">
-                    <div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
-                        <input id="input-username" type="text" placeholder="Username" /></div>
-                </div>
-            </div>
-            <div class="control-group">
-                <div class="controls">
-                    <div class="input-prepend"><span class="add-on"><i class="icon-key"></i></span>
-                        <input id="input-password" type="password" placeholder="Password" /></div>
-                    <div class="mtop10">
-                        <div class="block-hint pull-left small">
-                            <input type="checkbox" id="" />
-                            Remember Me </div>
-                        <div class="block-hint pull-right"><a href="javascript:;" class="" id="forget-password">Forgot Password?</a></div>
-                    </div>
-                    <div class="clearfix space5"></div>
-                </div>
-            </div>
-        </div>
-        <input type="submit" id="login-btn" class="btn btn-block login-btn" value="Login" /></form><form id="forgotform" class="form-vertical no-padding no-margin hide" action="index.html" />
-        <p class="center">Enter your e-mail address below to reset your password.</p>
+
+        <form id="loginform" runat="server" class="form-vertical no-padding no-margin">
+    <div class="lock"><i class="icon-lock"></i></div>
+    <div class="control-wrap">
+        <h4>User Login</h4>
         <div class="control-group">
             <div class="controls">
-                <div class="input-prepend"><span class="add-on"><i class="icon-envelope"></i></span>
-                    <input id="input-email" type="text" placeholder="Email" /></div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-user"></i></span>
+                    <asp:TextBox ID="txtusername" runat="server" placeholder="Username" />
+                </div>
             </div>
-            <div class="space20"></div>
         </div>
-        <input type="button" id="forget-btn" class="btn btn-block login-btn" value="Submit" /></form></div>
+        <div class="control-group">
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-key"></i></span>
+                    <asp:TextBox ID="txtpassword" runat="server" placeholder="Password" />
+                </div>
+                <div class="mtop10">
+                    <div class="block-hint pull-left small">
+                        <input type="checkbox" id="" />
+                        Remember Me
+                    </div>
+                    <div class="block-hint pull-right"><a href="javascript:;" class="" id="forget-password">Forgot Password?</a></div>
+                </div>
+                <div class="clearfix space5"></div>
+            </div>
+        </div>
+    </div>
+    <asp:Button ID="btnsubmit" CssClass="btn btn-block login-btn" runat="server" Text="Login" OnClick="Submitbtn_Click" />
+    </form>
+    </div>
     <div id="login-copyright">2018 &copy; Crick20.com </div>
-   
-   
+
+
 </body>
 </html>

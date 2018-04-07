@@ -64,8 +64,8 @@
                     </tbody></table>
                     
                       <div class="form-actions">
-                          <a href="index.php"><button type="button" class="btn btn-success">NEXT =&gt; MAIN MENU</button></a>
-                          <a href="../Login.php?lg=1"><button type="button" class="btn">Log Out</button></a>
+                          <a href="Dashboard.aspx"><button type="button" class="btn btn-success">NEXT =&gt; MAIN MENU</button></a>
+                          <a href="../agent/Login.aspx"><button type="button" class="btn">Log Out</button></a>
                       </div>
                       
                     <input name="PasswordModifyChk" type="hidden" id="PasswordModifyChk" value="" readonly="readonly">
