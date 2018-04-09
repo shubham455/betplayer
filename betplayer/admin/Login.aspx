@@ -1,4 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="betplayer.admin.Login" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin/Dashboard.Master" MaintainScrollPositionOnPostback="true" CodeBehind="Login.aspx.cs" Inherits="betplayer.admin.Login" %>
+ 
+<asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
 
 <!DOCTYPE html>
 
@@ -56,7 +59,8 @@
             <div class="space20"></div>
         </div>
         <input type="button" id="forget-btn" class="btn btn-block login-btn" value="Submit" /></form></div>
-    <div id="login-copyright">2013 &copy; Admin Lab Dashboard. </div>
+    <div id="login-copyright">2018 &copy; Admin Lab Dashboard. </div>
    
 </body>
 </html>
+    </asp:Content>
