@@ -8,10 +8,10 @@
     </div>
     
     <div class="TeamName">
-        <a href="#"><%: row["teamA"] %> v <%: row["teamB"] %>(5th ODI)</a>
+        <a href="#"><%: row["teamA"] %> v <%: row["teamB"] %></a>
     </div>
     <div class="profile-details">
-        <a href="ODMSBetDetails.php?id=234">
+        <a href="BetDetails.aspx">
             <table width="100%" border="0" cellspacing="2" cellpadding="2">
                 <tbody>
                     <tr>
@@ -38,7 +38,7 @@
                                         <td class="GameList" align="center">Session Bets : 0</td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Declared : <%: row["DateTime"] %></td>
+                                        <td class="GameList" align="center">Declared : </td>
                                     </tr>
                                     <tr>
                                         <td class="GameList" align="center">Won By : <%: row["winnerTeam"] %></td>
@@ -66,7 +66,7 @@
     <div class="content_bottom">
         <div class="clear"></div>
     </div>
-    </div>
+   
 
 
 </asp:Content>
