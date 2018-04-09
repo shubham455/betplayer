@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\Homepage.aspx" />
+    <Content Include="admin\Login.aspx" />
     <Content Include="Agent\AllClientLedger.aspx" />
     <Content Include="Agent\assets\bootstrap\css\bootstrap-fileupload.css" />
     <Content Include="Agent\assets\bootstrap\css\bootstrap-responsive.css" />
@@ -1004,6 +1005,13 @@
     </Compile>
     <Compile Include="admin\Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Agent\AllClientLedger.aspx.cs">
       <DependentUpon>AllClientLedger.aspx</DependentUpon>
