@@ -89,6 +89,14 @@
     <Content Include="admin\ModifyAgent.aspx" />
     <Content Include="admin\My_Ledger.aspx" />
     <Content Include="admin\NewCollection.aspx" />
+    <Content Include="admin\SecureCodeReport.aspx" />
+    <Content Include="admin\SessionplusMinusSelect.aspx" />
+    <Content Include="admin\Settings.aspx" />
+    <Content Include="admin\SportsBetting.aspx" />
+    <Content Include="admin\Sportsdetails.aspx" />
+    <Content Include="admin\TC.aspx" />
+    <Content Include="admin\ViewMatchReport.aspx" />
+    <Content Include="admin\ViewSessionReport.aspx" />
     <Content Include="Agent\AllClientLedger.aspx" />
     <Content Include="Agent\assets\bootstrap\css\bootstrap-fileupload.css" />
     <Content Include="Agent\assets\bootstrap\css\bootstrap-responsive.css" />
@@ -1164,6 +1172,62 @@
     </Compile>
     <Compile Include="admin\NewCollection.aspx.designer.cs">
       <DependentUpon>NewCollection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\SecureCodeReport.aspx.cs">
+      <DependentUpon>SecureCodeReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\SecureCodeReport.aspx.designer.cs">
+      <DependentUpon>SecureCodeReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\SessionplusMinusSelect.aspx.cs">
+      <DependentUpon>SessionplusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\SessionplusMinusSelect.aspx.designer.cs">
+      <DependentUpon>SessionplusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\SportsBetting.aspx.cs">
+      <DependentUpon>SportsBetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\SportsBetting.aspx.designer.cs">
+      <DependentUpon>SportsBetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Sportsdetails.aspx.cs">
+      <DependentUpon>Sportsdetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Sportsdetails.aspx.designer.cs">
+      <DependentUpon>Sportsdetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\TC.aspx.cs">
+      <DependentUpon>TC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\TC.aspx.designer.cs">
+      <DependentUpon>TC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ViewMatchReport.aspx.cs">
+      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ViewMatchReport.aspx.designer.cs">
+      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ViewSessionReport.aspx.cs">
+      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ViewSessionReport.aspx.designer.cs">
+      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Agent\AllClientLedger.aspx.cs">
       <DependentUpon>AllClientLedger.aspx</DependentUpon>

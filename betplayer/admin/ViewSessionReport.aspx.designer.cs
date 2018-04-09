@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace betplayer.Super_Agent {
+namespace betplayer.admin {
     
     
-    public partial class TC {
+    public partial class ViewSessionReport {
     }
 }
