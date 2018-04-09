@@ -69,34 +69,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin\SuperAgentDetails.aspx" />
-    <Content Include="admin\AgentLedger.aspx" />
-    <Content Include="admin\AgentLimitReport.aspx" />
-    <Content Include="admin\AgentPlusMinus.aspx" />
-    <Content Include="admin\AllAgentLedger.aspx" />
-    <Content Include="admin\ChangePassword.aspx" />
-    <Content Include="admin\ClientLedger.aspx" />
-    <Content Include="admin\ClientPlusMinus.aspx" />
-    <Content Include="admin\CollectionDetails.aspx" />
-    <Content Include="admin\CreateAgent.aspx" />
-    <Content Include="admin\CreateNewCollection.aspx" />
-    <Content Include="admin\Dashboard.aspx" />
-    <Content Include="admin\DateWiseReport.aspx" />
     <Content Include="admin\Homepage.aspx" />
-    <Content Include="admin\Ledger.aspx" />
     <Content Include="admin\Login.aspx" />
-    <Content Include="admin\MasterDetails.aspx" />
-    <Content Include="admin\ModifyAgent.aspx" />
-    <Content Include="admin\My_Ledger.aspx" />
-    <Content Include="admin\NewCollection.aspx" />
-    <Content Include="admin\SecureCodeReport.aspx" />
-    <Content Include="admin\SessionplusMinusSelect.aspx" />
-    <Content Include="admin\Settings.aspx" />
-    <Content Include="admin\SportsBetting.aspx" />
-    <Content Include="admin\Sportsdetails.aspx" />
-    <Content Include="admin\TC.aspx" />
-    <Content Include="admin\ViewMatchReport.aspx" />
-    <Content Include="admin\ViewSessionReport.aspx" />
     <Content Include="Agent\AllClientLedger.aspx" />
     <Content Include="Agent\assets\bootstrap\css\bootstrap-fileupload.css" />
     <Content Include="Agent\assets\bootstrap\css\bootstrap-responsive.css" />
@@ -931,7 +905,6 @@
     <Content Include="superagent\assets\font-awesome\sass\font-awesome.sass" />
     <Content Include="superagent\assets\font-awesome\sass\font-awesome.scss" />
     <Content Include="superagent\assets\jquery-slimscroll\slimScroll.jquery.json" />
-    <Content Include="admin\Dashboard.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1026,104 +999,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin\SuperAgentDetails.aspx.cs">
-      <DependentUpon>SuperAgentDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\SuperAgentDetails.aspx.designer.cs">
-      <DependentUpon>SuperAgentDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\AgentLedger.aspx.cs">
-      <DependentUpon>AgentLedger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\AgentLedger.aspx.designer.cs">
-      <DependentUpon>AgentLedger.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\AgentLimitReport.aspx.cs">
-      <DependentUpon>AgentLimitReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\AgentLimitReport.aspx.designer.cs">
-      <DependentUpon>AgentLimitReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\AgentPlusMinus.aspx.cs">
-      <DependentUpon>AgentPlusMinus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\AgentPlusMinus.aspx.designer.cs">
-      <DependentUpon>AgentPlusMinus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\AllAgentLedger.aspx.cs">
-      <DependentUpon>AllAgentLedger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\AllAgentLedger.aspx.designer.cs">
-      <DependentUpon>AllAgentLedger.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\ChangePassword.aspx.cs">
-      <DependentUpon>ChangePassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\ChangePassword.aspx.designer.cs">
-      <DependentUpon>ChangePassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\ClientLedger.aspx.cs">
-      <DependentUpon>ClientLedger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\ClientLedger.aspx.designer.cs">
-      <DependentUpon>ClientLedger.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\ClientPlusMinus.aspx.cs">
-      <DependentUpon>ClientPlusMinus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\ClientPlusMinus.aspx.designer.cs">
-      <DependentUpon>ClientPlusMinus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\CollectionDetails.aspx.cs">
-      <DependentUpon>CollectionDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\CollectionDetails.aspx.designer.cs">
-      <DependentUpon>CollectionDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\CreateAgent.aspx.cs">
-      <DependentUpon>CreateAgent.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\CreateAgent.aspx.designer.cs">
-      <DependentUpon>CreateAgent.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\CreateNewCollection.aspx.cs">
-      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\CreateNewCollection.aspx.designer.cs">
-      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\Dashboard.Master.cs">
-      <DependentUpon>Dashboard.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Dashboard.Master.designer.cs">
-      <DependentUpon>Dashboard.Master</DependentUpon>
-    </Compile>
-    <Compile Include="admin\DateWiseReport.aspx.cs">
-      <DependentUpon>DateWiseReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\DateWiseReport.aspx.designer.cs">
-      <DependentUpon>DateWiseReport.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1131,103 +1006,12 @@
     <Compile Include="admin\Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\Ledger.aspx.cs">
-      <DependentUpon>Ledger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Ledger.aspx.designer.cs">
-      <DependentUpon>Ledger.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\MasterDetails.aspx.cs">
-      <DependentUpon>MasterDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\MasterDetails.aspx.designer.cs">
-      <DependentUpon>MasterDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\ModifyAgent.aspx.cs">
-      <DependentUpon>ModifyAgent.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\ModifyAgent.aspx.designer.cs">
-      <DependentUpon>ModifyAgent.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\My_Ledger.aspx.cs">
-      <DependentUpon>My_Ledger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\My_Ledger.aspx.designer.cs">
-      <DependentUpon>My_Ledger.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\NewCollection.aspx.cs">
-      <DependentUpon>NewCollection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\NewCollection.aspx.designer.cs">
-      <DependentUpon>NewCollection.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\SecureCodeReport.aspx.cs">
-      <DependentUpon>SecureCodeReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\SecureCodeReport.aspx.designer.cs">
-      <DependentUpon>SecureCodeReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\SessionplusMinusSelect.aspx.cs">
-      <DependentUpon>SessionplusMinusSelect.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\SessionplusMinusSelect.aspx.designer.cs">
-      <DependentUpon>SessionplusMinusSelect.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\Settings.aspx.cs">
-      <DependentUpon>Settings.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Settings.aspx.designer.cs">
-      <DependentUpon>Settings.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\SportsBetting.aspx.cs">
-      <DependentUpon>SportsBetting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\SportsBetting.aspx.designer.cs">
-      <DependentUpon>SportsBetting.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\Sportsdetails.aspx.cs">
-      <DependentUpon>Sportsdetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Sportsdetails.aspx.designer.cs">
-      <DependentUpon>Sportsdetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\TC.aspx.cs">
-      <DependentUpon>TC.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\TC.aspx.designer.cs">
-      <DependentUpon>TC.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\ViewMatchReport.aspx.cs">
-      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\ViewMatchReport.aspx.designer.cs">
-      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\ViewSessionReport.aspx.cs">
-      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\ViewSessionReport.aspx.designer.cs">
-      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Agent\AllClientLedger.aspx.cs">
       <DependentUpon>AllClientLedger.aspx</DependentUpon>

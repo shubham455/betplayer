@@ -56,7 +56,7 @@
             <div class="space20"></div>
         </div>
         <input type="button" id="forget-btn" class="btn btn-block login-btn" value="Submit" /></form></div>
-    <div id="login-copyright">2018 &copy; Admin Lab Dashboard. </div>
+    <div id="login-copyright">2013 &copy; Admin Lab Dashboard. </div>
    
 </body>
 </html>

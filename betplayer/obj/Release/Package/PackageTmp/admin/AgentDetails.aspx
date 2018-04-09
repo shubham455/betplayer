@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/admin/Dashboard.Master" CodeBehind="SuperAgentDetails.aspx.cs" Inherits="betplayer.admin.AgentDetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/admin/Dashboard.Master" CodeBehind="AgentDetails.aspx.cs" Inherits="betplayer.admin.AgentDetails" %>
 
-<asp:Content ID="content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+<asp:Content ID="content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div id="main-content">
         <div class="container-fluid">
             <!-- BEGIN PAGE HEADER-->
@@ -15,7 +15,7 @@
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
                         <li>Master Details <span class="divider">&nbsp;</span> </li>
                         <li>Agent Details<span class="divider">&nbsp;</span></li>
-                        <li><a href="MasterDetails.Aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                        <li><a href="MasterDetails.php"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
                     <!-- END PAGE TITLE & BREADCRUMB-->
                 </div>
