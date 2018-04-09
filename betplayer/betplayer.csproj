@@ -69,7 +69,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin\AgentDetails.aspx" />
+    <Content Include="admin\SuperAgentDetails.aspx" />
     <Content Include="admin\AgentLedger.aspx" />
     <Content Include="admin\AgentLimitReport.aspx" />
     <Content Include="admin\AgentPlusMinus.aspx" />
@@ -1026,12 +1026,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin\AgentDetails.aspx.cs">
-      <DependentUpon>AgentDetails.aspx</DependentUpon>
+    <Compile Include="admin\SuperAgentDetails.aspx.cs">
+      <DependentUpon>SuperAgentDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\AgentDetails.aspx.designer.cs">
-      <DependentUpon>AgentDetails.aspx</DependentUpon>
+    <Compile Include="admin\SuperAgentDetails.aspx.designer.cs">
+      <DependentUpon>SuperAgentDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\AgentLedger.aspx.cs">
       <DependentUpon>AgentLedger.aspx</DependentUpon>
