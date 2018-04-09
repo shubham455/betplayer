@@ -8,7 +8,7 @@
             <a href="#">South Africa v India1 (5th ODI)</a>
         </div>
         <div class="profile-details">
-            <a href="ODMSBetDetails.php?id=234">
+            <a href="BetDetails.aspx">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tbody>
                         <tr>

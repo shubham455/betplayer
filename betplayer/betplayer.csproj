@@ -234,6 +234,7 @@
     <Content Include="Agent\ViewMatchReport.aspx" />
     <Content Include="Agent\ViewSessionReport.aspx" />
     <Content Include="Client\AllGamesList.aspx" />
+    <Content Include="Client\BetDetails.aspx" />
     <Content Include="Client\Change_Password.aspx" />
     <Content Include="Client\Change_Password2.aspx" />
     <Content Include="Client\css\Home\animate.css" />
@@ -1206,6 +1207,13 @@
     </Compile>
     <Compile Include="Client\AllGamesList.aspx.designer.cs">
       <DependentUpon>AllGamesList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\BetDetails.aspx.cs">
+      <DependentUpon>BetDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client\BetDetails.aspx.designer.cs">
+      <DependentUpon>BetDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Client\Change_Password.aspx.cs">
       <DependentUpon>Change_Password.aspx</DependentUpon>
