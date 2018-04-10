@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="betplayer.admin.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/admin/Dashboard.Master" CodeBehind="Login.aspx.cs" Inherits="betplayer.admin.Login" %>
+
+<asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
 
 <!DOCTYPE html>
 
@@ -60,3 +62,4 @@
    
 </body>
 </html>
+    </asp:Content>
