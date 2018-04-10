@@ -14,6 +14,7 @@ namespace betplayer.Agent
     {
         private DataTable dt;
         public DataTable MatchesDataTable { get { return dt; } }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -22,6 +23,7 @@ namespace betplayer.Agent
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Added SuccessFully.....');", true);
                 }
+            }
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (SqlConnection cn = new SqlConnection(CN))
                 {
@@ -29,11 +31,11 @@ namespace betplayer.Agent
                     string s = "Select * From ClientMaster";
                     SqlCommand cmd = new SqlCommand(s, cn);
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
+                    dt = new DataTable();
                     adp.Fill(dt);
                 }
             }
-        }
+        
 
 
         protected void txtsearch_TextChanged(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace betplayer.Agent
                 string s = "Select* From ClientMaster Where Name Like '%" + txtsearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(s, cn);
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
+                dt = new DataTable();
                 adp.Fill(dt);
             }
 
@@ -60,7 +62,7 @@ namespace betplayer.Agent
                 string s = "Select * From ClientMaster";
                 SqlCommand cmd = new SqlCommand(s, cn);
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
+                dt = new DataTable();
                 adp.Fill(dt);
 
 
