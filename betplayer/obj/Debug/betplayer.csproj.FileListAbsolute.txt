@@ -116,6 +116,6 @@ C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\betplayer.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\betplayer.pdb
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.csprojResolveAssemblyReference.cache
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.pdb
-C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.csprojResolveAssemblyReference.cache
