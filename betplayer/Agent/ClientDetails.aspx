@@ -43,11 +43,12 @@
                                     <a href="CreateClient.aspx">
                                         <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create</button></a>
                                     <div class="btn-group">
-                                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Change Status <span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="javascript:ChangeStatusMultiple('Active');">Active</a></li>
-                                            <li><a href="javascript:ChangeStatusMultiple('Inactive');">Inactive</a></li>
-                                        </ul>
+                                        <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" OnSelectedIndexChanged="DropDownstatus_SelectedIndexChanged" AutoPostBack="true">
+                                            <asp:ListItem Text="Please Select" Value="0">--Select Status--</asp:ListItem>
+                                            <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
+                                            <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
+                                        </asp:DropDownList>
+
                                     </div>
                                     <a href="ClientLimit.php">
                                         <button class="btn btn-success" type="button">Update Comm. &amp; Limit</button></a>
@@ -74,7 +75,7 @@
                                         <div class="dataTables_filter" id="sample_1_filter">
                                             <label>
                                                 Search:
-                                                    <asp:TextBox ID="txtsearch" aria-controls="sample_1" CssClass="input-medium" runat="server" AutoPostBack="true" OnTextChanged="txtsearch_TextChanged"></asp:TextBox></label>
+                                                    <asp:TextBox ID="txtsearch"  CssClass="input-medium" runat="server" AutoPostBack="true" OnTextChanged="txtsearch_TextChanged"></asp:TextBox></label>
                                         </div>
                                     </div>
                                 </div>
@@ -89,26 +90,28 @@
                                         </tr>
                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                             { %>
+                                       
                                         <tr role="row">
                                             <td width="2%" align="center" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label=" " style="width: 24px;">
                                                 <div class="checker" id="uniform-undefined">
                                                     <span>
-                                                        <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" style="opacity: 0;"></span>
+                                                        <asp:CheckBox ID="CheckboxID" runat="server"  OnCheckedChanged="CheckboxID_CheckedChanged" />
+                                                    </span>
                                                 </div>
                                             </td>
                                             <td align="left" class=" ">
                                                 <div class="btn-group">
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="ClientDetailsModify.php?id=118"><i class="icon-pencil"></i>Edit</a></li>
-                                                        <li><a href="ClientDetailsDelete.php?id=118"><i class="icon-trash"></i>Delete</a></li>
+                                                        <li><a href="ClientDetailsModify.aspx?id=<%: row ["ClientID"] %>"><i class="icon-pencil"></i>Edit</a></li>
+                                                        <li><a href="<%=delete(Convert.ToInt16(row["clientID"]))%>"><i class="icon-trash"></i>Delete</a></li>
                                                         <li><a href="javascript:ChangeStatus('118','Inactive');"><i class="icon-ban-circle"></i>
                                                             Inactive		                      </a></li>
                                                         <li><a href="javascript:SendLoginDetails('118');"><i class="icon-film"></i>Send Mobile Login Details</a></li>
                                                     </ul>
                                                 </div>
                                             </td>
-
+                                            
 
                                             <th height="25" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="SNo.: activate to sort column ascending" style="width: 30px;"><%:row["ClientID"] %></th>
                                             <th align="left" class="FontText" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Code: activate to sort column ascending" style="width: 33px;"><%:row["ClientID"] %></th>
@@ -218,7 +221,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input name="ID" type="hidden" id="ID" readonly="">
+                            <input name="ID" type="hidden" id="">
                             <input name="Status" type="hidden" id="Status" readonly="">
                             <input name="StatusMultiple" type="hidden" id="StatusMultiple" readonly="">
                             <input name="ModifyStatusChk" type="hidden" id="ModifyStatusChk" readonly="">
@@ -240,6 +243,6 @@
         </div>
         <!-- END PAGE CONTAINER-->
     </div>
-    
+
 </asp:Content>
 

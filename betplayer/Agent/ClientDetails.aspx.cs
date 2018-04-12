@@ -15,6 +15,8 @@ namespace betplayer.Agent
         private DataTable dt;
         public DataTable MatchesDataTable { get { return dt; } }
 
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -67,6 +69,44 @@ namespace betplayer.Agent
 
 
             }
+        }
+
+        protected void DropDownstatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (SqlConnection cn = new SqlConnection(CN))
+            {
+                cn.Open();
+                string s = "update  ClientMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID = 1";
+                SqlCommand cmd = new SqlCommand(s, cn);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+                BindData();
+
+            }
+        }
+        public int delete(int id)
+        {
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (SqlConnection cn = new SqlConnection(CN))
+            {
+                cn.Open();
+                string s = "delete from clientmaster  where clientid = '" + id + "'";
+                SqlCommand cmd = new SqlCommand(s, cn);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+                BindData();
+                return Convert.ToInt16(dt);
+                
+
+            }
+        }
+
+        protected void CheckboxID_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckboxID.Checked = true;
         }
     }
 }

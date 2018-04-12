@@ -13,6 +13,15 @@ namespace betplayer.Agent {
     public partial class ClientDetails {
         
         /// <summary>
+        /// DropDownstatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownstatus;
+        
+        /// <summary>
         /// txtsearch control.
         /// </summary>
         /// <remarks>
@@ -20,5 +29,14 @@ namespace betplayer.Agent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsearch;
+        
+        /// <summary>
+        /// CheckboxID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckboxID;
     }
 }

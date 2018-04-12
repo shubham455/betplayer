@@ -173,6 +173,7 @@
     <Content Include="Agent\assets\uniform\jquery.uniform.js" />
     <Content Include="Agent\assets\uniform\jquery.uniform.min.js" />
     <Content Include="Agent\ChangePassword.aspx" />
+    <Content Include="Agent\ClientDetailsModify.aspx" />
     <Content Include="Agent\ClientLimitReport.aspx" />
     <Content Include="Agent\Clientplusminus.aspx" />
     <Content Include="Agent\CreateClient.aspx" />
@@ -1250,6 +1251,13 @@
     </Compile>
     <Compile Include="Agent\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\ClientDetailsModify.aspx.cs">
+      <DependentUpon>ClientDetailsModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\ClientDetailsModify.aspx.designer.cs">
+      <DependentUpon>ClientDetailsModify.aspx</DependentUpon>
     </Compile>
     <Compile Include="Agent\ClientLimitReport.aspx.cs">
       <DependentUpon>ClientLimitReport.aspx</DependentUpon>
