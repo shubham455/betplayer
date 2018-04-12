@@ -86,7 +86,7 @@ namespace betplayer.Agent
 
             }
         }
-        public int delete(int id)
+        public string delete(string id)
         {
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (SqlConnection cn = new SqlConnection(CN))
@@ -98,8 +98,7 @@ namespace betplayer.Agent
                 dt = new DataTable();
                 adp.Fill(dt);
                 BindData();
-                return Convert.ToInt16(dt);
-                
+                return dt.ToString();
 
             }
         }
