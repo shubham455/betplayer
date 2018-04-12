@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data;
 using System.Globalization;
@@ -30,11 +30,11 @@ namespace Panchayat_System.Admin
             string strNewPassword1 = GeneratePassword().ToString();
 
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (SqlConnection cn = new SqlConnection(CN))
+            using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
                 string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Agent_limit,Agent_Share,Client_Share,Session_Commision_Type,Status) values (@Name,@Contact_No,@Password,@Clientlimit,@Agentlimit,@Agentshare,@Clientshare,@SessionType,@Status)";
-                SqlCommand cmd = new SqlCommand(s, cn);
+                MySqlCommand cmd = new MySqlCommand(s, cn);
                 cmd.Parameters.AddWithValue("@Name", txtname.Text);
                 cmd.Parameters.AddWithValue("@Contact_No", txtContactno.Text);
                 cmd.Parameters.AddWithValue("@Password", strNewPassword1);

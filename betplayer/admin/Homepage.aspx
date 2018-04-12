@@ -30,10 +30,10 @@
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item">
-                    <img data-src="../superagent/img/Homepage/slider.jpg" alt="First slide" src="../superagent/img/Homepage/slider.jpg">
+                    <img data-src="../admin/img/Homepage/slider.jpg" alt="First slide" src="../admin/img/Homepage/slider.jpg">
                 </div>
                 <div class="item active">
-                    <img data-src="/img/Homepage/slider1.jpg" alt="Second slide" src="../superagent/img/Homepage/slider1.jpg">
+                    <img data-src="/img/Homepage/slider1.jpg" alt="Second slide" src="../admin/img/Homepage/slider1.jpg">
                 </div>
             </div>
             <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon carousel-control-left"></span></a>
@@ -57,22 +57,22 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;एक पूरी तरह से नए स्तर पर अपने पसंदीदा खेल की आभासी सट्टेबाजी करे। कैसे खेले जानने के लिए <a href="HowToPlay.html">यहाँ क्लिक करे। </a>
             </p>
 
-            <p align="center"><a href="LoginPage.aspx" class="btn btn-success">Login</a></p>
+            <p align="center"><a href="Login.aspx" class="btn btn-success">Login</a></p>
             <br>
             <div class="col-md-4">
-                <img src="../superagent/img/Homepage/img1.jpg" alt="image" class="img-responsive img-rounded">
+                <img src="../admin/img/Homepage/img1.jpg" alt="image" class="img-responsive img-rounded">
                 <p>
                     <br>
                 </p>
             </div>
             <div class="col-md-4">
-                <img src="../superagent/img/Homepage/img2.jpg" alt="image" class="img-responsive img-rounded">
+                <img src="../admin/img/Homepage/img2.jpg" alt="image" class="img-responsive img-rounded">
                 <p>
                     <br>
                 </p>
             </div>
             <div class="col-md-4">
-                <img src="../superagent/img/Homepage/img3.jpg" alt="image" class="img-responsive img-rounded">
+                <img src="../admin/img/Homepage/img3.jpg" alt="image" class="img-responsive img-rounded">
                 <p>
                     <br>
                 </p>
@@ -82,11 +82,11 @@
             <div class="container">
 
                 <div class="col-md-6">
-                    <img src="../superagent/img/Homepage/pic1.jpg" alt="image" class="img-rounded img-responsive">
+                    <img src="../admin/img/Homepage/pic1.jpg" alt="image" class="img-rounded img-responsive">
                     <br>
                 </div>
                 <div class="col-md-6">
-                    <img src="../superagent/img/Homepage/pic2.jpg" alt="image" class="img-rounded img-responsive">
+                    <img src="../admin/img/Homepage/pic2.jpg" alt="image" class="img-rounded img-responsive">
                     <br>
                 </div>
                 <div class="clear"></div>
@@ -115,9 +115,9 @@
     </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script type="text/javascript" src="../superagent/js/Homepage/jquery.min.js"></script>
+    <script type="text/javascript" src="../admin/js/Homepage/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../superagent/js/Homepage/bootstrap.min.js"></script>
+    <script src="../admin/js/Homepage/bootstrap.min.js"></script>
     <script type="text/javascript">
 
         $('.carousel').carousel({

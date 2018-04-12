@@ -104,7 +104,7 @@
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="ClientDetailsModify.aspx?id=<%: row ["ClientID"] %>"><i class="icon-pencil"></i>Edit</a></li>
-                                                        <li><a href="<%=delete(row["clientID"].ToString())%>"><i class="icon-trash"></i>Delete</a></li>
+                                                        <li><a href="<%--<%=delete(row["clientID"].ToString())%>--%>"><i class="icon-trash"></i>Delete</a></li>
                                                         <li><a href="javascript:ChangeStatus('118','Inactive');"><i class="icon-ban-circle"></i>
                                                             Inactive		                      </a></li>
                                                         <li><a href="javascript:SendLoginDetails('118');"><i class="icon-film"></i>Send Mobile Login Details</a></li>

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
+
 using System.Configuration;
 using System.Data;
+using MySql.Data.MySqlClient;
+
 
 namespace betplayer
 {
@@ -49,17 +51,17 @@ namespace betplayer
             {
 
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-                using (SqlConnection cn = new SqlConnection(CN))
+                using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
                     string SELECT = "Select * from AgentMaster Where Name = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
-                    SqlCommand cmd = new SqlCommand(SELECT, cn);
-                    SqlDataReader rdr = cmd.ExecuteReader();
+                    MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
                     if (rdr.Read())
                     {
                         rdr.Close();
 
-                        SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
                         int AgentID = Convert.ToInt16(dt.Rows[0]["AgentID"]);

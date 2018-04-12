@@ -119,3 +119,5 @@ C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.CodeDom.Provider
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.csprojResolveAssemblyReference.cache
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.pdb
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\MySql.Data.dll
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\MySql.Data.xml

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Data;
 using System.Configuration;
 
@@ -27,12 +27,12 @@ namespace betplayer.Agent
                 }
             }
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-                using (SqlConnection cn = new SqlConnection(CN))
+                using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
                     string s = "Select * From ClientMaster";
-                    SqlCommand cmd = new SqlCommand(s, cn);
-                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
                     adp.Fill(dt);
                 }
@@ -43,12 +43,12 @@ namespace betplayer.Agent
         protected void txtsearch_TextChanged(object sender, EventArgs e)
         {
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (SqlConnection cn = new SqlConnection(CN))
+            using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
                 string s = "Select* From ClientMaster Where Name Like '%" + txtsearch.Text + "%'";
-                SqlCommand cmd = new SqlCommand(s, cn);
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
             }
@@ -58,12 +58,12 @@ namespace betplayer.Agent
         public void BindData()
         {
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (SqlConnection cn = new SqlConnection(CN))
+            using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
                 string s = "Select * From ClientMaster";
-                SqlCommand cmd = new SqlCommand(s, cn);
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
 
@@ -74,12 +74,12 @@ namespace betplayer.Agent
         protected void DropDownstatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (SqlConnection cn = new SqlConnection(CN))
+            using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
                 string s = "update  ClientMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID = 1";
-                SqlCommand cmd = new SqlCommand(s, cn);
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
                 BindData();
@@ -89,12 +89,12 @@ namespace betplayer.Agent
         public string delete(string id)
         {
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (SqlConnection cn = new SqlConnection(CN))
+            using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
                 string s = "delete from clientmaster  where clientid = '" + id + "'";
-                SqlCommand cmd = new SqlCommand(s, cn);
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
                 BindData();
