@@ -39,33 +39,33 @@
                 
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                            <a href="Clientplusminus.aspx">
+                            <a href="SuperAgentplusminus.aspx">
                                 <div class="stats-circle red-color">
                                     <i class="icon-tags"></i>
                                 </div>
-                                <strong><p style="color:#E17F90;">Client Plus/Minus</p></strong>
+                                <strong><p style="color:#E17F90;">SuperAgent Plus/Minus</p></strong>
                             </a>
                         </div>
                     </div>
                     
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                        	<a href="ClientLedger.aspx">
+                        	<a href="SuperAgentLedger.aspx">
                                 <div class="stats-circle purple-color">
                                     <i class="icon-eye-open"></i>
                                 </div>
-                                <strong><p style="color:#C8ABDB;">Client Ledger</p></strong>
+                                <strong><p style="color:#C8ABDB;">SuperAgent Ledger</p></strong>
                             </a>
                         </div>
                     </div>
                     
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                        	<a href="AllClientLedger.aspx">
+                        	<a href="AllSuperAgentLedger.aspx">
                                 <div class="stats-circle blue-color">
                                     <i class="icon-bar-chart"></i>
                                 </div>
-                                <strong><p style="color:#93C4E4;">ALL Client Ledger</p></strong>
+                                <strong><p style="color:#93C4E4;">ALL SuperAgent Ledger</p></strong>
                             </a>
                         </div>
                     </div>
