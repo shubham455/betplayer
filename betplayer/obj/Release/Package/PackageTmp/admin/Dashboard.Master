@@ -11,17 +11,17 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
-    <link href="../superagent/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../superagent/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="../superagent/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="../superagent/css/style.css" rel="stylesheet">
-    <link href="../superagent/css/style_responsive.css" rel="stylesheet">
-    <link href="../superagent/css/style_default.css" rel="stylesheet" id="style_color">
+    <link href="../admin/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../admin/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="../admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../admin/css/style.css" rel="stylesheet">
+    <link href="../admin/css/style_responsive.css" rel="stylesheet">
+    <link href="../admin/css/style_default.css" rel="stylesheet" id="style_color">
 
-    <link href="../superagent/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="../admin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css">
-    <link href="../superagent/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet">
-    <link href="../superagent/assets/jqvmap/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../admin/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet">
+    <link href="../admin/assets/jqvmap/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
 
     <script lang="javascript" type="text/javascript">
 
@@ -70,7 +70,7 @@
             <div class="container-fluid">
                 <!-- BEGIN LOGO -->
                 <a class="brand">
-                    <img src="../superagent/img/logo.png" alt="Admin Lab">
+                    <img src="../admin/img/logo.png" alt="Admin Lab">
                 </a>
                 <!-- END LOGO -->
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -135,7 +135,7 @@
 					    <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="AgentDetails.aspx">Agent Master</a></li>
+                        <li><a class="" href="SuperAgentDetails.aspx">SuperAgent Master</a></li>
                         <li><a class="" href="CollectionDetail.aspx">Collection Master</a></li>
                     </ul>
                 </li>
@@ -145,7 +145,7 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="../superagent/SportsDetails.aspx">Sport's Details</a></li>
+                        <li><a class="" href="../SuperAgent/SportsDetails.aspx">Sport's Details</a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -155,9 +155,9 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="My_Ledger.aspx">My Ledger</a></li>
-                        <li><a class="" href="AgentPlusMinus.aspx">Client Plus/Minus</a></li>
-                        <li><a class="" href="AgentLedger.aspx">Client Ledger</a></li>
-                        <li><a class="" href="AllAgentLedger.aspx">All Client Ledger</a></li>
+                        <li><a class="" href="SuperAgentPlusMinus.aspx">Client Plus/Minus</a></li>
+                        <li><a class="" href="SuperAgentLedger.aspx">Client Ledger</a></li>
+                        <li><a class="" href="AllSuperAgentLedger.aspx">All Client Ledger</a></li>
                         <li><a class="" href="DateWiseReport.aspx">Date Wise Report</a></li>
                     </ul>
                 </li>
@@ -167,8 +167,8 @@
 					<span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="AgentLimitReport.aspx">Client Limit Report</a></li>
-                        <li><a class="" href="../superagent/SecureCodeReport.aspx">Secure Code Report</a></li>
+                        <li><a class="" href="SuperAgentLimitReport.aspx">Client Limit Report</a></li>
+                        <li><a class="" href="../SuperAgent/SecureCodeReport.aspx">Secure Code Report</a></li>
                     </ul>
                 </li>
                 <li class="has-sub">

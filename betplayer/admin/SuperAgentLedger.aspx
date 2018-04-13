@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/admin/Dashboard.Master" CodeBehind="AgentLedger.aspx.cs" Inherits="betplayer.admin.AgentLedger" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/admin/Dashboard.Master" CodeBehind="SuperAgentLedger.aspx.cs" Inherits="betplayer.admin.AgentLedger" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
      <div id="main-content">

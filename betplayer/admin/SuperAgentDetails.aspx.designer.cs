@@ -10,6 +10,6 @@
 namespace betplayer.admin {
     
     
-    public partial class SuperAgentDetails {
+    public partial class SuperSuperAgentDetails {
     }
 }

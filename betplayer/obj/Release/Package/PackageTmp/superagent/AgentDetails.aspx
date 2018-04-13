@@ -153,16 +153,16 @@
                                                         </ul>
                                                     </div>
                                                 </td>
-                                                <td height="20" align="left" class=" "><%:row["ClientID"] %></td>
-                                                <td align="left" class=" "><%:row["ClientID"] %></td>
+                                                <td height="20" align="left" class=" "><%:row["AgentID"] %></td>
+                                                <td align="left" class=" "><%:row["AgentID"] %></td>
                                                 <td align="left" class=" "><%:row["Name"] %></td>
                                                 <td align="left" class=" "><%:row["ContactNO"] %></td>
                                                 <td align="left" class=" "></td>
-                                                <td align="left" class=" "><%:row["ClientID"] %></td>
+                                                <td align="left" class=" "><%:row["AgentID"] %></td>
                                                 <td align="left" class=" "><%:row["Password"] %></td>
                                                 <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["ClientID"] %></td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["ClientID"] %></td>
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["AgentID"] %></td>
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["AgentID"] %></td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
