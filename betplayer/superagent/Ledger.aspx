@@ -38,33 +38,33 @@
                 
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                            <a href="Clientplusminus.aspx">
+                            <a href="Agentplusminus.aspx">
                                 <div class="stats-circle red-color">
                                     <i class="icon-tags"></i>
                                 </div>
-                                <strong><p style="color:#E17F90;">Client Plus/Minus</p></strong>
+                                <strong><p style="color:#E17F90;">Agent Plus/Minus</p></strong>
                             </a>
                         </div>
                     </div>
                     
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                        	<a href="ClientLedger.aspx">
+                        	<a href="AgentLedger.aspx">
                                 <div class="stats-circle purple-color">
                                     <i class="icon-eye-open"></i>
                                 </div>
-                                <strong><p style="color:#C8ABDB;">Client Ledger</p></strong>
+                                <strong><p style="color:#C8ABDB;">Agent Ledger</p></strong>
                             </a>
                         </div>
                     </div>
                     
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                        	<a href="AllClientLedger.aspx">
+                        	<a href="AllAgentLedger.aspx">
                                 <div class="stats-circle blue-color">
                                     <i class="icon-bar-chart"></i>
                                 </div>
-                                <strong><p style="color:#93C4E4;">ALL Client Ledger</p></strong>
+                                <strong><p style="color:#93C4E4;">ALL Agent Ledger</p></strong>
                             </a>
                         </div>
                     </div>

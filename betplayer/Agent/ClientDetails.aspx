@@ -44,7 +44,7 @@
                                         <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create</button></a>
                                     <div class="btn-group">
                                         <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" OnSelectedIndexChanged="DropDownstatus_SelectedIndexChanged" AutoPostBack="true">
-                                            <asp:ListItem Text="Please Select" Value="0">--Select Status--</asp:ListItem>
+                                            <asp:ListItem Text="Please Select" Value="0">--Change Status--</asp:ListItem>
                                             <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
                                             <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
                                         </asp:DropDownList>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Data;
 using System.Configuration;
 
@@ -31,17 +31,17 @@ namespace betplayer.Client
             else
             {
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-                using (SqlConnection cn = new SqlConnection(CN))
+                using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
                     string SELECT = "Select * from ClientMaster Where Password= '" + txtOldPassword.Text + "'";
-                    SqlCommand cmd = new SqlCommand(SELECT, cn);
-                    SqlDataReader rdr = cmd.ExecuteReader();
+                    MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
                     if (rdr.Read())
                     {
                         rdr.Close();
                         string Update = "Update ClientMaster Set Password = '" + txtConfirmPassword.Text + "' where Password = '" + txtOldPassword.Text + "'";
-                        SqlCommand cmd1 = new SqlCommand(Update, cn);
+                        MySqlCommand cmd1 = new MySqlCommand(Update, cn);
                         cmd1.ExecuteNonQuery();
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Password Update Successfully...');", true);
                         txtOldPassword.Text = "";

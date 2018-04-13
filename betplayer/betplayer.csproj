@@ -905,7 +905,6 @@
     <Content Include="superagent\AgentPlusMinus.aspx" />
     <Content Include="superagent\AgentLedger.aspx" />
     <Content Include="superagent\AllAgentLedger.aspx" />
-    <Content Include="superagent\AllClientLedger.aspx" />
     <Content Include="superagent\assets\bootstrap-colorpicker\css\colorpicker.css" />
     <Content Include="superagent\assets\bootstrap-colorpicker\img\alpha.png" />
     <Content Include="superagent\assets\bootstrap-colorpicker\img\hue.png" />
@@ -1399,8 +1398,6 @@
     <Content Include="superagent\assets\uniform\jquery.uniform.js" />
     <Content Include="superagent\assets\uniform\jquery.uniform.min.js" />
     <Content Include="superagent\Changepassword.aspx" />
-    <Content Include="superagent\ClientLedger.aspx" />
-    <Content Include="superagent\ClientPlusMinus.aspx" />
     <Content Include="superagent\CollectionDetail.aspx" />
     <Content Include="superagent\CollectionDetails.aspx" />
     <Content Include="superagent\CreateAgent.aspx" />
@@ -2189,33 +2186,12 @@
     <Compile Include="superagent\AllAgentLedger.aspx.designer.cs">
       <DependentUpon>AllAgentLedger.aspx</DependentUpon>
     </Compile>
-    <Compile Include="superagent\AllClientLedger.aspx.cs">
-      <DependentUpon>AllClientLedger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="superagent\AllClientLedger.aspx.designer.cs">
-      <DependentUpon>AllClientLedger.aspx</DependentUpon>
-    </Compile>
     <Compile Include="superagent\Changepassword.aspx.cs">
       <DependentUpon>Changepassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="superagent\Changepassword.aspx.designer.cs">
       <DependentUpon>Changepassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="superagent\ClientLedger.aspx.cs">
-      <DependentUpon>ClientLedger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="superagent\ClientLedger.aspx.designer.cs">
-      <DependentUpon>ClientLedger.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="superagent\ClientPlusMinus.aspx.cs">
-      <DependentUpon>ClientPlusMinus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="superagent\ClientPlusMinus.aspx.designer.cs">
-      <DependentUpon>ClientPlusMinus.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\CollectionDetail.aspx.cs">
       <DependentUpon>CollectionDetail.aspx</DependentUpon>

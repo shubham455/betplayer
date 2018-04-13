@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 
 
@@ -20,12 +20,12 @@ namespace betplayer.Client
         {
             
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (SqlConnection cn = new SqlConnection(CN))
+            using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
                 string s = "Select * From Matches";
-                SqlCommand cmd = new SqlCommand(s, cn);
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
                 foreach(DataRow row in dt.Rows)

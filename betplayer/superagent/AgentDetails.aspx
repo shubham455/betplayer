@@ -39,11 +39,11 @@
                                         <a href="CreateAgent.aspx">
                                             <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create</button></a>
                                         <div class="btn-group">
-                                            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Change Status <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="javascript:ChangeStatusMultiple('Active');">Active</a></li>
-                                                <li><a href="javascript:ChangeStatusMultiple('Inactive');">Inactive</a></li>
-                                            </ul>
+                                            <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" OnSelectedIndexChanged="DropDownstatus_SelectedIndexChanged" AutoPostBack="true">
+                                            <asp:ListItem Text="Please Select" Value="0">--Change Status--</asp:ListItem>
+                                            <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
+                                            <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
+                                        </asp:DropDownList>
                                         </div>
                                         <div class="btn-group">
                                             <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">Update Details <span class="caret"></span></button>
@@ -80,7 +80,7 @@
                                             <div class="dataTables_filter" id="sample_1_filter">
                                                 <label>
                                                     Search:
-                                                <input type="text" aria-controls="sample_1" class="input-medium"></label>
+                                                <asp:TextBox ID="txtsearch" runat="server" aria-controls="sample_1" class="input-medium"/></label>
                                             </div>
                                         </div>
                                     </div>
@@ -128,6 +128,8 @@
                                                 <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Dead: activate to sort column ascending" style="width: 33px;">Dead</th>
                                             </tr>
                                         </thead>
+                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
+                                            { %>
 
                                         <tbody role="alert" aria-live="polite" aria-relevant="all">
                                             <tr class="odd">
@@ -151,208 +153,25 @@
                                                         </ul>
                                                     </div>
                                                 </td>
-                                                <td height="20" align="left" class=" ">1</td>
-                                                <td align="left" class=" ">A17</td>
-                                                <td align="left" class=" ">Golu (HM)</td>
-                                                <td align="left" class=" ">7007352585</td>
-                                                <td align="left" class=" ">01-02-2018</td>
-                                                <td align="left" class=" ">50.00</td>
-                                                <td align="left" class=" ">5971</td>
+                                                <td height="20" align="left" class=" "><%:row["AgentID"] %></td>
+                                                <td align="left" class=" "><%:row["AgentID"] %></td>
+                                                <td align="left" class=" "><%:row["Name"] %></td>
+                                                <td align="left" class=" "><%:row["ContactNO"] %></td>
+                                                <td align="left" class=" "></td>
+                                                <td align="left" class=" "><%:row["AgentID"] %></td>
+                                                <td align="left" class=" "><%:row["Password"] %></td>
                                                 <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.00</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.50</td>
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["AgentID"] %></td>
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["AgentID"] %></td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
-                                                <td align="left" class=" ">Inactive</td>
+                                                <td align="left" class=" "><%:row["Status"] %></td>
                                                 <td align="left" class=" ">NO</td>
                                             </tr>
-                                            <tr class="even">
-                                                <td align="center" class="  sorting_1">
-                                                    <div class="checker" id="uniform-2">
-                                                        <span>
-                                                            <input type="checkbox" class="checkboxes" name="2" id="2" value="16" style="opacity: 0;"></span>
-                                                    </div>
-                                                </td>
-                                                <td align="left" class=" ">
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="AgentDetailsModify.php?id=16"><i class="icon-pencil"></i>Edit</a></li>
-                                                            <li><a href="AgentDetailsDelete.php?id=16"><i class="icon-trash"></i>Delete</a></li>
-                                                            <li><a href="javascript:ChangeStatus('16','Active');"><i class="icon-ban-circle"></i>
-                                                                Active                              </a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="ClientLimit.php?id=16"><i class="icon-columns"></i>Client Limit</a></li>
-                                                            <li><a href="javascript:SendLoginDetails('16');"><i class="icon-film"></i>Send Login Details</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td height="20" align="left" class=" ">2</td>
-                                                <td align="left" class=" ">A16</td>
-                                                <td align="left" class=" ">Jaagu (HM)</td>
-                                                <td align="left" class=" ">7571099048</td>
-                                                <td align="left" class=" ">19-01-2018</td>
-                                                <td align="left" class=" ">50.00</td>
-                                                <td align="left" class=" ">1099</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.00</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.50</td>
-                                                <td align="right" style="text-align: right;" class=" ">0</td>
-                                                <td align="right" style="text-align: right;" class=" ">0</td>
-                                                <td align="right" style="text-align: right;" class=" ">0</td>
-                                                <td align="left" class=" ">Inactive</td>
-                                                <td align="left" class=" ">NO</td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td align="center" class="  sorting_1">
-                                                    <div class="checker" id="uniform-3">
-                                                        <span>
-                                                            <input type="checkbox" class="checkboxes" name="3" id="3" value="13" style="opacity: 0;"></span>
-                                                    </div>
-                                                </td>
-                                                <td align="left" class=" ">
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="AgentDetailsModify.php?id=13"><i class="icon-pencil"></i>Edit</a></li>
-                                                            <li><a href="AgentDetailsDelete.php?id=13"><i class="icon-trash"></i>Delete</a></li>
-                                                            <li><a href="javascript:ChangeStatus('13','Inactive');"><i class="icon-ban-circle"></i>
-                                                                Inactive                              </a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="ClientLimit.php?id=13"><i class="icon-columns"></i>Client Limit</a></li>
-                                                            <li><a href="javascript:SendLoginDetails('13');"><i class="icon-film"></i>Send Login Details</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td height="20" align="left" class=" ">3</td>
-                                                <td align="left" class=" ">A13</td>
-                                                <td align="left" class=" ">Lala Mau</td>
-                                                <td align="left" class=" ">9628371118</td>
-                                                <td align="left" class=" ">06-01-2018</td>
-                                                <td align="left" class=" ">50.00</td>
-                                                <td align="left" class=" ">2221</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.00</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.50</td>
-                                                <td align="right" style="text-align: right;" class=" ">1450000</td>
-                                                <td align="right" style="text-align: right;" class=" ">1450000</td>
-                                                <td align="right" style="text-align: right;" class=" ">840942</td>
-                                                <td align="left" class=" ">Active</td>
-                                                <td align="left" class=" ">NO</td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td align="center" class="  sorting_1">
-                                                    <div class="checker" id="uniform-4">
-                                                        <span>
-                                                            <input type="checkbox" class="checkboxes" name="4" id="4" value="12" style="opacity: 0;"></span>
-                                                    </div>
-                                                </td>
-                                                <td align="left" class=" ">
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="AgentDetailsModify.php?id=12"><i class="icon-pencil"></i>Edit</a></li>
-                                                            <li><a href="AgentDetailsDelete.php?id=12"><i class="icon-trash"></i>Delete</a></li>
-                                                            <li><a href="javascript:ChangeStatus('12','Inactive');"><i class="icon-ban-circle"></i>
-                                                                Inactive                              </a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="ClientLimit.php?id=12"><i class="icon-columns"></i>Client Limit</a></li>
-                                                            <li><a href="javascript:SendLoginDetails('12');"><i class="icon-film"></i>Send Login Details</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td height="20" align="left" class=" ">4</td>
-                                                <td align="left" class=" ">A12</td>
-                                                <td align="left" class=" ">Manish Sethiya</td>
-                                                <td align="left" class=" ">8269118268</td>
-                                                <td align="left" class=" ">05-01-2018</td>
-                                                <td align="left" class=" ">50.00</td>
-                                                <td align="left" class=" ">123</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.00</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.50</td>
-                                                <td align="right" style="text-align: right;" class=" ">500000</td>
-                                                <td align="right" style="text-align: right;" class=" ">500000</td>
-                                                <td align="right" style="text-align: right;" class=" ">274180</td>
-                                                <td align="left" class=" ">Active</td>
-                                                <td align="left" class=" ">NO</td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td align="center" class="  sorting_1">
-                                                    <div class="checker" id="uniform-5">
-                                                        <span>
-                                                            <input type="checkbox" class="checkboxes" name="5" id="5" value="11" style="opacity: 0;"></span>
-                                                    </div>
-                                                </td>
-                                                <td align="left" class=" ">
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="AgentDetailsModify.php?id=11"><i class="icon-pencil"></i>Edit</a></li>
-                                                            <li><a href="AgentDetailsDelete.php?id=11"><i class="icon-trash"></i>Delete</a></li>
-                                                            <li><a href="javascript:ChangeStatus('11','Inactive');"><i class="icon-ban-circle"></i>
-                                                                Inactive                              </a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="ClientLimit.php?id=11"><i class="icon-columns"></i>Client Limit</a></li>
-                                                            <li><a href="javascript:SendLoginDetails('11');"><i class="icon-film"></i>Send Login Details</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td height="20" align="left" class=" ">5</td>
-                                                <td align="left" class=" ">A11</td>
-                                                <td align="left" class=" ">MUkesh (Lala)</td>
-                                                <td align="left" class=" ">9936288283</td>
-                                                <td align="left" class=" ">29-12-2017</td>
-                                                <td align="left" class=" ">50.00</td>
-                                                <td align="left" class=" ">121416</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.00</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.50</td>
-                                                <td align="right" style="text-align: right;" class=" ">250000</td>
-                                                <td align="right" style="text-align: right;" class=" ">150000</td>
-                                                <td align="right" style="text-align: right;" class=" ">46293</td>
-                                                <td align="left" class=" ">Active</td>
-                                                <td align="left" class=" ">NO</td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td align="center" class="  sorting_1">
-                                                    <div class="checker" id="uniform-6">
-                                                        <span>
-                                                            <input type="checkbox" class="checkboxes" name="6" id="6" value="14" style="opacity: 0;"></span>
-                                                    </div>
-                                                </td>
-                                                <td align="left" class=" ">
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="AgentDetailsModify.php?id=14"><i class="icon-pencil"></i>Edit</a></li>
-                                                            <li><a href="AgentDetailsDelete.php?id=14"><i class="icon-trash"></i>Delete</a></li>
-                                                            <li><a href="javascript:ChangeStatus('14','Active');"><i class="icon-ban-circle"></i>
-                                                                Active                              </a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="ClientLimit.php?id=14"><i class="icon-columns"></i>Client Limit</a></li>
-                                                            <li><a href="javascript:SendLoginDetails('14');"><i class="icon-film"></i>Send Login Details</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td height="20" align="left" class=" ">6</td>
-                                                <td align="left" class=" ">A14</td>
-                                                <td align="left" class=" ">Raees Mau (HM)</td>
-                                                <td align="left" class=" ">7905668835</td>
-                                                <td align="left" class=" ">13-01-2018</td>
-                                                <td align="left" class=" ">50.00</td>
-                                                <td align="left" class=" ">raaj</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.00</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.50</td>
-                                                <td align="right" style="text-align: right;" class=" ">600000</td>
-                                                <td align="right" style="text-align: right;" class=" ">500000</td>
-                                                <td align="right" style="text-align: right;" class=" ">0</td>
-                                                <td align="left" class=" ">Inactive</td>
-                                                <td align="left" class=" ">NO</td>
-                                            </tr>
+                                            
                                         </tbody>
+                                         <% } //foreach %>
                                     </table>
                                     <div class="row-fluid">
                                         <div class="span6">

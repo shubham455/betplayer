@@ -11,5 +11,23 @@ namespace betplayer.Super_Agent {
     
     
     public partial class AgentDetails {
+        
+        /// <summary>
+        /// DropDownstatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownstatus;
+        
+        /// <summary>
+        /// txtsearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtsearch;
     }
 }

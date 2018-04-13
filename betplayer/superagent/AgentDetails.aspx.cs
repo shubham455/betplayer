@@ -5,104 +5,99 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 namespace betplayer.Super_Agent
 {
     public partial class AgentDetails : System.Web.UI.Page
     {
+        private DataTable dt;
+        public DataTable MatchesDataTable { get { return dt; } }
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-        public string getStudentData()
-        {
-            string data = "";
-            string constr = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
+            if (!IsPostBack)
             {
-                using (SqlCommand cmd = new SqlCommand("Select * From ClientMaster"))
+                if (Request.QueryString["msg"] == "Add")
                 {
-                    cmd.Connection = con;
-
-                    cmd.Connection.Open();
-                    using (SqlDataReader sqlRdr = cmd.ExecuteReader())
-                    {
-                        // table = new DataTable();  
-                        // table.Load(reader);  
-                        if (sqlRdr.HasRows)
-                        {
-                            while (sqlRdr.Read())
-                            {
-                                int SNo = sqlRdr.GetInt32(0);
-                                string Name = (sqlRdr.GetString(1));
-                                string ContactNo = sqlRdr.GetString(2);
-                                string Passwod = sqlRdr.GetString(3);
-                                string AgentLimit = sqlRdr.GetString(5);
-                                string ClientLimit = sqlRdr.GetString(4);
-
-                                string AgentShare = sqlRdr.GetString(6);
-                                string ClientShare = sqlRdr.GetString(7);
-                                string Client_Type = sqlRdr.GetString(8);
-                                string Status = sqlRdr.GetString(9);
-                                data += "<tr><td></td><td></td><td>" + SNo + "</td><td></td><td>" + Name + "</td><td>" + ContactNo + "</td><td>" + Passwod + "</td><td></td><td></td><td></td><td>" + Client_Type + "</td><td></td><td></td><td>" + AgentShare + "</td><td>" + ClientShare + "</td><td></td><td>" + Status + "</td></tr>";
-                            }
-                        }
-                    }
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Added SuccessFully.....');", true);
                 }
-                return data;
+            }
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+                string s = "Select * From AgentMaster";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
             }
         }
+
+
 
         protected void txtsearch_TextChanged(object sender, EventArgs e)
         {
-            string data = "";
-            string constr = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
             {
-                using (SqlCommand cmd = new SqlCommand("Select * From ClientMaster Where Name Like '%"  + "%'"))
-                {
-                    cmd.Connection = con;
-
-                    cmd.Connection.Open();
-                    using (SqlDataReader sqlRdr = cmd.ExecuteReader())
-                    {
-                        // table = new DataTable();  
-                        // table.Load(reader);  
-                        if (sqlRdr.HasRows)
-                        {
-                            while (sqlRdr.Read())
-                            {
-                                int SNo = sqlRdr.GetInt32(0);
-                                string Name = (sqlRdr.GetString(1));
-                                string ContactNo = sqlRdr.GetString(2);
-                                string Passwod = sqlRdr.GetString(3);
-                                string AgentLimit = sqlRdr.GetString(5);
-                                string ClientLimit = sqlRdr.GetString(4);
-
-                                string AgentShare = sqlRdr.GetString(6);
-                                string ClientShare = sqlRdr.GetString(7);
-                                string Client_Type = sqlRdr.GetString(8);
-                                string Status = sqlRdr.GetString(9);
-                                data += "<tr><td></td><td></td><td>" + SNo + "</td><td></td><td>" + Name + "</td><td>" + ContactNo + "</td><td>" + Passwod + "</td><td></td><td></td><td></td><td>" + Client_Type + "</td><td></td><td></td><td>" + AgentShare + "</td><td>" + ClientShare + "</td><td></td><td>" + Status + "</td></tr>";
-                            }
-                        }
-                    }
-                }
-
+                cn.Open();
+                string s = "Select* From AgentMaster Where Name Like '%" + txtsearch.Text + "%'";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
             }
+
         }
+
         public void BindData()
         {
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (SqlConnection cn = new SqlConnection(CN))
+            using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From ClientMaster";
-                SqlCommand cmd = new SqlCommand(s, cn);
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
+                string s = "Select * From AgentMaster";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                dt = new DataTable();
                 adp.Fill(dt);
+
+
+            }
+        }
+
+        protected void DropDownstatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+                string s = "update  AgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID = 1";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+                BindData();
+
+            }
+        }
+        public string delete(string id)
+        {
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+                string s = "delete from Agentmaster  where clientid = '" + id + "'";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+                BindData();
+                return dt.ToString();
 
             }
         }
