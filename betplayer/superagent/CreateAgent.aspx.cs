@@ -23,7 +23,7 @@ namespace betplayer.Super_Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "insert into AgentMaster(Name,ContactNo,Password,Agentlimit,Remlimit,myshare,AgentShare,mymobshare,agentmobshare,status) values (@Name,@Contact_No,@Password,@Agentlimit,@Remlimit,@myshare,@Agentshare,@mymobshare,@agentmobshare,@Status)";
+                string s = "insert into AgentMaster(Name,ContactNo,Password,Agentlimit,Remlimit,myshare,AgentShare,mymobshare,agentmobshare,status,CreatedBy,Date) values (@Name,@Contact_No,@Password,@Agentlimit,@Remlimit,@myshare,@Agentshare,@mymobshare,@agentmobshare,@Status,@CreatedBy,@Date)";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 cmd.Parameters.AddWithValue("@Name", txtname.Text);
                 cmd.Parameters.AddWithValue("@Contact_No", txtcontactno.Text);
@@ -36,6 +36,8 @@ namespace betplayer.Super_Agent
                 cmd.Parameters.AddWithValue("@mymobshare", txtmymobshare.Text);
                 cmd.Parameters.AddWithValue("@agentmobshare", txtagentmobshare.Text);
                 cmd.Parameters.AddWithValue("@Status", "active");
+                cmd.Parameters.AddWithValue("@CreatedBy", Session["SuperAgentID"]);
+                cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
 
                 cmd.ExecuteNonQuery();
                 Response.Redirect("AgentDetails.aspx?msg=Add");

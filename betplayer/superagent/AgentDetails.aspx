@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/superagent/DashBoard.Master" CodeBehind="AgentDetails.aspx.cs" Inherits="betplayer.Super_Agent.AgentDetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/superagent/DashBoard.Master" EnableEventValidation="false" CodeBehind="AgentDetails.aspx.cs" Inherits="betplayer.Super_Agent.AgentDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
@@ -15,7 +15,7 @@
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
                         <li>Master Details <span class="divider">&nbsp;</span> </li>
                         <li>Agent Details<span class="divider">&nbsp;</span></li>
-                        <li><a href="MasterDetails.php"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                        <li><a href="MasterDetails.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
                     <!-- END PAGE TITLE & BREADCRUMB-->
                 </div>
@@ -45,16 +45,7 @@
                                             <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
                                         </asp:DropDownList>
                                         </div>
-                                        <div class="btn-group">
-                                            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">Update Details <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="AgentLimitReportFix.php">Fix Limit Update Details</a></li>
-                                                <li><a href="AgentLimitReport.php">Current Limit Update Details</a></li>
-                                                <li><a href="AgentSharePerReport.php">Share Per Update Details</a></li>
-                                                <li><a href="AgentStatusReport.php">Status Update Details</a></li>
-                                                <li><a href="AgentDeadStatusReport.php">Dead Status Update Details</a></li>
-                                            </ul>
-                                        </div>
+                                       
                                         <a href="AgentLimit.php">
                                             <button class="btn btn-primary" type="button">Update Limit</button></a>
                                     </div>
@@ -80,7 +71,7 @@
                                             <div class="dataTables_filter" id="sample_1_filter">
                                                 <label>
                                                     Search:
-                                                <asp:TextBox ID="txtsearch" runat="server" aria-controls="sample_1" class="input-medium"/></label>
+                                                <asp:TextBox ID="txtsearch" runat="server" aria-controls="sample_1" class="input-medium" AutoPostBack="true" OnTextChanged="txtsearch_TextChanged"/></label>
                                             </div>
                                         </div>
                                     </div>
@@ -157,7 +148,7 @@
                                                 <td align="left" class=" "><%:row["AgentID"] %></td>
                                                 <td align="left" class=" "><%:row["Name"] %></td>
                                                 <td align="left" class=" "><%:row["ContactNO"] %></td>
-                                                <td align="left" class=" "></td>
+                                                <td align="left" class=" "><%:row["Date"] %></td>
                                                 <td align="left" class=" "><%:row["AgentID"] %></td>
                                                 <td align="left" class=" "><%:row["Password"] %></td>
                                                 <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
