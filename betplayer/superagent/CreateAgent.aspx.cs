@@ -23,7 +23,7 @@ namespace betplayer.Super_Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "insert into AgentMaster(Name,ContactNo,Password,Agentlimit,Remlimit,myshare,AgentShare,mymobshare,agentmobshare,status,CreatedBy,Date) values (@Name,@Contact_No,@Password,@Agentlimit,@Remlimit,@myshare,@Agentshare,@mymobshare,@agentmobshare,@Status,@CreatedBy,@Date)";
+                string s = "insert into AgentMaster(Name,ContactNo,Password,Agentlimit,Remlimit,myshare,AgentShare,mymobshare,agentmobshare,status,CreatedBy,Date) values (@Name,@Contact_No,@Password,@Agentlimit,@Remlimit,@myshare,@Agentshare,@mymobshare,@agentmobshare,@Status,@CreatedBy,@Date);  SELECT LAST_INSERT_ID()";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 cmd.Parameters.AddWithValue("@Name", txtname.Text);
                 cmd.Parameters.AddWithValue("@Contact_No", txtcontactno.Text);
@@ -39,7 +39,11 @@ namespace betplayer.Super_Agent
                 cmd.Parameters.AddWithValue("@CreatedBy", Session["SuperAgentID"]);
                 cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
 
-                cmd.ExecuteNonQuery();
+                int ID = Convert.ToInt16(cmd.ExecuteScalar());
+                string update = "Update AgentMaster Set Code = 'C" + ID + "'where AgentID = '" + ID + "' ";
+                MySqlCommand cmd1 = new MySqlCommand(update, cn);
+                cmd1.ExecuteNonQuery();
+
                 Response.Redirect("AgentDetails.aspx?msg=Add");
 
             }

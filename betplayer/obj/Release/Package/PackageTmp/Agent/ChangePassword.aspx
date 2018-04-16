@@ -31,7 +31,7 @@
 		            <span class="tools"> <a href="javascript:;" class="icon-chevron-down"></a> <a href="javascript:;" class="icon-remove"></a> </span> </div>
 		          <div class="widget-body form"> 
                   <!-- BEGIN FORM-->
-                    <form name="BetPlayer" id="BetPlayer" method="post" action="ClientDetails.php" autocomplete="off">
+                    
                     <div class="alert alert-error" id="Error" style="visibility:hidden">
                             
                     </div>
@@ -46,12 +46,12 @@
                           <tr>
                             <td class="welcome">&nbsp;</td>
                             <td height="30" align="left" valign="middle" class="welcome">New Password</td>
-                            <td align="left"><asp:TextBox runat="server" cssclass="textbox" id="txtpass"></asp:TextBox></td>
+                            <td align="left"><asp:TextBox runat="server" cssclass="textbox" id="txtNewPassword"></asp:TextBox></td>
                           </tr>
                           <tr>
                             <td class="welcome">&nbsp;</td>
                             <td height="30" align="left" valign="middle" class="welcome">Confirm Password</td>
-                            <td align="left"><asp:TextBox runat="server"  cssclass="textbox" id="txtpass1"></asp:TextBox></td>
+                            <td align="left"><asp:TextBox runat="server"  cssclass="textbox" id="txtConfirmPassword" OnTextChanged="txtConfirmPassword_TextChanged"></asp:TextBox></td>
                           </tr>
                           <tr>
                             <td>&nbsp;</td>
@@ -62,13 +62,13 @@
                       </tr>
                     </tbody></table>
                       <div class="form-actions">
-                          <button type="button" class="btn btn-success" onclick="Submit('Ok')">Change Password</button>
-                          <button type="button" class="btn" onclick="Submit('Cancel')">Cancel</button>
+                          <asp:button ID="btnSubmit" class="btn btn-success" onclick="btnChangepass_Click" Text="Change Password" runat="server" />
+                          <asp:button ID="btnCancel" class="btn btn-success" onclick="btnCancel_Click" Text="Cancel" runat="server" />
                       </div>
                       
                     <input name="PasswordModifyChk" type="hidden" id="txtPasswordModifyChk" value="" readonly="readonly">
                     
-                    </form>
+                   
                     <!-- END FORM-->
                   </div>
 	            </div>

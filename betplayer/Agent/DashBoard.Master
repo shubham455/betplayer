@@ -23,42 +23,7 @@
     <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet">
     <link href="assets/jqvmap/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
 
-    <script lang="javascript" type="text/javascript">
-
-        function Submit(frm) {
-            if (frm == "Ok") {
-
-                var Err = "";
-                //document.getElementById("Error").innerHTML = "<strong>Please Select Game Name.</strong>";
-                if (document.BetPlayer.OldPassword.value == "")
-                    Err = "<strong>1. Please Enter Old Password !<br></strong>";
-
-                if (document.BetPlayer.pass.value == "")
-                    Err += "<strong>2. Please New Password !<br></strong>";
-
-                if (document.BetPlayer.pass1.value == "")
-                    Err += "<strong>3. Please Enter Confirm New Password !<br></strong>";
-
-                if (Err == "") {
-                    document.BetPlayer.action = "ChangePassword.php";
-                    document.BetPlayer.PasswordModifyChk.value = "1";
-                    document.BetPlayer.submit();
-                }
-                else {
-                    document.getElementById("Error").innerHTML = Err;
-                    document.getElementById("Error").style.visibility = "visible";
-                }
-
-            }
-            else {
-                window.open("Settings.aspx", '_self');
-            }
-
-        }
-
-
-    </script>
-
+    
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->

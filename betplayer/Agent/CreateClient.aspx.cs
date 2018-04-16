@@ -33,23 +33,37 @@ namespace Panchayat_System.Admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Agent_limit,Agent_Share,Client_Share,Session_Commision_Type,Status,CreatedBy,Date) values (@Name,@Contact_No,@Password,@Clientlimit,@Agentlimit,@Agentshare,@Clientshare,@SessionType,@Status,@CreatedBy,@Date)";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                cmd.Parameters.AddWithValue("@Name", txtname.Text);
-                cmd.Parameters.AddWithValue("@Contact_No", txtContactno.Text);
-                cmd.Parameters.AddWithValue("@Password", strNewPassword1);
-                cmd.Parameters.AddWithValue("@Clientlimit", txtClientlimit.Text);
-                cmd.Parameters.AddWithValue("@Agentlimit", txtAgentlimit.Text);
-                cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
-                cmd.Parameters.AddWithValue("@Clientshare", txtClientShare.Text);
-                cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
-                cmd.Parameters.AddWithValue("@Status", "active");
-                cmd.Parameters.AddWithValue("@CreatedBy", Session["AgentID"]);
-                cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
+                string Select = "Select ContactNo From ClientMaster where ContactNo = @ContactNo";
+                MySqlCommand Selectcmd = new MySqlCommand(Select, cn);
+                MySqlDataReader rdr = Selectcmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Already Exists.....');", true);
+                }
+                else
+                {
+                    string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Agent_limit,Agent_Share,Client_Share,Session_Commision_Type,Status,CreatedBy,Date) values (@Name,@Contact_No,@Password,@Clientlimit,@Agentlimit,@Agentshare,@Clientshare,@SessionType,@Status,@CreatedBy,@Date); SELECT LAST_INSERT_ID()";
+                    MySqlCommand cmd = new MySqlCommand(s, cn);
 
-                cmd.ExecuteNonQuery();
-                Response.Redirect("~/Agent/ClientDetails.aspx?msg=Add");
+                    cmd.Parameters.AddWithValue("@Name", txtname.Text);
+                    cmd.Parameters.AddWithValue("@Contact_No", txtContactno.Text);
+                    cmd.Parameters.AddWithValue("@Password", strNewPassword1);
+                    cmd.Parameters.AddWithValue("@Clientlimit", txtClientlimit.Text);
+                    cmd.Parameters.AddWithValue("@Agentlimit", txtAgentlimit.Text);
+                    cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
+                    cmd.Parameters.AddWithValue("@Clientshare", txtClientShare.Text);
+                    cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
+                    cmd.Parameters.AddWithValue("@Status", "active");
+                    cmd.Parameters.AddWithValue("@CreatedBy", Session["AgentID"]);
+                    cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
 
+                    int ID = Convert.ToInt16(cmd.ExecuteScalar());
+                    string update = "Update ClientMaster Set Code = 'C" + ID + "'where ClientId = '" + ID + "' ";
+                    MySqlCommand cmd1 = new MySqlCommand(update, cn);
+                    cmd1.ExecuteNonQuery();
+
+                    Response.Redirect("~/Agent/ClientDetails.aspx?msg=Add");
+                }
             }
         }
         public string GeneratePassword()

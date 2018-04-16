@@ -44,8 +44,8 @@
                                         <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create</button></a>
                                     <div class="btn-group">
                                         <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" OnSelectedIndexChanged="DropDownstatus_SelectedIndexChanged" AutoPostBack="true">
-                                            <asp:ListItem Text="Please Select" Value="0">--Change Status--</asp:ListItem>
-                                            <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
+                                           
+                                            <asp:ListItem Text="Active"  Value="Active">Active</asp:ListItem>
                                             <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
                                         </asp:DropDownList>
 
@@ -114,7 +114,7 @@
                                             
 
                                             <th height="25" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="SNo.: activate to sort column ascending" style="width: 30px;"><%:row["ClientID"] %></th>
-                                            <th align="left" class="FontText" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Code: activate to sort column ascending" style="width: 33px;"><%:row["ClientID"] %></th>
+                                            <th align="left" class="FontText" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Code: activate to sort column ascending" style="width: 33px;"><%:row["Code"] %></th>
                                             <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 79px;"><%:row["name"] %></th>
                                             <th width="60" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Contact: activate to sort column ascending" style="width: 73px;"><%:row["Contact_No"] %></th>
                                             <th width="60" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Password: activate to sort column ascending" style="width: 63px;"><%:row["Password"] %></th>

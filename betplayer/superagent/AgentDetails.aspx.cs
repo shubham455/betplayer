@@ -76,7 +76,7 @@ namespace betplayer.Super_Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "update  AgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID = 1";
+                string s = "update  AgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where AgentID = 1";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();

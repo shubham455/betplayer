@@ -59,6 +59,7 @@ namespace betplayer.Client
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
+                    
                     string SELECT = "Select * from ClientMaster Where Name = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataReader rdr = cmd.ExecuteReader();

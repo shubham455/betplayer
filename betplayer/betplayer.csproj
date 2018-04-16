@@ -1622,7 +1622,7 @@
     <Content Include="superagent\js\respond.js" />
     <Content Include="superagent\js\scripts.js" />
     <Content Include="superagent\Ledger.aspx" />
-    <Content Include="superagent\LoginPage.aspx" />
+    <Content Include="superagent\Login.aspx" />
     <Content Include="superagent\MasterDetails.aspx" />
     <Content Include="superagent\ModifyAgent.aspx" />
     <Content Include="superagent\My_Ledger.aspx" />
@@ -2232,12 +2232,12 @@
     <Compile Include="superagent\Ledger.aspx.designer.cs">
       <DependentUpon>Ledger.aspx</DependentUpon>
     </Compile>
-    <Compile Include="superagent\LoginPage.aspx.cs">
-      <DependentUpon>LoginPage.aspx</DependentUpon>
+    <Compile Include="superagent\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="superagent\LoginPage.aspx.designer.cs">
-      <DependentUpon>LoginPage.aspx</DependentUpon>
+    <Compile Include="superagent\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\MasterDetails.aspx.cs">
       <DependentUpon>MasterDetails.aspx</DependentUpon>
