@@ -74,7 +74,7 @@
                     
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                            <a href="../Login.aspx?lg=1">
+                            <a href="Login.aspx">
                                 <div class="stats-circle gray-color">
                                     <i class="icon-comments-alt"></i>
                                 </div>

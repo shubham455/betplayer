@@ -145,7 +145,7 @@
                                                     </div>
                                                 </td>
                                                 <td height="20" align="left" class=" "><%:row["AgentID"] %></td>
-                                                <td align="left" class=" "><%:row["AgentID"] %></td>
+                                                <td align="left" class=" "><%:row["Code"] %></td>
                                                 <td align="left" class=" "><%:row["Name"] %></td>
                                                 <td align="left" class=" "><%:row["ContactNO"] %></td>
                                                 <td align="left" class=" "><%:row["Date"] %></td>

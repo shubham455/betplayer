@@ -754,6 +754,7 @@
     <Content Include="Agent\Dashboard.aspx" />
     <Content Include="Agent\DashboardMaster.aspx" />
     <Content Include="Agent\DateWiseReport.aspx" />
+    <Content Include="Agent\DeleteClient.aspx" />
     <Content Include="Agent\img\404.png" />
     <Content Include="Agent\img\500.png" />
     <Content Include="Agent\img\avatar-mini.png" />
@@ -1926,6 +1927,13 @@
     </Compile>
     <Compile Include="Agent\DateWiseReport.aspx.designer.cs">
       <DependentUpon>DateWiseReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\DeleteClient.aspx.cs">
+      <DependentUpon>DeleteClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\DeleteClient.aspx.designer.cs">
+      <DependentUpon>DeleteClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="Agent\Ledger.aspx.cs">
       <DependentUpon>Ledger.aspx</DependentUpon>

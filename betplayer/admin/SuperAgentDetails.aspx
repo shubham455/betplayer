@@ -32,29 +32,20 @@
                         </div>
                         <div class="widget-body form">
                             <!-- BEGIN FORM-->
-                            <form name="BetPlayer" id="BetPlayer" autocomplete="off">
+                            <form name="BetPlayer" id="BetPlayer" method="post" action="SuperAgentDetails.php" autocomplete="off">
                                 <div class="portlet-body">
                                     <div class="clearfix">
 
                                         <a href="CreateSuperAgent.aspx">
                                             <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create</button></a>
                                         <div class="btn-group">
-                                            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Change Status <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="javascript:ChangeStatusMultiple('Active');">Active</a></li>
-                                                <li><a href="javascript:ChangeStatusMultiple('Inactive');">Inactive</a></li>
-                                            </ul>
+                                            <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" OnSelectedIndexChanged="DropDownstatus_SelectedIndexChanged" AutoPostBack="true">
+                                            <asp:ListItem Text="Please Select" Value="0">--Change Status--</asp:ListItem>
+                                            <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
+                                            <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
+                                        </asp:DropDownList>
                                         </div>
-                                        <div class="btn-group">
-                                            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">Update Details <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="SuperAgentLimitReportFix.php">Fix Limit Update Details</a></li>
-                                                <li><a href="SuperAgentLimitReport.php">Current Limit Update Details</a></li>
-                                                <li><a href="SuperAgentSharePerReport.php">Share Per Update Details</a></li>
-                                                <li><a href="SuperAgentStatusReport.php">Status Update Details</a></li>
-                                                <li><a href="SuperAgentDeadStatusReport.php">Dead Status Update Details</a></li>
-                                            </ul>
-                                        </div>
+                                       
                                         <a href="SuperAgentLimit.php">
                                             <button class="btn btn-primary" type="button">Update Limit</button></a>
                                     </div>
@@ -80,7 +71,7 @@
                                             <div class="dataTables_filter" id="sample_1_filter">
                                                 <label>
                                                     Search:
-                                                <input type="text" aria-controls="sample_1" class="input-medium"></label>
+                                                <asp:TextBox ID="txtsearch" runat="server" aria-controls="sample_1" class="input-medium" AutoPostBack="true" OnTextChanged="txtsearch_TextChanged"/></label>
                                             </div>
                                         </div>
                                     </div>
@@ -128,6 +119,8 @@
                                                 <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Dead: activate to sort column ascending" style="width: 33px;">Dead</th>
                                             </tr>
                                         </thead>
+                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
+                                            { %>
 
                                         <tbody role="alert" aria-live="polite" aria-relevant="all">
                                             <tr class="odd">
@@ -151,24 +144,25 @@
                                                         </ul>
                                                     </div>
                                                 </td>
-                                                <td height="20" align="left" class=" ">1</td>
-                                                <td align="left" class=" ">A17</td>
-                                                <td align="left" class=" ">Golu (HM)</td>
-                                                <td align="left" class=" ">7007352585</td>
-                                                <td align="left" class=" ">01-02-2018</td>
-                                                <td align="left" class=" ">50.00</td>
-                                                <td align="left" class=" ">5971</td>
+                                                <td height="20" align="left" class=" "><%:row["SuperAgentID"] %></td>
+                                                <td align="left" class=" "><%:row["Code"] %></td>
+                                                <td align="left" class=" "><%:row["Name"] %></td>
+                                                <td align="left" class=" "><%:row["ContactNO"] %></td>
+                                                <td align="left" class=" "><%:row["Date"] %></td>
+                                                <td align="left" class=" "><%:row["SuperAgentID"] %></td>
+                                                <td align="left" class=" "><%:row["Password"] %></td>
                                                 <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.00</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;">2.50</td>
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["SuperAgentID"] %></td>
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["SuperAgentID"] %></td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
-                                                <td align="left" class=" ">Inactive</td>
+                                                <td align="left" class=" "><%:row["Status"] %></td>
                                                 <td align="left" class=" ">NO</td>
                                             </tr>
                                             
                                         </tbody>
+                                         <% } //foreach %>
                                     </table>
                                     <div class="row-fluid">
                                         <div class="span6">

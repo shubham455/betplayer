@@ -57,7 +57,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;एक पूरी तरह से नए स्तर पर अपने पसंदीदा खेल की आभासी सट्टेबाजी करे। कैसे खेले जानने के लिए <a href="HowToPlay.html">यहाँ क्लिक करे। </a>
             </p>
 
-            <p align="center"><a href="LoginPage.aspx" class="btn btn-success">Login</a></p>
+            <p align="center"><a href="Login.aspx" class="btn btn-success">Login</a></p>
             <br>
             <div class="col-md-4">
                 <img src="../superagent/img/Homepage/img1.jpg" alt="image" class="img-responsive img-rounded">

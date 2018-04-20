@@ -152,8 +152,8 @@
                                 </table>
 
                                 <div class="form-actions">
-                                    <asp:Button ID="btnsave" runat="server" class="btn btn-success" Text="Save"  />
-                                   <asp:Button ID="btncancel" runat="server" class="btn btn-success" Text="Cancel"/>
+                                    <asp:Button ID="btnsave" runat="server" class="btn btn-success" Text="Save" OnClick="submit_Click"  />
+                                   <asp:Button ID="btncancel" runat="server" class="btn btn-success" Text="Cancel" OnClick="submit_Click"/>
                                 </div>
 
                                

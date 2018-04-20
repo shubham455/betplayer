@@ -10,6 +10,6 @@
 namespace betplayer.Agent {
     
     
-    public partial class ModifyClient {
+    public partial class DeleteClient {
     }
 }

@@ -33,9 +33,9 @@ namespace Panchayat_System.Admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string Select = "Select ContactNo From ClientMaster where ContactNo = @ContactNo";
-                MySqlCommand Selectcmd = new MySqlCommand(Select, cn);
-                MySqlDataReader rdr = Selectcmd.ExecuteReader();
+                string Select = "Select * From ClientMaster where Contact_No = @Contact_No";
+                MySqlCommand cmd1 = new MySqlCommand(Select, cn);
+                MySqlDataReader rdr = cmd1.ExecuteReader();
                 if (rdr.Read())
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Already Exists.....');", true);
