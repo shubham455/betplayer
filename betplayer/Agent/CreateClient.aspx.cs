@@ -9,6 +9,9 @@ using System.Configuration;
 using System.Data;
 using System.Globalization;
 using ASPSnippets.SmsAPI;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 
 namespace Panchayat_System.Admin
@@ -33,15 +36,17 @@ namespace Panchayat_System.Admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string Select = "Select * From ClientMaster where Contact_No = @Contact_No";
-                MySqlCommand cmd1 = new MySqlCommand(Select, cn);
-                MySqlDataReader rdr = cmd1.ExecuteReader();
+                string Select = "Select * From ClientMaster where Contact_No = @Contactno ";
+                MySqlCommand cmd2 = new MySqlCommand(Select, cn);
+                cmd2.Parameters.AddWithValue("@Contactno", txtContactno.Text);
+                MySqlDataReader rdr = cmd2.ExecuteReader();
                 if (rdr.Read())
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Already Exists.....');", true);
                 }
                 else
                 {
+                    rdr.Close();
                     string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Agent_limit,Agent_Share,Client_Share,Session_Commision_Type,Status,CreatedBy,Date) values (@Name,@Contact_No,@Password,@Clientlimit,@Agentlimit,@Agentshare,@Clientshare,@SessionType,@Status,@CreatedBy,@Date); SELECT LAST_INSERT_ID()";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
 
@@ -62,6 +67,7 @@ namespace Panchayat_System.Admin
                     MySqlCommand cmd1 = new MySqlCommand(update, cn);
                     cmd1.ExecuteNonQuery();
 
+                   
                     Response.Redirect("~/Agent/ClientDetails.aspx?msg=Add");
                 }
             }

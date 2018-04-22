@@ -55,7 +55,7 @@
                                                             <td class="welcome">&nbsp;</td>
                                                             <td height="30" align="left" valign="middle" class="welcome">Contact No</td>
                                                             <td align="left">
-                                                                <asp:TextBox runat="server" CssClass="textbox" ID="txtContactno" /></td>
+                                                                <asp:TextBox runat="server" CssClass="textbox" MaxLength="10" ID="txtContactno" /></td>
                                                             <td align="left">&nbsp;</td>
                                                         </tr>
 

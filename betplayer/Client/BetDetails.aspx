@@ -2,7 +2,6 @@
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tbody>
             <tr>
@@ -24,11 +23,11 @@
                                             </tr>
                                             <tr>
                                                 <td width="78%" height="35" align="center" class="TeamCombo">
-                                                    <div class="ScoreCard">
+                                                    <div class="ScoreCard_rtmScore" style="color: #fff;">
                                                         <p>
-                                                            <span id="LocalTeam">KOLKATA    </span>
+                                                            <span id="LocalTeam">  </span>
                                                             <br>
-                                                            <span id="VisitorTeam">BANGLOR    </span>
+                                                            <span id="VisitorTeam">   </span>
                                                             <br>
                                                             <span id="Status"></span>
                                                             <br>

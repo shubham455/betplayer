@@ -1,96 +1,204 @@
-﻿<%@ Page Language="C#"  MasterPageFile="~/Agent/Admin.Master"  AutoEventWireup="true" CodeBehind="ModifyClient.aspx.cs" Inherits="betplayer.Agent.ModifyClient" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Agent/DashBoard.Master" AutoEventWireup="true" CodeBehind="ModifyClient.aspx.cs"   Inherits="betplayer.Agent.ModifyClient" %>
 
-<asp:Content ID ="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
 
-     <div class="content-wrapper" style="height: 1200px">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>Modify Client
-        
-            </h1>
-
-        </section>
-        <div class="col-md-6" style="padding-top: 20px !important">
-            <div class="box box-warning ">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Modify Client</h3>
+    <div id="main-content">
+        <!-- BEGIN PAGE CONTAINER-->
+        <div class="container-fluid">
+            <!-- BEGIN PAGE HEADER-->
+            <div class="row-fluid">
+                <div class="span12">
+                    <!-- BEGIN THEME CUSTOMIZER-->
+                    <div id="theme-change" class="hidden-phone"><i class="icon-cogs"></i><span class="settings"><span class="text">Theme:</span> <span class="colors"><span class="color-default" data-style="default"></span><span class="color-gray" data-style="gray"></span><span class="color-purple" data-style="purple"></span><span class="color-navy-blue" data-style="navy-blue"></span></span></span></div>
+                    <!-- END THEME CUSTOMIZER-->
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                    <h3 class="page-title">Modify Client</h3>
+                    <ul class="breadcrumb">
+                        <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
+                        <li>Master Details <span class="divider">&nbsp;</span> </li>
+                        <li><a href="ClientDetails.php">Client Details</a><span class="divider">&nbsp;</span></li>
+                        <li>Modify Client<span class="divider">&nbsp;</span></li>
+                        <li><a href="ClientDetails.php"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                    </ul>
+                    <!-- END PAGE TITLE & BREADCRUMB-->
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body">
+            </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h4><i class="icon-globe"></i>Modify Client</h4>
+                            <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a><a href="javascript:;" class="icon-remove"></a></span>
+                        </div>
+                        <div class="widget-body form">
+                            <!-- BEGIN FORM-->
+                            <form name="BetPlayer" id="BetPlayer" method="post" action="ClientDetails.php" autocomplete="off">
+                                <div class="alert alert-error" id="Error" style="visibility: hidden">
+                                </div>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="550">
+                                                <table width="900" border="0" cellpadding="0" cellspacing="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="33" class="welcome">&nbsp;</td>
+                                                            <td width="204" height="30" align="left" valign="middle" class="welcome">Code</td>
+                                                            <td width="313" align="left">
+                                                                <asp:TextBox CssClass="textbox" ID="txtCode" ReadOnly="true" runat="server" />
+                                                            </td>
+                                                            <td width="313" align="left">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">Name</td>
+                                                            <td align="left">
+                                                                <asp:TextBox CssClass="textbox" ID="txtName" ReadOnly="true" runat="server" /></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">Contact No</td>
+                                                            <td align="left">
+                                                                <asp:TextBox CssClass="textbox" ID="txtContactNo" runat="server" /></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
 
-                    <!-- text input -->
-                     <div class="form-group has-feedback">
-                        <label>Code</label>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="**" ControlToValidate="txtcode"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txtcode" runat="server" class="form-control" placeholder="Enter..."></asp:TextBox>
 
-                    </div>
-                    <div class="form-group has-feedback">
-                        <label>Name</label>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="**" ControlToValidate="txtname"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txtname" runat="server" class="form-control" placeholder="Enter..."></asp:TextBox>
+                                                        <tr>
+                                                            <td height="30" align="left" class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">Fix Limit</td>
+                                                            <td align="left" valign="middle">
+                                                                <asp:TextBox CssClass="textbox" ID="txtFixedLimit" runat="server" /></td>
+                                                            <td align="left" valign="middle">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="30" align="left" class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left">Mobile App</td>
+                                                            <td align="left">
+                                                                <asp:DropDownList ID="DropDownMobileApp" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" >
 
-                    </div>
+                                                                    <asp:ListItem Text="Yes" Value="Yes">Yes</asp:ListItem>
+                                                                    <asp:ListItem Text="No" Value="No">No</asp:ListItem>
+                                                                </asp:DropDownList></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
 
-                    <div class="form-group">
-                        <div class="form-group">
-                            <label>Contact No.</label>
-                            <asp:RequiredFieldValidator ID="ChildNametxtValidator" runat="server" ErrorMessage="**" ControlToValidate="txtcontactno"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txtcontactno" runat="server" class="form-control" placeholder="Enter..." MaxLength="10"></asp:TextBox>
-                        </div>
-                        
-                        
-                        <div class="form-group">
-                            <label>Password</label>
-                            <asp:RequiredFieldValidator ID="BirthPlacetxtValidator" runat="server" ErrorMessage="**" ControlToValidate="txtpassword"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txtpassword" runat="server" class="form-control" placeholder="Enter..."></asp:TextBox>
+                                                        <tr>
+                                                            <td>&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle"><strong>Settings</strong></td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>&nbsp;</td>
+                                                            <td height="30" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password</td>
+                                                            <td align="left">
+                                                                <asp:TextBox CssClass="textbox" ID="txtPassword" runat="server" /></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>&nbsp;</td>
+                                                            <td height="30" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status</td>
+                                                            <td align="left">
+                                                                <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" >
 
-                        </div>
-                        <div class="form-group">
-                            <label>Client limit</label>
-                            <asp:RequiredFieldValidator ID="MNametxtValidator" runat="server" ErrorMessage="**" ControlToValidate="txtclientlimit"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txtclientlimit" runat="server" class="form-control" placeholder="Enter..."></asp:TextBox>
-                        </div>
-                        <div class="form-group">
-                            <label>Agent current limit</label>
-                            <asp:RequiredFieldValidator ID="FNametxtValidator" runat="server" ErrorMessage="**" ControlToValidate="txtAgentLimit"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txtAgentLimit" runat="server" class="form-control" placeholder="Enter..."></asp:TextBox>
-                        </div>
-                        <div class="form-group">
-                            <label>Agent share%</label>
-                            <asp:RequiredFieldValidator ID="PresentAddtxtValidator6" runat="server" ErrorMessage="**" ControlToValidate="txtAgentShare"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txtAgentShare" runat="server" class="form-control" placeholder="Enter..." ></asp:TextBox>
-                        </div>
-                        <div class="form-group">
-                            <label>Client Share%</label>
-                            <asp:RequiredFieldValidator ID="PermanentAddtxtValidator7" runat="server" ErrorMessage="**" ControlToValidate="txtClientShare"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txtClientShare" runat="server" class="form-control" placeholder="Enter..." ></asp:TextBox>
-                        </div>
-                        <div class="form-group">
-                            <label>Client Commision Percantage</label>
-                           
-                        </div>
-                        <div class="form-group">
-                            <label>Session Commission Type </label>
-                             <asp:DropDownList ID="DropDownList1" runat="server" class="form-control"  AppendDataBoundItems="true" DataTextField="UserName" DataValueField="UserID">
-                            <asp:ListItem Text="Please Select" Value="1">Commission Type</asp:ListItem>
-                                 <asp:ListItem Text="Please Select" Value="2">No Commission</asp:ListItem>
-                                 <asp:ListItem Text="Please Select" Value="3">Only On MInus</asp:ListItem>
-                                 <asp:ListItem Text="Please Select" Value="4">Bet By Bet</asp:ListItem>
+                                                                    <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
+                                                                    <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
+                                                                </asp:DropDownList></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome"><strong>Commission &amp; Share </strong></td>
+                                                            <td align="left">&nbsp;</td>
+                                                            <td align="left" valign="middle" style="font-size: 13px; color: #F00"><strong>My Share %</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">Agent Share %</td>
+                                                            <td align="left">
+                                                                <asp:TextBox CssClass="textbox" ID="txtAgentshare" runat="server" /></td>
+                                                            <td align="left" valign="middle">
+                                                                <input name="MatchShare2" type="text" class="textbox" id="MatchShare2" onblur="showCustomer(this.value)" value="50.00" readonly=""></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">Client Share %</td>
+                                                            <td align="left">
+                                                                <asp:TextBox CssClass="textbox" ID="txtClientshare" runat="server" /></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" class="welcome">
+                                                                <p>&nbsp;</p>
+                                                            </td>
+                                                            <td height="30" align="left" valign="middle" class="welcome"><strong>Client Commission Percentage</strong></td>
+                                                            <td align="left">&nbsp;</td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session Commission Type</td>
+                                                            <td align="left" valign="middle">
+                                                                <asp:DropDownList ID="SessionDropDown" runat="server" class="form-control" AppendDataBoundItems="False" DataTextField="UserName" DataValueField="UserID">
+                                                                    <asp:ListItem Text="Please Select" Value="0">Commission Type</asp:ListItem>
+                                                                    <asp:ListItem Text="No Commission" Value="1">No Commission</asp:ListItem>
+                                                                    <asp:ListItem Text=">Only On Minus" Value="2">Only On Minus</asp:ListItem>
+                                                                    <asp:ListItem Text="Bet By Bet" Value="3">Bet By Bet</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Display="Dynamic" runat="server" ControlToValidate="SessionDropDown"
+                                                                    ErrorMessage="Value Required!" InitialValue="0"></asp:RequiredFieldValidator></td>
+                                                            <td align="left" valign="middle">&nbsp;</td>
+                                                        </tr>
+                                                        <tr id="divMatchCommission" style="visibility: visible;">
+                                                            <td align="left" class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">
+                                                                <span id="CommHeading">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Match Commission</span>
+                                                            </td>
+                                                            <td align="left">
+                                                                <input name="MatchCommissionClient" type="text" class="textbox" id="MatchCommissionClient" value="0.00"></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
+                                                        <tr id="divSessionCommission" style="visibility: visible;">
+                                                            <td align="left" class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session Commission</td>
+                                                            <td align="left">
+                                                                <input name="SessionCommissionClient" type="text" class="textbox" id="SessionCommissionClient" value="0.00"></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="form-actions">
+                                    <asp:button ID="btnUpdate" class="btn btn-success" Text="Update" OnClick="btnUpdate_Click" runat="server"/>
+                                    <asp:button ID="btnCancel" class="btn btn-success" Text="Cancel" OnClick="Button1_Click" runat="server"/>
+                                </div>
 
-                        </asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Display="Dynamic" runat="server" ControlToValidate="DropDownList1"
-                            ErrorMessage="Value Required!" InitialValue="0"></asp:RequiredFieldValidator>
+                                <input name="MatchShareOld" type="hidden" class="textbox" id="MatchShareOld" value="50.00">
+                                <input name="SessionShareOld" type="hidden" class="textbox" id="SessionShareOld" value="0.00">
+                                <input name="ShareModifyChk" type="hidden" class="textbox" id="ShareModifyChk" value="Yes">
+                                <input name="MatchLimit" type="hidden" class="textbox" id="MatchLimit" value="0" readonly="">
 
+                                <input name="AutoNo" type="hidden" id="AutoNo" value="323230" readonly="">
+                                <input name="ModifyChk" type="hidden" id="ModifyChk" value="" readonly="">
+                                <input name="ClientName_Old" type="hidden" id="ClientName_Old" value="220 Shivam" readonly="">
+                                <input name="ClientName1" type="hidden" id="ClientName1" value="220 Shivam" readonly="">
+                                <input name="SessionCommissionTypeClientOld" type="hidden" id="SessionCommissionTypeClientOld" value="No Comm" readonly="">
+                            </form>
+                            <!-- END FORM-->
                         </div>
-                       
-                        <asp:Button ID="Submit" runat="server" class="btn btn-block btn-info btn-sm" Text="Update" OnClick="Submit_Click" />
-                         <asp:Button ID="Button1" runat="server" class="btn btn-block btn-info btn-sm" Text="Cancel" OnClick="Button1_Click"  />
                     </div>
                 </div>
             </div>
+            <!-- END PAGE CONTENT-->
         </div>
+        <!-- END PAGE CONTAINER-->
     </div>
-   
-    
-</asp:content>
+
+</asp:Content>

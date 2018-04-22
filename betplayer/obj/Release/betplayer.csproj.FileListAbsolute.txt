@@ -61,3 +61,12 @@ C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.pdb
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\MySql.Data.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\MySql.Data.xml
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Newtonsoft.Json.dll
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Twilio.dll
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Newtonsoft.Json.xml
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Twilio.xml

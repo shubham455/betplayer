@@ -85,7 +85,33 @@
     <h4 align="center" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">Copy Right @ Khai Lagai</h4>
 
 
-
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDeJEW2OK0RnL0A4OjYF6oTj04xQhgpb40",
+        authDomain: "betplayer-197014.firebaseapp.com",
+        databaseURL: "https://betplayer-197014.firebaseio.com",
+        projectId: "betplayer-197014",
+        storageBucket: "betplayer-197014.appspot.com",
+        messagingSenderId: "98790187004"
+      };
+      firebase.initializeApp(config);
+      firebase.database().ref('/currentMatches/1136578').once("value", function (snapshot) {
+          console.log(snapshot.val());
+          match = snapshot.val();
+          document.getElementsByClassName("ScoreCard_rtmScore")[0].innerHTML = '<p><span id="LocalTeam">' + match.btTm.name + ' ' + match.btTm.run + '/' + match.btTm.wickets + ' (' + match.btTm.overs + ') *  </span><br>' +
+                                                                      '<span id="VisitorTeam">' + match.blgTm.name + ' ' + match.blgTm.run + '/' + match.blgTm.wickets + ' (' + match.blgTm.overs + ') </span><br>' +
+                                                                      '<span id="Status"></span><br></p>'
+      });
+      firebase.database().ref('/currentMatches').on("child_changed", function (snapshot){
+          console.log(snapshot.val());
+          match = snapshot.val();
+          document.getElementsByClassName("ScoreCard_rtmScore")[0].innerHTML = '<p><span id="LocalTeam">' + match.btTm.name + ' ' + match.btTm.run + '/' + match.btTm.wickets + ' (' + match.btTm.overs + ') *  </span><br>' +
+                                                                      '<span id="VisitorTeam">' + match.blgTm.name + ' ' + match.blgTm.run + '/' + match.blgTm.wickets + ' (' + match.blgTm.overs + ') </span><br>' +
+                                                                      '<span id="Status"></span><br></p>'
+      });
+    </script>
     <!----- End Content ------------->
 
     <!---//End-wrap---->

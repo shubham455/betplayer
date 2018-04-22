@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
+
 
 namespace betplayer.Agent
 {
@@ -14,65 +16,46 @@ namespace betplayer.Agent
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int ID = Convert.ToInt16(Request.QueryString["ClientID"]);
-            if (!IsPostBack)
-            {
-                if (ID != 0)
-                {
-                    string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-                    using (SqlConnection cn = new SqlConnection(CN))
-                    {
-                        cn.Open();
-                        string s = "select * from ClientMaster where ClientID= '" + ID + "'";
-                        SqlCommand cmd = new SqlCommand(s, cn);
-                        SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        adp.Fill(dt);
-
-                        txtcode.Text = dt.Rows[0]["ClientID"].ToString();
-                        txtname.Text = dt.Rows[0]["Name"].ToString();
-                        txtcontactno.Text = dt.Rows[0]["Contact_No"].ToString();
-                        txtpassword.Text = dt.Rows[0]["Password"].ToString();
-                        txtclientlimit.Text = dt.Rows[0]["Client_limit"].ToString();
-                        txtAgentLimit.Text = dt.Rows[0]["Agent_limit"].ToString();
-                        txtAgentShare.Text = dt.Rows[0]["Agent_share"].ToString();
-                        txtClientShare.Text = dt.Rows[0]["client_share"].ToString();
-                        DropDownList1.SelectedItem.Text = dt.Rows[0]["Session_Commision_Type"].ToString();
-                    }
-                }
-            }
-            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        }
-
-        protected void Submit_Click(object sender, EventArgs e)
-        {
-            int ID = Convert.ToInt16(Request.QueryString["ClientID"]);
+            int Id = Convert.ToInt16(Request.QueryString["Id"]);
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (SqlConnection cn = new SqlConnection(CN))
+            using (MySqlConnection cn = new MySqlConnection(CN))
             {
-                cn.Open();
-                string s = "Update ClientMaster Set Name=@Name, Contact_No = @ContactNo, Password = @Password, Client_limit = @Client_limit, Agent_limit = @Agent_limit, Agent_Share = @Agent_Share, Client_Share = @Client_Share, Session_Commision_Type = @Session_Commision where ClientID = '" + ID + "'";
-                SqlCommand cmd = new SqlCommand(s, cn);
-                cmd.Parameters.AddWithValue("@Name", txtname.Text);
-                cmd.Parameters.AddWithValue("@ContactNo", txtcontactno.Text);
-                cmd.Parameters.AddWithValue("@Password", txtpassword.Text);
+                string s = "Select * From ClientMaster where ClientId = '"+Id+"' ";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                txtCode.Text = dt.Rows[0]["ClientID"].ToString();
+                txtName.Text = dt.Rows[0]["Name"].ToString();
+            }
 
-                cmd.Parameters.AddWithValue("@Client_limit", txtclientlimit.Text);
-                cmd.Parameters.AddWithValue("@Agent_limit", txtAgentLimit.Text);
-                cmd.Parameters.AddWithValue("@Agent_Share", txtAgentShare.Text);
-                cmd.Parameters.AddWithValue("@Client_Share", txtClientShare.Text);
+        }
 
-                cmd.Parameters.AddWithValue("@Session_Commision", DropDownList1.SelectedItem.Text);
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                string s = "Update ClientMaster set Name = @Name,Contact_No= @Contact_No,Password=@Password,Client_limit=@Clientlimit,Agent_limit=@Agentlimit,Agent_Share=@Agentshare,Client_Share=@Clientshare,Session_Commision_Type=@SessionType,Status=@Status where ClientId = @ID ";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
 
-                cmd.ExecuteNonQuery();
-                Response.Redirect("~/Agent/ClientDetails.aspx?msg=Update");
+                cmd.Parameters.AddWithValue("@ID", Session[ClientID]);
+                cmd.Parameters.AddWithValue("@Name", txtName.Text);
+                cmd.Parameters.AddWithValue("@Contact_No", txtContactNo.Text);
+                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                cmd.Parameters.AddWithValue("@Clientlimit", txtClientshare.Text);
+                cmd.Parameters.AddWithValue("@Agentlimit", txtClientshare.Text);
+                cmd.Parameters.AddWithValue("@Agentshare", txtAgentshare.Text);
+                cmd.Parameters.AddWithValue("@Clientshare", txtClientshare.Text);
+                cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@Status", DropDownstatus.SelectedItem.Text);
 
             }
         }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ClientDetails.aspx");
+
         }
     }
-
 }

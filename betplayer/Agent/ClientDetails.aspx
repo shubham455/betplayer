@@ -88,9 +88,7 @@
                                             <th colspan="2" align="center" valign="middle" style="text-align: center; vertical-align: middle;" rowspan="1">Share %</th>
                                             <th colspan="2" align="center" style="text-align: center; vertical-align: middle;" rowspan="1">Other</th>
                                         </tr>
-                                        <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
-                                            { %>
-
+                                       
                                         <tr role="row">
                                             <td width="2%" align="center" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label=" " style="width: 24px;">
                                                 <div class="checker" id="uniform-undefined">
@@ -119,7 +117,7 @@
                                                 <th align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Limit: activate to sort column ascending" style="width: 62px;">Limit</th>
                                                 <th width="50" align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 50px;">Status</th>
                                             </tr>
-                                        <% } //foreach %>
+                                        
                                     </thead>
 
                                     <tbody role="alert" aria-live="polite" aria-relevant="all">
@@ -137,7 +135,7 @@
                                                 <div class="btn-group">
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="ClientDetailsModify.php?id=118"><i class="icon-pencil"></i>Edit</a></li>
+                                                        <li><a href="ModifyClient.aspx?id=<%:row["ClientID"] %>"><i class="icon-pencil"></i>Edit</a></li>
                                                         <li><a href="ClientDetailsDelete.php?id=118"><i class="icon-trash"></i>Delete</a></li>
                                                         <li><a href="javascript:ChangeStatus('118','Inactive');"><i class="icon-ban-circle"></i>
                                                             Inactive		                      </a></li>

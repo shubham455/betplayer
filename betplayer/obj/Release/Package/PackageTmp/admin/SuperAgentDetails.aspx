@@ -10,11 +10,11 @@
                     <div id="theme-change" class="hidden-phone"><i class="icon-cogs"></i><span class="settings"><span class="text">Theme:</span> <span class="colors"><span class="color-default" data-style="default"></span><span class="color-gray" data-style="gray"></span><span class="color-purple" data-style="purple"></span><span class="color-navy-blue" data-style="navy-blue"></span></span></span></div>
                     <!-- END THEME CUSTOMIZER-->
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-                    <h3 class="page-title">Agent Details  <small>Create, Modify, Delete and Display Agent Details</small> </h3>
+                    <h3 class="page-title">SuperAgent Details  <small>Create, Modify, Delete and Display SuperAgent Details</small> </h3>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
                         <li>Master Details <span class="divider">&nbsp;</span> </li>
-                        <li>Agent Details<span class="divider">&nbsp;</span></li>
+                        <li>SuperAgent Details<span class="divider">&nbsp;</span></li>
                         <li><a href="MasterDetails.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
                     <!-- END PAGE TITLE & BREADCRUMB-->
@@ -27,16 +27,16 @@
                     <!-- BEGIN EXAMPLE TABLE widget-->
                     <div class="widget">
                         <div class="widget-title">
-                            <h4><i class="icon-globe"></i>Agent Details</h4>
+                            <h4><i class="icon-globe"></i>SuperAgent Details</h4>
                             <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a><a href="javascript:;" class="icon-remove"></a></span>
                         </div>
                         <div class="widget-body form">
                             <!-- BEGIN FORM-->
-                            <form name="BetPlayer" id="BetPlayer" method="post" action="AgentDetails.php" autocomplete="off">
+                            <form name="BetPlayer" id="BetPlayer" method="post" action="SuperAgentDetails.php" autocomplete="off">
                                 <div class="portlet-body">
                                     <div class="clearfix">
 
-                                        <a href="CreateAgent.aspx">
+                                        <a href="CreateSuperAgent.aspx">
                                             <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create</button></a>
                                         <div class="btn-group">
                                             <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" OnSelectedIndexChanged="DropDownstatus_SelectedIndexChanged" AutoPostBack="true">
@@ -46,7 +46,7 @@
                                         </asp:DropDownList>
                                         </div>
                                        
-                                        <a href="AgentLimit.php">
+                                        <a href="SuperAgentLimit.php">
                                             <button class="btn btn-primary" type="button">Update Limit</button></a>
                                     </div>
                                     <div class="space15"></div>
@@ -87,7 +87,7 @@
                                                 <th align="left" rowspan="1" colspan="1">&nbsp;</th>
                                                 <th align="left" rowspan="1" colspan="1">&nbsp;</th>
                                                 <th align="left" rowspan="1" colspan="1">&nbsp;</th>
-                                                <th colspan="3" align="center" valign="middle" style="text-align: center; vertical-align: middle;" rowspan="1">Agent Commission %</th>
+                                                <th colspan="3" align="center" valign="middle" style="text-align: center; vertical-align: middle;" rowspan="1">SuperAgent Commission %</th>
                                                 <th colspan="3" align="right" style="text-align: center; vertical-align: middle;" rowspan="1">Limit</th>
                                                 <th align="left" rowspan="1" colspan="1">&nbsp;</th>
                                                 <th align="left" rowspan="1" colspan="1">&nbsp;</th>
@@ -113,7 +113,7 @@
                                                 <th align="right" style="text-align: right; width: 32px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Mat: activate to sort column ascending">Mat</th>
                                                 <th align="right" style="text-align: right; width: 32px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Ses: activate to sort column ascending">Ses</th>
                                                 <th align="right" style="text-align: center; width: 51px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Fix: activate to sort column ascending">Fix</th>
-                                                <th align="right" style="text-align: center; width: 51px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Agent : activate to sort column ascending">Agent </th>
+                                                <th align="right" style="text-align: center; width: 51px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="SuperAgent : activate to sort column ascending">SuperAgent </th>
                                                 <th align="right" style="text-align: center; width: 44px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Client : activate to sort column ascending">Client </th>
                                                 <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 45px;">Status</th>
                                                 <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Dead: activate to sort column ascending" style="width: 33px;">Dead</th>
@@ -134,8 +134,8 @@
                                                     <div class="btn-group">
                                                         <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="AgentDetailsModify.php?id=17"><i class="icon-pencil"></i>Edit</a></li>
-                                                            <li><a href="AgentDetailsDelete.php?id=17"><i class="icon-trash"></i>Delete</a></li>
+                                                            <li><a href="SuperAgentDetailsModify.php?id=17"><i class="icon-pencil"></i>Edit</a></li>
+                                                            <li><a href="SuperAgentDetailsDelete.php?id=17"><i class="icon-trash"></i>Delete</a></li>
                                                             <li><a href="javascript:ChangeStatus('17','Active');"><i class="icon-ban-circle"></i>
                                                                 Active                              </a></li>
                                                             <li class="divider"></li>
@@ -149,11 +149,11 @@
                                                 <td align="left" class=" "><%:row["Name"] %></td>
                                                 <td align="left" class=" "><%:row["ContactNO"] %></td>
                                                 <td align="left" class=" "><%:row["Date"] %></td>
-                                                <td align="left" class=" "><%:row["AgentID"] %></td>
+                                                <td align="left" class=" "><%:row["SuperAgentID"] %></td>
                                                 <td align="left" class=" "><%:row["Password"] %></td>
                                                 <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["AgentID"] %></td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["AgentID"] %></td>
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["SuperAgentID"] %></td>
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["SuperAgentID"] %></td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
