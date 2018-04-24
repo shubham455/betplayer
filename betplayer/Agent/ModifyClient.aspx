@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Agent/DashBoard.Master" AutoEventWireup="true" CodeBehind="ModifyClient.aspx.cs"   Inherits="betplayer.Agent.ModifyClient" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Agent/DashBoard.Master" EnableEventValidation="true" AutoEventWireup="true" CodeBehind="ModifyClient.aspx.cs"   Inherits="betplayer.Agent.ModifyClient" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
 
@@ -16,9 +16,9 @@
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
                         <li>Master Details <span class="divider">&nbsp;</span> </li>
-                        <li><a href="ClientDetails.php">Client Details</a><span class="divider">&nbsp;</span></li>
+                        <li><a href="ClientDetails.aspx">Client Details</a><span class="divider">&nbsp;</span></li>
                         <li>Modify Client<span class="divider">&nbsp;</span></li>
-                        <li><a href="ClientDetails.php"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                        <li><a href="ClientDetails.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
                     <!-- END PAGE TITLE & BREADCRUMB-->
                 </div>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="widget-body form">
                             <!-- BEGIN FORM-->
-                            <form name="BetPlayer" id="BetPlayer" method="post" action="ClientDetails.php" autocomplete="off">
+                           
                                 <div class="alert alert-error" id="Error" style="visibility: hidden">
                                 </div>
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -69,7 +69,7 @@
 
                                                         <tr>
                                                             <td height="30" align="left" class="welcome">&nbsp;</td>
-                                                            <td height="30" align="left" valign="middle" class="welcome">Fix Limit</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">Client Limit</td>
                                                             <td align="left" valign="middle">
                                                                 <asp:TextBox CssClass="textbox" ID="txtFixedLimit" runat="server" /></td>
                                                             <td align="left" valign="middle">&nbsp;</td>
@@ -79,9 +79,9 @@
                                                             <td height="30" align="left">Mobile App</td>
                                                             <td align="left">
                                                                 <asp:DropDownList ID="DropDownMobileApp" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" >
-
-                                                                    <asp:ListItem Text="Yes" Value="Yes">Yes</asp:ListItem>
-                                                                    <asp:ListItem Text="No" Value="No">No</asp:ListItem>
+                                                                    <asp:ListItem Enabled ="true" Text="Please Select" Value="0">Commission Type</asp:ListItem>
+                                                                    <asp:ListItem   Text="Yes" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="No" Value="2"></asp:ListItem>
                                                                 </asp:DropDownList></td>
                                                             <td align="left">&nbsp;</td>
                                                         </tr>
@@ -104,7 +104,7 @@
                                                             <td height="30" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status</td>
                                                             <td align="left">
                                                                 <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" >
-
+                                                                    <asp:ListItem Text="Please Select" Value="0">Commission Type</asp:ListItem>
                                                                     <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
                                                                     <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
                                                                 </asp:DropDownList></td>
@@ -143,14 +143,13 @@
                                                             <td align="left" class="welcome">&nbsp;</td>
                                                             <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session Commission Type</td>
                                                             <td align="left" valign="middle">
-                                                                <asp:DropDownList ID="SessionDropDown" runat="server" class="form-control" AppendDataBoundItems="False" DataTextField="UserName" DataValueField="UserID">
+                                                                <asp:DropDownList ID="SessionDropDown" runat="server" class="btn btn-primary dropdown-toggle" AppendDataBoundItems="True">
                                                                     <asp:ListItem Text="Please Select" Value="0">Commission Type</asp:ListItem>
                                                                     <asp:ListItem Text="No Commission" Value="1">No Commission</asp:ListItem>
                                                                     <asp:ListItem Text=">Only On Minus" Value="2">Only On Minus</asp:ListItem>
                                                                     <asp:ListItem Text="Bet By Bet" Value="3">Bet By Bet</asp:ListItem>
                                                                 </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Display="Dynamic" runat="server" ControlToValidate="SessionDropDown"
-                                                                    ErrorMessage="Value Required!" InitialValue="0"></asp:RequiredFieldValidator></td>
+                                                                </td>
                                                             <td align="left" valign="middle">&nbsp;</td>
                                                         </tr>
                                                         <tr id="divMatchCommission" style="visibility: visible;">
@@ -176,7 +175,7 @@
                                     </tbody>
                                 </table>
                                 <div class="form-actions">
-                                    <asp:button ID="btnUpdate" class="btn btn-success" Text="Update" OnClick="btnUpdate_Click" runat="server"/>
+                                    <asp:Button ID="btnUpdate" class="btn btn-success" Text="Update" OnClick="btnUpdate_Click" runat="server"/>
                                     <asp:button ID="btnCancel" class="btn btn-success" Text="Cancel" OnClick="Button1_Click" runat="server"/>
                                 </div>
 
@@ -190,7 +189,7 @@
                                 <input name="ClientName_Old" type="hidden" id="ClientName_Old" value="220 Shivam" readonly="">
                                 <input name="ClientName1" type="hidden" id="ClientName1" value="220 Shivam" readonly="">
                                 <input name="SessionCommissionTypeClientOld" type="hidden" id="SessionCommissionTypeClientOld" value="No Comm" readonly="">
-                            </form>
+                         
                             <!-- END FORM-->
                         </div>
                     </div>

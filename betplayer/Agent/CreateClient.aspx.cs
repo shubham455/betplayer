@@ -8,10 +8,6 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data;
 using System.Globalization;
-using ASPSnippets.SmsAPI;
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
-using Twilio.Types;
 
 
 namespace Panchayat_System.Admin

@@ -88,18 +88,20 @@ namespace betplayer.Agent
         }
         public string delete(string id)
         {
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s = "delete from clientmaster  where clientid = '" + id + "'";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                dt = new DataTable();
-                adp.Fill(dt);
-                BindData();
-                return dt.ToString();
+            
+                string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+                using (MySqlConnection cn = new MySqlConnection(CN))
+                {
+                    cn.Open();
+                    string s = "delete from clientmaster  where clientid = '" + id + "'";
+                    MySqlCommand cmd = new MySqlCommand(s, cn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    adp.Fill(dt);
+                    BindData();
+                    return dt.ToString();
 
+              
             }
         }
 

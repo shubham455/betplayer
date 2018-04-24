@@ -132,7 +132,8 @@
                 <li class="has-sub">
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-book"></i></span>Master Details
-					    <span class="arrow"></span>
+					   
+                        <span class="arrow"></span>
                     </a>
                     <ul class="sub">
                         <li><a class="" href="SuperAgentDetails.aspx">SuperAgent Master</a></li>
@@ -142,6 +143,7 @@
                 <li class="has-sub">
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-tasks"></i></span>Sport's Betting
+                       
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
@@ -151,6 +153,7 @@
                 <li class="has-sub">
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-tasks"></i></span>Ledger
+                       
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
@@ -164,7 +167,8 @@
                 <li class="has-sub">
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-cogs"></i></span>Reports
-					<span class="arrow"></span>
+				
+                        <span class="arrow"></span>
                     </a>
                     <ul class="sub">
                         <li><a class="" href="SuperAgentLimitReport.aspx">SuperAgent Limit Report</a></li>
@@ -174,27 +178,40 @@
                 <li class="has-sub">
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-cogs"></i></span>Settings
+                       
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
                         <li><a class="" href="ChangePassword.aspx">Change Password</a></li>
                     </ul>
                 </li>
+               <li class="has-sub">
+                    <a href="javascript:;" class="">
+                        <span class="icon-box"><i class="icon-cogs"></i></span>Matches
+				
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="CreateMatch.aspx">Create Matches </a></li>
+                        <li><a class="" href="ModifyMatches.aspx">Modify Matches</a></li>
+                    </ul>
+                </li>
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>
     </div>
-     <form id="form1" runat="server">
+    <form id="form1" runat="server">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
         </asp:ContentPlaceHolder>
     </form>
-    
+
     <div id="footer">
-		2013 © Admin Lab Dashboard.
-		<div class="span pull-right">
-			<span class="go-top"><i class="icon-arrow-up"></i></span>
-		</div>
-	</div>
+        2013 © Admin Lab Dashboard.
+	
+        <div class="span pull-right">
+            <span class="go-top"><i class="icon-arrow-up"></i></span>
+        </div>
+    </div>
 
     <script src="js/jquery-1.8.3.min.js"></script>
     <script src="assets/jquery-slimscroll/jquery-ui-1.9.2.custom.min.js"></script>
@@ -237,6 +254,6 @@
     <div class="jqvmap-label"></div>
     <div class="jqvmap-label"></div>
     <div class="jqvmap-label"></div>
-   
+
 </body>
 </html>
