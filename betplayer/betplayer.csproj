@@ -82,7 +82,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\AddMatch.aspx" />
-    <Content Include="admin\AddMatch1.aspx" />
     <Content Include="admin\CreateMatch.aspx" />
     <Content Include="admin\EditMatches.aspx" />
     <Content Include="admin\ModifyMatches.aspx" />
@@ -1663,13 +1662,6 @@
     </Compile>
     <Compile Include="admin\AddMatch.aspx.designer.cs">
       <DependentUpon>AddMatch.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\AddMatch1.aspx.cs">
-      <DependentUpon>AddMatch1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\AddMatch1.aspx.designer.cs">
-      <DependentUpon>AddMatch1.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\CreateMatch.aspx.cs">
       <DependentUpon>CreateMatch.aspx</DependentUpon>

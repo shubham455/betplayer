@@ -65,8 +65,7 @@ C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.IdentityModel.Lo
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.IdentityModel.Tokens.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Newtonsoft.Json.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Twilio.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.IdentityModel.Tokens.xml
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Newtonsoft.Json.xml
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\System.IdentityModel.Tokens.Jwt.xml
-C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Twilio.xml
+C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Google.Protobuf.dll
