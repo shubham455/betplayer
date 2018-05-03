@@ -14,13 +14,13 @@ namespace betplayer.Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["clientID"] == null)
-            //{
-            //    Response.Redirect("login.aspx");
-            //}
-            //else
-            //{
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            if (Session["clientID"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
+            else
+            {
+                string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
@@ -31,7 +31,7 @@ namespace betplayer.Client
                 adp.Fill(dt);
                 lbl1.InnerText = dt.Rows[0]["Name"].ToString();
 
-                //}
+                }
             }
         }
     }

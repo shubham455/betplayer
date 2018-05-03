@@ -37,9 +37,9 @@
                 <h3>Login</h3>
                 <form id="Form1" runat="server">
                     <span><i class="user"></i>
-                        <asp:TextBox ID="txtusername" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtusername" runat="server" placeHode="Username"></asp:TextBox>
                     </span><span><i class="lock"></i>
-                        <asp:TextBox ID="txtpassword" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtpassword" runat="server" TextMode="Password" placeholder="*********"></asp:TextBox>
                     </span>
                     <table style="width: 100%" border="0" cellspacing="0" cellpadding="0">
                         <tbody>
@@ -90,8 +90,6 @@
                                 </td>
 
                             </tr>
-
-
 
                             <tr>
                                 <td>

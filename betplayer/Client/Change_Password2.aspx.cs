@@ -15,10 +15,7 @@ namespace betplayer.Client
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            if (!IsPostBack)
-            {
-
-            }
+            
         }
 
         protected void btnChangepass_Click(object sender, EventArgs e)
@@ -26,7 +23,6 @@ namespace betplayer.Client
             if (txtNewPassword.Text != txtConfirmPassword.Text)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('New Password Does not Match');", true);
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Please Give Username.....');", true);
             }
             else
             {

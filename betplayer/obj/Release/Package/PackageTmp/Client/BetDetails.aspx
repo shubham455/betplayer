@@ -25,9 +25,9 @@
                                                 <td width="78%" height="35" align="center" class="TeamCombo">
                                                     <div class="ScoreCard_rtmScore" style="color: #fff;">
                                                         <p>
-                                                            <span id="LocalTeam">  </span>
+                                                            <span id="LocalTeam"></span>
                                                             <br>
-                                                            <span id="VisitorTeam">   </span>
+                                                            <span id="VisitorTeam"></span>
                                                             <br>
                                                             <span id="Status"></span>
                                                             <br>
@@ -52,7 +52,8 @@
                             </tr>
                             <tr>
                                 <td align="left" valign="top">
-
+                                    <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
+                                        { %>
                                     <table width="100%" border="0" cellpadding="2" cellspacing="2">
                                         <tbody>
                                             <tr>
@@ -63,7 +64,7 @@
                                             </tr>
 
                                             <tr>
-                                                <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle">KOLKATA</td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamA"] %></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" style="vertical-align: middle">
                                                     <input type="button" name="KRate1" id="KRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitK(1)"></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle; color: #000">
@@ -72,7 +73,7 @@
                                             </tr>
 
                                             <tr>
-                                                <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle">BANGLOR</td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamB"] %></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle">
                                                     <input type="button" name="KRate2" id="KRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitK(2)"></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle; color: #000">
@@ -82,7 +83,7 @@
 
                                         </tbody>
                                     </table>
-
+                                    <% } //foreach %>
                                 </td>
                             </tr>
                             <tr>
@@ -204,12 +205,16 @@
 
     <div class="menu" id="menu" align="center">
         <ul class="nav">
-            <li class="active"><a href="ODMSBetDetails.php?id=167">KOLKATA V BANGLOR (IPLT20)</a></li>
-            <li class="active"><a href="ODMSBetDetails.php?id=166">PUNJAB V DELHI(IPLT20)</a></li>
+            <% foreach (System.Data.DataRow row in MatchesDataTable1.Rows)
+                { %>
+            <li class="active"><a href="BetDetails.aspx?id=<%: row["apiID"] %>"><%: row["TeamA"] %> V <%: row["TeamB"] %> <%: row["Type"] %></a></li>
+            <% } //foreach %>
+
             <li class="active"><a href="AllGamesList.php">BACK TO LIST</a></li>
         </ul>
     </div>
-    <br>
+
+    <br />
     <table width="100%" border="0" cellspacing="2" cellpadding="0">
         <tbody>
             <tr>
@@ -217,7 +222,7 @@
             </tr>
         </tbody>
     </table>
-    <br>
+    <br />
     <table width="100%" border="0" cellspacing="2" cellpadding="2">
         <tbody>
             <tr>
@@ -229,44 +234,7 @@
             </tr>
         </tbody>
     </table>
-    <input name="NameChk" type="hidden" id="NameChk" value="">
-    <input name="MatchCode" type="hidden" id="MatchCode" value="167">
-    <input name="MatchRate" type="hidden" id="MatchRate">
-    <input name="MatchTeam" type="hidden" id="MatchTeam">
-    <input name="LockManual" type="hidden" id="LockManual" value="">
-    <input name="SessionYN" type="hidden" id="SessionYN">
-    <input name="SessionName" type="hidden" id="SessionName">
-    <input name="MatchStatus" type="hidden" id="MatchStatus" value="">
-    <input name="MatchLockStatus" type="hidden" id="MatchLockStatus" value="">
-    <input name="SessionLockStatus" type="hidden" id="SessionLockStatus" value="">
-    <input name="AmountTimeChk" type="hidden" id="AmountTimeChk" value="">
-    <input name="AmountTime1" type="hidden" id="AmountTime1" value="">
+    <asp:HiddenField ID="apiID" runat="server" />
 
-    <input name="RateMode" type="hidden" id="RateMode" value="Automatic">
-    <input name="ID" type="hidden" id="ID" value="313637">
 
-    <input name="SessionRate" type="hidden" id="SessionRate">
-    <input name="MatchBitChk" type="hidden" id="MatchBitChk" value="">
-    <input name="MatchBitChk_Manualy" type="hidden" id="MatchBitChk_Manualy" value="">
-    <input name="SessionBitChk" type="hidden" id="SessionBitChk" value="">
-    <input name="SessionBitChk_Manualy" type="hidden" id="SessionBitChk_Manualy" value="">
-    <input name="AddSessionChk" type="hidden" id="AddSessionChk" value="">
-    <input name="DeleteChkMultiple" type="hidden" id="DeleteChkMultiple" value="0.00#0.00###########0.00#images/Blank.png###NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#0.00#0.00########KOLKATA# # #BANGLOR# # # # # #<br><br>MatchBitDateTime1=, MatchBitDateTime1_05=1970-01-01 05:30:00, CurrTime=2018-04-08 17:52:09,MatchLockStatus=Yes<br><br><br>SessionBitDateTime1=, SessionBitDateTime1_05=1970-01-01 05:30:00, CurrTimeMatch=2018-04-08 17:52:09<br><br><br>SessionBitDateTime2=, SessionBitDateTime2_05=1970-01-01 05:30:00, CurrTimeMatch=2018-04-08 17:52:09<br>MatchTime=2018-04-08 20:00:00, TimeDiff=7671<br>, ">
-    <input name="ClientName" type="hidden" id="ClientName" value="220 Shivam">
-    <input name="SessBitMultiChk" type="hidden" id="SessBitMultiChk" value="1">
-    <input name="MatchBitMultiChk" type="hidden" id="MatchBitMultiChk" value="1">
-    <input name="ClientBitMultiChk" type="hidden" id="ClientBitMultiChk" value="">
-    <input name="Team1" type="hidden" id="Team1" value="KOLKATA">
-    <input name="Team2" type="hidden" id="Team2" value="BANGLOR">
-    <input name="Team3" type="hidden" id="Team3" value="">
-
-    <input name="SessionRun" type="hidden" id="SessionRun" size="7" onkeypress="return SetFocusSession(event,this.name)">
-    <input name="KLRate" type="hidden" id="KLRate">
-
-    <input name="KRate1Chk" type="hidden" id="KRate1Chk">
-    <input name="LRate1Chk" type="hidden" id="LRate1Chk">
-    <input name="KRate2Chk" type="hidden" id="KRate2Chk">
-    <input name="LRate2Chk" type="hidden" id="LRate2Chk">
-
-    <input name="SubmitTimeValue" type="hidden" id="SubmitTimeValue" value="3">
 </asp:Content>

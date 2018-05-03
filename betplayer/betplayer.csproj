@@ -615,15 +615,6 @@
     <Content Include="admin\img\bread-crumb-bg.jpg" />
     <Content Include="admin\img\bread-crumb-divider.jpg" />
     <Content Include="admin\img\bread-crumb-last.jpg" />
-    <Content Include="admin\img\gallery\photo1.jpg" />
-    <Content Include="admin\img\gallery\photo2.jpg" />
-    <Content Include="admin\img\gallery\photo3.jpg" />
-    <Content Include="admin\img\gallery\photo4.jpg" />
-    <Content Include="admin\img\gallery\photo5.jpg" />
-    <Content Include="admin\img\gallery\photo6.jpg" />
-    <Content Include="admin\img\gallery\photo7.jpg" />
-    <Content Include="admin\img\gallery\photo8.jpg" />
-    <Content Include="admin\img\gallery\photo9.jpg" />
     <Content Include="admin\img\header_line.png" />
     <Content Include="admin\img\Homepage\img1.jpg" />
     <Content Include="admin\img\Homepage\img2.jpg" />
@@ -1593,15 +1584,6 @@
     <Content Include="superagent\img\bread-crumb-bg.jpg" />
     <Content Include="superagent\img\bread-crumb-divider.jpg" />
     <Content Include="superagent\img\bread-crumb-last.jpg" />
-    <Content Include="superagent\img\gallery\photo1.jpg" />
-    <Content Include="superagent\img\gallery\photo2.jpg" />
-    <Content Include="superagent\img\gallery\photo3.jpg" />
-    <Content Include="superagent\img\gallery\photo4.jpg" />
-    <Content Include="superagent\img\gallery\photo5.jpg" />
-    <Content Include="superagent\img\gallery\photo6.jpg" />
-    <Content Include="superagent\img\gallery\photo7.jpg" />
-    <Content Include="superagent\img\gallery\photo8.jpg" />
-    <Content Include="superagent\img\gallery\photo9.jpg" />
     <Content Include="superagent\img\header_line.png" />
     <Content Include="superagent\img\Homepage\img1.jpg" />
     <Content Include="superagent\img\Homepage\img2.jpg" />
@@ -2377,9 +2359,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Client\css\login2\" />
     <Folder Include="Client\css\terms_condition\" />
-    <Folder Include="Client\images\allgameslistimg\" />
     <Folder Include="Models\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>

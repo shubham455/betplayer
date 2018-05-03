@@ -2,13 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
-  
-         <% foreach(System.Data.DataRow row in MatchesDataTable.Rows) { %>
+    <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
+        { %>
     <div>
-    
     </div>
-    
+
     <div class="TeamName">
         <a href="#"><%: row["teamA"] %> v <%: row["teamB"] %></a>
     </div>
@@ -22,7 +20,8 @@
 
                             <div class="profile_picture">
                                 <p align="center">
-                                    <img src="images/allgameslistimg/Team.jpg" alt=""></p>
+                                    <img src="images/allgameslistimg/Team.jpg" alt="">
+                                </p>
                             </div>
 
                         </td>
@@ -51,7 +50,8 @@
                         </td>
                         <td align="center" style="vertical-align: middle;">
                             <p align="center">
-                                <img src="images/allgameslistimg/Team.jpg" alt=""></p>
+                                <img src="images/allgameslistimg/Team.jpg" alt="">
+                            </p>
                         </td>
                         <td width="1%">&nbsp;</td>
                     </tr>
@@ -59,9 +59,9 @@
             </table>
         </a>
     </div>
-    <br>
-    &nbsp;<br>
-    
+    <br/>
+    &nbsp;<br/>
+
     <% } //foreach %>
 
 

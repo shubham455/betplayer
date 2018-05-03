@@ -15,19 +15,19 @@ namespace betplayer.Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
 
             if (!IsPostBack)
             {
                 FillCapctha();
-                if (Session["clientID"] != null )
+                if (Session["clientID"] != null)
                 {
                     Session.Remove("ClientID");
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Logout Successfully.....');", true);
                 }
-               
-               
-               
+
+
+
             }
         }
         protected void Submitbtn_Click(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace betplayer.Client
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    
+
                     string SELECT = "Select * from ClientMaster Where Name = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
@@ -86,11 +86,8 @@ namespace betplayer.Client
         void FillCapctha()
 
         {
-
             try
-
             {
-
                 Random random = new Random();
 
                 string combination = "0123456789";

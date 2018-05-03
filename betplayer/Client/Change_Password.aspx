@@ -2,11 +2,6 @@
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
-    <!---start-wrap---->
-
-
-    <!----- Content ------------->
     <div class="content_top">
         <div class="content_top-grid3"></div>
         <div class="clear"></div>
@@ -46,15 +41,8 @@
         </tbody>
     </table>
 
-
-
     <div class="content_bottom">
         <div class="clear"></div>
     </div>
-
-
-
-
-
 
 </asp:Content>
