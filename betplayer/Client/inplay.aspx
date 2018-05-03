@@ -13,7 +13,7 @@
         <a href="#"><%: row["teamA"] %> v <%: row["teamB"] %></a>
     </div>
     <div class="profile-details">
-        <a href="BetDetails.aspx?id=<%: row["MatchesID"] %>">
+        <a href="BetDetails.aspx?id=<%: row["apiID"] %>">
             <table width="100%" border="0" cellspacing="2" cellpadding="2">
                 <tbody>
                     <tr>

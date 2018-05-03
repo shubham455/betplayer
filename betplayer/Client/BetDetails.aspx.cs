@@ -11,7 +11,8 @@ namespace betplayer.Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            apiID.Value = Request.QueryString["id"];
+          
         }
     }
 }

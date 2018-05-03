@@ -217,7 +217,7 @@
             </tr>
         </tbody>
     </table>
-    <br>
+    <br/>
     <table width="100%" border="0" cellspacing="2" cellpadding="2">
         <tbody>
             <tr>
@@ -229,44 +229,7 @@
             </tr>
         </tbody>
     </table>
-    <input name="NameChk" type="hidden" id="NameChk" value="">
-    <input name="MatchCode" type="hidden" id="MatchCode" value="167">
-    <input name="MatchRate" type="hidden" id="MatchRate">
-    <input name="MatchTeam" type="hidden" id="MatchTeam">
-    <input name="LockManual" type="hidden" id="LockManual" value="">
-    <input name="SessionYN" type="hidden" id="SessionYN">
-    <input name="SessionName" type="hidden" id="SessionName">
-    <input name="MatchStatus" type="hidden" id="MatchStatus" value="">
-    <input name="MatchLockStatus" type="hidden" id="MatchLockStatus" value="">
-    <input name="SessionLockStatus" type="hidden" id="SessionLockStatus" value="">
-    <input name="AmountTimeChk" type="hidden" id="AmountTimeChk" value="">
-    <input name="AmountTime1" type="hidden" id="AmountTime1" value="">
-
-    <input name="RateMode" type="hidden" id="RateMode" value="Automatic">
-    <input name="ID" type="hidden" id="ID" value="313637">
-
-    <input name="SessionRate" type="hidden" id="SessionRate">
-    <input name="MatchBitChk" type="hidden" id="MatchBitChk" value="">
-    <input name="MatchBitChk_Manualy" type="hidden" id="MatchBitChk_Manualy" value="">
-    <input name="SessionBitChk" type="hidden" id="SessionBitChk" value="">
-    <input name="SessionBitChk_Manualy" type="hidden" id="SessionBitChk_Manualy" value="">
-    <input name="AddSessionChk" type="hidden" id="AddSessionChk" value="">
-    <input name="DeleteChkMultiple" type="hidden" id="DeleteChkMultiple" value="0.00#0.00###########0.00#images/Blank.png###NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#0.00#0.00########KOLKATA# # #BANGLOR# # # # # #<br><br>MatchBitDateTime1=, MatchBitDateTime1_05=1970-01-01 05:30:00, CurrTime=2018-04-08 17:52:09,MatchLockStatus=Yes<br><br><br>SessionBitDateTime1=, SessionBitDateTime1_05=1970-01-01 05:30:00, CurrTimeMatch=2018-04-08 17:52:09<br><br><br>SessionBitDateTime2=, SessionBitDateTime2_05=1970-01-01 05:30:00, CurrTimeMatch=2018-04-08 17:52:09<br>MatchTime=2018-04-08 20:00:00, TimeDiff=7671<br>, ">
-    <input name="ClientName" type="hidden" id="ClientName" value="220 Shivam">
-    <input name="SessBitMultiChk" type="hidden" id="SessBitMultiChk" value="1">
-    <input name="MatchBitMultiChk" type="hidden" id="MatchBitMultiChk" value="1">
-    <input name="ClientBitMultiChk" type="hidden" id="ClientBitMultiChk" value="">
-    <input name="Team1" type="hidden" id="Team1" value="KOLKATA">
-    <input name="Team2" type="hidden" id="Team2" value="BANGLOR">
-    <input name="Team3" type="hidden" id="Team3" value="">
-
-    <input name="SessionRun" type="hidden" id="SessionRun" size="7" onkeypress="return SetFocusSession(event,this.name)">
-    <input name="KLRate" type="hidden" id="KLRate">
-
-    <input name="KRate1Chk" type="hidden" id="KRate1Chk">
-    <input name="LRate1Chk" type="hidden" id="LRate1Chk">
-    <input name="KRate2Chk" type="hidden" id="KRate2Chk">
-    <input name="LRate2Chk" type="hidden" id="LRate2Chk">
-
-    <input name="SubmitTimeValue" type="hidden" id="SubmitTimeValue" value="3">
+    <asp:HiddenField ID="apiID" runat="server"/>
+  
+    
 </asp:Content>
