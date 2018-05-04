@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Agent/DashBoard.Master" AutoEventWireup="true" CodeBehind="MatchAndSessionPosition.aspx.cs" Inherits="betplayer.Agent.Match_SessionPosition" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
-    <div id="main-content">
+   <div id="main-content">
 		  <!-- BEGIN PAGE CONTAINER-->
 		  <div class="container-fluid">
 		    <!-- BEGIN PAGE HEADER-->
@@ -15,7 +15,7 @@
 		          <li> <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
 		          <li> Sport's Betting<span class="divider">&nbsp;</span> </li>
 		          <li>Match &amp; Session Position<span class="divider">&nbsp;</span></li>
-                  <li><a href="SportsDetails.aspx"> <span style="color:#00F;"> <strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                  <li><a href="SportDetails.php"> <span style="color:#00F;"> <strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
 	            </ul>
 		        <!-- END PAGE TITLE & BREADCRUMB-->
 	          </div>
@@ -48,8 +48,8 @@
                                       </tr>
                                       <tr>
                                         <td width="80%" height="70" class="ButtonK" style="text-align:center;">
-                                        	<span id="LocalTeam">South Africa    </span><br>
-                                            <span id="VisitorTeam">India    </span><br>
+                                        	<span id="LocalTeam">Sunrisers Hyderabad    </span><br>
+                                            <span id="VisitorTeam">Delhi Daredevils    </span><br>
                                     		<span id="Status"> </span><br>
                                         </td>
                                         <td width="20%" style="text-align:center;vertical-align:middle;">
@@ -72,7 +72,7 @@
                                       <td style="text-align:center;vertical-align:middle;line-height:35px;width:140px;"><span class="ButtonK">PLUS</span>/<span class="ButtonL">MINUS</span></td>
                                     </tr>
                                     <tr>
-                                      <td height="35" align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="Team1" id="Team1" value="South Africa" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;"></td>
+                                      <td height="35" align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="Team1" id="Team1" value="Sunrisers Hyderabad" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;"></td>
                                       <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="KRate1" id="KRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(1)"></td>
                                       <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><span style="color:">
                                         <input type="button" name="LRate1" id="LRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitL(1)">
@@ -82,7 +82,7 @@
                                     </tr>
                                     <tr>
                                       <td height="35" align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><span>
-                                        <input type="button" name="Team2" id="Team2" value="India" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;">
+                                        <input type="button" name="Team2" id="Team2" value="Delhi Daredevils" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;">
                                       </span></td>
                                       <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="KRate2" id="KRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(2)"></td>
                                       <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><span style="color:">
@@ -118,6 +118,20 @@
 		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRun2" id="YRun2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(2)"></td>
 		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRate2" id="YRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
 		                              </tr>
+		                            <tr>
+		                              <td height="35" style="text-align:center;vertical-align:middle;"><input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width:150px;" onclick="ShowSession(3)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRun3" id="NRun3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(3)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRate3" id="NRate3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRun3" id="YRun3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(3)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRate3" id="YRate3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
+		                              </tr>
+		                            <tr>
+		                              <td height="35" style="text-align:center;vertical-align:middle;"><input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width:150px;" onclick="ShowSession(4)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRun4" id="NRun4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(4)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRate4" id="NRate4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRun4" id="YRun4" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(4)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRate4" id="YRate4" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
+		                              </tr>
                                   </tbody></table>
                                 
                                 </div>
@@ -146,9 +160,9 @@
                         <td align="left" class="TableHeading"><strong>Team </strong></td>
                         <td align="left" class="TableHeading"><strong>Client</strong></td>
                         <td style="text-align:right;" class="TableHeading"><strong>
-                          South Africa                        </strong></td>
+                          Sunrisers Hyderabad                        </strong></td>
                         <td style="text-align:right;" class="TableHeading"><strong>
-                          India                        </strong></td>
+                          Delhi Daredevils                        </strong></td>
                         <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
                       </tr>
                       
@@ -161,7 +175,7 @@
                       <input name="TotalRecords" type="hidden" id="TotalRecords" value="">
                    
                     <input name="NameChk" type="hidden" id="NameChk" value="">
-          <input name="MatchCode" type="hidden" id="MatchCode" value="246">
+          <input name="MatchCode" type="hidden" id="MatchCode" value="196">
           <input name="MatchRate" type="hidden" id="MatchRate">
           <input name="MatchTeam" type="hidden" id="MatchTeam">
           <input name="LockManual" type="hidden" id="LockManual" value="No">
@@ -184,7 +198,7 @@
           <input name="ExtraSessionBitChk_Manualy" type="hidden" id="ExtraSessionBitChk_Manualy" value="">
           
           <input name="AddSessionChk" type="hidden" id="AddSessionChk" value="">
-          <input name="DeleteChkMultiple" type="hidden" id="DeleteChkMultiple" value="0.00#0.00###########0.00###No#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#0.00#0.00########South Africa# # #India# # # # # #<br><br>MatchBitDateTime1=, MatchBitDateTime1_05=1970-01-01 05:30:00, CurrTime=2018-02-21 10:03:02,MatchLockStatus=Yes<br><br><br>SessionBitDateTime1=, SessionBitDateTime1_05=1970-01-01 05:30:00, CurrTime=2018-02-21 10:03:02<br><br><br>SessionBitDateTime2=, SessionBitDateTime2_05=1970-01-01 05:30:00, CurrTime=2018-02-21 10:03:02<br>, ">
+          <input name="DeleteChkMultiple" type="hidden" id="DeleteChkMultiple" value="0.00#0.00###########0.00###No#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#0.00#0.00########Sunrisers Hyderabad# # #Delhi Daredevils# # # # # #<br><br>MatchBitDateTime1=, MatchBitDateTime1_05=1970-01-01 05:30:00, CurrTime=2018-05-04 13:34:33,MatchLockStatus=Yes<br><br><br>SessionBitDateTime1=, SessionBitDateTime1_05=1970-01-01 05:30:00, CurrTime=2018-05-04 13:34:33<br><br><br>SessionBitDateTime2=, SessionBitDateTime2_05=1970-01-01 05:30:00, CurrTime=2018-05-04 13:34:33<br>, ">
 		  <input name="ClientName" type="hidden" id="ClientName" value="">
           <input name="SessBitMultiChk" type="hidden" id="SessBitMultiChk" value="1">
           <input name="MatchBitMultiChk" type="hidden" id="MatchBitMultiChk" value="1">

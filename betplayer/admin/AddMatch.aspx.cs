@@ -21,7 +21,7 @@ namespace betplayer.admin
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
-                    string s = "Select * From Matches where MatchesID = '" + Id + "' ";
+                    string s = "Select * From Matches where MatchesID = '"+Id+"'";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -41,7 +41,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Update Matches set IsSelected = 'true' where matchesID = '"+id+"'";
+                string s = "Update Matches set Active = '1' where matchesID = '"+id+"'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 
                 cmd.ExecuteNonQuery();

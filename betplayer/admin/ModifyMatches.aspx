@@ -33,7 +33,44 @@
                         </div>
                         <div class="widget-body form">
                             <!-- BEGIN FORM-->
+                             <table width="100%" class="table table-striped table-hover table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td width="20" align="center" class="TableHeadingCheckBox">&nbsp;</td>
+                                        <td width="30" height="25" align="left" class="TableHeading">SNo.</td>
+                                        <td width="40" align="left" class="TableHeading">Code</td>
+                                        <td align="left" class="TableHeading">Name</td>
+                                        <td width="70" align="left" class="TableHeading">Date</td>
+                                        <td width="110" align="left" class="TableHeading">Time</td>
+                                        <td width="110" align="left" class="TableHeading">Match Type </td>
 
+                                    </tr>
+                                    <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
+                                        { %>
+                                    <tr style="background-color: #FFFFFF">
+                                      
+                                         <td align="left" class=" ">
+                                                <div class="btn-group">
+                                                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="EditMatches.aspx?Matchid=<%:row["MatchesID"] %>"><i class="icon-pencil"></i>Edit</a></li>
+                                                         <li><a href="ManuallyUpdation.aspx?Matchid=<%:row["apiID"] %>"><i class="icon-pencil"></i>Manually Updataion</a></li>
+                                                       
+                                                    </ul>
+                                                </div>
+                                            </td>
+
+                                        <td height="20" align="left" class="FontText"><%:row["MatchesID"] %></td>
+                                        <td align="left" class="FontText"><%:row["apiID"] %></td>
+                                        <td align="left" class="FontText"><%:row["TeamA"] %> v <%:row["TeamB"] %> </td>
+                                        <td align="left" class="FontText"><%:row["DateTime"] %></td>
+                                        <td width="110" align="left" class="FontText">04:00:00 PM</td>
+                                        <td width="110" align="left" class="FontText"><%:row["Type"] %></td>
+
+                                    </tr>
+                                    <% } //foreach %>
+                                </tbody>
+                            </table>
 
                            
                         </div>
