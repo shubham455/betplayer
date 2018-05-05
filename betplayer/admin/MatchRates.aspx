@@ -31,7 +31,7 @@
                             <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a><a href="javascript:;" class="icon-remove"></a></span>
                         </div>
                         <div class="widget-body form">
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <table>
                                 <tbody>
                                     <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
@@ -52,7 +52,8 @@
                                         <td width="2%" align="left">&nbsp;</td>
                                     </tr>
                                 
-
+                                    <br />
+                                    <br />
 
                            
                                

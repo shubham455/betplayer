@@ -38,6 +38,15 @@ namespace betplayer.Client
                 adp1.Fill(dt1);
                 
 
+                if (Session["ball"].ToString() == "Ball Start")
+                {
+                    imgball.ImageUrl = "images/HomeImg/logo.png";
+                }
+                if (Session["ball"].ToString() == "1")
+                {
+                    imgball.ImageUrl = "images/HomeImg/logo.png";
+                }
+
             }
         }
     }
