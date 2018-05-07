@@ -21,7 +21,7 @@ namespace betplayer.Client
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From Matches";
+                string s = "Select * From Matches where Status = '01' && Active = '1'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();

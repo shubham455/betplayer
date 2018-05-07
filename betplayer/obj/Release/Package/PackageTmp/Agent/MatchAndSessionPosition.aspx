@@ -48,9 +48,16 @@
                                       </tr>
                                       <tr>
                                         <td width="80%" height="70" class="ButtonK" style="text-align:center;">
-                                        	<span id="LocalTeam">Sunrisers Hyderabad    </span><br>
-                                            <span id="VisitorTeam">Delhi Daredevils    </span><br>
-                                    		<span id="Status"> </span><br>
+                                        	<div class="ScoreCard_rtmScore" style="color: #fff;">
+                                                        <p>
+                                                            <span id="LocalTeam"></span>
+                                                            <br>
+                                                            <span id="VisitorTeam"></span>
+                                                            <br>
+                                                            <span id="Status"></span>
+                                                            <br>
+                                                        </p>
+                                                    </div>
                                         </td>
                                         <td width="20%" style="text-align:center;vertical-align:middle;">
                                         	<span id="Image"><img src="" width="53" height="60"></span>
@@ -168,12 +175,7 @@
                       
                     </tbody></table>
 		            <input name="ID" type="hidden" id="ID" readonly="">
-                      <input name="Status" type="hidden" id="Status" readonly="">
-                      <input name="StatusMultiple" type="hidden" id="StatusMultiple" readonly="">
-                      <input name="ModifyStatusChk" type="hidden" id="ModifyStatusChk" readonly="">
-                      <input name="ModifyStatusMultipleChk" type="hidden" id="ModifyStatusMultipleChk" readonly="">
-                      <input name="TotalRecords" type="hidden" id="TotalRecords" value="">
-                   
+                     
                     <input name="NameChk" type="hidden" id="NameChk" value="">
           <input name="MatchCode" type="hidden" id="MatchCode" value="196">
           <input name="MatchRate" type="hidden" id="MatchRate">

@@ -31,21 +31,24 @@ namespace betplayer.Client
                 dt = new DataTable();
                 adp.Fill(dt);
 
-                string SMatches = "Select * from Matches";
+                string SMatches = "Select * from Matches where Status = '01' && Active = '1'";
                 MySqlCommand cmd1 = new MySqlCommand(SMatches, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt1 = new DataTable();
                 adp1.Fill(dt1);
-                
 
-                if (Session["ball"].ToString() == "Ball Start")
-                {
-                    imgball.ImageUrl = "images/HomeImg/logo.png";
-                }
-                if (Session["ball"].ToString() == "1")
-                {
-                    imgball.ImageUrl = "images/HomeImg/logo.png";
-                }
+                //if (Session["ball"].ToString() == "")
+                //{
+                   
+                //}
+                //if (Session["ball"].ToString() == "Ball Start")
+                //{
+                //    imgball.ImageUrl = "images/HomeImg/logo.png";
+                //}
+                //if (Session["ball"].ToString() == "1")
+                //{
+                //    imgball.ImageUrl = "images/HomeImg/logo.png";
+                //}
 
             }
         }

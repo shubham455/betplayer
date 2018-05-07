@@ -14,6 +14,7 @@ namespace betplayer.Client
 
     public partial class AllGamesList : System.Web.UI.Page
     {
+        
         private DataTable dt;
         public DataTable MatchesDataTable { get { return dt; } }
         protected void Page_Load(object sender, EventArgs e)
@@ -23,7 +24,7 @@ namespace betplayer.Client
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From Matches";
+                string s = "Select * From Matches where Status = '11' && Active = '1'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -36,6 +37,8 @@ namespace betplayer.Client
                     string datetime = "Date: " + oDate.Date.ToString() + " Time: " + oDate.TimeOfDay.ToString();
                     row["DateTime"] = datetime;
                 }
+
+               
             }
         }
     }

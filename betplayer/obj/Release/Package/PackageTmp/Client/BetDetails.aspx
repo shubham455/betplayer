@@ -38,7 +38,7 @@
                                                     <div class="ScoreCard">
                                                         <p>
                                                             <span id="Image">
-                                                                <img src="images/Blank.png" width="53" height="60"><br>
+                                                                <asp:Image ID="imgball" runat="server" width="53" height="60"/><br>
                                                             </span>
                                                         </p>
                                                     </div>

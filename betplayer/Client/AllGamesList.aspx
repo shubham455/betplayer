@@ -38,7 +38,7 @@
                                         <td class="GameList" align="center">Session Bets : 0</td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Declared : </td>
+                                        <td class="GameList" align="center">Declared :Yes</td>
                                     </tr>
                                     <tr>
                                         <td class="GameList" align="center">Won By : <%: row["winnerTeam"] %></td>

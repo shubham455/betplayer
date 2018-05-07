@@ -3,13 +3,12 @@
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
         <div class="container-fluid">
-            <!-- BEGIN PAGE HEADER-->
+           
             <div class="row-fluid">
                 <div class="span12">
-                    <!-- BEGIN THEME CUSTOMIZER-->
+                   
                     <div id="theme-change" class="hidden-phone"><i class="icon-cogs"></i><span class="settings"><span class="text">Theme:</span> <span class="colors"><span class="color-default" data-style="default"></span><span class="color-gray" data-style="gray"></span><span class="color-purple" data-style="purple"></span><span class="color-navy-blue" data-style="navy-blue"></span></span></span></div>
-                    <!-- END THEME CUSTOMIZER-->
-                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                   
                     <h3 class="page-title">Add Match</h3>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
@@ -18,11 +17,9 @@
 
                         <li><a href="CreateMatch.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
-                    <!-- END PAGE TITLE & BREADCRUMB-->
                 </div>
             </div>
-            <!-- END PAGE HEADER-->
-            <!-- BEGIN PAGE CONTENT-->
+          
             <div class="row-fluid">
                 <div class="span12">
                     <div class="widget">
@@ -31,48 +28,52 @@
                             <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a><a href="javascript:;" class="icon-remove"></a></span>
                         </div>
                         <div class="widget-body form">
-
                             <table>
-                                <tr>
-                                    <td style="font-size: large; font: 100" class="welcome">ScoreBoard</td>
-                                    <td>
-                                        <asp:TextBox ID="txtRun" CssClass="textbox" runat="server" />
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtwicket" CssClass="textbox" runat="server" /></td>
-                                    <td>
-                                        <asp:TextBox ID="TextBox1" CssClass="textbox" runat="server" /></td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-size: large; font: 100">ScoreBoard</td>
+                                        <td>
+                                            <asp:TextBox ID="txtrun"  runat="server" placeholer="Run" OnTextChanged="txtrun_TextChanged"  AutoPostBack="true"/></td>
+                                        <td>
+                                            <asp:TextBox ID="txtwicket"  runat="server" placeholer="Wicket" OnTextChanged="txtwicket_TextChanged" AutoPostBack="true" /></td>
+                                        <td>
+                                            <asp:TextBox ID="txtover" CssClass="textbox" runat="server" placeholer="over" OnTextChanged="txtover_TextChanged" AutoPostBack="true" /></td>
+                                    </tr>
+                                </tbody>
                             </table>
-
                             <table>
-                                <tr>
+                                <tbody>
+                                    <tr>
 
-                                    <td style="font-size: large; font: 100" class="welcome">Message</td>
-                                    <td>
-                                        <asp:TextBox ID="txtMessage" TextMode="MultiLine" Width="680px" CssClass="textbox" runat="server" /></td>
-                                    <td>
-                                        <asp:Button ID="Button1" runat="server" class="btn btn-success" Text="Update" />
+                                       
+                                        <td style="font-size: large; font: 100" width="10%" height="30" align="left" valign="middle" class="welcome">Message</td>
+                                          <td>
+                                            <asp:TextBox ID="txtmessage" Width="620px" TextMode="MultiLine" CssClass="textbox" runat="server" />
+                                        </td>
+                                              <td></td>
+                                        <td>
+                                            <asp:Button ID="btnmessage" runat="server" class="btn btn-success" Text="Update" />
 
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                             <div class="form-actions">
                                 <table>
                                     <tr>
                                         <td>
-                                            <asp:Button ID="Button2" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="Ball Start" Font-Size="Large" /></td>
+                                            <asp:Button ID="btnballstart" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="Ball Start" Font-Size="Large" OnClick="btnballstart_Click" /></td>
                                         <td>
-                                            <asp:Button ID="Button3" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="1" Font-Size="XX-Large" /></td>
+                                            <asp:Button ID="btn1" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="1" Font-Size="XX-Large" OnClick="btn1_Click" /></td>
                                         <td>
-                                            <asp:Button ID="Button4" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="2" Font-Size="XX-Large" /></td>
+                                            <asp:Button ID="btn2" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="2" Font-Size="XX-Large" /></td>
                                         <td>
-                                            <asp:Button ID="Button5" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="3" Font-Size="XX-Large" /></td>
+                                            <asp:Button ID="btn3" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="3" Font-Size="XX-Large" /></td>
 
                                         <td>
-                                            <asp:Button ID="Button6" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="4" Font-Size="XX-Large" /></td>
+                                            <asp:Button ID="btn4" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="4" Font-Size="XX-Large" /></td>
                                         <td>
-                                            <asp:Button ID="Button7" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="6" Font-Size="XX-Large" /></td>
+                                            <asp:Button ID="btn6" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="6" Font-Size="XX-Large" /></td>
                                     </tr>
                                 </table>
                             </div>
@@ -80,13 +81,13 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <asp:Button ID="Button8" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="Wide" Font-Size="Large" /></td>
+                                            <asp:Button ID="btnwide" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="Wide" Font-Size="Large" /></td>
                                         <td>
-                                            <asp:Button ID="Button9" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="NoBall" Font-Size="Large" /></td>
+                                            <asp:Button ID="btnnoball" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="NoBall" Font-Size="Large" /></td>
                                         <td>
-                                            <asp:Button ID="Button10" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="FreeHit" Font-Size="Large" /></td>
+                                            <asp:Button ID="btnfreehit" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="FreeHit" Font-Size="Large" /></td>
                                         <td>
-                                            <asp:Button ID="Button11" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="wide+4" Font-Size="Large" /></td>
+                                            <asp:Button ID="btnwide4" runat="server" class="btn btn-success" Width="100px" Height="50px" Text="wide+4" Font-Size="Large" /></td>
                                     </tr>
                                 </table>
                             </div>

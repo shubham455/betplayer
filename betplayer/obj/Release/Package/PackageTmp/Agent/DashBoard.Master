@@ -195,6 +195,50 @@
         });
 
     </script>
+     <script>
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyDeJEW2OK0RnL0A4OjYF6oTj04xQhgpb40",
+    authDomain: "betplayer-197014.firebaseapp.com",
+    databaseURL: "https://betplayer-197014.firebaseio.com",
+    projectId: "betplayer-197014",
+    storageBucket: "betplayer-197014.appspot.com",
+    messagingSenderId: "98790187004"
+};
+firebase.initializeApp(config);
+var matchIdElement = document.getElementById("ContentPlaceHolder1_apiID");
+if(matchIdElement !== null) {
+firebase.database().ref('/currentMatches/'+matchIdElement.value).once("value",
+    function (snapshot) {
+        console.log(snapshot.val());
+        match = snapshot.val();
+        document.getElementsByClassName("ScoreCard_rtmScore")[0].innerHTML
+            = '<p><span id="LocalTeam">' + match.btTm.name + ' ' + match.btTm.run
+            + '/' + match.btTm.wickets + ' (' + match.btTm.overs + ') * < /span><br>' +
+
+        '<span id="VisitorTeam">' + match.blgTm.name + ' ' + match.blgTm.run +
+            '/' + match.blgTm.wickets + ' (' + match.blgTm.overs + ') </span><br>'
+            +
+
+            '<span id="Status"></span><br></p>'
+    });
+    firebase.database().ref('/currentMatches'+matchIdElement.value).on("child_changed",
+    function (snapshot) {
+        console.log(snapshot.val());
+        match = snapshot.val();
+        document.getElementsByClassName("ScoreCard_rtmScore")[0].innerHTML
+            = '<p><span id="LocalTeam">' + match.btTm.name + ' ' + match.btTm.run
+            + '/' + match.btTm.wickets + ' (' + match.btTm.overs + ') * < /span><br>' +
+
+        '<span id="VisitorTeam">' + match.blgTm.name + ' ' + match.blgTm.run +
+            '/' + match.blgTm.wickets + ' (' + match.blgTm.overs + ') </span><br>'
+            +
+
+            '<span id="Status"></span><br></p>'
+    });
+}
+</script>
+
     <!-- END JAVASCRIPTS -->
 
     <!-- END BODY -->
