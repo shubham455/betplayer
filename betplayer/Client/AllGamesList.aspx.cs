@@ -29,17 +29,63 @@ namespace betplayer.Client
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
-                foreach(DataRow row in dt.Rows)
+                if (dt.Rows.Count > 0 )
                 {
-                    string timeFromDB = row["DateTime"].ToString();
-                    //DateTime oDate = DateTime.ParseExact(timeFromDB, "yyyy-MM-ddTHH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
-                    DateTime oDate = DateTime.Parse(timeFromDB);
-                    string datetime = "Date: " + oDate.Date.ToString() + " Time: " + oDate.TimeOfDay.ToString();
-                    row["DateTime"] = datetime;
-                }
+                    string TeamA = dt.Rows[0]["TeamA"].ToString();
+                    string TeamB = dt.Rows[0]["TeamB"].ToString();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string timeFromDB = row["DateTime"].ToString();
+                        //DateTime oDate = DateTime.ParseExact(timeFromDB, "yyyy-MM-ddTHH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
+                        DateTime oDate = DateTime.Parse(timeFromDB);
+                        string datetime = "Date: " + oDate.Date.ToString() + " Time: " + oDate.TimeOfDay.ToString();
+                        row["DateTime"] = datetime;
+                    }
 
+                }
+                else
+                {
+                   
+                }
                
             }
         }
+        public string TeamtoImgpath(string TeamA)
+        {
+            if (TeamA == "Delhi Daredevils")
+            {
+                return "images/Teams_Image/DD.png";
+            }
+            else if (TeamA == "Royal Challengers Bangalore")
+            {
+                return "images/Teams_Image/RCB.png";
+            }
+            else if (TeamA == "Kolkata Knight Riders")
+            {
+                return "images/Teams_Image/KKR.png";
+            }
+            else if (TeamA == "Kings XI Punjab")
+            {
+                return "images/Teams_Image/KXIP.png";
+            }
+            else if (TeamA == "Mumbai Indians")
+            {
+                return "images/Teams_Image/MI.png";
+            }
+            else if (TeamA == "Chennai Super Kings")
+            {
+                return "images/Teams_Image/CSK.png";
+            }
+            else if (TeamA == "Sunrisers Hyderabad")
+            {
+                return "images/Teams_Image/SRH.png";
+            }
+            else if (TeamA == "Rajasthan Royals")
+            {
+                return "images/Teams_Image/RR.png";
+            }
+            return "";
+        }
+
     }
 }

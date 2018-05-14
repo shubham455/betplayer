@@ -37,7 +37,7 @@
                 <h3>Login</h3>
                 <form id="Form1" runat="server">
                     <span><i class="user"></i>
-                        <asp:TextBox ID="txtusername" runat="server" placeHode="Username"></asp:TextBox>
+                        <asp:TextBox ID="txtusername" runat="server" placeholder="Username"></asp:TextBox>
                     </span><span><i class="lock"></i>
                         <asp:TextBox ID="txtpassword" runat="server" TextMode="Password" placeholder="*********"></asp:TextBox>
                     </span>

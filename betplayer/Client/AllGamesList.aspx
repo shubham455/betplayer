@@ -20,7 +20,7 @@
 
                             <div class="profile_picture">
                                 <p align="center">
-                                    <img src="images/allgameslistimg/Team.jpg" alt=""></p>
+                                    <img src="<%=TeamtoImgpath(row["TeamA"].ToString()) %>" alt="team image" style="height:100px"></p>
                             </div>
 
                         </td>
@@ -49,7 +49,7 @@
                         </td>
                         <td align="center" style="vertical-align: middle;">
                             <p align="center">
-                                <img src="images/allgameslistimg/Team.jpg" alt=""></p>
+                                <img src="<%=TeamtoImgpath(row["TeamB"].ToString()) %>"alt="team image" style="height:100px"></p>
                         </td>
                         <td width="1%">&nbsp;</td>
                     </tr>

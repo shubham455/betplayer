@@ -8,7 +8,7 @@
     </div>
 
     <div class="TeamName">
-        <a href="#"><%: row["teamA"] %> v <%: row["teamB"] %></a>
+        <a href="#"><%: row["teamA"] %> VS <%: row["teamB"] %></a>
     </div>
     <div class="profile-details">
         <a href="BetDetails.aspx?id=<%: row["apiID"] %>">
@@ -20,7 +20,7 @@
 
                             <div class="profile_picture">
                                 <p align="center">
-                                    <img src="images/allgameslistimg/Team.jpg" alt="">
+                                    <img src="<%=TeamtoImgpath(row["TeamA"].ToString()) %>" alt="team image" style="height:100px"/>
                                 </p>
                             </div>
 
@@ -50,7 +50,7 @@
                         </td>
                         <td align="center" style="vertical-align: middle;">
                             <p align="center">
-                                <img src="images/allgameslistimg/Team.jpg" alt="">
+                                <img src="<%=TeamtoImgpath(row["TeamB"].ToString()) %>" alt="team image" style="height:100px"/>
                             </p>
                         </td>
                         <td width="1%">&nbsp;</td>

@@ -26,6 +26,8 @@ namespace betplayer.Agent
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
+                DateTime DateTimeFromDB = Convert.ToDateTime(dt.Rows[0]["DateTime"]);
+                Time(DateTimeFromDB);
                 foreach (DataRow row in dt.Rows)
                 {
                     string timeFromDB = row["DateTime"].ToString();
@@ -35,10 +37,20 @@ namespace betplayer.Agent
                     string date = oDate.Date.ToString("yyyy-MM-dd");
                     string time = oDate.TimeOfDay.ToString();
                     row["DateTime"] = time;
-                    
-                   
+
+
                 }
             }
+        }
+        public string Time(DateTime DateTimefromDB)
+        {
+
+            //DateTime oDate = DateTime.ParseExact(timeFromDB, "yyyy-MM-ddTHH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime oDate = DateTime.Parse(DateTimefromDB.ToString());
+            string datetime = "Time: " + oDate.TimeOfDay.ToString();
+            string date = oDate.Date.ToString("yyyy-MM-dd");
+            string time = oDate.TimeOfDay.ToString();
+            return date;
         }
     }
 }

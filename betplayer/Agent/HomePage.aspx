@@ -8,8 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="./css/Homepage/bootstrap.min.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Quicksand:300,400,700" rel="stylesheet" type="text/css">
     <link href="./css/Homepage/style.css" rel="stylesheet">
 </head>
 <body data-gr-c-s-loaded="true" style="">
@@ -119,15 +117,7 @@
     <script type="text/javascript" src="js/Homepage/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/Homepage/bootstrap.min.js"></script>
-    <script type="text/javascript">
-
-        $('.carousel').carousel({
-            interval: 3500, // in milliseconds
-            pause: 'none' // set to 'true' to pause slider on mouse hover
-        })
-
-    </script>
-
+   
 
 </body>
 </html>

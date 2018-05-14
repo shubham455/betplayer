@@ -881,6 +881,14 @@
     <Content Include="Client\images\MainMenuImg\Rules.png" />
     <Content Include="Client\images\MainMenuImg\Settings.png" />
     <Content Include="Client\images\MainMenuImg\TC.png" />
+    <Content Include="Client\images\Teams_Image\CSK.png" />
+    <Content Include="Client\images\Teams_Image\DD.png" />
+    <Content Include="Client\images\Teams_Image\KKR.png" />
+    <Content Include="Client\images\Teams_Image\KXIP.png" />
+    <Content Include="Client\images\Teams_Image\MI.png" />
+    <Content Include="Client\images\Teams_Image\RCB.png" />
+    <Content Include="Client\images\Teams_Image\RR.png" />
+    <Content Include="Client\images\Teams_Image\SRH.png" />
     <Content Include="Client\inplay.aspx" />
     <Content Include="Client\js\Homejs\camera.js" />
     <Content Include="Client\js\Homejs\device.min.js" />
@@ -894,6 +902,7 @@
     <Content Include="Client\js\Homejs\jquery.rd-parallax.js" />
     <Content Include="Client\js\Homejs\jquery.simplr.smoothscroll.min.js" />
     <Content Include="Client\js\Homejs\jquery.ui.totop.js" />
+    <Content Include="Client\js\Homejs\LiveMatch.js" />
     <Content Include="Client\js\Homejs\owl.carousel.min.js" />
     <Content Include="Client\js\Homejs\script.js" />
     <Content Include="Client\js\Homejs\superfish.js" />
