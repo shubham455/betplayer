@@ -33,6 +33,11 @@ namespace betplayer.admin
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    DateTime DateFromDB = Convert.ToDateTime(dt.Rows[0]["Date"]);
+                    Date(DateFromDB);
+                }
             }
         }
 
@@ -99,6 +104,14 @@ namespace betplayer.admin
                 return dt.ToString();
 
             }
+        }
+        public string Date(DateTime DateTimefromDB)
+        {
+            DateTime oDate = DateTime.Parse(DateTimefromDB.ToString());
+            string datetime = "Time: " + oDate.TimeOfDay.ToString();
+            string date = oDate.Date.ToString("dd-MM-yyyy");
+            string time = oDate.TimeOfDay.ToString();
+            return date;
         }
     }
 }

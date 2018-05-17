@@ -34,83 +34,54 @@
                         <div class="widget-body form">
                             <!-- BEGIN FORM-->
                            
+                            
+                               <table width="100%" class="table table-striped table-hover table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td width="20" align="center" class="TableHeadingCheckBox">&nbsp;</td>
+                                        <td width="30" height="25" align="left" class="TableHeading">SNo.</td>
+                                        <td width="40" align="left" class="TableHeading">Code</td>
+                                        <td align="left" class="TableHeading">Name</td>
+                                        <td width="70" align="left" class="TableHeading">Date</td>
+                                        <td width="110" align="left" class="TableHeading">Time</td>
+                                        <td width="110" align="left" class="TableHeading">Match Type </td>
+                                        <td width="100" align="left" class="TableHeading">Declare</td>
+                                        <td width="92" align="left" class="TableHeading">Won By</td>
+                                    </tr>
+                                    <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
+                                        { %>
+                                    <tr style="background-color: #FFFFFF">
+                                        <td align="center">
+                                            <div class="btn-group">
+                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="MatchAndSessionPosition.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-film"></i>Match &amp; Session Position</a></li>
+                                                    <li><a href="MatchPlusMinusSelect.php?MT=243"><i class="icon-tasks"></i>Match Plus Minus</a></li>
+                                                    <li><a href="SessionPlusMinusSelect.php?MT=243"><i class="icon-bolt"></i>Session Plus Minus</a></li>
+                                                    <li><a href="MatchSessionPlusMinusSelect.php?MT=243"><i class="icon-filter"></i>Match &amp; Session Plus Minus</a></li>
+                                                    <li><a href="ViewMatchReport.php?id=243"><i class="icon-pushpin"></i>Display Match Bets</a></li>
+                                                    <li><a href="ViewSessionReport.php?id=243"><i class="icon-bullhorn"></i>Display Session Bets</a></li>
 
-                                <table width="100%" class="table table-striped table-hover table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <td width="20" align="center" class="TableHeadingCheckBox">&nbsp;</td>
-                                            <td width="30" height="25" align="left" class="TableHeading">SNo.</td>
-                                            <td width="40" align="left" class="TableHeading">Code</td>
-                                            <td align="left" class="TableHeading">Name</td>
-                                            <td width="70" align="left" class="TableHeading">Date</td>
-                                            <td width="110" align="left" class="TableHeading">Time</td>
-                                            <td width="110" align="left" class="TableHeading">Match Type </td>
-                                            <td width="100" align="left" class="TableHeading">Declare</td>
-                                            <td width="92" align="left" class="TableHeading">Won By</td>
-                                        </tr>
-                                        <tr style="background-color :#FFFFFF">
-                                            <td align="center">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#"><i class="icon-film"></i>Match &amp; Session Position</a></li>
-                                                        <li><a href="MatchPlusMinusSelect.php?MT=243"><i class="icon-tasks"></i>Match Plus Minus</a></li>
-                                                        <li><a href="SessionPlusMinusSelect.php?MT=243"><i class="icon-bolt"></i>Session Plus Minus</a></li>
-                                                        <li><a href="MatchSessionPlusMinusSelect.php?MT=243"><i class="icon-filter"></i>Match &amp; Session Plus Minus</a></li>
-                                                        <li><a href="ViewMatchReport.php?id=243"><i class="icon-pushpin"></i>Display Match Bets</a></li>
-                                                        <li><a href="ViewSessionReport.php?id=243"><i class="icon-bullhorn"></i>Display Session Bets</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
 
-                                                    </ul>
-                                                </div>
-                                            </td>
-
-                                            <td height="20" align="left" class="FontText">1</td>
-                                            <td align="left" class="FontText">243</td>
-                                            <td align="left" class="FontText">Afghanistan v Zimbabwe (5th ODI)</td>
-                                            <td align="left" class="FontText">19-02-2018</td>
-                                            <td width="110" align="left" class="FontText">04:00:00 PM</td>
-                                            <td width="110" align="left" class="FontText">One Day Match</td>
-                                            <td width="100" align="left" class="FontText">YES</td>
-                                            <td width="92" align="left" class="FontText">Afghanistan</td>
-                                        </tr>
-                                        <tr bgcolor="#FFFFFF">
-                                            <td align="center">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#"><i class="icon-film"></i>Match &amp; Session Position</a></li>
-                                                        <li><a href="MatchPlusMinusSelect.php?MT=242"><i class="icon-tasks"></i>Match Plus Minus</a></li>
-                                                        <li><a href="SessionPlusMinusSelect.php?MT=242"><i class="icon-bolt"></i>Session Plus Minus</a></li>
-                                                        <li><a href="MatchSessionPlusMinusSelect.php?MT=242"><i class="icon-filter"></i>Match &amp; Session Plus Minus</a></li>
-                                                        <li><a href="ViewMatchReport.php?id=242"><i class="icon-pushpin"></i>Display Match Bets</a></li>
-                                                        <li><a href="ViewSessionReport.php?id=242"><i class="icon-bullhorn"></i>Display Session Bets</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-
-                                            <td height="20" align="left" class="FontText">2</td>
-                                            <td align="left" class="FontText">242</td>
-                                            <td align="left" class="FontText">South Africa v India (1st T20)</td>
-                                            <td align="left" class="FontText">18-02-2018</td>
-                                            <td width="110" align="left" class="FontText">06:00:00 PM</td>
-                                            <td width="110" align="left" class="FontText">One Day Match</td>
-                                            <td width="100" align="left" class="FontText">YES</td>
-                                            <td width="92" align="left" class="FontText">India</td>
-                                        </tr>
+                                        <td height="20" align="left" class="FontText"><%: row["matchesID"] %></td>
+                                        <td align="left" class="FontText"><%: row["MatchesID"] %></td>
+                                        <td align="left" class="FontText"><%: row["TeamA"] %> v <%: row["TeamB"] %>(<%: row["Type"] %>)</td>
+                                        <td align="left" class="FontText"><%= Time(Convert.ToDateTime(row["DateTime"]))%></td>
+                                        <td width="110" align="left" class="FontText"><%: row["DateTime"].ToString() %></td>
+                                        <td width="110" align="left" class="FontText">One Day Match</td>
+                                        <td width="100" align="left" class="FontText">YES</td>
+                                        <td width="92" align="left" class="FontText"><%: row["WinnerTeam"] %></td>
+                                    </tr>
+                                    <% } //foreach %>
+                                    
 
 
 
-                                    </tbody>
-                                </table>
-                                <input name="ID" type="hidden" id="ID" readonly="readonly">
-                                <input name="Status" type="hidden" id="Status" readonly="readonly">
-                                <input name="StatusMultiple" type="hidden" id="StatusMultiple" readonly="readonly">
-                                <input name="ModifyStatusChk" type="hidden" id="ModifyStatusChk" readonly="readonly">
-                                <input name="ModifyStatusMultipleChk" type="hidden" id="ModifyStatusMultipleChk" readonly="readonly">
-                                <input name="TotalRecords" type="hidden" id="TotalRecords" value="">
-                         
-                            <!-- END FORM-->
+                                </tbody>
+                           </table>
 
                         </div>
                     </div>

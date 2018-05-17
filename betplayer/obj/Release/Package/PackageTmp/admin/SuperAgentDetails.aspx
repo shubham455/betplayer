@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/admin/Dashboard.Master" CodeBehind="SuperAgentDetails.aspx.cs" Inherits="betplayer.admin.SuperAgentDetails" %>
+﻿<%@ Page Language="C#"  MasterPageFile="~/admin/Dashboard.Master" CodeBehind="SuperAgentDetails.aspx.cs" Inherits="betplayer.admin.SuperAgentDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
@@ -17,22 +17,19 @@
                         <li>SuperAgent Details<span class="divider">&nbsp;</span></li>
                         <li><a href="MasterDetails.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
-                    <!-- END PAGE TITLE & BREADCRUMB-->
+                   
                 </div>
             </div>
-            <!-- END PAGE HEADER-->
-            <!-- BEGIN ADVANCED TABLE widget-->
+          
             <div class="row-fluid">
                 <div class="span12">
-                    <!-- BEGIN EXAMPLE TABLE widget-->
+                   
                     <div class="widget">
                         <div class="widget-title">
                             <h4><i class="icon-globe"></i>SuperAgent Details</h4>
                             <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a><a href="javascript:;" class="icon-remove"></a></span>
                         </div>
                         <div class="widget-body form">
-                            <!-- BEGIN FORM-->
-                            <form name="BetPlayer" id="BetPlayer" method="post" action="SuperAgentDetails.php" autocomplete="off">
                                 <div class="portlet-body">
                                     <div class="clearfix">
 
@@ -107,7 +104,7 @@
                                                 <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Name : activate to sort column ascending" style="width: 89px;">Name </th>
                                                 <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Contact : activate to sort column ascending" style="width: 73px;">Contact </th>
                                                 <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="D.O.J.: activate to sort column ascending" style="width: 67px;">D.O.J.</th>
-                                                <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Share%: activate to sort column ascending" style="width: 48px;">Share%</th>
+                                                <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Share%: activate to sort column ascending" style="width: 40px;">Share%</th>
                                                 <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="PWD: activate to sort column ascending" style="width: 44px;">PWD</th>
                                                 <th align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Type: activate to sort column ascending" style="width: 36px;">Type</th>
                                                 <th align="right" style="text-align: right; width: 32px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Mat: activate to sort column ascending">Mat</th>
@@ -148,7 +145,7 @@
                                                 <td align="left" class=" "><%:row["Code"] %></td>
                                                 <td align="left" class=" "><%:row["Name"] %></td>
                                                 <td align="left" class=" "><%:row["ContactNO"] %></td>
-                                                <td align="left" class=" "><%:row["Date"] %></td>
+                                                <td align="left" class=" "><%= Date(Convert.ToDateTime(row["Date"]))%></td>
                                                 <td align="left" class=" "><%:row["SuperAgentID"] %></td>
                                                 <td align="left" class=" "><%:row["Password"] %></td>
                                                 <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
@@ -179,27 +176,10 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <input name="ID" type="hidden" id="ID" readonly="">
-                                <input name="Status" type="hidden" id="Status" readonly="">
-                                <input name="StatusMultiple" type="hidden" id="StatusMultiple" readonly="">
-                                <input name="ModifyStatusChk" type="hidden" id="ModifyStatusChk" readonly="">
-                                <input name="ModifyStatusMultipleChk" type="hidden" id="ModifyStatusMultipleChk" readonly="">
-                                <input name="TotalRecords" type="hidden" id="TotalRecords" value="">
-
-                                <input name="AutoNo" type="hidden" id="AutoNo" value="">
-                                <input name="GaddiChk" type="hidden" id="GaddiChk" value="">
-                                <input name="LoginChk" type="hidden" id="LoginChk" value="">
-                            </form>
-                            <!-- END FORM-->
-
                         </div>
                     </div>
-                    <!-- END EXAMPLE TABLE widget-->
                 </div>
             </div>
-            <!-- END ADVANCED TABLE widget-->
-            <!-- END PAGE CONTENT-->
         </div>
     </div>
 </asp:Content>

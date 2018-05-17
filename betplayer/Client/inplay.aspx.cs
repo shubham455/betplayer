@@ -35,7 +35,7 @@ namespace betplayer.Client
                         string timeFromDB = row["DateTime"].ToString();
                         //DateTime oDate = DateTime.ParseExact(timeFromDB, "yyyy-MM-ddTHH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
                         DateTime oDate = DateTime.Parse(timeFromDB);
-                        string datetime = "Date: " + oDate.Date.ToString() + " Time: " + oDate.TimeOfDay.ToString();
+                        string datetime = "Date: " + oDate.Date.ToString().Substring(0,10) + " Time: " + oDate.TimeOfDay.ToString();
                         row["DateTime"] = datetime;
                     }
 

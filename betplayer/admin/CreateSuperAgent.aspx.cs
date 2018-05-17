@@ -38,7 +38,7 @@ namespace betplayer.admin
                 cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
 
                 int ID = Convert.ToInt16(cmd.ExecuteScalar());
-                string update = "Update SuperAgentMaster Set Code = 'C" + ID + "'where SuperAgentID = '" + ID + "' ";
+                string update = "Update SuperAgentMaster Set Code = 'SA" + ID + "'where SuperAgentID = '" + ID + "' ";
                 MySqlCommand cmd1 = new MySqlCommand(update, cn);
                 cmd1.ExecuteNonQuery();
 

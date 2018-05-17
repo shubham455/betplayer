@@ -22,9 +22,6 @@ namespace betplayer.Super_Agent
                     Session.Remove("SuperAgentID");
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Logout Successfully.....');", true);
                 }
-
-
-
             }
         }
         protected void Submitbtn_Click(object sender, EventArgs e)
@@ -43,8 +40,6 @@ namespace betplayer.Super_Agent
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Please Give Password.....');", true);
             }
-
-
             else
             {
 

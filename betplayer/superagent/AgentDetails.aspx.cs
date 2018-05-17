@@ -34,6 +34,8 @@ namespace betplayer.Super_Agent
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
+                DateTime DateFromDB = Convert.ToDateTime(dt.Rows[0]["Date"]);
+                Date(DateFromDB);
             }
         }
 
@@ -101,5 +103,14 @@ namespace betplayer.Super_Agent
 
             }
         }
+        public string Date(DateTime DateTimefromDB)
+        {
+            DateTime oDate = DateTime.Parse(DateTimefromDB.ToString());
+            string datetime = "Time: " + oDate.TimeOfDay.ToString();
+            string date = oDate.Date.ToString("dd-MM-yyyy");
+            string time = oDate.TimeOfDay.ToString();
+            return date;
+        }
     }
 }
+ 

@@ -148,7 +148,7 @@
                                                 <td align="left" class=" "><%:row["Code"] %></td>
                                                 <td align="left" class=" "><%:row["Name"] %></td>
                                                 <td align="left" class=" "><%:row["ContactNO"] %></td>
-                                                <td align="left" class=" "><%:row["Date"] %></td>
+                                                <td align="left" class=" "><%= Date(Convert.ToDateTime(row["Date"]))%></td>
                                                 <td align="left" class=" "><%:row["AgentID"] %></td>
                                                 <td align="left" class=" "><%:row["Password"] %></td>
                                                 <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>

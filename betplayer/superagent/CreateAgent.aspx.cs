@@ -40,7 +40,7 @@ namespace betplayer.Super_Agent
                 cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
 
                 int ID = Convert.ToInt16(cmd.ExecuteScalar());
-                string update = "Update AgentMaster Set Code = 'C" + ID + "'where AgentID = '" + ID + "' ";
+                string update = "Update AgentMaster Set Code = 'A" + ID + "'where AgentID = '" + ID + "' ";
                 MySqlCommand cmd1 = new MySqlCommand(update, cn);
                 cmd1.ExecuteNonQuery();
 
@@ -51,7 +51,7 @@ namespace betplayer.Super_Agent
 
         protected void btncancel_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("AgentDetails.aspx");
         }
     }
 }

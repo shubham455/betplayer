@@ -14,17 +14,24 @@ namespace betplayer.SuperAgent
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
+            if (Session["SuperAgentID"] == null)
             {
-                cn.Open();
-                string SELECT = "Select Name From SuperAgentMAster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
-                MySqlCommand cmd = new MySqlCommand(SELECT, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                lbl1.Text = dt.Rows[0]["Name"].ToString();
+                Response.Redirect("login.aspx");
+            }
+            else
+            {
+                string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+                using (MySqlConnection cn = new MySqlConnection(CN))
+                {
+                    cn.Open();
+                    string SELECT = "Select Name From SuperAgentMAster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
+                    MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    lbl1.Text = dt.Rows[0]["Name"].ToString();
 
+                }
             }
         }
     }

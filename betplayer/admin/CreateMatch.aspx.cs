@@ -28,9 +28,37 @@ namespace betplayer.admin
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
                     adp.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        DateTime DateTimeFromDB = Convert.ToDateTime(dt.Rows[0]["DateTime"]);
+                        Time(DateTimeFromDB);
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            string timeFromDB = row["DateTime"].ToString();
+                            //DateTime oDate = DateTime.ParseExact(timeFromDB, "yyyy-MM-ddTHH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
+                            DateTime oDate = DateTime.Parse(timeFromDB);
+                            string datetime = "Date: " + oDate.Date.ToString() + " Time: " + oDate.TimeOfDay.ToString();
+                            string date = oDate.Date.ToString("yyyy-MM-dd");
+                            string time = oDate.TimeOfDay.ToString();
+                            row["DateTime"] = time;
+
+
+                        }
+                    }
+                    else { }
 
                 }
             }
+        }
+        public string Time(DateTime DateTimefromDB)
+        {
+
+            //DateTime oDate = DateTime.ParseExact(timeFromDB, "yyyy-MM-ddTHH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime oDate = DateTime.Parse(DateTimefromDB.ToString());
+            string datetime = "Time: " + oDate.TimeOfDay.ToString();
+            string date = oDate.Date.ToString("yyyy-MM-dd");
+            string time = oDate.TimeOfDay.ToString();
+            return date;
         }
     }
 }
