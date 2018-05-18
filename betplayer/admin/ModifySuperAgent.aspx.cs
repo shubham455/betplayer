@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace betplayer.admin
 {
-    public partial class ModifyAgent : System.Web.UI.Page
+    public partial class ModifySuperAgent : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

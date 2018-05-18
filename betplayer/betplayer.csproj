@@ -82,12 +82,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\AddMatch.aspx" />
+    <Content Include="admin\AgentDetails.aspx" />
+    <Content Include="admin\ClientDetails.aspx" />
+    <Content Include="admin\CreateAgent.aspx" />
+    <Content Include="admin\CreateClient.aspx" />
     <Content Include="admin\CreateMatch.aspx" />
     <Content Include="admin\EditMatches.aspx" />
     <Content Include="admin\js\LiveMatch.js" />
     <Content Include="admin\ManuallyUpdation.aspx" />
     <Content Include="admin\MatchAndSessionPosition.aspx" />
     <Content Include="admin\MatchRates.aspx" />
+    <Content Include="admin\ModifyAgent.aspx" />
+    <Content Include="admin\ModifyClient.aspx" />
     <Content Include="admin\ModifyMatches.aspx" />
     <Content Include="admin\ScoreBoard.aspx" />
     <Content Include="admin\SuperAgentLedger.aspx" />
@@ -1663,6 +1669,34 @@
     <Compile Include="admin\AddMatch.aspx.designer.cs">
       <DependentUpon>AddMatch.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\AgentDetails.aspx.cs">
+      <DependentUpon>AgentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AgentDetails.aspx.designer.cs">
+      <DependentUpon>AgentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ClientDetails.aspx.cs">
+      <DependentUpon>ClientDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ClientDetails.aspx.designer.cs">
+      <DependentUpon>ClientDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\CreateAgent.aspx.cs">
+      <DependentUpon>CreateAgent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CreateAgent.aspx.designer.cs">
+      <DependentUpon>CreateAgent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\CreateClient.aspx.cs">
+      <DependentUpon>CreateClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CreateClient.aspx.designer.cs">
+      <DependentUpon>CreateClient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\CreateMatch.aspx.cs">
       <DependentUpon>CreateMatch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1697,6 +1731,20 @@
     </Compile>
     <Compile Include="admin\MatchRates.aspx.designer.cs">
       <DependentUpon>MatchRates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ModifyAgent.aspx.cs">
+      <DependentUpon>ModifyAgent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ModifyAgent.aspx.designer.cs">
+      <DependentUpon>ModifyAgent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ModifyClient.aspx.cs">
+      <DependentUpon>ModifyClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ModifyClient.aspx.designer.cs">
+      <DependentUpon>ModifyClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\ModifyMatches.aspx.cs">
       <DependentUpon>ModifyMatches.aspx</DependentUpon>

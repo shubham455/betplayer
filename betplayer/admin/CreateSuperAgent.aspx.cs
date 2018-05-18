@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace betplayer.admin
 {
-    public partial class CreateAgent : System.Web.UI.Page
+    public partial class CreateSuperAgent : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
