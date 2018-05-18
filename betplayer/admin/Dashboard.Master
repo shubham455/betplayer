@@ -147,7 +147,7 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="../SuperAgent/SportsDetails.aspx">Sport's Details</a></li>
+                        <li><a class="" href="SportsDetails.aspx">Sport's Details</a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -172,7 +172,7 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="SuperAgentLimitReport.aspx">SuperAgent Limit Report</a></li>
-                        <li><a class="" href="../SuperAgent/SecureCodeReport.aspx">Secure Code Report</a></li>
+                        <li><a class="" href="SecureCodeReport.aspx">Secure Code Report</a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -185,7 +185,7 @@
                         <li><a class="" href="ChangePassword.aspx">Change Password</a></li>
                     </ul>
                 </li>
-               <li class="has-sub">
+                <li class="has-sub">
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-cogs"></i></span>Matches
 				
@@ -246,6 +246,8 @@
         });
 
     </script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="js/LiveMatch.js"></script>
     <!-- END JAVASCRIPTS -->
 
     <!-- END BODY -->

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace betplayer.Agent {
+namespace betplayer.superagent {
     
     
     public partial class Match_SessionPosition {

@@ -22,8 +22,6 @@
     <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css">
     <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet">
     <link href="assets/jqvmap/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
-
-    
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -149,20 +147,20 @@
             <!-- END SIDEBAR MENU -->
         </div>
     </div>
-     <form id="form1" runat="server">
+    <form id="form1" runat="server">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
         </asp:ContentPlaceHolder>
     </form>
-    
+
     <div id="footer">
-		2018 © Crick20.com
+        2018 © Crick20.com
 		<div class="span pull-right">
-			<span class="go-top"><i class="icon-arrow-up"></i></span>
-		</div>
-	</div>
+            <span class="go-top"><i class="icon-arrow-up"></i></span>
+        </div>
+    </div>
 
 
-   <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery-1.8.3.min.js"></script>
     <script src="assets/jquery-slimscroll/jquery-ui-1.9.2.custom.min.js"></script>
     <script src="assets/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>
@@ -186,6 +184,8 @@
     <script src="js/jquery.peity.min.js"></script>
     <script type="text/javascript" src="assets/uniform/jquery.uniform.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="js/LiveMatch.js"></script>
 
     <script>
         jQuery(document).ready(function () {
@@ -195,49 +195,7 @@
         });
 
     </script>
-     <script>
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyDeJEW2OK0RnL0A4OjYF6oTj04xQhgpb40",
-    authDomain: "betplayer-197014.firebaseapp.com",
-    databaseURL: "https://betplayer-197014.firebaseio.com",
-    projectId: "betplayer-197014",
-    storageBucket: "betplayer-197014.appspot.com",
-    messagingSenderId: "98790187004"
-};
-firebase.initializeApp(config);
-var matchIdElement = document.getElementById("ContentPlaceHolder1_apiID");
-if(matchIdElement !== null) {
-firebase.database().ref('/currentMatches/'+matchIdElement.value).once("value",
-    function (snapshot) {
-        console.log(snapshot.val());
-        match = snapshot.val();
-        document.getElementsByClassName("ScoreCard_rtmScore")[0].innerHTML
-            = '<p><span id="LocalTeam">' + match.btTm.name + ' ' + match.btTm.run
-            + '/' + match.btTm.wickets + ' (' + match.btTm.overs + ') * < /span><br>' +
 
-        '<span id="VisitorTeam">' + match.blgTm.name + ' ' + match.blgTm.run +
-            '/' + match.blgTm.wickets + ' (' + match.blgTm.overs + ') </span><br>'
-            +
-
-            '<span id="Status"></span><br></p>'
-    });
-    firebase.database().ref('/currentMatches'+matchIdElement.value).on("child_changed",
-    function (snapshot) {
-        console.log(snapshot.val());
-        match = snapshot.val();
-        document.getElementsByClassName("ScoreCard_rtmScore")[0].innerHTML
-            = '<p><span id="LocalTeam">' + match.btTm.name + ' ' + match.btTm.run
-            + '/' + match.btTm.wickets + ' (' + match.btTm.overs + ') * < /span><br>' +
-
-        '<span id="VisitorTeam">' + match.blgTm.name + ' ' + match.blgTm.run +
-            '/' + match.blgTm.wickets + ' (' + match.blgTm.overs + ') </span><br>'
-            +
-
-            '<span id="Status"></span><br></p>'
-    });
-}
-</script>
 
     <!-- END JAVASCRIPTS -->
 
@@ -247,6 +205,6 @@ firebase.database().ref('/currentMatches/'+matchIdElement.value).once("value",
     <div class="jqvmap-label"></div>
     <div class="jqvmap-label"></div>
     <div class="jqvmap-label"></div>
-   
+
 </body>
 </html>

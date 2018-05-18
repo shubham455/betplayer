@@ -8,7 +8,7 @@ var config = {
     messagingSenderId: "98790187004"
 };
 firebase.initializeApp(config);
-var matchIdElement = document.getElementById("ContentPlaceHolder1_apiID");
+var matchIdElement = document.getElementById("ContentPlaceHolder_apiID");
 if (matchIdElement !== null) {
     firebase.database().ref('/currentMatches').once("value", // runs on page runder
         function (snapshot) {

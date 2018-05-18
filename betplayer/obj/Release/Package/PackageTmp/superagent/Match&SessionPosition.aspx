@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Agent/DashBoard.Master" AutoEventWireup="true" CodeBehind="MatchAndSessionPosition.aspx.cs" Inherits="betplayer.Agent.Match_SessionPosition" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/superagent/DashBoard.Master" CodeBehind="Match&SessionPosition.aspx.cs" Inherits="betplayer.superagent.Match_SessionPosition" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
    <div id="main-content">
@@ -60,7 +60,7 @@
                                                     </div>
                                         </td>
                                         <td width="20%" style="text-align:center;vertical-align:middle;">
-                                        	<span id="LastBall"</span>
+                                        	<span id="LastBall"></span>
                                         </td>
                                       </tr>
                                     </tbody></table>
@@ -225,5 +225,5 @@
 	      </div>
 		  <!-- END PAGE CONTAINER-->
 	  </div>
-    <asp:HiddenField ID="apiID" runat="server" />
+    <asp:HiddenField id="apiID" runat="server"/>
 </asp:Content>

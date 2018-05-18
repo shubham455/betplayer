@@ -13,6 +13,24 @@ namespace betplayer.admin {
     public partial class ScoreBoard {
         
         /// <summary>
+        /// CheckAutomatic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckAutomatic;
+        
+        /// <summary>
+        /// CheckManual control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckManual;
+        
+        /// <summary>
         /// txtrun control.
         /// </summary>
         /// <remarks>

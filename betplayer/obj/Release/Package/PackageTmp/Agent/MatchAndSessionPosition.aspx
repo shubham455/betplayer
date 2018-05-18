@@ -48,7 +48,7 @@
                                       </tr>
                                       <tr>
                                         <td width="80%" height="70" class="ButtonK" style="text-align:center;">
-                                        	<div class="ScoreCard_rtmScore" style="color: #fff;">
+                                        	<div class="ScoreCard_rtmScore " style="color: #fff;">
                                                         <p>
                                                             <span id="LocalTeam"></span>
                                                             <br>
@@ -60,7 +60,7 @@
                                                     </div>
                                         </td>
                                         <td width="20%" style="text-align:center;vertical-align:middle;">
-                                        	<span id="Image"><img src="" width="53" height="60"></span>
+                                        	<span id="LastBall"</span>
                                         </td>
                                       </tr>
                                     </tbody></table>
@@ -225,4 +225,5 @@
 	      </div>
 		  <!-- END PAGE CONTAINER-->
 	  </div>
+    <asp:HiddenField ID="apiID" runat="server" />
 </asp:Content>

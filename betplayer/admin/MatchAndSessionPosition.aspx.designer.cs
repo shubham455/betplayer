@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace betplayer.Agent {
+namespace betplayer.admin {
     
     
-    public partial class Match_SessionPosition {
+    public partial class MatchAndSessionPosition {
         
         /// <summary>
         /// apiID control.

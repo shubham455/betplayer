@@ -99,6 +99,7 @@ C:\Users\DELL\Source\Repos\betplayer\betplayer\bin\Microsoft.CodeDom.Providers.D
 C:\Users\DELL\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.csprojResolveAssemblyReference.cache
 C:\Users\DELL\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.dll
 C:\Users\DELL\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.pdb
+C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.csprojResolveAssemblyReference.cache
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\roslyn\csc.exe
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -126,4 +127,3 @@ C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\MySql.Data.xml
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.pdb
-C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.csprojResolveAssemblyReference.cache

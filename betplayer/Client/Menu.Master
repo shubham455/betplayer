@@ -5,11 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Crick20.com</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="css/login/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="css/login/clndr.css" rel="stylesheet" type="text/css" media="all"/>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/login/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/login/clndr.css" rel="stylesheet" type="text/css" media="all" />
+
 </head>
 <body>
     <div class="wrap" style="margin-left: 30px; margin-top: 15px;">
@@ -50,18 +50,18 @@
         </table>
         <div class="top-left-grid" style="padding-top: 5px;">
             <div class="clear"></div>
-            </div>
-            <div class="content_top">
-                <div class="content_top-grid3"></div>
-                <div class="clear"></div>
-            </div>
+        </div>
+        <div class="content_top">
+            <div class="content_top-grid3"></div>
+            <div class="clear"></div>
+        </div>
 
-            <div class="menu" id="menu" align="center">
-                <ul class="nav">
-                    <li class="active"><a href="MainMenu.aspx">BACK</a></li>
-                </ul>
-            </div>
-      
+        <div class="menu" id="menu" align="center">
+            <ul class="nav">
+                <li class="active"><a href="MainMenu.aspx">BACK</a></li>
+            </ul>
+        </div>
+
         <br />
 
 
@@ -72,17 +72,17 @@
             </div>
         </form>
     </div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <br />
+    <br />
 
 
     <h4 align="center" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">Copy Right @ Khai Lagai</h4>
 
 
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-   <script src="js/Homejs/LiveMatch.js"></script>
+    <script src="js/Homejs/LiveMatch.js"></script>
 
     <!----- End Content ------------->
 

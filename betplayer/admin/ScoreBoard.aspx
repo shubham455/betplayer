@@ -3,12 +3,12 @@
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
         <div class="container-fluid">
-           
+
             <div class="row-fluid">
                 <div class="span12">
-                   
+
                     <div id="theme-change" class="hidden-phone"><i class="icon-cogs"></i><span class="settings"><span class="text">Theme:</span> <span class="colors"><span class="color-default" data-style="default"></span><span class="color-gray" data-style="gray"></span><span class="color-purple" data-style="purple"></span><span class="color-navy-blue" data-style="navy-blue"></span></span></span></div>
-                   
+
                     <h3 class="page-title">Add Match</h3>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
@@ -19,7 +19,7 @@
                     </ul>
                 </div>
             </div>
-          
+
             <div class="row-fluid">
                 <div class="span12">
                     <div class="widget">
@@ -28,14 +28,30 @@
                             <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a><a href="javascript:;" class="icon-remove"></a></span>
                         </div>
                         <div class="widget-body form">
+
+                            <table>
+                                <tbody>
+                                    <tr>
+                                       
+                                        <td>
+                                            <asp:CheckBox ID="CheckAutomatic"  AutoPostBack="true" runat="server" Text="Automatic" />
+                                        </td>
+                                        <td>
+                                            <asp:CheckBox ID="CheckManual"   AutoPostBack="true" runat="server" Text="Manual" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br />
+                            <br />
                             <table>
                                 <tbody>
                                     <tr>
                                         <td style="font-size: large; font: 100">ScoreBoard</td>
                                         <td>
-                                            <asp:TextBox ID="txtrun"  runat="server" placeholer="Run" OnTextChanged="txtrun_TextChanged"  AutoPostBack="true"/></td>
+                                            <asp:TextBox ID="txtrun" runat="server" placeholer="Run" OnTextChanged="txtrun_TextChanged" AutoPostBack="true" /></td>
                                         <td>
-                                            <asp:TextBox ID="txtwicket"  runat="server" placeholer="Wicket" OnTextChanged="txtwicket_TextChanged" AutoPostBack="true" /></td>
+                                            <asp:TextBox ID="txtwicket" runat="server" placeholer="Wicket" OnTextChanged="txtwicket_TextChanged" AutoPostBack="true" /></td>
                                         <td>
                                             <asp:TextBox ID="txtover" CssClass="textbox" runat="server" placeholer="over" OnTextChanged="txtover_TextChanged" AutoPostBack="true" /></td>
                                     </tr>
@@ -45,12 +61,12 @@
                                 <tbody>
                                     <tr>
 
-                                       
+
                                         <td style="font-size: large; font: 100" width="10%" height="30" align="left" valign="middle" class="welcome">Message</td>
-                                          <td>
+                                        <td>
                                             <asp:TextBox ID="txtmessage" Width="620px" TextMode="MultiLine" CssClass="textbox" runat="server" />
                                         </td>
-                                              <td></td>
+                                        <td></td>
                                         <td>
                                             <asp:Button ID="btnmessage" runat="server" class="btn btn-success" Text="Update" />
 

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace betplayer.Agent
+namespace betplayer.superagent
 {
     public partial class Match_SessionPosition : System.Web.UI.Page
     {

@@ -84,7 +84,9 @@
     <Content Include="admin\AddMatch.aspx" />
     <Content Include="admin\CreateMatch.aspx" />
     <Content Include="admin\EditMatches.aspx" />
+    <Content Include="admin\js\LiveMatch.js" />
     <Content Include="admin\ManuallyUpdation.aspx" />
+    <Content Include="admin\MatchAndSessionPosition.aspx" />
     <Content Include="admin\MatchRates.aspx" />
     <Content Include="admin\ModifyMatches.aspx" />
     <Content Include="admin\ScoreBoard.aspx" />
@@ -814,6 +816,7 @@
     <Content Include="Agent\js\jquery.cookie.js" />
     <Content Include="Agent\js\jquery.peity.min.js" />
     <Content Include="Agent\js\jquery.pulsate.min.js" />
+    <Content Include="Agent\js\LiveMatch.js" />
     <Content Include="Agent\js\respond.js" />
     <Content Include="Agent\js\scripts.js" />
     <Content Include="Agent\Ledger.aspx" />
@@ -1565,6 +1568,7 @@
     <Content Include="admin\assets\font-awesome\sass\font-awesome.sass" />
     <Content Include="admin\assets\font-awesome\sass\font-awesome.scss" />
     <Content Include="admin\assets\jquery-slimscroll\slimScroll.jquery.json" />
+    <None Include="Properties\PublishProfiles\Google.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1629,11 +1633,13 @@
     <Content Include="superagent\js\jquery.cookie.js" />
     <Content Include="superagent\js\jquery.peity.min.js" />
     <Content Include="superagent\js\jquery.pulsate.min.js" />
+    <Content Include="superagent\js\LiveMatch.js" />
     <Content Include="superagent\js\respond.js" />
     <Content Include="superagent\js\scripts.js" />
     <Content Include="superagent\Ledger.aspx" />
     <Content Include="superagent\Login.aspx" />
     <Content Include="superagent\MasterDetails.aspx" />
+    <Content Include="superagent\Match&amp;SessionPosition.aspx" />
     <Content Include="superagent\ModifyAgent.aspx" />
     <Content Include="superagent\My_Ledger.aspx" />
     <Content Include="superagent\NewCollection.aspx" />
@@ -1677,6 +1683,13 @@
     </Compile>
     <Compile Include="admin\ManuallyUpdation.aspx.designer.cs">
       <DependentUpon>ManuallyUpdation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\MatchAndSessionPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\MatchAndSessionPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\MatchRates.aspx.cs">
       <DependentUpon>MatchRates.aspx</DependentUpon>
@@ -2312,6 +2325,13 @@
     <Compile Include="superagent\MasterDetails.aspx.designer.cs">
       <DependentUpon>MasterDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="superagent\Match&amp;SessionPosition.aspx.cs">
+      <DependentUpon>Match&amp;SessionPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\Match&amp;SessionPosition.aspx.designer.cs">
+      <DependentUpon>Match&amp;SessionPosition.aspx</DependentUpon>
+    </Compile>
     <Compile Include="superagent\ModifyAgent.aspx.cs">
       <DependentUpon>ModifyAgent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2394,7 +2414,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Client\css\terms_condition\" />
     <Folder Include="Models\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

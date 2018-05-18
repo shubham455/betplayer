@@ -124,7 +124,7 @@ namespace betplayer.Client
 
         protected void btnHOME_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Home.aspx");
+            Response.Redirect("Homepage.aspx");
         }
     }
 }

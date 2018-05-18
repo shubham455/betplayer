@@ -22,23 +22,22 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td width="78%" height="35" align="center" class="TeamCombo">
-                                                    <div class="ScoreCard_rtmScore" style="color: #fff;">
+                                                <td width="70%" height="35" align="center" class="TeamCombo">
+                                                    <div class="ScoreCard_rtmScore ScoreCard" style="color: #fff; height:100%;">
                                                         <p>
                                                             <span id="LocalTeam"></span>
                                                             <br>
                                                             <span id="VisitorTeam"></span>
                                                             <br>
                                                             <span id="Status"></span>
-                                                            <br>
                                                         </p>
                                                     </div>
                                                 </td>
-                                                <td width="22%" height="35" align="center" class="TeamCombo">
+                                                <td width="30%" height="35" align="center" class="TeamCombo">
                                                     <div class="ScoreCard">
                                                         <p>
-                                                            <span id="Image">
-                                                                <asp:Image ID="imgball" runat="server" width="53" height="60"/><br>
+                                                            <span id="LastBall">
+                                                                Ball Start
                                                             </span>
                                                         </p>
                                                     </div>
