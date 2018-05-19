@@ -44,6 +44,7 @@ namespace betplayer.admin
 
                 Response.Redirect("SuperAgentDetails.aspx?msg=Add");
 
+
             }
         }
 

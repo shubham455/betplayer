@@ -10,7 +10,7 @@
 namespace betplayer.admin {
     
     
-    public partial class CreateAgent {
+    public partial class CreateSuperAgent {
         
         /// <summary>
         /// txtcode control.

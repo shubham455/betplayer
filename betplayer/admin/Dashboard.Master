@@ -136,6 +136,8 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
+                        <li><a class="" href="ClientDetails.aspx">Client Master</a></li>
+                        <li><a class="" href="AgentDetails.aspx">Agent Master</a></li>
                         <li><a class="" href="SuperAgentDetails.aspx">SuperAgent Master</a></li>
                         <li><a class="" href="CollectionDetail.aspx">Collection Master</a></li>
                     </ul>

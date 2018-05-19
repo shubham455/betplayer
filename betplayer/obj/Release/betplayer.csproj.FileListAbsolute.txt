@@ -56,7 +56,6 @@ C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\betplayer.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\betplayer.pdb
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.csprojResolveAssemblyReference.cache
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.pdb
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\MySql.Data.dll
@@ -67,3 +66,6 @@ C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\System.IdentityModel.Token
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Microsoft.IdentityModel.Tokens.xml
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Google.Protobuf.dll
+C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.csprojAssemblyReference.cache
+C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.csproj.CoreCompileInputs.cache
+C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.csproj.CopyComplete

@@ -4,6 +4,7 @@
     <UseIISExpress>true</UseIISExpress>
     <NameOfLastUsedPublishProfile>Google</NameOfLastUsedPublishProfile>
     <ProjectView>ShowAllFiles</ProjectView>
+    <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
