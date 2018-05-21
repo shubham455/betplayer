@@ -129,3 +129,4 @@ C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.pdb
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.csprojAssemblyReference.cache
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.csproj.CoreCompileInputs.cache
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.csproj.CopyComplete
+C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Debug\betplayer.csprojResolveAssemblyReference.cache

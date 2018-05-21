@@ -84,8 +84,8 @@
 
                         </div>
                        
-                        <asp:Button ID="Submit" runat="server" class="btn btn-block btn-info btn-sm" Text="Update" OnClick="Submit_Click" />
-                         <asp:Button ID="Button1" runat="server" class="btn btn-block btn-info btn-sm" Text="Cancel" OnClick="Button1_Click"  />
+                        <asp:Button ID="Submit" runat="server" class="btn btn-block btn-info btn-sm" Text="Update"  />
+                         <asp:Button ID="Button1" runat="server" class="btn btn-block btn-info btn-sm" Text="Cancel"   />
                     </div>
                 </div>
             </div>

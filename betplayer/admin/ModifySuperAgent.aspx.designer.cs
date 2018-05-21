@@ -10,7 +10,7 @@
 namespace betplayer.admin {
     
     
-    public partial class ModifyAgent {
+    public partial class ModifySuperAgent {
         
         /// <summary>
         /// RequiredFieldValidator3 control.
