@@ -56,19 +56,17 @@
                                                                                             <td width="80%" height="70" class="ButtonK" style="text-align: center;">
                                                                                                 <div class="ScoreCard_rtmScore " style="color: #fff;">
                                                                                                     <p>
-                                                                                                        <span id="LocalTeam"></span>
+                                                                                                        <span id="LocalTeam" style="color: black"></span>
                                                                                                         <br>
-                                                                                                        <span id="VisitorTeam"></span>
+                                                                                                        <span id="VisitorTeam" style="color: black"></span>
                                                                                                         <br>
-                                                                                                        <span id="Status"></span>
+                                                                                                        <span id="Status" style="color: black"></span>
                                                                                                         <br>
                                                                                                     </p>
                                                                                                 </div>
                                                                                             </td>
                                                                                             <td width="20%" style="text-align: center; vertical-align: middle;">
-                                                                                                <span id="LastBall">
-                                                                                                    
-                                                                                            </td>
+                                                                                                <span id="LastBall"></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -261,6 +259,8 @@
         </div>
         <!-- END PAGE CONTAINER-->
     </div>
-    <asp:HiddenField id="apiID" runat="server"/>
+    <asp:HiddenField ID="apiID" runat="server" />
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="js/LiveMatch.js"></script>
 </asp:Content>
 

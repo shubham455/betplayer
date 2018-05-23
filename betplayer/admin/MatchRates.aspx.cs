@@ -14,19 +14,7 @@ namespace betplayer.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string MatchID = Request.QueryString["Matchid"].ToString();
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string SELECT = "Select * from Matches Where apiID = '" + MatchID + "' ";
-                MySqlCommand cmd = new MySqlCommand(SELECT, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                lblTeamA.Text = dt.Rows[0]["TeamA"].ToString();
-                lblTeamB.Text = dt.Rows[0]["TeamB"].ToString();
-            }
+            apiid.Value = Request.QueryString["MatchID"];
         }
     }
 }

@@ -16,7 +16,7 @@
 		        <ul class="breadcrumb">
 		          <li> <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
 		          <li>Terms &amp; Conditions <span class="divider">&nbsp;</span> </li>
-		          <li><a href="../Login.php?alg=1"> <span style="color:#00F;"> <strong>Log Out</strong></span></a><span class="divider-last">&nbsp;</span></li>
+		          <li><a href="Login.aspx"> <span style="color:#00F;"> <strong>Log Out</strong></span></a><span class="divider-last">&nbsp;</span></li>
 	            </ul>
 		        <!-- END PAGE TITLE & BREADCRUMB-->
 	          </div>

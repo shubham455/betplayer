@@ -69,8 +69,8 @@
                                         <td height="20" align="left" class="FontText"><%: row["matchesID"] %></td>
                                         <td align="left" class="FontText"><%: row["MatchesID"] %></td>
                                         <td align="left" class="FontText"><%: row["TeamA"] %> v <%: row["TeamB"] %>(<%: row["Type"] %>)</td>
-                                        <td align="left" class="FontText"><%= Time(Convert.ToDateTime(row["DateTime"]))%></td>
-                                        <td width="110" align="left" class="FontText"><%: row["DateTime"].ToString() %></td>
+                                        <td align="left" class="FontText"><%: toDateString(row["DateTime"])%></td>
+                                        <td width="110" align="left" class="FontText"><%: toTime(row["DateTime"]) %></td>
                                         <td width="110" align="left" class="FontText">One Day Match</td>
                                         <td width="100" align="left" class="FontText">YES</td>
                                         <td width="92" align="left" class="FontText"><%: row["WinnerTeam"] %></td>

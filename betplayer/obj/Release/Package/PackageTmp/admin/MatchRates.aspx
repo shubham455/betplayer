@@ -36,40 +36,40 @@
                                     <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td style="font-size: large; font: 100" width="10%" height="30" align="left" valign="middle" class="welcome">
-                                            <asp:Label ID="lblTeamA" runat="server"></asp:Label></td>
+                                            <label id="team_1">Team 1</label>
                                         <td width="14%" align="left" valign="middle">
-                                            <asp:TextBox ID="txtcode" CssClass="textbox" runat="server" />
+                                            <input id="team1_Khai" type="text" name="team1khai" value="" placeholder="Khai">
                                         </td>
                                         <td width="14%" align="left" valign="middle">
-                                            <asp:TextBox ID="TextBox1" CssClass="textbox" runat="server" />
+                                            <input id="team1_Lagai" type="text" name="team1lagai" value="" placeholder="Lagai">
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="14%" align="left" valign="middle">
-                                            <asp:Button ID="Button1" runat="server" class="btn btn-success" Text="Update" />
+                                          <button id="btnteam1update" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Update</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="2%" align="left">&nbsp;</td>
                                     </tr>
-                                
+
                                     <br />
                                     <br />
 
-                           
-                               
+
+
                                     <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td style="font-size: large; font: 100" width="10%" height="30" align="left" valign="middle" class="welcome">
-                                            <asp:Label ID="lblTeamB" runat="server"></asp:Label></td>
+                                           <label id="team_2">Team 2</label>
                                         <td width="14%" align="left" valign="middle">
-                                            <asp:TextBox ID="TextBox2" CssClass="textbox" runat="server" />
+                                             <input id="team2_Khai" type="text" name="team2khai" value="" placeholder="Khai">
                                         </td>
                                         <td width="14%" align="left" valign="middle">
-                                            <asp:TextBox ID="TextBox3" CssClass="textbox" runat="server" />
+                                            <input id="team2_Lagai" type="text" name="team2lagai" value="" placeholder="Lagai">
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="14%" align="left" valign="middle">
-                                            <asp:Button ID="Button2" runat="server" class="btn btn-success" Text="Update" />
+                                            <button id="btnteam2update" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Update</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
@@ -79,11 +79,14 @@
                             </table>
 
 
-                           
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+     <asp:HiddenField ID="apiid" runat="server" />  
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="js/RunnerUpdate.js"></script>
 </asp:Content>

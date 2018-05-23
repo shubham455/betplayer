@@ -69,7 +69,6 @@ C:\Users\shubham\Source\Repos\betplayer\betplayer\bin\Google.Protobuf.dll
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.csprojAssemblyReference.cache
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.csproj.CoreCompileInputs.cache
 C:\Users\shubham\Source\Repos\betplayer\betplayer\obj\Release\betplayer.csproj.CopyComplete
-C:\Users\hp\Desktop\Setup\betplayer\betplayer\obj\Release\betplayer.csprojAssemblyReference.cache
 C:\Users\hp\Desktop\Setup\betplayer\betplayer\obj\Release\betplayer.csproj.CoreCompileInputs.cache
 C:\Users\hp\Desktop\Setup\betplayer\betplayer\bin\roslyn\csc.exe
 C:\Users\hp\Desktop\Setup\betplayer\betplayer\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -96,3 +95,4 @@ C:\Users\hp\Desktop\Setup\betplayer\betplayer\bin\System.IdentityModel.Tokens.Jw
 C:\Users\hp\Desktop\Setup\betplayer\betplayer\obj\Release\betplayer.csproj.CopyComplete
 C:\Users\hp\Desktop\Setup\betplayer\betplayer\obj\Release\betplayer.dll
 C:\Users\hp\Desktop\Setup\betplayer\betplayer\obj\Release\betplayer.pdb
+C:\Users\hp\Desktop\Setup\betplayer\betplayer\obj\Release\betplayer.csprojAssemblyReference.cache

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/superagent/DashBoard.Master" CodeBehind="Match&SessionPosition.aspx.cs" Inherits="betplayer.superagent.Match_SessionPosition" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/superagent/DashBoard.Master" CodeBehind="MatchAndSessionPosition.aspx.cs" Inherits="betplayer.superagent.Match_SessionPosition" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
    <div id="main-content">
@@ -50,11 +50,11 @@
                                         <td width="80%" height="70" class="ButtonK" style="text-align:center;">
                                         	<div class="ScoreCard_rtmScore " style="color: #fff;">
                                                         <p>
-                                                            <span id="LocalTeam"></span>
+                                                             <span id="LocalTeam" style="color:black"></span>
                                                             <br>
-                                                            <span id="VisitorTeam"></span>
+                                                            <span id="VisitorTeam" style="color:black"></span>
                                                             <br>
-                                                            <span id="Status"></span>
+                                                            <span id="Status" style="color:black"></span>
                                                             <br>
                                                         </p>
                                                     </div>

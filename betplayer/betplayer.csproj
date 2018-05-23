@@ -90,6 +90,8 @@
     <Content Include="admin\CreateMatch.aspx" />
     <Content Include="admin\EditMatches.aspx" />
     <Content Include="admin\js\LiveMatch.js" />
+    <Content Include="admin\js\RunnerUpdate.js" />
+    <Content Include="admin\js\SessionUpdate.js" />
     <Content Include="admin\ManuallyUpdation.aspx" />
     <Content Include="admin\MatchAndSessionPosition.aspx" />
     <Content Include="admin\MatchRates.aspx" />
@@ -824,6 +826,7 @@
     <Content Include="Agent\js\jquery.peity.min.js" />
     <Content Include="Agent\js\jquery.pulsate.min.js" />
     <Content Include="Agent\js\LiveMatch.js" />
+    <Content Include="admin\js\ManualMatch.js" />
     <Content Include="Agent\js\respond.js" />
     <Content Include="Agent\js\scripts.js" />
     <Content Include="Agent\Ledger.aspx" />
@@ -1647,7 +1650,7 @@
     <Content Include="superagent\Ledger.aspx" />
     <Content Include="superagent\Login.aspx" />
     <Content Include="superagent\MasterDetails.aspx" />
-    <Content Include="superagent\Match&amp;SessionPosition.aspx" />
+    <Content Include="superagent\MatchAndSessionPosition.aspx" />
     <Content Include="superagent\ModifyAgent.aspx" />
     <Content Include="superagent\My_Ledger.aspx" />
     <Content Include="superagent\NewCollection.aspx" />
@@ -2375,12 +2378,12 @@
     <Compile Include="superagent\MasterDetails.aspx.designer.cs">
       <DependentUpon>MasterDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="superagent\Match&amp;SessionPosition.aspx.cs">
-      <DependentUpon>Match&amp;SessionPosition.aspx</DependentUpon>
+    <Compile Include="superagent\MatchAndSessionPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="superagent\Match&amp;SessionPosition.aspx.designer.cs">
-      <DependentUpon>Match&amp;SessionPosition.aspx</DependentUpon>
+    <Compile Include="superagent\MatchAndSessionPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\ModifyAgent.aspx.cs">
       <DependentUpon>ModifyAgent.aspx</DependentUpon>

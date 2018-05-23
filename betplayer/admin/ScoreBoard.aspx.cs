@@ -12,68 +12,35 @@ namespace betplayer.admin
 {
     public partial class ScoreBoard : System.Web.UI.Page
     {
-        string matchid;
+        string matchid,Manual;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void btncancel_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ManuallyUpdation.aspx");
-        }
-
-        protected void txtrun_TextChanged(object sender, EventArgs e)
-        {
-            matchid = Request.QueryString["matchid"];
+            apiid.Value = Request.QueryString["MatchID"];
+            string MatchID = Request.QueryString["MatchID"];
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Update CurrentMatch set TeamA_run = '" + txtrun.Text + "' where matchid = '" + matchid + "'";
+                string s = "Select * From Matches Where apiID = '" + MatchID + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
-                cmd.ExecuteNonQuery();
-                txtrun.Text = "";
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                 Manual =dt.Rows[0]["Manual"].ToString();
+                if(Manual == "False")
+                {
+                    ChkAutomatic.Checked = true;
+                }
+                else if(Manual == "True")
+                {
+                    ChkManual.Checked = true;
+                }
+
+
             }
-        }
 
-        protected void txtover_TextChanged(object sender, EventArgs e)
-        {
-            matchid = Request.QueryString["matchid"];
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s = "Update CurrentMatch set TeamA_Over = '" + txtover.Text + "' where matchid = '" + matchid + "'";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                cmd.ExecuteNonQuery();
-                txtover.Text = "";
-            }
         }
-
-        protected void txtwicket_TextChanged(object sender, EventArgs e)
-        {
-            matchid = Request.QueryString["matchid"];
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s = "Update CurrentMatch set TeamA_Wicket = '" + txtwicket.Text + "' where matchid = '" + matchid + "'";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                cmd.ExecuteNonQuery();
-                txtwicket.Text = "";
-            }
-        }
-
-        protected void btnballstart_Click(object sender, EventArgs e)
-        {
-            Session["ball"] = btnballstart.Text ;
-            string s = Session["ball"].ToString();
-        }
-
-        protected void btn1_Click(object sender, EventArgs e)
-        {
-            Session["ball"] = btn1.Text;
-        }
+        
     }
 }

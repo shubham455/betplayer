@@ -20,14 +20,6 @@ if (matchIdElement !== null) {
                     matchKey = key;
                 }
             }
-            /*var team1_ast = (match.team_1.Status === "Batting") ? ' *' : '';
-            var team2_ast = (match.team_2.Status === "Batting") ? ' *' : '';
-            document.getElementById("LocalTeam").innerHTML = match.team_1.Name + ' ' + match.team_1.Runs
-                         + '/' + match.team_1.Wickets + ' (' + match.team_1.Overs + ')' + team1_ast;
-            document.getElementById("VisitorTeam").innerHTML = match.team_2.Name + ' ' + match.team_2.Runs
-                         + '/' + match.team_2.Wickets + ' (' + match.team_2.Overs + ')' + team2_ast;
-            document.getElementById("LastBall").innerHTML = match.lastBall.event;
-            document.getElementById("Status").innerHTML = match.status;*/
             firebase.database().ref('/currentMatches/' + matchKey + "/team_1").on("value", // runs on change
                 function (snapshot) {
                     var team_1 = snapshot.val();
@@ -57,7 +49,20 @@ if (matchIdElement !== null) {
             });
             firebase.database().ref('/currentMatches/' + matchKey + "/message").on("value", // runs on change
                 function (snapshot) {
-            });
+                });
+            firebase.database().ref('/currentMatches/' + matchKey + "/team_1/Runner").on("value", // runs on change
+                function (snapshot) {
+                    var runner = snapshot.val();
+                    document.getElementById('KRate1').value = runner.Khai;
+                    document.getElementById('LRate1').value = runner.Lagai;
+                });
+            firebase.database().ref('/currentMatches/' + matchKey + "/team_2/Runner").on("value", // runs on change
+                function (snapshot) {
+                    var runner = snapshot.val();
+                    console.log("RUNNER tEAM");
+                    document.getElementById('KRate2').value = runner.Khai;
+                    document.getElementById('LRate2').value = runner.Lagai;
+                });
         });
 
 }

@@ -41,9 +41,12 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Update Matches set Active = '1' where matchesID = '"+id+"'";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
+                string s = "Update Matches set Active = @Active where matchesID = @MatchID";
                 
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                cmd.Parameters.AddWithValue("@Active", '1');
+                cmd.Parameters.AddWithValue("@MatchID", id);
+
                 cmd.ExecuteNonQuery();
 
                 Response.Redirect("CreateMatch.aspx?msg=Add");

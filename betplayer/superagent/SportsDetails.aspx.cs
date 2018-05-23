@@ -26,28 +26,19 @@ namespace betplayer.Super_Agent
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
-                DateTime DateTimeFromDB = Convert.ToDateTime(dt.Rows[0]["DateTime"]);
-                Time(DateTimeFromDB);
-                foreach (DataRow row in dt.Rows)
-                {
-                    string timeFromDB = row["DateTime"].ToString();
-                    DateTime oDate = DateTime.Parse(timeFromDB);
-                    string datetime = "Date: " + oDate.Date.ToString() + " Time: " + oDate.TimeOfDay.ToString();
-                    string date = oDate.Date.ToString("yyyy-MM-dd");
-                    string time = oDate.TimeOfDay.ToString();
-                    row["DateTime"] = time;
 
-
-                }
             }
         }
-        public string Time(DateTime DateTimefromDB)
+
+        public string toTime(object DateTimefromDB)
         {
             DateTime oDate = DateTime.Parse(DateTimefromDB.ToString());
-            string datetime = "Time: " + oDate.TimeOfDay.ToString();
-            string date = oDate.Date.ToString("yyyy-MM-dd");
-            string time = oDate.TimeOfDay.ToString();
-            return date;
+            return oDate.TimeOfDay.ToString();
+        }
+        public string toDateString(object date)
+        {
+            DateTime rowDate = DateTime.Parse(date.ToString());
+            return rowDate.Date.ToString("dd-MM-yyyy");
         }
     }
 }
