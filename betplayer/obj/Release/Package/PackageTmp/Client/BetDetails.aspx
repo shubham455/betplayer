@@ -23,7 +23,7 @@
                                             </tr>
                                             <tr>
                                                 <td width="70%" height="35" align="center" class="TeamCombo">
-                                                    <div class="ScoreCard_rtmScore ScoreCard" style="color: #fff; height:100%;">
+                                                    <div class="ScoreCard_rtmScore ScoreCard" style="color: #fff; height: 100%;">
                                                         <p>
                                                             <span id="LocalTeam"></span>
                                                             <br>
@@ -36,9 +36,7 @@
                                                 <td width="30%" height="35" align="center" class="TeamCombo">
                                                     <div class="ScoreCard">
                                                         <p>
-                                                            <span id="LastBall">
-                                                                Ball Start
-                                                            </span>
+                                                            <span id="LastBall"></span>
                                                         </p>
                                                     </div>
                                                 </td>
@@ -69,7 +67,7 @@
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle; color: #000">
                                                     <input type="button" name="LRate1" id="LRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitL(1)"></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextWhite" style="color: #000; vertical-align: middle">0.00</td>
-                                            </tr>   
+                                            </tr>
 
                                             <tr>
                                                 <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamB"] %></td>
@@ -79,7 +77,17 @@
                                                     <input type="button" name="LRate2" id="LRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitL(2)"></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextWhite" style="color: #000; vertical-align: middle">0.00</td>
                                             </tr>
-
+                                            <% foreach (System.Data.DataRow row2 in MatchesDataTable2.Rows)
+                                                { %>
+                                            <tr>
+                                                <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamC"] %></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle">
+                                                    <input type="button" name="KRate2" id="KRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitK(2)"></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle; color: #000">
+                                                    <input type="button" name="LRate2" id="LRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitL(2)"></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextWhite" style="color: #000; vertical-align: middle">0.00</td>
+                                            </tr>
+                                            <% } //foreach %>
                                         </tbody>
                                     </table>
                                     <% } //foreach %>
@@ -125,6 +133,30 @@
                                                     <input type="button" name="YRun1" id="YRun1" value="0.00" class="ButtonYRun" onfocus="this.className='ButtonYRun_hover'" onblur="this.className='ButtonYRun'" onmouseover="this.className='ButtonYRun_hover'" onmouseout="this.className='ButtonYRun'" onclick="AddSessionBitY(1)"></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="color: #000;">
                                                     <input type="button" name="YRate1" id="YRate1" value="0.00" class="ButtonYRate" onfocus="this.className='ButtonYRate_hover'" onblur="this.className='ButtonYRate'" onmouseover="this.className='ButtonYRate_hover'" onmouseout="this.className='ButtonYRate'" disabled="disabled"></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="">
+                                                    <input type="button" name="Session2" id="Session2" value="NONE" class="ButtonSess" onclick="ShowSession(2)"></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="color: #000">
+                                                    <input type="button" name="NRun2" id="NRun2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(2)"></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="color: #000">
+                                                    <input type="button" name="NRate2" id="NRate2" value="0.00" class="ButtonNRate" onfocus="this.className='ButtonNRate_hover'" onblur="this.className='ButtonNRate'" onmouseover="this.className='ButtonNRate_hover'" onmouseout="this.className='ButtonNRate'" disabled="disabled"></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="color: #000">
+                                                    <input type="button" name="YRun2" id="YRun2" value="0.00" class="ButtonYRun" onfocus="this.className='ButtonYRun_hover'" onblur="this.className='ButtonYRun'" onmouseover="this.className='ButtonYRun_hover'" onmouseout="this.className='ButtonYRun'" onclick="AddSessionBitY(2)"></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="color: #000">
+                                                    <input type="button" name="YRate2" id="YRate2" value="0.00" class="ButtonYRate" onfocus="this.className='ButtonYRate_hover'" onblur="this.className='ButtonYRate'" onmouseover="this.className='ButtonYRate_hover'" onmouseout="this.className='ButtonYRate'" disabled="disabled"></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="">
+                                                    <input type="button" name="Session2" id="Session2" value="NONE" class="ButtonSess" onclick="ShowSession(2)"></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="color: #000">
+                                                    <input type="button" name="NRun2" id="NRun2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(2)"></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="color: #000">
+                                                    <input type="button" name="NRate2" id="NRate2" value="0.00" class="ButtonNRate" onfocus="this.className='ButtonNRate_hover'" onblur="this.className='ButtonNRate'" onmouseover="this.className='ButtonNRate_hover'" onmouseout="this.className='ButtonNRate'" disabled="disabled"></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="color: #000">
+                                                    <input type="button" name="YRun2" id="YRun2" value="0.00" class="ButtonYRun" onfocus="this.className='ButtonYRun_hover'" onblur="this.className='ButtonYRun'" onmouseover="this.className='ButtonYRun_hover'" onmouseout="this.className='ButtonYRun'" onclick="AddSessionBitY(2)"></td>
+                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="color: #000">
+                                                    <input type="button" name="YRate2" id="YRate2" value="0.00" class="ButtonYRate" onfocus="this.className='ButtonYRate_hover'" onblur="this.className='ButtonYRate'" onmouseover="this.className='ButtonYRate_hover'" onmouseout="this.className='ButtonYRate'" disabled="disabled"></td>
                                             </tr>
                                             <tr>
                                                 <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="">

@@ -90,48 +90,55 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="form-actions">
+                             <div class="widget-body form">
                                 <table>
                                     <tr>
                                         <td>
-                                            <button id="ball_start" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Ball Start</button>
+                                            <button id="ball_start" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">Ball Start</button>
                                         </td>
                                         <td>
-                                            <button id="1run" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">1 Run</button>
+                                            <button id="1run" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">1 Run</button>
                                         </td>
                                         <td>
-                                            <button id="2run" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">2 Run</button>
+                                            <button id="2run" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">2 Run</button>
                                         </td>
                                         <td>
-                                            <button id="3run" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">3 Run</button>
+                                            <button id="3run" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">3 Run</button>
                                         </td>
                                         <td>
-                                            <button id="four" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">FOUR</button>
+                                            <button id="four" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">FOUR</button>
                                         </td>
                                         <td>
-                                            <button id="six" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">SIX</button>
+                                            <button id="six" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">SIX</button>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            <div class="form-actions">
+                            <div class="widget-body form">
                                 <table>
                                     <tr>
                                         <td>
-                                            <button id="wide" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">WIDE</button>
+                                            <button id="wide" type="button" class="btn btn-success"style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">WIDE</button>
                                         </td>
                                         <td>
-                                            <button id="noball" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">NO BALL</button>
+                                            <button id="noball" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">NO BALL</button>
                                         </td>
                                         <td>
-                                            <button id="freehit" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">FREE HIT</button>
+                                            <button id="freehit" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">FREE HIT</button>
                                         </td>
                                         <td>
-                                            <button id="wideplus4" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">WIDE+4</button>
+                                            <button id="wideplus4" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">WIDE+4</button>
+                                        </td>
+                                         <td>
+                                            <button id="timeout" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">Timeout</button>
+                                        </td>
+                                        <td>
+                                            <button id="thirdumpire" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">Third Umpire</button>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
+
                             <div class="form-actions">
                                 <asp:Button ID="btnsave" runat="server" class="btn btn-success" Text="Add" />
                             </div>

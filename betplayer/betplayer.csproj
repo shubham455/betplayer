@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\AddMatch.aspx" />
+    <Content Include="admin\AddMatchManually.aspx" />
     <Content Include="admin\AgentDetails.aspx" />
     <Content Include="admin\ClientDetails.aspx" />
     <Content Include="admin\CreateAgent.aspx" />
@@ -847,6 +848,7 @@
     <Content Include="Agent\ViewSessionReport.aspx" />
     <Content Include="Client\AllGamesList.aspx" />
     <Content Include="Client\BetDetails.aspx" />
+    <Content Include="Client\BetDetails_Declare.aspx" />
     <Content Include="Client\Change_Password.aspx" />
     <Content Include="Client\Change_Password2.aspx" />
     <Content Include="Client\css\Home\animate.css" />
@@ -1674,6 +1676,13 @@
     <Compile Include="admin\AddMatch.aspx.designer.cs">
       <DependentUpon>AddMatch.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\AddMatchManually.aspx.cs">
+      <DependentUpon>AddMatchManually.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AddMatchManually.aspx.designer.cs">
+      <DependentUpon>AddMatchManually.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\AgentDetails.aspx.cs">
       <DependentUpon>AgentDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1716,6 +1725,7 @@
     <Compile Include="admin\EditMatches.aspx.designer.cs">
       <DependentUpon>EditMatches.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\KeyEventArgs.cs" />
     <Compile Include="admin\ManuallyUpdation.aspx.cs">
       <DependentUpon>ManuallyUpdation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2170,6 +2180,13 @@
     </Compile>
     <Compile Include="Client\BetDetails.aspx.designer.cs">
       <DependentUpon>BetDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\BetDetails_Declare.aspx.cs">
+      <DependentUpon>BetDetails_Declare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client\BetDetails_Declare.aspx.designer.cs">
+      <DependentUpon>BetDetails_Declare.aspx</DependentUpon>
     </Compile>
     <Compile Include="Client\Change_Password.aspx.cs">
       <DependentUpon>Change_Password.aspx</DependentUpon>

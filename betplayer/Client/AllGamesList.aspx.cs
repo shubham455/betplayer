@@ -14,22 +14,22 @@ namespace betplayer.Client
 
     public partial class AllGamesList : System.Web.UI.Page
     {
-        
+
         private DataTable dt;
         public DataTable MatchesDataTable { get { return dt; } }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From Matches where Status = '11' && Active = '1'";
+                string s = "Select * From Matches where Active = '1' order by DateTime DESC ";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
-                if (dt.Rows.Count > 0 )
+                if (dt.Rows.Count > 0)
                 {
                     string TeamA = dt.Rows[0]["TeamA"].ToString();
                     string TeamB = dt.Rows[0]["TeamB"].ToString();
@@ -38,16 +38,16 @@ namespace betplayer.Client
                         string timeFromDB = row["DateTime"].ToString();
                         //DateTime oDate = DateTime.ParseExact(timeFromDB, "yyyy-MM-ddTHH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
                         DateTime oDate = DateTime.Parse(timeFromDB);
-                        string datetime = "Date: " + oDate.Date.ToString() .Substring(0,10)+ " Time: " + oDate.TimeOfDay.ToString();
+                        string datetime = "Date: " + oDate.Date.ToString().Substring(0, 10) + " Time: " + oDate.TimeOfDay.ToString();
                         row["DateTime"] = datetime;
                     }
 
                 }
                 else
                 {
-                   
+
                 }
-               
+
             }
         }
         public string TeamtoImgpath(string TeamA)
@@ -86,6 +86,40 @@ namespace betplayer.Client
             }
             return "";
         }
+        public int redirect(int apiID)
+        {
+            int status;
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+                string s = "Select * From Matches where apiID = '" + apiID + "'";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+                status = Convert.ToInt16(dt.Rows[0]["Status"].ToString());
+                
+                if (dt.Rows.Count < 0)
+                {
+                    if (status == 11)
+                    {
+                        Response.Redirect("BetDetails_Declare.aspx?apiID");
+                    }
+                    else if (status == 1)
+                    {
+                        Response.Redirect("BetDetails.aspx?apiID");
+                    }
+                    else if (status == 0)
+                    {
+                        Response.Redirect("BetDetails_Declare.aspx?apiID");
+                    }
 
+                }return status;
+                
+
+
+            }
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace betplayer.admin
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string s = "Select * From Matches where Active  = '0'";
+                    string s = "Select * From Matches where Active  = '0' order by DateTime DESC";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     dt = new DataTable();

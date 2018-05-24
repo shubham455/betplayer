@@ -136,7 +136,7 @@
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="ModifyClient.aspx?id=<%:row["ClientID"] %>"><i class="icon-pencil"></i>Edit</a></li>
-                                                        <li><a href="<%--<%=delete(row["ClientID"].ToString()) %>--%>"><i class="icon-trash"></i>Delete</a></li>
+                                                        <li onclick="<%=delete(row["ClientID"].ToString()) %>--%>"><i class="icon-trash"></i>Delete</li>
                                                         <li><a href="javascript:ChangeStatus('118','Inactive');"><i class="icon-ban-circle"></i>
                                                             Inactive		                      </a></li>
                                                         <li><a href="javascript:SendLoginDetails('118');"><i class="icon-film"></i>Send Mobile Login Details</a></li>

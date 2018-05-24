@@ -14,8 +14,10 @@ namespace betplayer.Client
     {
         private DataTable dt;
         private DataTable dt1;
+        private DataTable dt2;
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
+        public DataTable MatchesDataTable2 { get { return dt2; } }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -31,24 +33,19 @@ namespace betplayer.Client
                 dt = new DataTable();
                 adp.Fill(dt);
 
-                string SMatches = "Select * from Matches where Status = '01' && Active = '1'";
+                string SMatches = "Select * from Matches where Status = '1' && Active = '1'";
                 MySqlCommand cmd1 = new MySqlCommand(SMatches, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt1 = new DataTable();
                 adp1.Fill(dt1);
 
-                //if (Session["ball"].ToString() == "")
-                //{
-                   
-                //}
-                //if (Session["ball"].ToString() == "Ball Start")
-                //{
-                //    imgball.ImageUrl = "images/HomeImg/logo.png";
-                //}
-                //if (Session["ball"].ToString() == "1")
-                //{
-                //    imgball.ImageUrl = "images/HomeImg/logo.png";
-                //}
+                string TeamCMatches = "Select TeamC from Matches where Status = '1' && Active = '1'";
+                MySqlCommand cmd2 = new MySqlCommand(TeamCMatches, cn);
+                MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
+                dt2 = new DataTable();
+                adp2.Fill(dt2);
+
+
 
             }
         }

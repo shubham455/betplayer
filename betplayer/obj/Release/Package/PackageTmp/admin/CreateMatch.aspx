@@ -33,6 +33,14 @@
                         </div>
                         <div class="widget-body form">
                             <!-- BEGIN FORM-->
+                            <div class="portlet-body">
+                                <div class="clearfix">
+
+                                    <a href="AddMatchManually.aspx">
+                                        <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create</button></a>
+                                </div>
+                            </div>
+                            <br />
 
                             <table width="100%" class="table table-striped table-hover table-bordered">
                                 <tbody>
@@ -58,7 +66,7 @@
                                         <td height="20" align="left" class="FontText"><%:row["MatchesID"] %></td>
                                         <td align="left" class="FontText"><%:row["apiID"] %></td>
                                         <td align="left" class="FontText"><%:row["TeamA"] %> v <%:row["TeamB"] %> </td>
-                                       <td align="left" class="FontText"><%: toDateString(row["DateTime"])%></td>
+                                        <td align="left" class="FontText"><%: toDateString(row["DateTime"])%></td>
                                         <td width="110" align="left" class="FontText"><%: toTime(row["DateTime"]) %></td>
                                         <td width="110" align="left" class="FontText"><%:row["Type"] %></td>
 

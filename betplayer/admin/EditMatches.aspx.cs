@@ -17,7 +17,7 @@ namespace betplayer.admin
             if (!IsPostBack)
             {
 
-                int Id = Convert.ToInt16(Request.QueryString["MatchID"]);
+                int Id = Convert.ToInt32(Request.QueryString["MatchID"]);
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {

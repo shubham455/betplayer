@@ -23,7 +23,7 @@ namespace betplayer.Agent
 
             {
                 cn.Open();
-                string s = "Select * From Matches where Active = '1' and status = '11'";
+                string s = "Select * From Matches where Active = '1' order by DateTime DESC ";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -54,7 +54,7 @@ namespace betplayer.Agent
 
             {
                 cn.Open();
-                string s = "Select * From Matches where Active = '1' and status = '11'";
+                string s = "Select * From Matches where Active = '1'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
