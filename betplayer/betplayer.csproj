@@ -774,7 +774,6 @@
     <Content Include="Agent\Dashboard.aspx" />
     <Content Include="Agent\DashboardMaster.aspx" />
     <Content Include="Agent\DateWiseReport.aspx" />
-    <Content Include="Agent\DeleteClient.aspx" />
     <Content Include="Agent\img\404.png" />
     <Content Include="Agent\img\500.png" />
     <Content Include="Agent\img\avatar-mini.png" />
@@ -1580,6 +1579,8 @@
     <Content Include="admin\assets\font-awesome\sass\font-awesome.sass" />
     <Content Include="admin\assets\font-awesome\sass\font-awesome.scss" />
     <Content Include="admin\assets\jquery-slimscroll\slimScroll.jquery.json" />
+    <Content Include="Agent\DeleteClient.ashx" />
+    <Content Include="Client\AddDataToLedger.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <None Include="Web.Debug.config">
@@ -2055,13 +2056,6 @@
     <Compile Include="Agent\DateWiseReport.aspx.designer.cs">
       <DependentUpon>DateWiseReport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Agent\DeleteClient.aspx.cs">
-      <DependentUpon>DeleteClient.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\DeleteClient.aspx.designer.cs">
-      <DependentUpon>DeleteClient.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Agent\Ledger.aspx.cs">
       <DependentUpon>Ledger.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2167,6 +2161,9 @@
     <Compile Include="Agent\ViewSessionReport.aspx.designer.cs">
       <DependentUpon>ViewSessionReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Client\AddDataToLedger.ashx.cs">
+      <DependentUpon>AddDataToLedger.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Client\AllGamesList.aspx.cs">
       <DependentUpon>AllGamesList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2243,6 +2240,9 @@
     </Compile>
     <Compile Include="Client\Terms_Condition.aspx.designer.cs">
       <DependentUpon>Terms_Condition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\DeleteClient.ashx.cs">
+      <DependentUpon>DeleteClient.ashx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

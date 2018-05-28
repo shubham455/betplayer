@@ -63,31 +63,25 @@
                                             <tr>
                                                 <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamA"] %></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" style="vertical-align: middle">
-                                                    <input type="button" name="KRate1" id="KRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitK(1)"></td>
+                                                    <input type="button" name="ButtonK" id="KRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_1', 'Runner', 'Khai')"></td>
+
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle; color: #000">
-                                                    <input type="button" name="LRate1" id="LRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitL(1)"></td>
+                                                    <input type="button" name="ButtonL" id="LRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_1', 'Runner', 'Lagai')"></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextWhite" style="color: #000; vertical-align: middle">0.00</td>
                                             </tr>
 
                                             <tr>
                                                 <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamB"] %></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle">
-                                                    <input type="button" name="KRate2" id="KRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitK(2)"></td>
+                                                    <input type="button" name="ButtonK" id="KRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_2', 'Runner', 'Khai')"></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle; color: #000">
-                                                    <input type="button" name="LRate2" id="LRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitL(2)"></td>
+                                                    <input type="button" name="ButtonL" id="LRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_2', 'Runner', 'Lagai')"></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextWhite" style="color: #000; vertical-align: middle">0.00</td>
                                             </tr>
-                                            <% foreach (System.Data.DataRow row2 in MatchesDataTable2.Rows)
-                                                { %>
-                                            <tr>
-                                                <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamC"] %></td>
-                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle">
-                                                    <input type="button" name="KRate2" id="KRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitK(2)"></td>
-                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle; color: #000">
-                                                    <input type="button" name="LRate2" id="LRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitL(2)"></td>
-                                                <td align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextWhite" style="color: #000; vertical-align: middle">0.00</td>
-                                            </tr>
-                                            <% } //foreach %>
+
+
+
+
                                         </tbody>
                                     </table>
                                     <% } //foreach %>
@@ -176,47 +170,18 @@
                             </tr>
                             <tr>
                                 <td align="left" valign="top">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" id="PlaceBet">
+                                    <table onload="countdown()" width="100%" border="0" cellpadding="0" cellspacing="0" id="PlaceBet">
                                         <tbody>
                                             <tr>
                                                 <td height="35" align="center" valign="middle" bgcolor="#2486B2" class="FontTextWhite" style="vertical-align: middle">AMOUNT</td>
                                                 <td align="center" valign="middle" bgcolor="#2486B2" style="vertical-align: middle">
-                                                    <input name="MatchAmount" list="AmountList" class="ClientText" id="MatchAmount" onkeypress="" size="10" maxlength="7" readonly="" autocomplete="OFF">
-                                                    <datalist id="AmountList">
-                                                        <option value="500"></option>
-                                                        <option value="1000"></option>
-                                                        <option value="1500"></option>
-                                                        <option value="2000"></option>
-                                                        <option value="2500"></option>
-                                                        <option value="3000"></option>
-                                                        <option value="3500"></option>
-                                                        <option value="4000"></option>
-                                                        <option value="4500"></option>
-                                                        <option value="5000"></option>
-                                                        <option value="10000"></option>
-                                                        <option value="15000"></option>
-                                                        <option value="20000"></option>
-                                                        <option value="25000"></option>
-                                                        <option value="30000"></option>
-                                                        <option value="35000"></option>
-                                                        <option value="40000"></option>
-                                                        <option value="45000"></option>
-                                                        <option value="50000"></option>
-                                                        <option value="100000"></option>
-                                                        <option value="150000"></option>
-                                                        <option value="200000"></option>
-                                                        <option value="250000"></option>
-                                                        <option value="300000"></option>
-                                                        <option value="350000"></option>
-                                                        <option value="400000"></option>
-                                                        <option value="450000"></option>
-                                                        <option value="500000"></option>
-                                                    </datalist>
+
+                                                    <input type="text" id="matchAmount" disabled=""  />
+
+                                                    <label id="timerLabel" style="margin-left: 50px; font-family: Verdana; font-weight: bold; color: black; visibility: hidden;"></label>
+
+                                                    <input type="button" id="btnSubmit" onclick="doneClick()" style="margin-left: 50px; visibility: hidden;" class="FontTextBlue" value="Done" />
                                                 </td>
-                                                <td align="center" valign="middle" bgcolor="#2486B2" style="vertical-align: middle">
-                                                    <input name="AmountTime" type="text" class="AmountTime" id="AmountTime" size="4" maxlength="3" readonly="" autocomplete="OFF"></td>
-                                                <td align="center" valign="middle" bgcolor="#2486B2" style="vertical-align: middle">
-                                                    <input name="cmdDone" type="button" class="FontTextBlue" id="cmdDone" onclick="SubmitBit()" value="Done" disabled="" style="visibility: hidden;"></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -241,7 +206,7 @@
             <li class="active"><a href="BetDetails.aspx?id=<%: row["apiID"] %>"><%: row["TeamA"] %> V <%: row["TeamB"] %> <%: row["Type"] %></a></li>
             <% } //foreach %>
 
-            <li class="active"><a href="AllGamesList.php">BACK TO LIST</a></li>
+            <li class="active"><a href="AllGamesList.aspx">BACK TO LIST</a></li>
         </ul>
     </div>
 
@@ -254,18 +219,56 @@
         </tbody>
     </table>
     <br />
+
+    <table style="width:100%;" border="0" cellspacing="2" cellpadding="2">
+        <tbody>
+            <tr>
+                <td style="height:25px;" align="right" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite10px">Rate</td>
+                <td align="right" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite10px">Amount</td>
+                <td align="right" bgcolor="#2DA5DA" style="text-align:center;" class="FontTextWhite10px">Mode</td>
+                <td align="center" bgcolor="#2DA5DA" style="text-align:center;" class="FontTextWhite10px">Team</td>
+            </tr>
+
+            <% foreach (System.Data.DataRow row in MatchesDataTable3.Rows)
+                { %>
+            <tr>
+               
+                <td  align="left" style="background:#FFF;color:black; text-align:right; height:25px;" class="FontTextWhite10px "><%:row["Rate"] %></td>
+                <td align="left"  style="background:#FFF;color:black; text-align:right;" class="FontTextWhite10px "><%:row["Amount"] %></td>
+                <td align="left"  style="background:#FFF;color:black; text-align:center;" class="FontTextWhite10px "><%:row["Mode"] %></td>
+                <td align="left"   style="background:#FFF;color:black; text-align:center;" class="FontTextWhite10px "><%:row["Team"] %></td>
+            </tr>
+            <% } //foreach %>
+        </tbody>
+    </table>
+    <br />
+    <br />
     <table width="100%" border="0" cellspacing="2" cellpadding="2">
         <tbody>
             <tr>
-                <td height="25" align="left" bgcolor="#2DA5DA" class="FontTextWhite10px">Session </td>
+
+
+                <td height="25" align="left" bgcolor="#2DA5DA" class="FontTextWhite10px">Session</td>
                 <td align="right" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite10px">Rate</td>
                 <td align="right" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite10px">Amount</td>
                 <td align="right" bgcolor="#2DA5DA" class="FontTextWhite10px">Runs</td>
                 <td align="center" bgcolor="#2DA5DA" class="FontTextWhite10px">Mode</td>
             </tr>
+
+            <% foreach (System.Data.DataRow row in MatchesDataTable3.Rows)
+                { %>
+            <tr>
+                <td height="20" align="left" style="background:#FFF;color:black;" class="FontTextWhite10px  "><%:row["Rate"] %></td>
+                <td align="left"  style="background:#FFF;color:black;" class="FontTextWhite10px "><%:row["Rate"] %></td>
+                <td align="left"  style="background:#FFF;color:black;" class="FontTextWhite10px "><%:row["Amount"] %></td>
+                <td align="left"  style="background:#FFF;color:black;" class="FontTextWhite10px "><%:row["Rate"] %></td>
+                <td align="left"   style="background:#FFF;color:black;" class="FontTextWhite10px "><%:row["Mode"] %></td>
+            </tr>
+            <% } //foreach %>
         </tbody>
     </table>
+
     <asp:HiddenField ID="apiID" runat="server" />
-
-
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="js/Homejs/LiveMatch.js"></script>
 </asp:Content>

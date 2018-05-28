@@ -27,7 +27,7 @@ if (matchIdElement !== null) {
         }).then(() => {
             document.getElementById('btnteam1update').addEventListener("click", (event) => {
                 var team = document.getElementById('team_selector').value
-                var Khai = document.getElementById('team1_Khai').value
+                var Khai = document.getElementById('team1_Khai').value 
                 var Lagai = document.getElementById('team1_Lagai').value
                 console.log(team,Khai, Lagai);
                 firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update({

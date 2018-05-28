@@ -87,7 +87,7 @@
         <br>
 
         <!---start-wrap---->
-        <div class="wrap" style="margin-left: 30px;">
+        <div class="wrap" style="margin-left: 10px;">
 
             <!----- Content ------------->
             <div class="content_top">

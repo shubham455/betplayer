@@ -35,6 +35,7 @@ namespace betplayer.Agent
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
+                
             }
         }
 
@@ -99,7 +100,9 @@ namespace betplayer.Agent
                     dt = new DataTable();
                     adp.Fill(dt);
                     BindData();
-                    return dt.ToString();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Added SuccessFully.....');", true);
+                return dt.ToString();
+                
 
               
             }

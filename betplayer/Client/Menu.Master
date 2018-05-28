@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <div class="wrap" style="margin-left: 30px; margin-top: 15px;">
+    <div class="wrap" style="margin-left: 10px; margin-top: 15px;">
 
         <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: #FFF dashed 1px;">
             <tbody>
@@ -79,10 +79,6 @@
 
 
     <h4 align="center" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">Copy Right @ Khai Lagai</h4>
-
-
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="js/Homejs/LiveMatch.js"></script>
 
     <!----- End Content ------------->
 

@@ -14,7 +14,7 @@ namespace betplayer.admin
 {
     public partial class ScoreBoard : System.Web.UI.Page
     {
-        string matchid,Manual;
+        string Manual;
         
         protected void Page_Load(object sender, EventArgs e)
         {

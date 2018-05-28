@@ -23,7 +23,7 @@
     <br />
 
     <!---start-wrap---->
-    <div class="wrap">
+    <div class="wrap" style="margin-left :10px;">
         <!---  End Header ----->
 
         <!----- Content ------------->
@@ -59,13 +59,13 @@
 
                                                     <td style="height: 50px; width: 100px;">
 
-                                                        <asp:Image ID="imgCaptcha" runat="server" />
+                                                        <asp:Image ID="imgCaptcha" style="color:black;background-attachment:fixed;" runat="server" />
 
                                                     </td>
 
                                                     <td style="align-content: center">
 
-                                                        <asp:Button ID="btnRefresh" runat="server" Text="Refresh" OnClick="btnRefresh_Click" />
+                                                        
 
                                                     </td>
 
@@ -79,23 +79,26 @@
                                 </td>
 
 
-                                <td>Enter above captcha code :
-
-                                </td>
-
-                                <td>
-
-                                    <asp:TextBox ID="txtCaptcha" runat="server" placeholder="Text Captcha"></asp:TextBox>
-
-                                </td>
-
                             </tr>
+                        </tbody>
+                    </table>
+
+                    <span><i class="FontText"></i>
+                        <asp:TextBox ID="txtCaptcha" Style="background: #FFF;" runat="server" placeholder="Text Captcha"></asp:TextBox>
+                    </span>
+                    <br />
+                    <br />
+                    <br />
+
+                    <table>
+                        <tbody>
 
                             <tr>
                                 <td>
 
                                     <asp:Button ID="btnHOME" CssClass="HomeButton" runat="server" Text="Home" class="HomeButton" OnClick="btnHOME_Click" />
                                 </td>
+                                <td></td>
                                 <td>
                                     <asp:Button ID="btnSubmit" CssClass="LoginButton" runat="server" Text="Login" class="LoginButton" OnClick="Submitbtn_Click" />
                                 </td>
@@ -103,7 +106,6 @@
                             </tr>
                         </tbody>
                     </table>
-
 
 
                 </form>

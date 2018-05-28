@@ -36,15 +36,16 @@
                                     <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td style="font-size: large; font: 100" width="10%" height="30" align="left" valign="middle" class="welcome">
-                                            <select name="ctl00$ContentPlaceHolder$DropStatus" id="team_selector" class="btn btn-primary dropdown-toggle" style="width: 100px; height:50px">
-                                                <option id="team1_name" value="team_1">Team1</option>
-                                                <option id="team2_name" value="team_2">Team2</option>
+                                            <select name="ctl00$ContentPlaceHolder$DropStatus" id="team_selector" class="btn btn-primary dropdown-toggle" style="width: 180px; height:50px;font-size:large">
+                                                <option id="team1_name" style="font-size:large" value="team_1">Team1</option>
+                                                <option id="team2_name" style="font-size:large" value="team_2">Team2</option>
                                             </select>
+                                             <td width="5%" align="left" valign="middle"></td>
                                         <td width="14%" align="left" valign="middle">
-                                            <input id="team1_Khai" type="text" style="width:100px; height:50px"  name="team1khai" value="" placeholder="Khai">
+                                            <input id="team1_Khai" type="text" style="width:100px; height:50px; font-size:xx-large;font-weight:bold"   name="team1khai" value="" placeholder="Khai">
                                         </td>
                                         <td width="14%" align="left" valign="middle">
-                                            <input id="team1_Lagai" type="text" name="team1lagai" style="width:100px; height:50px" value="" placeholder="Lagai">
+                                            <input id="team1_Lagai" type="text" name="team1lagai" style="width:100px; height:50px;font-size:xx-large;font-weight:bold"value="" placeholder="Lagai">
                                         </td>
                                        
                                         <td width="14%" align="left" valign="middle">
@@ -85,10 +86,10 @@
                                             <button id="3run" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">3 Run</button>
                                         </td>
                                         <td>
-                                            <button id="four" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">FOUR</button>
+                                            <button id="four" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">4 Run</button>
                                         </td>
                                         <td>
-                                            <button id="six" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">SIX</button>
+                                            <button id="six" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">6 Run</button>
                                         </td>
                                     </tr>
                                 </table>
@@ -106,10 +107,10 @@
                                             <button id="freehit" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">FREE HIT</button>
                                         </td>
                                         <td>
-                                            <button id="wideplus4" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">WIDE+4</button>
+                                            <button id="wideplus4" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">WIDE+ 4</button>
                                         </td>
                                          <td>
-                                            <button id="timeout" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">Timeout</button>
+                                            <button id="timeout" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">Time out</button>
                                         </td>
                                         <td>
                                             <button id="thirdumpire" type="button" class="btn btn-success" style="height: 70px; width: 120px; font-size: x-large;font-weight:bold; color:black">Third Umpire</button>

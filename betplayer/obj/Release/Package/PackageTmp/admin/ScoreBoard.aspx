@@ -62,10 +62,10 @@
                                             <p style="font-size: large; font: 100">Score Board</p>
                                         </td>
                                         <td>
-                                            <input id="InputRun" type="text" name="Runs" value="" placeholder="Run">
+                                            <input id="InputRun" type="text" name="Runs" value="" onkeydown="return focusOnNext(event, 'jsTxt2')" placeholder="Run">
                                         </td>
                                         <td>
-                                            <input id="InputWicket" type="text" name="Wickets" value="" placeholder="Wicket">
+                                            <input id="InputWicket" type="text" name="Wickets" value="" onkeydown="return focusOnNext(event, 'jsTxt3')" placeholder="Wicket">
                                         </td>
                                         <td>
                                             <input id="InputOver" type="text" name="Overs" value="" placeholder="Over">
@@ -151,4 +151,42 @@
     <asp:HiddenField ID="apiid" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/ManualMatch.js"></script>
+    <script lang="javascript">
+function Tab()
+{
+    var tb1=document.getElementById(InputWicket);
+        tb1.focus();
+}
+
+</script>
+    <script src="jquery.js" type="text/javascript"></script>
+ 
+
+    <script type="text/javascript"  lang="js">
+
+        $(function()
+
+        {
+
+               $("input[type=text]").keypress(function(){
+
+                  alert("Wow; Its Work!.")
+
+               
+
+           });
+
+                    });
+
+    </script>
+    function focusOnNext(e, nextControl) {
+            alert(e.keyCode);
+            if (e.keyCode == 13) {
+                $("." + nextControl).focus();
+                return false;
+            }
+            
+        }
+
+
 </asp:Content>
