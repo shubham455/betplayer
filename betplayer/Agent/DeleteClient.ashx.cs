@@ -11,21 +11,21 @@ using System.Web.Script.Serialization;
 namespace betplayer.Agent
 {
     /// <summary>
-    /// Summary description for DataHandler
+    /// Summary description for Deleteclient
     /// </summary>
     public class Deleteclient : IHttpHandler
     {
-       
 
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/json";
             string result = Delete(Convert.ToInt16(context.Request["userId"]));
             if (result == "success")
-            context.Response.Write(new JavaScriptSerializer().Serialize(new {
-                status = true,
-                userDeletedId = context.Request["userId"]
-            }));
+                context.Response.Write(new JavaScriptSerializer().Serialize(new
+                {
+                    status = true,
+                    userDeletedId = context.Request["userId"]
+                }));
             else context.Response.Write(new JavaScriptSerializer().Serialize(new
             {
                 status = false,
@@ -42,7 +42,8 @@ namespace betplayer.Agent
         }
         public string Delete(int id)
         {
-            try { 
+            try
+            {
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
@@ -53,10 +54,11 @@ namespace betplayer.Agent
                     return "success";
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return e.Message;
             }
         }
+       
     }
 }

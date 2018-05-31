@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="betplayer.admin.Login" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="betplayer.admin.Login1" %>
 
 <!DOCTYPE html>
 
@@ -20,7 +19,7 @@
 <body id="login-body">
     <div class="login-header">
         <div id="logo" class="center">
-            <a href="admin.crick20.com">Crick20</a>
+            <a href="agent.crick20.com">Crick20</a>
         </div>
     </div>
     <div id="login">

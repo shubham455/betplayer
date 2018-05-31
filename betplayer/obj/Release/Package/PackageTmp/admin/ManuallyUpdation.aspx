@@ -53,7 +53,7 @@
                     <div class="row-fluid circle-state-overview">
                         <div style="float: left; padding-left: 20px; padding-right: 20px;">
                             <div class="circle-wrap">
-                                <a href="ModifyMatches.aspx">
+                                <a href="SessionRate.aspx?Matchid=<%=apiID%>">
                                     <div class="stats-circle turquoise-color">
                                         <i class="icon-user"></i>
                                     </div>

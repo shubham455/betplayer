@@ -47,7 +47,7 @@ namespace betplayer.Super_Agent
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string SELECT = "Select * from SuperAgentMaster Where Name = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
+                    string SELECT = "Select * from SuperAgentMaster Where Code = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     if (rdr.Read())

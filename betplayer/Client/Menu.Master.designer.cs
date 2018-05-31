@@ -13,13 +13,22 @@ namespace betplayer.Client {
     public partial class Menu {
         
         /// <summary>
-        /// lbl1 control.
+        /// lblName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblName;
+        
+        /// <summary>
+        /// lblAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAmount;
         
         /// <summary>
         /// form1 control.

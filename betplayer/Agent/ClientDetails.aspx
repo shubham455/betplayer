@@ -136,8 +136,8 @@
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="ModifyClient.aspx?id=<%:row["ClientID"] %>"><i class="icon-pencil"></i>Edit</a></li>
-                                                        <li><a onclick = "CallHandler('<%:row["ClientID"] %>');" /> <i class="icon-trash"></i>Delete</li>
-                                                        <li><a href="javascript:ChangeStatus('118','Inactive');"><i class="icon-ban-circle"></i>
+                                                        <li><a onclick ="CallHandler('<%:row["ClientID"] %>');" /> <i class="icon-trash"></i>Delete</li>
+                                                        <li><a onclick="ChangesInStatus('<%:row["ClientID"] %>');"><i class="icon-ban-circle"></i>
                                                             Inactive		                      </a></li>
                                                         <li><a href="javascript:SendLoginDetails('118');"><i class="icon-film"></i>Send Mobile Login Details</a></li>
                                                     </ul>
@@ -203,7 +203,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('https://agent.crick20.com/Deleteclient.ashx', {
+            fetch('http://localhost:54034/Agent/Deleteclient.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -214,6 +214,38 @@
             }).then(function (data) {
                 if (data.status) alert("User with ID: " + data.userDeletedId + " Successfully Deleted.");
                 else alert("User Delete Failed!!!"+"\r\n"+data.error);
+            }).then(function () {
+                location.reload();
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }  
+    </script>
+    <script>
+        function ChangesInStatus(userId) {  
+            var params = {
+                userId: userId
+            };
+
+            var formBody = [];
+            for (var property in params) {
+              var encodedKey = encodeURIComponent(property);
+              var encodedValue = encodeURIComponent(params[property]);
+              formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
+
+            fetch('http://localhost:54034/Agent/ChangeStatus.ashx', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: formBody
+            }).then(function (responce) {
+                return responce.json();
+            }).then(function (data) {
+                if (data.status) alert("Status Updated with ID: " + data.userDeletedId + " Successfully");
+                else alert("User Status Updated Failed!!!"+"\r\n"+data.error);
             }).then(function () {
                 location.reload();
             }).catch(function (err) {

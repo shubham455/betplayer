@@ -16,5 +16,40 @@ namespace betplayer.admin
         {
             apiid.Value = Request.QueryString["MatchID"];
         }
+
+        protected void btnDeclare_ServerClick(object sender, EventArgs e)
+        {
+            string apiID = Request.QueryString["id"];
+           
+            {
+
+            }
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+
+                string SELECT = "Update Matches Set Declare = '"+true+"' Where  apiID = '" + apiID + "'";
+                MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+
+            protected void btnUnDeclare_ServerClick(object sender, EventArgs e)
+            {
+                string apiID = Request.QueryString["id"];
+                string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+                using (MySqlConnection cn = new MySqlConnection(CN))
+                {
+                    cn.Open();
+
+                    string SELECT = "Update Matches Set Declare = '0' Where TeamName = '" + apiID + "'";
+                    MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                    cmd.ExecuteNonQuery();
+
+                }
+
+            }
+        }
     }
-}

@@ -10,7 +10,7 @@
 namespace betplayer.admin {
     
     
-    public partial class Login {
+    public partial class Login1 {
         
         /// <summary>
         /// loginform control.

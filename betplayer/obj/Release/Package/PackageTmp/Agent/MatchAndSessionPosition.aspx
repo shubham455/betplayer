@@ -79,7 +79,7 @@
                                       <td style="text-align:center;vertical-align:middle;line-height:35px;width:140px;"><span class="ButtonK">PLUS</span>/<span class="ButtonL">MINUS</span></td>
                                     </tr>
                                     <tr>
-                                      <td height="35" align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="Team1" id="Team1" value="Sunrisers Hyderabad" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;"></td>
+                                      <td height="35" align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="Team1" id="Team1" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;"></td>
                                       <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="KRate1" id="KRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(1)"></td>
                                       <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><span style="color:">
                                         <input type="button" name="LRate1" id="LRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitL(1)">
@@ -89,7 +89,7 @@
                                     </tr>
                                     <tr>
                                       <td height="35" align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><span>
-                                        <input type="button" name="Team2" id="Team2" value="Delhi Daredevils" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;">
+                                        <input type="button" name="Team2" id="Team2" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;">
                                       </span></td>
                                       <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="KRate2" id="KRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(2)"></td>
                                       <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><span style="color:">
@@ -101,7 +101,7 @@
                                   </tbody></table>
                                 </div>
 		                          <div id="divSessionBhav" style="float:right;padding-top:10px;" width="470">
-		                          <table width="470" class="table table-striped table-hover table-bordered">
+		                          <table style="width:470px" class="table table-striped table-hover table-bordered">
 		                            	<tbody><tr>
                                           <td class="ButtonK" style="text-align:center;vertical-align:middle;line-height:35px;width:150px;">SESSION</td>
                                           <td class="ButtonL" style="text-align:center;vertical-align:middle;line-height:35px;width:80px;">NO RUN</td>

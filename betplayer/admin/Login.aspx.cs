@@ -5,21 +5,21 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using System.Data.SqlClient;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace betplayer.admin
 {
-    public partial class Login : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
+	public partial class Login1 : System.Web.UI.Page
+	{
+		protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
 
-                if (Session["AgentID"] != null)
+                if (Session["AdminID"] != null)
                 {
-                    Session.Remove("AgentID");
+                    Session.Remove("AdminID");
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Logout Successfully.....');", true);
                 }
 
@@ -49,20 +49,20 @@ namespace betplayer.admin
             {
 
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-                using (SqlConnection cn = new SqlConnection(CN))
+                using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string SELECT = "Select * from AgentMaster Where Name = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
-                    SqlCommand cmd = new SqlCommand(SELECT, cn);
-                    SqlDataReader rdr = cmd.ExecuteReader();
+                    string SELECT = "Select * from AdminMaster Where Code = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
+                    MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
                     if (rdr.Read())
                     {
                         rdr.Close();
 
-                        SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
-                        int AdminID = Convert.ToInt16(dt.Rows[0]["AgentID"]);
+                        int AdminID = Convert.ToInt16(dt.Rows[0]["AdminID"]);
 
                         Session["AdminID"] = AdminID;
 

@@ -23,7 +23,7 @@
     <br />
 
     <!---start-wrap---->
-    <div class="wrap">
+    <div class="wrap" style="margin-left :10px;">
         <!---  End Header ----->
 
         <!----- Content ------------->

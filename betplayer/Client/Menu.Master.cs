@@ -14,22 +14,23 @@ namespace betplayer.Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["clientID"] == null)
+            if (Session["ClientID"] == null)
             {
                 Response.Redirect("login.aspx");
             }
             else
             {
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string SELECT = "Select Name From ClientMaster where ClientID = '" + Session["ClientID"] + "'";
-                MySqlCommand cmd = new MySqlCommand(SELECT, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                lbl1.InnerText = dt.Rows[0]["Name"].ToString();
+                using (MySqlConnection cn = new MySqlConnection(CN))
+                {
+                    cn.Open();
+                    string SELECT = "Select Name,Coins From ClientMaster where ClientID = '" + Session["ClientID"] + "'";
+                    MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    lblName.InnerText = dt.Rows[0]["Name"].ToString();
+                    lblAmount.InnerText = dt.Rows[0]["Coins"].ToString();
 
                 }
             }

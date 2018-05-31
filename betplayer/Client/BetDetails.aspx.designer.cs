@@ -13,6 +13,24 @@ namespace betplayer.Client {
     public partial class BetDetails {
         
         /// <summary>
+        /// PositionTeam1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PositionTeam1;
+        
+        /// <summary>
+        /// PositionTeam2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PositionTeam2;
+        
+        /// <summary>
         /// apiID control.
         /// </summary>
         /// <remarks>

@@ -87,26 +87,7 @@ namespace betplayer.Agent
 
             }
         }
-        public string delete(string id)
-        {
-            
-                string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-                using (MySqlConnection cn = new MySqlConnection(CN))
-                {
-                    cn.Open();
-                    string s = "delete from clientmaster  where clientid = '" + id + "'";
-                    MySqlCommand cmd = new MySqlCommand(s, cn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                    dt = new DataTable();
-                    adp.Fill(dt);
-                    BindData();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Added SuccessFully.....');", true);
-                return dt.ToString();
-                
-
-              
-            }
-        }
+        
 
         protected void CheckboxID_CheckedChanged(object sender, EventArgs e)
         {

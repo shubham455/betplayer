@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.SessionState;
-using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 using System.Web.Script.Serialization;
+using System.Data;
+
 
 namespace betplayer.Client
 {
     /// <summary>
-    /// Summary description for AddDataToLedger
+    /// Summary description for AddDataToSession
     /// </summary>
-    public class AddDataToLedger : IHttpHandler, IReadOnlySessionState
+    public class AddDataToSession : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)
@@ -22,7 +22,7 @@ namespace betplayer.Client
             int UserID = Convert.ToInt16(context.Session["ClientID"]);
             if (IsClient(UserID))
             {
-                string Result = AddEntryToLedger(context, UserID);
+                string Result = AddEntryToSession(context, UserID);
                 if (Result == "success")
                     context.Response.Write(new JavaScriptSerializer().Serialize(new
                     {
@@ -61,7 +61,7 @@ namespace betplayer.Client
 
             }
         }
-        private string AddEntryToLedger(HttpContext context, int ClientID)
+        private string AddEntryToSession(HttpContext context, int ClientID)
         {
             string Amount = context.Request["Amount"].ToString();
             string Rate = context.Request["Rate"].ToString();
@@ -69,13 +69,14 @@ namespace betplayer.Client
             string Mode = context.Request["Mode"].ToString();
             string MatchID = context.Request["MatchID"].ToString();
 
+
             try
             {
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string s = "Insert Into Ledger (ClientID, Amount, Rate, Mode, DateTime, MatchID,Team) values (@ClientID,@Amount,@Rate,@Mode,@DateTime,@MatchID,@Team)";
+                    string s = "Insert Into Session (ClientID, Amount, Rate, Mode, DateTime, MatchID,Team) values (@ClientID,@Amount,@Rate,@Mode,@DateTime,@MatchID,@Team)";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     cmd.Parameters.AddWithValue("@ClientID", ClientID);
                     cmd.Parameters.AddWithValue("@Amount", Amount);
@@ -84,29 +85,14 @@ namespace betplayer.Client
                     cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
                     cmd.Parameters.AddWithValue("@MatchID", MatchID);
                     cmd.Parameters.AddWithValue("@Team", Team);
+
                     cmd.ExecuteNonQuery();
-                    BindData(ClientID);
                     return "success";
                 }
             }
             catch (Exception e)
             {
                 return e.Message;
-            }
-
-        }
-        private void BindData(int id)
-        {
-
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s = "Select * From Ledger where ClientID ='" + id + "' ";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
             }
         }
     }

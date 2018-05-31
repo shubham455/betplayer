@@ -13,6 +13,24 @@ namespace betplayer.admin {
     public partial class MatchRates {
         
         /// <summary>
+        /// btnDeclare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnDeclare;
+        
+        /// <summary>
+        /// btnUnDeclare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnUnDeclare;
+        
+        /// <summary>
         /// apiid control.
         /// </summary>
         /// <remarks>

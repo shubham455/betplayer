@@ -28,11 +28,11 @@
                     <td style="vertical-align: bottom" align="left">
                         <div class="profile_picture_name" align="left">
                             <h2><a href="#">
-                                <label id="lbl1" runat="server"></label>
+                                <label id="lblName" runat="server"></label>
                             </a></h2>
                         </div>
                         <div class="profile_picture">
-                            <p align="left"><a href="#">Total Coins : 10000</a></p>
+                            <p align="left"><a href="#">Total Coins :  <label id="lblAmount" runat="server"></label></a></p>
                         </div>
                     </td>
                     <td width="55" align="center" class="FontTextWhite" style="padding: 8px;">

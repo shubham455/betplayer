@@ -11,6 +11,7 @@ firebase.initializeApp(config);
 var matchIdElement = document.getElementById("ContentPlaceHolder_apiid");
 console.log("firebase connecting to match: " + matchIdElement.value.toString());
 var matchKey;
+var timer = setTimeout(function () { }, 0);
 if (matchIdElement !== null) {
     firebase.database().ref('/currentMatches').once("value", // runs on page runder
         function (snapshot) {
@@ -22,26 +23,52 @@ if (matchIdElement !== null) {
                     matchKey = key;
                     document.getElementById('team1_name').text = matches[key]['team_1']['Name'];
                     document.getElementById('team2_name').text = matches[key]['team_2']['Name'];
+                    document.getElementById('team1_name1').text = matches[key]['team_1']['Name'];
+                    document.getElementById('team2_name2').text = matches[key]['team_2']['Name'];
+
                 }
             }
         }).then(() => {
-            document.getElementById('btnteam1update').addEventListener("click", (event) => {
+            document.getElementById('btnteamupdate').addEventListener("click", (event) => {
                 var team = document.getElementById('team_selector').value
-                var Khai = document.getElementById('team1_Khai').value 
-                var Lagai = document.getElementById('team1_Lagai').value
-                console.log(team,Khai, Lagai);
-                firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update({
-                    Runner: {
-                        Khai: Khai,
-                        Lagai: Lagai
-                    }
-                });
+                var KhaiElement = document.getElementById('team_Khai');
+                var LagaiElement = document.getElementById('team_Lagai');
+                var Khai = parseFloat(KhaiElement.value);
+                var Lagai = parseFloat(LagaiElement.value);
+                console.log(Lagai < Khai);
+                if (Lagai < Khai) {
+                    Khai /= 100;
+                    Lagai /= 100;
+                    if (parseInt(KhaiElement.value) % 10 === 0) Khai = Khai.toString().concat("0");
+                    if (parseInt(LagaiElement.value) % 10 === 0) Lagai = Lagai.toString().concat("0");
+
+                    console.log(team, Khai, Lagai);
+                    firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update({
+                        Runner: {
+                            Khai: Khai,
+                            Lagai: Lagai
+                        }
+                    }).then(function () {
+                        document.getElementById('team_Lagai').value = "";
+                        document.getElementById('team_Khai').value = "";
+                        document.getElementById('team_Lagai').focus();
+                        });
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update({
+                            Runner: {
+                                Khai: "0.00",
+                                Lagai: "0.00"
+                            }
+                        })
+                    },10000)
+                } else alert("Lagai is greater than Khai.");
             });
             document.getElementById('btnLock').addEventListener("click", (event) => {
                 var emptysession = {
                     Runner: {
-                        Khai: "0",
-                        Lagai: "0"
+                        Khai: "0.00",
+                        Lagai: "0.00"
                     },
                     Session: {
                         Not: "0",
@@ -77,4 +104,14 @@ function updateScore(event) {
             event: event.srcElement.innerHTML
         });
 
+}
+function lagaiKeyPress(event) {
+    if (event.keyCode === 13) {
+        document.getElementById('team_Khai').focus();
+    }
+}
+function khaiKeyPress(event) {
+    if (event.keyCode === 13) {
+        document.getElementById('btnteamupdate').focus();
+    }
 }

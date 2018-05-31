@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="DeleteClient.ashx.cs" Class="betplayer.DataHandler" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="Deleteclient.ashx.cs" Class="betplayer.Agent.Deleteclient" %>

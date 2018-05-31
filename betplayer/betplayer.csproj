@@ -92,6 +92,7 @@
     <Content Include="admin\EditMatches.aspx" />
     <Content Include="admin\js\LiveMatch.js" />
     <Content Include="admin\js\RunnerUpdate.js" />
+    <Content Include="admin\js\SessionRate.js" />
     <Content Include="admin\js\SessionUpdate.js" />
     <Content Include="admin\ManuallyUpdation.aspx" />
     <Content Include="admin\MatchAndSessionPosition.aspx" />
@@ -100,6 +101,7 @@
     <Content Include="admin\ModifyClient.aspx" />
     <Content Include="admin\ModifyMatches.aspx" />
     <Content Include="admin\ScoreBoard.aspx" />
+    <Content Include="admin\SessionRate.aspx" />
     <Content Include="admin\SuperAgentLedger.aspx" />
     <Content Include="admin\SuperAgentLimitReport.aspx" />
     <Content Include="admin\SuperAgentPlusMinus.aspx" />
@@ -1579,8 +1581,16 @@
     <Content Include="admin\assets\font-awesome\sass\font-awesome.sass" />
     <Content Include="admin\assets\font-awesome\sass\font-awesome.scss" />
     <Content Include="admin\assets\jquery-slimscroll\slimScroll.jquery.json" />
-    <Content Include="Agent\DeleteClient.ashx" />
-    <Content Include="Client\AddDataToLedger.ashx" />
+    <Content Include="Client\AddDataToRunner.ashx" />
+    <Content Include="Agent\Deleteclient.ashx" />
+    <Content Include="Client\AddDataToSession.ashx" />
+    <Content Include="Agent\ChangeStatus.ashx" />
+    <Content Include="admin\Deleteclient.ashx" />
+    <Content Include="admin\DeleteAgent.ashx" />
+    <Content Include="admin\DeleteSuperAgent.ashx" />
+    <Content Include="admin\changeclientstatus.ashx" />
+    <Content Include="admin\changeagentstatus.ashx" />
+    <Content Include="admin\changesuperagentstatus.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <None Include="Web.Debug.config">
@@ -1691,6 +1701,15 @@
     <Compile Include="admin\AgentDetails.aspx.designer.cs">
       <DependentUpon>AgentDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\changeagentstatus.ashx.cs">
+      <DependentUpon>changeagentstatus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\changeclientstatus.ashx.cs">
+      <DependentUpon>changeclientstatus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\changesuperagentstatus.ashx.cs">
+      <DependentUpon>changesuperagentstatus.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\ClientDetails.aspx.cs">
       <DependentUpon>ClientDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1718,6 +1737,15 @@
     </Compile>
     <Compile Include="admin\CreateMatch.aspx.designer.cs">
       <DependentUpon>CreateMatch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\DeleteAgent.ashx.cs">
+      <DependentUpon>DeleteAgent.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Deleteclient.ashx.cs">
+      <DependentUpon>Deleteclient.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\DeleteSuperAgent.ashx.cs">
+      <DependentUpon>DeleteSuperAgent.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\EditMatches.aspx.cs">
       <DependentUpon>EditMatches.aspx</DependentUpon>
@@ -1775,6 +1803,13 @@
     </Compile>
     <Compile Include="admin\ScoreBoard.aspx.designer.cs">
       <DependentUpon>ScoreBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\SessionRate.aspx.cs">
+      <DependentUpon>SessionRate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\SessionRate.aspx.designer.cs">
+      <DependentUpon>SessionRate.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\SuperAgentLedger.aspx.cs">
       <DependentUpon>SuperAgentLedger.aspx</DependentUpon>
@@ -1979,6 +2014,9 @@
     <Compile Include="Agent\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Agent\ChangeStatus.ashx.cs">
+      <DependentUpon>ChangeStatus.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Agent\ClientLimitReport.aspx.cs">
       <DependentUpon>ClientLimitReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2055,6 +2093,9 @@
     </Compile>
     <Compile Include="Agent\DateWiseReport.aspx.designer.cs">
       <DependentUpon>DateWiseReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\Deleteclient.ashx.cs">
+      <DependentUpon>Deleteclient.ashx</DependentUpon>
     </Compile>
     <Compile Include="Agent\Ledger.aspx.cs">
       <DependentUpon>Ledger.aspx</DependentUpon>
@@ -2161,8 +2202,11 @@
     <Compile Include="Agent\ViewSessionReport.aspx.designer.cs">
       <DependentUpon>ViewSessionReport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Client\AddDataToLedger.ashx.cs">
-      <DependentUpon>AddDataToLedger.ashx</DependentUpon>
+    <Compile Include="Client\AddDataToRunner.ashx.cs">
+      <DependentUpon>AddDataToRunner.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\AddDataToSession.ashx.cs">
+      <DependentUpon>AddDataToSession.ashx</DependentUpon>
     </Compile>
     <Compile Include="Client\AllGamesList.aspx.cs">
       <DependentUpon>AllGamesList.aspx</DependentUpon>
@@ -2240,9 +2284,6 @@
     </Compile>
     <Compile Include="Client\Terms_Condition.aspx.designer.cs">
       <DependentUpon>Terms_Condition.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\DeleteClient.ashx.cs">
-      <DependentUpon>DeleteClient.ashx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

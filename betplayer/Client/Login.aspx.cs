@@ -71,10 +71,19 @@ namespace betplayer.Client
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
                         int ClientID = Convert.ToInt16(dt.Rows[0]["ClientID"]);
+                        int coins = Convert.ToInt16(dt.Rows[0]["coins"]);
+                        if(coins > 200)
+                        {
+                            Session["ClientID"] = ClientID;
+                            Session["clientUsername"] = txtusername.Text;
+                            Response.Redirect("~/Client/Terms_Condition.aspx");
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('you Dont Enough Coins... ');", true);
+                        }
 
-                        Session["ClientID"] = ClientID;
-                        Session["clientUsername"] = txtusername.Text;
-                        Response.Redirect("~/Client/Terms_Condition.aspx");
+                       
                     }
                     else
                     {
