@@ -3060,7 +3060,102 @@ ul.faq-list li a:hover, ul.faq-list li a.active{
 /*tab*/
 
 .tabbable-custom .nav-tabs > li > a {
-    border-radius: 0!important;
-    -moz-border-radius: 0!important;
-    -webkit-border-radius: 0!important;
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
 }
+.ButtonK
+
+
+{
+    background-image: url(nav_interface_pref.png);
+    background-repeat: no-repeat;
+    background-position: 3px 3px;
+    background-color: transparent;
+    border: 0px solid;
+    color: #00F;
+    border-color: #696 #363 #363 #696;
+    height: 25px;
+    width: 80px;
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+.ButtonL {
+    background-image: url(nav_interface_pref.png);
+    background-repeat: no-repeat;
+    background-position: 3px 3px;
+    background-color: transparent;
+    border: 0px solid;
+    color: #F00;
+    border-color: #696 #363 #363 #696;
+    height: 25px;
+    width: 80px;
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+.ButtonL_hover {
+    background-image: url(nav_interface_pref.png);
+    background-repeat: no-repeat;
+    background-position: 3px 3px;
+    background-color: transparent;
+    border: 0px solid;
+    color: #000;
+    border-color: #696 #363 #363 #696;
+    height: 25px;
+    width: 80px;
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+.ButtonK_hover {
+    background-image: url(nav_interface_pref.png);
+    background-repeat: no-repeat;
+    background-position: 3px 3px;
+    background-color: transparent;
+    border: 0px solid;
+    color: #000;
+    border-color: #696 #363 #363 #696;
+    height: 25px;
+    width: 80px;
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+.ButtonUserSession {
+    background-image: url(nav_interface_pref.png);
+    background-repeat: no-repeat;
+    background-position: 3px 3px;
+    background-color: transparent;
+    border: 0px solid;
+    color: #00F;
+    border-color: #696 #363 #363 #696;
+    height: 25px;
+    width: 180px;
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ButtonUserSession_hover {
+    background-image: url(nav_interface_pref.png);
+    background-repeat: no-repeat;
+    background-position: 3px 3px;
+    background-color: transparent;
+    border: 0px solid;
+    color: #000;
+    border-color: #696 #363 #363 #696;
+    height: 25px;
+    width: 180px;
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+

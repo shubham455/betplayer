@@ -15,7 +15,7 @@
 		          <li> <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
 		          <li> Sport's Betting<span class="divider">&nbsp;</span> </li>
 		          <li>Match &amp; Session Position<span class="divider">&nbsp;</span></li>
-                  <li><a href="SportDetails.php"> <span style="color:#00F;"> <strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                  <li><a href="SportsDetails.php"> <span style="color:#00F;"> <strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
 	            </ul>
 		        <!-- END PAGE TITLE & BREADCRUMB-->
 	          </div>
@@ -29,7 +29,7 @@
 		          
 		          <div class="widget-body form">
                                     <!-- BEGIN FORM-->
-                    <form name="BetPlayer" id="BetPlayer" method="post" action="AgentDetails.php" autocomplete="off">
+                    
                     
 		            <table width="100%" border="0" cellspacing="0" cellpadding="0">
 		              <tbody><tr>
@@ -50,7 +50,7 @@
                                         <td width="80%" height="70" class="ButtonK" style="text-align:center;">
                                         	<div class="ScoreCard_rtmScore " style="color: #fff;">
                                                         <p>
-                                                             <span id="LocalTeam" style="color:black"></span>
+                                                            <span id="LocalTeam" style="color:black"></span>
                                                             <br>
                                                             <span id="VisitorTeam" style="color:black"></span>
                                                             <br>
@@ -60,7 +60,7 @@
                                                     </div>
                                         </td>
                                         <td width="20%" style="text-align:center;vertical-align:middle;">
-                                        	<span id="LastBall"></span>
+                                        	<span id="LastBall" style="color:black; font-weight:bold;font-size:large" </span>
                                         </td>
                                       </tr>
                                     </tbody></table>
@@ -79,9 +79,9 @@
                                       <td style="text-align:center;vertical-align:middle;line-height:35px;width:140px;"><span class="ButtonK">PLUS</span>/<span class="ButtonL">MINUS</span></td>
                                     </tr>
                                     <tr>
-                                      <td height="35" align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="Team1" id="Team1" value="Sunrisers Hyderabad" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;"></td>
-                                      <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="KRate1" id="KRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(1)"></td>
-                                      <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><span style="color:">
+                                      <td height="35" align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="Team1" id="Team1" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;"></td>
+                                      <td align="center" valign="middle" style="text-align:center;vertical-align:middle;"><input type="button" name="KRate1" id="KRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(1)"></td>
+                                      <td align="center" valign="middle" style="text-align:center;vertical-align:middle;"><span style="color:">
                                         <input type="button" name="LRate1" id="LRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitL(1)">
                                       </span></td>
                                       <td align="center" valign="middle" style="text-align:center;vertical-align:middle;">                                        <span class="ButtonL" id="Team1Amt"></span>
@@ -89,7 +89,7 @@
                                     </tr>
                                     <tr>
                                       <td height="35" align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><span>
-                                        <input type="button" name="Team2" id="Team2" value="Delhi Daredevils" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;">
+                                        <input type="button" name="Team2" id="Team2" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width:120px;">
                                       </span></td>
                                       <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><input type="button" name="KRate2" id="KRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(2)"></td>
                                       <td align="center" valign="middle" style="color:;text-align:center;vertical-align:middle;"><span style="color:">
@@ -101,7 +101,7 @@
                                   </tbody></table>
                                 </div>
 		                          <div id="divSessionBhav" style="float:right;padding-top:10px;" width="470">
-		                          <table width="470" class="table table-striped table-hover table-bordered">
+		                          <table style="width:470px" class="table table-striped table-hover table-bordered">
 		                            	<tbody><tr>
                                           <td class="ButtonK" style="text-align:center;vertical-align:middle;line-height:35px;width:150px;">SESSION</td>
                                           <td class="ButtonL" style="text-align:center;vertical-align:middle;line-height:35px;width:80px;">NO RUN</td>
@@ -112,32 +112,32 @@
 		                            <tr>
 		                              <td height="35" style="text-align:center;vertical-align:middle;">
                                       <input type="button" name="Session1" id="Session1" value="NONE" class="ButtonUserSession" style="width:150px;" onclick="ShowSession(1)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRun1" id="NRun1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(1)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRate1" id="NRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRun1" id="YRun1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(1)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRate1" id="YRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="not1" id="not1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(1)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="notrate1" id="notrate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="yes1" id="yes1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(1)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="yesrate1" id="yesrate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
 	                                </tr>
 		                            <tr>
 		                              <td height="35" style="text-align:center;vertical-align:middle;">
 		                                <input type="button" name="Session2" id="Session2" value="NONE" class="ButtonUserSession" style="width:150px;" onclick="ShowSession(2)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRun2" id="NRun2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(2)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRate2" id="NRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRun2" id="YRun2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(2)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRate2" id="YRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="not2" id="not2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(2)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="notrate2" id="notrate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="yes2" id="yes2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(2)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="yesrate2" id="yesrate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
 		                              </tr>
 		                            <tr>
 		                              <td height="35" style="text-align:center;vertical-align:middle;"><input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width:150px;" onclick="ShowSession(3)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRun3" id="NRun3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(3)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRate3" id="NRate3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRun3" id="YRun3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(3)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRate3" id="YRate3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="not3" id="not3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(3)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="notrate3" id="notrate3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="yes3" id="yes3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(3)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="yesrate3" id="yesrate3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
 		                              </tr>
 		                            <tr>
 		                              <td height="35" style="text-align:center;vertical-align:middle;"><input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width:150px;" onclick="ShowSession(4)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRun4" id="NRun4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(4)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="NRate4" id="NRate4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRun4" id="YRun4" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(4)"></td>
-		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="YRate4" id="YRate4" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="not4" id="not4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(4)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="notrate4" id="notrate4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="yes4" id="yes4" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddSessionBitY(4)"></td>
+		                              <td style="text-align:center;vertical-align:middle;"><input type="button" name="yesrate4" id="yesrate4" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'"></td>
 		                              </tr>
                                   </tbody></table>
                                 
@@ -174,45 +174,8 @@
                       </tr>
                       
                     </tbody></table>
-		            <input name="ID" type="hidden" id="ID" readonly="">
-                     
-                    <input name="NameChk" type="hidden" id="NameChk" value="">
-          <input name="MatchCode" type="hidden" id="MatchCode" value="196">
-          <input name="MatchRate" type="hidden" id="MatchRate">
-          <input name="MatchTeam" type="hidden" id="MatchTeam">
-          <input name="LockManual" type="hidden" id="LockManual" value="No">
-          <input name="SessionYN" type="hidden" id="SessionYN">
-          <input name="SessionName" type="hidden" id="SessionName">
-          <input name="MatchStatus" type="hidden" id="MatchStatus" value="">
-          <input name="MatchLockStatus" type="hidden" id="MatchLockStatus" value="">
-          <input name="SessionLockStatus" type="hidden" id="SessionLockStatus" value="">
-          <input name="AmountTimeChk" type="hidden" id="AmountTimeChk" value="">
-          
-          <input name="SessionRate" type="hidden" id="SessionRate">
-          <input name="MatchBitChk" type="hidden" id="MatchBitChk" value="">
-          <input name="MatchBitChk_Manualy" type="hidden" id="MatchBitChk_Manualy" value="">
-          
-          <input name="SessionBitChk" type="hidden" id="SessionBitChk" value="">
-          <input name="SessionBitChk_Manualy" type="hidden" id="SessionBitChk_Manualy" value="">
-          
-          <input name="ExtraSessionName" type="hidden" id="ExtraSessionName" value="">
-          <input name="ExtraSessionBitChk" type="hidden" id="ExtraSessionBitChk" value="">
-          <input name="ExtraSessionBitChk_Manualy" type="hidden" id="ExtraSessionBitChk_Manualy" value="">
-          
-          <input name="AddSessionChk" type="hidden" id="AddSessionChk" value="">
-          <input name="DeleteChkMultiple" type="hidden" id="DeleteChkMultiple" value="0.00#0.00###########0.00###No#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#NONE#0.00#0.00#0.00#0.00#0.00#0.00########Sunrisers Hyderabad# # #Delhi Daredevils# # # # # #<br><br>MatchBitDateTime1=, MatchBitDateTime1_05=1970-01-01 05:30:00, CurrTime=2018-05-04 13:34:33,MatchLockStatus=Yes<br><br><br>SessionBitDateTime1=, SessionBitDateTime1_05=1970-01-01 05:30:00, CurrTime=2018-05-04 13:34:33<br><br><br>SessionBitDateTime2=, SessionBitDateTime2_05=1970-01-01 05:30:00, CurrTime=2018-05-04 13:34:33<br>, ">
-		  <input name="ClientName" type="hidden" id="ClientName" value="">
-          <input name="SessBitMultiChk" type="hidden" id="SessBitMultiChk" value="1">
-          <input name="MatchBitMultiChk" type="hidden" id="MatchBitMultiChk" value="1">
-          <input name="ClientBitMultiChk" type="hidden" id="ClientBitMultiChk" value="1">
-          
-          <input name="BetType" type="hidden" id="BetType" value="">
-          
-          <input name="SessionRun" type="hidden" id="SessionRun" size="7" onkeypress="return SetFocusSession(event,this.name)">
-          
-          <input name="LastRecord" type="hidden" id="LastRecord" value="0">
-          
-                    </form>
+		           
+
                     <!-- END FORM-->
                     
 	              </div>
@@ -225,5 +188,7 @@
 	      </div>
 		  <!-- END PAGE CONTAINER-->
 	  </div>
-    <asp:HiddenField id="apiID" runat="server"/>
+    <asp:HiddenField ID="apiID" runat="server" />
+      <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="js/LiveMatch.js"></script>
 </asp:Content>

@@ -12,7 +12,7 @@
     </div>
     <div class="profile-details">
         
-        <a  href="BetDetails.aspx?id=<%: row["apiID"] %> ">
+        <a  onclick="Redirect('<%: row["apiID"] %>'); ">
             <table width="100%" border="0" cellspacing="2" cellpadding="2">
                 <tbody>
                     <tr>
@@ -68,6 +68,37 @@
         <div class="clear"></div>
     </div>
    
+     <script>
+        function Redirect(MatchID) {  
+            var params = {
+                MatchID: MatchID
+            };
 
+            var formBody = [];
+            for (var property in params) {
+              var encodedKey = encodeURIComponent(property);
+              var encodedValue = encodeURIComponent(params[property]);
+              formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
+
+            fetch('http://localhost:54034/client/Redirect.ashx', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: formBody
+            }).then(function (responce) {
+                return responce.json();
+                }).then(function (data) {
+                    if (data.status) 
+                else alert("User Delete Failed!!!"+"\r\n"+data.error);
+            }).then(function () {
+                location.reload();
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }  
+    </script>
 
 </asp:Content>

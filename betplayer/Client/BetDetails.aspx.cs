@@ -12,12 +12,13 @@ namespace betplayer.Client
 {
     public partial class BetDetails : System.Web.UI.Page
     {
-        
+
 
         private DataTable dt;
         private DataTable dt1;
         private DataTable dt2;
         private DataTable dt3;
+        private DataTable dt4;
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
         public DataTable MatchesDataTable2 { get { return dt2; } }
@@ -25,13 +26,14 @@ namespace betplayer.Client
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["ClientID"] == null)
+            if (Session["ClientID"] == null)
             {
                 Response.Redirect("Login.aspx");
             }
-            else { 
-            apiID.Value = Request.QueryString["id"];
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            else
+            {
+                apiID.Value = Request.QueryString["id"];
+                string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
@@ -70,10 +72,61 @@ namespace betplayer.Client
                         PositionTeam1.Text = "0.00";
                         PositionTeam2.Text = "0.00";
                     }
+
+                    string result = "SELECT * FROM ViewMatch WHERE ClientID='" + ClientID + "' && MatchID = '" + apiID.Value + "'";
+                    MySqlCommand resultcmd = new MySqlCommand(result, cn);
+                    MySqlDataReader rdr = resultcmd.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        
+                    }
+                    else
+                    {
+                        rdr.Close();
+                        string insert = "Insert Into ViewMatch (MatchID,ClientID) values (@MatchID,@ClientID)";
+                        MySqlCommand insertcmd = new MySqlCommand(insert, cn);
+                        insertcmd.Parameters.AddWithValue("@MatchID", apiID.Value);
+                        insertcmd.Parameters.AddWithValue("@ClientID", ClientID);
+                        insertcmd.ExecuteNonQuery();
+
+                        string checkfordeduction = "Select *  from viewmatch  where ClientID = '" + ClientID + "' and MatchID = '" + apiID.Value + "'";
+                        MySqlCommand cmd4 = new MySqlCommand(checkfordeduction, cn);
+                        MySqlDataAdapter adp4 = new MySqlDataAdapter(cmd4);
+                        dt4 = new DataTable();
+                        adp4.Fill(dt4);
+                        if (dt4.Rows.Count > 0)
+                        {
+                            int Isview = Convert.ToInt16(dt4.Rows[0]["Isview"]);
+                            if (Isview == 0)
+                            {
+                                string coinDeduct = "Select Client_limit From ClientMaster where ClientID = '" + ClientID + "'";
+                                MySqlCommand cmd5 = new MySqlCommand(coinDeduct, cn);
+                                MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
+                                DataTable dt = new DataTable();
+                                adp5.Fill(dt);
+                                int clientlimit = Convert.ToInt32(dt.Rows[0]["Client_Limit"]);
+                                int Deductdlimit = clientlimit - 100;
+
+                                string update = "update clientmaster set client_Limit =@Deductdlimit where clientID = @ClientID";
+                                MySqlCommand cmd6 = new MySqlCommand(update, cn);
+                                cmd6.Parameters.AddWithValue("@Deductdlimit", Deductdlimit);
+                                cmd6.Parameters.AddWithValue("@ClientID", ClientID);
+                                cmd6.ExecuteNonQuery();
+
+                                string update1 = "update viewmatch set Isview = '1' where clientID = '" + ClientID + "' && MatchID = '" + apiID.Value + "'";
+                                MySqlCommand cmd7 = new MySqlCommand(update1, cn);
+                                cmd7.ExecuteNonQuery();
+                            }
+
+                        }
+                        else
+                        {
+                           
+                        }
+                    }
                 }
-                
             }
         }
-        
+
     }
 }

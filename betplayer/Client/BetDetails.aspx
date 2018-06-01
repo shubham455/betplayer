@@ -256,6 +256,7 @@
                 <td align="right" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite10px">Amount</td>
                 <td align="right" bgcolor="#2DA5DA" class="FontTextWhite10px">Runs</td>
                 <td align="center" bgcolor="#2DA5DA" class="FontTextWhite10px">Mode</td>
+                 <td align="center" bgcolor="#2DA5DA" class="FontTextWhite10px">Dec</td>
             </tr>
 
            

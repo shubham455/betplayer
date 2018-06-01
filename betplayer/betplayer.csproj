@@ -926,6 +926,7 @@
     <Content Include="Client\js\Homejs\wow.js" />
     <Content Include="Client\Login.aspx" />
     <Content Include="Client\MainMenu.aspx" />
+    <Content Include="Client\MyLedger.aspx" />
     <Content Include="Client\Terms_Condition.aspx" />
     <Content Include="DB\intialDBSetup.sql" />
     <Content Include="Default.html" />
@@ -1591,6 +1592,7 @@
     <Content Include="admin\changeclientstatus.ashx" />
     <Content Include="admin\changeagentstatus.ashx" />
     <Content Include="admin\changesuperagentstatus.ashx" />
+    <Content Include="Client\Redirect.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <None Include="Web.Debug.config">
@@ -2277,6 +2279,16 @@
     </Compile>
     <Compile Include="Client\Menu.Master.designer.cs">
       <DependentUpon>Menu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Client\MyLedger.aspx.cs">
+      <DependentUpon>MyLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client\MyLedger.aspx.designer.cs">
+      <DependentUpon>MyLedger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\Redirect.ashx.cs">
+      <DependentUpon>Redirect.ashx</DependentUpon>
     </Compile>
     <Compile Include="Client\Terms_Condition.aspx.cs">
       <DependentUpon>Terms_Condition.aspx</DependentUpon>
