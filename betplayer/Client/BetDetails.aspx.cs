@@ -19,10 +19,12 @@ namespace betplayer.Client
         private DataTable dt2;
         private DataTable dt3;
         private DataTable dt4;
+        private DataTable dt5;
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
         public DataTable MatchesDataTable2 { get { return dt2; } }
         public DataTable MatchesDataTable3 { get { return dt3; } }
+        public DataTable MatchesDataTable5 { get { return dt5; } }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,6 +35,7 @@ namespace betplayer.Client
             else
             {
                 apiID.Value = Request.QueryString["id"];
+                int ClientID = Convert.ToInt16(Session["ClientID"]);
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
@@ -56,7 +59,15 @@ namespace betplayer.Client
                     dt2 = new DataTable();
                     adp2.Fill(dt2);
 
-                    string ClientID = Session["ClientID"].ToString();
+                    string Session = "Select *  from Session where ClientID  = @ClientID && MatchID = @MatchID order by DateTime DESC";
+                    MySqlCommand Sessioncmd = new MySqlCommand(Session, cn);
+                    Sessioncmd.Parameters.AddWithValue("@MatchID", apiID.Value);
+                    Sessioncmd.Parameters.AddWithValue("@ClientID", ClientID);
+                    MySqlDataAdapter sessionadp = new MySqlDataAdapter(Sessioncmd);
+                    dt5 = new DataTable();
+                    sessionadp.Fill(dt5);
+
+                    
                     string runner = "Select *  from runner  where ClientID = '" + ClientID + "' and MatchID = '" + apiID.Value + "' order by DateTime DESC";
                     MySqlCommand cmd3 = new MySqlCommand(runner, cn);
                     MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);

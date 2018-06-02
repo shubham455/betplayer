@@ -32,12 +32,15 @@ var matchKey;
             }).then(() => {
                 document.getElementById('btnAdd').addEventListener("click", (event) => {
                     var team = document.getElementById('team_selector').value
+                    var teamName = (document.getElementById('team1_name').value === team) ?
+                        document.getElementById('team1_name').innerHTML :
+                        document.getElementById('team2_name').innerHTML;
                     var Over = document.getElementById('Over').value;
                     console.log(Over);
                     firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString() + '/Session').once("value", function (snapshot) {
                         sessions = snapshot.val();
                         if (sessions === null || Object.keys(sessions).length <= 4)
-                            firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString() + '/Session').child(Over).set({
+                            firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString() + '/Session').child(Over + " " + teamName).set({
                                 "not": "",
                                 "yes": "",
                                 "notRate": "",
@@ -53,6 +56,7 @@ var matchKey;
             });
 
     }
+    
 })()
 
 function focusNextElementOnEnterKeyPress(event) {
@@ -60,7 +64,22 @@ function focusNextElementOnEnterKeyPress(event) {
         var sessionKey = event.srcElement.id.charAt(event.srcElement.id.length - 1);
         var elementType = event.srcElement.id.substring(0, event.srcElement.id.length - 1);
         if (elementType === "not") document.getElementById("yes" + sessionKey).focus();
-        if (elementType === "yes") document.getElementById("yesrate" + sessionKey).focus();
+        if (elementType === "yes" &&
+            parseInt(document.getElementById('not' + sessionKey).value) <
+            parseInt(document.getElementById('yes' + sessionKey).value)) {
+            document.getElementById('notrate' + sessionKey).value = "100";
+            document.getElementById('yesrate' + sessionKey).value = "100";
+            document.getElementById("UpdateButton" + sessionKey).focus();
+        }
+        else if (elementType === "yes" &&
+            document.getElementById('not' + sessionKey).value === document.getElementById('yes' + sessionKey).value) {
+            document.getElementById('notrate' + sessionKey).readOnly = false;
+            document.getElementById('yesrate' + sessionKey).readOnly = false;
+            document.getElementById('notrate' + sessionKey).value = "110";
+            document.getElementById('yesrate' + sessionKey).value = "90";
+            document.getElementById("yesrate" + sessionKey).focus();
+        }
+        else if (elementType === "yes")document.getElementById("yesrate" + sessionKey).focus();
         if (elementType === "yesrate") document.getElementById("notrate" + sessionKey).focus();
         if (elementType === "notrate") document.getElementById("UpdateButton" + sessionKey).focus();
     }
@@ -85,6 +104,7 @@ function updateSessionTable(Team) {
                 if (aCreatedAt > bCreatedAt) return 1;
                 return 0;
             });
+           
             document.getElementById("session_selector").innerHTML = "";
             clearSessionTable();
             for (var i = 1; i <= sessionKeys.length; i++) {
@@ -126,48 +146,34 @@ function sessionTeamChanged() {
 
 function updateSession(sessionId) {
     var sessionKey = document.getElementById('Session' + sessionId).value;
-    var Team = document.getElementById('team_selector').value
-    var not = document.getElementById('not1').value
-    var yes = document.getElementById('yes1').value
-    console.log(not, yes);
-    if (not <= yes) {
-        
-        if (not >= yes)
-        {
-            document.getElementById('notrate').value = '1';
-            document.getElementById('yesrate').value = '1';
-
+    var Team = document.getElementById('team_selector').value;
+    if (sessionKey !== "") {
+        if (parseInt(document.getElementById('not' + sessionId).value) <=
+            parseInt(document.getElementById('yes' + sessionId).value)) {
             firebase.database().ref('/currentMatches/' + matchKey + '/' + Team.toString() + '/Session/' + sessionKey).update({
-                "not": (document.getElementById('not' + sessionId).value),
-                "yes": (document.getElementById('yes' + sessionId).value),
-                "notRate": toCorrectFormat('1'),
-                "yesRate": toCorrectFormat('1'),
-
-
+                "not": document.getElementById('not' + sessionId).value,
+                "yes": document.getElementById('yes' + sessionId).value,
+                "notRate": toCorrectFormat(document.getElementById('notrate' + sessionId).value),
+                "yesRate": toCorrectFormat(document.getElementById('yesrate' + sessionId).value),
             }).then(function () {
-
+                document.getElementById('notrate' + sessionId).readOnly = true;
+                document.getElementById('yesrate' + sessionId).readOnly = true;
                 document.getElementById('not' + sessionId).focus();
             }).catch(function (err) {
                 alert("Session Not Updated.");
             });
-        }
-        
-        firebase.database().ref('/currentMatches/' + matchKey + '/' + Team.toString() + '/Session/' + sessionKey).update({
-            "not": (document.getElementById('not' + sessionId).value),
-            "yes": (document.getElementById('yes' + sessionId).value),
-            "notRate": toCorrectFormat(document.getElementById('notrate' + sessionId).value),
-            "yesRate": toCorrectFormat(document.getElementById('yesrate' + sessionId).value)
-
-        }).then(function () {
-
-            document.getElementById('not' + sessionId).focus();
-        }).catch(function (err) {
-            alert("Session Not Updated.");
-        });
-    } else alert("Yes is greater than Not.");
+        } else alert("Not is greater than Yes.");
+    } else {
+        alert('No session key present.');
+        document.getElementById('not' + sessionId).value = "";
+        document.getElementById('yes' + sessionId).value = "";
+        document.getElementById('notrate' + sessionId).value = "";
+        document.getElementById('yesrate' + sessionId).value = "";
+    }
 }
 
 function toCorrectFormat(value) {
+    if (parseInt(value) === 100) return "1.00";
     var floatValue = parseFloat(value);
     floatValue /= 100;
     floatValue = (parseInt(value) % 10 === 0) ? floatValue.toString().concat('0') : floatValue.toString();
@@ -175,15 +181,18 @@ function toCorrectFormat(value) {
 }
 
 function declareSession() {
+    var matchId = document.getElementById("ContentPlaceHolder_apiid");
     var sessionkey = document.getElementById('session_selector').value;
     var team = document.getElementById('team_selector').value;
+    
     var params = {
         sessionKey: sessionkey,
-        declareValue: document.getElementById('Declear').value
+        declareValue: document.getElementById('Declear').value,
+        team: team,
+        MatchID: matchId.value
+       
     };
-    firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString() + '/Session/' + sessionkey).remove().then(function () {
-        updateSessionTable(team);
-    });
+   
     var formBody = [];
     for (var property in params) {
         var encodedKey = encodeURIComponent(property);
@@ -192,7 +201,7 @@ function declareSession() {
     }
     formBody = formBody.join("&");
 
-    fetch('http://localhost:54034/Client/AddDataToLedger.ashx', {
+    fetch('http://localhost:54034/admin/SessionDeclare.ashx', {
         credentials: 'same-origin',
         method: 'POST',
         headers: {
@@ -204,7 +213,9 @@ function declareSession() {
     }).then(function (data) {
         console.log(data);
         if (data.status) {
-            console.log(betValue, betAmount, team, betType);
+            firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString() + '/Session/' + sessionkey).remove().then(function () {
+                updateSessionTable(team);
+            });
             alert("Declared Successfully");
         }
         else alert("Declare Rejected By server!!!");
@@ -212,5 +223,14 @@ function declareSession() {
 
     }).catch(function (err) {
         console.log(err);
+    });
+}
+function declareSession() {
+   
+    var sessionkey = document.getElementById('session_selector1').value;
+    var team = document.getElementById('team_selector').value;
+
+    firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString() + '/Session/' + sessionkey).remove().then(function () {
+        updateSessionTable(team);
     });
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.SessionState;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 using System.Web.Script.Serialization;
@@ -13,7 +14,7 @@ namespace betplayer.Client
     /// <summary>
     /// Summary description for AddDataToSession
     /// </summary>
-    public class AddDataToSession : IHttpHandler
+    public class AddDataToSession : IHttpHandler, IReadOnlySessionState
     {
 
         public void ProcessRequest(HttpContext context)
@@ -63,8 +64,10 @@ namespace betplayer.Client
         }
         private string AddEntryToSession(HttpContext context, int ClientID)
         {
+            string Session = context.Request["Session"].ToString();
             string Amount = context.Request["Amount"].ToString();
             string Rate = context.Request["Rate"].ToString();
+            string Run = context.Request["Run"].ToString();
             string Team = context.Request["Team"].ToString();
             string Mode = context.Request["Mode"].ToString();
             string MatchID = context.Request["MatchID"].ToString();
@@ -76,10 +79,12 @@ namespace betplayer.Client
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string s = "Insert Into Session (ClientID, Amount, Rate, Mode, DateTime, MatchID,Team) values (@ClientID,@Amount,@Rate,@Mode,@DateTime,@MatchID,@Team)";
+                    string s = "Insert Into Session (ClientID,Session, Amount, Runs,Rate, Mode, DateTime, MatchID,Team) values (@ClientID,@Session,@Amount,@Run,@Rate,@Mode,@DateTime,@MatchID,@Team)";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     cmd.Parameters.AddWithValue("@ClientID", ClientID);
+                    cmd.Parameters.AddWithValue("@Session", Session);
                     cmd.Parameters.AddWithValue("@Amount", Amount);
+                    cmd.Parameters.AddWithValue("@Run", Run);
                     cmd.Parameters.AddWithValue("@Rate", Rate);
                     cmd.Parameters.AddWithValue("@Mode", Mode);
                     cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);

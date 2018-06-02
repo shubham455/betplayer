@@ -36,7 +36,7 @@
                                     <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td>
-                                            <input id="Session1" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
+                                            <input id="Session1" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
                                         <td width="5%" align="left" valign="middle"></td>
                                         <td>
                                             <input id="not1" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Not"></td>
@@ -44,11 +44,11 @@
                                             <input id="yes1" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Yes"></td>
 
                                         <td>
-                                            <input id="yesrate1" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
+                                            <input id="yesrate1" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
                                         <td>
-                                            <input id="notrate1" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
+                                            <input id="notrate1" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
                                         <td>
-                                            <button id="UpdateButton1" onclick="updateSession(1)" type="button"  class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                            <button id="UpdateButton1" onclick="updateSession(1)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td>
-                                            <input id="Session2" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
+                                            <input id="Session2" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
                                         <td width="5%" align="left" valign="middle"></td>
                                         <td>
                                             <input id="not2" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Not"></td>
@@ -69,11 +69,11 @@
                                             <input id="yes2" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Yes"></td>
 
                                         <td>
-                                            <input id="yesrate2" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
+                                            <input id="yesrate2" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
                                         <td>
-                                            <input id="notrate2" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
+                                            <input id="notrate2" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
                                         <td>
-                                            <button id="UpdateButton2" onclick="updateSession(2)" type="button"  class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                            <button id="UpdateButton2" onclick="updateSession(2)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
@@ -85,7 +85,7 @@
                                     <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td>
-                                            <input id="Session3" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
+                                            <input id="Session3" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
                                         <td width="5%" align="left" valign="middle"></td>
                                         <td>
                                             <input id="not3" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Not"></td>
@@ -93,11 +93,11 @@
                                             <input id="yes3" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Yes"></td>
 
                                         <td>
-                                            <input id="yesrate3" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
+                                            <input id="yesrate3" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
                                         <td>
-                                            <input id="notrate3" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
+                                            <input id="notrate3" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
                                         <td>
-                                            <button id="UpdateButton3" onclick="updateSession(3)" type="button"  class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                            <button id="UpdateButton3" onclick="updateSession(3)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
@@ -109,7 +109,7 @@
                                     <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td>
-                                            <input id="Session4" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
+                                            <input id="Session4" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
                                         <td width="5%" align="left" valign="middle"></td>
                                         <td>
                                             <input id="not4" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Not"></td>
@@ -117,11 +117,11 @@
                                             <input id="yes4" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Yes"></td>
 
                                         <td>
-                                            <input id="yesrate4" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
+                                            <input id="yesrate4" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
                                         <td>
-                                            <input id="notrate4" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
+                                            <input id="notrate4" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
                                         <td>
-                                            <button id="UpdateButton4" onclick="updateSession(4)" type="button"  class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                            <button id="UpdateButton4" onclick="updateSession(4)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
@@ -138,18 +138,18 @@
                                     <tr>
                                         <td>
                                             <select name="ctl00$ContentPlaceHolder$DropStatus" id="team_selector" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large" onchange="sessionTeamChanged()">
-                                                <option id="team1_name" style="font-size: large" value="team_1">Team1</option>
-                                                <option id="team2_name" style="font-size: large" value="team_2">Team2</option>
+                                                <option id="team1_name" style="font-size: large" value="team1" >Team1</option>
+                                                <option id="team2_name" style="font-size: large" value="team2" >Team2</option>
                                             </select>
 
                                         </td>
-                                        <td style="margin-left: 30px;"></td>
+                                        <td style="margin-left: 20px;"></td>
                                         <td>
                                             <input id="Over" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
                                         <td>
                                         <td style="margin-left: 30px;"></td>
                                         <td>
-                                            <button id="btnAdd" type="button" class="btn btn-success"  style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Add</button>
+                                            <button id="btnAdd" type="button" class="btn btn-success" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Add</button>
                                         </td>
 
                                         <br />
@@ -166,7 +166,17 @@
                                         <td>
                                             <button id="btnDeclear" type="button" class="btn btn-success" onclick="declareSession()" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Declare</button>
                                         </td>
-
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select name="ctl00$ContentPlaceHolder$DropStatus" id="session_selector1" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large">
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button id="btnDelete" type="button" class="btn btn-success" onclick="deleteSession()" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Declare</button>
+                                  
+                                        </td>
                                     </tr>
                                 </table>
 

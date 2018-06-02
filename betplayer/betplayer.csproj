@@ -682,6 +682,7 @@
     <Content Include="admin\TC.aspx" />
     <Content Include="admin\ViewMatchReport.aspx" />
     <Content Include="admin\ViewSessionReport.aspx" />
+    <Content Include="admin\WebForm1.aspx" />
     <Content Include="Agent\AllClientLedger.aspx" />
     <Content Include="Agent\assets\bootstrap\css\bootstrap-fileupload.css" />
     <Content Include="Agent\assets\bootstrap\css\bootstrap-responsive.css" />
@@ -862,9 +863,10 @@
     <Content Include="Client\css\Home\subscribe-form.css" />
     <Content Include="Client\css\login\clndr.css" />
     <Content Include="Client\css\login\style.css" />
+    <Content Include="Client\fonts\arrows.woff" />
     <Content Include="Client\GenerateCaptcha.aspx" />
     <Content Include="Client\Homepage.aspx" />
-    <Content Include="Client\images\HomeImg\camera-loader.gif" />
+    <Content Include="Client\images\camera-loader.gif" />
     <Content Include="Client\images\HomeImg\logo.png" />
     <Content Include="Client\images\HomeImg\logo_camera.png" />
     <Content Include="Client\images\HomeImg\page-1_img1.png" />
@@ -1593,6 +1595,7 @@
     <Content Include="admin\changeagentstatus.ashx" />
     <Content Include="admin\changesuperagentstatus.ashx" />
     <Content Include="Client\Redirect.ashx" />
+    <Content Include="admin\SessionDeclare.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <None Include="Web.Debug.config">
@@ -1806,6 +1809,9 @@
     <Compile Include="admin\ScoreBoard.aspx.designer.cs">
       <DependentUpon>ScoreBoard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\SessionDeclare.ashx.cs">
+      <DependentUpon>SessionDeclare.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\SessionRate.aspx.cs">
       <DependentUpon>SessionRate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2001,6 +2007,13 @@
     </Compile>
     <Compile Include="admin\ViewSessionReport.aspx.designer.cs">
       <DependentUpon>ViewSessionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Agent\AllClientLedger.aspx.cs">
       <DependentUpon>AllClientLedger.aspx</DependentUpon>
@@ -2535,7 +2548,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Client\css\terms_condition\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

@@ -52,7 +52,7 @@
                                     <div class="camerarelative" style="width: 1349px; height: 782px;"></div>
                                 </div>
                                 <div class="cameraSlide cameraSlide_2 cameranext" style="display: none; z-index: 1;">
-                                    <img src="images/HoemImg/page-1_slide03.jpg?1518241513179" class="imgLoaded" data-alignment="" data-portrait="" width="2050" height="1188" style="visibility: visible; height: 782px; margin-left: -0.205387px; margin-top: 0px; position: absolute; width: 1349.41px;">
+                                    <img src="images/HomeImg/page-1_slide03.jpg?1518241513179" class="imgLoaded" data-alignment="" data-portrait="" width="2050" height="1188" style="visibility: visible; height: 782px; margin-left: -0.205387px; margin-top: 0px; position: absolute; width: 1349.41px;">
                                     <div class="camerarelative" style="width: 1349px; height: 782px;"></div>
                                 </div>
                                 <div class="cameraSlide cameraSlide_3 cameranext" style="z-index: 1; display: none;">
@@ -67,6 +67,7 @@
                                     <div class="camera_caption fadeIn" style="visibility: hidden; opacity: 1;">
                                         <div>
                                             <h2>Cricket civilises people and creates
+                                               
                                                 <br>
                                                 good gentlemen </h2>
 
@@ -77,6 +78,7 @@
                                     <div class="camera_caption fadeIn" style="visibility: visible; opacity: 1;">
                                         <div>
                                             <h2>Cricket is the most wonderful
+                                               
                                                 <br>
                                                 entertainment in the world </h2>
 
@@ -87,6 +89,7 @@
                                     <div class="camera_caption fadeIn" style="visibility: hidden; opacity: 1;">
                                         <div>
                                             <h2>The greatest game that the wit
+                                               
                                                 <br>
                                                 of man has yet devised</h2>
 
@@ -124,16 +127,19 @@
                     <div class="wrap_cnt">
                         <div class="wrap_cnt_ins" style="text-align: justify !important;">
                             <!--<h2>हमारे बारे में !</h2>-->
-                            <h4><a href="#">34 Zone सट्टेबाजी की साइट नहीं है।</a></h4>
+                            <h4><a href="#">crick20 सट्टेबाजी की साइट नहीं है।</a></h4>
                             <br>
                             <strong>असली सट्टेबाजी जिंदगी को बर्बाद कर देती है। आभासी सट्टेबाजी अद्भुत रोमांच देती है। </strong>
                             <br>
                             <br>
-                            34 Zone उपयोगकर्ताओं के लिए आभासी सट्टेबाजी का खेल (INSTANT BETTING SPORTS) है और हमारे आभासी खेल (VIRTUAL  SPORTS) पर शर्त लगाने का एक मुफ्त सामाजिक सट्टेबाजी मंच है।
+                            crick20 उपयोगकर्ताओं के लिए आभासी सट्टेबाजी का खेल (INSTANT BETTING SPORTS) है और हमारे आभासी खेल (VIRTUAL  SPORTS) पर शर्त लगाने का एक मुफ्त सामाजिक सट्टेबाजी मंच है।
+                           
                             <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;34 Zone में हम अपने उपयोगकर्ताओं को सट्टेबाजी, मनोरंजन के रूप में, एक सुरक्षित और कानूनी वातावरण से मुक्त तरीके से प्रदान करना चाहते हैं। खिलाड़ियों को एक आभासी मुद्रा (VIRTUAL CURRENCY) कोइंस  (Coins) दिए जाते है  जिससे वह भाव देख सकते है एवं सौदे कर सकते है । इसमें दिखने वाले भाव भी आभासी होते है।  34 Zone में किये गए किसी भी सौदे का किसी भी तरह से रूपये के रूप में लेन देन नहीं होता है।
+                            &nbsp;&nbsp;&nbsp;&nbsp;crick20 में हम अपने उपयोगकर्ताओं को सट्टेबाजी, मनोरंजन के रूप में, एक सुरक्षित और कानूनी वातावरण से मुक्त तरीके से प्रदान करना चाहते हैं। खिलाड़ियों को एक आभासी मुद्रा (VIRTUAL CURRENCY) कोइंस  (Coins) दिए जाते है  जिससे वह भाव देख सकते है एवं सौदे कर सकते है । इसमें दिखने वाले भाव भी आभासी होते है।  crick20 में किये गए किसी भी सौदे का किसी भी तरह से रूपये के रूप में लेन देन नहीं होता है।
+                           
                             <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;34 Zone केवल एक  मुफ्त, मनोरंजन साइट है जहां केवल आभासी मुद्राओं (Coins) का उपयोग किया जाता है।  34 Zone में आप ना तो रूपये जमा कर सकते हे और ना ही निकाल सकते हे।
+                            &nbsp;&nbsp;&nbsp;&nbsp;crick20 केवल एक  मुफ्त, मनोरंजन साइट है जहां केवल आभासी मुद्राओं (Coins) का उपयोग किया जाता है।  crick20 में आप ना तो रूपये जमा कर सकते हे और ना ही निकाल सकते हे।
+                           
                             <br>
                             &nbsp;&nbsp;&nbsp;&nbsp;एक पूरी तरह से नए स्तर पर अपने पसंदीदा खेल की आभासी सट्टेबाजी करे। कैसे खेले जानने के लिए <a href="HowToPlay.html">यहाँ क्लिक करे। </a>
                             <p></p>
@@ -166,7 +172,7 @@
                 <div class="parallax_image" style="background-image: url(&quot;images/HomeImg/parallax1.png&quot;); background-color: inherit; height: 500px; transform: translate3d(0px, -629.5px, 0px);"></div>
                 <div class="parallax_cnt">
 
-                    <section class="parallax parallax__skins1" data-url="images/page-1_img1.png" data-mobile="true">
+                    <section class="parallax parallax__skins1" data-url="images/HomeImg/page-1_img1.png" data-mobile="true">
                         <div class="parallax_image" style="background-image: url(&quot;images/HomeImg/page-1_img1.png&quot;); background-color: inherit; height: 500px; transform: translate3d(0px, -32.5px, 0px);"></div>
                         <div class="parallax_cnt">
                         </div>
@@ -334,8 +340,8 @@
                     </div>
                 </div>
             </section>
-            <section class="parallax well2 center" data-url="images/parallax2.png" data-mobile="true">
-                <div class="parallax_image" style="background-image: url(&quot;images/parallax2.png&quot;); background-color: inherit; height: 789.8px; transform: translate3d(0px, -37.8591px, 0px);"></div>
+            <section class="parallax well2 center" data-url="images/HomeImg/parallax2.png" data-mobile="true">
+                <div class="parallax_image" style="background-image: url(&quot;images/HomeImg/parallax2.png&quot;); background-color: inherit; height: 789.8px; transform: translate3d(0px, -37.8591px, 0px);"></div>
                 <div class="parallax_cnt">
                     <div class="container">
 
@@ -344,7 +350,7 @@
 
 
 
-                            <div class="owl-stage-outer">
+                            
                                 <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 900px;">
                                     <div class="owl-item active" style="width: 270px; margin-right: 30px;">
                                         <div class="item">
@@ -363,55 +369,40 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="owl-controls">
-                                <div class="owl-nav">
-                                    <div class="owl-prev fa fa-angle-left" style=""></div>
-                                    <div class="owl-next fa fa-angle-right" style=""></div>
-                                </div>
-                                <div class="owl-dots" style="display: none;"></div>
-                            </div>
+
                         </div>
                     </div>
-                </div>
-            </section>
+               
+    </section>
 
-            <hr>
-        </main>
+           
 
-        <!--========================================================
+    <hr>
+    </main>
+
+       
+
+    <!--========================================================
                               FOOTER
     =========================================================-->
-        <footer class="center">
-            <div class="container">
+    <footer class="center">
+        <div class="container">
 
-                <div class="copyright">
-                    <strong>इस वेबसाइट पर स्वयं के विवेक से जुड़े या खेले। वेबसाइट बनाने वाली कंपनी की किसी भी तरह से कोई जिम्मेदारी नहीं होगी और ना ही किसी भी तरह की जवाबदेही रहेगी।</strong>
-                </div>
-
-                <div class="copyright">
-                    Copy Right © 34 Zone <span id="copyright-year">2018</span> •
-                
-                </div>
+            <div class="copyright">
+                <strong>इस वेबसाइट पर स्वयं के विवेक से जुड़े या खेले। वेबसाइट बनाने वाली कंपनी की किसी भी तरह से कोई जिम्मेदारी नहीं होगी और ना ही किसी भी तरह की जवाबदेही रहेगी।</strong>
             </div>
-        </footer>
-    </div>
 
-    <script src="js/Homejs/script.js"></script>
-    <script src="js/Homejs/jquery.cookie.js"></script>
-    <script src="js/Homejs/jquery.easing.1.3.js"></script>
-    <script src="js/Homejs/tmstickup.js"></script>
-    <script src="js/Homejs/jquery.ui.totop.js"></script>
-    <script src="js/Homejs/jquery.mousewheel.min.js"></script>
-    <script src="js/Homejs/Homejss1/jquery.simplr.smoothscroll.min.js"></script>
-    <script src="js/Homejs/superfish.js"></script>
-    <script src="js/Homejs/jquery.rd-navbar.js"></script>
-    <script src="js/Homejs/wow.js"></script>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
-    <script src="js/Homejs/jquery.mobile.customized.min.js"></script>
-    <script src="js/Homejs/camera.js"></script>
-    <script src="js/Homejs/owl.carousel.min.js"></script>
-    <script src="js/Homejs/jquery.rd-parallax.js"></script>
+            <div class="copyright">
+                Copy Right © crick20 <span id="copyright-year">2018</span> •
+                
+               
+            </div>
+        </div>
+    </footer>
+    
+   
+   
 
-    <a href="#" id="toTop" class="toTop" style="display: inline;"></a>
+   
 </body>
 </html>

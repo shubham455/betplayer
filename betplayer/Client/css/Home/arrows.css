@@ -9,9 +9,9 @@
 	font-family: "arrows";
 	src: url("../fonts/arrows.eot");
 	src: url("../fonts/arrows.eot#iefix") format("embedded-opentype"),
-	url("../fonts/arrows.woff") format("woff"),
-	url("../fonts/arrows.ttf") format("truetype"),
-	url("../fonts/arrows.svg") format("svg");
+	url("fonts/arrows.woff") format("woff"),
+	url("fonts/arrows.ttf") format("truetype"),
+	url("fonts/arrows.svg") format("svg");
 	font-weight: normal;
 	font-style: normal;
 }

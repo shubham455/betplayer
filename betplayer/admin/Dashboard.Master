@@ -36,7 +36,7 @@
             <div class="container-fluid">
                 <!-- BEGIN LOGO -->
                 <a class="brand">
-                    <img src="../admin/img/logo.png" alt="Admin Lab">
+                    <img src="../admin/img/logo.png" alt="crick20">
                 </a>
                 <!-- END LOGO -->
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -174,7 +174,7 @@
     </form>
 
     <div id="footer">
-        2013 © Admin Lab Dashboard.
+        2018 © crick20 Dashboard.
 	
         <div class="span pull-right">
             <span class="go-top"><i class="icon-arrow-up"></i></span>
