@@ -7,45 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace betplayer.admin {
+namespace betplayer.Agent {
     
     
-    public partial class MatchRates {
+    public partial class MatchAndSessionSPosition {
         
         /// <summary>
-        /// team_selector1 control.
+        /// Session1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect team_selector1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton Session1;
         
         /// <summary>
-        /// btnDeclare control.
+        /// Session2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnDeclare;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton Session2;
         
         /// <summary>
-        /// btnUnDeclare control.
+        /// Session3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnUnDeclare;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton Session3;
         
         /// <summary>
-        /// apiid control.
+        /// Session4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField apiid;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton Session4;
+        
+        /// <summary>
+        /// apiID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField apiID;
     }
 }

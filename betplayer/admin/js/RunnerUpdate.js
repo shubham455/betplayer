@@ -45,8 +45,8 @@ if (matchIdElement !== null) {
                     console.log(team, Khai, Lagai);
                     firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update({
                         Runner: {
-                            Khai: Khai,
-                            Lagai: Lagai
+                            Khai: Khai.toString(),
+                            Lagai: Lagai.toString()
                         }
                     }).then(function () {
                         document.getElementById('team_Lagai').value = "";

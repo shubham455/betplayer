@@ -66,11 +66,11 @@ if (matchIdElement !== null) {
                     document.getElementById('KRate2').value = runner.Khai;
                     document.getElementById('LRate2').value = runner.Lagai;
                 });
-            firebase.database().ref('/currentMatches/' + matchKey + "/team_2/Session").on("value", // runs on change
+            firebase.database().ref('/currentMatches/' + matchKey + "/team1/Session").on("value", // runs on change
                 function (snapshot) {
                     updateSessionTable(snapshot.val());
                 });
-            firebase.database().ref('/currentMatches/' + matchKey + "/team_1/Session").on("value", // runs on change
+            firebase.database().ref('/currentMatches/' + matchKey + "/team2/Session").on("value", // runs on change
                 function (snapshot) {
                     updateSessionTable(snapshot.val());
                 });
@@ -78,7 +78,7 @@ if (matchIdElement !== null) {
 
 }
 var timmerRunning = false, doneClicked = false, timer;
-var team, runnerSession, betType, betValue, betAmount;
+var team, runnerSession, betType, betValue, betRate, betAmount,Session;
 var seconds = 10;
 function enableBetting(event, teamValue, runnerSessionValue, betTypeValue) {
     if (event.srcElement.value === "0.00") {
@@ -87,6 +87,12 @@ function enableBetting(event, teamValue, runnerSessionValue, betTypeValue) {
         seconds = 10;
         team = teamValue; runnerSession = runnerSessionValue; betType = betTypeValue;
         betValue = event.srcElement.value;
+        var elementId = event.srcElement.id;
+        if (runnerSessionValue === "Session") {
+            betRate = document.getElementById(elementId.substring(0, event.srcElement.id.length - 1)
+                + 'rate' + elementId.charAt(event.srcElement.id.length - 1)).value;
+            Session = document.getElementById('Session' + elementId.charAt(event.srcElement.id.length - 1)).value;
+        }
         document.getElementById('matchAmount').disabled = false;
         document.getElementById('timerLabel').innerHTML = seconds;
         document.getElementById('timerLabel').style.visibility = "visible";
@@ -193,6 +199,7 @@ function doneClick() {
                                 if (data.status) {
                                     console.log(betValue, betAmount, team, betType);
                                     alert("Bet Made Successfully");
+                                    location.reload();
                                 }
                                 else alert("Bet Rejected!!!");
                             }).then(function () {
@@ -215,27 +222,25 @@ function doneClick() {
                         var match = snapshot.val();
                         console.log(betValue);
                         betAmount = parseInt(document.getElementById('matchAmount').value);
-                        if (betValue !== match[team][runnerSession][betType]) {
-                            alert('Bet Not Accepted Because Rate Not Found');
-                            clearTimer();
-                        } else if (2000 >= betAmount || betAmount >= 100000) {
-                            alert("The Amount Should not be less than 2000 or greater than 1 Lakh.");
+                        if (500 >= betAmount || betAmount >= 100000) {
+                            alert("The Amount Should not be less than 500 or greater than 1 Lakh.");
                             clearTimer();
                         }
                         else {
                             console.log(snapshot.val());
                             updatePosition(betValue, betAmount, team, betType);
                             var TeamName = match[team]['Name'];
-                            if (betType === 'Khai') { Mode = "K" }
-                            else if (betType === 'Lagai') { Mode = "L" }
+                            if (betType === 'Not') { Mode = "N" }
+                            else if (betType === 'Yes') { Mode = "Y" }
                             var params = {
+                                Session: Session,
                                 Amount: betAmount,
-                                Rate: betValue,
+                                Run: betValue,
+                                Rate: betRate,
                                 Mode: Mode,
                                 Team: TeamName,
                                 MatchID: matchIdElement.value,
-                                Team1Position: document.getElementById('ContentPlaceHolder1_PositionTeam1').innerHTML,
-                                Team2Position: document.getElementById('ContentPlaceHolder1_PositionTeam2').innerHTML,
+                                
                             };
                             var formBody = [];
                             for (var property in params) {
@@ -245,7 +250,7 @@ function doneClick() {
                             }
                             formBody = formBody.join("&");
 
-                            fetch('https://www.crick20.com/AddDataToRunner.ashx', {
+                            fetch('https://www.crick20.com/AddDataToSession.ashx', {
                                 credentials: 'same-origin',
                                 method: 'POST',
                                 headers: {
@@ -259,6 +264,7 @@ function doneClick() {
                                 if (data.status) {
                                     console.log(betValue, betAmount, team, betType);
                                     alert("Bet Made Successfully");
+                                    location.reload();
                                 }
                                 else alert("Bet Rejected!!!");
                             }).then(function () {

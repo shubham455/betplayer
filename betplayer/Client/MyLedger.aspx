@@ -34,14 +34,15 @@
                                                 <td width="20%" align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle; text-align: right;">CREDIT</td>
                                                 <td width="20%" align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle; text-align: right;">BALANCE</td>
                                             </tr>
-
+                                            <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
+                                                { %>
                                             <tr>
-                                                <td height="35" align="left" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: left; padding-right: 5px;">TOTAL</td>
-                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;">0</td>
-                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;">0</td>
-                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;">0</td>
+                                                <td height="35" align="left" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: left; padding-right: 5px;"><%: row["TeamA"] %> VS <%: row["TeamB"] %>( <%: row["DateTime"] %>) </td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"><%: row["Dabit"] %></td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"><%: row["credit"] %></td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"><%: row["Amount"] %></td>
                                             </tr>
-
+                                            <% } //foreach %>
                                         </tbody>
                                     </table>
 

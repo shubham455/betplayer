@@ -16,6 +16,7 @@ namespace betplayer.Client
     {
 
         private DataTable dt;
+        
         public DataTable MatchesDataTable { get { return dt; } }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -47,6 +48,11 @@ namespace betplayer.Client
                 {
 
                 }
+
+                string s1 = "select count(clientID) From runner where MatchID = '1136620' && ClientID = '5' ";
+                MySqlCommand cmd1 = new MySqlCommand(s1, cn);
+                string count = cmd1.ExecuteScalar().ToString();
+                lblmatch.Text = count;
 
             }
         }
@@ -86,22 +92,23 @@ namespace betplayer.Client
             }
             return "";
         }
-        public int redirect(int apiID)
+        public int redirect(string apiID)
         {
-            int status;
+            int status = 0;
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From Matches where apiID = '" + apiID + "'";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                dt = new DataTable();
-                adp.Fill(dt);
-                status = Convert.ToInt16(dt.Rows[0]["Status"].ToString());
+                string s2 = "Select * From Matches where apiID = '" + apiID + "'";
+                MySqlCommand cmd2 = new MySqlCommand(s2, cn);
+                MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
+                DataTable dt2 = new DataTable();
+                adp2.Fill(dt2);
+                
                 
                 if (dt.Rows.Count < 0)
                 {
+                    status = Convert.ToInt16(dt2.Rows[0]["Status"].ToString());
                     if (status == 11)
                     {
                         Response.Redirect("BetDetails_Declare.aspx?apiID");

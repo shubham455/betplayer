@@ -92,7 +92,6 @@
     <Content Include="admin\EditMatches.aspx" />
     <Content Include="admin\js\LiveMatch.js" />
     <Content Include="admin\js\RunnerUpdate.js" />
-    <Content Include="admin\js\SessionRate.js" />
     <Content Include="admin\js\SessionUpdate.js" />
     <Content Include="admin\ManuallyUpdation.aspx" />
     <Content Include="admin\MatchAndSessionPosition.aspx" />
@@ -836,6 +835,7 @@
     <Content Include="Agent\Login.aspx" />
     <Content Include="Agent\MasterDetails.aspx" />
     <Content Include="Agent\MatchAndSessionPosition.aspx" />
+    <Content Include="Agent\MatchAndSessionSPosition.aspx" />
     <Content Include="Agent\MatchPlusMinusSelect.aspx" />
     <Content Include="Agent\MatchSessionPlusMinusSelect.aspx" />
     <Content Include="Agent\ModifyClient.aspx" />
@@ -1594,7 +1594,6 @@
     <Content Include="admin\changeclientstatus.ashx" />
     <Content Include="admin\changeagentstatus.ashx" />
     <Content Include="admin\changesuperagentstatus.ashx" />
-    <Content Include="Client\Redirect.ashx" />
     <Content Include="admin\SessionDeclare.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
@@ -2133,6 +2132,13 @@
     <Compile Include="Agent\MatchAndSessionPosition.aspx.designer.cs">
       <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Agent\MatchAndSessionSPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\MatchAndSessionSPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Agent\MatchPlusMinusSelect.aspx.cs">
       <DependentUpon>MatchPlusMinusSelect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2300,9 +2306,7 @@
     <Compile Include="Client\MyLedger.aspx.designer.cs">
       <DependentUpon>MyLedger.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Client\Redirect.ashx.cs">
-      <DependentUpon>Redirect.ashx</DependentUpon>
-    </Compile>
+    <Compile Include="Client\Redirect.cs" />
     <Compile Include="Client\Terms_Condition.aspx.cs">
       <DependentUpon>Terms_Condition.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

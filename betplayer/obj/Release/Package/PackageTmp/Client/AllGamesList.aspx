@@ -12,7 +12,7 @@
     </div>
     <div class="profile-details">
         
-        <a  onclick="Redirect('<%: row["apiID"] %>'); ">
+        <a href="javascript:RedirectPage(<%: row["apiID"] %>);"  onclick="Redirect('<%: row["apiID"] %>');event.preventDefault();">
             <table width="100%" border="0" cellspacing="2" cellpadding="2">
                 <tbody>
                     <tr>
@@ -33,10 +33,10 @@
                                         <td class="GameList" align="center"><%: row["DateTime"] %> </td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Match Bets : 0</td>
+                                        <td class="GameList" align="center">Match Bets : <asp:Label ID="lblmatch" runat="server" Text="0"></asp:Label></td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Session Bets : 0</td>
+                                        <td class="GameList" align="center">Session Bets : <asp:Label ID="lblSession" runat="server" Text="0"/></td>
                                     </tr>
                                     <tr>
                                         <td class="GameList" align="center">Declared :Yes</td>
@@ -68,37 +68,14 @@
         <div class="clear"></div>
     </div>
    
-     <script>
-        function Redirect(MatchID) {  
-            var params = {
-                MatchID: MatchID
-            };
+     
 
-            var formBody = [];
-            for (var property in params) {
-              var encodedKey = encodeURIComponent(property);
-              var encodedValue = encodeURIComponent(params[property]);
-              formBody.push(encodedKey + "=" + encodedValue);
-            }
-            formBody = formBody.join("&");
-
-            fetch('http://localhost:54034/client/Redirect.ashx', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-                },
-                body: formBody
-            }).then(function (responce) {
-                return responce.json();
-                }).then(function (data) {
-                    if (data.status) 
-                else alert("User Delete Failed!!!"+"\r\n"+data.error);
-            }).then(function () {
-                location.reload();
-            }).catch(function (err) {
-                console.log(err);
-            });
-        }  
-    </script>
+      <script lang="javascript">
+          function RedirectPage(MatchID)
+          {
+                ID = MatchID;
+               <%redirect(ID);%>;
+          }
+          </script>
 
 </asp:Content>

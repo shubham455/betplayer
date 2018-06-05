@@ -122,7 +122,7 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <select name="ctl00$ContentPlaceHolder$DropStatus" id="team_selector1" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large">
+                                            <select name="ctl00$ContentPlaceHolder$DropStatus" runat="server" id="team_selector1" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large">
                                                 <option id="team1_name1" style="font-size: large" value="team_1">Team1</option>
                                                 <option id="team2_name2" style="font-size: large" value="team_2">Team2</option>
                                             </select>

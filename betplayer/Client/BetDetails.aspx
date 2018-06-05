@@ -98,9 +98,10 @@
                                     <table width="99%" border="0" cellspacing="0" cellpadding="0">
                                         <tbody>
                                             <tr bgcolor="#CCFFFF" height="35px;">
-                                                <td class="FontTextWhite">&nbsp;<span style="color: #00F">Session Plus</span>/<span style="color: #F00">Minus</span></td>
+                                                <td class="FontTextWhite">&nbsp;<span style="color: #00F"></span>/<span style="color: #F00"></span></td>
                                                 <td width="100" style="font-size: 14px; font-family: Verdana, Geneva, sans-serif; font-weight: bold;">
-                                                    <span style="color: #00F">0</span>                 </td>
+                                                    <td class="FontTextWhite">&nbsp;<span style="color: #00F;margin-left:1000px;margin-right:50px">Session Position</span>
+                                                    <span style="color: #00F"><asp:Label ID ="lblAmount" runat="server" Font-Size="13pt" Font-Bold="true" ></asp:Label></span>                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -280,4 +281,5 @@
     <asp:HiddenField ID="apiID" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/Homejs/LiveMatch.js"></script>
+    
 </asp:Content>

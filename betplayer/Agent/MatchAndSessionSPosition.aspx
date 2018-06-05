@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Agent/DashBoard.Master" AutoEventWireup="true" CodeBehind="MatchAndSessionPosition.aspx.cs" Inherits="betplayer.Agent.Match_SessionPosition" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Agent/DashBoard.Master" AutoEventWireup="true" CodeBehind="MatchAndSessionSPosition.aspx.cs" Inherits="betplayer.Agent.MatchAndSessionSPosition" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
@@ -78,7 +78,7 @@
                                                                         <td valign="top">
 
                                                                             <div id="divMatchBhav" style="float: left; padding-top: 10px;" width="400">
-                                                                                <table style="width:500px;" class="table table-striped table-hover table-bordered">
+                                                                                <table style="width: 500px;" class="table table-striped table-hover table-bordered">
                                                                                     <tbody>
                                                                                         <tr>
                                                                                             <td class="ButtonK" style="text-align: center; vertical-align: middle; line-height: 35px; width: 120px;">TEAM</td>
@@ -124,7 +124,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session1" id="Session1" value="NONE" class="ButtonUserSession" style="width: 150px;" runat="server" onserverclick="Session1_ServerClick"></td>
+                                                                                                <input type="button" name="Session1" id="Session1" value="NONE" class="ButtonUserSession" style="width: 150px;" runat="server" onserverclick="Session4_ServerClick"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not1" id="not1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(1)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -136,7 +136,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session2" id="Session2" value="NONE" class="ButtonUserSession" style="width: 150px;"  runat="server" onserverclick="Session1_ServerClick"></td>
+                                                                                                <input type="button" name="Session2" id="Session2" value="NONE" class="ButtonUserSession" style="width: 150px;" runat="server" onserverclick="Session4_ServerClick"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not2" id="not2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(2)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -148,7 +148,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width: 150px;" runat="server" onserverclick="Session1_ServerClick"></td>
+                                                                                                <input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width: 150px;" runat="server" onserverclick="Session4_ServerClick"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not3" id="not3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(3)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -160,7 +160,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width: 150px;" runat="server" onserverclick="Session1_ServerClick"></td>
+                                                                                                <input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width: 150px;" runat="server" onserverclick="Session4_ServerClick"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not4" id="not4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(4)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -193,41 +193,60 @@
                             <div class="alert alert-error" id="Error" style="visibility: hidden; font-weight: bold;">
                             </div>
 
-                            <table width="100%" class="table table-striped table-hover table-bordered" id="MatchBet">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tbody>
                                     <tr>
-                                        <td align="left" class="TableHeading">&nbsp;</td>
-                                        <td height="25" align="left" class="TableHeading"><strong>Sr.</strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong>Rate</strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong>Amount</strong></td>
-                                        <td align="left" class="TableHeading"><strong>Mode</strong></td>
-                                        <td align="left" class="TableHeading"><strong>Team </strong></td>
-                                        <td align="left" class="TableHeading"><strong>Client</strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong>Sunrisers Hyderabad                        </strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong>Delhi Daredevils                        </strong></td>
-                                        <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
-                                    </tr>
-                                    <% foreach (System.Data.DataRow row in MatchesDataTable1.Rows)
+                                        <td valign="top">
+                                            <table width="100%" class="table table-striped table-hover table-bordered" id="SessionBet">
+                                                <tbody>
+                                                    <tr>
+                                                        <td align="left" class="TableHeading">&nbsp;</td>
+                                                        <td height="25" align="left" class="TableHeading"><strong>Sr.</strong></td>
+                                                        <td align="left" class="TableHeading"><strong>Session </strong></td>
+                                                        <td align="left" class="TableHeading"><strong>Client</strong></td>
+                                                        <td align="right" class="TableHeading" style="text-align: right;"><strong>Rate</strong></td>
+                                                        <td align="right" class="TableHeading" style="text-align: right;"><strong>Amount</strong></td>
+                                                        <td align="right" class="TableHeading" style="text-align: right;"><strong>Runs</strong></td>
+                                                        <td align="center" class="TableHeading"><strong>Mode</strong></td>
+                                                        <td align="right" class="TableHeading" style="text-align: right;"><strong>No</strong></td>
+                                                        <td align="right" class="TableHeading" style="text-align: right;"><strong>Yes</strong></td>
+                                                        
+                                                        <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
+                                                    </tr>
+                                                      <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                         { %>
-                                    <tr>
-                                        <td align="left" class="TableHeading">&nbsp;</td>
-                                        <td height="25" align="left" class="TableHeading"><strong>Sr.</strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong><%: row["rate"] %></strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong><%: row["Amount"] %></strong></td>
-                                        <td align="left" class="TableHeading"><strong><%: row["Mode"] %></strong></td>
-                                        <td align="left" class="TableHeading"><strong><%: row["Team"] %> </strong></td>
-                                        <td align="left" class="TableHeading"><strong><%: row["ClientID"] %>  <%: row["Name"] %></strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong><%: row["Position1"] %>                        </strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong><%: row["Position2"] %>                        </strong></td>
-                                        <td align="left" class="TableHeading"><strong><%: row["Datetime"] %></strong></td>
+                                                     <tr>
+                                                        <td align="left" class="TableHeading">&nbsp;</td>
+                                                        <td height="25" align="left" class="TableHeading"><strong><%: row["SessionID"] %></strong></td>
+                                                        <td align="left" class="TableHeading"><strong><%: row["Session"] %> </strong></td>
+                                                        <td align="left" class="TableHeading"><strong><%: row["ClientID"] %> <%: row["Name"] %></strong></td>
+                                                        <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["rate"] %></strong></td>
+                                                        <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["Amount"] %></strong></td>
+                                                        <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["Runs"] %></strong></td>
+                                                        <td align="center" class="TableHeading"><strong><%: row["Mode"] %></strong></td>
+                                                        <td align="right" class="TableHeading" style="text-align: right;"><strong>No</strong></td>
+                                                        <td align="right" class="TableHeading" style="text-align: right;"><strong>Yes</strong></td>
+                                                        
+                                                        <td align="left" class="TableHeading"><strong><%: row["DateTime"] %></strong></td>
+                                                    </tr>
+                                                     <% } //foreach %>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td width="10" valign="top">&nbsp;</td>
+                                        <td width="10%" valign="top">
+                                            <table width="150" border="0" cellpadding="0" cellspacing="2" class="table table-striped table-hover table-bordered" id="SessionRun">
+                                                <thead>
+                                                    <tr>
+                                                        <td width="50" height="25" align="right" style="text-align: right;"><strong>RUNS</strong></td>
+                                                        <td width="100" align="right" style="text-align: right;"><strong>AMOUNT</strong></td>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </td>
                                     </tr>
-                                    <% } //foreach %>
                                 </tbody>
                             </table>
-
-
-                            <!-- END FORM-->
-
                         </div>
                     </div>
                     <!-- END EXAMPLE TABLE widget-->

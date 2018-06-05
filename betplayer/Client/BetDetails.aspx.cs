@@ -67,6 +67,37 @@ namespace betplayer.Client
                     dt5 = new DataTable();
                     sessionadp.Fill(dt5);
 
+                    string Amount = "Select TotalAmount from SessionCalculation where ClientID = '" + ClientID + "' && MatchID = '"+apiID.Value+"'";
+                    MySqlCommand Amountcmd = new MySqlCommand(Amount, cn);
+                    MySqlDataAdapter Amountadp = new MySqlDataAdapter(Amountcmd);
+                    DataTable Amountdt = new DataTable();
+                    Amountadp.Fill(Amountdt);
+                    if(Amountdt.Rows.Count > 0)
+                    {
+                        int TotalAmount = 0;
+                        int TotalAmount1 =0;
+
+                        for(int i =0; i < Amountdt.Rows.Count; i++)
+                        {
+                            TotalAmount = Convert.ToInt32(Amountdt.Rows[i]["TotalAmount"]);
+                            TotalAmount1 = TotalAmount1 + TotalAmount;
+                        }TotalAmount = 0;
+
+                        
+                        
+                        lblAmount.Text = TotalAmount1.ToString();
+                        if(Convert.ToInt32(lblAmount.Text) >0)
+                        {
+                            lblAmount.ForeColor = System.Drawing.Color.Pink;
+                        }
+                        else if (Convert.ToInt32(lblAmount.Text) < 0)
+                        {
+                            lblAmount.ForeColor = System.Drawing.Color.Red;
+                        }
+
+                    }
+
+
                     
                     string runner = "Select *  from runner  where ClientID = '" + ClientID + "' and MatchID = '" + apiID.Value + "' order by DateTime DESC";
                     MySqlCommand cmd3 = new MySqlCommand(runner, cn);

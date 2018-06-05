@@ -15,109 +15,122 @@ namespace betplayer.admin
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            int TotalAmount = 0;
-            int declarevalue = 50;
+
+            int LedgerAmount = 0;
+
+
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
+
                 cn.Open();
+                int TotalAmount1 = 0;
+                string SessionAmount = "Select * from SessionCalculation where MatchID = '1136620' order by ClientID DESC";
+                MySqlCommand SessionAmountcmd = new MySqlCommand(SessionAmount, cn);
+                MySqlDataAdapter SessionAmountadp = new MySqlDataAdapter(SessionAmountcmd);
+                DataTable SessionAmountdt = new DataTable();
+                SessionAmountadp.Fill(SessionAmountdt);
 
-                string s1 = "select * from Session where Session = '6 over Chennai Super Kings' && matchID='1136620'  ORDER BY ClientID DESC;";
-                MySqlCommand cmd1 = new MySqlCommand(s1, cn);
-                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
-                DataTable dt1 = new DataTable();
-                adp1.Fill(dt1);
-
-                for (int i = 0; i < dt1.Rows.Count; i++)
+                if (SessionAmountdt.Rows.Count > 0)
                 {
-                    int Amount = Convert.ToInt32(dt1.Rows[i]["Amount"]);
-                    string Mode = dt1.Rows[i]["Mode"].ToString();
-                    int Runs = Convert.ToInt16(dt1.Rows[i]["Runs"]);
-                    int clientID = Convert.ToInt32(dt1.Rows[i]["ClientID"]);
+                    int TotalAmount = 0;
 
-                    if (declarevalue == Runs)
+
+                    for (int i = 0; i < SessionAmountdt.Rows.Count; i++)
                     {
-                        if (Mode == "Y")
-                        {
-                            TotalAmount = TotalAmount + Amount;
+                        TotalAmount = Convert.ToInt32(SessionAmountdt.Rows[i]["TotalAmount"]);
+                        int ClientID = Convert.ToInt16(SessionAmountdt.Rows[i]["ClientID"]);
+                        TotalAmount1 = TotalAmount1 + TotalAmount;
 
-                        }
-                        else if (Mode == "N")
-                        {
-                            TotalAmount = TotalAmount - Amount;
-                        }
 
-                    }
-                    else if (declarevalue < Runs)
-                    {
-                        if (Mode == "Y")
+                        for (int j = i + 1; j <= SessionAmountdt.Rows.Count;)
                         {
-                            TotalAmount = TotalAmount - Amount;
-
-                        }
-                        else if (Mode == "N")
-                        {
-                            TotalAmount = TotalAmount + Amount;
-                        }
-
-                    }
-                    else if (declarevalue > Runs)
-                    {
-                        if (Mode == "Y")
-                        {
-                            TotalAmount = TotalAmount + Amount;
-
-                        }
-                        else if (Mode == "N")
-                        {
-                            TotalAmount = TotalAmount - Amount;
-                        }
-
-                    }
-
-                    string s2 = "select * from Session where Session = '8 over Chennai Super Kings' && matchID='1136620'  ORDER BY ClientID DESC;";
-                    MySqlCommand cmd2 = new MySqlCommand(s2, cn);
-                    MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd1);
-                    DataTable dt2 = new DataTable();
-                    adp1.Fill(dt2);
-                    for (int j = i+1; j <= dt2.Rows.Count;)
-                    {
-                        if (dt2.Rows.Count > j)
-                        {
-                            int ClientID = Convert.ToInt32(dt2.Rows[j]["ClientID"]);
-                            if (clientID == ClientID)
+                            if (SessionAmountdt.Rows.Count > j)
                             {
+                                int clientID = Convert.ToInt16(SessionAmountdt.Rows[j]["clientID"]);
+                                if (ClientID != clientID)
+                                {
 
+                                    LedgerAmount = LedgerAmount + TotalAmount1;
+
+
+                                    string Runner = "Select Position1,Position2 from Runner where ClientID = '" + ClientID + "' && MatchID = '1136620' order by DateTime DESC";
+                                    MySqlCommand Runnercmd = new MySqlCommand(Runner, cn);
+                                    MySqlDataAdapter Runneradp = new MySqlDataAdapter(Runnercmd);
+                                    DataTable Runnerdt = new DataTable();
+                                    Runneradp.Fill(Runnerdt);
+
+                                    if (Runnerdt.Rows.Count > 0)
+                                    {
+                                        int Position1 = Convert.ToInt32(Runnerdt.Rows[0]["Position1"]);
+                                        int Position2 = Convert.ToInt32(Runnerdt.Rows[0]["Position2"]);
+
+                                        if ("team_1" == "team_1")
+                                        {
+                                            LedgerAmount = LedgerAmount + Position1;
+                                        }
+                                        else { }
+                                    }
+                                    LedgerAmount = LedgerAmount - 100;
+
+
+                                    string InsertClientLedger = "Insert Into ClientLedger (clientID,MatchID,Amount) values (@ClientID,@MatchID,@Amount)";
+                                    MySqlCommand Insertclientcmd = new MySqlCommand(InsertClientLedger, cn);
+                                    Insertclientcmd.Parameters.AddWithValue("@ClientID", ClientID);
+                                    Insertclientcmd.Parameters.AddWithValue("@MatchID", 1136620);
+                                    Insertclientcmd.Parameters.AddWithValue("@Amount", LedgerAmount);
+                                    Insertclientcmd.ExecuteNonQuery();
+
+                                    TotalAmount1 = 0;
+                                    LedgerAmount = 0;
+
+
+
+                                }
                             }
                             else
                             {
-                                string StoreAmount = "Insert Into sessioncalculation (Session,ClientID,MatchID,TotalAmount) Values (@Session,@ClientID,@MatchID,@TotalAmount)";
-                                MySqlCommand cmd3 = new MySqlCommand(StoreAmount, cn);
-                                cmd3.Parameters.AddWithValue("@Session", "6 over Chennai Super Kings");
-                                cmd3.Parameters.AddWithValue("@ClientID", clientID);
-                                cmd3.Parameters.AddWithValue("@MatchID", "1136620");
-                                cmd3.Parameters.AddWithValue("@TotalAmount", TotalAmount);
-                                cmd3.ExecuteNonQuery();
-                                TotalAmount = 0;
+                                LedgerAmount = LedgerAmount + TotalAmount1;
+
+
+                                string Runner = "Select Position1,Position2 from Runner where ClientID = '" + ClientID + "' && MatchID = '1136620' order by DateTime DESC";
+                                MySqlCommand Runnercmd = new MySqlCommand(Runner, cn);
+                                MySqlDataAdapter Runneradp = new MySqlDataAdapter(Runnercmd);
+                                DataTable Runnerdt = new DataTable();
+                                Runneradp.Fill(Runnerdt);
+
+                                if (Runnerdt.Rows.Count > 0)
+                                {
+                                    int Position1 = Convert.ToInt32(Runnerdt.Rows[0]["Position1"]);
+                                    int Position2 = Convert.ToInt32(Runnerdt.Rows[0]["Position2"]);
+
+                                    if ("team_1" == "team_1")
+                                    {
+                                        LedgerAmount = LedgerAmount + Position1;
+                                    }
+                                    else { }
+                                }
+                                LedgerAmount = LedgerAmount - 100;
+
+
+                                string InsertClientLedger = "Insert Into ClientLedger (clientID,MatchID,Amount) values (@ClientID,@MatchID,@Amount)";
+                                MySqlCommand Insertclientcmd = new MySqlCommand(InsertClientLedger, cn);
+                                Insertclientcmd.Parameters.AddWithValue("@ClientID", ClientID);
+                                Insertclientcmd.Parameters.AddWithValue("@MatchID", 1136620);
+                                Insertclientcmd.Parameters.AddWithValue("@Amount", LedgerAmount);
+                                Insertclientcmd.ExecuteNonQuery();
+
+                                TotalAmount1 = 0;
+                                LedgerAmount = 0;
+
                             }
                             break;
                         }
-                        else
-                        {
 
-                            string StoreAmount = "Insert Into sessioncalculation (Session,ClientID,MatchID,TotalAmount) Values (@Session,@ClientID,@MatchID,@TotalAmount)";
-                            MySqlCommand cmd3 = new MySqlCommand(StoreAmount, cn);
-                            cmd3.Parameters.AddWithValue("@Session", "6 over Chennai Super Kings");
-                            cmd3.Parameters.AddWithValue("@ClientID", clientID);
-                            cmd3.Parameters.AddWithValue("@MatchID", "1136620");
-                            cmd3.Parameters.AddWithValue("@TotalAmount", TotalAmount);
-                            cmd3.ExecuteNonQuery();
-                            TotalAmount = 0;
-                        }
-                        break;
                     }
                 }
             }
         }
     }
 }
+

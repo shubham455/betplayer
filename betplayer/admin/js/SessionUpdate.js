@@ -201,7 +201,7 @@ function declareSession() {
     }
     formBody = formBody.join("&");
 
-    fetch('http://localhost:54034/admin/SessionDeclare.ashx', {
+    fetch('https://admin.crick20.com/SessionDeclare.ashx', {
         credentials: 'same-origin',
         method: 'POST',
         headers: {
@@ -225,7 +225,7 @@ function declareSession() {
         console.log(err);
     });
 }
-function declareSession() {
+function deleteSession() {
    
     var sessionkey = document.getElementById('session_selector1').value;
     var team = document.getElementById('team_selector').value;

@@ -69,7 +69,8 @@ namespace betplayer.admin
             string MatchID = context.Request["MatchID"].ToString();
             try
             {
-                int TotalAmount = 0;
+                Decimal TotalAmount = 0;
+                Decimal Amount1;
 
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
@@ -89,18 +90,21 @@ namespace betplayer.admin
                         int Amount = Convert.ToInt32(dt1.Rows[i]["Amount"]);
                         string Mode = dt1.Rows[i]["Mode"].ToString();
                         int Runs = Convert.ToInt16(dt1.Rows[i]["Runs"]);
+                        Decimal Rate = Convert.ToDecimal(dt1.Rows[i]["Rate"]);
                         int clientID = Convert.ToInt32(dt1.Rows[i]["ClientID"]);
 
                         if (declarevalue == Runs)
                         {
                             if (Mode == "Y")
                             {
-                                TotalAmount = TotalAmount + Amount;
+                                Amount1 = Amount * Rate;
+                                TotalAmount = TotalAmount + Amount1;
 
                             }
                             else if (Mode == "N")
                             {
-                                TotalAmount = TotalAmount - Amount;
+                                Amount1 = Amount * Rate;
+                                TotalAmount = TotalAmount - Amount1;
                             }
 
                         }
@@ -108,12 +112,14 @@ namespace betplayer.admin
                         {
                             if (Mode == "Y")
                             {
-                                TotalAmount = TotalAmount - Amount;
+                                Amount1 = Amount * Rate;
+                                TotalAmount = TotalAmount - Amount1;
 
                             }
                             else if (Mode == "N")
                             {
-                                TotalAmount = TotalAmount + Amount;
+                                Amount1 = Amount * Rate;
+                                TotalAmount = TotalAmount + Amount1;
                             }
 
                         }
@@ -121,12 +127,14 @@ namespace betplayer.admin
                         {
                             if (Mode == "Y")
                             {
-                                TotalAmount = TotalAmount + Amount;
+                                Amount1 = Amount * Rate;
+                                TotalAmount = TotalAmount + Amount1;
 
                             }
                             else if (Mode == "N")
                             {
-                                TotalAmount = TotalAmount - Amount;
+                                Amount1 = Amount * Rate;
+                                TotalAmount = TotalAmount - Amount1;
                             }
 
                         }
@@ -183,7 +191,7 @@ namespace betplayer.admin
                     cmd.Parameters.AddWithValue("@Session", SessionKey);
                     cmd.Parameters.AddWithValue("@declareRun", declarevalue);
                     cmd.Parameters.AddWithValue("@MatchID", MatchID);
-                    
+
 
                     cmd.ExecuteNonQuery();
                     return "success";

@@ -203,7 +203,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/Agent/Deleteclient.ashx', {
+            fetch('https://agent.crick20.com/Deleteclient.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -235,7 +235,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/Agent/ChangeStatus.ashx', {
+            fetch('https://agent.crick20.com/ChangeStatus.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
