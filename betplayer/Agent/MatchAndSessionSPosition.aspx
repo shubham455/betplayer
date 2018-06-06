@@ -236,18 +236,19 @@
                                         <td width="10" valign="top">&nbsp;</td>
                                         <td width="10%" valign="top">
                                             <table width="150" border="0" cellpadding="0" cellspacing="2" class="table table-striped table-hover table-bordered" id="SessionRun">
-                                               
-                                                    <tr>
-                                                        <td width="50" height="25" align="right" style="text-align: right;"><strong>RUNS</strong></td>
-                                                        <td width="100" align="right" style="text-align: right;"><strong>AMOUNT</strong></td>
-                                                    </tr>
 
-                                                    <% foreach (System.Data.DataRow row in MatchesDataTable1.Rows)
-                                                        { %>
-                                                    <td width="50" height="25" align="right" style="text-align: right;"><strong><%:row["Runs"] %></strong></td>
-                                                    <td width="100" align="right" style="text-align: right;"><strong><%:row["Amount"] %></strong></td>
-                                                    <% } //foreach %>
-                                                
+                                                <tr>
+                                                    <td width="50" height="25" align="right" style="text-align: right;"><strong>RUNS</strong></td>
+                                                    <td width="100" align="right" style="text-align: right;"><strong>AMOUNT</strong></td>
+                                                </tr>
+
+                                                <% foreach (System.Data.DataRow row in runTable1.Rows)
+                                                    
+                                                    { %>
+                                                <tr>
+                                                <td width="50" height="25" align="right" style="text-align: right;"><strong><%:row["Runs"] %></strong></td>
+                                                <td width="100" align="right" style="text-align: right;"><strong><%:row["Amount"] %></strong></td></tr>
+                                                <% } //foreach %>
                                             </table>
                                         </td>
                                     </tr>

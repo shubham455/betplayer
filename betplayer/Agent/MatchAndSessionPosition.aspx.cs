@@ -131,7 +131,17 @@ namespace betplayer.Agent
 
 
                 }
+                
                 Team1Amt.Text = Teampos.ToString();
+                if(Teampos > 0)
+                {
+                    Team1Amt.ForeColor = System.Drawing.Color.Blue;
+                }
+                else if (Teampos < 0)
+                {
+                    Team1Amt.ForeColor = System.Drawing.Color.Red;
+                }
+
 
                 int k = 0;
                 Decimal TeamBposition = 0;
@@ -206,6 +216,14 @@ namespace betplayer.Agent
                     TeamposB = TeamposB + TeamBposition2;
                 }
                 Team2Amt.Text = TeamposB.ToString();
+                if (TeamposB > 0)
+                {
+                    Team2Amt.ForeColor = System.Drawing.Color.Blue;
+                }
+                else if (TeamposB < 0)
+                {
+                    Team2Amt.ForeColor = System.Drawing.Color.Red;
+                }
             }
         }
 

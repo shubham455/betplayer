@@ -94,7 +94,7 @@
                                                                                             <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><span style="color: ">
                                                                                                 <input type="button" name="LRate1" id="LRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitL(1)">
                                                                                             </span></td>
-                                                                                            <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><asp:label id="Team1Amt" runat="server" style="font-size:13px"></asp:label>
+                                                                                            <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><asp:label id="Team1Amt" runat="server" style="font-size:13px; font-weight:bold"></asp:label>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
@@ -106,7 +106,7 @@
                                                                                             <td align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;"><span style="color: ">
                                                                                                 <input type="button" name="LRate2" id="LRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitL(2)">
                                                                                             </span></td>
-                                                                                            <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><asp:label id="Team2Amt" runat="server"></asp:label>
+                                                                                            <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><asp:label id="Team2Amt" runat="server" style="font-size:13px;font-weight:bold"></asp:label>
                                                                                             </td>
                                                                                         </tr>
                                                                                     </tbody>

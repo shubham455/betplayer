@@ -57,10 +57,10 @@
                                                 <ul class="dropdown-menu">
                                                     <li><a href="MatchAndSessionPosition.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-film"></i>Match &amp; Session Position</a></li>
                                                     <li><a href="MatchPlusMinusSelect.php?MT=243"><i class="icon-tasks"></i>Match Plus Minus</a></li>
-                                                    <li><a href="SessionPlusMinusSelect.php?MT=243"><i class="icon-bolt"></i>Session Plus Minus</a></li>
-                                                    <li><a href="MatchSessionPlusMinusSelect.php?MT=243"><i class="icon-filter"></i>Match &amp; Session Plus Minus</a></li>
-                                                    <li><a href="ViewMatchReport.php?id=243"><i class="icon-pushpin"></i>Display Match Bets</a></li>
-                                                    <li><a href="ViewSessionReport.php?id=243"><i class="icon-bullhorn"></i>Display Session Bets</a></li>
+                                                    <li><a href="SessionPlusMinusSelect.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-bolt"></i>Session Plus Minus</a></li>
+                                                    <li><a href="MatchSessionPlusMinusSelect.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-filter"></i>Match &amp; Session Plus Minus</a></li>
+                                                    <li><a href="ViewMatchReport.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-pushpin"></i>Display Match Bets</a></li>
+                                                    <li><a href="ViewSessionReport.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-bullhorn"></i>Display Session Bets</a></li>
 
                                                 </ul>
                                             </div>

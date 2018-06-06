@@ -14,9 +14,11 @@ namespace betplayer.Agent
     public partial class MatchAndSessionSPosition : System.Web.UI.Page
     {
         private DataTable dt;
-        private DataTable dt1;
+       
+        private DataTable runTable;
         public DataTable MatchesDataTable { get { return dt; } }
-        public DataTable MatchesDataTable1 { get { return dt1; } }
+        
+        public DataTable runTable1 { get { return runTable; } }
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,20 +34,39 @@ namespace betplayer.Agent
                 MySqlCommand cmd1 = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt = new DataTable();
-                dt1 = new DataTable();
+                
                 adp1.Fill(dt);
-                adp1.Fill(dt1);
+              
 
-                int runs = Convert.ToInt16(dt1.Rows[0]["Runs"]);
-                    for (int i = runs - 10; i < runs + 10; i++)
-                    {
-                    foreach (DataRow row in dt1.Rows)
-                    {
 
-                        int Num = i;
-                        row["Runs"] = Num;
+                runTable = new DataTable();
+                runTable.Columns.Add(new DataColumn("RUNS"));
+                runTable.Columns.Add(new DataColumn("AMOUNT"));
+                int runs = Convert.ToInt16(dt.Rows[0]["Runs"]);
+                int Amount = Convert.ToInt32(dt.Rows[0]["Amount"]);
+                for (int i = runs - 10; i <= runs + 10; i++)
+                {
+
+                    DataRow row = runTable.NewRow();
+                    row["RUNS"] = i.ToString();
+                    if (i < runs)
+                    {
+                        int Amount1 = Amount * -1;
+                        row["Amount"] = 
+                            System.Drawing.Color.Red; 
+                        row["AMOUNT"] = Amount1;
+
                     }
-                  
+                    if (i >= runs)
+                    {
+                        int Amount1 = Amount ;
+                        row["Amount"] = System.Drawing.Color.Blue;
+                        row["AMOUNT"] = Amount1;
+                    }
+
+
+                    runTable.Rows.Add(row.ItemArray);
+
                 }
             }
 
