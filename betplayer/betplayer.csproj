@@ -846,6 +846,7 @@
     <Content Include="Agent\Sportsbetting.aspx" />
     <Content Include="Agent\SportsDetails.aspx" />
     <Content Include="Agent\TC.aspx" />
+    <Content Include="Agent\UpdateClientLimit.aspx" />
     <Content Include="Agent\ViewMatchReport.aspx" />
     <Content Include="Agent\ViewSessionReport.aspx" />
     <Content Include="Client\AllGamesList.aspx" />
@@ -2208,6 +2209,13 @@
     </Compile>
     <Compile Include="Agent\TC.aspx.designer.cs">
       <DependentUpon>TC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\UpdateClientLimit.aspx.cs">
+      <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\UpdateClientLimit.aspx.designer.cs">
+      <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Agent\ViewMatchReport.aspx.cs">
       <DependentUpon>ViewMatchReport.aspx</DependentUpon>

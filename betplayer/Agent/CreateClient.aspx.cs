@@ -19,7 +19,7 @@ namespace Panchayat_System.Admin
 
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
-            
+
         }
 
         protected void Submit_Click(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace Panchayat_System.Admin
                     MySqlCommand cmd1 = new MySqlCommand(update, cn);
                     cmd1.ExecuteNonQuery();
 
-                   
+
                     Response.Redirect("~/Agent/ClientDetails.aspx?msg=Add");
                 }
             }
@@ -101,6 +101,24 @@ namespace Panchayat_System.Admin
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("ClientDetails.aspx");
+        }
+
+        protected void txtClientlimit_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(txtAgentlimit.Text) < Convert.ToInt32(txtClientlimit.Text))
+            {
+                txtClientlimit.Text = "";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Limit Do not Greater Than Agent Limit.....');", true);
+            }
+        }
+
+        protected void txtAgentShare_TextChanged(object sender, EventArgs e)
+        {
+            if(Convert.ToDecimal(txtAgentShare.Text) > Convert.ToDecimal(txtAgentShare2.Text) )
+            {
+                txtAgentShare.Text = "";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Agent Share Do not Greater Than My Share.....');", true);
+            }
         }
     }
 }

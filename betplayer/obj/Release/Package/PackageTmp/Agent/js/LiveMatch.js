@@ -58,8 +58,8 @@ if (matchIdElement !== null) {
                 function (snapshot) {
                     var runner = snapshot.val();
 
-                    document.getElementById('KRate1').value = runner.Khai;
-                    document.getElementById('LRate1').value = runner.Lagai;
+                    document.getElementById('KRate1').value = runner.Lagai;
+                    document.getElementById('LRate1').value = runner.Khai;
 
                 });
             firebase.database().ref('/currentMatches/' + matchKey + "/team_2/Runner").on("value", // runs on change

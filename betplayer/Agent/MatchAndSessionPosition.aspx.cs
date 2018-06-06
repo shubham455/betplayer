@@ -32,73 +32,183 @@ namespace betplayer.Agent
                 adp.Fill(dt);
 
 
-                string s = "select runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["AgentID"] + "'";
+       string s = "select runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["AgentID"] + "' order by DateTime DESC";
                 MySqlCommand cmd1 = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt1 = new DataTable();
                 adp1.Fill(dt1);
-
+                int l = 0;
                 foreach (DataRow row in dt1.Rows)
                 {
-                    string Mode1="";
-                    string Mode = dt1.Rows[0]["Mode"].ToString();
+                    string Mode1 = "";
+                    string Mode = dt1.Rows[l]["Mode"].ToString();
                     if (Mode == "K")
                     {
-                         Mode1 = "L";
+                        Mode1 = "L";
                     }
-                    else if(Mode == "L")
+                    else if (Mode == "L")
                     {
                         Mode1 = "K";
                     }
                     row["Mode"] = Mode1;
+                    l++;
                 }
-
-                foreach(DataRow row in dt1.Rows)
+                int j = 0;
+                Decimal TeamAposition = 0;
+                Decimal TeamAposition1 = 0;
+                Decimal Teampos = 0;
+                foreach (DataRow row in dt1.Rows)
                 {
-                    Decimal Position = 0;
-                    Decimal Amount = Convert.ToDecimal(dt1.Rows[0]["Amount"]);
-                    Decimal Rate = Convert.ToDecimal(dt1.Rows[0]["Rate"]);
-                    string Mode = dt1.Rows[0]["Mode"].ToString();
-                    
 
-                    if(Mode == "K")
+                    string selectteam = "select TeamA,TeamB From Matches where apiID = '" + apiID.Value + "'";
+                    MySqlCommand selectteamcmd = new MySqlCommand(selectteam, cn);
+                    MySqlDataAdapter selectteamadp = new MySqlDataAdapter(selectteamcmd);
+                    DataTable selectteamdt = new DataTable();
+                    selectteamadp.Fill(selectteamdt);
+                    string TeamA = selectteamdt.Rows[0]["TeamA"].ToString();
+                    string TeamB = selectteamdt.Rows[0]["TeamB"].ToString();
+                    lblTeamA.Text = TeamA;
+                    lblTeamB.Text = TeamB;
+                    string selectteam1 = "select Team From runner where MatchID = '" + apiID.Value + "' order by DateTime DESC";
+                    MySqlCommand selectteamcmd1 = new MySqlCommand(selectteam1, cn);
+                    MySqlDataAdapter selectteamadp1 = new MySqlDataAdapter(selectteamcmd1);
+                    DataTable selectteamdt1 = new DataTable();
+                    selectteamadp1.Fill(selectteamdt1);
+                    string team = selectteamdt1.Rows[j]["Team"].ToString();
+
+
+
+                    Decimal Position = 0;
+                    Decimal Amount = Convert.ToDecimal(dt1.Rows[j]["Amount"]);
+                    Decimal Rate = Convert.ToDecimal(dt1.Rows[j]["Rate"]);
+                    int clientID = Convert.ToInt32(dt1.Rows[j]["ClientID"]);
+                    string Mode1 = "";
+                    string Mode = dt1.Rows[j]["Mode"].ToString();
+                    if (Mode == "K")
                     {
-                        Position = Amount * Rate * -1;
+                        Mode1 = "L";
                     }
                     else if (Mode == "L")
+                    {
+                        Mode1 = "K";
+                    }
+
+
+                    if (TeamA == team && Mode1 == "K")
                     {
                         Position = Amount * Rate;
                     }
+                    else if (TeamA == team && Mode1 == "L")
+                    {
+                        Position = Amount * Rate * -1;
+                    }
+                    else if (TeamB == team && Mode1 == "K")
+                    {
+                        Position = Amount * -1;
+                    }
+                    else if (TeamB == team && Mode1 == "L")
+                    {
+                        Position = Amount;
+                    }
+
                     row["Position1"] = Position;
+                    
+                    TeamAposition = TeamAposition + Position;
+
+                    string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + clientID + "'";
+                    MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
+                    MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
+                    DataTable selectAgentsharedt = new DataTable();
+                    selectAgentshareadp.Fill(selectAgentsharedt);
+                    TeamAposition1 = 0;
+
+                    Decimal AgentShare1 = Convert.ToDecimal(selectAgentsharedt.Rows[0]["Agent_Share"]);
+
+                    TeamAposition1 = (Position * AgentShare1) / 100;
+
+                    Teampos = Teampos + TeamAposition1;
+                    j++;
+
+
                 }
+                Team1Amt.Text = Teampos.ToString();
+
+                int k = 0;
+                Decimal TeamBposition = 0;
+                Decimal TeamBposition2 = 0;
+                Decimal TeamposB = 0;
                 foreach (DataRow row in dt1.Rows)
                 {
+                    string selectteam = "select TeamA,TeamB From Matches where apiID = '" + apiID.Value + "'";
+                    MySqlCommand selectteamcmd = new MySqlCommand(selectteam, cn);
+                    MySqlDataAdapter selectteamadp = new MySqlDataAdapter(selectteamcmd);
+                    DataTable selectteamdt = new DataTable();
+                    selectteamadp.Fill(selectteamdt);
+                    string TeamA = selectteamdt.Rows[0]["TeamA"].ToString();
+                    string TeamB = selectteamdt.Rows[0]["TeamB"].ToString();
+
+                    string selectteam1 = "select Team From runner where MatchID = '" + apiID.Value + "' order by DateTime DESC";
+                    MySqlCommand selectteamcmd1 = new MySqlCommand(selectteam1, cn);
+                    MySqlDataAdapter selectteamadp1 = new MySqlDataAdapter(selectteamcmd1);
+                    DataTable selectteamdt1 = new DataTable();
+                    selectteamadp1.Fill(selectteamdt1);
+                    string team = selectteamdt1.Rows[k]["Team"].ToString();
+
+                    string Mode1 = "";
                     Decimal Position = 0;
-                    Decimal Amount = Convert.ToDecimal(dt1.Rows[0]["Amount"]);
-                    Decimal Rate = Convert.ToDecimal(dt1.Rows[0]["Rate"]);
-                    string Mode = dt1.Rows[0]["Mode"].ToString();
+                    Decimal Amount = Convert.ToDecimal(dt1.Rows[k]["Amount"]);
+                    Decimal Rate = Convert.ToDecimal(dt1.Rows[k]["Rate"]);
+                    string Mode = dt1.Rows[k]["Mode"].ToString();
+                    int clientID = Convert.ToInt32(dt1.Rows[k]["ClientID"]);
 
                     if (Mode == "K")
                     {
-                       
+                        Mode1 = "L";
                     }
                     else if (Mode == "L")
                     {
-                        
+                        Mode1 = "K";
+                    }
+
+
+                    if (TeamA == team && Mode1 == "K")
+                    {
+                        Position = Amount * -1;
+                    }
+                    else if (TeamA == team && Mode1 == "L")
+                    {
+                        Position = Amount;
+                    }
+                    else if (TeamB == team && Mode1 == "K")
+                    {
+                        Position = Amount * Rate;
+                    }
+                    else if (TeamB == team && Mode1 == "L")
+                    {
+                        Position = Amount * Rate * -1;
                     }
                     row["Position2"] = Position;
+                    k++;
+
+                    TeamBposition = TeamBposition + Position;
+
+                    
+                    string selectAgentshare1 = "select Agent_share From ClientMaster where ClientID = '" + clientID + "'";
+                    MySqlCommand selectAgentsharecmd1 = new MySqlCommand(selectAgentshare1, cn);
+                    MySqlDataAdapter selectAgentshareadp1 = new MySqlDataAdapter(selectAgentsharecmd1);
+                    DataTable selectAgentsharedt1 = new DataTable();
+                    selectAgentshareadp1.Fill(selectAgentsharedt1);
+
+
+                    Decimal AgentShare = Convert.ToDecimal(selectAgentsharedt1.Rows[0]["Agent_Share"]);
+
+                    TeamBposition2 = (Position * AgentShare) / 100;
+                    TeamposB = TeamposB + TeamBposition2;
                 }
-
-
+                Team2Amt.Text = TeamposB.ToString();
             }
         }
 
-        protected void Session1_ServerClick(object sender, EventArgs e)
-        {
-            string value = Session1.Value;
-             int apiID = Convert.ToInt32(Request.QueryString["MatchID"]);
-
-            Response.Redirect("MatchAndSessionSposition.aspx?Matchid="+apiID+"&&Session="+value);
+           
         }
     }
-}

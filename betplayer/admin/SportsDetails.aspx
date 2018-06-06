@@ -72,7 +72,7 @@
                                         <td align="left" class="FontText"><%: toDateString(row["DateTime"])%></td>
                                         <td width="110" align="left" class="FontText"><%: toTime(row["DateTime"]) %></td>
                                         <td width="110" align="left" class="FontText">One Day Match</td>
-                                        <td width="100" align="left" class="FontText">YES</td>
+                                        <td width="100" align="left" class="FontText"><%: row["Declear"] %></td>
                                         <td width="92" align="left" class="FontText"><%: row["WinnerTeam"] %></td>
                                     </tr>
                                     <% } //foreach %>

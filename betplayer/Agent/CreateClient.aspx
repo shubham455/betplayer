@@ -63,14 +63,14 @@
                                                             <td align="left" class="welcome">&nbsp;</td>
                                                             <td height="30" align="left" valign="middle" class="welcome">Client Limit</td>
                                                             <td align="left" valign="middle">
-                                                                <asp:TextBox CssClass="textbox" ID="txtClientlimit" runat="server" /></td>
+                                                                <asp:TextBox CssClass="textbox" ID="txtClientlimit" runat="server" OnTextChanged="txtClientlimit_TextChanged" AutoPostBack="true" /></td>
                                                             <td align="left" valign="middle">&nbsp;</td>
                                                         </tr>
                                                         <tr>
                                                             <td align="left" class="welcome">&nbsp;</td>
                                                             <td height="30" align="left" valign="middle" class="welcome">Agent Current Limit</td>
                                                             <td height="30" align="left" valign="middle" style="font-size: 13px; color: #F00">
-                                                                <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" PlaceHolder="305653&nbsp;&nbsp; से ज्यादा नहीं भर सकते। " ReadOnly="true" />
+                                                                <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" Text="305653" PlaceHolder="305653&nbsp;&nbsp; से ज्यादा नहीं भर सकते। " ReadOnly="true" />
                                                             </td>
                                                             <td align="left" valign="middle" style="font-size: 13px; color: #F00"><strong>My Share %</strong></td>
                                                         </tr>
@@ -78,9 +78,9 @@
                                                             <td align="left" class="welcome">&nbsp;</td>
                                                             <td height="30" align="left" valign="middle" class="welcome">Agent Share %</td>
                                                             <td align="left" valign="middle">
-                                                                <asp:TextBox CssClass="textbox" ID="txtAgentShare" runat="server" Text="50.00"/>></td>
+                                                                <asp:TextBox CssClass="textbox" ID="txtAgentShare" runat="server" OnTextChanged="txtAgentShare_TextChanged" AutoPostBack="true"  Text="50.00"/></td>
                                                             <td align="left" valign="middle">
-                                                                <asp:TextBox CssClass="textbox" ID="txtAgentShare2" runat="server" PlaceHolder="50.00" ReadOnly="true" /></td>
+                                                                <asp:TextBox CssClass="textbox" ID="txtAgentShare2" runat="server" Text="50" PlaceHolder="50.00" ReadOnly="true" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td align="left" class="welcome">&nbsp;</td>

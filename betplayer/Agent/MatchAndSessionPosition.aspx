@@ -78,7 +78,7 @@
                                                                         <td valign="top">
 
                                                                             <div id="divMatchBhav" style="float: left; padding-top: 10px;" width="400">
-                                                                                <table style="width:500px;" class="table table-striped table-hover table-bordered">
+                                                                                <table style="width: 500px;" class="table table-striped table-hover table-bordered">
                                                                                     <tbody>
                                                                                         <tr>
                                                                                             <td class="ButtonK" style="text-align: center; vertical-align: middle; line-height: 35px; width: 120px;">TEAM</td>
@@ -94,7 +94,7 @@
                                                                                             <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><span style="color: ">
                                                                                                 <input type="button" name="LRate1" id="LRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitL(1)">
                                                                                             </span></td>
-                                                                                            <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><span class="ButtonL" id="Team1Amt"></span>
+                                                                                            <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><asp:label id="Team1Amt" runat="server" style="font-size:13px"></asp:label>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
@@ -106,7 +106,7 @@
                                                                                             <td align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;"><span style="color: ">
                                                                                                 <input type="button" name="LRate2" id="LRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitL(2)">
                                                                                             </span></td>
-                                                                                            <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><span class="ButtonL" id="Team2Amt"></span>
+                                                                                            <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><asp:label id="Team2Amt" runat="server"></asp:label>
                                                                                             </td>
                                                                                         </tr>
                                                                                     </tbody>
@@ -124,7 +124,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session1" id="Session1" value="NONE" class="ButtonUserSession" style="width: 150px;" runat="server" onserverclick="Session1_ServerClick"></td>
+                                                                                                <input type="button" name="Session1" id="Session1" value="NONE" onclick="Redirect(this.value);"  class="ButtonUserSession" style="width: 150px;"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not1" id="not1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(1)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -136,7 +136,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session2" id="Session2" value="NONE" class="ButtonUserSession" style="width: 150px;"  runat="server" onserverclick="Session1_ServerClick"></td>
+                                                                                                <input type="button" name="Session2" id="Session2" value="NONE" onclick="Redirect(this.value);" class="ButtonUserSession" style="width: 150px;" ></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not2" id="not2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(2)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -148,7 +148,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width: 150px;" runat="server" onserverclick="Session1_ServerClick"></td>
+                                                                                                <input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width: 150px;" /></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not3" id="not3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(3)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -160,7 +160,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width: 150px;" runat="server" onserverclick="Session1_ServerClick"></td>
+                                                                                                <input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width: 150px;" /> </td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not4" id="not4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(4)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -203,8 +203,12 @@
                                         <td align="left" class="TableHeading"><strong>Mode</strong></td>
                                         <td align="left" class="TableHeading"><strong>Team </strong></td>
                                         <td align="left" class="TableHeading"><strong>Client</strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong>Sunrisers Hyderabad                        </strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong>Delhi Daredevils                        </strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong>
+                                            <asp:Label ID="lblTeamA" runat="server"></asp:Label>
+                                        </strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong>
+                                            <asp:Label ID="lblTeamB" runat="server"></asp:Label>
+                                        </strong></td>
                                         <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
                                     </tr>
                                     <% foreach (System.Data.DataRow row in MatchesDataTable1.Rows)
@@ -223,8 +227,72 @@
                                     </tr>
                                     <% } //foreach %>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <input type="text" class="grdtot" value="" id="total" name="" /></td>
+                                    </tr>
+                                </tfoot>
                             </table>
+                            <script>
+                                window.sumInputs = function () {
+                                    var inputs = document.getElementsByID(MatchBet),
+                                        result = document.getElementById('total'),
+                                        sum = 0;
 
+                                    for (var i = 0; i < inputs.length; i++) {
+                                        var ip = inputs[i];
+
+                                        if (ip.name && ip.name.indexOf("total") < 0) {
+                                            sum += parseInt(ip.value) || 0;
+                                        }
+
+                                    }
+
+                                    result.value = sum;
+                                }
+                                sumInputs();
+                            </script>
+                            <script type="text/javascript">
+                                //<![CDATA[
+
+                                window.onload = function () {
+
+                                    var sum = 0;
+
+                                    var dataTable = document.getElementById("MatchBet");
+
+                                    // use querySelector to find all second table cells
+                                    var cells = document.querySelectorAll("td");
+
+                                    for (var i = 0; i < cells.length; i++)
+                                        sum += parseFloat(cells[i].firstChild.data);
+
+                                    // now add sum to end of table
+                                    var newRow = document.createElement("tr");
+
+                                    // first cell
+                                    var firstCell = document.createElement("td");
+                                    var firstCellText = document.createTextNode("Sum:");
+                                    firstCell.appendChild(firstCellText);
+                                    newRow.appendChild(firstCell);
+
+                                    // second cell with sum
+                                    var secondCell = document.createElement("td");
+                                    var secondCellText = document.createTextNode(sum);
+                                    secondCell.appendChild(secondCellText);
+                                    newRow.appendChild(secondCell);
+
+                                    // add row to table
+                                    dataTable.appendChild(newRow);
+
+                                }
+
+
+                            </script>
 
                             <!-- END FORM-->
 
@@ -241,4 +309,12 @@
     <asp:HiddenField ID="apiID" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/LiveMatch.js"></script>
+    <script type="text/javascript">
+         <!--
+        function Redirect(value) {
+
+            window.location = "MatchAndSessionSPosition.aspx?MatchID=1136620&&Session=" + value;
+            }
+         //-->
+      </script>
 </asp:Content>

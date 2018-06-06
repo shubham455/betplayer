@@ -50,7 +50,7 @@
                                         </asp:DropDownList>
 
                                     </div>
-                                    <a href="ClientLimit.php">
+                                    <a href="UpdateClientLimit.aspx">
                                         <button class="btn btn-success" type="button">Update Comm. &amp; Limit</button></a>
 
                                 </div>

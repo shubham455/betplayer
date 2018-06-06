@@ -41,7 +41,7 @@ namespace betplayer.admin
                 else
                 {
                     rdr.Close();
-                    string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Agent_limit,Agent_Share,Client_Share,Session_Commision_Type,Status,CreatedBy,Date) values (@Name,@Contact_No,@Password,@Clientlimit,@Agentlimit,@Agentshare,@Clientshare,@SessionType,@Status,@CreatedBy,@Date); SELECT LAST_INSERT_ID()";
+                    string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Agent_limit,Agent_Share,Client_Share,Session_Commision_Type,Status,CreatedBy,Date,Mode) values (@Name,@Contact_No,@Password,@Clientlimit,@Agentlimit,@Agentshare,@Clientshare,@SessionType,@Status,@CreatedBy,@Date,@Mode); SELECT LAST_INSERT_ID()";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
 
                     cmd.Parameters.AddWithValue("@Name", txtname.Text);
@@ -55,6 +55,7 @@ namespace betplayer.admin
                     cmd.Parameters.AddWithValue("@Status", "active");
                     cmd.Parameters.AddWithValue("@CreatedBy", Session["AgentID"]);
                     cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
+                    cmd.Parameters.AddWithValue("@Mode", "Agent");
 
                     int ID = Convert.ToInt16(cmd.ExecuteScalar());
                     string update = "Update ClientMaster Set Code = 'C" + ID + "'where ClientId = '" + ID + "' ";

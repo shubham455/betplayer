@@ -26,6 +26,22 @@ namespace betplayer.admin
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
+                int i = 0;
+                foreach (DataRow row in dt.Rows)
+                {
+                    string declare="";
+                    int Declear =Convert.ToInt16( dt.Rows[i]["declear"]);
+                    if(Declear == 0)
+                    {
+                        declare = "False";
+                    }
+                    if (Declear == 1)
+                    {
+                        declare = "True";
+                    }
+                    row["declear"] = Convert.ToBoolean(declare);
+                    i++;
+                }
             }
         }
         public string toTime(object DateTimefromDB)

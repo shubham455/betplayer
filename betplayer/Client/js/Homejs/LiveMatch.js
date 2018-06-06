@@ -55,16 +55,17 @@ if (matchIdElement !== null) {
                 function (snapshot) {
                     var runner = snapshot.val();
 
-                    document.getElementById('KRate1').value = runner.Khai;
-                    document.getElementById('LRate1').value = runner.Lagai;
+                    document.getElementById('KRate1').value = runner.Khai.toString();
+                    document.getElementById('LRate1').value = runner.Lagai.toString();
                     console.log(KRate1, LRate1);
                 });
             firebase.database().ref('/currentMatches/' + matchKey + "/team_2/Runner").on("value", // runs on change
                 function (snapshot) {
                     var runner = snapshot.val();
                     console.log("RUNNER tEAM");
-                    document.getElementById('KRate2').value = runner.Khai;
-                    document.getElementById('LRate2').value = runner.Lagai;
+                    document.getElementById('KRate2').value = runner.Khai.toString();
+                    document.getElementById('LRate2').value = runner.Lagai.toString();
+                    console.log(KRate2, LRate2);
                 });
             firebase.database().ref('/currentMatches/' + matchKey + "/team1/Session").on("value", // runs on change
                 function (snapshot) {
@@ -185,7 +186,7 @@ function doneClick() {
                             }
                             formBody = formBody.join("&");
 
-                            fetch('http://localhost:54034/Client/AddDataToRunner.ashx', {
+                            fetch('https://www.crick20.com/AddDataToRunner.ashx', {
                                 credentials: 'same-origin',
                                 method: 'POST',
                                 headers: {

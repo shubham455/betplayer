@@ -13,40 +13,40 @@ namespace betplayer.Agent {
     public partial class Match_SessionPosition {
         
         /// <summary>
-        /// Session1 control.
+        /// Team1Amt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton Session1;
+        protected global::System.Web.UI.WebControls.Label Team1Amt;
         
         /// <summary>
-        /// Session2 control.
+        /// Team2Amt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton Session2;
+        protected global::System.Web.UI.WebControls.Label Team2Amt;
         
         /// <summary>
-        /// Session3 control.
+        /// lblTeamA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton Session3;
+        protected global::System.Web.UI.WebControls.Label lblTeamA;
         
         /// <summary>
-        /// Session4 control.
+        /// lblTeamB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton Session4;
+        protected global::System.Web.UI.WebControls.Label lblTeamB;
         
         /// <summary>
         /// apiID control.
