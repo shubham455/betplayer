@@ -837,6 +837,7 @@
     <Content Include="Agent\MatchAndSessionPosition.aspx" />
     <Content Include="Agent\MatchAndSessionSPosition.aspx" />
     <Content Include="Agent\MatchPlusMinusSelect.aspx" />
+    <Content Include="Agent\MatchSessionPlusMinusDisplay.aspx" />
     <Content Include="Agent\MatchSessionPlusMinusSelect.aspx" />
     <Content Include="Agent\ModifyClient.aspx" />
     <Content Include="Agent\My_Ledger.aspx" />
@@ -2146,6 +2147,13 @@
     </Compile>
     <Compile Include="Agent\MatchPlusMinusSelect.aspx.designer.cs">
       <DependentUpon>MatchPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\MatchSessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>MatchSessionPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\MatchSessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusMinusDisplay.aspx</DependentUpon>
     </Compile>
     <Compile Include="Agent\MatchSessionPlusMinusSelect.aspx.cs">
       <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
