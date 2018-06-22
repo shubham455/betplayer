@@ -7,6 +7,11 @@ using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Configuration;
+using System.Net.Http;
+using System.Net;
+using System.Collections.Specialized;
+using System.Web.Script.Serialization;
+using System.IO;
 
 namespace betplayer.admin
 {
@@ -14,7 +19,8 @@ namespace betplayer.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) { 
+            if (!IsPostBack)
+            {
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
@@ -46,15 +52,80 @@ namespace betplayer.admin
                 cn.Open();
                 string s = "Update Matches set TeamA =@TeamA , TeamB =@TeamB, TeamC =@TeamC, apiID=@MatchesID, DateTime =@DateTime ,Type = @MatchType where MatchesId = @MatchesID";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
-               
-                
+
+
                 cmd.Parameters.AddWithValue("@MatchesID", txtcode.Text);
                 cmd.Parameters.AddWithValue("@TeamA", txtTeamA.Text);
                 cmd.Parameters.AddWithValue("@TeamB", txtTeamB.Text);
                 cmd.Parameters.AddWithValue("@TeamC", txtTeamC.Text);
-                cmd.Parameters.AddWithValue("@DateTime", txtdate1.Text+"T "+txtTime.Text+ ":00.000Z");
+                cmd.Parameters.AddWithValue("@DateTime", txtdate1.Text + "T" + txtTime.Text + ":00.000Z");
                 cmd.Parameters.AddWithValue("@MatchType", txtMatchType.Text);
                 cmd.ExecuteNonQuery();
+
+
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://betplayer-197014.firebaseio.com/currentMatches.json");
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        match_id = Convert.ToInt32(txtcode.Text),
+                        description = "",
+                        message = "",
+                        status = "",
+                        team_1 = new
+                        {
+                            Name = txtTeamA.Text,
+                            Overs = "0.0",
+                            Runs = "0",
+                            Status = "",
+                            Wickets = "0",
+                            sName = "",
+                            Runner = new
+                            {
+                                Khai = "0",
+                                Lagai = "0"
+                            },
+                            Session = new { }
+                        },
+                        team_2 = new
+                        {
+                            Name = txtTeamB.Text,
+                            Overs = "0.0",
+                            Runs = "0",
+                            Status = "",
+                            Wickets = "0",
+                            sName = "",
+                            Runner = new
+                            {
+                                Khai = "0",
+                                Lagai = "0"
+                            },
+                            Session = new { }
+                        },
+                        team_c = new
+                        {
+                            Name = "DRAW",
+                            Runner = new
+                            {
+                                Khai = "0.0",
+                                Lagai = "0.0"
+                            },
+                            Session = new { }
+                        }
+                    });
+
+                    streamWriter.Write(json);
+                }
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                }
+
                 txtcode.Text = "";
                 txtTeamA.Text = "";
                 txtTeamB.Text = "";
@@ -62,11 +133,15 @@ namespace betplayer.admin
                 txtdate1.Text = "";
                 txtTime.Text = "";
                 txtMatchType.Text = "";
+
+
+                Response.Redirect("CreateMatch.aspx");
+               
             }
         }
         protected void btncancel_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("CreateMatch.aspx");
         }
     }
 }

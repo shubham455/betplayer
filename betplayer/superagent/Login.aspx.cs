@@ -58,8 +58,10 @@ namespace betplayer.Super_Agent
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
                         int SuperAgentID = Convert.ToInt16(dt.Rows[0]["SuperAgentID"]);
+                        string SuperAgentCode = dt.Rows[0]["Code"].ToString();
 
                         Session["SuperAgentID"] = SuperAgentID;
+                        Session["SuperAgentCode"] = SuperAgentCode;
 
                         Response.Redirect("~/SuperAgent/TC.aspx");
                     }

@@ -31,8 +31,7 @@
                         <div class="widget-body form">
 
                             <!-- BEGIN FORM-->
-                            <form name="BetPlayer" id="BetPlayer" method="post" action="MatchSessionPlusMinusDisplay.php" autocomplete="off">
-
+                           
                                 <div class="portlet-body">
                                     <div class="clearfix">
                                     </div>
@@ -278,25 +277,10 @@
                                     </tbody>
                                 </table>
 
-
-
-
-
-
-
-                               
-                                    <tbody>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-
                                 <br>
                                 <br>
                                 <br>
-                            </form>
+                           
                             <!-- END FORM-->
 
                         </div>

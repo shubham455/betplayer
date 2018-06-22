@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace betplayer.Super_Agent {
+namespace betplayer.superagent {
     
     
     public partial class ViewSessionReport {

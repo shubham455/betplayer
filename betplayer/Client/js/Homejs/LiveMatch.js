@@ -67,11 +67,11 @@ if (matchIdElement !== null) {
                     document.getElementById('LRate2').value = runner.Lagai.toString();
                     console.log(KRate2, LRate2);
                 });
-            firebase.database().ref('/currentMatches/' + matchKey + "/team1/Session").on("value", // runs on change
+            firebase.database().ref('/currentMatches/' + matchKey + "/team_1/Session").on("value", // runs on change
                 function (snapshot) {
                     updateSessionTable(snapshot.val());
                 });
-            firebase.database().ref('/currentMatches/' + matchKey + "/team2/Session").on("value", // runs on change
+            firebase.database().ref('/currentMatches/' + matchKey + "/team_2/Session").on("value", // runs on change
                 function (snapshot) {
                     updateSessionTable(snapshot.val());
                 });

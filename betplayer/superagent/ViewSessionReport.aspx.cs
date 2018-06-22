@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace betplayer.Super_Agent
+namespace betplayer.superagent
 {
     public partial class ViewSessionReport : System.Web.UI.Page
     {

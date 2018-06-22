@@ -12,7 +12,8 @@
     </div>
     <div class="profile-details">
         
-        <a href="javascript:RedirectPage(<%: row["apiID"] %>);"  onclick="Redirect('<%: row["apiID"] %>');event.preventDefault();">
+        <a href="<%if (Convert.ToInt16(row["status"]) == 1) {%>BetDetails.aspx?iD=<%: row["apiID"] %><% }else{%>BetDetails_Declare.aspx?iD=<%: row["apiID"] %><% } %>">
+
             <table width="100%" border="0" cellspacing="2" cellpadding="2">
                 <tbody>
                     <tr>
@@ -73,8 +74,7 @@
       <script lang="javascript">
           function RedirectPage(MatchID)
           {
-                ID = MatchID;
-               <%redirect(ID);%>;
+               
           }
           </script>
 

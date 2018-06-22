@@ -13,6 +13,42 @@ namespace betplayer.superagent {
     public partial class Match_SessionPosition {
         
         /// <summary>
+        /// Team1Amt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Team1Amt;
+        
+        /// <summary>
+        /// Team2Amt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Team2Amt;
+        
+        /// <summary>
+        /// lblTeamA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTeamA;
+        
+        /// <summary>
+        /// lblTeamB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTeamB;
+        
+        /// <summary>
         /// apiID control.
         /// </summary>
         /// <remarks>

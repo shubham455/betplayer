@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/admin/Dashboard.Master"  AutoEventWireup="true" CodeBehind="AddMatchManually.aspx.cs" Inherits="betplayer.admin.AddMatchManually" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin/Dashboard.Master" AutoEventWireup="true" CodeBehind="AddMatchManually.aspx.cs" Inherits="betplayer.admin.AddMatchManually" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
@@ -13,9 +13,9 @@
                     <h3 class="page-title">Add Match</h3>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
-                        
+
                         <li><a href="#">Add Match</a><span class="divider">&nbsp;</span></li>
-                        
+
                         <li><a href="CreateMatch.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
                     <!-- END PAGE TITLE & BREADCRUMB-->
@@ -32,7 +32,7 @@
                         </div>
                         <div class="widget-body form">
                             <!-- BEGIN FORM-->
-                           
+
                             <div class="alert alert-error" id="Error" style="visibility: hidden">
                             </div>
                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -43,7 +43,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td width="2%" class="welcome">&nbsp;</td>
-                                                        <td width="24%" height="30" align="left" valign="middle"  class="welcome">Code</td>
+                                                        <td width="24%" height="30" align="left" valign="middle" class="welcome">Code</td>
                                                         <td width="24%" align="left" valign="middle">
                                                             <asp:TextBox ID="txtcode" CssClass="textbox" ReadOnly="true" runat="server" />
                                                         </td>
@@ -63,15 +63,15 @@
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">TeamB</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtTeamB"  CssClass="textbox" runat="server" /></td>
+                                                            <asp:TextBox ID="txtTeamB" CssClass="textbox" runat="server" /></td>
 
 
                                                     </tr>
-                                                     <tr>
+                                                    <tr>
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">TeamC</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtTeamC"  CssClass="textbox" runat="server" /></td>
+                                                            <asp:TextBox ID="txtTeamC" CssClass="textbox" runat="server" /></td>
 
 
                                                     </tr>
@@ -79,16 +79,16 @@
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Time</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtTime"  CssClass="textbox" placeholder="HH:MM" runat="server" /></td>
+                                                            <asp:TextBox ID="txtTime" CssClass="textbox" placeholder="HH:MM" runat="server" /></td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
-                                                     <tr>
+                                                    <tr>
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Date</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtdate1"  CssClass="textbox" placeholder="yyyy-MM-dd" runat="server" /></td>
+                                                            <asp:TextBox ID="txtdate1" CssClass="textbox" placeholder="yyyy-MM-dd" runat="server" /></td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left">&nbsp;</td>
@@ -97,7 +97,7 @@
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">MatchType</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtMatchType" CssClass="textbox"  runat="server" /></td>
+                                                            <asp:TextBox ID="txtMatchType" CssClass="textbox" runat="server" /></td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left">&nbsp;</td>
@@ -111,8 +111,8 @@
                             </table>
 
                             <div class="form-actions">
-                                <asp:Button ID="btnsave" runat="server" class="btn btn-success" Text="Add" OnClick="btnsave_Click"  />
-                                <asp:Button ID="btncancel" runat="server" class="btn btn-success" Text="Cancel" OnClick="btncancel_Click"  />
+                                <asp:Button ID="btnsave" runat="server" class="btn btn-success" Text="Add" OnClick="btnsave_Click" />
+                                <asp:Button ID="btncancel" runat="server" class="btn btn-success" Text="Cancel" OnClick="btncancel_Click" />
                             </div>
                         </div>
                     </div>
@@ -120,4 +120,5 @@
             </div>
         </div>
     </div>
+    
 </asp:Content>

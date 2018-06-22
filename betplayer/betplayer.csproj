@@ -1669,11 +1669,18 @@
     <Content Include="superagent\Ledger.aspx" />
     <Content Include="superagent\Login.aspx" />
     <Content Include="superagent\MasterDetails.aspx" />
+    <Content Include="superagent\MatchAndSessionSPosition.aspx" />
     <Content Include="superagent\MatchAndSessionPosition.aspx" />
+    <Content Include="superagent\MatchPlusMinusDisplay.aspx" />
+    <Content Include="superagent\MatchplusminusSelect.aspx" />
+    <Content Include="superagent\MatchSessionPlusMinusDisplay.aspx" />
+    <Content Include="superagent\MatchSessionPlusMinusSelect.aspx" />
     <Content Include="superagent\ModifyAgent.aspx" />
     <Content Include="superagent\My_Ledger.aspx" />
     <Content Include="superagent\NewCollection.aspx" />
+    <Content Include="superagent\PlusMinusSelect.aspx" />
     <Content Include="superagent\SecureCodeReport.aspx" />
+    <Content Include="superagent\SessionPlusMinusDisplay.aspx" />
     <Content Include="superagent\SessionPlusMinusSelect.aspx" />
     <Content Include="superagent\Settings.aspx" />
     <Content Include="superagent\SportsBetting.aspx" />
@@ -2481,12 +2488,47 @@
     <Compile Include="superagent\MasterDetails.aspx.designer.cs">
       <DependentUpon>MasterDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="superagent\MatchAndSessionSPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\MatchAndSessionSPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+    </Compile>
     <Compile Include="superagent\MatchAndSessionPosition.aspx.cs">
       <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="superagent\MatchAndSessionPosition.aspx.designer.cs">
       <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\MatchPlusMinusDisplay.aspx.cs">
+      <DependentUpon>MatchPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\MatchPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\MatchplusminusSelect.aspx.cs">
+      <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\MatchplusminusSelect.aspx.designer.cs">
+      <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\MatchSessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>MatchSessionPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\MatchSessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\MatchSessionPlusMinusSelect.aspx.cs">
+      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\MatchSessionPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\ModifyAgent.aspx.cs">
       <DependentUpon>ModifyAgent.aspx</DependentUpon>
@@ -2509,12 +2551,26 @@
     <Compile Include="superagent\NewCollection.aspx.designer.cs">
       <DependentUpon>NewCollection.aspx</DependentUpon>
     </Compile>
+    <Compile Include="superagent\PlusMinusSelect.aspx.cs">
+      <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\PlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+    </Compile>
     <Compile Include="superagent\SecureCodeReport.aspx.cs">
       <DependentUpon>SecureCodeReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="superagent\SecureCodeReport.aspx.designer.cs">
       <DependentUpon>SecureCodeReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\SessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\SessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\SessionPlusMinusSelect.aspx.cs">
       <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>

@@ -138,8 +138,8 @@
                                     <tr>
                                         <td>
                                             <select name="ctl00$ContentPlaceHolder$DropStatus" id="team_selector" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large" onchange="sessionTeamChanged()">
-                                                <option id="team1_name" style="font-size: large" value="team1" >Team1</option>
-                                                <option id="team2_name" style="font-size: large" value="team2" >Team2</option>
+                                                <option id="team1_name" style="font-size: large" value="team_1" >Team1</option>
+                                                <option id="team2_name" style="font-size: large" value="team_2" >Team2</option>
                                             </select>
 
                                         </td>

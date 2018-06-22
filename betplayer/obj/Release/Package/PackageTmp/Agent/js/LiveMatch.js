@@ -69,11 +69,11 @@ if (matchIdElement !== null) {
                     document.getElementById('KRate2').value = runner.Lagai;
                     document.getElementById('LRate2').value = runner.Khai;
                 });
-            firebase.database().ref('/currentMatches/' + matchKey + "/team2/Session").on("value", // runs on change
+            firebase.database().ref('/currentMatches/' + matchKey + "/team_2/Session").on("value", // runs on change
                 function (snapshot) {
                     updateSessionTable(snapshot.val());
                 });
-            firebase.database().ref('/currentMatches/' + matchKey + "/team1/Session").on("value", // runs on change
+            firebase.database().ref('/currentMatches/' + matchKey + "/team_1/Session").on("value", // runs on change
                 function (snapshot) {
                     updateSessionTable(snapshot.val());
                 });

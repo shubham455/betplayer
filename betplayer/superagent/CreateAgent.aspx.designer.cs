@@ -67,31 +67,22 @@ namespace betplayer.Super_Agent {
         protected global::System.Web.UI.WebControls.TextBox txtpassword;
         
         /// <summary>
-        /// txtmyshare control.
+        /// txtmobAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmyshare;
+        protected global::System.Web.UI.WebControls.TextBox txtmobAmount;
         
         /// <summary>
-        /// txtagentshare control.
+        /// txtmobAmount1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtagentshare;
-        
-        /// <summary>
-        /// txtmymobshare control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmymobshare;
+        protected global::System.Web.UI.WebControls.TextBox txtmobAmount1;
         
         /// <summary>
         /// txtagentmobshare control.
@@ -101,6 +92,15 @@ namespace betplayer.Super_Agent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtagentmobshare;
+        
+        /// <summary>
+        /// txtagentmobshare1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtagentmobshare1;
         
         /// <summary>
         /// txtmatchshare control.
@@ -119,6 +119,33 @@ namespace betplayer.Super_Agent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmobileshare;
+        
+        /// <summary>
+        /// SessionCommissionType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect SessionCommissionType;
+        
+        /// <summary>
+        /// MatchCommission control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText MatchCommission;
+        
+        /// <summary>
+        /// SessionCommission control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText SessionCommission;
         
         /// <summary>
         /// btnsave control.

@@ -12,14 +12,16 @@ var matchKey;
     var matchIdElement = document.getElementById("ContentPlaceHolder_apiid");
     console.log("firebase connecting to match: " + matchIdElement.value.toString());
     var timer = setTimeout(function () { }, 0);
-
+    
     if (matchIdElement !== null) {
         firebase.database().ref('/currentMatches').once("value", // runs on page runder
             function (snapshot) {
                 var match,
                     matches = snapshot.val();
+                
                 for (var key of Object.keys(matches)) {
                     if (matches[key]['match_id'].toString() === matchIdElement.value) {
+                        
                         console.log("match found with id: " + matches[key]['match_id'].toString());
                         match = matches[key];
                         matchKey = key;

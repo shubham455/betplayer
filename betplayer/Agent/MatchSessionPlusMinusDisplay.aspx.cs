@@ -121,7 +121,9 @@ namespace betplayer.Agent
 
                     row["SessionAmount"] = SessionTotalAmount;
 
-                    row["TotalAmount"] = MatchTotalAmount + SessionTotalAmount;
+                    Decimal TotalMatch = MatchTotalAmount + SessionTotalAmount;
+
+                    row["TotalAmount"] = TotalMatch;
 
 
 
@@ -186,10 +188,30 @@ namespace betplayer.Agent
                         row["MatchCommision"] = TotalMatchCommision1;
                     }
 
+                    decimal totalcommision = TotalMatchCommision1 + SessionCommision;
 
-                    row["TotalCommisionAmount"] = TotalMatchCommision1 + SessionCommision;
 
-                    Decimal TotalNetAmouunt = MatchTotalAmount + SessionTotalAmount + SessionCommision + TotalMatchCommision1;
+                    row["TotalCommisionAmount"] = totalcommision;
+
+                    Decimal Match = MatchTotalAmount + SessionTotalAmount;
+                    Decimal Commision = SessionCommision + TotalMatchCommision1;
+                    Decimal To = 0;
+
+                    if (Match > 0)
+                    {
+
+                       To = Match - Commision;
+
+                    }
+                    else if (Match < 0)
+                    {
+
+                        To = Match + Commision;
+
+                    }
+
+                    Decimal TotalNetAmouunt = To;
+
 
                     Decimal TotalHalfAmount = TotalNetAmouunt / 2;
 
@@ -197,16 +219,18 @@ namespace betplayer.Agent
 
                     row["TotalHalfAmount"] = TotalHalfAmount;
 
-                    string s7 = "Select MobileApp From ClientMaster where  ClientID = '" + ID + "'";
+                    string s7 = "Select MobileApp,Agent_Share From ClientMaster where  ClientID = '" + ID + "'";
                     MySqlCommand cmd7 = new MySqlCommand(s7, cn);
                     MySqlDataAdapter adp7 = new MySqlDataAdapter(cmd7);
                     DataTable dt7 = new DataTable();
                     adp7.Fill(dt7);
                     Decimal MobileAppAmount = 0;
                     String MobileApp = dt7.Rows[0]["MobileApp"].ToString();
+                    Decimal AgentShare = Convert.ToDecimal(dt7.Rows[0]["Agent_Share"]);
+                    decimal AgentShare1 = AgentShare / 100;
                     if (MobileApp == "Yes")
                     {
-                        MobileAppAmount = 100;
+                        MobileAppAmount = 100 - (100 * AgentShare1) ;
                         row["MOBAppAmount"] = MobileAppAmount;
                     }
                     else if (MobileApp == "NO")
@@ -315,8 +339,22 @@ namespace betplayer.Agent
                 }
 
                 row1["TotalFinalAmount"] = TotalFinalAmount1;
+                decimal Dabit = 0, Credit = 0;
+                string Remark = "";
 
-                string s9 = "Select * From  Agentledger where AgentID = '"+Session["AgentID"]+"' && MatchID  = '"+MatchID+"'" ;
+                if(TotalFinalAmount1 <0)
+                {
+                    Dabit = TotalFinalAmount1;
+                    Remark = "Agent Plus";
+
+                }
+                else if (TotalFinalAmount1 > 0)
+                {
+                    Credit = TotalFinalAmount1;
+                    Remark = "Agent Minus";
+                }
+
+                string s9 = "Select * From  Agentledger where AgentID = '" + Session["AgentID"] + "' && MatchID  = '" + MatchID + "'";
                 MySqlCommand cmd9 = new MySqlCommand(s9, cn);
                 MySqlDataReader rdr = cmd9.ExecuteReader();
                 if (rdr.Read())
@@ -325,12 +363,17 @@ namespace betplayer.Agent
                 }
                 else
                 {
+
                     rdr.Close();
-                    string s8 = "Insert Into Agentledger (AgentID,MatchID,Amount) Values(@AgentID,@MatchID,@Amount)";
+                    string s8 = "Insert Into Agentledger (AgentID,MatchID,Amount,Dabit,Credit,Remark) Values(@AgentID,@MatchID,@Amount,@Dabit,@Credit,@Remark)";
                     MySqlCommand cmd8 = new MySqlCommand(s8, cn);
                     cmd8.Parameters.AddWithValue("@AgentID", Session["AgentID"]);
                     cmd8.Parameters.AddWithValue("@MatchID", MatchID);
                     cmd8.Parameters.AddWithValue("@Amount", TotalFinalAmount1);
+                    cmd8.Parameters.AddWithValue("@Dabit", Dabit);
+                    cmd8.Parameters.AddWithValue("@Credit", Credit);
+                    cmd8.Parameters.AddWithValue("@Remark", Remark);
+
                     cmd8.ExecuteNonQuery();
                 }
             }

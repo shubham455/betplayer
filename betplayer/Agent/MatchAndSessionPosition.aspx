@@ -237,63 +237,8 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            <script>
-                                window.sumInputs = function () {
-                                    var inputs = document.getElementsByID(MatchBet),
-                                        result = document.getElementById('total'),
-                                        sum = 0;
-
-                                    for (var i = 0; i < inputs.length; i++) {
-                                        var ip = inputs[i];
-
-                                        if (ip.name && ip.name.indexOf("total") < 0) {
-                                            sum += parseInt(ip.value) || 0;
-                                        }
-
-                                    }
-
-                                    result.value = sum;
-                                }
-                                sumInputs();
-                            </script>
-                            <script type="text/javascript">
-                                //<![CDATA[
-
-                                window.onload = function () {
-
-                                    var sum = 0;
-
-                                    var dataTable = document.getElementById("MatchBet");
-
-                                    // use querySelector to find all second table cells
-                                    var cells = document.querySelectorAll("td");
-
-                                    for (var i = 0; i < cells.length; i++)
-                                        sum += parseFloat(cells[i].firstChild.data);
-
-                                    // now add sum to end of table
-                                    var newRow = document.createElement("tr");
-
-                                    // first cell
-                                    var firstCell = document.createElement("td");
-                                    var firstCellText = document.createTextNode("Sum:");
-                                    firstCell.appendChild(firstCellText);
-                                    newRow.appendChild(firstCell);
-
-                                    // second cell with sum
-                                    var secondCell = document.createElement("td");
-                                    var secondCellText = document.createTextNode(sum);
-                                    secondCell.appendChild(secondCellText);
-                                    newRow.appendChild(secondCell);
-
-                                    // add row to table
-                                    dataTable.appendChild(newRow);
-
-                                }
-
-
-                            </script>
-
+                            
+                           
                             <!-- END FORM-->
 
                         </div>

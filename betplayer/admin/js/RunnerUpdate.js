@@ -1,4 +1,4 @@
-﻿// Initialize Firebase
+﻿    // Initialize Firebase
 var config = {
     apiKey: "AIzaSyDeJEW2OK0RnL0A4OjYF6oTj04xQhgpb40",
     authDomain: "betplayer-197014.firebaseapp.com",
