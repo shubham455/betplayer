@@ -7,9 +7,7 @@ using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Configuration;
-using System.Net.Http;
 using System.Net;
-using System.Collections.Specialized;
 using System.Web.Script.Serialization;
 using System.IO;
 
@@ -19,27 +17,41 @@ namespace betplayer.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
             if (!IsPostBack)
             {
-                string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-                using (MySqlConnection cn = new MySqlConnection(CN))
                 {
-                    cn.Open();
-                    string s = "insert into Matches() values (); SELECT LAST_INSERT_ID()";
-                    MySqlCommand cmd = new MySqlCommand(s, cn);
-                    cmd.Parameters.AddWithValue("@TeamA", txtTeamA.Text);
-                    cmd.Parameters.AddWithValue("@TeamB", "");
-                    cmd.Parameters.AddWithValue("@TeamC", "");
-                    cmd.Parameters.AddWithValue("@Date", "");
-                    cmd.Parameters.AddWithValue("@MatchType", "");
+                    string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+                    using (MySqlConnection cn = new MySqlConnection(CN))
+                    {
+                        cn.Open();
+                        string s2 = "Select * From Matches where MatchesID = '" + txtcode.Text + "'";
+                        MySqlCommand cmd2 = new MySqlCommand(s2, cn);
+                        MySqlDataReader rdr = cmd2.ExecuteReader();
+                        if (rdr.Read())
+                        {
+                        }
+                        else
+                        {
+                            rdr.Close();
+                            string s = "insert into Matches() values (); SELECT LAST_INSERT_ID()";
+                            MySqlCommand cmd = new MySqlCommand(s, cn);
+                            cmd.Parameters.AddWithValue("@TeamA", txtTeamA.Text);
+                            cmd.Parameters.AddWithValue("@TeamB", "");
+                            cmd.Parameters.AddWithValue("@TeamC", "");
+                            cmd.Parameters.AddWithValue("@Date", "");
+                            cmd.Parameters.AddWithValue("@MatchType", "");
 
-                    int ID = Convert.ToInt32(cmd.ExecuteScalar());
-                    string s1 = "Select MatchesID From Matches where MatchesID = '" + ID + "' ";
-                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd1);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-                    txtcode.Text = dt.Rows[0]["MatchesID"].ToString();
+                            int ID = Convert.ToInt32(cmd.ExecuteScalar());
+                            string s1 = "Select MatchesID From Matches where MatchesID = '" + ID + "' ";
+                            MySqlCommand cmd1 = new MySqlCommand(s1, cn);
+                            MySqlDataAdapter adp = new MySqlDataAdapter(cmd1);
+                            DataTable dt = new DataTable();
+                            adp.Fill(dt);
+                            txtcode.Text = dt.Rows[0]["MatchesID"].ToString();
+                        }
+                    }
                 }
             }
         }
@@ -59,7 +71,7 @@ namespace betplayer.admin
                 cmd.Parameters.AddWithValue("@TeamB", txtTeamB.Text);
                 cmd.Parameters.AddWithValue("@TeamC", txtTeamC.Text);
                 cmd.Parameters.AddWithValue("@DateTime", txtdate1.Text + "T" + txtTime.Text + ":00.000Z");
-                cmd.Parameters.AddWithValue("@MatchType", txtMatchType.Text);
+                cmd.Parameters.AddWithValue("@MatchType", DropdownMatchesType.SelectedItem.Text);
                 cmd.ExecuteNonQuery();
 
 
@@ -125,23 +137,23 @@ namespace betplayer.admin
                 {
                     var result = streamReader.ReadToEnd();
                 }
-
-                txtcode.Text = "";
-                txtTeamA.Text = "";
-                txtTeamB.Text = "";
-                txtTeamC.Text = "";
-                txtdate1.Text = "";
-                txtTime.Text = "";
-                txtMatchType.Text = "";
-
-
                 Response.Redirect("CreateMatch.aspx");
-               
+
             }
         }
         protected void btncancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CreateMatch.aspx");
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+                string s = "Delete From  Matches where MatchesID = '" + txtcode.Text + "'";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                cmd.ExecuteNonQuery();
+
+
+                Response.Redirect("CreateMatch.aspx");
+            }
         }
     }
 }

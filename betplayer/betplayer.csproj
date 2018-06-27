@@ -2329,7 +2329,6 @@
     <Compile Include="Client\MyLedger.aspx.designer.cs">
       <DependentUpon>MyLedger.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Client\Redirect.cs" />
     <Compile Include="Client\Terms_Condition.aspx.cs">
       <DependentUpon>Terms_Condition.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

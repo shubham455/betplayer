@@ -186,7 +186,7 @@ function doneClick() {
                             }
                             formBody = formBody.join("&");
 
-                            fetch('https://www.crick20.com/AddDataToRunner.ashx', {
+                            fetch('http://localhost:54034/Client/AddDataToRunner.ashx', {
                                 credentials: 'same-origin',
                                 method: 'POST',
                                 headers: {

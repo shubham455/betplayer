@@ -16,7 +16,11 @@
                                         <tbody>
                                             <tr>
                                                 <td height="35" align="center" bgcolor="#CCFFCC" class="TeamCombo">
-                                                    <p class="price-btn price-btn-blue popup-with-zoom-anim"><asp:Label ID="lblteamA" runat="server"></asp:Label> VS <asp:Label ID="lblteamB" runat="server"></asp:Label></p>
+                                                    <p class="price-btn price-btn-blue popup-with-zoom-anim">
+                                                        <asp:Label ID="lblteamA" runat="server"></asp:Label>
+                                                        VS
+                                                        <asp:Label ID="lblteamB" runat="server"></asp:Label>
+                                                    </p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -67,19 +71,28 @@
                                     <p class="price-btn price-btn-blue popup-with-zoom-anim">Session Bet(s)</p>
                                     <table width="100%" border="0" cellspacing="2" cellpadding="0">
                                         <tbody>
+                                           
                                             <tr>
-                                                <td>&nbsp;</td>
+                                                <td height="25" align="right" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Session</td>
+                                                <td height="25" align="right" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Rate</td>
+                                                <td align="right" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Amount</td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Mode</td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Team</td>
+                                                
                                             </tr>
+                                           
+                                            <% foreach (System.Data.DataRow row in SessionDataTable.Rows)
+                                                { %>
                                             <tr>
-                                                <td height="35">
-                                                    <div class="menu" id="menu2" align="center">
-                                                        <ul class="nav">
-                                                            <li class="active"><a href="#">NO ANY SESSION BET'S</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <br>
-                                                </td>
+                                                <td height="25" align="right" bgcolor="#CCFFFF" class="FontText"><%:row["Session"] %></td>
+                                                <td height="25" align="right" bgcolor="#CCFFFF" class="FontText"><%:row["Rate"] %></td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText"><%:row["Amount"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Mode"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Team"] %></td>
+                                               
                                             </tr>
+                                            <%} //foreach %>
+                                            
 
                                         </tbody>
                                     </table>
@@ -95,7 +108,8 @@
                                 </td>
                             </tr>
                             <tr bgcolor="">
-                                <td height="25" colspan="6" align="center" class=""><asp:Label ID="lblSession" runat="server"></asp:Label></td>
+                                <td height="25" colspan="6" align="center" class="">
+                                    <asp:Label ID="lblSession" runat="server"></asp:Label></td>
                             </tr>
                             <tr>
                                 <td valign="top">&nbsp;</td>
@@ -139,7 +153,7 @@
                                 </td>
                             </tr>
                             <tr bgcolor="">
-                                <td height="25" colspan="6" align="center" class="" style="color: #F00;">You Lost 0 Coins.</td>
+                                <td height="25" colspan="6" align="center" class="" style="color: #F00;">You Lost 100 Coins.</td>
                             </tr>
 
                             <tr>

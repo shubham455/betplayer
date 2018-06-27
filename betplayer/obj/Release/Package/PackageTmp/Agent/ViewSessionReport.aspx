@@ -31,9 +31,7 @@
                         <div class="widget-body form">
 
                             <!-- BEGIN FORM-->
-                            <form name="BetPlayer" id="BetPlayer" method="post" action="ViewSessionReport.php" autocomplete="off">
-
-                                <div class="portlet-body">
+                            <div class="portlet-body">
                                     <div class="clearfix">
                                     </div>
                                     <div class="space15"></div>
@@ -88,17 +86,16 @@
                                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                                             { %>
                                                         <tr>
-                                                            <td align="left" class="TableHeading">&nbsp;</td>
-                                                            <td height="25" align="left" class="TableHeading"><strong><%: row["SessionID"] %></strong></td>
-                                                            <td align="left" class="TableHeading"><strong><%: row["Session"] %> </strong></td>
-                                                            <td align="left" class="TableHeading"><strong><%: row["ClientID"] %> <%: row["Name"] %></strong></td>
-                                                            <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["rate"] %></strong></td>
+                                                            <td align="left" class="TableHeading"><%: row["SessionID"] %></td>
+                                                            <td height="25" align="left" class="TableHeading"><strong><%: row["Session"] %></strong></td>
+                                                            <td align="left" class="TableHeading"><strong> <%: row["ClientID"] %> <%: row["Name"] %></strong></td>
+                                                            <td align="left" class="TableHeading"><strong><%: row["rate"] %></strong></td>
                                                             <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["Amount"] %></strong></td>
                                                             <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["Runs"] %></strong></td>
-                                                            <td align="center" class="TableHeading"><strong><%: row["Mode"] %></strong></td>
-                                                            <td align="right" class="TableHeading" style="text-align: right;"><strong>No</strong></td>
+                                                            <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["Mode"] %></strong></td>
+                                                            <td align="center" class="TableHeading"><strong>No</strong></td>
                                                             <td align="right" class="TableHeading" style="text-align: right;"><strong>Yes</strong></td>
-
+                                                            
                                                             <td align="left" class="TableHeading"><strong><%: row["DateTime"] %></strong></td>
                                                         </tr>
                                                         <% } //foreach %>
@@ -130,12 +127,7 @@
                                 </table>
                                 <br>
 
-                                <input name="SessionReportChk" type="hidden" id="SessionReportChk" size="7" value="0">
-                                <input name="ExtraSessionReportChk" type="hidden" id="ExtraSessionReportChk" size="7" value="">
-                                <input name="MatchCode" type="hidden" id="MatchCode" size="7" value="246">
-                            </form>
-                            <!-- END FORM-->
-
+                                
                         </div>
                     </div>
                     <!-- END EXAMPLE TABLE widget-->

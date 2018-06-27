@@ -46,7 +46,23 @@ namespace betplayer.Agent
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string s = "update clientmaster set Status = 'Inactive' where clientid = '" + id + "'";
+                    string checkstatus = "Select Status From ClientMaster Where ClientID = '" + id + "'";
+                    MySqlCommand cmd1 = new MySqlCommand(checkstatus, cn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd1);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    string St = "";
+                    string status = dt.Rows[0]["Status"].ToString();
+                    if(status == "active")
+                    {
+                        St = "Inactive";
+                    }
+                    else if (status == "Inactive")
+                    {
+                        St = "active";
+                    }
+
+                    string s = "update clientmaster set Status = '"+St+"' where clientid = '" + id + "'";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     cmd.ExecuteNonQuery();
                     return "success";

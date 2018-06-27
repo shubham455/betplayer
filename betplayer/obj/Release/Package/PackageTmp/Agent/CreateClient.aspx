@@ -43,7 +43,13 @@
                                                 <div></div>
                                                 <table width="850" border="0" cellspacing="0" cellpadding="0">
                                                     <tbody>
-
+                                                        <tr>
+                                                            <td class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">Code</td>
+                                                            <td align="left">
+                                                                <asp:TextBox CssClass="textbox" ID="txtcode" runat="server" ReadOnly="true" /></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
                                                         <tr>
                                                             <td class="welcome">&nbsp;</td>
                                                             <td height="30" align="left" valign="middle" class="welcome">Name</td>
@@ -80,7 +86,7 @@
                                                             <td align="left" valign="middle">
                                                                 <asp:TextBox CssClass="textbox" ID="txtAgentShare" runat="server" OnTextChanged="txtAgentShare_TextChanged" AutoPostBack="true"  Text="50.00"/></td>
                                                             <td align="left" valign="middle">
-                                                                <asp:TextBox CssClass="textbox" ID="txtAgentShare2" runat="server" Text="50" PlaceHolder="50.00" ReadOnly="true" /></td>
+                                                                <asp:TextBox CssClass="textbox" ID="txtAgentShare2" runat="server"  ReadOnly="true" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td align="left" class="welcome">&nbsp;</td>

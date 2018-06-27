@@ -71,7 +71,7 @@ namespace betplayer.Client
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
                         int ClientID = Convert.ToInt16(dt.Rows[0]["ClientID"]);
-                        int ClientLimit = Convert.ToInt32(dt.Rows[0]["Client_Limit"]);
+                        Decimal ClientLimit = Convert.ToDecimal(dt.Rows[0]["Client_Limit"]);
                         if(ClientLimit > 200)
                         {
                             Session["ClientID"] = ClientID;

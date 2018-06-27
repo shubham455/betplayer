@@ -71,8 +71,8 @@
                                         <td align="left" class="FontText"><%: row["TeamA"] %> v <%: row["TeamB"] %>(<%: row["Type"] %>)</td>
                                         <td align="left" class="FontText"><%= date()%></td>
                                         <td width="110" align="left" class="FontText"><%: row["DateTime"].ToString() %></td>
-                                        <td width="110" align="left" class="FontText">One Day Match</td>
-                                        <td width="100" align="left" class="FontText">YES</td>
+                                        <td width="110" align="left" class="FontText"><%: row["Type"] %></td>
+                                        <td width="100" align="left" class="FontText"><%: row["status"] %></td>
                                         <td width="92" align="left" class="FontText"><%: row["WinnerTeam"] %></td>
                                     </tr>
                                     <% } //foreach %>

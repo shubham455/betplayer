@@ -36,7 +36,7 @@ namespace betplayer.superagent
                 lblTeamB.Text = TeamB1;
 
                 int ID = Convert.ToInt32(Session["SuperAgentID"]);
-                string s11 = "Select AgentID From AgentMaster where CreatedBy = '"+Session["SuperAgentID"]+"'";
+                string s11 = "Select code From AgentMaster where CreatedBy = '"+Session["SuperAgentcode"]+"'";
                 MySqlCommand cmd11 = new MySqlCommand(s11, cn);
                 MySqlDataAdapter adp11 = new MySqlDataAdapter(cmd11);
                 DataTable dt11 = new DataTable();
@@ -45,9 +45,9 @@ namespace betplayer.superagent
                 for (int i = 0; i < dt11.Rows.Count; i++)
                 {
 
-                    int AgentID = Convert.ToInt32(dt11.Rows[i]["AgentID"]);
+                    string Agentcode = (dt11.Rows[i]["code"]).ToString();
 
-                    string s = "select runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" +ID+ "' order by DateTime DESC";
+                    string s = "select runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" +Agentcode+ "' order by DateTime DESC";
                     MySqlCommand cmd1 = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     dt1 = new DataTable();

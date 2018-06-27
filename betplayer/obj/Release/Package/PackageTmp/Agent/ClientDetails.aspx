@@ -45,7 +45,7 @@
                                     <div class="btn-group">
                                         <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" OnSelectedIndexChanged="DropDownstatus_SelectedIndexChanged" AutoPostBack="true">
 
-                                            <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
+                                            <asp:ListItem Text="Active" Value="Active">active</asp:ListItem>
                                             <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
                                         </asp:DropDownList>
 
@@ -128,7 +128,8 @@
                                             <td align="center" class="  sorting_1">
                                                 <div class="checker" id="uniform-2">
                                                     <span>
-                                                        <input type="checkbox" class="checkboxes" name="2" id="2" value="118" style="opacity: 0;"></span>
+                                                        
+                                                        <input type="checkbox" class="checkboxes" name="checkbox" id="check" onclick="ChangesInStatus('<%:row["ClientID"] %>" value ="<%:row["ClientID"] %>" style="opacity: 0;"></span>
                                                 </div>
                                             </td>
                                             <td align="left" class=" ">
@@ -150,12 +151,12 @@
                                             <td align="left" class="FontText "><%:row["Contact_No"] %></td>
                                             <td align="left" class="FontText "><%:row["Password"] %></td>
                                             <td align="right" class="FontText ">Bet By Bet</td>
-                                            <td align="right" class="FontText " style="text-align: right;">2.00</td>
-                                            <td align="right" class="FontText " style="text-align: right;">2.50</td>
+                                            <td align="right" class="FontText " style="text-align: right;"><%:row["MatchCommision"] %></td>
+                                            <td align="right" class="FontText " style="text-align: right;"><%:row["SessionCommision"] %></td>
                                             <td align="right" class="FontText "><%:row["Session_Commision_Type"] %></td>
                                             <td align="right" class="FontText " style="text-align: right;">0.00</td>
                                             <td align="right" class="FontText " style="text-align: right;">0.00</td>
-                                            <td align="right" class="FontText " style="text-align: right;"><%:row["agent_share"] %></td>
+                                            <td align="right" class="FontText " style="text-align: right;"><%:row["agentshare"] %></td>
                                             <td align="right" class="FontText " style="text-align: right;"><%:row["client_share"] %></td>
                                             <td align="right" class="FontText " style="text-align: right;"><%:row["client_limit"] %></td>
                                             <td align="right" class="FontText "><%:row["Status"] %></td>
@@ -235,7 +236,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('https://agent.crick20.com/ChangeStatus.ashx', {
+            fetch('http://localhost:54034/Agent/ChangeStatus.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

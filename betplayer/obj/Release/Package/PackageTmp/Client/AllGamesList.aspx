@@ -40,7 +40,7 @@
                                         <td class="GameList" align="center">Session Bets : <asp:Label ID="lblSession" runat="server" Text="0"/></td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Declared :Yes</td>
+                                        <td class="GameList" align="center">Declared :<%: row["Status"] %></td>
                                     </tr>
                                     <tr>
                                         <td class="GameList" align="center">Won By : <%: row["winnerTeam"] %></td>

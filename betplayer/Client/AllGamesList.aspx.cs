@@ -16,7 +16,7 @@ namespace betplayer.Client
     {
 
         private DataTable dt;
-        
+
         public DataTable MatchesDataTable { get { return dt; } }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,6 +42,7 @@ namespace betplayer.Client
                         string datetime = "Date: " + oDate.Date.ToString().Substring(0, 10) + " Time: " + oDate.TimeOfDay.ToString();
                         row["DateTime"] = datetime;
                     }
+                   
 
                 }
                 else
@@ -92,41 +93,7 @@ namespace betplayer.Client
             }
             return "";
         }
-        public int redirect(string apiID)
-        {
-            int status = 0;
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s2 = "Select * From Matches where apiID = '" + apiID + "'";
-                MySqlCommand cmd2 = new MySqlCommand(s2, cn);
-                MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
-                DataTable dt2 = new DataTable();
-                adp2.Fill(dt2);
-                
-                
-                if (dt.Rows.Count < 0)
-                {
-                    status = Convert.ToInt16(dt2.Rows[0]["Status"].ToString());
-                    if (status == 11)
-                    {
-                        Response.Redirect("BetDetails_Declare.aspx?apiID");
-                    }
-                    else if (status == 1)
-                    {
-                        Response.Redirect("BetDetails.aspx?apiID");
-                    }
-                    else if (status == 0)
-                    {
-                        Response.Redirect("BetDetails_Declare.aspx?apiID");
-                    }
-
-                }return status;
-                
 
 
-            }
-        }
     }
 }

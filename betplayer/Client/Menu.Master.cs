@@ -30,7 +30,7 @@ namespace betplayer.Client
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     lblName.InnerText = dt.Rows[0]["Name"].ToString();
-                    lblAmount.InnerText = dt.Rows[0]["Client_limit"].ToString();
+                    lblAmount.InnerText = dt.Rows[0]["Client_limit"].ToString().TrimEnd('0');
 
                 }
             }

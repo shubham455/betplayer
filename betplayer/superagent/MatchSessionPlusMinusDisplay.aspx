@@ -55,7 +55,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="img/avatar1_small.jpg" alt="">
-                                <span class="username">one two gwalior</span>
+                                <span class="username"><asp:Label ID="lblname" runat="server"></asp:Label></span>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
@@ -194,7 +194,7 @@
                             <div class="widget-body form">
 
                                 <!-- BEGIN FORM-->
-                                <form name="BetPlayer" id="BetPlayer" method="post" action="AgentDetails.php" autocomplete="off">
+                                <form name="BetPlayer" id="BetPlayer" method="post" action="AgentDetails.aspx" autocomplete="off">
 
                                     <div class="portlet-body">
                                         <div class="clearfix">
@@ -206,8 +206,7 @@
                                         <tbody>
                                             <tr>
                                                 <td height="37" width="70%" style="text-align: center; vertical-align: middle;" class="FontText">
-                                                    <strong>ESSEX V YORKSHIRE 
-                          	Dated 14-06-2018 06:30:00 PM                          </strong></td>
+                                                    <strong><asp:Label ID="lblTeamA" runat="server"></asp:Label> V <asp:Label ID="lblTeamB" runat="server"></asp:Label> 	Dated <asp:Label ID="lblDatetime" runat="server"></asp:Label></strong></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -217,7 +216,7 @@
                                         <tbody>
                                             <tr>
                                                 <td width="11%" height="25" align="left" valign="middle"><strong>SUPER AGENT</strong></td>
-                                                <td width="89%" align="left" valign="middle"><strong>ONE TWO GWALIOR                </strong></td>
+                                                <td width="89%" align="left" valign="middle"><strong><asp:Label ID="lblname1" runat="server"></asp:Label>  </strong></td>
                                             </tr>
                                             <tr>
                                                 <td height="25" colspan="2" align="left" valign="middle">

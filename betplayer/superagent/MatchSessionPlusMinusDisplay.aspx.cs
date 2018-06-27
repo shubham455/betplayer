@@ -45,6 +45,27 @@ namespace betplayer.superagent
             {
                 cn.Open();
 
+                string SuperAgent = "Select Name From SuperAgentMaster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
+                MySqlCommand SuperAgentcmd = new MySqlCommand(SuperAgent, cn);
+                MySqlDataAdapter SuperAgentadp = new MySqlDataAdapter(SuperAgentcmd);
+                DataTable SuperAgentdt = new DataTable();
+                SuperAgentadp.Fill(SuperAgentdt);
+
+                lblname.Text = SuperAgentdt.Rows[0]["Name"].ToString();
+                lblname1.Text = SuperAgentdt.Rows[0]["Name"].ToString();
+
+                string Team = "Select TeamA,TeamB,DateTime From Matches where apiID = '" +MatchID + "'";
+                MySqlCommand Teamcmd = new MySqlCommand(Team, cn);
+                MySqlDataAdapter Teamadp = new MySqlDataAdapter(Teamcmd);
+                DataTable Teamdt = new DataTable();
+                Teamadp.Fill(Teamdt);
+
+                lblTeamA.Text = Teamdt.Rows[0]["TeamA"].ToString();
+                lblTeamB.Text = Teamdt.Rows[0]["TeamB"].ToString();
+                lblDatetime.Text = Teamdt.Rows[0]["DateTime"].ToString();
+
+
+
                 string Agent = "Select Code,Name From AgentMaster where Createdby = '" + Session["SuperAgentCode"] + "'";
                 MySqlCommand Agentcmd = new MySqlCommand(Agent, cn);
                 MySqlDataAdapter Agentadp = new MySqlDataAdapter(Agentcmd);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Data;
@@ -30,7 +31,7 @@ namespace betplayer.Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From ClientMaster where CreatedBy = '" + Session["AgentID"] + "'";
+                string s = "Select * From Clientmaster inner join AgentMaster on clientmaster.CreatedBy = agentmaster.code  where ClientMaster.CreatedBy = '" + Session["Agentcode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -47,7 +48,7 @@ namespace betplayer.Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select* From ClientMaster Where Name Like '%" + txtsearch.Text + "%'";
+                string s = "Select * From Clientmaster inner join AgentMaster on clientmaster.CreatedBy = agentmaster.code  where ClientMaster.CreatedBy = '" + Session["Agentcode"] + "' && ClientMaster.Name Like '%" + txtsearch.Text + "%'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -62,7 +63,7 @@ namespace betplayer.Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From ClientMaster where CreatedBy = '" + Session["AgentID"] + "'";
+                string s = "Select * From Clientmaster inner join AgentMaster on clientmaster.CreatedBy = agentmaster.code  where ClientMaster.CreatedBy = '" + Session["Agentcode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -78,11 +79,12 @@ namespace betplayer.Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "update  ClientMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID = 1";
+
+                string selected = Request.Form["checkbox"];
+                string s = "update  ClientMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID in ("+selected+")";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                dt = new DataTable();
-                adp.Fill(dt);
+                cmd.ExecuteNonQuery();
+                
                 BindData();
 
             }

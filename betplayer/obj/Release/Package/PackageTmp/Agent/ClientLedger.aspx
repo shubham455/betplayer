@@ -130,7 +130,7 @@
                                         <td align="right"><strong>Total Amount</strong></td>
                                         <td align="right" style="text-align: right;"><strong><%:row["TotalDabitAmount"] %>  </strong></td>
                                         <td align="right" style="text-align: right;"><strong><%:row["TotalCreditAmount"] %> </strong></td>
-                                        <td align="right" style="text-align: right;"><strong><%:row["TotalBalanceAmount"] %> </strong></td>
+                                        <td align="right" style="text-align: right;"><strong><asp:Label ID="lblAmount" runat="server"></asp:Label> </strong></td>
                                         <td align="right">&nbsp;</td>
                                     </tr>
                                         <% } //foreach %>

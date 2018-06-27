@@ -20,8 +20,9 @@ namespace betplayer.Agent
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
+
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (!IsPostBack)
             {
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
@@ -30,13 +31,12 @@ namespace betplayer.Agent
                     cn.Open();
 
 
-                    string s = "Select * From ClientMaster where CreatedBy = '" + Session["AgentID"] + "' And  Mode = 'Agent'";
+                    string s = "Select * From ClientMaster where CreatedBy = '" + Session["Agentcode"] + "' And  Mode = 'Agent'";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     dropdownClient.DataSource = dt;
-
                     dropdownClient.DataTextField = "Name";
                     dropdownClient.DataValueField = "ClientID";
                     dropdownClient.DataBind();
@@ -45,13 +45,18 @@ namespace betplayer.Agent
                     string s1 = "Select * From Clientledger where ClientID = '" + dropdownClient.SelectedValue + "'";
                     MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
-                    runtable = new DataTable();
                     runtable1 = new DataTable();
-                    adp1.Fill(runtable);
+                    runtable = new DataTable();
                     adp1.Fill(runtable1);
+                    adp1.Fill(runtable);
+
+
+
+
                 }
             }
         }
+
 
         protected void dropdownClient_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -69,7 +74,8 @@ namespace betplayer.Agent
             runtable1.Columns.Add(new DataColumn("TotalDabitAmount"));
             runtable1.Columns.Add(new DataColumn("TotalCreditAmount"));
             runtable1.Columns.Add(new DataColumn("TotalBalanceAmount"));
-           
+
+            DataRow row = runTable.NewRow();
             DataRow row1 = runtable1.NewRow();
 
 
@@ -83,19 +89,41 @@ namespace betplayer.Agent
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt1 = new DataTable();
                 adp.Fill(dt1);
-
+                lblAmount.Text = "0";
                 for (int i = 0; i < dt1.Rows.Count; i++)
-                {
+                { 
+                    string s1 = "Select * From ClientCollectionMaster where ClientID = '" + dropdownClient.SelectedValue + "'";
+                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
+                    MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
+                    DataTable dt = new DataTable();
+                    adp1.Fill(dt);
+
+                    //string CollectionDate = dt.Rows[i]["Date"].ToString();
+                    //DateTime date = DateTime.Parse(CollectionDate);
+                    //string Date1 = date.Date.ToString().Substring(0, 10);
+
+                    string DateFromDB = dt1.Rows[i]["DateTime"].ToString();
+                    DateTime oDate = DateTime.Parse(DateFromDB);
+                    string datetime = oDate.Date.ToString().Substring(0, 10);
+
+
+                    //if (Date1 == datetime)
+                    //{
+                    //    string CollectionName = dt.Rows[0]["CollectionType"].ToString();
+                    //    string Amount = dt.Rows[0]["Amount"].ToString();
+                    //    string PaynmentDescription = dt.Rows[0]["PaynmentType"].ToString();
+
+                    //    row["CollectionName"] = CollectionName;
+                    //    row["Dabit"] = Amount;
+                    //    row["PaynmentDescription"] = PaynmentDescription;
+                    //}
+                    //else
+                    //{
                     string TeamA = dt1.Rows[i]["TeamA"].ToString();
                     string TeamB = dt1.Rows[i]["TeamB"].ToString();
-
                     decimal Dabit = Convert.ToDecimal(dt1.Rows[i]["Dabit"]);
                     decimal Credit = Convert.ToDecimal(dt1.Rows[i]["Credit"]);
-                    DataRow row = runTable.NewRow();
 
-                    string timeFromDB = dt1.Rows[i]["DateTime"].ToString();
-                    DateTime oDate = DateTime.Parse(timeFromDB);
-                    string datetime = oDate.Date.ToString().Substring(0, 10);
                     row["Date"] = datetime;
                     row["PaynmentDescription"] = TeamA + "VS" + TeamB;
                     row["Dabit"] = Dabit;
@@ -110,72 +138,67 @@ namespace betplayer.Agent
                     {
                         Balance = Credit;
                     }
+                    lblAmount.Text = "0";
                     if (runtable.Rows.Count > 0)
                     {
-
-                        for (int j = 0; j < runtable.Rows.Count; j++)
+                        for (int k = 0; k < runtable.Rows.Count; k++)
                         {
-
-                            Balance1 = Convert.ToDecimal(runtable.Rows[j]["Balance"]);
+                            Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
                             Balance1 = Balance1 - Dabit;
                             Balance1 = Balance1 + Credit;
                             row["Balance"] = Balance1;
+                            lblAmount.Text = Balance1.ToString();
                         }
                     }
                     else
                     {
                         row["Balance"] = Balance;
+                        lblAmount.Text = Balance.ToString();
                     }
 
-
-
-
                     runTable.Rows.Add(row.ItemArray);
-
-
-
                 }
-                decimal TotalDabitAmount1 = 0;
-                for (int l = 0; l < runtable.Rows.Count; l++)
-                {
-                    decimal DabitAmount = Convert.ToDecimal(runtable.Rows[l]["Dabit"]);
-                    TotalDabitAmount1 = TotalDabitAmount1 + DabitAmount;
-                }
-
-                row1["TotalDabitAmount"] = TotalDabitAmount1;
-
-                decimal TotalCreditAmount1 = 0;
-                for (int l = 0; l < runtable.Rows.Count; l++)
-                {
-                    decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["Credit"]);
-                    TotalCreditAmount1 = TotalCreditAmount1 + MatchAmount;
-                }
-
-                row1["TotalCreditAmount"] = TotalCreditAmount1;
-
-                decimal TotalbalanceAmount1 = 0;
-                for (int l = 0; l < runtable.Rows.Count; l++)
-                {
-                    decimal TotalAmount = Convert.ToDecimal(runtable.Rows[l]["Balance"]);
-                    TotalbalanceAmount1 = TotalbalanceAmount1 + TotalAmount;
-                }
-
-                row1["TotalBalanceAmount"] = TotalbalanceAmount1;
-
             }
+            decimal TotalDabitAmount1 = 0;
+            for (int l = 0; l < runtable.Rows.Count; l++)
+            {
+                decimal DabitAmount = Convert.ToDecimal(runtable.Rows[l]["Dabit"]);
+                TotalDabitAmount1 = TotalDabitAmount1 + DabitAmount;
+            }
+
+            row1["TotalDabitAmount"] = TotalDabitAmount1;
+
+            decimal TotalCreditAmount1 = 0;
+            for (int l = 0; l < runtable.Rows.Count; l++)
+            {
+                decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["Credit"]);
+                TotalCreditAmount1 = TotalCreditAmount1 + MatchAmount;
+            }
+
+            row1["TotalCreditAmount"] = TotalCreditAmount1;
+
+            decimal TotalbalanceAmount1 = 0;
+            for (int l = 0; l < runtable.Rows.Count; l++)
+            {
+                decimal TotalAmount = Convert.ToDecimal(runtable.Rows[l]["Balance"]);
+                TotalbalanceAmount1 = TotalbalanceAmount1 + TotalAmount;
+            }
+
+            row1["TotalBalanceAmount"] = TotalbalanceAmount1;
+
+
             runTable1.Rows.Add(row1.ItemArray);
         }
 
         protected void btnSave_ServerClick(object sender, EventArgs e)
         {
-
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Insert Into ClientCollectionMaster (Name,CollectionType,Date,Amount,PaynmentType,Remark,AgentID) values(@Name,@CollectionType,@Date,@Amount,@PaynmentType,@Remark,@AgentID)";
+                string s = "Insert Into ClientCollectionMaster (ClientID,CollectionType,Date,Amount,PaynmentType,Remark,AgentID) values(@ClientID,@CollectionType,@Date,@Amount,@PaynmentType,@Remark,@AgentID)";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
-                cmd.Parameters.AddWithValue("@Name", dropdownClient.Text);
+                cmd.Parameters.AddWithValue("@ClientID", dropdownClient.Text);
                 cmd.Parameters.AddWithValue("@CollectionType", Collection.Value);
                 cmd.Parameters.AddWithValue("@Date", BillDate.Text);
                 cmd.Parameters.AddWithValue("@Amount", Amount.Text);
@@ -183,8 +206,6 @@ namespace betplayer.Agent
                 cmd.Parameters.AddWithValue("@Remark", Remark.Text);
                 cmd.Parameters.AddWithValue("@AgentID", Session["AgentID"]);
                 cmd.ExecuteNonQuery();
-
-
             }
         }
     }

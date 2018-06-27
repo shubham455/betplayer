@@ -32,7 +32,7 @@ namespace betplayer.Agent
                 adp.Fill(dt);
 
 
-       string s = "select runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["AgentID"] + "' order by DateTime DESC";
+                string s = "select runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' order by DateTime DESC";
                 MySqlCommand cmd1 = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt1 = new DataTable();
@@ -112,7 +112,7 @@ namespace betplayer.Agent
                     }
 
                     row["Position1"] = Position;
-                    
+
                     TeamAposition = TeamAposition + Position;
 
                     string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + clientID + "'";
@@ -131,9 +131,9 @@ namespace betplayer.Agent
 
 
                 }
-                
+
                 Team1Amt.Text = Teampos.ToString();
-                if(Teampos > 0)
+                if (Teampos > 0)
                 {
                     Team1Amt.ForeColor = System.Drawing.Color.Blue;
                 }
@@ -202,7 +202,7 @@ namespace betplayer.Agent
 
                     TeamBposition = TeamBposition + Position;
 
-                    
+
                     string selectAgentshare1 = "select Agent_share From ClientMaster where ClientID = '" + clientID + "'";
                     MySqlCommand selectAgentsharecmd1 = new MySqlCommand(selectAgentshare1, cn);
                     MySqlDataAdapter selectAgentshareadp1 = new MySqlDataAdapter(selectAgentsharecmd1);
@@ -227,6 +227,6 @@ namespace betplayer.Agent
             }
         }
 
-           
-        }
+
     }
+}

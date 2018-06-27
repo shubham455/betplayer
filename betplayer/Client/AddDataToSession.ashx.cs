@@ -65,8 +65,8 @@ namespace betplayer.Client
         private string AddEntryToSession(HttpContext context, int ClientID)
         {
             string Session = context.Request["Session"].ToString();
-            string Amount = context.Request["Amount"].ToString();
-            string Rate = context.Request["Rate"].ToString();
+            Decimal Amount = Convert.ToDecimal(context.Request["Amount"]);
+            Decimal Rate = Convert.ToDecimal(context.Request["Rate"]);
             string Run = context.Request["Run"].ToString();
             string Team = context.Request["Team"].ToString();
             string Mode = context.Request["Mode"].ToString();
@@ -92,6 +92,37 @@ namespace betplayer.Client
                     cmd.Parameters.AddWithValue("@Team", Team);
 
                     cmd.ExecuteNonQuery();
+
+
+                    string s1 = "Select Client_Limit From ClientMaster where ClientID = '" + ClientID + "'";
+                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
+                    MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
+                    DataTable dt1 = new DataTable();
+                    adp1.Fill(dt1);
+
+                    decimal ClientLimit = Convert.ToDecimal(dt1.Rows[0]["Client_Limit"]);
+
+                    if (Mode == "Y")
+                    {
+                        decimal deductedAmount = ClientLimit - Amount;
+
+                        string s2 = "Update ClientMaster Set Client_Limit = '" + deductedAmount + "' where ClientId = '" + ClientID + "'";
+                        MySqlCommand cmd2 = new MySqlCommand(s2, cn);
+                        cmd2.ExecuteNonQuery();
+                    }
+                    else if (Mode == "N")
+                    {
+                        decimal CalculateAmount = Rate * Amount;
+                        decimal deductedAmount = ClientLimit - CalculateAmount;
+
+                        string s2 = "Update ClientMaster Set Client_Limit = '" + deductedAmount + "' where ClientId = '" + ClientID + "'";
+                        MySqlCommand cmd2 = new MySqlCommand(s2, cn);
+                        cmd2.ExecuteNonQuery();
+                    }
+
+
+
+
                     return "success";
                 }
             }

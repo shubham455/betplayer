@@ -58,6 +58,24 @@ namespace betplayer.admin {
         protected global::System.Web.UI.WebControls.TextBox txtTime;
         
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        
+        /// <summary>
         /// txtdate1 control.
         /// </summary>
         /// <remarks>
@@ -67,13 +85,40 @@ namespace betplayer.admin {
         protected global::System.Web.UI.WebControls.TextBox txtdate1;
         
         /// <summary>
-        /// txtMatchType control.
+        /// required1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMatchType;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator required1;
+        
+        /// <summary>
+        /// regularexpression1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regularexpression1;
+        
+        /// <summary>
+        /// DropdownMatchesType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropdownMatchesType;
+        
+        /// <summary>
+        /// required2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator required2;
         
         /// <summary>
         /// btnsave control.

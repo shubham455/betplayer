@@ -14,12 +14,15 @@ namespace betplayer.Client
     {
         private DataTable dt;
         private DataTable dt1;
+        private DataTable Sessiondt;
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
+        public DataTable SessionDataTable { get { return Sessiondt; } }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             int ClientID = Convert.ToInt32(Session["ClientID"]);
-            int MatchID = 1136620; /*Convert.ToInt32(Request.QueryString["Matchid"]);*/
+            int MatchID = Convert.ToInt32(Request.QueryString["id"]);
 
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
@@ -33,12 +36,17 @@ namespace betplayer.Client
                 dt = new DataTable();
                 adp.Fill(dt);
 
+
                 string s1 = "Select TeamA,TeamB From Matches where apiID = @MatchID";
                 MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                 cmd1.Parameters.AddWithValue("@MatchID", MatchID);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt1 = new DataTable();
                 adp1.Fill(dt1);
+                string TeamA = dt1.Rows[0]["TeamA"].ToString();
+                string TeamB = dt1.Rows[0]["TeamB"].ToString();
+                lblteamA.Text = TeamA;
+                lblteamB.Text = TeamB;
 
                 if(dt.Rows.Count >0)
                 {
@@ -74,11 +82,15 @@ namespace betplayer.Client
                     {
                         lblSession.Text = "You Lose(" + TotalAmount1 + ")Coins";
                     }
-
-
-
-
+                    
                 }
+
+                string Session = "Select * From Session where MatchID = '"+MatchID+"' && ClientID = '"+ClientID+"' order by DateTime DESC ";
+                MySqlCommand Sessioncmd = new MySqlCommand(Session, cn);
+               
+                MySqlDataAdapter Sessionadp = new MySqlDataAdapter(Sessioncmd);
+                Sessiondt = new DataTable();
+                Sessionadp.Fill(Sessiondt);
             }
         }
     }

@@ -79,7 +79,10 @@
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Time</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtTime" CssClass="textbox" placeholder="HH:MM" runat="server" /></td>
+                                                            <asp:TextBox ID="txtTime" CssClass="textbox" placeholder="HH:MM" runat="server" />
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTime" ErrorMessage="**"></asp:RequiredFieldValidator>
+                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtTime" ErrorMessage="Please Give Time HH:MM Format" ValidationExpression="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"></asp:RegularExpressionValidator>
+                                                        </td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left">&nbsp;</td>
@@ -88,7 +91,10 @@
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Date</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtdate1" CssClass="textbox" placeholder="yyyy-MM-dd" runat="server" /></td>
+                                                            <asp:TextBox ID="txtdate1" CssClass="textbox" placeholder="yyyy-MM-dd" runat="server" />
+                                                            <asp:RequiredFieldValidator ID="required1" runat="server" ControlToValidate="txtdate1" ErrorMessage="**"></asp:RequiredFieldValidator>
+                                                            <asp:RegularExpressionValidator ID="regularexpression1" runat="server" ControlToValidate="txtdate1" ErrorMessage="Please Give Date yyyy-MM-dd Format" ValidationExpression="((([0-9][0-9][0-9][1-9])|([1-9][0-9][0-9][0-9])|([0-9][1-9][0-9][0-9])|([0-9][0-9][1-9][0-9]))-((0[13578])|(1[02]))-((0[1-9])|([12][0-9])|(3[01])))|((([0-9][0-9][0-9][1-9])|([1-9][0-9][0-9][0-9])|([0-9][1-9][0-9][0-9])|([0-9][0-9][1-9][0-9]))-((0[469])|11)-((0[1-9])|([12][0-9])|(30)))|(((000[48])|([0-9]0-9)|([0-9][1-9][02468][048])|([1-9][0-9][02468][048]))-02-((0[1-9])|([12][0-9])))|((([0-9][0-9][0-9][1-9])|([1-9][0-9][0-9][0-9])|([0-9][1-9][0-9][0-9])|([0-9][0-9][1-9][0-9]))-02-((0[1-9])|([1][0-9])|([2][0-8])))"></asp:RegularExpressionValidator>
+                                                        </td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left">&nbsp;</td>
@@ -97,7 +103,14 @@
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">MatchType</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtMatchType" CssClass="textbox" runat="server" /></td>
+                                                            <asp:DropDownList ID="DropdownMatchesType" runat="server" AppendDataBoundItems="true">
+                                                                <asp:ListItem Text="Select Match Type" Value="0"></asp:ListItem>
+                                                                <asp:ListItem Text="ODI" Value="1"></asp:ListItem>
+                                                                <asp:ListItem Text="Test" Value="2"></asp:ListItem>
+                                                                <asp:ListItem Text="T20" Value="3"></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <asp:RequiredFieldValidator ID="required2" runat="server" ErrorMessage="**" ControlToValidate="DropdownMatchesType" InitialValue="0"></asp:RequiredFieldValidator>
+                                                        </td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left">&nbsp;</td>
@@ -120,5 +133,5 @@
             </div>
         </div>
     </div>
-    
+
 </asp:Content>

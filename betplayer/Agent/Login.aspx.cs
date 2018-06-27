@@ -65,8 +65,10 @@ namespace betplayer
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
                         int AgentID = Convert.ToInt16(dt.Rows[0]["AgentID"]);
+                        string Agentcode = (dt.Rows[0]["Code"]).ToString();
 
                         Session["AgentID"] = AgentID;
+                        Session["Agentcode"] = Agentcode;
                         
                         Response.Redirect("~/Agent/TC.aspx");
                     }

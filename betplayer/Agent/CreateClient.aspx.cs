@@ -19,13 +19,39 @@ namespace Panchayat_System.Admin
 
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
+            if (!IsPostBack)
+            {
+                string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+                using (MySqlConnection cn = new MySqlConnection(CN))
+                {
+                    cn.Open();
+                    string s = "insert into ClientMaster() values (); SELECT LAST_INSERT_ID()";
+                    MySqlCommand cmd = new MySqlCommand(s, cn);
+                    int ID = Convert.ToInt32(cmd.ExecuteScalar());
+                    string s1 = "Select ClientID From ClientMaster where ClientID = '" + ID + "' ";
+                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd1);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    txtcode.Text = "C" + dt.Rows[0]["ClientID"].ToString();
 
+                    string s2 = "Update ClientMaster Set Code = '" + txtcode.Text + "' where ClientID = '"+ID+"'";
+                    MySqlCommand cmd2 = new MySqlCommand(s2, cn);
+                    cmd2.ExecuteNonQuery();
+
+                    string s3 = "Select Myshare,AgentLimit From AgentMaster where AgentID = '"+Session["AgentID"]+"'";
+                    MySqlCommand cmd3 = new MySqlCommand(s3, cn);
+                    MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);
+                    DataTable dt3 = new DataTable();
+                    adp3.Fill(dt3);
+                    txtAgentlimit.Text = dt3.Rows[0]["Agentlimit"].ToString();
+                    txtAgentShare2.Text = dt3.Rows[0]["myshare"].ToString();
+                }
+            }
         }
 
         protected void Submit_Click(object sender, EventArgs e)
         {
-
-
             string strNewPassword1 = GeneratePassword().ToString();
 
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
@@ -43,27 +69,23 @@ namespace Panchayat_System.Admin
                 else
                 {
                     rdr.Close();
-                    string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Agent_limit,Agent_Share,Client_Share,Session_Commision_Type,Status,CreatedBy,Date) values (@Name,@Contact_No,@Password,@Clientlimit,@Agentlimit,@Agentshare,@Clientshare,@SessionType,@Status,@CreatedBy,@Date); SELECT LAST_INSERT_ID()";
+                    string s = "update  ClientMaster set  Name = @Name,Contact_No= @Contact_No,Password= @Password,Client_limit= @Clientlimit,Client_Share = @Clientshare,Session_Commision_Type= @Sessiontype,Status=@Status,CreatedBy=@CreatedBy,Date=@Date,Mode=@Mode,FixLimit=@FixLimit where code = @Code";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
 
                     cmd.Parameters.AddWithValue("@Name", txtname.Text);
                     cmd.Parameters.AddWithValue("@Contact_No", txtContactno.Text);
                     cmd.Parameters.AddWithValue("@Password", strNewPassword1);
                     cmd.Parameters.AddWithValue("@Clientlimit", txtClientlimit.Text);
-                    cmd.Parameters.AddWithValue("@Agentlimit", txtAgentlimit.Text);
-                    cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
                     cmd.Parameters.AddWithValue("@Clientshare", txtClientShare.Text);
                     cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
                     cmd.Parameters.AddWithValue("@Status", "active");
-                    cmd.Parameters.AddWithValue("@CreatedBy", Session["AgentID"]);
+                    cmd.Parameters.AddWithValue("@CreatedBy", Session["Agentcode"]);
                     cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
+                    cmd.Parameters.AddWithValue("@Mode", "Agent");
+                    cmd.Parameters.AddWithValue("@Code", txtcode.Text);
+                    cmd.Parameters.AddWithValue("@FixLimit", txtClientlimit.Text);
 
-                    int ID = Convert.ToInt16(cmd.ExecuteScalar());
-                    string update = "Update ClientMaster Set Code = 'C" + ID + "'where ClientId = '" + ID + "' ";
-                    MySqlCommand cmd1 = new MySqlCommand(update, cn);
-                    cmd1.ExecuteNonQuery();
-
-
+                    cmd.ExecuteNonQuery();
                     Response.Redirect("~/Agent/ClientDetails.aspx?msg=Add");
                 }
             }
@@ -100,7 +122,15 @@ namespace Panchayat_System.Admin
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ClientDetails.aspx");
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+                string s = "Delete from  ClientMaster where Code = '"+txtcode.Text+"'";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                cmd.ExecuteNonQuery();
+                Response.Redirect("ClientDetails.aspx");
+            }
         }
 
         protected void txtClientlimit_TextChanged(object sender, EventArgs e)
@@ -114,7 +144,7 @@ namespace Panchayat_System.Admin
 
         protected void txtAgentShare_TextChanged(object sender, EventArgs e)
         {
-            if(Convert.ToDecimal(txtAgentShare.Text) > Convert.ToDecimal(txtAgentShare2.Text) )
+            if (Convert.ToDecimal(txtAgentShare.Text) > Convert.ToDecimal(txtAgentShare2.Text))
             {
                 txtAgentShare.Text = "";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Agent Share Do not Greater Than My Share.....');", true);
