@@ -22,6 +22,15 @@ namespace betplayer.superagent {
         protected global::System.Web.UI.WebControls.Label lblTeamA;
         
         /// <summary>
+        /// lblPositionA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPositionA;
+        
+        /// <summary>
         /// lblTeamB control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace betplayer.superagent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTeamB;
+        
+        /// <summary>
+        /// lblPositionB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPositionB;
         
         /// <summary>
         /// Dropdownclient control.
@@ -58,21 +76,21 @@ namespace betplayer.superagent {
         protected global::System.Web.UI.WebControls.Label lblTeamB1;
         
         /// <summary>
-        /// lblTotalposition1 control.
+        /// lblTotalPosition1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalposition1;
+        protected global::System.Web.UI.WebControls.Label lblTotalPosition1;
         
         /// <summary>
-        /// lblTotalposition2 control.
+        /// lblTotalPosition2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalposition2;
+        protected global::System.Web.UI.WebControls.Label lblTotalPosition2;
     }
 }

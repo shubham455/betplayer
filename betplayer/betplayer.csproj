@@ -82,25 +82,584 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin\AddMatch.aspx" />
-    <Content Include="admin\AddMatchManually.aspx" />
+    <Content Include="PowerUser\AddMatch.aspx" />
+    <Content Include="PowerUser\AddMatchManually.aspx" />
     <Content Include="admin\AgentDetails.aspx" />
     <Content Include="admin\ClientDetails.aspx" />
     <Content Include="admin\CreateAgent.aspx" />
     <Content Include="admin\CreateClient.aspx" />
-    <Content Include="admin\CreateMatch.aspx" />
-    <Content Include="admin\EditMatches.aspx" />
+    <Content Include="PowerUser\assets\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="PowerUser\assets\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="PowerUser\assets\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="PowerUser\assets\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="PowerUser\assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="PowerUser\assets\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="PowerUser\assets\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="PowerUser\assets\bootstrap-daterangepicker\date.js" />
+    <Content Include="PowerUser\assets\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="PowerUser\assets\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="PowerUser\assets\bootstrap-daterangepicker\examples.html" />
+    <Content Include="PowerUser\assets\bootstrap-inputmask\bootstrap-inputmask.js" />
+    <Content Include="PowerUser\assets\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="PowerUser\assets\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="PowerUser\assets\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="PowerUser\assets\bootstrap-toggle-buttons\static\js\jquery.min.js" />
+    <Content Include="PowerUser\assets\bootstrap-toggle-buttons\static\js\jquery.toggle.buttons.js" />
+    <Content Include="PowerUser\assets\bootstrap-toggle-buttons\static\stylesheets\bootstrap-toggle-buttons.css" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\bootstrap\css\bootstrap.min.css" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\bootstrap\js\bootstrap.min.js" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\basic-custombuttons.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\basic-custombuttonsfirstlast.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\basic-disabletabclick.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\basic-finishbutton.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\basic-formvalidation.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\basic-inverse.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\basic-pills.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\basic-progressbar.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\basic-tabsleft.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\basic.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\examples\multiple.html" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\jquery.bootstrap.wizard.js" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\prettify.css" />
+    <Content Include="PowerUser\assets\bootstrap-wizard\prettify.js" />
+    <Content Include="PowerUser\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="PowerUser\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="PowerUser\assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="PowerUser\assets\bootstrap\css\bootstrap-fileupload.css" />
+    <Content Include="PowerUser\assets\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="PowerUser\assets\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="PowerUser\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="PowerUser\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="PowerUser\assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="PowerUser\assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="PowerUser\assets\bootstrap\js\bootstrap-fileupload.js" />
+    <Content Include="PowerUser\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="PowerUser\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\chosen\chosen-sprite.png" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\chosen\chosen.css" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\chosen\chosen.jquery.js" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\chosen\chosen.jquery.min.js" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\chosen\chosen.proto.js" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\chosen\chosen.proto.min.js" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\example.jquery.html" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\example.proto.html" />
+    <Content Include="PowerUser\assets\ckeditor\build-config.js" />
+    <Content Include="PowerUser\assets\ckeditor\ckeditor.js" />
+    <Content Include="PowerUser\assets\ckeditor\config.js" />
+    <Content Include="PowerUser\assets\ckeditor\contents.css" />
+    <Content Include="PowerUser\assets\ckeditor\lang\af.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\ar.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\bg.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\bn.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\bs.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\ca.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\cs.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\cy.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\da.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\de.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\el.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\en-au.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\en-ca.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\en-gb.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\en.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\eo.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\es.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\et.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\eu.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\fa.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\fi.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\fo.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\fr-ca.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\fr.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\gl.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\gu.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\he.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\hi.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\hr.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\hu.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\is.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\it.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\ja.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\ka.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\km.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\ko.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\ku.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\lt.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\lv.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\mk.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\mn.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\ms.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\nb.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\nl.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\no.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\pl.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\pt-br.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\pt.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\ro.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\ru.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\sk.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\sl.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\sr-latn.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\sr.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\sv.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\th.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\tr.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\ug.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\uk.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\vi.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\zh-cn.js" />
+    <Content Include="PowerUser\assets\ckeditor\lang\zh.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\icons.png" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="PowerUser\assets\ckeditor\samples\ajax.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\api.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\appendto.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="PowerUser\assets\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="PowerUser\assets\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="PowerUser\assets\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="PowerUser\assets\ckeditor\samples\divreplace.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\inlineall.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\inlinebycode.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="PowerUser\assets\ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="PowerUser\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="PowerUser\assets\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\readonly.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\replacebyclass.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\replacebycode.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\sample.css" />
+    <Content Include="PowerUser\assets\ckeditor\samples\sample.js" />
+    <Content Include="PowerUser\assets\ckeditor\samples\tabindex.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\uicolor.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\uilanguages.html" />
+    <Content Include="PowerUser\assets\ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\dialog.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\editor.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\icons.png" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\images\close.png" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\images\mini.png" />
+    <Content Include="PowerUser\assets\ckeditor\styles.js" />
+    <Content Include="PowerUser\assets\clockface\CHANGELOG.txt" />
+    <Content Include="PowerUser\assets\clockface\css\clockface.css" />
+    <Content Include="PowerUser\assets\clockface\js\clockface.js" />
+    <Content Include="PowerUser\assets\data-tables\DT_bootstrap.css" />
+    <Content Include="PowerUser\assets\data-tables\DT_bootstrap.js" />
+    <Content Include="PowerUser\assets\data-tables\images\sort_asc.png" />
+    <Content Include="PowerUser\assets\data-tables\images\sort_both.png" />
+    <Content Include="PowerUser\assets\data-tables\images\sort_desc.png" />
+    <Content Include="PowerUser\assets\data-tables\jquery.dataTables.js" />
+    <Content Include="PowerUser\assets\fancybox\demo\1_b.jpg" />
+    <Content Include="PowerUser\assets\fancybox\demo\1_s.jpg" />
+    <Content Include="PowerUser\assets\fancybox\demo\2_b.jpg" />
+    <Content Include="PowerUser\assets\fancybox\demo\2_s.jpg" />
+    <Content Include="PowerUser\assets\fancybox\demo\3_b.jpg" />
+    <Content Include="PowerUser\assets\fancybox\demo\3_s.jpg" />
+    <Content Include="PowerUser\assets\fancybox\demo\4_b.jpg" />
+    <Content Include="PowerUser\assets\fancybox\demo\4_s.jpg" />
+    <Content Include="PowerUser\assets\fancybox\demo\5_b.jpg" />
+    <Content Include="PowerUser\assets\fancybox\demo\5_s.jpg" />
+    <Content Include="PowerUser\assets\fancybox\demo\ajax.txt" />
+    <Content Include="PowerUser\assets\fancybox\demo\iframe.html" />
+    <Content Include="PowerUser\assets\fancybox\lib\jquery-1.8.2.min.js" />
+    <Content Include="PowerUser\assets\fancybox\lib\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="PowerUser\assets\fancybox\source\blank.gif" />
+    <Content Include="PowerUser\assets\fancybox\source\fancybox_loading.gif" />
+    <Content Include="PowerUser\assets\fancybox\source\fancybox_overlay.png" />
+    <Content Include="PowerUser\assets\fancybox\source\fancybox_sprite.png" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\fancybox_buttons.png" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\jquery.fancybox-buttons_cdea843f.css" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\jquery.fancybox-buttons_cdea843f.js" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\jquery.fancybox-media.js" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\jquery.fancybox-media_cdea843f.js" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\jquery.fancybox-thumbs_cdea843d.css" />
+    <Content Include="PowerUser\assets\fancybox\source\helpers\jquery.fancybox-thumbs_cdea843d.js" />
+    <Content Include="PowerUser\assets\fancybox\source\jquery.fancybox.css" />
+    <Content Include="PowerUser\assets\fancybox\source\jquery.fancybox.js" />
+    <Content Include="PowerUser\assets\fancybox\source\jquery.fancybox.pack.js" />
+    <Content Include="PowerUser\assets\fancybox\source\jquery.fancybox_cdea77da.css" />
+    <Content Include="PowerUser\assets\fancybox\source\jquery.fancybox_cdea77db.js" />
+    <Content Include="PowerUser\assets\flot\API.txt" />
+    <Content Include="PowerUser\assets\flot\examples\ajax.html" />
+    <Content Include="PowerUser\assets\flot\examples\annotating.html" />
+    <Content Include="PowerUser\assets\flot\examples\basic.html" />
+    <Content Include="PowerUser\assets\flot\examples\graph-types.html" />
+    <Content Include="PowerUser\assets\flot\examples\hs-2004-27-a-large_web.jpg" />
+    <Content Include="PowerUser\assets\flot\examples\image.html" />
+    <Content Include="PowerUser\assets\flot\examples\interacting-axes.html" />
+    <Content Include="PowerUser\assets\flot\examples\interacting.html" />
+    <Content Include="PowerUser\assets\flot\examples\layout.css" />
+    <Content Include="PowerUser\assets\flot\examples\multiple-axes.html" />
+    <Content Include="PowerUser\assets\flot\examples\navigate.html" />
+    <Content Include="PowerUser\assets\flot\examples\percentiles.html" />
+    <Content Include="PowerUser\assets\flot\examples\pie.html" />
+    <Content Include="PowerUser\assets\flot\examples\realtime.html" />
+    <Content Include="PowerUser\assets\flot\examples\resize.html" />
+    <Content Include="PowerUser\assets\flot\examples\selection.html" />
+    <Content Include="PowerUser\assets\flot\examples\setting-options.html" />
+    <Content Include="PowerUser\assets\flot\examples\stacking.html" />
+    <Content Include="PowerUser\assets\flot\examples\symbols.html" />
+    <Content Include="PowerUser\assets\flot\examples\thresholding.html" />
+    <Content Include="PowerUser\assets\flot\examples\time.html" />
+    <Content Include="PowerUser\assets\flot\examples\tracking.html" />
+    <Content Include="PowerUser\assets\flot\examples\turning-series.html" />
+    <Content Include="PowerUser\assets\flot\examples\visitors.html" />
+    <Content Include="PowerUser\assets\flot\examples\zooming.html" />
+    <Content Include="PowerUser\assets\flot\excanvas.js" />
+    <Content Include="PowerUser\assets\flot\excanvas.min.js" />
+    <Content Include="PowerUser\assets\flot\FAQ.txt" />
+    <Content Include="PowerUser\assets\flot\jquery.colorhelpers.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.crosshair.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.fillbetween.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.image.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.navigate.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.pie.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.resize.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.selection.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.stack.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.symbol.js" />
+    <Content Include="PowerUser\assets\flot\jquery.flot.threshold.js" />
+    <Content Include="PowerUser\assets\flot\jquery.js" />
+    <Content Include="PowerUser\assets\flot\LICENSE.txt" />
+    <Content Include="PowerUser\assets\flot\NEWS.txt" />
+    <Content Include="PowerUser\assets\flot\PLUGINS.txt" />
+    <Content Include="PowerUser\assets\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="PowerUser\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="PowerUser\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\css\font-awesome-ie7.min.css" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\css\font-awesome.min.css" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\css\prettify.css" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\css\site.css" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\ico\favicon.ico" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\img\contribution-sample.png" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\js\backbone.min.js" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\js\bootstrap-222.min.js" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\js\index\index.js" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\js\jquery-1.7.1.min.js" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\js\prettify.min.js" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\js\underscore.min.js" />
+    <Content Include="PowerUser\assets\font-awesome\docs\design.html" />
+    <Content Include="PowerUser\assets\fullcalendar\changelog.txt" />
+    <Content Include="PowerUser\assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="PowerUser\assets\fullcalendar\fullcalendar\fullcalendar.css" />
+    <Content Include="PowerUser\assets\fullcalendar\fullcalendar\fullcalendar.js" />
+    <Content Include="PowerUser\assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
+    <Content Include="PowerUser\assets\fullcalendar\fullcalendar\fullcalendar.print.css" />
+    <Content Include="PowerUser\assets\fullcalendar\fullcalendar\gcal.js" />
+    <Content Include="PowerUser\assets\fullcalendar\GPL-LICENSE.txt" />
+    <Content Include="PowerUser\assets\fullcalendar\jquery\jquery-1.8.1.min.js" />
+    <Content Include="PowerUser\assets\fullcalendar\jquery\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="PowerUser\assets\fullcalendar\MIT-LICENSE.txt" />
+    <Content Include="PowerUser\assets\gritter\css\jquery.gritter.css" />
+    <Content Include="PowerUser\assets\gritter\images\gritter-light.png" />
+    <Content Include="PowerUser\assets\gritter\images\gritter.png" />
+    <Content Include="PowerUser\assets\gritter\images\ie-spacer.gif" />
+    <Content Include="PowerUser\assets\gritter\images\trees.jpg" />
+    <Content Include="PowerUser\assets\gritter\js\jquery.gritter.js" />
+    <Content Include="PowerUser\assets\jquery-knob\js\jquery.knob.js" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\allow-page-scroll.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\chaining.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\disable-fade-out.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\height-width.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\libs\prettify\prettify.css" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\libs\prettify\prettify.js" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\mouse-wheel.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\multiple-elements.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\programmatic-scrolling.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\rail.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\scrollbar.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\start-position.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\style.css" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\examples\top-bottom-events.html" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="PowerUser\assets\jquery-tags-input\example.html" />
+    <Content Include="PowerUser\assets\jquery-tags-input\jquery.tagsinput.css" />
+    <Content Include="PowerUser\assets\jquery-tags-input\jquery.tagsinput.js" />
+    <Content Include="PowerUser\assets\jquery-tags-input\jquery.tagsinput.min.js" />
+    <Content Include="PowerUser\assets\jquery-tags-input\test\fake_json_endpoint.html" />
+    <Content Include="PowerUser\assets\jquery-tags-input\test\fake_plaintext_endpoint.html" />
+    <Content Include="PowerUser\assets\jqvmap\jqvmap\data\jquery.vmap.sampledata.js" />
+    <Content Include="PowerUser\assets\jqvmap\jqvmap\jquery.vmap.js" />
+    <Content Include="PowerUser\assets\jqvmap\jqvmap\jquery.vmap.min.js" />
+    <Content Include="PowerUser\assets\jqvmap\jqvmap\jquery.vmap.packed.js" />
+    <Content Include="PowerUser\assets\jqvmap\jqvmap\jqvmap.css" />
+    <Content Include="PowerUser\assets\jqvmap\jqvmap\maps\jquery.vmap.europe.js" />
+    <Content Include="PowerUser\assets\jqvmap\jqvmap\maps\jquery.vmap.germany.js" />
+    <Content Include="PowerUser\assets\jqvmap\jqvmap\maps\jquery.vmap.russia.js" />
+    <Content Include="PowerUser\assets\jqvmap\jqvmap\maps\jquery.vmap.usa.js" />
+    <Content Include="PowerUser\assets\jqvmap\jqvmap\maps\jquery.vmap.world.js" />
+    <Content Include="PowerUser\assets\jqvmap\samples\europe.html" />
+    <Content Include="PowerUser\assets\jqvmap\samples\germany.html" />
+    <Content Include="PowerUser\assets\jqvmap\samples\multi.html" />
+    <Content Include="PowerUser\assets\jqvmap\samples\russia.html" />
+    <Content Include="PowerUser\assets\jqvmap\samples\usa.html" />
+    <Content Include="PowerUser\assets\jqvmap\samples\world.html" />
+    <Content Include="PowerUser\assets\jslider\css\jslider.blue.css" />
+    <Content Include="PowerUser\assets\jslider\css\jslider.css" />
+    <Content Include="PowerUser\assets\jslider\css\jslider.plastic.css" />
+    <Content Include="PowerUser\assets\jslider\css\jslider.round.css" />
+    <Content Include="PowerUser\assets\jslider\css\jslider.round.plastic.css" />
+    <Content Include="PowerUser\assets\jslider\img\jslider.blue.png" />
+    <Content Include="PowerUser\assets\jslider\img\jslider.plastic.png" />
+    <Content Include="PowerUser\assets\jslider\img\jslider.png" />
+    <Content Include="PowerUser\assets\jslider\img\jslider.round.plastic.png" />
+    <Content Include="PowerUser\assets\jslider\img\jslider.round.png" />
+    <Content Include="PowerUser\assets\jslider\js\draggable-0.1.js" />
+    <Content Include="PowerUser\assets\jslider\js\jquery-1.7.1.js" />
+    <Content Include="PowerUser\assets\jslider\js\jquery.dependClass-0.1.js" />
+    <Content Include="PowerUser\assets\jslider\js\jquery.numberformatter-1.2.3.js" />
+    <Content Include="PowerUser\assets\jslider\js\jquery.slider.js" />
+    <Content Include="PowerUser\assets\jslider\js\jshashtable-2.1_src.js" />
+    <Content Include="PowerUser\assets\jslider\js\tmpl.js" />
+    <Content Include="PowerUser\assets\pre-loader\3D coffee cup.gif" />
+    <Content Include="PowerUser\assets\pre-loader\3D snake.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Atom.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Bouncing ball.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Broken ring.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Chasing blocks.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Clock with hands.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Drawing flower.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Drink in glass.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Fading squares.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Fancy pants.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Hourglass.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Kaleidoscope.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Linear star.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Moving blocks.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Nuclear alert.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Ovals in circle.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Pie chart.gif" />
+    <Content Include="PowerUser\assets\pre-loader\preview.gif" />
+    <Content Include="PowerUser\assets\pre-loader\preview2.gif" />
+    <Content Include="PowerUser\assets\pre-loader\preview3.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Radar.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Rounded blocks.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Rounded stripes.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Search with arrow.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Searching.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Snake.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Snakes chasing.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Snow with rain.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Spider web.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Spinning line.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Spinning spiral.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Storm.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Sun.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Surrounded segments.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Thin broken ring.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Thin fading line.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Tree on wind.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Triangles indicator.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Twirl.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Velocity.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Ventilator.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Water ripples.gif" />
+    <Content Include="PowerUser\assets\pre-loader\Whirlpool.gif" />
+    <Content Include="PowerUser\assets\uniform\css\uniform.default.css" />
+    <Content Include="PowerUser\assets\uniform\demo\demo.html" />
+    <Content Include="PowerUser\assets\uniform\images\bg-input-focus.png" />
+    <Content Include="PowerUser\assets\uniform\images\bg-input.png" />
+    <Content Include="PowerUser\assets\uniform\images\sprite.png" />
+    <Content Include="PowerUser\assets\uniform\jquery.uniform.js" />
+    <Content Include="PowerUser\assets\uniform\jquery.uniform.min.js" />
+    <Content Include="PowerUser\CreateMatch.aspx" />
+    <Content Include="PowerUser\css\Homepage\bootstrap.min.css" />
+    <Content Include="PowerUser\css\Homepage\style.css" />
+    <Content Include="PowerUser\css\style.css" />
+    <Content Include="PowerUser\css\style.min.css" />
+    <Content Include="PowerUser\css\style_default.css" />
+    <Content Include="PowerUser\css\style_gray.css" />
+    <Content Include="PowerUser\css\style_navy-blue.css" />
+    <Content Include="PowerUser\css\style_purple.css" />
+    <Content Include="PowerUser\css\style_responsive.css" />
+    <Content Include="PowerUser\EditMatches.aspx" />
     <Content Include="admin\js\LiveMatch.js" />
     <Content Include="admin\js\RunnerUpdate.js" />
     <Content Include="admin\js\SessionUpdate.js" />
-    <Content Include="admin\ManuallyUpdation.aspx" />
+    <Content Include="PowerUser\img\404.png" />
+    <Content Include="PowerUser\img\500.png" />
+    <Content Include="PowerUser\img\avatar-mini.png" />
+    <Content Include="PowerUser\img\avatar.png" />
+    <Content Include="PowerUser\img\avatar1.jpg" />
+    <Content Include="PowerUser\img\avatar1_small.jpg" />
+    <Content Include="PowerUser\img\avatar2.jpg" />
+    <Content Include="PowerUser\img\avatar3.jpg" />
+    <Content Include="PowerUser\img\avatar3_small.jpg" />
+    <Content Include="PowerUser\img\bg-default.jpg" />
+    <Content Include="PowerUser\img\bg-grey.jpg" />
+    <Content Include="PowerUser\img\bg-navy-blue.jpg" />
+    <Content Include="PowerUser\img\bg-purple.jpg" />
+    <Content Include="PowerUser\img\body-bg.png" />
+    <Content Include="PowerUser\img\box-bg.png" />
+    <Content Include="PowerUser\img\bread-crumb-bg.jpg" />
+    <Content Include="PowerUser\img\bread-crumb-divider.jpg" />
+    <Content Include="PowerUser\img\bread-crumb-last.jpg" />
+    <Content Include="PowerUser\img\header_line.png" />
+    <Content Include="PowerUser\img\Homepage\img1.jpg" />
+    <Content Include="PowerUser\img\Homepage\img2.jpg" />
+    <Content Include="PowerUser\img\Homepage\img3.jpg" />
+    <Content Include="PowerUser\img\Homepage\line_bg_repeat.jpg" />
+    <Content Include="PowerUser\img\Homepage\next.png" />
+    <Content Include="PowerUser\img\Homepage\pic1.jpg" />
+    <Content Include="PowerUser\img\Homepage\pic2.jpg" />
+    <Content Include="PowerUser\img\Homepage\prev.png" />
+    <Content Include="PowerUser\img\Homepage\slider.jpg" />
+    <Content Include="PowerUser\img\Homepage\slider1.jpg" />
+    <Content Include="PowerUser\img\loading.gif" />
+    <Content Include="PowerUser\img\login-btn.jpg" />
+    <Content Include="PowerUser\img\logo.png" />
+    <Content Include="PowerUser\img\menu-selected-bg.png" />
+    <Content Include="PowerUser\img\overlay-icon.png" />
+    <Content Include="PowerUser\img\photo.jpg" />
+    <Content Include="PowerUser\img\profile-pic.jpg" />
+    <Content Include="PowerUser\img\side-bar-list-bg.png" />
+    <Content Include="PowerUser\img\submenu_border.png" />
+    <Content Include="PowerUser\img\submenu_hover.png" />
+    <Content Include="PowerUser\img\top-bg.jpg" />
+    <Content Include="PowerUser\js\demo.gmaps.js" />
+    <Content Include="PowerUser\js\excanvas.js" />
+    <Content Include="PowerUser\js\gmaps.js" />
+    <Content Include="PowerUser\js\Homepage\bootstrap.min.js" />
+    <Content Include="PowerUser\js\Homepage\jquery.min.js" />
+    <Content Include="PowerUser\js\jquery-1.8.2.min.js" />
+    <Content Include="PowerUser\js\jquery-1.8.3.min.js" />
+    <Content Include="PowerUser\js\jquery.blockui.js" />
+    <Content Include="PowerUser\js\jquery.cookie.js" />
+    <Content Include="PowerUser\js\jquery.peity.min.js" />
+    <Content Include="PowerUser\js\jquery.pulsate.min.js" />
+    <Content Include="PowerUser\js\LiveMatch.js" />
+    <Content Include="PowerUser\js\ManualMatch.js" />
+    <Content Include="PowerUser\js\respond.js" />
+    <Content Include="PowerUser\js\RunnerUpdate.js" />
+    <Content Include="PowerUser\js\scripts.js" />
+    <Content Include="PowerUser\js\SessionUpdate.js" />
+    <Content Include="PowerUser\Login.aspx" />
+    <Content Include="PowerUser\ManuallyUpdation.aspx" />
     <Content Include="admin\MatchAndSessionPosition.aspx" />
-    <Content Include="admin\MatchRates.aspx" />
+    <Content Include="PowerUser\MatchRates.aspx" />
     <Content Include="admin\ModifyAgent.aspx" />
     <Content Include="admin\ModifyClient.aspx" />
-    <Content Include="admin\ModifyMatches.aspx" />
-    <Content Include="admin\ScoreBoard.aspx" />
-    <Content Include="admin\SessionRate.aspx" />
+    <Content Include="PowerUser\ModifyMatches.aspx" />
+    <Content Include="PowerUser\ScoreBoard.aspx" />
+    <Content Include="PowerUser\SessionRate.aspx" />
     <Content Include="admin\SuperAgentLedger.aspx" />
     <Content Include="admin\SuperAgentLimitReport.aspx" />
     <Content Include="admin\SuperAgentPlusMinus.aspx" />
@@ -934,7 +1493,7 @@
     <Content Include="Client\Terms_Condition.aspx" />
     <Content Include="DB\intialDBSetup.sql" />
     <Content Include="Default.html" />
-    <Content Include="admin\ModifyMatch.aspx" />
+    <Content Include="PowerUser\ModifyMatch.aspx" />
     <Content Include="packages.config" />
     <Content Include="Agent\DashBoard.Master" />
     <Content Include="superagent\AgentDetails.aspx" />
@@ -1596,7 +2155,62 @@
     <Content Include="admin\changeclientstatus.ashx" />
     <Content Include="admin\changeagentstatus.ashx" />
     <Content Include="admin\changesuperagentstatus.ashx" />
-    <Content Include="admin\SessionDeclare.ashx" />
+    <Content Include="PowerUser\SessionDeclare.ashx" />
+    <Content Include="PowerUser\Dashboard.Master" />
+    <Content Include="PowerUser\assets\bootstrap-colorpicker\less\colorpicker.less" />
+    <Content Include="PowerUser\assets\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="PowerUser\assets\bootstrap-timepicker\less\timepicker.less" />
+    <Content Include="PowerUser\assets\bootstrap-toggle-buttons\LICENSE" />
+    <Content Include="PowerUser\assets\bootstrap-toggle-buttons\static\config.rb" />
+    <Content Include="PowerUser\assets\bootstrap-toggle-buttons\static\sass\bootstrap-toggle-buttons.scss" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\Cakefile" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\chosen\lib\chosen.less" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\coffee\chosen.jquery.coffee" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\coffee\chosen.proto.coffee" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\coffee\lib\abstract-chosen.coffee" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\coffee\lib\select-parser.coffee" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\LICENSE.md" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\package.json" />
+    <Content Include="PowerUser\assets\chosen-bootstrap\VERSION" />
+    <Content Include="PowerUser\assets\ckeditor\CHANGES.md" />
+    <Content Include="PowerUser\assets\ckeditor\LICENSE.md" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="PowerUser\assets\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="PowerUser\assets\ckeditor\README.md" />
+    <Content Include="PowerUser\assets\ckeditor\skins\moono\readme.md" />
+    <Content Include="PowerUser\assets\clockface\LICENSE-MIT" />
+    <Content Include="PowerUser\assets\fancybox\CHANGELOG.md" />
+    <Content Include="PowerUser\assets\flot\examples\data-eu-gdp-growth.json" />
+    <Content Include="PowerUser\assets\flot\examples\data-japan-gdp-growth.json" />
+    <Content Include="PowerUser\assets\flot\examples\data-usa-gdp-growth.json" />
+    <Content Include="PowerUser\assets\flot\Makefile" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\fontawesome-webfont.eot" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\fontawesome-webfont.ttf" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\fontawesome-webfont.woff" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\fontawesome-webfont_162a16fe.eot" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\museo_slab_300-webfont.eot" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\museo_slab_300-webfont.ttf" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\museo_slab_300-webfont_162a16fe.eot" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\museo_slab_500-webfont.eot" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\museo_slab_500-webfont.ttf" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\museo_slab_500-webfont_162a16fe.eot" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.eot" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.ttf" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont_162a16fe.eot" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\proximanova-webfont.eot" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\proximanova-webfont.ttf" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\font\proximanova-webfont_162a16fe.eot" />
+    <Content Include="PowerUser\assets\font-awesome\docs\assets\img\icon-flag.pdf" />
+    <Content Include="PowerUser\assets\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="PowerUser\assets\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="PowerUser\assets\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="PowerUser\assets\font-awesome\font\fontawesome-webfont_162a16fe.eot" />
+    <Content Include="PowerUser\assets\font-awesome\font\FontAwesome.otf" />
+    <Content Include="PowerUser\assets\font-awesome\less\font-awesome-ie7.less" />
+    <Content Include="PowerUser\assets\font-awesome\less\font-awesome.less" />
+    <Content Include="PowerUser\assets\font-awesome\sass\font-awesome.sass" />
+    <Content Include="PowerUser\assets\font-awesome\sass\font-awesome.scss" />
+    <Content Include="PowerUser\assets\jquery-slimscroll\slimScroll.jquery.json" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <None Include="Web.Debug.config">
@@ -1693,18 +2307,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin\AddMatch.aspx.cs">
+    <Compile Include="PowerUser\AddMatch.aspx.cs">
       <DependentUpon>AddMatch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\AddMatch.aspx.designer.cs">
+    <Compile Include="PowerUser\AddMatch.aspx.designer.cs">
       <DependentUpon>AddMatch.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\AddMatchManually.aspx.cs">
+    <Compile Include="PowerUser\AddMatchManually.aspx.cs">
       <DependentUpon>AddMatchManually.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\AddMatchManually.aspx.designer.cs">
+    <Compile Include="PowerUser\AddMatchManually.aspx.designer.cs">
       <DependentUpon>AddMatchManually.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\AgentDetails.aspx.cs">
@@ -1744,11 +2358,11 @@
     <Compile Include="admin\CreateClient.aspx.designer.cs">
       <DependentUpon>CreateClient.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\CreateMatch.aspx.cs">
+    <Compile Include="PowerUser\CreateMatch.aspx.cs">
       <DependentUpon>CreateMatch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\CreateMatch.aspx.designer.cs">
+    <Compile Include="PowerUser\CreateMatch.aspx.designer.cs">
       <DependentUpon>CreateMatch.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\DeleteAgent.ashx.cs">
@@ -1760,19 +2374,33 @@
     <Compile Include="admin\DeleteSuperAgent.ashx.cs">
       <DependentUpon>DeleteSuperAgent.ashx</DependentUpon>
     </Compile>
-    <Compile Include="admin\EditMatches.aspx.cs">
+    <Compile Include="PowerUser\Dashboard.Master.cs">
+      <DependentUpon>Dashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\Dashboard.Master.designer.cs">
+      <DependentUpon>Dashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PowerUser\EditMatches.aspx.cs">
       <DependentUpon>EditMatches.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\EditMatches.aspx.designer.cs">
+    <Compile Include="PowerUser\EditMatches.aspx.designer.cs">
       <DependentUpon>EditMatches.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\KeyEventArgs.cs" />
-    <Compile Include="admin\ManuallyUpdation.aspx.cs">
+    <Compile Include="PowerUser\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PowerUser\ManuallyUpdation.aspx.cs">
       <DependentUpon>ManuallyUpdation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\ManuallyUpdation.aspx.designer.cs">
+    <Compile Include="PowerUser\ManuallyUpdation.aspx.designer.cs">
       <DependentUpon>ManuallyUpdation.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\MatchAndSessionPosition.aspx.cs">
@@ -1782,11 +2410,11 @@
     <Compile Include="admin\MatchAndSessionPosition.aspx.designer.cs">
       <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\MatchRates.aspx.cs">
+    <Compile Include="PowerUser\MatchRates.aspx.cs">
       <DependentUpon>MatchRates.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\MatchRates.aspx.designer.cs">
+    <Compile Include="PowerUser\MatchRates.aspx.designer.cs">
       <DependentUpon>MatchRates.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\ModifyAgent.aspx.cs">
@@ -1803,28 +2431,28 @@
     <Compile Include="admin\ModifyClient.aspx.designer.cs">
       <DependentUpon>ModifyClient.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\ModifyMatches.aspx.cs">
+    <Compile Include="PowerUser\ModifyMatches.aspx.cs">
       <DependentUpon>ModifyMatches.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\ModifyMatches.aspx.designer.cs">
+    <Compile Include="PowerUser\ModifyMatches.aspx.designer.cs">
       <DependentUpon>ModifyMatches.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\ScoreBoard.aspx.cs">
+    <Compile Include="PowerUser\ScoreBoard.aspx.cs">
       <DependentUpon>ScoreBoard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\ScoreBoard.aspx.designer.cs">
+    <Compile Include="PowerUser\ScoreBoard.aspx.designer.cs">
       <DependentUpon>ScoreBoard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\SessionDeclare.ashx.cs">
+    <Compile Include="PowerUser\SessionDeclare.ashx.cs">
       <DependentUpon>SessionDeclare.ashx</DependentUpon>
     </Compile>
-    <Compile Include="admin\SessionRate.aspx.cs">
+    <Compile Include="PowerUser\SessionRate.aspx.cs">
       <DependentUpon>SessionRate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\SessionRate.aspx.designer.cs">
+    <Compile Include="PowerUser\SessionRate.aspx.designer.cs">
       <DependentUpon>SessionRate.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\SuperAgentLedger.aspx.cs">
@@ -2360,11 +2988,11 @@
     <Compile Include="Client\Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\ModifyMatch.aspx.cs">
+    <Compile Include="PowerUser\ModifyMatch.aspx.cs">
       <DependentUpon>ModifyMatch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\ModifyMatch.aspx.designer.cs">
+    <Compile Include="PowerUser\ModifyMatch.aspx.designer.cs">
       <DependentUpon>ModifyMatch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -26,6 +26,10 @@ namespace betplayer.Agent
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Added SuccessFully.....');", true);
                 }
+                else if (Request.QueryString["msg"] == "Update")
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Data Updated SuccessFully.....');", true);
+                }
             }
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))

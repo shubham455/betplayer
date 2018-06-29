@@ -45,7 +45,7 @@
                                     <tr class="MainHeading">
                                         <td width="181" height="35" align="left" valign="middle" class="MainHeading1 textTeamHead">
                                             <asp:Label ID="lblTeamA" runat="server"></asp:Label></td>
-                                        <td width="193" style="text-align: right; color: #000" valign="middle" class="MainHeading1 textTeamHead">0.00</td>
+                                        <td width="193" style="text-align: right; color: #000" valign="middle" class="MainHeading1 textTeamHead"><asp:Label ID="lblPositionA" runat="server"></asp:Label> </td>
                                         <td width="118" align="center" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
                                         <td width="199" height="35" align="center" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
                                         <td width="398" align="center" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
@@ -54,7 +54,7 @@
                                     <tr class="MainHeading">
                                         <td height="35" align="left" valign="middle" class="MainHeading1 textTeamHead">
                                             <asp:Label ID="lblTeamB" runat="server"></asp:Label></td>
-                                        <td style="text-align: right; color: #000" valign="middle" class="MainHeading1 textTeamHead">0.00</td>
+                                        <td style="text-align: right; color: #000" valign="middle" class="MainHeading1 textTeamHead"><asp:Label ID="lblPositionB" runat="server"></asp:Label> </td>
                                         <td align="center" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
                                         <td align="center" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
                                         <td align="center" valign="middle" class="MainHeading">&nbsp;</td>
@@ -130,8 +130,8 @@
                                         <td style="text-align: right;" class="TableHeading">TOTAL AMOUNT</td>
                                         <td style="text-align: right;" class="TableHeading">&nbsp;</td>
                                         <td style="text-align: right;" class="TableHeading">&nbsp;</td>
-                                        <td style="text-align: right;" class="TableHeading"><asp:Label ID="lblTotalposition1" runat="server"></asp:Label></td>
-                                        <td style="text-align: right;" class="TableHeading"><asp:Label ID="lblTotalposition2" runat="server"></asp:Label></td>
+                                        <td style="text-align: right;" class="TableHeading"><asp:Label ID="lblTotalPosition1" runat="server"></asp:Label></td>
+                                        <td style="text-align: right;" class="TableHeading"><asp:Label ID="lblTotalPosition2" runat="server"></asp:Label></td>
                                     </tr>
                                 </tbody>
                             </table>

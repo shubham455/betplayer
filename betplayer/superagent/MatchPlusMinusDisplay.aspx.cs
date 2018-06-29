@@ -15,10 +15,12 @@ namespace betplayer.superagent
         private DataTable dt;
         private DataTable runtable;
         private DataTable runtable1;
-        
+        private DataTable runtable2;
+
 
         public DataTable runTable { get { return runtable; } }
         public DataTable runTable1 { get { return runtable1; } }
+        public DataTable runTable2 { get { return runtable2; } }
         protected void Page_Load(object sender, EventArgs e)
         {
             runtable1 = new DataTable();
@@ -37,29 +39,47 @@ namespace betplayer.superagent
             runtable.Columns.Add(new DataColumn("TotalNetAmount"));
             runtable.Columns.Add(new DataColumn("TotalHalfAmount"));
             runtable.Columns.Add(new DataColumn("MOBAppAmount"));
+            runtable.Columns.Add(new DataColumn("SAAgentShare"));
             runtable.Columns.Add(new DataColumn("FinalAmount"));
+
+
+            runtable2 = new DataTable();
+            runtable2.Columns.Add(new DataColumn("MatchAmount"));
+            runtable2.Columns.Add(new DataColumn("SessionAmount"));
+            runtable2.Columns.Add(new DataColumn("TotalPlusMinusAmount"));
+            runtable2.Columns.Add(new DataColumn("Match1Amount"));
+            runtable2.Columns.Add(new DataColumn("Session1Amount"));
+            runtable2.Columns.Add(new DataColumn("TotalCommisionAmount"));
+            runtable2.Columns.Add(new DataColumn("TotalNetAmount"));
+            runtable2.Columns.Add(new DataColumn("TotalHalfAmount"));
+            runtable2.Columns.Add(new DataColumn("TotalAppAmount"));
+            runtable2.Columns.Add(new DataColumn("TotalFinalAmount"));
+            DataRow row2 = runtable2.NewRow();
 
             int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
-          {
+            {
                 cn.Open();
 
-                string Agent = "Select Code,Name From AgentMaster where Createdby = '" + Session["SuperAgentCode"] + "'";
+                string SuperAgent = "Select Name From SuperAgentMaster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
+                MySqlCommand SuperAgentcmd = new MySqlCommand(SuperAgent, cn);
+                MySqlDataAdapter SuperAgentadp = new MySqlDataAdapter(SuperAgentcmd);
+                DataTable SuperAgentdt = new DataTable();
+                SuperAgentadp.Fill(SuperAgentdt);
+                lblName.Text = SuperAgentdt.Rows[0]["Name"].ToString();
+
+                string Agent = "Select AgentID,Code,Name From AgentMaster where Createdby = '" + Session["SuperAgentCode"] + "'";
                 MySqlCommand Agentcmd = new MySqlCommand(Agent, cn);
                 MySqlDataAdapter Agentadp = new MySqlDataAdapter(Agentcmd);
                 DataTable Agentdt = new DataTable();
                 Agentadp.Fill(Agentdt);
-
-               
-                
-
-
                 for (int a = 0; a < Agentdt.Rows.Count; a++)
                 {
+                    int AgentID = Convert.ToInt16(Agentdt.Rows[a]["AgentID"]);
                     string Agentcode = Agentdt.Rows[a]["code"].ToString();
                     string AgentName = Agentdt.Rows[a]["Name"].ToString();
-                    
+
 
 
                     string s = "select clientmaster.clientID,clientmaster.Name from clientmaster inner join viewmatch on clientmaster.ClientID = viewmatch.ClientID  where MatchID = '" + MatchID + "' && CreatedBy = '" + Agentcode + "'  group by Name";
@@ -74,12 +94,12 @@ namespace betplayer.superagent
                         string ID = dt.Rows[i]["ClientID"].ToString();
                         string CodeName = ID + Name;
                         DataRow row = runtable.NewRow();
-                        
+
                         row["Name"] = CodeName;
                         row["AgentName"] = AgentName;
                         row1["AgentName"] = AgentName;
 
-                        
+
                         string s1 = "Select Amount From MatchCalculation where ClientID = '" + ID + "' and MatchID = '" + MatchID + "'";
                         MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                         MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
@@ -235,11 +255,11 @@ namespace betplayer.superagent
                         adp7.Fill(dt7);
                         Decimal MobileAppAmount = 0;
                         String MobileApp = dt7.Rows[0]["MobileApp"].ToString();
-                        Decimal AgentShare = Convert.ToDecimal(dt7.Rows[0]["Agent_Share"]);
-                        decimal AgentShare1 = AgentShare / 100;
+                        Decimal ClientAgentShare = Convert.ToDecimal(dt7.Rows[0]["Agent_Share"]);
+                        decimal ClientAgentShare1 = ClientAgentShare / 100;
                         if (MobileApp == "Yes")
                         {
-                            MobileAppAmount = 100 - (100 * AgentShare1);
+                            MobileAppAmount = 100 - (100 * ClientAgentShare1);
                             row["MOBAppAmount"] = MobileAppAmount;
                         }
                         else if (MobileApp == "NO")
@@ -248,6 +268,18 @@ namespace betplayer.superagent
                             row["MOBAppAmount"] = MobileAppAmount;
 
                         }
+
+                        string s8 = "Select AgentShare From AgentMaster where  AgentID = '" + AgentID + "'";
+                        MySqlCommand cmd8 = new MySqlCommand(s8, cn);
+                        MySqlDataAdapter adp8 = new MySqlDataAdapter(cmd8);
+                        DataTable dt8 = new DataTable();
+                        adp8.Fill(dt8);
+
+                        Decimal AgentShare = Convert.ToDecimal(dt8.Rows[0]["AgentShare"]);
+                        decimal AgentShare1 = AgentShare / 100;
+
+                        row["SAAgentShare"] = 100 * AgentShare1;
+
 
                         row["FinalAmount"] = TotalHalfAmount + MobileAppAmount;
 
@@ -269,12 +301,100 @@ namespace betplayer.superagent
 
                         }
 
+
+                    }
+                    decimal TotalMatchAmount1 = 0;
+                    for (int l = 0; l < runtable.Rows.Count; l++)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["MatchAmount"]);
+                        TotalMatchAmount1 = TotalMatchAmount1 + MatchAmount;
                     }
 
+                    row2["MatchAmount"] = TotalMatchAmount1;
 
+                    decimal TotalSessionAmount1 = 0;
+                    for (int l = 0; l < runtable.Rows.Count; l++)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["SessionAmount"]);
+                        TotalSessionAmount1 = TotalSessionAmount1 + MatchAmount;
+                    }
 
+                    row2["SessionAmount"] = TotalSessionAmount1;
+
+                    decimal TotalPlusMinusAmount = 0;
+                    for (int l = 0; l < runtable.Rows.Count; l++)
+                    {
+                        decimal TotalAmount = Convert.ToDecimal(runtable.Rows[l]["TotalAmount"]);
+                        TotalPlusMinusAmount = TotalPlusMinusAmount + TotalAmount;
+                    }
+
+                    row2["TotalPlusMinusAmount"] = TotalPlusMinusAmount;
+
+                    decimal Match1Amount = 0;
+                    for (int l = 0; l < runtable.Rows.Count; l++)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["MatchCommision"]);
+                        Match1Amount = Match1Amount + MatchAmount;
+                    }
+
+                    row2["Match1Amount"] = Match1Amount;
+
+                    decimal Session1Amount = 0;
+                    for (int l = 0; l < runtable.Rows.Count; l++)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["SessionCommision"]);
+                        Session1Amount = Session1Amount + MatchAmount;
+                    }
+
+                    row2["Session1Amount"] = Session1Amount;
+
+                    decimal TotalCommisionAmount = 0;
+                    for (int l = 0; l < runtable.Rows.Count; l++)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["TotalCommisionAmount"]);
+                        TotalCommisionAmount = TotalCommisionAmount + MatchAmount;
+                    }
+
+                    row2["TotalCommisionAmount"] = TotalCommisionAmount;
+
+                    decimal TotalNetAmount1 = 0;
+                    for (int l = 0; l < runtable.Rows.Count; l++)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["TotalNetAmount"]);
+                        TotalNetAmount1 = TotalNetAmount1 + MatchAmount;
+                    }
+
+                    row2["TotalNetAmount"] = TotalNetAmount1;
+
+                    decimal TotalHalfAmount1 = 0;
+                    for (int l = 0; l < runtable.Rows.Count; l++)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["TotalHalfAmount"]);
+                        TotalHalfAmount1 = TotalHalfAmount1 + MatchAmount;
+                    }
+
+                    row2["TotalHalfAmount"] = TotalHalfAmount1;
+
+                    decimal TotalAppAmount1 = 0;
+                    for (int l = 0; l < runtable.Rows.Count; l++)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["MOBAppAmount"]);
+                        TotalAppAmount1 = TotalAppAmount1 + MatchAmount;
+                    }
+
+                    row2["TotalAppAmount"] = TotalAppAmount1;
+
+                    decimal TotalFinalAmount1 = 0;
+                    for (int l = 0; l < runtable.Rows.Count; l++)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["FinalAmount"]);
+                        TotalFinalAmount1 = TotalFinalAmount1 + MatchAmount;
+                    }
+
+                    row2["TotalFinalAmount"] = TotalFinalAmount1;
 
                 }
+                runtable2.Rows.Add(row2.ItemArray);
             }
         }
     }

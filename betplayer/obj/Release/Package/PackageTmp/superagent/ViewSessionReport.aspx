@@ -140,10 +140,6 @@
                                     </tbody>
                                 </table>
                                 <br>
-
-                                
-                            
-
                         </div>
                     </div>
                     <!-- END EXAMPLE TABLE widget-->

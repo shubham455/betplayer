@@ -156,7 +156,7 @@
                                             <td align="right" class="FontText "><%:row["Session_Commision_Type"] %></td>
                                             <td align="right" class="FontText " style="text-align: right;">0.00</td>
                                             <td align="right" class="FontText " style="text-align: right;">0.00</td>
-                                            <td align="right" class="FontText " style="text-align: right;"><%:row["agentshare"] %></td>
+                                            <td align="right" class="FontText " style="text-align: right;"><%:row["agent_share"] %></td>
                                             <td align="right" class="FontText " style="text-align: right;"><%:row["client_share"] %></td>
                                             <td align="right" class="FontText " style="text-align: right;"><%:row["client_limit"] %></td>
                                             <td align="right" class="FontText "><%:row["Status"] %></td>

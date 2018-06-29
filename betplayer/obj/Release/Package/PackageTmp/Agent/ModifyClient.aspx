@@ -71,7 +71,7 @@
                                                             <td height="30" align="left" class="welcome">&nbsp;</td>
                                                             <td height="30" align="left" valign="middle" class="welcome">Client Limit</td>
                                                             <td align="left" valign="middle">
-                                                                <asp:TextBox CssClass="textbox" ID="txtFixedLimit" runat="server" /></td>
+                                                                <asp:TextBox CssClass="textbox" ID="txtclientLimit" runat="server" /></td>
                                                             <td align="left" valign="middle">&nbsp;</td>
                                                         </tr>
                                                         <tr>

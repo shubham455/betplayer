@@ -15,8 +15,10 @@ namespace betplayer.Agent
 
         private DataTable dt1;
         private DataTable dt3;
+        private DataTable Runnerclientdt;
         public DataTable MatchesDataTable { get { return dt1; } }
         public DataTable MatchesDataTable3 { get { return dt3; } }
+        public DataTable RunnerclientDataTable { get { return Runnerclientdt; } }
         protected void Page_Load(object sender, EventArgs e)
         {
             int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);
@@ -33,7 +35,11 @@ namespace betplayer.Agent
                 lblAgentName.Text = dt.Rows[0]["Name"].ToString();
                 lblAgentNAme1.Text = dt.Rows[0]["Name"].ToString();
 
-
+                string Runnerclient = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.clientID,clientmaster.Name from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && Runner.MatchID = '" + MatchID + "' group by ClientMaster.Name";
+                MySqlCommand Runnerclientcmd = new MySqlCommand(Runnerclient, cn);
+                MySqlDataAdapter Runnerclientadp = new MySqlDataAdapter(Runnerclientcmd);
+                Runnerclientdt = new DataTable();
+                Runnerclientadp.Fill(Runnerclientdt);
 
 
                 string s1 = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && Session.MatchID = '" + MatchID + "' group by ClientMaster.Name ";

@@ -69,7 +69,7 @@ namespace Panchayat_System.Admin
                 else
                 {
                     rdr.Close();
-                    string s = "update  ClientMaster set  Name = @Name,Contact_No= @Contact_No,Password= @Password,Client_limit= @Clientlimit,Client_Share = @Clientshare,Session_Commision_Type= @Sessiontype,Status=@Status,CreatedBy=@CreatedBy,Date=@Date,Mode=@Mode,FixLimit=@FixLimit where code = @Code";
+                    string s = "update  ClientMaster set  Name = @Name,Contact_No= @Contact_No,Password= @Password,Client_limit= @Clientlimit,Client_Share = @Clientshare,Agent_Share = @Agentshare,Session_Commision_Type= @Sessiontype,Status=@Status,CreatedBy=@CreatedBy,Date=@Date,Mode=@Mode,FixLimit=@FixLimit where code = @Code";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
 
                     cmd.Parameters.AddWithValue("@Name", txtname.Text);
@@ -77,6 +77,7 @@ namespace Panchayat_System.Admin
                     cmd.Parameters.AddWithValue("@Password", strNewPassword1);
                     cmd.Parameters.AddWithValue("@Clientlimit", txtClientlimit.Text);
                     cmd.Parameters.AddWithValue("@Clientshare", txtClientShare.Text);
+                    cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
                     cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
                     cmd.Parameters.AddWithValue("@Status", "active");
                     cmd.Parameters.AddWithValue("@CreatedBy", Session["Agentcode"]);

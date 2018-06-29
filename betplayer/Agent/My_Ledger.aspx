@@ -35,9 +35,7 @@
                         <div class="widget-body form">
 
                             <!-- BEGIN FORM-->
-                            <form name="BetPlayer" id="BetPlayer" method="post" action="AgentDetails.php" autocomplete="off">
-
-                                <table width="100%" border="0" cellspacing="2" cellpadding="0" class="table table-striped table-hover table-bordered">
+                              <table width="100%" border="0" cellspacing="2" cellpadding="0" class="table table-striped table-hover table-bordered">
                                     <tbody>
                                         <tr>
                                             <td width="4%" height="25"><strong>SNo.</strong></td>
@@ -70,11 +68,7 @@
                                 <br>
                                 <br>
 
-                                <input name="DisplayChk" type="hidden" id="DisplayChk" value="">
-                                <input name="MatchCode" type="hidden" id="MatchCode" value="243">
-                            </form>
-                            <!-- END FORM-->
-
+                                
                         </div>
                     </div>
                     <!-- END EXAMPLE TABLE widget-->

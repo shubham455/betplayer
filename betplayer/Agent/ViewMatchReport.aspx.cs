@@ -13,10 +13,7 @@ namespace betplayer.Agent
     public partial class ViewMatchReport : System.Web.UI.Page
     {
         private DataTable dt2;
-        
         public DataTable MatchesDataTable { get { return dt2; } }
-        
-       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,7 +30,6 @@ namespace betplayer.Agent
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     Dropdownclient.DataSource = dt;
-
                     Dropdownclient.DataTextField = "Name";
                     Dropdownclient.DataValueField = "ClientID";
                     Dropdownclient.DataBind();
@@ -81,10 +77,6 @@ namespace betplayer.Agent
 
         protected void Dropdownclient_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            
-
-
             int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
@@ -127,8 +119,6 @@ namespace betplayer.Agent
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     dt2 = new DataTable();
                     adp.Fill(dt2);
-
-
                     for (int i = 0; i < dt2.Rows.Count; i++)
                     {
                         decimal Amount = Convert.ToDecimal(dt2.Rows[i]["Position1"]);

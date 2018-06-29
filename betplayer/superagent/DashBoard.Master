@@ -121,9 +121,9 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="My_Ledger.aspx">My Ledger</a></li>
-                        <li><a class="" href="AgentPlusMinus.aspx">Client Plus/Minus</a></li>
-                        <li><a class="" href="AgentLedger.aspx">Client Ledger</a></li>
-                        <li><a class="" href="AllAgentLedger.aspx">All Client Ledger</a></li>
+                        <li><a class="" href="AgentPlusMinus.aspx">Agent Plus/Minus</a></li>
+                        <li><a class="" href="AgentLedger.aspx">Agent Ledger</a></li>
+                        <li><a class="" href="AllAgentLedger.aspx">All Agent Ledger</a></li>
                         <li><a class="" href="DateWiseReport.aspx">Date Wise Report</a></li>
                     </ul>
                 </li>
@@ -134,7 +134,7 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="AgentLimitReport.aspx">Client Limit Report</a></li>
+                        <li><a class="" href="AgentLimitReport.aspx">Agent Limit Report</a></li>
                         <li><a class="" href="../superagent/SecureCodeReport.aspx">Secure Code Report</a></li>
                     </ul>
                 </li>

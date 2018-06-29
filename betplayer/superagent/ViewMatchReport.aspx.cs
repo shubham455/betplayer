@@ -12,15 +12,15 @@ namespace betplayer.superagent
 {
     public partial class ViewMatchReport : System.Web.UI.Page
     {
-        private DataTable dt3;
-        public DataTable MatchesDataTable { get { return dt3; } }
+        private DataTable dt4;
+        public DataTable MatchesDataTable { get { return dt4; } }
         private DataTable runtable;
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
-                
                 runtable = new DataTable();
                 runtable.Columns.Add(new DataColumn("ClientID"));
                 runtable.Columns.Add(new DataColumn("Name"));
@@ -53,9 +53,7 @@ namespace betplayer.superagent
 
                     for (int i = 0; i < dt1.Rows.Count; i++)
                     {
-                       string Agentcode = dt1.Rows[i]["code"].ToString();
-
-
+                        string Agentcode = dt1.Rows[i]["code"].ToString();
                         string s2 = "Select * From ClientMaster where CreatedBy = '" + Agentcode + "' && Mode = 'Agent'";
                         MySqlCommand cmd2 = new MySqlCommand(s2, cn);
                         MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
@@ -69,8 +67,6 @@ namespace betplayer.superagent
 
                             row["ClientID"] = ClientID;
                             row["Name"] = Name;
-
-
                             runtable.Rows.Add(row.ItemArray);
                         }
                     }
@@ -79,12 +75,42 @@ namespace betplayer.superagent
                     Dropdownclient.DataValueField = "ClientID";
                     Dropdownclient.DataBind();
 
-
-                    string s3 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.clientID,clientmaster.Name from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["AgentID"] + "' && Runner.MatchID = '0'";
+                    string s3 = "Select * From AgentMaster where CreatedBy = '" + Session["SuperAgentCode"] + "'";
                     MySqlCommand cmd3 = new MySqlCommand(s3, cn);
                     MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);
-                    dt3 = new DataTable();
+                    DataTable dt3 = new DataTable();
                     adp3.Fill(dt3);
+
+                    for (int i = 0; i < dt1.Rows.Count; i++)
+                    {
+                        string Agentcode = dt3.Rows[i]["code"].ToString();
+
+
+                        string s4 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name,ClientMaster.CreatedBy from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Runner.MatchID = '" + MatchID + "'";
+                        MySqlCommand cmd4 = new MySqlCommand(s4, cn);
+                        MySqlDataAdapter adp4 = new MySqlDataAdapter(cmd4);
+                        dt4 = new DataTable();
+                        adp4.Fill(dt4);
+                        decimal PositionAAmount = 0, PositionBAmount = 0;
+                        for (int j = 0; j < dt4.Rows.Count; j++)
+                        {
+                            decimal Amount = Convert.ToDecimal(dt4.Rows[j]["Position1"]);
+                            PositionAAmount = PositionAAmount + Amount;
+
+                        }
+                        lblTotalPosition1.Text = PositionAAmount.ToString();
+                        lblPositionA.Text = PositionAAmount.ToString();
+                        colorforpositionA(PositionAAmount);
+                        for (int j = 0; j < dt4.Rows.Count; j++)
+                        {
+                            decimal Amount = Convert.ToDecimal(dt4.Rows[j]["Position2"]);
+                            PositionBAmount = PositionBAmount + Amount;
+
+                        }
+                        lblTotalPosition2.Text = PositionBAmount.ToString();
+                        lblPositionB.Text = PositionBAmount.ToString();
+                        colorforpositionB(PositionBAmount);
+                    }
                 }
             }
         }
@@ -96,35 +122,110 @@ namespace betplayer.superagent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-
-                string s1 = "Select * From AgentMaster where CreatedBy = '" + Session["SuperAgentCode"] + "'";
-                MySqlCommand cmd1 = new MySqlCommand(s1, cn);
-                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
-                DataTable dt1 = new DataTable();
-                adp1.Fill(dt1);
-
-                for (int i = 0; i < dt1.Rows.Count; i++)
+                decimal PositionAAmount = 0, PositionBAmount = 0;
+                if (Dropdownclient.SelectedItem.Text == "All Client")
                 {
-                    string Agentcode = dt1.Rows[i]["code"].ToString();
 
-                    string s2 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name,clientmaster.CreatedBy from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Runner.MatchID = '" + MatchID + "' && runner.ClientID = '" + Dropdownclient.SelectedValue + "'  ";
-                    MySqlCommand cmd = new MySqlCommand(s2, cn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                    dt3 = new DataTable();
-                    adp.Fill(dt3);
+                    string s1 = "Select * From AgentMaster where CreatedBy = '" + Session["SuperAgentCode"] + "'";
+                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
+                    MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
+                    DataTable dt1 = new DataTable();
+                    adp1.Fill(dt1);
+
+                    for (int i = 0; i < dt1.Rows.Count; i++)
+                    {
+                        string Agentcode = dt1.Rows[i]["code"].ToString();
+                        string s = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name,clientmaster.CreatedBy from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Runner.MatchID = '" + MatchID + "'";
+                        MySqlCommand cmd = new MySqlCommand(s, cn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                        dt4 = new DataTable();
+                        adp.Fill(dt4);
+
+                        for (int j = 0; j < dt4.Rows.Count; j++)
+                        {
+                            decimal Amount = Convert.ToDecimal(dt4.Rows[j]["Position1"]);
+                            PositionAAmount = PositionAAmount + Amount;
+
+                        }
+                        lblTotalPosition1.Text = PositionAAmount.ToString();
+                        lblPositionA.Text = PositionAAmount.ToString();
+                        colorforpositionA(PositionAAmount);
+
+                        for (int k = 0; k < dt4.Rows.Count; k++)
+                        {
+                            decimal Amount = Convert.ToDecimal(dt4.Rows[k]["Position2"]);
+                            PositionBAmount = PositionBAmount + Amount;
+
+                        }
+                        lblTotalPosition2.Text = PositionBAmount.ToString();
+                        lblPositionB.Text = PositionBAmount.ToString();
+                        colorforpositionB(PositionBAmount);
+
+                    }
                 }
-                decimal TotalPosition1 = 0, TotalPosition2 = 0;
-                for (int j = 0; j<dt3.Rows.Count;j++)
+                else
                 {
-                    decimal position1amount = Convert.ToDecimal(dt3.Rows[j]["Position1"]);
-                    decimal position2amount = Convert.ToDecimal(dt3.Rows[j]["Position2"]);
+                    string s1 = "Select * From AgentMaster where CreatedBy = '" + Session["SuperAgentCode"] + "'";
+                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
+                    MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
+                    DataTable dt1 = new DataTable();
+                    adp1.Fill(dt1);
 
-                    TotalPosition1 = TotalPosition1 + position1amount;
-                    TotalPosition2 = TotalPosition2 + position2amount;
+                    for (int i = 0; i < dt1.Rows.Count; i++)
+                    {
+                        string Agentcode = dt1.Rows[i]["code"].ToString();
+
+                        string s2 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name,clientmaster.CreatedBy from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Runner.MatchID = '" + MatchID + "' && runner.ClientID = '" + Dropdownclient.SelectedValue + "'  ";
+                        MySqlCommand cmd = new MySqlCommand(s2, cn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                        dt4 = new DataTable();
+                        adp.Fill(dt4);
+                    }
+                    for (int j = 0; j < dt4.Rows.Count; j++)
+                    {
+                        decimal Amount = Convert.ToDecimal(dt4.Rows[j]["Position1"]);
+                        PositionAAmount = PositionAAmount + Amount;
+
+                    }
+                    lblTotalPosition1.Text = PositionAAmount.ToString();
+                    lblPositionA.Text = PositionAAmount.ToString();
+                    colorforpositionA(PositionAAmount);
+
+                    for (int k = 0; k < dt4.Rows.Count; k++)
+                    {
+                        decimal Amount = Convert.ToDecimal(dt4.Rows[k]["Position2"]);
+                        PositionBAmount = PositionBAmount + Amount;
+
+                    }
+                    lblTotalPosition2.Text = PositionBAmount.ToString();
+                    lblPositionB.Text = PositionBAmount.ToString();
+                    colorforpositionB(PositionBAmount);
+
+                    
+
                 }
-                lblTotalposition1.Text = TotalPosition1.ToString();
-                lblTotalposition2.Text = TotalPosition2.ToString();
-
+            }
+        }
+        public void colorforpositionA(decimal Amount)
+        {
+            if (Amount > 0)
+            {
+                lblPositionA.ForeColor = System.Drawing.Color.Blue;
+            }
+            else if (Amount < 0)
+            {
+                lblPositionA.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+        public void colorforpositionB(decimal Amount)
+        {
+            if (Amount > 0)
+            {
+                lblPositionB.ForeColor = System.Drawing.Color.Blue;
+            }
+            else if (Amount < 0)
+            {
+                lblPositionB.ForeColor = System.Drawing.Color.Red;
             }
         }
     }

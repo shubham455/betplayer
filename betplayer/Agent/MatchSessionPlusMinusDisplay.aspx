@@ -1,7 +1,10 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Agent/DashBoard.Master" AutoEventWireup="true" CodeBehind="MatchSessionPlusMinusDisplay.aspx.cs" Inherits="betplayer.Agent.MatchSessionPlusMinusDisplay" %>
 
 
-<asp:Content ID="Content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+
+                                    <div class="space15"></div>
+
+                                </div><asp:Content ID="Content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
         <!-- BEGIN PAGE CONTAINER-->
         <div class="container-fluid">
@@ -36,9 +39,6 @@
                                 <div class="portlet-body">
                                     <div class="clearfix">
                                     </div>
-                                    <div class="space15"></div>
-
-                                </div>
                                 <table width="100%" border="0" cellspacing="2" cellpadding="0">
                                     <tbody>
                                         <tr>
@@ -132,22 +132,7 @@
                                     </tbody>
                                 </table>
                                 <br>
-                                <input name="From" type="hidden" id="From" value="">
-                                <input name="To" type="hidden" id="To" value="">
-                                <input name="FromID" type="hidden" id="FromID" value="">
-                                <input name="DeleteChkMultiple" type="hidden" id="DeleteChkMultiple" value="">
-                                <input name="DisplayChk" type="hidden" id="DisplayChk" value="0">
-                                <input name="MatchCount" type="hidden" id="MatchCount" value="">
-
-
-
-                                <br>
-                                <br>
-                                <br>
-
-                                <input name="DisplayChk" type="hidden" id="DisplayChk" value="0">
-                                <input name="MatchCode" type="hidden" id="MatchCode" value="381">
-                            </form>
+                               
                             <!-- END FORM-->
 
                         </div>

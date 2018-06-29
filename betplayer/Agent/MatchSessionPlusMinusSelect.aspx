@@ -129,7 +129,7 @@
 
                                                                 <table width="100%" border="0" cellspacing="2" cellpadding="0" class="table table-striped table-hover table-bordered">
                                                                     <tbody>
-                                                                        <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
+                                                                        <% foreach (System.Data.DataRow row in RunnerclientDataTable.Rows)
                                                                             { %>
                                                                         <tr bgcolor="#FFFFFF">
                                                                             <td width="20" align="center">
