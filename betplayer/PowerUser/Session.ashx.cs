@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
-using System.Configuration;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 using System.Web.Script.Serialization;
 using System.Web.SessionState;
 
-namespace betplayer.poweruser
+
+
+namespace betplayer.PowerUser
 {
     /// <summary>
-    /// Summary description for SessionDeclare
+    /// Summary description for Session
     /// </summary>
-    public class SessionDeclare : IHttpHandler, IReadOnlySessionState
+    public class Session : IHttpHandler, IReadOnlySessionState
     {
 
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/json";
-            int UserID = Convert.ToInt16(context.Session["adminID"]);
+            int UserID = Convert.ToInt16(context.Session["PoweruserID"]);
             if (IsClient(UserID))
             {
                 string Result = declareSession(context);

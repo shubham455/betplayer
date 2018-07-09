@@ -293,9 +293,10 @@
         </div>
         <!-- END PAGE CONTAINER-->
     </div>
+    <asp:HiddenField ID="apiID" runat="server" />
     <script>
         function ShowReport() {
-            window.location = "MatchSessionPlusMinusDisplay.aspx?MatchID=1136620"
+            window.location = "MatchSessionPlusMinusDisplay.aspx?MatchID=57296"
         }
     </script>
 </asp:Content>

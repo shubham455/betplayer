@@ -2155,7 +2155,6 @@
     <Content Include="admin\changeclientstatus.ashx" />
     <Content Include="admin\changeagentstatus.ashx" />
     <Content Include="admin\changesuperagentstatus.ashx" />
-    <Content Include="PowerUser\SessionDeclare.ashx" />
     <Content Include="PowerUser\Dashboard.Master" />
     <Content Include="PowerUser\assets\bootstrap-colorpicker\less\colorpicker.less" />
     <Content Include="PowerUser\assets\bootstrap-datepicker\less\datepicker.less" />
@@ -2211,8 +2210,13 @@
     <Content Include="PowerUser\assets\font-awesome\sass\font-awesome.sass" />
     <Content Include="PowerUser\assets\font-awesome\sass\font-awesome.scss" />
     <Content Include="PowerUser\assets\jquery-slimscroll\slimScroll.jquery.json" />
+    <Content Include="Agent\clientLimit.ashx" />
+    <Content Include="PowerUser\Session.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
+    <Content Include="superagent\Agentlimit.ashx" />
+    <Content Include="superagent\deleteagent.ashx" />
+    <Content Include="superagent\Changestatus.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2300,6 +2304,7 @@
     <Content Include="superagent\SportsBetting.aspx" />
     <Content Include="superagent\SportsDetails.aspx" />
     <Content Include="superagent\TC.aspx" />
+    <Content Include="superagent\UpdateAgentlimit.aspx" />
     <Content Include="superagent\ViewMatchReport.aspx" />
     <Content Include="superagent\ViewSessionReport.aspx" />
     <Content Include="Web.config">
@@ -2307,6 +2312,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent\clientLimit.ashx.cs">
+      <DependentUpon>clientLimit.ashx</DependentUpon>
+    </Compile>
     <Compile Include="PowerUser\AddMatch.aspx.cs">
       <DependentUpon>AddMatch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2445,8 +2453,8 @@
     <Compile Include="PowerUser\ScoreBoard.aspx.designer.cs">
       <DependentUpon>ScoreBoard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PowerUser\SessionDeclare.ashx.cs">
-      <DependentUpon>SessionDeclare.ashx</DependentUpon>
+    <Compile Include="PowerUser\Session.ashx.cs">
+      <DependentUpon>Session.ashx</DependentUpon>
     </Compile>
     <Compile Include="PowerUser\SessionRate.aspx.cs">
       <DependentUpon>SessionRate.aspx</DependentUpon>
@@ -3003,6 +3011,9 @@
     <Compile Include="superagent\AgentDetails.aspx.designer.cs">
       <DependentUpon>AgentDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="superagent\Agentlimit.ashx.cs">
+      <DependentUpon>Agentlimit.ashx</DependentUpon>
+    </Compile>
     <Compile Include="superagent\AgentLimitReport.aspx.cs">
       <DependentUpon>AgentLimitReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3037,6 +3048,9 @@
     </Compile>
     <Compile Include="superagent\Changepassword.aspx.designer.cs">
       <DependentUpon>Changepassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\Changestatus.ashx.cs">
+      <DependentUpon>Changestatus.ashx</DependentUpon>
     </Compile>
     <Compile Include="superagent\CollectionDetail.aspx.cs">
       <DependentUpon>CollectionDetail.aspx</DependentUpon>
@@ -3086,6 +3100,9 @@
     </Compile>
     <Compile Include="superagent\DateWiseReport.aspx.designer.cs">
       <DependentUpon>DateWiseReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\deleteagent.ashx.cs">
+      <DependentUpon>deleteagent.ashx</DependentUpon>
     </Compile>
     <Compile Include="superagent\Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
@@ -3233,6 +3250,13 @@
     </Compile>
     <Compile Include="superagent\TC.aspx.designer.cs">
       <DependentUpon>TC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\UpdateAgentlimit.aspx.cs">
+      <DependentUpon>UpdateAgentlimit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\UpdateAgentlimit.aspx.designer.cs">
+      <DependentUpon>UpdateAgentlimit.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\ViewMatchReport.aspx.cs">
       <DependentUpon>ViewMatchReport.aspx</DependentUpon>

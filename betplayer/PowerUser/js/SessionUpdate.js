@@ -7,21 +7,22 @@
     messagingSenderId: "98790187004"
 };
 var matchKey;
+var timer = setTimeout(function () { }, 0);
 (function () {
     firebase.initializeApp(config);
     var matchIdElement = document.getElementById("ContentPlaceHolder_apiid");
     console.log("firebase connecting to match: " + matchIdElement.value.toString());
     var timer = setTimeout(function () { }, 0);
-    
+
     if (matchIdElement !== null) {
         firebase.database().ref('/currentMatches').once("value", // runs on page runder
             function (snapshot) {
                 var match,
                     matches = snapshot.val();
-                
+
                 for (var key of Object.keys(matches)) {
                     if (matches[key]['match_id'].toString() === matchIdElement.value) {
-                        
+
                         console.log("match found with id: " + matches[key]['match_id'].toString());
                         match = matches[key];
                         matchKey = key;
@@ -58,7 +59,7 @@ var matchKey;
             });
 
     }
-    
+
 })()
 
 function focusNextElementOnEnterKeyPress(event) {
@@ -81,7 +82,7 @@ function focusNextElementOnEnterKeyPress(event) {
             document.getElementById('yesrate' + sessionKey).value = "90";
             document.getElementById("yesrate" + sessionKey).focus();
         }
-        else if (elementType === "yes")document.getElementById("yesrate" + sessionKey).focus();
+        else if (elementType === "yes") document.getElementById("yesrate" + sessionKey).focus();
         if (elementType === "yesrate") document.getElementById("notrate" + sessionKey).focus();
         if (elementType === "notrate") document.getElementById("UpdateButton" + sessionKey).focus();
     }
@@ -106,7 +107,7 @@ function updateSessionTable(Team) {
                 if (aCreatedAt > bCreatedAt) return 1;
                 return 0;
             });
-           
+
             document.getElementById("session_selector").innerHTML = "";
             clearSessionTable();
             for (var i = 1; i <= sessionKeys.length; i++) {
@@ -156,12 +157,23 @@ function updateSession(sessionId) {
                 "not": document.getElementById('not' + sessionId).value,
                 "yes": document.getElementById('yes' + sessionId).value,
                 "notRate": toCorrectFormat(document.getElementById('notrate' + sessionId).value),
-                "yesRate": toCorrectFormat(document.getElementById('yesrate' + sessionId).value),
+                "yesRate": toCorrectFormat(document.getElementById('yesrate' + sessionId).value)
             }).then(function () {
                 document.getElementById('notrate' + sessionId).readOnly = true;
                 document.getElementById('yesrate' + sessionId).readOnly = true;
                 document.getElementById('not' + sessionId).focus();
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    console.log("Running timer");
+                    firebase.database().ref('/currentMatches/' + matchKey + '/' + Team.toString() + '/Session/' + sessionKey).update({
+                        "not": "0.00",
+                        "yes": "0.00",
+                        "notRate": "0.00",
+                        "yesRate": "0.00"
+                    })
+                }, 10000)
             }).catch(function (err) {
+                console.log(err);
                 alert("Session Not Updated.");
             });
         } else alert("Not is greater than Yes.");
@@ -186,15 +198,15 @@ function declareSession() {
     var matchId = document.getElementById("ContentPlaceHolder_apiid");
     var sessionkey = document.getElementById('session_selector').value;
     var team = document.getElementById('team_selector').value;
-    
+
     var params = {
         sessionKey: sessionkey,
         declareValue: document.getElementById('Declear').value,
         team: team,
         MatchID: matchId.value
-       
+
     };
-   
+
     var formBody = [];
     for (var property in params) {
         var encodedKey = encodeURIComponent(property);
@@ -203,7 +215,7 @@ function declareSession() {
     }
     formBody = formBody.join("&");
 
-    fetch('https://admin.crick20.com/SessionDeclare.ashx', {
+    fetch('http://localhost:54034/PowerUser/Session.ashx', {
         credentials: 'same-origin',
         method: 'POST',
         headers: {
@@ -228,7 +240,7 @@ function declareSession() {
     });
 }
 function deleteSession() {
-   
+
     var sessionkey = document.getElementById('session_selector1').value;
     var team = document.getElementById('team_selector').value;
 

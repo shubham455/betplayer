@@ -24,8 +24,6 @@ namespace betplayer.Agent
         protected void Page_Load(object sender, EventArgs e)
 
         {
-
-            
             runTable = new DataTable();
             runTable.Columns.Add(new DataColumn("RUNS"));
             runTable.Columns.Add(new DataColumn("AMOUNT"));
@@ -36,6 +34,14 @@ namespace betplayer.Agent
             {
                 cn.Open();
 
+                string SELECT = "Select * from Matches Where apiID = '" + apiID.Value + "'";
+                MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+                string TeamA1 = dt.Rows[0]["TeamA"].ToString();
+                string TeamB1 = dt.Rows[0]["TeamB"].ToString();
+               
 
                 string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "'";
                 MySqlCommand cmd1 = new MySqlCommand(s, cn);

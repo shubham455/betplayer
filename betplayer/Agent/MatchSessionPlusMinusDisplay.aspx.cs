@@ -174,25 +174,31 @@ namespace betplayer.Agent
                     DataTable dt6 = new DataTable();
                     adp6.Fill(dt6);
 
-                    Decimal MatchAmount = Convert.ToDecimal(dt6.Rows[0]["Amount"]);
-                    if (MatchAmount > 0)
+                    if (dt6.Rows.Count > 0)
                     {
-                        MatchAmount = MatchAmount * -1;
 
-                        row["MatchCommision"] = TotalMatchCommision1;
+                        Decimal MatchAmount = Convert.ToDecimal(dt6.Rows[0]["Amount"]);
+                        if (MatchAmount > 0)
+                        {
+                            MatchAmount = MatchAmount * -1;
+
+                            row["MatchCommision"] = TotalMatchCommision1;
+                        }
+                        else if (MatchAmount < 0)
+                        {
+                            MatchAmount = MatchAmount * -1;
+                            TotalMatchCommision1 = MatchCommision1 * MatchAmount;
+                            row["MatchCommision"] = TotalMatchCommision1;
+                        }
+
+                        decimal totalcommision = TotalMatchCommision1 + SessionCommision;
+
+
+                        row["TotalCommisionAmount"] = totalcommision;
                     }
-                    else if (MatchAmount < 0)
-                    {
-                        MatchAmount = MatchAmount * -1;
-                        TotalMatchCommision1 = MatchCommision1 * MatchAmount;
-                        row["MatchCommision"] = TotalMatchCommision1;
-                    }
-
-                    decimal totalcommision = TotalMatchCommision1 + SessionCommision;
-
-
-                    row["TotalCommisionAmount"] = totalcommision;
-
+                    else {
+                        row["MatchCommision"] = 0;
+                        row["TotalCommisionAmount"] = 0; }
                     Decimal Match = MatchTotalAmount + SessionTotalAmount;
                     Decimal Commision = SessionCommision + TotalMatchCommision1;
                     Decimal To = 0;
@@ -200,13 +206,13 @@ namespace betplayer.Agent
                     if (Match > 0)
                     {
 
-                       To = Match - Commision;
+                        To = Match - Commision;
 
                     }
                     else if (Match < 0)
                     {
 
-                        To = Match + Commision;
+                        To = Match - Commision;
 
                     }
 
@@ -230,7 +236,7 @@ namespace betplayer.Agent
                     decimal AgentShare1 = AgentShare / 100;
                     if (MobileApp == "Yes")
                     {
-                        MobileAppAmount = 100 - (100 * AgentShare1) ;
+                        MobileAppAmount = 100 - (100 * AgentShare1);
                         row["MOBAppAmount"] = MobileAppAmount;
                     }
                     else if (MobileApp == "NO")
@@ -280,8 +286,11 @@ namespace betplayer.Agent
                 decimal Match1Amount = 0;
                 for (int l = 0; l < runtable.Rows.Count; l++)
                 {
-                    decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["MatchCommision"]);
-                    Match1Amount = Match1Amount + MatchAmount;
+                    if (runtable.Rows.Count > 0)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["MatchCommision"]);
+                        Match1Amount = Match1Amount + MatchAmount;
+                    }
                 }
 
                 row1["Match1Amount"] = Match1Amount;
@@ -342,7 +351,7 @@ namespace betplayer.Agent
                 decimal Dabit = 0, Credit = 0;
                 string Remark = "";
 
-                if(TotalFinalAmount1 <0)
+                if (TotalFinalAmount1 < 0)
                 {
                     Dabit = TotalFinalAmount1;
                     Remark = "Agent Plus";

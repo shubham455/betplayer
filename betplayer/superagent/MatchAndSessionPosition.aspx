@@ -89,7 +89,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Team1" id="Team1" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width: 120px;"></td>
+                                                                                                <input type="button"  name="Team1" id="Team1" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width: 120px;"></td>
                                                                                             <td align="center" valign="middle" style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="KRate1" id="KRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(1)"></td>
                                                                                             <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><span style="color: ">
@@ -100,7 +100,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;"><span>
-                                                                                                <input type="button" name="Team2" id="Team2" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width: 120px;">
+                                                                                                <input type="button"  name="Team2" id="Team2" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width: 120px;">
                                                                                             </span></td>
                                                                                             <td align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="KRate2" id="KRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(2)"></td>
@@ -259,7 +259,7 @@
          <!--
         function Redirect(value) {
 
-            window.location = "MatchAndSessionSPosition.aspx?MatchID=1136620&&Session=" + value;
+            window.location = "MatchAndSessionSPosition.aspx?MatchID=57296&&Session=" + value;
             }
          //-->
       </script>

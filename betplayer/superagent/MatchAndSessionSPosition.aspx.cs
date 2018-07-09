@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Configuration;
@@ -31,6 +31,16 @@ namespace betplayer.superagent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
+
+                string SELECT = "Select * from Matches Where apiID = '" + apiID.Value + "'";
+                MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+                string TeamA1 = dt.Rows[0]["TeamA"].ToString();
+                string TeamB1 = dt.Rows[0]["TeamB"].ToString();
+                Team1.Value = TeamA1;
+                Team2.Value = TeamB1;
 
                 string s11 = "Select AgentID,code From AgentMaster where CreatedBy = '" + Session["SuperAgentcode"] + "'";
                 MySqlCommand cmd11 = new MySqlCommand(s11, cn);

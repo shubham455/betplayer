@@ -1,7 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/superagent/DashBoard.Master" AutoEventWireup="true" CodeBehind="CreateAgent.aspx.cs" Inherits="betplayer.Super_Agent.CreateAgent" %>
 
-<asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
+        <!-- BEGIN PAGE CONTAINER-->
         <div class="container-fluid">
             <!-- BEGIN PAGE HEADER-->
             <div class="row-fluid">
@@ -10,13 +11,13 @@
                     <div id="theme-change" class="hidden-phone"><i class="icon-cogs"></i><span class="settings"><span class="text">Theme:</span> <span class="colors"><span class="color-default" data-style="default"></span><span class="color-gray" data-style="gray"></span><span class="color-purple" data-style="purple"></span><span class="color-navy-blue" data-style="navy-blue"></span></span></span></div>
                     <!-- END THEME CUSTOMIZER-->
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-                    <h3 class="page-title">Create New Agent</h3>
+                    <h3 class="page-title">Create New Client</h3>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
                         <li>Master Details <span class="divider">&nbsp;</span> </li>
-                        <li><a href="AgentDetails.php">Agent Details</a><span class="divider">&nbsp;</span></li>
-                        <li>Create New Agent<span class="divider">&nbsp;</span></li>
-                        <li><a href="AgentDetails.php"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                        <li><a href="ClientDetails.aspx">Client Details</a><span class="divider">&nbsp;</span></li>
+                        <li>Create New Client<span class="divider">&nbsp;</span></li>
+                        <li><a href="ClientDetails.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
                     <!-- END PAGE TITLE & BREADCRUMB-->
                 </div>
@@ -38,178 +39,134 @@
                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <td width="550">
+                                            <div></div>
+                                            <table width="850" border="0" cellspacing="0" cellpadding="0">
                                                 <tbody>
-                                                    <tr>
-                                                        <td width="2%" class="welcome">&nbsp;</td>
-                                                        <td width="24%" height="30" align="left" valign="middle" class="welcome">Code</td>
-                                                        <td width="24%" align="left" valign="middle">
-                                                            <asp:TextBox ID="txtcode" CssClass="textbox" runat="server" ReadOnly="true" />
-                                                        </td>
-                                                        <td width="24%" align="left" valign="middle">&nbsp;</td>
-                                                        <td width="24%" align="left" valign="middle">&nbsp;</td>
-                                                        <td width="2%" align="left">&nbsp;</td>
-                                                    </tr>
+                                                   
                                                     <tr>
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Name</td>
-                                                        <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtname" CssClass="textbox" runat="server" /></td>
-                                                        <td align="left" valign="middle"><strong>My Limit</strong></td>
-                                                        <td align="left" valign="middle">&nbsp;</td>
+                                                        <td align="left">
+                                                            <asp:TextBox CssClass="textbox" ID="txtname" runat="server" /></td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">Agent Limit</td>
-                                                        <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtagentlimit" CssClass="textbox" runat="server" /></td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">Rem Limit</td>
-                                                        <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtRemlimit" CssClass="textbox" runat="server" value="-2100000" ReadOnly="true" TabIndex="-1" /></td>
-                                                        <td align="left">&nbsp;</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">Contact No.</td>
-                                                        <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtcontactno" CssClass="textbox" runat="server" /></td>
-                                                        <td align="left" valign="middle">&nbsp;</td>
-                                                        <td align="left" valign="middle">&nbsp;</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Contact No</td>
+                                                        <td align="left">
+                                                            <asp:TextBox runat="server" CssClass="textbox" MaxLength="10" ID="txtContactno" /></td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Password</td>
-                                                        <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtpassword" CssClass="textbox" runat="server" /></td>
-                                                        <td align="left" valign="middle">&nbsp;</td>
-                                                        <td align="left" valign="middle">&nbsp;</td>
-                                                        <td align="left">&nbsp;</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>&nbsp;</td>
-                                                        <td height="30" colspan="2" align="left" valign="middle" class="welcome"><strong>My  Share (Your Share and Agent Share Can't Greater than
-                                                          )</strong></td>
-                                                        <td height="30" align="left" class="welcome"><strong>My  Share Given By Admin</strong></td>
-                                                        <td align="left" valign="middle">&nbsp;</td>
-                                                        <td align="left">&nbsp;</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Share %</td>
-                                                        <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtmobAmount" CssClass="textbox" runat="server" /></td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Share %</td>
-                                                        <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtmobAmount1" CssClass="textbox" runat="server" value="50.00" ReadOnly="true" TabIndex="-1" /></td>
+                                                        <td align="left">
+                                                            <asp:TextBox runat="server" CssClass="textbox" MaxLength="10" ID="txtPassword" /></td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
 
                                                     <tr>
-                                                        <td height="30" align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mobile Share %</td>
+                                                        <td align="left" class="welcome">&nbsp;</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Agent Limit</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtagentmobshare" CssClass="textbox" runat="server" Text="100.00" /></td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mobile&nbsp;Share %</td>
-                                                        <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtagentmobshare1" CssClass="textbox" runat="server" Text="100.00" ReadOnly="true" TabIndex="-1" /></td>
-                                                        <td align="left">&nbsp;</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td height="30" align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" class="welcome"><strong>Agent Share </strong></td>
-                                                        <td align="left">&nbsp;</td>
-                                                        <td height="30" align="left" class="welcome">&nbsp;</td>
+                                                            <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" OnTextChanged="txtClientlimit_TextChanged" AutoPostBack="true" /></td>
                                                         <td align="left" valign="middle">&nbsp;</td>
-                                                        <td align="left">&nbsp;</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td height="30" align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Share %</td>
-                                                        <td align="left">
-                                                            <asp:TextBox ID="txtmatchshare" CssClass="textbox" runat="server" /></td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;</td>
-                                                        <td align="left" valign="middle">&nbsp;</td>
-                                                        <td align="left">&nbsp;</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td height="30" align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mobile Share %</td>
-                                                        <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtmobileshare" CssClass="textbox" runat="server" /></td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;</td>
-                                                        <td align="left" valign="middle">&nbsp;</td>
-                                                        <td align="left">&nbsp;</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td height="30" align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" colspan="2" align="left" class="welcome"><strong>Agent Commission On User</strong></td>
-                                                        <td height="30" colspan="2" align="left" class="welcome"><strong>My Commission On User</strong></td>
-                                                        <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr>
                                                         <td align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session Commission Type</td>
-                                                        <td align="left" valign="middle">
-                                                            <select runat="server"   name="SessionCommissionType" id="SessionCommissionType" onchange="MSCommission()">
-                                                                <option value="Commission Type" selected="">Commission Type</option>
-                                                                <option value="No Comm">No Comm</option>
-                                                                <option value="Only On Minus">Only On Minus</option>
-                                                                <option value="Bet By Bet">Bet By Bet</option>
-                                                            </select></td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session Commission Type</td>
-                                                        <td align="left" valign="middle">
-                                                            <select name="SASessionCommissionType" id="SASessionCommissionType" onchange="MSCommission()" tabindex="-1">
-                                                                <option value="Bet By Bet" selected="">Bet By Bet</option>
-                                                            </select></td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">SuperAgent Current Limit</td>
+                                                        <td height="30" align="left" valign="middle" style="font-size: 13px; color: #F00">
+                                                            <asp:TextBox CssClass="textbox" ID="txtSuperAgentlimit" runat="server" Text="305653" PlaceHolder="305653&nbsp;&nbsp; से ज्यादा नहीं भर सकते। " ReadOnly="true" />
+                                                        </td>
+                                                        <td align="left" valign="middle" style="font-size: 13px; color: #F00"><strong>My Share %</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" class="welcome">&nbsp;</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Agent Share %</td>
+                                                       <td align="left" valign="middle">
+                                                            <asp:TextBox CssClass="textbox" ID="txtAgentShare" OnTextChanged="txtAgentShare_TextChanged" AutoPostBack="true" runat="server"/></td>
+                                                        <td align="left">
+                                                            <asp:TextBox CssClass="textbox" ID="txtSuperAgentShare" runat="server" Text="50" ReadOnly="true" /></td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
-                                                    <tr id="divMatchCommission" style="visibility: ;">
+                                                    
+                                                     <tr>
+                                                        <td align="left" class="welcome">&nbsp;</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Mobile App</td>
+                                                        <td align="left">
+                                                            <asp:TextBox CssClass="textbox" ID="txtMobileApp" runat="server" Text="0" /></td>
+                                                        <td align="left">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" class="welcome">
+                                                            <p>&nbsp;</p>
+                                                        </td>
+                                                        <td height="30" align="left" valign="middle" class="welcome"><strong>Agent Commission Percentage</strong></td>
+                                                        
+                                                        <td align="left">&nbsp;</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome"><strong>My Commission Percentage</strong></td>
+                                                        
+                                                        <td align="left">&nbsp;</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td align="left" class="welcome">&nbsp;</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Session Commission Type</td>
+                                                        <td align="left" valign="middle">
+                                                            <asp:DropDownList ID="SessionDropDown" runat="server" class="form-control" AppendDataBoundItems="False" DataTextField="UserName" DataValueField="UserID">
+                                                                <asp:ListItem Text="Please Select" Value="0">Commission Type</asp:ListItem>
+                                                                <asp:ListItem Text="No Commission" Value="1">No Commission</asp:ListItem>
+                                                                <asp:ListItem Text=">Only On Minus" Value="2">Only On Minus</asp:ListItem>
+                                                                <asp:ListItem Text="Bet By Bet" Value="3">Bet By Bet</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Display="Dynamic" runat="server" ControlToValidate="SessionDropDown"
+                                                                ErrorMessage="Value Required!" InitialValue="0"></asp:RequiredFieldValidator>
+                                                        </td>
+                                                        <td align="left" valign="middle">&nbsp;</td>
+                                                    </tr>
+                                                    <tr id="divMatchCommission">
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">
-                                                            <span id="CommHeading">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Match Commission</span>
+                                                            <span id="CommHeading">Match Commission</span>
                                                         </td>
                                                         <td align="left">
-                                                            <input runat="server" name="MatchCommission" type="text" class="textbox" id="MatchCommission" value=""></td>
-                                                        <td height="30" align="left" valign="middle" class="welcome"><span id="CommHeading">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Match Commission</span></td>
-                                                        <td align="left">
-                                                            <input name="SAMatchCommission" type="text" class="textbox" id="SAMatchCommission" value="2.00" readonly="" tabindex="-1"></td>
+                                                            <input runat="server" name="MatchCommissionClient" type="text" class="textbox" id="MatchCommissionAgent" onblur="showCustomer(this.value)" value="0"></td>
+                                                        <td>
+                                                            <input runat="server" name="MatchCommissionClient" type="text" class="textbox" id="Text1" readonly="" onblur="showCustomer(this.value)" value="0">
+                                                        </td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
-                                                    <tr id="divSessionCommission" style="visibility: ;">
+                                                    <tr id="divSessionCommission">
                                                         <td align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session Commission</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Session Commission</td>
                                                         <td align="left">
-                                                            <input runat="server" name="SessionCommission" type="text" class="textbox" id="SessionCommission" value=""></td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session Commission</td>
+                                                            <input name="SessionCommissionClient" runat="server" type="text" class="textbox" id="SessionCommissionAgent" onblur="showCustomer(this.value)" value="0"></td>
                                                         <td align="left">
-                                                            <input name="SASessionCommission" type="text" class="textbox" id="SASessionCommission" value="2.50" readonly="" tabindex="-1"></td>
+                                                            <input name="SessionCommissionClient" runat="server" type="text" class="textbox" id="Text2" onblur="showCustomer(this.value)" readonly="" value="0"></td>
+                                                        
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
-
                                                 </tbody>
                                             </table>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-
                             <div class="form-actions">
-                                <asp:Button ID="btnsave" runat="server" class="btn btn-success" Text="Save" OnClick="submit_Click" />
-                                <asp:Button ID="btncancel" runat="server" class="btn btn-success" Text="Cancel" OnClick="btncancel_Click" />
+                                <asp:Button ID="btnSave" CssClass="btn btn-success" runat="server" OnClick="Submit_Click" Text="Save" />
+                                <asp:Button ID="btnCancel" ValidationGroup="vg1" CssClass="btn btn-success" runat="server" OnClick="btnCancel_Click" Text="Cancel" />
                             </div>
 
 
-                            </>
-                           
-                            <!-- END FORM-->
                         </div>
                     </div>
                 </div>
             </div>
             <!-- END PAGE CONTENT-->
         </div>
+        <!-- END PAGE CONTAINER-->
     </div>
+
 </asp:Content>
+

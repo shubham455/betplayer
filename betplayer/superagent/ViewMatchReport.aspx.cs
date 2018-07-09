@@ -19,6 +19,8 @@ namespace betplayer.superagent
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             if (!IsPostBack)
             {
                 runtable = new DataTable();
@@ -117,6 +119,7 @@ namespace betplayer.superagent
 
         protected void Dropdownclient_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
@@ -138,8 +141,13 @@ namespace betplayer.superagent
                         string s = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name,clientmaster.CreatedBy from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Runner.MatchID = '" + MatchID + "'";
                         MySqlCommand cmd = new MySqlCommand(s, cn);
                         MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                        dt4 = new DataTable();
-                        adp.Fill(dt4);
+                        DataTable dt2 = new DataTable();
+                        adp.Fill(dt2);
+
+
+                        
+                        
+
 
                         for (int j = 0; j < dt4.Rows.Count; j++)
                         {
@@ -171,16 +179,15 @@ namespace betplayer.superagent
                     DataTable dt1 = new DataTable();
                     adp1.Fill(dt1);
 
-                    for (int i = 0; i < dt1.Rows.Count; i++)
-                    {
-                        string Agentcode = dt1.Rows[i]["code"].ToString();
 
-                        string s2 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name,clientmaster.CreatedBy from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Runner.MatchID = '" + MatchID + "' && runner.ClientID = '" + Dropdownclient.SelectedValue + "'  ";
-                        MySqlCommand cmd = new MySqlCommand(s2, cn);
-                        MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                        dt4 = new DataTable();
-                        adp.Fill(dt4);
-                    }
+
+
+                    string s2 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name,clientmaster.CreatedBy from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && Runner.MatchID = '" + MatchID + "' && runner.ClientID = '" + Dropdownclient.SelectedValue + "'  ";
+                    MySqlCommand cmd = new MySqlCommand(s2, cn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                    dt4 = new DataTable();
+                    adp.Fill(dt4);
+
                     for (int j = 0; j < dt4.Rows.Count; j++)
                     {
                         decimal Amount = Convert.ToDecimal(dt4.Rows[j]["Position1"]);
@@ -200,8 +207,6 @@ namespace betplayer.superagent
                     lblTotalPosition2.Text = PositionBAmount.ToString();
                     lblPositionB.Text = PositionBAmount.ToString();
                     colorforpositionB(PositionBAmount);
-
-                    
 
                 }
             }

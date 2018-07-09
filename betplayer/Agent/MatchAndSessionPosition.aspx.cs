@@ -30,9 +30,14 @@ namespace betplayer.Agent
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
+                string TeamA1 = dt.Rows[0]["TeamA"].ToString();
+                string TeamB1 = dt.Rows[0]["TeamB"].ToString();
+                
 
 
-                string s = "select runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' order by DateTime DESC";
+
+
+                string s = "select runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && runner.MatchID = '"+ apiID.Value + "' order by DateTime DESC";
                 MySqlCommand cmd1 = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt1 = new DataTable();
@@ -74,9 +79,12 @@ namespace betplayer.Agent
                     MySqlDataAdapter selectteamadp1 = new MySqlDataAdapter(selectteamcmd1);
                     DataTable selectteamdt1 = new DataTable();
                     selectteamadp1.Fill(selectteamdt1);
-                    string team = selectteamdt1.Rows[j]["Team"].ToString();
+                    string team = "";
+                    if (selectteamdt1.Rows.Count > j)
+                    {
+                        team = selectteamdt1.Rows[j]["Team"].ToString();
 
-
+                    }
 
                     Decimal Position = 0;
                     Decimal Amount = Convert.ToDecimal(dt1.Rows[j]["Amount"]);
@@ -162,8 +170,12 @@ namespace betplayer.Agent
                     MySqlDataAdapter selectteamadp1 = new MySqlDataAdapter(selectteamcmd1);
                     DataTable selectteamdt1 = new DataTable();
                     selectteamadp1.Fill(selectteamdt1);
-                    string team = selectteamdt1.Rows[k]["Team"].ToString();
+                    string team = "";
+                    if (selectteamdt1.Rows.Count > k)
+                    {
+                        team = selectteamdt1.Rows[k]["Team"].ToString();
 
+                    }
                     string Mode1 = "";
                     Decimal Position = 0;
                     Decimal Amount = Convert.ToDecimal(dt1.Rows[k]["Amount"]);

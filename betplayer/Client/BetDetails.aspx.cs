@@ -41,6 +41,9 @@ namespace betplayer.Client
                 {
                     cn.Open();
 
+
+
+
                     string SELECT = "Select * from Matches Where apiID = '" + apiID.Value + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);

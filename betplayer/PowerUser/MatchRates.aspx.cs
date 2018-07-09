@@ -69,7 +69,7 @@ namespace betplayer.poweruser
                                         MySqlDataAdapter Runneradp = new MySqlDataAdapter(Runnercmd);
                                         DataTable Runnerdt = new DataTable();
                                         Runneradp.Fill(Runnerdt);
-
+                                        Decimal MatchtotalAmount = 0;
                                         if (Runnerdt.Rows.Count > 0)
                                         {
                                             int Position1 = Convert.ToInt32(Runnerdt.Rows[0]["Position1"]);
@@ -77,10 +77,12 @@ namespace betplayer.poweruser
 
                                             if (team_selector1.Value == "team_1")
                                             {
+                                                MatchtotalAmount = Position1;
                                                 LedgerAmount = LedgerAmount + Position1;
                                             }
                                             else if (team_selector1.Value == "team_2")
                                             {
+                                                MatchtotalAmount = Position2;
                                                 LedgerAmount = LedgerAmount + Position2;
                                             }
 
@@ -96,6 +98,12 @@ namespace betplayer.poweruser
                                             Credit = LedgerAmount;
                                         }
 
+                                        string AddMatchCalculation = "Insert into MatchCalculation (MatchID,ClientID,Amount) Values( @MatchID,@ClientID,@Amount)";
+                                        MySqlCommand AddMatchCalculationcmd = new MySqlCommand(AddMatchCalculation, cn);
+                                        AddMatchCalculationcmd.Parameters.AddWithValue("@ClientID", ClientID);
+                                        AddMatchCalculationcmd.Parameters.AddWithValue("@MatchID", apiID);
+                                        AddMatchCalculationcmd.Parameters.AddWithValue("@Amount", MatchtotalAmount);
+                                        AddMatchCalculationcmd.ExecuteNonQuery();
                                         string MatchBet = "select count(clientID) From runner where MatchID = '" + apiID + "' && ClientID = '" + ClientID + "' ";
                                         MySqlCommand MatchBetcmd = new MySqlCommand(MatchBet, cn);
                                         string MatchBetcount = MatchBetcmd.ExecuteScalar().ToString();
@@ -130,7 +138,7 @@ namespace betplayer.poweruser
                                     MySqlDataAdapter Runneradp = new MySqlDataAdapter(Runnercmd);
                                     DataTable Runnerdt = new DataTable();
                                     Runneradp.Fill(Runnerdt);
-
+                                    decimal MatchtotalAmount = 0;
                                     if (Runnerdt.Rows.Count > 0)
                                     {
                                         int Position1 = Convert.ToInt32(Runnerdt.Rows[0]["Position1"]);
@@ -138,10 +146,12 @@ namespace betplayer.poweruser
 
                                         if (team_selector1.Value == "team_1")
                                         {
+                                            MatchtotalAmount = Position1;
                                             LedgerAmount = LedgerAmount + Position1;
                                         }
                                         else if (team_selector1.Value == "team_2")
                                         {
+                                            MatchtotalAmount = Position2;
                                             LedgerAmount = LedgerAmount + Position2;
                                         }
                                     }
@@ -156,6 +166,13 @@ namespace betplayer.poweruser
                                         Credit = LedgerAmount;
                                     }
 
+                                    string AddMatchCalculation = "Insert into MatchCalculation (MatchID,ClientID,Amount) Values( @MatchID,@ClientID,@Amount)";
+                                    MySqlCommand AddMatchCalculationcmd = new MySqlCommand(AddMatchCalculation, cn);
+                                    AddMatchCalculationcmd.Parameters.AddWithValue("@ClientID", ClientID);
+                                    AddMatchCalculationcmd.Parameters.AddWithValue("@MatchID", apiID);
+                                    AddMatchCalculationcmd.Parameters.AddWithValue("@Amount", MatchtotalAmount);
+                                    AddMatchCalculationcmd.ExecuteNonQuery();
+
                                     string MatchBet = "select count(clientID) From runner where MatchID = '" + apiID + "' && ClientID = '" + ClientID + "' ";
                                     MySqlCommand MatchBetcmd = new MySqlCommand(MatchBet, cn);
                                     string MatchBetcount = MatchBetcmd.ExecuteScalar().ToString();
@@ -163,6 +180,7 @@ namespace betplayer.poweruser
                                     string SessionBet = "select count(clientID) From session where MatchID = '" + apiID + "' && ClientID = '" + ClientID + "' ";
                                     MySqlCommand SessionBetcmd = new MySqlCommand(SessionBet, cn);
                                     string SessionBetcount = SessionBetcmd.ExecuteScalar().ToString();
+
 
 
                                     string InsertClientLedger = "Insert Into ClientLedger (clientID,MatchID,Dabit,Credit,Amount,MatchBets,SessionBets) values (@ClientID,@MatchID,@Dabit,@Credit,@Amount,@MatchBets,@SessionBets)";
@@ -176,7 +194,7 @@ namespace betplayer.poweruser
                                     Insertclientcmd.Parameters.AddWithValue("@SessionBets", SessionBetcount);
                                     Insertclientcmd.ExecuteNonQuery();
 
-                                    string SELECT = "Update Matches Set Status = '11', Declear = '1' Where apiID = '" + apiID + "'";
+                                    string SELECT = "Update Matches Set Status = '11', Declear = '1', winnerTeam ='" + team_selector1.Value + "' Where apiID = '" + apiID + "'";
                                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                                     cmd.ExecuteNonQuery();
 
@@ -188,37 +206,123 @@ namespace betplayer.poweruser
                         }
 
                     }
-                }
+                    else
+                    {
+                        string RunnerClientID = "Select ClientID From Runner group by ClientID";
+                        MySqlCommand RunnerClientIDcmd = new MySqlCommand(RunnerClientID, cn);
+                        MySqlDataAdapter RunnerClientIDadp = new MySqlDataAdapter(RunnerClientIDcmd);
+                        DataTable RunnerClientIDdt = new DataTable();
+                        RunnerClientIDadp.Fill(RunnerClientIDdt);
+
+                        for (int a = 0; a < RunnerClientIDdt.Rows.Count; a++)
+                        {
+                            int ClientID = Convert.ToInt16(RunnerClientIDdt.Rows[a]["ClientID"]);
+
+                            string Runner = "Select Position1,Position2 from Runner where ClientID = '" + ClientID + "' && MatchID = '" + apiID + "' order by DateTime DESC";
+                            MySqlCommand Runnercmd = new MySqlCommand(Runner, cn);
+                            MySqlDataAdapter Runneradp = new MySqlDataAdapter(Runnercmd);
+                            DataTable Runnerdt = new DataTable();
+                            Runneradp.Fill(Runnerdt);
+                            decimal MatchtotalAmount = 0;
+                            if (Runnerdt.Rows.Count > 0)
+                            {
+                                int Position1 = Convert.ToInt32(Runnerdt.Rows[0]["Position1"]);
+                                int Position2 = Convert.ToInt32(Runnerdt.Rows[0]["Position2"]);
+
+                                if (team_selector1.Value == "team_1")
+                                {
+                                    MatchtotalAmount = Position1;
+                                    LedgerAmount = LedgerAmount + Position1;
+                                }
+                                else if (team_selector1.Value == "team_2")
+                                {
+                                    MatchtotalAmount = Position2;
+                                    LedgerAmount = LedgerAmount + Position2;
+                                }
+                            }
+                            LedgerAmount = LedgerAmount - 100;
+                            int Dabit = 0, Credit = 0;
+                            if (LedgerAmount > 0)
+                            {
+                                Dabit = LedgerAmount;
+                            }
+                            else if (LedgerAmount < 0)
+                            {
+                                Credit = LedgerAmount;
+                            }
+
+                            string AddMatchCalculation = "Insert into MatchCalculation (MatchID,ClientID,Amount) Values( @MatchID,@ClientID,@Amount)";
+                            MySqlCommand AddMatchCalculationcmd = new MySqlCommand(AddMatchCalculation, cn);
+                            AddMatchCalculationcmd.Parameters.AddWithValue("@ClientID", ClientID);
+                            AddMatchCalculationcmd.Parameters.AddWithValue("@MatchID", apiID);
+                            AddMatchCalculationcmd.Parameters.AddWithValue("@Amount", MatchtotalAmount);
+                            AddMatchCalculationcmd.ExecuteNonQuery();
+
+                            string MatchBet = "select count(clientID) From runner where MatchID = '" + apiID + "' && ClientID = '" + ClientID + "' ";
+                            MySqlCommand MatchBetcmd = new MySqlCommand(MatchBet, cn);
+                            string MatchBetcount = MatchBetcmd.ExecuteScalar().ToString();
+
+                            string SessionBet = "select count(clientID) From session where MatchID = '" + apiID + "' && ClientID = '" + ClientID + "' ";
+                            MySqlCommand SessionBetcmd = new MySqlCommand(SessionBet, cn);
+                            string SessionBetcount = SessionBetcmd.ExecuteScalar().ToString();
+
+
+
+                            string InsertClientLedger = "Insert Into ClientLedger (clientID,MatchID,Dabit,Credit,Amount,MatchBets,SessionBets) values (@ClientID,@MatchID,@Dabit,@Credit,@Amount,@MatchBets,@SessionBets)";
+                            MySqlCommand Insertclientcmd = new MySqlCommand(InsertClientLedger, cn);
+                            Insertclientcmd.Parameters.AddWithValue("@ClientID", ClientID);
+                            Insertclientcmd.Parameters.AddWithValue("@MatchID", apiID);
+                            Insertclientcmd.Parameters.AddWithValue("@Dabit", Dabit);
+                            Insertclientcmd.Parameters.AddWithValue("@Credit", Credit);
+                            Insertclientcmd.Parameters.AddWithValue("@Amount", LedgerAmount);
+                            Insertclientcmd.Parameters.AddWithValue("@MatchBets", MatchBetcount);
+                            Insertclientcmd.Parameters.AddWithValue("@SessionBets", SessionBetcount);
+                            Insertclientcmd.ExecuteNonQuery();
+                        }
+
+                            string SELECT = "Update Matches Set Status = '11', Declear = '1', winnerTeam ='"+ team_selector1.Value+"'  Where apiID = '" + apiID + "'";
+                            MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                            cmd.ExecuteNonQuery();
+
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Match Declared Succesfully.....');", true);
+                        }
+                    }
+                
+
 
                 else if (Declear == "True")
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Match Already Declared.....');", true);
 
                 }
+                }
             }
-        }
 
 
 
-        protected void btnUnDeclare_ServerClick(object sender, EventArgs e)
-        {
-            string apiID = Request.QueryString["Matchid"];
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
+            protected void btnUnDeclare_ServerClick(object sender, EventArgs e)
             {
-                cn.Open();
+                string apiID = Request.QueryString["Matchid"];
+                string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+                using (MySqlConnection cn = new MySqlConnection(CN))
+                {
+                    cn.Open();
 
 
-                string SELECT = "Update Matches Set Status = '0', Declear = '0' Where apiID = '" + apiID + "'";
-                MySqlCommand cmd = new MySqlCommand(SELECT, cn);
-                cmd.ExecuteNonQuery();
+                    string SELECT = "Update Matches Set Status = '1', Declear = '0' Where apiID = '" + apiID + "'";
+                    MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                    cmd.ExecuteNonQuery();
 
-                string Delete = "Delete From clientledger where MatchID = '" + apiID + "'";
-                MySqlCommand Deletecmd = new MySqlCommand(Delete, cn);
-                Deletecmd.ExecuteNonQuery();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Match UnDeclared.....');", true);
+                    string Delete = "Delete From clientledger where MatchID = '" + apiID + "'";
+                    MySqlCommand Deletecmd = new MySqlCommand(Delete, cn);
+                    Deletecmd.ExecuteNonQuery();
+
+                    string DeleteMatchCalcultion = "Delete From MatchCalculation where MatchID = '" + apiID + "'";
+                    MySqlCommand DeleteMatchCalcultioncmd = new MySqlCommand(DeleteMatchCalcultion, cn);
+                    DeleteMatchCalcultioncmd.ExecuteNonQuery();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Match UnDeclared.....');", true);
+                }
+
             }
-
         }
     }
-}

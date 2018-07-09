@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/superagent/DashBoard.Master" AutoEventWireup="true" CodeBehind="MatchSessionPlusMinusDisplay.aspx.cs" Inherits="betplayer.superagent.MatchSessionPlusMinusDisplay" %>
 
-<asp:content id="Content" contentplaceholderid="ContentPlaceHolder" runat="server">
+<asp:Content ID="Content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
         <!-- BEGIN PAGE CONTAINER-->
         <div class="container-fluid">
@@ -39,13 +39,15 @@
                                     <tbody>
                                         <tr>
                                             <td width="11%" height="25" align="left" valign="middle"><strong>SUPER AGENT</strong></td>
-                                            <td width="89%" align="left" valign="middle"><strong><asp:Label ID="lblName" runat="server"></asp:Label>          </strong></td>
+                                            <td width="89%" align="left" valign="middle"><strong>
+                                                <asp:Label ID="lblName" runat="server"></asp:Label>
+                                            </strong></td>
                                         </tr>
                                         <tr>
                                             <td height="25" colspan="2" align="left" valign="middle">
 
 
-                                                <% foreach (System.Data.DataRow row1 in runTable1.Rows)
+                                                <% int index = 0, totalindex = 0; foreach (System.Data.DataRow row1 in agentname.Rows)
                                                     { %>
                                                 <table width="99%" border="0" align="left" cellpadding="0" cellspacing="0" class="table table-striped table-bordered" style="margin-bottom: 10px !important;">
                                                     <tbody>
@@ -78,7 +80,27 @@
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>FINAL</strong></td>
 
                                                                         </tr>
-                                                                        <% foreach (System.Data.DataRow row in runTable.Rows)
+
+                                                                        <% int rows = 0; foreach (System.Data.DataRow row in AgentDataList[index].Rows)
+                                                                            { %>
+                                                                        <% if (rows == AgentDataList[index].Rows.Count - 1)
+                                                                            { %>
+                                                                        <tr>
+                                                                            <td height="25" align="left" valign="middle"><strong>TOTAL</strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MatchAmount"] %> </strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SessionAmount"] %></strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalAmount"] %></strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MatchCommision"] %></strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SessionCommision"] %> </strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalCommisionAmount"] %> </strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalNetAmount"] %> </strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalHalfAmount"] %> </strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MOBAppAmount"] %></strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SAAgentShare"] %></strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["FinalAmount"] %>  </strong></td>
+                                                                        </tr>
+                                                                        <% }
+                                                                            else
                                                                             { %>
                                                                         <tr>
                                                                             <td height="25" align="left" valign="middle" class="FontText"><%:row["Name"] %></td>
@@ -95,31 +117,16 @@
                                                                             <td style="text-align: right;"><strong><%:row["FinalAmount"] %></strong></td>
 
                                                                         </tr>
-                                                                        <% } //foreach %>
-                                                                        <% foreach (System.Data.DataRow row in runTable2.Rows)
-                                                                            { %>
-
-                                                                        <td height="25" align="left" valign="middle"><strong>TOTAL</strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MatchAmount"] %> </strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SessionAmount"] %></strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalPlusMinusAmount"] %></strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["Match1Amount"] %></strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["Session1Amount"] %> </strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalCommisionAmount"] %> </strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalNetAmount"] %> </strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalHalfAmount"] %> </strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalAppAmount"] %></strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalAppAmount"] %></strong></td>
-                                                                        <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalFinalAmount"] %>  </strong></td>
-
-                                                                        <% } //foreach %>
+                                                                        <% } rows++; //else
+                                                                            } //foreach %>
                                                                     </tbody>
                                                                 </table>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <% } //foreach %>
+                                                <%  index++; totalindex++;
+                                                    } //foreach %>
 
                                                 <br>
 
@@ -133,17 +140,17 @@
                                                     <tbody>
                                                         <tr>
                                                             <td width="125" height="25" align="left" valign="middle"><strong>SA TOTAL</strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>175,124.32          </strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>0.00          </strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>175,124.32          </strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>12,362.62          </strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>0.00          </strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>12,362.62          </strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>162,761.70          </strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>72,745.75          </strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>2,700.00          </strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>2,700.00          </strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>92,715.00        </strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SAMatchAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SASessionAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SATotalAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SAMatchCommision" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SASessionCommision" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SATotalCommisionAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SATotalNetAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SATotalHalfAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SAMOBAppAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SBSAAgentShare" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SAFinalAmount" runat="server"></asp:Label></strong></td>
 
                                                         </tr>
                                                     </tbody>
@@ -169,17 +176,17 @@
                                                     <tbody>
                                                         <tr>
                                                             <td width="180" height="25" align="left" valign="middle"><strong>GRAND TOTAL</strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>175,124.32                      </strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>0.00                      </strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>175,124.32                      </strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>12,362.62                      </strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>0.00                      </strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>12,362.62                      </strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>162,761.70                      </strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>72,745.75                      </strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>2,700.00                      </strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>2,700.00                      </strong></td>
-                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>92,715.00                    </strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label1" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label2" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label3" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label4" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label5" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label6" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label7" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label8" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label9" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label10" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label11" runat="server"></asp:Label></strong></td>
 
                                                         </tr>
                                                     </tbody>
@@ -202,6 +209,6 @@
             <!-- END PAGE CONTAINER-->
         </div>
     </div>
-</asp:content>
+</asp:Content>
 
 

@@ -61,7 +61,7 @@
                                             </tr>
 
                                             <tr>
-                                                <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamA"] %></td>
+                                                <td height="35" id="TeamA" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamA"] %></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" style="vertical-align: middle">
                                                     <input type="button" name="ButtonL" id="LRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_1', 'Runner', 'Lagai')"></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle; color: #000">
@@ -72,7 +72,7 @@
                                             </tr>
 
                                             <tr>
-                                                <td height="35" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamB"] %></td>
+                                                <td height="35" id="TeamB" align="center" valign="middle" bgcolor="#CCFFFF" class="FontTextBlue" style="vertical-align: middle"><%: row["TeamB"] %></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle">
                                                     <input type="button" name="ButtonL" id="LRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_2', 'Runner', 'Lagai')"></td>
                                                 <td align="center" valign="middle" bgcolor="#CCFFFF" class="textTeamHead" style="vertical-align: middle; color: #000">

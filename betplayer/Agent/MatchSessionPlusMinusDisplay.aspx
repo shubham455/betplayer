@@ -2,9 +2,8 @@
 
 
 
-                                    <div class="space15"></div>
 
-                                </div><asp:Content ID="Content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+<asp:Content ID="Content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
         <!-- BEGIN PAGE CONTAINER-->
         <div class="container-fluid">
@@ -35,10 +34,10 @@
                         <div class="widget-body form">
 
                             <!-- BEGIN FORM-->
-                          
-                                <div class="portlet-body">
-                                    <div class="clearfix">
-                                    </div>
+
+                            <div class="portlet-body">
+                                <div class="clearfix">
+                                </div>
                                 <table width="100%" border="0" cellspacing="2" cellpadding="0">
                                     <tbody>
                                         <tr>
@@ -51,7 +50,8 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <td width="75" height="25" align="left" valign="middle"><strong>AGENT</strong></td>
-                                                                            <td width="630" align="left" valign="middle"><strong><asp:Label ID="lblAgentName" runat="server"></asp:Label></strong></td>
+                                                                            <td width="630" align="left" valign="middle"><strong>
+                                                                                <asp:Label ID="lblAgentName" runat="server"></asp:Label></strong></td>
                                                                             <td width="170" align="left" valign="middle">
                                                                                 <input type="hidden" name="Match" id="Match" value="381">&nbsp;</td>
                                                                             <td width="125" align="left" valign="middle">&nbsp;</td>
@@ -99,9 +99,9 @@
                                                                                         </tr>
                                                                                         <% } //foreach %>
                                                                                         <tr>
-                                                                                         <% foreach (System.Data.DataRow row in runTable1.Rows)
-                                                                                            { %>
-                                                                                        
+                                                                                            <% foreach (System.Data.DataRow row in runTable1.Rows)
+                                                                                                { %>
+
                                                                                             <td height="25" align="left" valign="middle"><strong>TOTAL</strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MatchAmount"] %> </strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SessionAmount"] %></strong></td>
@@ -113,9 +113,9 @@
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalHalfAmount"] %> </strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalAppAmount"] %></strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalFinalAmount"] %>  </strong></td>
-                                                                                        
-                                                                                        <% } //foreach %>
-                                                                                            </tr>
+
+                                                                                            <% } //foreach %>
+                                                                                        </tr>
                                                                                     </tbody>
                                                                                 </table>
                                                                             </td>
@@ -132,17 +132,18 @@
                                     </tbody>
                                 </table>
                                 <br>
-                               
-                            <!-- END FORM-->
 
+                                <!-- END FORM-->
+
+                            </div>
                         </div>
+                        <!-- END EXAMPLE TABLE widget-->
                     </div>
-                    <!-- END EXAMPLE TABLE widget-->
                 </div>
+                <!-- END ADVANCED TABLE widget-->
+                <!-- END PAGE CONTENT-->
             </div>
-            <!-- END ADVANCED TABLE widget-->
-            <!-- END PAGE CONTENT-->
+            <!-- END PAGE CONTAINER-->
         </div>
-        <!-- END PAGE CONTAINER-->
     </div>
 </asp:Content>

@@ -55,6 +55,7 @@ namespace betplayer.poweruser
                     string SELECT = "Select * from AdminMaster Where Code = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
+
                     if (rdr.Read())
                     {
                         rdr.Close();
@@ -64,7 +65,7 @@ namespace betplayer.poweruser
                         adp.Fill(dt);
                         int AdminID = Convert.ToInt16(dt.Rows[0]["AdminID"]);
 
-                        Session["AdminID"] = AdminID;
+                        Session["PoweruserID"] = AdminID;
 
                         Response.Redirect("~/PowerUser/ModifyMatches.aspx");
                     }

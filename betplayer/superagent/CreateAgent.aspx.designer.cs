@@ -13,15 +13,6 @@ namespace betplayer.Super_Agent {
     public partial class CreateAgent {
         
         /// <summary>
-        /// txtcode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcode;
-        
-        /// <summary>
         /// txtname control.
         /// </summary>
         /// <remarks>
@@ -31,138 +22,138 @@ namespace betplayer.Super_Agent {
         protected global::System.Web.UI.WebControls.TextBox txtname;
         
         /// <summary>
-        /// txtagentlimit control.
+        /// txtContactno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtagentlimit;
+        protected global::System.Web.UI.WebControls.TextBox txtContactno;
         
         /// <summary>
-        /// txtRemlimit control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRemlimit;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// txtcontactno control.
+        /// txtAgentlimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcontactno;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentlimit;
         
         /// <summary>
-        /// txtpassword control.
+        /// txtSuperAgentlimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpassword;
+        protected global::System.Web.UI.WebControls.TextBox txtSuperAgentlimit;
         
         /// <summary>
-        /// txtmobAmount control.
+        /// txtAgentShare control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmobAmount;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentShare;
         
         /// <summary>
-        /// txtmobAmount1 control.
+        /// txtSuperAgentShare control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmobAmount1;
+        protected global::System.Web.UI.WebControls.TextBox txtSuperAgentShare;
         
         /// <summary>
-        /// txtagentmobshare control.
+        /// txtMobileApp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtagentmobshare;
+        protected global::System.Web.UI.WebControls.TextBox txtMobileApp;
         
         /// <summary>
-        /// txtagentmobshare1 control.
+        /// SessionDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtagentmobshare1;
+        protected global::System.Web.UI.WebControls.DropDownList SessionDropDown;
         
         /// <summary>
-        /// txtmatchshare control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmatchshare;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// txtmobileshare control.
+        /// MatchCommissionAgent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmobileshare;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText MatchCommissionAgent;
         
         /// <summary>
-        /// SessionCommissionType control.
+        /// Text1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect SessionCommissionType;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
         
         /// <summary>
-        /// MatchCommission control.
+        /// SessionCommissionAgent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText MatchCommission;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText SessionCommissionAgent;
         
         /// <summary>
-        /// SessionCommission control.
+        /// Text2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText SessionCommission;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
         
         /// <summary>
-        /// btnsave control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsave;
+        protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// btncancel control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btncancel;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

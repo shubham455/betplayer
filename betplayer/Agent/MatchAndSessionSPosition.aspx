@@ -88,7 +88,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Team1" id="Team1" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="Redirect();" style="width: 120px;"></td>
+                                                                                                <input type="button"  name="Team1" id="Team1" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="Redirect();" style="width: 120px;"></td>
                                                                                             <td align="center" valign="middle" style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="KRate1" id="KRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(1)"></td>
                                                                                             <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><span style="color: ">
@@ -124,7 +124,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session1" id="Session1" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect();"></td>
+                                                                                                <input type="button" name="Session1" id="Session1" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="RedirectSessionPage(this.value);"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not1" id="not1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(1)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -136,7 +136,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session2" id="Session2" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect();"></td>
+                                                                                                <input type="button" name="Session2" id="Session2" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="RedirectSessionPage(this.value);"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not2" id="not2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(2)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -148,7 +148,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect();"></td>
+                                                                                                <input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="RedirectSessionPage(this.value);"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not3" id="not3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(3)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -160,7 +160,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect();"></td>
+                                                                                                <input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="RedirectSessionPage(this.value);"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not4" id="not4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(4)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -271,7 +271,11 @@
          <!--
     function Redirect(value) {
 
-        window.location = "MatchAndSessionPosition.aspx?MatchID=1136620";
+        window.location = "MatchAndSessionPosition.aspx?MatchID=57296";
+        }
+        function RedirectSessionPage(value) {
+
+        window.location = "MatchAndSessionSPosition.aspx?MatchID=57296&&Session=" + value;
     }
          //-->
     </script>

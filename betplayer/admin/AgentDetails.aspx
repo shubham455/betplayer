@@ -116,8 +116,7 @@
                                                 <th align="right" style="text-align: center; width: 51px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Agent : activate to sort column ascending">Agent </th>
                                                 <th align="right" style="text-align: center; width: 44px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Client : activate to sort column ascending">Client </th>
                                                 <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 45px;">Status</th>
-                                                <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Dead: activate to sort column ascending" style="width: 33px;">Dead</th>
-                                            </tr>
+                                                </tr>
                                         </thead>
                                          <% foreach (System.Data.DataRow row in MatchDataTable.Rows)
                                             { %>
@@ -152,13 +151,13 @@
                                                 <td align="left" class=" "><%:row["AgentID"] %></td>
                                                 <td align="left" class=" "><%:row["Password"] %></td>
                                                 <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["AgentID"] %></td>
-                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["AgentID"] %></td>
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["MatchCommision"] %></td>
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["SessionCommision"] %></td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="right" style="text-align: right;" class=" ">0</td>
                                                 <td align="left" class=" "><%:row["Status"] %></td>
-                                                <td align="left" class=" ">NO</td>
+                                               
                                             </tr>
                                             
                                         </tbody>

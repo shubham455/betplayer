@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace betplayer.Agent {
+namespace betplayer.superagent {
     
     
-    public partial class UpdateClientLimit {
+    public partial class UpdateAgentlimit {
         
         /// <summary>
-        /// agentlimit control.
+        /// SuperAgentLimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText agentlimit;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText SuperAgentLimit;
         
         /// <summary>
         /// TotalLimit control.

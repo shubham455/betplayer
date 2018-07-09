@@ -14,6 +14,7 @@ namespace betplayer.superagent
     {
         private DataTable dt;
         private DataTable runTable;
+        private DataTable Clientname;
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable runTable1 { get { return runTable; } }
 
@@ -23,6 +24,13 @@ namespace betplayer.superagent
         {
             if (!IsPostBack)
             {
+
+                Clientname = new DataTable();
+                Clientname.Columns.Add(new DataColumn("ClientID"));
+                Clientname.Columns.Add(new DataColumn("Name"));
+
+                DataRow Clientrow = Clientname.NewRow();
+
                 int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
@@ -45,8 +53,18 @@ namespace betplayer.superagent
                         MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                         DataTable Clientdt = new DataTable();
                         adp.Fill(Clientdt);
-                        DropDownClient.DataSource = Clientdt;
-                        //DropDownClient.DataBind();
+
+
+                        for (int j = 0; j < Clientdt.Rows.Count; j++)
+                        {
+                            int ClientID = Convert.ToInt32(Clientdt.Rows[j]["ClientID"]);
+                            string Name = Clientdt.Rows[j]["Name"].ToString();
+
+                            Clientrow["ClientID"] = ClientID;
+                            Clientrow["Name"] = Name;
+                            Clientname.Rows.Add(Clientrow.ItemArray);
+                        }
+                        DropDownClient.DataSource = Clientname;
                         DropDownClient.DataTextField = "Name";
                         DropDownClient.DataValueField = "ClientID";
                         DropDownClient.DataBind();
@@ -106,6 +124,7 @@ namespace betplayer.superagent
             }
         }
 
+
         protected void btnview_Click(object sender, EventArgs e)
         {
             int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);
@@ -125,7 +144,7 @@ namespace betplayer.superagent
                     string AgentName = Agentdt.Rows[a]["Name"].ToString();
 
 
-                    string s2 = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name,ClientMaster.CreatedBy from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Session.ClientID = '" + DropDownClient.SelectedItem.Value + "' && Session.MatchID = '" + MatchID + "' && Session.Session = '" + DropDownSession.SelectedItem.Text + "'";
+                    string s2 = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name,ClientMaster.CreatedBy from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' &&  Session.ClientID = '" + DropDownClient.SelectedItem.Value + "' && Session.MatchID = '" + MatchID + "' && Session.Session = '" + DropDownSession.SelectedItem.Text + "'";
                     MySqlCommand cmd2 = new MySqlCommand(s2, cn);
                     MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
                     dt = new DataTable();
@@ -248,6 +267,7 @@ namespace betplayer.superagent
                 }
             }
         }
+
         public Decimal CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount, Decimal AgentShare1)
         {
             Decimal Difference = 0;
@@ -284,3 +304,5 @@ namespace betplayer.superagent
 
     }
 }
+
+

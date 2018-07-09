@@ -21,6 +21,7 @@ namespace betplayer.Agent
         public DataTable RunnerclientDataTable { get { return Runnerclientdt; } }
         protected void Page_Load(object sender, EventArgs e)
         {
+           apiID.Value = (Request.QueryString["MatchID"]).ToString();
             int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))

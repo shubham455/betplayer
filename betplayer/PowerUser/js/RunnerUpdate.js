@@ -1,4 +1,4 @@
-﻿    // Initialize Firebase
+﻿// Initialize Firebase
 var config = {
     apiKey: "AIzaSyDeJEW2OK0RnL0A4OjYF6oTj04xQhgpb40",
     authDomain: "betplayer-197014.firebaseapp.com",
@@ -52,16 +52,17 @@ if (matchIdElement !== null) {
                         document.getElementById('team_Lagai').value = "";
                         document.getElementById('team_Khai').value = "";
                         document.getElementById('team_Lagai').focus();
-                        });
-                    clearTimeout(timer);
-                    timer = setTimeout(function () {
-                        firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update({
-                            Runner: {
-                                Khai: "0.00",
-                                Lagai: "0.00"
-                            }
-                        })
-                    },10000)
+                        clearTimeout(timer);
+                        timer = setTimeout(function () {
+                            firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update({
+                                Runner: {
+                                    Khai: "0.00",
+                                    Lagai: "0.00"
+                                }
+                            })
+                        }, 10000)
+                    });
+                    
                 } else alert("Lagai is greater than Khai.");
             });
             document.getElementById('btnLock').addEventListener("click", (event) => {
@@ -71,14 +72,46 @@ if (matchIdElement !== null) {
                         Lagai: "0.00"
                     },
                     Session: {
-                        Not: "0",
-                        NotRate: "0",
-                        Yes: "0",
-                        YesRate: "0"
+
                     }
                 };
-                firebase.database().ref('/currentMatches/' + matchKey + '/team_1').update(emptysession);
-                firebase.database().ref('/currentMatches/' + matchKey + '/team_2').update(emptysession);
+                firebase.database().ref('/currentMatches/' + matchKey + "/team_1/Session").once("value", // runs on change
+                    function (snapshot) {
+                        var session = snapshot.val();
+                        for (var key in session) {
+                            for (var property in session[key]) {
+                                if (property !== "created_at")
+                                    session[key][property] = "0.00";
+                            }
+                        }
+                        firebase.database().ref('/currentMatches/' + matchKey + '/team_1').update({
+                            Runner: {
+                                Khai: "0.00",
+                                Lagai: "0.00"
+                            },
+                            Session: session
+                        });
+                    });
+                firebase.database().ref('/currentMatches/' + matchKey + "/team_2/Session").once("value", // runs on change
+                    function (snapshot) {
+                        var session = snapshot.val();
+                        for (var key in session) {
+                            for (var property in session[key]) {
+                                if (property !== "created_at")
+                                    session[key][property] = "0.00";
+                            }
+                        }
+                        firebase.database().ref('/currentMatches/' + matchKey + '/team_2').update({
+                            Runner: {
+                                Khai: "0.00",
+                                Lagai: "0.00"
+                            },
+                            Session: session
+                        });
+                    });
+                console.log("In Lock.")
+                //firebase.database().ref('/currentMatches/' + matchKey + '/team_1').update(emptysession);
+                //firebase.database().ref('/currentMatches/' + matchKey + '/team_2').update(emptysession);
             });
             document.getElementById('ball_start').addEventListener("click", updateScore);
             document.getElementById('1run').addEventListener("click", updateScore);
