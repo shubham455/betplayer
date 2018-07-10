@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,8 +11,9 @@ using MySql.Data.MySqlClient;
 
 namespace betplayer.superagent
 {
-    public partial class MatchPlusMinusDisplay : System.Web.UI.Page
+    public partial class MatchSessionPlusMinusDisplay : System.Web.UI.Page
     {
+
         private DataTable AgentName;
         public List<DataTable> AgentDataList = new List<DataTable>();
         public List<DataTable> TotalAgentDataList = new List<DataTable>();
@@ -167,7 +169,7 @@ namespace betplayer.superagent
             TotalFinalAmount1 = 0;
             foreach (DataTable DataT in AgentDataList)
             {
-                decimal MatchAmount = Convert.ToDecimal(DataT.Rows[DataT.Rows.Count - 1]["MatchAmount"]);
+                decimal MatchAmount = Convert.ToDecimal(DataT.Rows[DataT.Rows.Count -1]["MatchAmount"]);
                 TotalMatchAmount1 = TotalMatchAmount1 + MatchAmount;
 
                 decimal SessionAmount = Convert.ToDecimal(DataT.Rows[DataT.Rows.Count - 1]["SessionAmount"]);
@@ -286,10 +288,29 @@ namespace betplayer.superagent
                     }
                     row["MatchAmount"] = MatchTotalAmount;
 
+                    string s2 = "Select TotalAmount From SessionCalculation where ClientID = '" + ID + "' and MatchID = '" + MatchID + "'";
+                    MySqlCommand cmd2 = new MySqlCommand(s2, cn);
+                    MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    adp2.Fill(dt2);
+                    int SessionTotalAmount = 0;
+                    for (int k = 0; k < dt2.Rows.Count; k++)
+                    {
+                        int Amount = Convert.ToInt32(dt2.Rows[k]["TotalAmount"]);
+                        SessionTotalAmount = SessionTotalAmount + Amount;
+                    }
+                    //row["SessionAmount"] = SessionTotalAmount;
+                    if (SessionTotalAmount > 0)
+                    {
+                        SessionTotalAmount = SessionTotalAmount * -1;
+                    }
+                    else if (SessionTotalAmount < 0)
+                    {
+                        SessionTotalAmount = SessionTotalAmount * -1;
+                    }
+                    row["SessionAmount"] = SessionTotalAmount;
 
-                    row["SessionAmount"] = 0;
-
-                    Decimal TotalMatch = MatchTotalAmount;
+                    Decimal TotalMatch = MatchTotalAmount + SessionTotalAmount;
                     row["TotalAmount"] = TotalMatch;
 
                     string s3 = "Select Session From DeclaredSession where MatchID = '" + MatchID + "'";
@@ -313,7 +334,7 @@ namespace betplayer.superagent
                             TotalAmount = TotalAmount + Amount;
                         }
                     }
-                    string s5 = "Select SessionCommision,MatchCommision,Name  From AgentMaster where CreatedBy = '" + Session["SuperAgentCode"] + "' ";
+                    string s5 = "Select SessionCommision,MatchCommision,Name  From AgentMaster where code = '" +AgentCode + "' ";
                     MySqlCommand cmd5 = new MySqlCommand(s5, cn);
                     MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
                     DataTable dt5 = new DataTable();
@@ -333,6 +354,7 @@ namespace betplayer.superagent
                     MySqlDataAdapter adp6 = new MySqlDataAdapter(cmd6);
                     DataTable dt6 = new DataTable();
                     adp6.Fill(dt6);
+
                     if (dt6.Rows.Count > 0)
                     {
                         Decimal MatchAmount = Convert.ToDecimal(dt6.Rows[0]["Amount"]);
@@ -353,7 +375,7 @@ namespace betplayer.superagent
                     decimal totalcommision = TotalMatchCommision1 + SessionCommision;
                     row["TotalCommisionAmount"] = totalcommision;
 
-                    Decimal Match = MatchTotalAmount;
+                    Decimal Match = MatchTotalAmount + SessionTotalAmount;
                     Decimal Commision = SessionCommision + TotalMatchCommision1;
                     Decimal To = 0;
 

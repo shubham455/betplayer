@@ -14,11 +14,23 @@ namespace betplayer.superagent
     {
         private DataTable dt;
         private DataTable dt1;
+        private DataTable ClientTable;
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
+        public DataTable ClientDataTable1 { get { return ClientTable; } }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //DataTable ClientTable = new DataTable();
+
+            //ClientTable.Columns.Add(new DataColumn("Sr"));
+            //ClientTable.Columns.Add(new DataColumn("Rate"));
+            //ClientTable.Columns.Add(new DataColumn("Amount"));
+            //ClientTable.Columns.Add(new DataColumn("Mode"));
+            //ClientTable.Columns.Add(new DataColumn("Team"));
+            //ClientTable.Columns.Add(new DataColumn("Client"));
+            //ClientTable.Columns.Add(new DataColumn("DateTime"));
+            
             apiID.Value = Request.QueryString["MatchID"];
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
@@ -95,8 +107,6 @@ namespace betplayer.superagent
                         if (selectteamdt1.Rows.Count > 0)
                         {
                             string team = selectteamdt1.Rows[j]["Team"].ToString();
-
-
 
                             Decimal Position = 0;
                             Decimal Amount = Convert.ToDecimal(dt1.Rows[j]["Amount"]);

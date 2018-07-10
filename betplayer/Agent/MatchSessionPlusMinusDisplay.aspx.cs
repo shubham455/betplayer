@@ -196,9 +196,11 @@ namespace betplayer.Agent
 
                         row["TotalCommisionAmount"] = totalcommision;
                     }
-                    else {
+                    else
+                    {
                         row["MatchCommision"] = 0;
-                        row["TotalCommisionAmount"] = 0; }
+                        row["TotalCommisionAmount"] = 0;
+                    }
                     Decimal Match = MatchTotalAmount + SessionTotalAmount;
                     Decimal Commision = SessionCommision + TotalMatchCommision1;
                     Decimal To = 0;
@@ -225,26 +227,28 @@ namespace betplayer.Agent
 
                     row["TotalHalfAmount"] = TotalHalfAmount;
 
-                    string s7 = "Select MobileApp,Agent_Share From ClientMaster where  ClientID = '" + ID + "'";
+
+
+                    string s7 = "Select Agent_Share From ClientMaster where  ClientID = '" + ID + "'";
                     MySqlCommand cmd7 = new MySqlCommand(s7, cn);
                     MySqlDataAdapter adp7 = new MySqlDataAdapter(cmd7);
                     DataTable dt7 = new DataTable();
                     adp7.Fill(dt7);
+
+                    string s8 = "Select * From AgentMaster where  AgentID = '" + Session["AgentID"] + "'";
+                    MySqlCommand cmd8 = new MySqlCommand(s8, cn);
+                    MySqlDataAdapter adp8 = new MySqlDataAdapter(cmd8);
+                    DataTable dt8 = new DataTable();
+                    adp8.Fill(dt8);
+
+
                     Decimal MobileAppAmount = 0;
-                    String MobileApp = dt7.Rows[0]["MobileApp"].ToString();
+                    String MobileApp = dt8.Rows[0]["Mobapp"].ToString();
                     Decimal AgentShare = Convert.ToDecimal(dt7.Rows[0]["Agent_Share"]);
                     decimal AgentShare1 = AgentShare / 100;
-                    if (MobileApp == "Yes")
-                    {
-                        MobileAppAmount = 100 - (100 * AgentShare1);
-                        row["MOBAppAmount"] = MobileAppAmount;
-                    }
-                    else if (MobileApp == "NO")
-                    {
-                        MobileAppAmount = 0;
-                        row["MOBAppAmount"] = MobileAppAmount;
 
-                    }
+                    MobileAppAmount = Convert.ToDecimal(MobileApp);
+                    row["MOBAppAmount"] = MobileAppAmount;
 
                     row["FinalAmount"] = TotalHalfAmount + MobileAppAmount;
 

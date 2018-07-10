@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/superagent/DashBoard.Master" AutoEventWireup="true" CodeBehind="MatchSessionPlusMinusDisplay.aspx.cs" Inherits="betplayer.superagent.MatchSessionPlusMinusDisplay" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/superagent/DashBoard.Master" AutoEventWireup="true" CodeBehind="MatchSessionPlusminusDisplay.aspx.cs" Inherits="betplayer.superagent.CompanymatchSessionPlusminusDisplay" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
@@ -74,9 +74,10 @@
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>S. COM</strong></td>
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>TOL. COM</strong></td>
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>NET AMT</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>SHR AMT</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>MOB. APP</strong></td>
+                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>AGT SHR</strong></td>
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>SA Share</strong></td>
+                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>MOB. APP</strong></td>
+
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>FINAL</strong></td>
 
                                                                         </tr>
@@ -95,8 +96,8 @@
                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalCommisionAmount"] %> </strong></td>
                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalNetAmount"] %> </strong></td>
                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalHalfAmount"] %> </strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MOBAppAmount"] %></strong></td>
                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SAAgentShare"] %></strong></td>
+                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MOBAppAmount"] %></strong></td>
                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["FinalAmount"] %>  </strong></td>
                                                                         </tr>
                                                                         <% }
@@ -112,12 +113,13 @@
                                                                             <td style="text-align: right;"><strong><%:row["TotalCommisionAmount"] %></strong></td>
                                                                             <td style="text-align: right;"><strong><%:row["TotalNetAmount"] %></strong></td>
                                                                             <td style="text-align: right;"><%:row["TotalHalfAmount"] %></td>
-                                                                            <td style="text-align: right;"><%:row["MOBAppAmount"] %></td>
                                                                             <td style="text-align: right;"><%:row["SAAgentShare"] %></td>
+                                                                            <td style="text-align: right;"><%:row["MOBAppAmount"] %></td>
                                                                             <td style="text-align: right;"><strong><%:row["FinalAmount"] %></strong></td>
 
                                                                         </tr>
-                                                                        <% } rows++; //else
+                                                                        <% }
+                                                                                rows++; //else
                                                                             } //foreach %>
                                                                     </tbody>
                                                                 </table>
@@ -140,17 +142,29 @@
                                                     <tbody>
                                                         <tr>
                                                             <td width="125" height="25" align="left" valign="middle"><strong>SA TOTAL</strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SAMatchAmount" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SASessionAmount" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SATotalAmount" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SAMatchCommision" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SASessionCommision" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SATotalCommisionAmount" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SATotalNetAmount" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SATotalHalfAmount" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SAMOBAppAmount" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SBSAAgentShare" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="SAFinalAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SAMatchAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SASessionAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SATotalAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SAMatchCommision" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SASessionCommision" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SATotalCommisionAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SATotalNetAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SATotalHalfAmount" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SBSAAgentShare" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SAMOBAppAmount" runat="server"></asp:Label></strong></td>
+
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="SAFinalAmount" runat="server"></asp:Label></strong></td>
 
                                                         </tr>
                                                     </tbody>
@@ -176,17 +190,29 @@
                                                     <tbody>
                                                         <tr>
                                                             <td width="180" height="25" align="left" valign="middle"><strong>GRAND TOTAL</strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label1" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label2" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label3" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label4" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label5" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label6" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label7" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label8" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label9" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label10" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong><asp:Label ID="Label11" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label1" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label2" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label3" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label4" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label5" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label6" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label7" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label8" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label10" runat="server"></asp:Label></strong></td>
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label9" runat="server"></asp:Label></strong></td>
+
+                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                                <asp:Label ID="Label11" runat="server"></asp:Label></strong></td>
 
                                                         </tr>
                                                     </tbody>

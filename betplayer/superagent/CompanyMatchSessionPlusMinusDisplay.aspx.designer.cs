@@ -10,7 +10,7 @@
 namespace betplayer.superagent {
     
     
-    public partial class CompanymatchSessionPlusminusDisplay {
+    public partial class MatchSessionPlusMinusDisplay {
         
         /// <summary>
         /// lblName control.

@@ -91,7 +91,7 @@
                                             <td width="2%" align="center" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label=" " style="width: 24px;">
                                                 <div class="checker" id="uniform-undefined">
                                                     <span>
-                                                        <asp:CheckBox ID="CheckboxID" runat="server" OnCheckedChanged="CheckboxID_CheckedChanged" />
+                                                        <asp:CheckBox ID="CheckboxID" runat="server"  />
                                                     </span>
                                                 </div>
                                             </td>

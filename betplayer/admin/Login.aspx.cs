@@ -63,8 +63,10 @@ namespace betplayer.admin
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
                         int AdminID = Convert.ToInt16(dt.Rows[0]["AdminID"]);
+                        string Admincode = (dt.Rows[0]["code"]).ToString();
 
                         Session["AdminID"] = AdminID;
+                        Session["Admincode"] = Admincode;
 
                         Response.Redirect("~/Admin/TC.aspx");
                     }

@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace betplayer.superagent
 {
-    public partial class MatchPlusMinusDisplay : System.Web.UI.Page
+    public partial class CompanySessionPlusMinusDisplay : System.Web.UI.Page
     {
         private DataTable AgentName;
         public List<DataTable> AgentDataList = new List<DataTable>();
@@ -265,31 +265,32 @@ namespace betplayer.superagent
 
                     row["Name"] = CodeName;
 
-                    string s1 = "Select Amount From MatchCalculation where ClientID = '" + ID + "' and MatchID = '" + MatchID + "'";
-                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
-                    MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
-                    DataTable dt1 = new DataTable();
-                    adp1.Fill(dt1);
-                    int MatchTotalAmount = 0;
-                    for (int j = 0; j < dt1.Rows.Count; j++)
-                    {
-                        int Amount = Convert.ToInt32(dt1.Rows[j]["Amount"]);
-                        MatchTotalAmount = MatchTotalAmount + Amount;
-                    }
-                    if (MatchTotalAmount > 0)
-                    {
-                        MatchTotalAmount = MatchTotalAmount * -1;
-                    }
-                    else if (MatchTotalAmount < 0)
-                    {
-                        MatchTotalAmount = MatchTotalAmount * -1;
-                    }
-                    row["MatchAmount"] = MatchTotalAmount;
 
+                    row["MatchAmount"] = 0;
 
-                    row["SessionAmount"] = 0;
+                    string s2 = "Select TotalAmount From SessionCalculation where ClientID = '" + ID + "' and MatchID = '" + MatchID + "'";
+                    MySqlCommand cmd2 = new MySqlCommand(s2, cn);
+                    MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    adp2.Fill(dt2);
+                    int SessionTotalAmount = 0;
+                    for (int k = 0; k < dt2.Rows.Count; k++)
+                    {
+                        int Amount = Convert.ToInt32(dt2.Rows[k]["TotalAmount"]);
+                        SessionTotalAmount = SessionTotalAmount + Amount;
+                    }
+                    //row["SessionAmount"] = SessionTotalAmount;
+                    if (SessionTotalAmount > 0)
+                    {
+                        SessionTotalAmount = SessionTotalAmount * -1;
+                    }
+                    else if (SessionTotalAmount < 0)
+                    {
+                        SessionTotalAmount = SessionTotalAmount * -1;
+                    }
+                    row["SessionAmount"] = SessionTotalAmount;
 
-                    Decimal TotalMatch = MatchTotalAmount;
+                    Decimal TotalMatch = SessionTotalAmount;
                     row["TotalAmount"] = TotalMatch;
 
                     string s3 = "Select Session From DeclaredSession where MatchID = '" + MatchID + "'";
@@ -353,7 +354,7 @@ namespace betplayer.superagent
                     decimal totalcommision = TotalMatchCommision1 + SessionCommision;
                     row["TotalCommisionAmount"] = totalcommision;
 
-                    Decimal Match = MatchTotalAmount;
+                    Decimal Match = SessionTotalAmount;
                     Decimal Commision = SessionCommision + TotalMatchCommision1;
                     Decimal To = 0;
 

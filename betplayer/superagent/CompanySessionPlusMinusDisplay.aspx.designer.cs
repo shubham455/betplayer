@@ -10,7 +10,7 @@
 namespace betplayer.superagent {
     
     
-    public partial class CompanymatchSessionPlusminusDisplay {
+    public partial class CompanySessionPlusMinusDisplay {
         
         /// <summary>
         /// lblName control.
@@ -94,15 +94,6 @@ namespace betplayer.superagent {
         protected global::System.Web.UI.WebControls.Label SATotalHalfAmount;
         
         /// <summary>
-        /// SBSAAgentShare control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SBSAAgentShare;
-        
-        /// <summary>
         /// SAMOBAppAmount control.
         /// </summary>
         /// <remarks>
@@ -110,6 +101,15 @@ namespace betplayer.superagent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label SAMOBAppAmount;
+        
+        /// <summary>
+        /// SBSAAgentShare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SBSAAgentShare;
         
         /// <summary>
         /// SAFinalAmount control.
@@ -193,15 +193,6 @@ namespace betplayer.superagent {
         protected global::System.Web.UI.WebControls.Label Label8;
         
         /// <summary>
-        /// Label10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label10;
-        
-        /// <summary>
         /// Label9 control.
         /// </summary>
         /// <remarks>
@@ -209,6 +200,15 @@ namespace betplayer.superagent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label9;
+        
+        /// <summary>
+        /// Label10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label10;
         
         /// <summary>
         /// Label11 control.

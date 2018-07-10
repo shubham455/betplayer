@@ -29,7 +29,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From AgentMaster";
+                string s = "Select * From AgentMaster where CreatedBy = '"+Session["Admincode"]+"'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -47,7 +47,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select* From AgentMaster Where Name Like '%" + txtsearch.Text + "%'";
+                string s = "Select* From AgentMaster Where Name Like '%" + txtsearch.Text + "%' and CreatedBy = '" + Session["Admincode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -62,7 +62,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From AgentMaster";
+                string s = "Select * From AgentMaster where CreatedBy = '" + Session["Admincode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -78,28 +78,13 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "update  AgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where AgentID = 1";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                dt = new DataTable();
-                adp.Fill(dt);
-                BindData();
 
-            }
-        }
-        public string delete(string id)
-        {
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s = "delete from Agentmaster  where AgentID = '" + id + "'";
+                string selected = Request.Form["checkbox"];
+                string s = "update  AgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where AgentID in (" + selected + ")";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                dt = new DataTable();
-                adp.Fill(dt);
+                cmd.ExecuteNonQuery();
+
                 BindData();
-                return dt.ToString();
 
             }
         }

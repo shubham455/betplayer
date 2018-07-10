@@ -265,7 +265,7 @@ namespace betplayer.superagent
 
                     row["Name"] = CodeName;
 
-                    
+
                     row["MatchAmount"] = 0;
 
                     string s2 = "Select TotalAmount From SessionCalculation where ClientID = '" + ID + "' and MatchID = '" + MatchID + "'";
@@ -340,6 +340,7 @@ namespace betplayer.superagent
                         if (MatchAmount > 0)
                         {
                             MatchAmount = MatchAmount * -1;
+                            TotalMatchCommision1 = MatchCommision1 * MatchAmount;
                             row["MatchCommision"] = TotalMatchCommision1;
                         }
                         else if (MatchAmount < 0)
@@ -353,7 +354,7 @@ namespace betplayer.superagent
                     decimal totalcommision = TotalMatchCommision1 + SessionCommision;
                     row["TotalCommisionAmount"] = totalcommision;
 
-                    Decimal Match =  SessionTotalAmount;
+                    Decimal Match = SessionTotalAmount;
                     Decimal Commision = SessionCommision + TotalMatchCommision1;
                     Decimal To = 0;
 
@@ -368,44 +369,46 @@ namespace betplayer.superagent
 
                     Decimal TotalNetAmouunt = To;
 
-                    Decimal TotalHalfAmount = TotalNetAmouunt / 2;
+                    string ClientShare = "Select Agent_Share From ClientMaster where CreatedBy = '" + AgentCode + "'";
+                    MySqlCommand ClientSharecmd = new MySqlCommand(ClientShare, cn);
+                    MySqlDataAdapter ClientShareadp = new MySqlDataAdapter(ClientSharecmd);
+                    DataTable ClientSharedt = new DataTable();
+                    ClientShareadp.Fill(ClientSharedt);
+
+                    decimal ClientShare1 = Convert.ToDecimal(ClientSharedt.Rows[i]["Agent_Share"]);
+                    decimal ClientMaster2 = 100 / ClientShare1;
+                    Decimal TotalHalfAmount = TotalNetAmouunt / ClientMaster2;
 
                     row["TotalNetAmount"] = TotalNetAmouunt;
 
                     row["TotalHalfAmount"] = TotalHalfAmount;
 
-                    string s7 = "Select MobileApp,Agent_Share From ClientMaster where  ClientID = '" + ID + "'";
+                    string SuperAgentShare = "Select Code,AgentShare From SuperAgentMaster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
+                    MySqlCommand SuperAgentSharecmd = new MySqlCommand(SuperAgentShare, cn);
+                    MySqlDataAdapter SuperAgentShareadp = new MySqlDataAdapter(SuperAgentSharecmd);
+                    DataTable SuperAgentSharedt = new DataTable();
+                    SuperAgentShareadp.Fill(SuperAgentSharedt);
+
+                    decimal SuperAgentShare1 = Convert.ToDecimal(SuperAgentSharedt.Rows[0]["AgentShare"]);
+                    decimal SuperAgentShare2 = 100 / SuperAgentShare1;
+                    Decimal TotalSAShareAmount = TotalHalfAmount / ClientMaster2;
+                    row["SAAgentShare"] = TotalSAShareAmount;
+
+                    Decimal MobileAppAmount = 0;
+
+                    string s7 = "Select MobApp From AgentMaster where  Code = '" + AgentCode + "'";
                     MySqlCommand cmd7 = new MySqlCommand(s7, cn);
                     MySqlDataAdapter adp7 = new MySqlDataAdapter(cmd7);
                     DataTable dt7 = new DataTable();
                     adp7.Fill(dt7);
-                    Decimal MobileAppAmount = 0;
-                    String MobileApp = dt7.Rows[0]["MobileApp"].ToString();
-                    Decimal ClientAgentShare = Convert.ToDecimal(dt7.Rows[0]["Agent_Share"]);
-                    decimal ClientAgentShare1 = ClientAgentShare / 100;
-                    if (MobileApp == "Yes")
-                    {
-                        MobileAppAmount = 100 - (100 * ClientAgentShare1);
-                        row["MOBAppAmount"] = MobileAppAmount;
-                    }
-                    else if (MobileApp == "NO")
-                    {
-                        MobileAppAmount = 0;
-                        row["MOBAppAmount"] = MobileAppAmount;
-                    }
+                    MobileAppAmount = 0;
+                    String MobileApp = dt7.Rows[0]["MobApp"].ToString();
 
-                    string s8 = "Select AgentShare From AgentMaster where  AgentID = '" + AgentID + "'";
-                    MySqlCommand cmd8 = new MySqlCommand(s8, cn);
-                    MySqlDataAdapter adp8 = new MySqlDataAdapter(cmd8);
-                    DataTable dt8 = new DataTable();
-                    adp8.Fill(dt8);
+                    MobileAppAmount = Convert.ToDecimal(MobileApp);
+                    row["MOBAppAmount"] = MobileAppAmount;
 
-                    Decimal AgentShare = Convert.ToDecimal(dt8.Rows[0]["AgentShare"]);
-                    decimal AgentShare1 = AgentShare / 100;
 
-                    row["SAAgentShare"] = 100 * AgentShare1;
-
-                    row["FinalAmount"] = TotalHalfAmount + MobileAppAmount;
+                    row["FinalAmount"] = TotalSAShareAmount + MobileAppAmount;
 
                     ClientTable.Rows.Add(row.ItemArray);
 

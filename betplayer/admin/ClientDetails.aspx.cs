@@ -12,9 +12,9 @@ using System.Configuration;
 
 namespace betplayer.admin
 {
-	public partial class ClientDetails : System.Web.UI.Page
-	{
-		private DataTable dt;
+    public partial class ClientDetails : System.Web.UI.Page
+    {
+        private DataTable dt;
         public DataTable MatchesDataTable { get { return dt; } }
 
 
@@ -32,7 +32,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From ClientMaster";
+                string s = "Select * From ClientMaster where CreatedBy = '" + Session["Admincode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -48,7 +48,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select* From ClientMaster Where Name Like '%" + txtsearch.Text + "%'";
+                string s = "Select* From ClientMaster Where Name Like '%" + txtsearch.Text + "%' and  CreatedBy = '" + Session["Admincode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -63,7 +63,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From ClientMaster";
+                string s = "Select * From ClientMaster where CreatedBy = '" + Session["Admincode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -79,37 +79,16 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "update  ClientMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID = 1";
+
+                string selected = Request.Form["checkbox"];
+                string s = "update  ClientMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID in (" + selected + ")";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                dt = new DataTable();
-                adp.Fill(dt);
+                cmd.ExecuteNonQuery();
+
                 BindData();
 
             }
         }
-        public string delete(string id)
-        {
-            
-                string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-                using (MySqlConnection cn = new MySqlConnection(CN))
-                {
-                    cn.Open();
-                    string s = "delete from clientmaster  where clientid = '" + id + "'";
-                    MySqlCommand cmd = new MySqlCommand(s, cn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                    dt = new DataTable();
-                    adp.Fill(dt);
-                    BindData();
-                    return dt.ToString();
-
-              
-            }
-        }
-
-        protected void CheckboxID_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckboxID.Checked = true;
-        }
     }
 }
+

@@ -1996,6 +1996,13 @@
     <Content Include="superagent\Changepassword.aspx" />
     <Content Include="superagent\CollectionDetail.aspx" />
     <Content Include="superagent\CollectionDetails.aspx" />
+    <Content Include="superagent\CompanymatchplusminusDisplay.aspx" />
+    <Content Include="superagent\CompanymatchPlusminusSelect.aspx" />
+    <Content Include="superagent\MatchSessionPlusminusDisplay.aspx" />
+    <Content Include="superagent\CompanymatchSessionplusMinusSelect.aspx" />
+    <Content Include="superagent\CompanyPlusMinusSelect.aspx" />
+    <Content Include="superagent\CompanySessionPlusMinusDisplay.aspx" />
+    <Content Include="superagent\CompanySessionPlusMinusSelect.aspx" />
     <Content Include="superagent\CreateAgent.aspx" />
     <Content Include="superagent\CreateNewCollection.aspx" />
     <Content Include="superagent\css\Homepage\bootstrap.min.css" />
@@ -2291,7 +2298,7 @@
     <Content Include="superagent\MatchAndSessionPosition.aspx" />
     <Content Include="superagent\MatchPlusMinusDisplay.aspx" />
     <Content Include="superagent\MatchplusminusSelect.aspx" />
-    <Content Include="superagent\MatchSessionPlusMinusDisplay.aspx" />
+    <Content Include="superagent\CompanyMatchSessionPlusMinusDisplay.aspx" />
     <Content Include="superagent\MatchSessionPlusMinusSelect.aspx" />
     <Content Include="superagent\ModifyAgent.aspx" />
     <Content Include="superagent\My_Ledger.aspx" />
@@ -3066,6 +3073,55 @@
     <Compile Include="superagent\CollectionDetails.aspx.designer.cs">
       <DependentUpon>CollectionDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="superagent\CompanymatchplusminusDisplay.aspx.cs">
+      <DependentUpon>CompanymatchplusminusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\CompanymatchplusminusDisplay.aspx.designer.cs">
+      <DependentUpon>CompanymatchplusminusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\CompanymatchPlusminusSelect.aspx.cs">
+      <DependentUpon>CompanymatchPlusminusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\CompanymatchPlusminusSelect.aspx.designer.cs">
+      <DependentUpon>CompanymatchPlusminusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\MatchSessionPlusminusDisplay.aspx.cs">
+      <DependentUpon>MatchSessionPlusminusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\MatchSessionPlusminusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusminusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\CompanymatchSessionplusMinusSelect.aspx.cs">
+      <DependentUpon>CompanymatchSessionplusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\CompanymatchSessionplusMinusSelect.aspx.designer.cs">
+      <DependentUpon>CompanymatchSessionplusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\CompanyPlusMinusSelect.aspx.cs">
+      <DependentUpon>CompanyPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\CompanyPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>CompanyPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\CompanySessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>CompanySessionPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\CompanySessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>CompanySessionPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\CompanySessionPlusMinusSelect.aspx.cs">
+      <DependentUpon>CompanySessionPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\CompanySessionPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>CompanySessionPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
     <Compile Include="superagent\CreateAgent.aspx.cs">
       <DependentUpon>CreateAgent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3160,12 +3216,12 @@
     <Compile Include="superagent\MatchplusminusSelect.aspx.designer.cs">
       <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
     </Compile>
-    <Compile Include="superagent\MatchSessionPlusMinusDisplay.aspx.cs">
-      <DependentUpon>MatchSessionPlusMinusDisplay.aspx</DependentUpon>
+    <Compile Include="superagent\CompanyMatchSessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>CompanyMatchSessionPlusMinusDisplay.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="superagent\MatchSessionPlusMinusDisplay.aspx.designer.cs">
-      <DependentUpon>MatchSessionPlusMinusDisplay.aspx</DependentUpon>
+    <Compile Include="superagent\CompanyMatchSessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>CompanyMatchSessionPlusMinusDisplay.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\MatchSessionPlusMinusSelect.aspx.cs">
       <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
