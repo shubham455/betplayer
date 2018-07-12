@@ -48,7 +48,7 @@
                                         </asp:DropDownList>
 
                                     </div>
-                                    <a href="ClientLimit.php">
+                                    <a href="UpdateClientLimit.aspx">
                                         <button class="btn btn-success" type="button">Update Comm. &amp; Limit</button></a>
 
                                 </div>
@@ -126,7 +126,7 @@
                                             <td align="center" class="  sorting_1">
                                                 <div class="checker" id="uniform-2">
                                                     <span>
-                                                        <input type="checkbox" class="checkboxes" name="2" id="2" value="118" style="opacity: 0;"></span>
+                                                        <input type="checkbox" class="checkboxes" name="checkbox" id="check" onclick="ChangesInStatus('<%:row["ClientID"] %>" value ="<%:row["ClientID"] %>" style="opacity: 0;"></span>
                                                 </div>
                                             </td>
                                             <td align="left" class=" ">

@@ -13,7 +13,8 @@ namespace betplayer.superagent
     public partial class ViewMatchReport : System.Web.UI.Page
     {
         private DataTable dt4;
-        public DataTable MatchesDataTable { get { return dt4; } }
+        private DataTable ClientTable = new DataTable();
+        public DataTable MatchesDataTable { get { return ClientTable; } }
         private DataTable runtable;
 
 
@@ -26,8 +27,20 @@ namespace betplayer.superagent
                 runtable = new DataTable();
                 runtable.Columns.Add(new DataColumn("ClientID"));
                 runtable.Columns.Add(new DataColumn("Name"));
-
                 DataRow row = runtable.NewRow();
+
+                ClientTable.Columns.Add(new DataColumn("runnerID"));
+                ClientTable.Columns.Add(new DataColumn("Amount"));
+                ClientTable.Columns.Add(new DataColumn("Rate"));
+                ClientTable.Columns.Add(new DataColumn("Mode"));
+                ClientTable.Columns.Add(new DataColumn("DateTime"));
+                ClientTable.Columns.Add(new DataColumn("Team"));
+                ClientTable.Columns.Add(new DataColumn("Position1"));
+                ClientTable.Columns.Add(new DataColumn("Position2"));
+                ClientTable.Columns.Add(new DataColumn("ClientID"));
+                ClientTable.Columns.Add(new DataColumn("Name"));
+                ClientTable.Columns.Add(new DataColumn("CreatedBy"));
+                DataRow Clientrow = ClientTable.NewRow();
 
                 string MatchID = Request.QueryString["MatchID"];
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
@@ -82,7 +95,7 @@ namespace betplayer.superagent
                     MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);
                     DataTable dt3 = new DataTable();
                     adp3.Fill(dt3);
-
+                    decimal PositionAAmount = 0, PositionBAmount = 0;
                     for (int i = 0; i < dt1.Rows.Count; i++)
                     {
                         string Agentcode = dt3.Rows[i]["code"].ToString();
@@ -93,7 +106,7 @@ namespace betplayer.superagent
                         MySqlDataAdapter adp4 = new MySqlDataAdapter(cmd4);
                         dt4 = new DataTable();
                         adp4.Fill(dt4);
-                        decimal PositionAAmount = 0, PositionBAmount = 0;
+                        
                         for (int j = 0; j < dt4.Rows.Count; j++)
                         {
                             decimal Amount = Convert.ToDecimal(dt4.Rows[j]["Position1"]);
@@ -112,6 +125,18 @@ namespace betplayer.superagent
                         lblTotalPosition2.Text = PositionBAmount.ToString();
                         lblPositionB.Text = PositionBAmount.ToString();
                         colorforpositionB(PositionBAmount);
+
+                        if (dt4.Rows.Count > 0)
+                        {
+                            IEnumerable<DataRow> orderedRows = dt4.AsEnumerable();
+                            DataTable TempClientTable = orderedRows.CopyToDataTable();
+                            foreach (DataRow row1 in TempClientTable.Rows)
+                            {
+                                ClientTable.Rows.Add(row1.ItemArray);
+                            }
+                        }
+
+
                     }
                 }
             }
@@ -119,6 +144,18 @@ namespace betplayer.superagent
 
         protected void Dropdownclient_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ClientTable.Columns.Add(new DataColumn("runnerID"));
+            ClientTable.Columns.Add(new DataColumn("Amount"));
+            ClientTable.Columns.Add(new DataColumn("Rate"));
+            ClientTable.Columns.Add(new DataColumn("Mode"));
+            ClientTable.Columns.Add(new DataColumn("DateTime"));
+            ClientTable.Columns.Add(new DataColumn("Team"));
+            ClientTable.Columns.Add(new DataColumn("Position1"));
+            ClientTable.Columns.Add(new DataColumn("Position2"));
+            ClientTable.Columns.Add(new DataColumn("ClientID"));
+            ClientTable.Columns.Add(new DataColumn("Name"));
+            ClientTable.Columns.Add(new DataColumn("CreatedBy"));
+            DataRow Clientrow = ClientTable.NewRow();
 
             int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
@@ -143,15 +180,9 @@ namespace betplayer.superagent
                         MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                         DataTable dt2 = new DataTable();
                         adp.Fill(dt2);
-
-
-                        
-                        
-
-
-                        for (int j = 0; j < dt4.Rows.Count; j++)
+                        for (int j = 0; j < dt2.Rows.Count; j++)
                         {
-                            decimal Amount = Convert.ToDecimal(dt4.Rows[j]["Position1"]);
+                            decimal Amount = Convert.ToDecimal(dt2.Rows[j]["Position1"]);
                             PositionAAmount = PositionAAmount + Amount;
 
                         }
@@ -159,15 +190,26 @@ namespace betplayer.superagent
                         lblPositionA.Text = PositionAAmount.ToString();
                         colorforpositionA(PositionAAmount);
 
-                        for (int k = 0; k < dt4.Rows.Count; k++)
+                        for (int k = 0; k < dt2.Rows.Count; k++)
                         {
-                            decimal Amount = Convert.ToDecimal(dt4.Rows[k]["Position2"]);
+                            decimal Amount = Convert.ToDecimal(dt2.Rows[k]["Position2"]);
                             PositionBAmount = PositionBAmount + Amount;
 
                         }
                         lblTotalPosition2.Text = PositionBAmount.ToString();
                         lblPositionB.Text = PositionBAmount.ToString();
                         colorforpositionB(PositionBAmount);
+
+                        if (dt2.Rows.Count > 0)
+                        {
+                            IEnumerable<DataRow> orderedRows = dt2.AsEnumerable();
+                            DataTable TempClientTable = orderedRows.CopyToDataTable();
+                            foreach (DataRow row1 in TempClientTable.Rows)
+                            {
+                                ClientTable.Rows.Add(row1.ItemArray);
+                            }
+                        }
+
 
                     }
                 }
@@ -178,19 +220,15 @@ namespace betplayer.superagent
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     DataTable dt1 = new DataTable();
                     adp1.Fill(dt1);
-
-
-
-
                     string s2 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name,clientmaster.CreatedBy from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && Runner.MatchID = '" + MatchID + "' && runner.ClientID = '" + Dropdownclient.SelectedValue + "'  ";
                     MySqlCommand cmd = new MySqlCommand(s2, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                    dt4 = new DataTable();
-                    adp.Fill(dt4);
+                    ClientTable = new DataTable();
+                    adp.Fill(ClientTable);
 
-                    for (int j = 0; j < dt4.Rows.Count; j++)
+                    for (int j = 0; j < ClientTable.Rows.Count; j++)
                     {
-                        decimal Amount = Convert.ToDecimal(dt4.Rows[j]["Position1"]);
+                        decimal Amount = Convert.ToDecimal(ClientTable.Rows[j]["Position1"]);
                         PositionAAmount = PositionAAmount + Amount;
 
                     }
@@ -198,9 +236,9 @@ namespace betplayer.superagent
                     lblPositionA.Text = PositionAAmount.ToString();
                     colorforpositionA(PositionAAmount);
 
-                    for (int k = 0; k < dt4.Rows.Count; k++)
+                    for (int k = 0; k < ClientTable.Rows.Count; k++)
                     {
-                        decimal Amount = Convert.ToDecimal(dt4.Rows[k]["Position2"]);
+                        decimal Amount = Convert.ToDecimal(ClientTable.Rows[k]["Position2"]);
                         PositionBAmount = PositionBAmount + Amount;
 
                     }

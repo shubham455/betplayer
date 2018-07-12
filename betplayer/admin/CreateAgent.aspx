@@ -43,7 +43,7 @@
                                             <div></div>
                                             <table width="850" border="0" cellspacing="0" cellpadding="0">
                                                 <tbody>
-                                                   
+
                                                     <tr>
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Name</td>
@@ -62,7 +62,7 @@
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Password</td>
                                                         <td align="left">
-                                                            <asp:TextBox runat="server" CssClass="textbox" MaxLength="10" ID="txtPassword" /></td>
+                                                            <asp:TextBox runat="server" CssClass="textbox" ID="txtPassword" /></td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
 
@@ -70,28 +70,18 @@
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Agent Limit</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" OnTextChanged="txtClientlimit_TextChanged" AutoPostBack="true" /></td>
+                                                            <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" /></td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">SuperAgent Current Limit</td>
-                                                        <td height="30" align="left" valign="middle" style="font-size: 13px; color: #F00">
-                                                            <asp:TextBox CssClass="textbox" ID="txtSuperAgentlimit" runat="server" Text="305653" PlaceHolder="305653&nbsp;&nbsp; से ज्यादा नहीं भर सकते। " ReadOnly="true" />
-                                                        </td>
-                                                        <td align="left" valign="middle" style="font-size: 13px; color: #F00"><strong>My Share %</strong></td>
-                                                    </tr>
+
                                                     <tr>
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Agent Share %</td>
-                                                       <td align="left" valign="middle">
-                                                            <asp:TextBox CssClass="textbox" ID="txtAgentShare" OnTextChanged="txtAgentShare_TextChanged" AutoPostBack="true" runat="server"/></td>
-                                                        <td align="left">
-                                                            <asp:TextBox CssClass="textbox" ID="txtSuperAgentShare" runat="server" Text="50" ReadOnly="true" /></td>
-                                                        <td align="left">&nbsp;</td>
+                                                        <td align="left" valign="middle">
+                                                            <asp:TextBox CssClass="textbox" ID="txtAgentShare" runat="server" /></td>
                                                     </tr>
-                                                    
-                                                     <tr>
+
+                                                    <tr>
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Mobile App</td>
                                                         <td align="left">
@@ -103,13 +93,12 @@
                                                             <p>&nbsp;</p>
                                                         </td>
                                                         <td height="30" align="left" valign="middle" class="welcome"><strong>Agent Commission Percentage</strong></td>
-                                                        
+
                                                         <td align="left">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome"><strong>My Commission Percentage</strong></td>
-                                                        
+
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
-                                                    
+
                                                     <tr>
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Session Commission Type</td>
@@ -132,9 +121,7 @@
                                                         </td>
                                                         <td align="left">
                                                             <input runat="server" name="MatchCommissionClient" type="text" class="textbox" id="MatchCommissionAgent" onblur="showCustomer(this.value)" value="0"></td>
-                                                        <td>
-                                                            <input runat="server" name="MatchCommissionClient" type="text" class="textbox" id="Text1" readonly="" onblur="showCustomer(this.value)" value="0">
-                                                        </td>
+
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr id="divSessionCommission">
@@ -142,9 +129,7 @@
                                                         <td height="30" align="left" valign="middle" class="welcome">Session Commission</td>
                                                         <td align="left">
                                                             <input name="SessionCommissionClient" runat="server" type="text" class="textbox" id="SessionCommissionAgent" onblur="showCustomer(this.value)" value="0"></td>
-                                                        <td align="left">
-                                                            <input name="SessionCommissionClient" runat="server" type="text" class="textbox" id="Text2" onblur="showCustomer(this.value)" readonly="" value="0"></td>
-                                                        
+
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
                                                 </tbody>

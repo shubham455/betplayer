@@ -28,7 +28,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From SuperAgentMaster";
+                string s = "Select * From SuperAgentMaster where CreatedBy = '"+Session["Admincode"]+"'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -49,7 +49,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select* From SuperAgentMaster Where Name Like '%" + txtsearch.Text + "%'";
+                string s = "Select* From SuperAgentMaster Where Name Like '%" + txtsearch.Text + "%' and  CreatedBy = '" + Session["Admincode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -64,7 +64,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From SuperAgentMaster";
+                string s = "Select * From SuperAgentMaster where CreatedBy = '" + Session["Admincode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -80,31 +80,15 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "update  SuperAgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where superagentid = 1";
+                string selected = Request.Form["checkbox"];
+                string s = "update  SuperAgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where superagentid in ("+selected+")";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                dt = new DataTable();
-                adp.Fill(dt);
+                cmd.ExecuteNonQuery();
                 BindData();
 
             }
         }
-        public string delete(string id)
-        {
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s = "delete from SuperAgentMaster  where superagentid = '" + id + "'";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                dt = new DataTable();
-                adp.Fill(dt);
-                BindData();
-                return dt.ToString();
-
-            }
-        }
+        
         public string Date(DateTime DateTimefromDB)
         {
             DateTime oDate = DateTime.Parse(DateTimefromDB.ToString());

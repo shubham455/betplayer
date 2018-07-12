@@ -14,23 +14,27 @@ namespace betplayer.superagent
     {
         private DataTable dt;
         private DataTable dt1;
-        private DataTable ClientTable;
+        private DataTable ClientTable = new DataTable();
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
         public DataTable ClientDataTable1 { get { return ClientTable; } }
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-            //DataTable ClientTable = new DataTable();
+        { 
+            ClientTable.Columns.Add(new DataColumn("runnerID"));
+            ClientTable.Columns.Add(new DataColumn("Amount"));
+            ClientTable.Columns.Add(new DataColumn("Rate"));
+            ClientTable.Columns.Add(new DataColumn("Mode"));
+            ClientTable.Columns.Add(new DataColumn("DateTime"));
+            ClientTable.Columns.Add(new DataColumn("Team"));
+            ClientTable.Columns.Add(new DataColumn("ClientID"));
+            ClientTable.Columns.Add(new DataColumn("Name"));
+            ClientTable.Columns.Add(new DataColumn("Position1"));
+            ClientTable.Columns.Add(new DataColumn("Position2"));
+            DataRow Clientrow = ClientTable.NewRow();
 
-            //ClientTable.Columns.Add(new DataColumn("Sr"));
-            //ClientTable.Columns.Add(new DataColumn("Rate"));
-            //ClientTable.Columns.Add(new DataColumn("Amount"));
-            //ClientTable.Columns.Add(new DataColumn("Mode"));
-            //ClientTable.Columns.Add(new DataColumn("Team"));
-            //ClientTable.Columns.Add(new DataColumn("Client"));
-            //ClientTable.Columns.Add(new DataColumn("DateTime"));
-            
+
+
             apiID.Value = Request.QueryString["MatchID"];
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
@@ -46,7 +50,7 @@ namespace betplayer.superagent
                 string TeamB1 = dt.Rows[0]["TeamB"].ToString();
                 lblTeamA.Text = TeamA1;
                 lblTeamB.Text = TeamB1;
-                
+
 
 
 
@@ -59,14 +63,25 @@ namespace betplayer.superagent
 
                 for (int i = 0; i < dt11.Rows.Count; i++)
                 {
-
+                    DataRow row1 = ClientTable.NewRow();
                     string Agentcode = (dt11.Rows[i]["code"]).ToString();
 
-                    string s = "select runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && runner.MatchID = '"+apiID.Value+"' order by DateTime DESC";
+                    string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && runner.MatchID = '" + apiID.Value + "' order by DateTime DESC";
                     MySqlCommand cmd1 = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     dt1 = new DataTable();
                     adp1.Fill(dt1);
+
+                    if (dt1.Rows.Count < 0)
+                    {
+
+                        decimal rate = Convert.ToDecimal(dt1.Rows[i]["rate"]);
+                        row1["rate"] = rate;
+                    }
+                    else { row1["rate"] = 0; }
+
+                    
+
                     int l = 0;
                     foreach (DataRow row in dt1.Rows)
                     {
@@ -75,11 +90,14 @@ namespace betplayer.superagent
                         if (Mode == "K")
                         {
                             Mode1 = "L";
+
                         }
                         else if (Mode == "L")
                         {
                             Mode1 = "K";
+
                         }
+                        row["Mode"] = Mode1;
                         row["Mode"] = Mode1;
                         l++;
                     }
@@ -159,9 +177,10 @@ namespace betplayer.superagent
                             Teampos = Teampos + TeamAposition1;
 
                         }
-
-                            j++;
                         
+
+                        j++;
+
 
                     }
                     string selectSAshare = "select Agentshare From AgentMaster where AgentID = '" + ID + "'";
@@ -280,6 +299,17 @@ namespace betplayer.superagent
                     {
                         Team2Amt.ForeColor = System.Drawing.Color.Red;
                     }
+
+                    if (dt1.Rows.Count > 0)
+                    {
+                        IEnumerable<DataRow> orderedRows = dt1.AsEnumerable();
+                        DataTable TempClientTable = orderedRows.CopyToDataTable();
+                        foreach(DataRow row in TempClientTable.Rows)
+                        {
+                            ClientTable.Rows.Add(row.ItemArray);
+                        }
+                    }
+                   
                 }
             }
         }

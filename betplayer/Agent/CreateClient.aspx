@@ -84,7 +84,7 @@
                                                             <td align="left" class="welcome">&nbsp;</td>
                                                             <td height="30" align="left" valign="middle" class="welcome">Agent Share %</td>
                                                             <td align="left" valign="middle">
-                                                                <asp:TextBox CssClass="textbox" ID="txtAgentShare" runat="server" OnTextChanged="txtAgentShare_TextChanged" AutoPostBack="true"  Text="50.00"/></td>
+                                                                <asp:TextBox CssClass="textbox" ID="txtAgentShare" runat="server" OnTextChanged="txtAgentShare_TextChanged" AutoPostBack="true"  /></td>
                                                             <td align="left" valign="middle">
                                                                 <asp:TextBox CssClass="textbox" ID="txtAgentShare2" runat="server"  ReadOnly="true" /></td>
                                                         </tr>

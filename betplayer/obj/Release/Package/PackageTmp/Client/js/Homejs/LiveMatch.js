@@ -1,4 +1,4 @@
-﻿// Initialize Firebase
+﻿    // Initialize Firebase
 var config = {
     apiKey: "AIzaSyDeJEW2OK0RnL0A4OjYF6oTj04xQhgpb40",
     authDomain: "betplayer-197014.firebaseapp.com",
@@ -175,6 +175,7 @@ function doneClick() {
                                 Mode: Mode,
                                 Team: TeamName,
                                 MatchID: matchIdElement.value,
+                                
                                 Team1Position: document.getElementById('ContentPlaceHolder1_PositionTeam1').innerHTML,
                                 Team2Position: document.getElementById('ContentPlaceHolder1_PositionTeam2').innerHTML,
                             };
@@ -197,9 +198,14 @@ function doneClick() {
                                 return responce.json();
                             }).then(function (data) {
                                 console.log(data);
-                                if (data.status) {
+                                if (data.status==="success") {
                                     console.log(betValue, betAmount, team, betType);
                                     alert("Bet Made Successfully");
+                                    location.reload();
+                                }
+                                else if (data.status === "unsuccess")
+                                {
+                                    alert("You Do not have Coins For this Bet");
                                     location.reload();
                                 }
                                 else alert("Bet Rejected!!!");
@@ -262,10 +268,13 @@ function doneClick() {
                                 return responce.json();
                             }).then(function (data) {
                                 console.log(data);
-                                if (data.status) {
+                                if (data.status === "success") {
                                     console.log(betValue, betAmount, team, betType);
                                     alert("Bet Made Successfully");
                                     location.reload();
+                                }
+                                else if (data.status === "unsuccess") {
+                                    alert("You Do not have Coins For this Bet");
                                 }
                                 else alert("Bet Rejected!!!");
                             }).then(function () {

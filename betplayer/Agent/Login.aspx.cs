@@ -70,7 +70,7 @@ namespace betplayer
                         Session["AgentID"] = AgentID;
                         Session["Agentcode"] = Agentcode;
                         
-                        Response.Redirect("~/Agent/TC.aspx");
+                        Response.Redirect("TC.aspx");
                     }
                     else
                     {

@@ -108,17 +108,19 @@
                                         <td width="9%" align="right"><strong>Credit</strong></td>
                                         <td width="9%" align="right"><strong>Balance</strong></td>
                                         <td align="right"><strong>Payment Description</strong></td>
+                                        <td align="right"><strong>Remark</strong></td>
                                     </tr>
-                                    <% foreach (System.Data.DataRow row in runTable.Rows)
+                                    <% foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
                                         { %>
                                     <tr>
                                         <td height="20" class="FontText">1</td>
                                         <td class="FontText"><%: row["Date"] %></td>
-                                        <td class="FontText"></td>
+                                        <td class="FontText"><%: row["Collectionname"] %></td>
                                         <td align="right" class="FontText" style="text-align: right;"><%: row["Dabit"] %></td>
                                         <td align="right" class="FontText" style="text-align: right;"><%:row["Credit"] %></td>
                                         <td align="right" class="FontText" style="text-align: right;"><strong><%: row["Balance"] %> </strong></td>
                                         <td align="right" class="FontText"><%:row["PaynmentDescription"] %></td>
+                                        <td align="right" class="FontText"><%:row["Remark"] %></td>
                                     </tr>
 
                                     <% } //foreach %>
@@ -130,7 +132,7 @@
                                         <td align="right"><strong>Total Amount</strong></td>
                                         <td align="right" style="text-align: right;"><strong><%:row["TotalDabitAmount"] %>  </strong></td>
                                         <td align="right" style="text-align: right;"><strong><%:row["TotalCreditAmount"] %> </strong></td>
-                                        <td align="right" style="text-align: right;"><strong><asp:Label ID="lblAmount" runat="server"></asp:Label> </strong></td>
+                                        <td align="right" style="text-align: right;"><strong><%:LedgerTableOrdered.Rows[LedgerTableOrdered.Rows.Count-1]["Balance"] %></strong></td>
                                         <td align="right">&nbsp;</td>
                                     </tr>
                                         <% } //foreach %>

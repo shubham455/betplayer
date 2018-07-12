@@ -67,7 +67,7 @@ namespace betplayer.poweruser
 
                         Session["PoweruserID"] = AdminID;
 
-                        Response.Redirect("~/PowerUser/ModifyMatches.aspx");
+                        Response.Redirect("ModifyMatches.aspx");
                     }
                     else
                     {

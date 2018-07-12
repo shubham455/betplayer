@@ -73,7 +73,7 @@ namespace Panchayat_System.Admin
                 else
                 {
                     rdr.Close();
-                    string s = "insert into ClientMaster(Name,ContactNo,Password,Client_limit,Currentlimit,FixLimit,Agent_Share,mobileApp,SessionCommisionType,Status,CreatedBy,Date,Mode,MatchCommision,SessionCommision) values (@Name,@Contact_No,@Password,@Agentlimit,@Currentlimit,@FixLimit,@Agentshare,@MobileAppAmount,@SessionType,@Status,@CreatedBy,@Date,@Mode); SELECT LAST_INSERT_ID()";
+                    string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Currentlimit,FixLimit,Agent_Share,mobileApp,Session_Commision_Type,Status,CreatedBy,Date,Mode) values (@Name,@Contact_No,@Password,@Clientlimit,@Currentlimit,@FixLimit,@Agentshare,@MobApp,@SessionType,@Status,@CreatedBy,@Date,@Mode); SELECT LAST_INSERT_ID()";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
 
                     cmd.Parameters.AddWithValue("@Name", txtname.Text);
@@ -84,10 +84,11 @@ namespace Panchayat_System.Admin
                     cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
                     cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
                     cmd.Parameters.AddWithValue("@Status", "Active");
-                    cmd.Parameters.AddWithValue("@CreatedBy", Session["Admincode"]);
+                    cmd.Parameters.AddWithValue("@CreatedBy", Session["Agentcode"]);
                     cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
-                    cmd.Parameters.AddWithValue("@Mode", "Admin");
+                    cmd.Parameters.AddWithValue("@Mode", "Agent");
                     cmd.Parameters.AddWithValue("@FixLimit", txtClientlimit.Text);
+                    cmd.Parameters.AddWithValue("@MobApp", "Yes");
 
                     int ID = Convert.ToInt16(cmd.ExecuteScalar());
                     string update = "Update ClientMaster Set Code = 'C" + ID + "'where ClientID = '" + ID + "' ";

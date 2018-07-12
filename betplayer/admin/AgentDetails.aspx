@@ -46,7 +46,7 @@
                                         </asp:DropDownList>
                                     </div>
 
-                                    <a href="AgentLimit.php">
+                                    <a href="UpdateAgentlimit.aspx">
                                         <button class="btn btn-primary" type="button">Update Limit</button></a>
                                 </div>
                                 <div class="space15"></div>
@@ -90,7 +90,7 @@
                                             <th colspan="3" align="center" valign="middle" style="text-align: center; vertical-align: middle;" rowspan="1">Agent Commission %</th>
                                             <th colspan="3" align="right" style="text-align: center; vertical-align: middle;" rowspan="1">Limit</th>
                                             <th align="left" rowspan="1" colspan="1">&nbsp;</th>
-                                            <th align="left" rowspan="1" colspan="1">&nbsp;</th>
+
                                         </tr>
                                         <tr role="row">
                                             <th width="2%" align="center" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="
@@ -126,7 +126,7 @@
                                             <td align="center" class="  sorting_1">
                                                 <div class="checker" id="uniform-1">
                                                     <span>
-                                                        <input type="checkbox" class="checkboxes" name="checkbox" id="check" onclick="ChangesInStatus('<%:row["ClientID"] %>" value="<%:row["ClientID"] %>" style="opacity: 0;"></span>
+                                                        <input type="checkbox" class="checkboxes" name="checkbox" id="check" onclick="ChangesInStatus('<%:row["AgentID"] %>" value="<%:row["AgentID"] %>" style="opacity: 0;"></span>
                                                 </div>
 
                                             </td>
@@ -154,8 +154,8 @@
                                             <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
                                             <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["MatchCommision"] %></td>
                                             <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["SessionCommision"] %></td>
-                                            <td align="right" style="text-align: right;" class=" ">0</td>
-                                            <td align="right" style="text-align: right;" class=" ">0</td>
+                                            <td align="right" style="text-align: right;" class=" "><%:row["Fixlimit"] %></td>
+                                            <td align="right" style="text-align: right;" class=" "><%:row["Currentlimit"] %></td>
                                             <td align="right" style="text-align: right;" class=" ">0</td>
                                             <td align="left" class=" "><%:row["Status"] %></td>
 
@@ -179,47 +179,47 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
+                    <!-- END EXAMPLE TABLE widget-->
                 </div>
-                <!-- END EXAMPLE TABLE widget-->
             </div>
+            <!-- END ADVANCED TABLE widget-->
+            <!-- END PAGE CONTENT-->
         </div>
-        <!-- END ADVANCED TABLE widget-->
-        <!-- END PAGE CONTENT-->
     </div>
-    </div>
-     <script>
-         function CallHandler(userId) {
-             var params = {
-                 userId: userId
-             };
+    <script>
+        function CallHandler(userId) {
+            var params = {
+                userId: userId
+            };
 
-             var formBody = [];
-             for (var property in params) {
-                 var encodedKey = encodeURIComponent(property);
-                 var encodedValue = encodeURIComponent(params[property]);
-                 formBody.push(encodedKey + "=" + encodedValue);
-             }
-             formBody = formBody.join("&");
+            var formBody = [];
+            for (var property in params) {
+                var encodedKey = encodeURIComponent(property);
+                var encodedValue = encodeURIComponent(params[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
 
-             fetch('http://localhost:54034/Admin/DeleteAgent.ashx', {
-                 method: 'POST',
-                 headers: {
-                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-                 },
-                 body: formBody
-             }).then(function (responce) {
-                 return responce.json();
-             }).then(function (data) {
-                 if (data.status) alert("User with ID: " + data.userDeletedId + " Successfully Deleted.");
-                 else alert("User Delete Failed!!!" + "\r\n" + data.error);
-             }).then(function () {
-                 location.reload();
-             }).catch(function (err) {
-                 console.log(err);
-             });
-         }
-     </script>
+            fetch('http://localhost:54034/Admin/DeleteAgent.ashx', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: formBody
+            }).then(function (responce) {
+                return responce.json();
+            }).then(function (data) {
+                if (data.status) alert("User with ID: " + data.userDeletedId + " Successfully Deleted.");
+                else alert("User Delete Failed!!!" + "\r\n" + data.error);
+            }).then(function () {
+                location.reload();
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    </script>
     <script>
         function ChangesInStatus(userId) {
             var params = {
@@ -234,7 +234,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/Agent/ChangeStatus.ashx', {
+            fetch('http://localhost:54034/Admin/ChangeStatus.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

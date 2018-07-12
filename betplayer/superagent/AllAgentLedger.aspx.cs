@@ -61,6 +61,7 @@ namespace betplayer.Super_Agent
                 DataTable SelectAgentdt = new DataTable();
                 SelectAgentadp.Fill(SelectAgentdt);
 
+                
                 for (int i = 0; i < SelectAgentdt.Rows.Count; i++)
                 {
                     int AgentID = Convert.ToInt16(SelectAgentdt.Rows[i]["AgentID"]);
@@ -70,7 +71,7 @@ namespace betplayer.Super_Agent
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
-
+                    decimal LedgerAmount = 0;
                     for (int j = 0; j < dt.Rows.Count; j++)
                     {
                         decimal Dabit = Convert.ToDecimal(dt.Rows[j]["Dabit"]);
@@ -84,6 +85,7 @@ namespace betplayer.Super_Agent
                         {
                             Balance = Credit;
                         }
+
                         if (runtable.Rows.Count > 0)
                         {
 
@@ -93,19 +95,52 @@ namespace betplayer.Super_Agent
                                 Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
                                 Balance1 = Balance1 - Dabit;
                                 Balance1 = Balance1 + Credit;
-                                row["Balance"] = Balance1;
+
+                                LedgerAmount = LedgerAmount + Balance1;
                             }
                         }
                         else
                         {
-                            row["Balance"] = Balance;
+                            LedgerAmount = Balance * -1;
+
                         }
+
+
+
+                        string CollectionAmount = "Select * From AgentCollectionmaster where AgentID = '" + AgentID + "'";
+                        MySqlCommand CollectionAmountcmd = new MySqlCommand(CollectionAmount, cn);
+                        MySqlDataAdapter CollectionAmountadp = new MySqlDataAdapter(CollectionAmountcmd);
+                        DataTable CollectionAmountdt = new DataTable();
+                        CollectionAmountadp.Fill(CollectionAmountdt);
+                        decimal CollectionBalance = 0, CollectionBalance1 = 0;
+                        for (int l = 0; l < CollectionAmountdt.Rows.Count; l++)
+                        {
+                            //decimal CollectionDabit = Convert.ToDecimal(CollectionAmountdt.Rows[l]["Dabit"]);
+                            decimal CollectionCredit = Convert.ToDecimal(CollectionAmountdt.Rows[l]["Amount"]);
+                            string PaynmentDescription = (CollectionAmountdt.Rows[l]["PaynmentType"]).ToString();
+
+                            if (PaynmentDescription == "Payment Received")
+                            {
+                                CollectionBalance = CollectionCredit * -1;
+                            }
+                            else if (PaynmentDescription == "Payment Paid")
+                            {
+                                CollectionBalance = CollectionCredit;
+                            }
+
+                            CollectionBalance1 = CollectionBalance1 + CollectionBalance;
+                        }
+
+
+                        Decimal FinalAmount = CollectionBalance1 + LedgerAmount;
+                        row["Balance"] = FinalAmount;
                         runtable.Rows.Add(row.ItemArray);
 
                     }
                     decimal TotalbalanceAmount1 = 0;
                     for (int l = 1; l <= runtable.Rows.Count; l++)
                     {
+
                         if (l == runtable.Rows.Count)
                         {
                             l = l - 1;

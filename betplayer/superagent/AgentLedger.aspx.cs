@@ -15,8 +15,10 @@ namespace betplayer.Super_Agent
         private DataTable dt1;
         private DataTable runtable;
         private DataTable runtable1;
+        public DataTable LedgerTableOrdered;
         public DataTable runTable { get { return runtable; } }
         public DataTable runTable1 { get { return runtable1; } }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -47,8 +49,10 @@ namespace betplayer.Super_Agent
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     runtable1 = new DataTable();
                     runtable = new DataTable();
+                    LedgerTableOrdered = new DataTable();
                     adp1.Fill(runtable1);
                     adp1.Fill(runtable);
+                    adp1.Fill(LedgerTableOrdered);
                 }
             }
         }
@@ -58,7 +62,9 @@ namespace betplayer.Super_Agent
         {
 
             runtable = new DataTable();
-            runtable.Columns.Add(new DataColumn("Date"));
+            DataColumn colDateTime = new DataColumn("Date");
+            colDateTime.DataType = System.Type.GetType("System.DateTime");
+            runtable.Columns.Add(colDateTime);
             runtable.Columns.Add(new DataColumn("CollectionName"));
             runtable.Columns.Add(new DataColumn("Dabit"));
             runtable.Columns.Add(new DataColumn("Credit"));
@@ -80,61 +86,38 @@ namespace betplayer.Super_Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "select matches.TeamA,matches.teamB,matches.DateTime,agentledger.Dabit,agentledger.Credit from agentLedger inner join matches on agentledger.MatchID = matches.apiID where AgentID = '" + dropdownAgent.SelectedValue + "'";
+                string s = "select matches.TeamA,matches.teamB,matches.DateTime,agentledger.Dabit,agentledger.Credit from agentLedger inner join matches on agentledger.MatchID = matches.apiID where agentID = '" + dropdownAgent.SelectedValue + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt1 = new DataTable();
                 adp.Fill(dt1);
-                lblAmount.Text = "0";
+
+
                 for (int i = 0; i < dt1.Rows.Count; i++)
                 {
-                    string s1 = "Select * From AgentCollectionMaster where AgentID = '" + dropdownAgent.SelectedValue + "'";
-                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
-                    MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
-                    DataTable dt = new DataTable();
-                    adp1.Fill(dt);
-
-                    //string CollectionDate = dt.Rows[i]["Date"].ToString();
-                    //DateTime date = DateTime.Parse(CollectionDate);
-                    //string Date1 = date.Date.ToString().Substring(0, 10);
-
                     string DateFromDB = dt1.Rows[i]["DateTime"].ToString();
                     DateTime oDate = DateTime.Parse(DateFromDB);
                     string datetime = oDate.Date.ToString().Substring(0, 10);
 
-
-                    //if (Date1 == datetime)
-                    //{
-                    //    string CollectionName = dt.Rows[0]["CollectionType"].ToString();
-                    //    string Amount = dt.Rows[0]["Amount"].ToString();
-                    //    string PaynmentDescription = dt.Rows[0]["PaynmentType"].ToString();
-
-                    //    row["CollectionName"] = CollectionName;
-                    //    row["Dabit"] = Amount;
-                    //    row["PaynmentDescription"] = PaynmentDescription;
-                    //}
-                    //else
-                    //{
                     string TeamA = dt1.Rows[i]["TeamA"].ToString();
                     string TeamB = dt1.Rows[i]["TeamB"].ToString();
                     decimal Dabit = Convert.ToDecimal(dt1.Rows[i]["Dabit"]);
                     decimal Credit = Convert.ToDecimal(dt1.Rows[i]["Credit"]);
 
-                    row["Date"] = datetime;
+                    row["Date"] = oDate;     //row["Date"] = datetime;
                     row["PaynmentDescription"] = TeamA + "VS" + TeamB;
                     row["Dabit"] = Dabit;
-                    row["Credit"] = Credit;
+                    row["Credit"] = Credit * -1;
 
                     decimal Balance = 0, Balance1 = 0;
                     if (Dabit != 0)
                     {
-                        Balance = Dabit * -1;
+                        Balance = Dabit;
                     }
                     else if (Credit != 0)
                     {
-                        Balance = Credit;
+                        Balance = Credit * -1;
                     }
-                    lblAmount.Text = "0";
                     if (runtable.Rows.Count > 0)
                     {
                         for (int k = 0; k < runtable.Rows.Count; k++)
@@ -143,48 +126,136 @@ namespace betplayer.Super_Agent
                             Balance1 = Balance1 - Dabit;
                             Balance1 = Balance1 + Credit;
                             row["Balance"] = Balance1;
-                            lblAmount.Text = Balance1.ToString();
                         }
                     }
                     else
                     {
                         row["Balance"] = Balance;
-                        lblAmount.Text = Balance.ToString();
                     }
 
                     runTable.Rows.Add(row.ItemArray);
                 }
+
+                string s1 = "Select * From AgentCollectionMaster where agentID = '" + dropdownAgent.SelectedValue + "'";
+                MySqlCommand cmd1 = new MySqlCommand(s1, cn);
+                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
+                DataTable dt = new DataTable();
+                adp1.Fill(dt);
+
+                for (int j = 0; j < dt.Rows.Count; j++)
+                {
+
+                    string CollectionDate = dt.Rows[j]["Date"].ToString();
+                    DateTime date = DateTime.Parse(CollectionDate);
+                    string Date1 = date.Date.ToString().Substring(0, 10);
+
+
+                    string CollectionName = dt.Rows[j]["CollectionType"].ToString();
+                    int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
+                    string PaynmentDescription = dt.Rows[j]["PaynmentType"].ToString();
+                    string Remark = dt.Rows[j]["Remark"].ToString();
+
+                    row["Date"] = Date1;        //row["Date"] = Date1;
+                    row["CollectionName"] = CollectionName;
+                    row["Remark"] = Remark;
+                    if (PaynmentDescription == "Payment Received")
+                    {
+                        row["Dabit"] = Amount;
+                        row["Credit"] = 0;
+                        row["Balance"] = Amount * -1;
+                    }
+                    else if (PaynmentDescription == "Payment Paid")
+                    {
+                        row["Credit"] = Amount;
+                        row["Dabit"] = 0;
+                        row["Balance"] = Amount;
+                    }
+
+
+
+                    row["PaynmentDescription"] = PaynmentDescription;
+
+                    runTable.Rows.Add(row.ItemArray);
+
+                }
             }
-            decimal TotalDabitAmount1 = 0;
-            for (int l = 0; l < runtable.Rows.Count; l++)
+            if (runtable.Rows.Count > 0)
             {
-                decimal DabitAmount = Convert.ToDecimal(runtable.Rows[l]["Dabit"]);
-                TotalDabitAmount1 = TotalDabitAmount1 + DabitAmount;
+                IEnumerable<DataRow> orderedRows = runTable.AsEnumerable()
+                .OrderBy(r => r.Field<DateTime>("Date"));
+
+                LedgerTableOrdered = orderedRows.CopyToDataTable();
+
+                for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
+                {
+                    DateTime date = DateTime.Parse(LedgerTableOrdered.Rows[0]["Date"].ToString());
+                    LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
+                    if (l > 0)
+                    {
+                        LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
+
+
+                    }
+
+                }
+
+
+                decimal TotalDabitAmount1 = 0;
+                for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
+                {
+                    decimal DabitAmount = Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]);
+                    TotalDabitAmount1 = TotalDabitAmount1 + DabitAmount;
+                }
+
+                row1["TotalDabitAmount"] = TotalDabitAmount1;
+
+                decimal TotalCreditAmount1 = 0;
+                for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
+                {
+                    decimal MatchAmount = Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
+                    TotalCreditAmount1 = TotalCreditAmount1 + MatchAmount;
+                }
+
+                row1["TotalCreditAmount"] = TotalCreditAmount1;
+
+                decimal TotalbalanceAmount1 = 0;
+                for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
+                {
+                    decimal TotalAmount = Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Balance"]);
+                    TotalbalanceAmount1 = TotalbalanceAmount1 + TotalAmount;
+                }
+
+                row1["TotalBalanceAmount"] = TotalbalanceAmount1;
+
+
+                runTable1.Rows.Add(row1.ItemArray);
             }
-
-            row1["TotalDabitAmount"] = TotalDabitAmount1;
-
-            decimal TotalCreditAmount1 = 0;
-            for (int l = 0; l < runtable.Rows.Count; l++)
+            else
             {
-                decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["Credit"]);
-                TotalCreditAmount1 = TotalCreditAmount1 + MatchAmount;
+                string DateFromDB = "01-01-2000";
+                DateTime oDate = DateTime.Parse(DateFromDB);
+                row["Date"] = oDate;     //row["Date"] = datetime;
+                row["PaynmentDescription"] = 0;
+                row["Dabit"] = 0;
+                row["Credit"] = 0;
+                row["CollectionName"] = 0;
+                row["Balance"] = 0;
+                row["Remark"] = 0;
+                runTable.Rows.Add(row.ItemArray);
+
+                DataTable LedgerTableOrdered = runtable;
+
+
+
+                row1["TotalDabitAmount"] = 0;
+                row1["TotalCreditAmount"] = 0;
+                row1["TotalBalanceAmount"] = 0;
+                runTable1.Rows.Add(row1.ItemArray);
+                DataTable LedgerTableOrdered1 = runtable1;
+
             }
-
-            row1["TotalCreditAmount"] = TotalCreditAmount1;
-
-            decimal TotalbalanceAmount1 = 0;
-            for (int l = 0; l < runtable.Rows.Count; l++)
-            {
-                decimal TotalAmount = Convert.ToDecimal(runtable.Rows[l]["Balance"]);
-                TotalbalanceAmount1 = TotalbalanceAmount1 + TotalAmount;
-            }
-
-            row1["TotalBalanceAmount"] = TotalbalanceAmount1;
-
-
-            runTable1.Rows.Add(row1.ItemArray);
         }
+
 
         protected void btnSave_ServerClick(object sender, EventArgs e)
         {

@@ -11,17 +11,17 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
-    <link href="../admin/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../admin/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="../admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="../admin/css/style.css" rel="stylesheet">
-    <link href="../admin/css/style_responsive.css" rel="stylesheet">
-    <link href="../admin/css/style_default.css" rel="stylesheet" id="style_color">
+    <link href="../poweruser/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../poweruser/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="../poweruser/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../poweruser/css/style.css" rel="stylesheet">
+    <link href="../poweruser/css/style_responsive.css" rel="stylesheet">
+    <link href="../poweruser/css/style_default.css" rel="stylesheet" id="style_color">
 
-    <link href="../admin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="../poweruser/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css">
-    <link href="../admin/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet">
-    <link href="../admin/assets/jqvmap/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../poweruser/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet">
+    <link href="../poweruser/assets/jqvmap/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
 
    
 
@@ -36,7 +36,7 @@
             <div class="container-fluid">
                 <!-- BEGIN LOGO -->
                 <a class="brand">
-                    <img src="../admin/img/logo.png" alt="crick20">
+                    <img src="../poweruser/img/logo.png" alt="crick20">
                 </a>
                 <!-- END LOGO -->
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->

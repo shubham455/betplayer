@@ -23,7 +23,7 @@
     <br />
 
     <!---start-wrap---->
-    <div class="wrap" style="margin-left :10px;">
+    <div class="wrap" style="margin-left: 10px;">
         <!---  End Header ----->
 
         <!----- Content ------------->
@@ -59,15 +59,11 @@
 
                                                     <td style="height: 50px; width: 100px;">
 
-                                                        <asp:Image ID="imgCaptcha" style="color:black;background-attachment:fixed;" runat="server" />
+                                                        <asp:Image ID="imgCaptcha" Style="color: black; background-attachment: fixed;" runat="server" />
 
                                                     </td>
 
-                                                    <td style="align-content: center">
-
-                                                        
-
-                                                    </td>
+                                                    <td style="align-content: center"></td>
 
                                                 </tr>
 

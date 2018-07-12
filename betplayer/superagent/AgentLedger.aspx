@@ -111,12 +111,12 @@
                                         <td width="9%" align="right"><strong>Balance</strong></td>
                                         <td align="right"><strong>Payment Description</strong></td>
                                     </tr>
-                                    <% foreach (System.Data.DataRow row in runTable.Rows)
+                                    <% foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
                                         { %>
                                     <tr>
                                         <td height="20" class="FontText">1</td>
                                         <td class="FontText"><%: row["Date"] %></td>
-                                        <td class="FontText"></td>
+                                        <td class="FontText"><%: row["CollectionName"] %></td>
                                         <td align="right" class="FontText" style="text-align: right;"><%: row["Dabit"] %></td>
                                         <td align="right" class="FontText" style="text-align: right;"><%:row["Credit"] %></td>
                                         <td align="right" class="FontText" style="text-align: right;"><strong><%: row["Balance"] %> </strong></td>
@@ -132,7 +132,7 @@
                                         <td align="right"><strong>Total Amount</strong></td>
                                         <td align="right" style="text-align: right;"><strong><%:row["TotalDabitAmount"] %>  </strong></td>
                                         <td align="right" style="text-align: right;"><strong><%:row["TotalCreditAmount"] %> </strong></td>
-                                        <td align="right" style="text-align: right;"><strong>
+                                        <td align="right" style="text-align: right;"><%:LedgerTableOrdered.Rows[LedgerTableOrdered.Rows.Count-1]["Balance"] %><strong>
                                             <asp:Label ID="lblAmount" runat="server"></asp:Label>
                                         </strong></td>
                                         <td align="right">&nbsp;</td>

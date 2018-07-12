@@ -63,7 +63,7 @@ namespace betplayer.Super_Agent
                         Session["SuperAgentID"] = SuperAgentID;
                         Session["SuperAgentCode"] = SuperAgentCode;
 
-                        Response.Redirect("~/SuperAgent/TC.aspx");
+                        Response.Redirect("TC.aspx");
                     }
                     else
                     {

@@ -15,40 +15,6 @@ namespace betplayer.admin
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s3 = "Select *From SuperAgentMaster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
-                MySqlCommand cmd3 = new MySqlCommand(s3, cn);
-                MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);
-                DataTable dt3 = new DataTable();
-                adp3.Fill(dt3);
-
-                int SuperAgentLimit = Convert.ToInt32(dt3.Rows[0]["Agentlimit"]);
-                decimal Total = 0;
-
-                string SuperAgentCode = dt3.Rows[0]["Agentlimit"].ToString();
-                string s4 = "Select * From AgentMaster where CreatedBy = '" + Session["SuperAgentCode"] + "'";
-                MySqlCommand cmd4 = new MySqlCommand(s4, cn);
-                MySqlDataAdapter adp4 = new MySqlDataAdapter(cmd4);
-                DataTable dt4 = new DataTable();
-                adp4.Fill(dt4);
-
-                for (int i = 0; i < dt4.Rows.Count; i++)
-                {
-
-                    decimal AgentLimit = Convert.ToDecimal(dt4.Rows[i]["CurrentLimit"]);
-                    Total = Total + AgentLimit;
-
-                }
-
-                txtSuperAgentlimit.Text = (SuperAgentLimit - Total).ToString();
-
-                txtSuperAgentShare.Text = dt3.Rows[0]["myshare"].ToString();
-                Text1.Value = dt3.Rows[0]["MatchCommision"].ToString();
-                Text2.Value = dt3.Rows[0]["SessionCommision"].ToString();
-            }
         }
         protected void Submit_Click(object sender, EventArgs e)
         {
@@ -80,7 +46,7 @@ namespace betplayer.admin
                     cmd.Parameters.AddWithValue("@MobileAppAmount", txtMobileApp.Text);
                     cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
                     cmd.Parameters.AddWithValue("@Status", "active");
-                    cmd.Parameters.AddWithValue("@CreatedBy", Session["SuperAgentcode"]);
+                    cmd.Parameters.AddWithValue("@CreatedBy", Session["Admincode"]);
                     cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
                     cmd.Parameters.AddWithValue("@Mode", "Admin");
                     cmd.Parameters.AddWithValue("@MatchCommision", MatchCommissionAgent.Value);
@@ -92,7 +58,7 @@ namespace betplayer.admin
                     cmd1.ExecuteNonQuery();
 
 
-                    Response.Redirect("~/SuperAgent/AgentDetails.aspx?msg=Add");
+                    Response.Redirect("AgentDetails.aspx?msg=Add");
                 }
             }
         }
@@ -104,23 +70,7 @@ namespace betplayer.admin
 
         }
 
-        protected void txtClientlimit_TextChanged(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(txtSuperAgentlimit.Text) < Convert.ToInt32(txtAgentlimit.Text))
-            {
-                txtAgentlimit.Text = "";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Limit Do not Greater Than Agent Limit.....');", true);
-            }
-        }
-
-        protected void txtAgentShare_TextChanged(object sender, EventArgs e)
-        {
-            if (Convert.ToDecimal(txtSuperAgentShare.Text) < Convert.ToDecimal(txtAgentShare.Text))
-            {
-                txtAgentShare.Text = "";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Agent Share Do not Greater Than My Share.....');", true);
-            }
-        }
+        
     }
 }
 

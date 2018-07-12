@@ -340,8 +340,7 @@ namespace betplayer.superagent
                         if (MatchAmount > 0)
                         {
                             MatchAmount = MatchAmount * -1;
-                            TotalMatchCommision1 = MatchCommision1 * MatchAmount;
-                            row["MatchCommision"] = TotalMatchCommision1;
+                           row["MatchCommision"] = TotalMatchCommision1;
                         }
                         else if (MatchAmount < 0)
                         {

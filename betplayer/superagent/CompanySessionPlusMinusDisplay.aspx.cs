@@ -314,7 +314,7 @@ namespace betplayer.superagent
                             TotalAmount = TotalAmount + Amount;
                         }
                     }
-                    string s5 = "Select SessionCommision,MatchCommision,Name  From AgentMaster where CreatedBy = '" + Session["SuperAgentCode"] + "' ";
+                    string s5 = "Select SessionCommision,MatchCommision,Name  From SuperAgentMaster where SuperAgentID = '" + Session["SuperAgentID"] + "' ";
                     MySqlCommand cmd5 = new MySqlCommand(s5, cn);
                     MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
                     DataTable dt5 = new DataTable();
@@ -340,7 +340,6 @@ namespace betplayer.superagent
                         if (MatchAmount > 0)
                         {
                             MatchAmount = MatchAmount * -1;
-                            TotalMatchCommision1 = MatchCommision1 * MatchAmount;
                             row["MatchCommision"] = TotalMatchCommision1;
                         }
                         else if (MatchAmount < 0)

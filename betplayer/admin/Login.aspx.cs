@@ -68,7 +68,7 @@ namespace betplayer.admin
                         Session["AdminID"] = AdminID;
                         Session["Admincode"] = Admincode;
 
-                        Response.Redirect("~/Admin/TC.aspx");
+                        Response.Redirect("TC.aspx");
                     }
                     else
                     {

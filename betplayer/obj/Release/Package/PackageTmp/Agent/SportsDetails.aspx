@@ -55,7 +55,7 @@
                                             <div class="btn-group">
                                                 <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="MatchAndSessionPosition.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-film"></i>Match &amp; Session Position</a></li>
+                                                    <li><a href="<%if (Convert.ToInt16(row["Declear"]) == 1) {%>#<% }else{%>MatchAndSessionPosition.aspx?MatchID=<%: row["apiID"] %><% } %>"><i class="icon-film"></i>Match &amp; Session Position</a></li>
                                                     <li><a href="MatchPlusMinusSelect.php?MT=243"><i class="icon-tasks"></i>Match Plus Minus</a></li>
                                                     <li><a href="SessionPlusMinusSelect.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-bolt"></i>Session Plus Minus</a></li>
                                                     <li><a href="MatchSessionPlusMinusSelect.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-filter"></i>Match &amp; Session Plus Minus</a></li>
@@ -72,7 +72,7 @@
                                         <td align="left" class="FontText"><%= date()%></td>
                                         <td width="110" align="left" class="FontText"><%: row["DateTime"].ToString() %></td>
                                         <td width="110" align="left" class="FontText"><%: row["Type"] %></td>
-                                        <td width="100" align="left" class="FontText"><%: row["status"] %></td>
+                                        <td width="100" align="left" class="FontText"><%if (Convert.ToInt16(row["Declear"]) == 1) {%>Yes<% }else{%>No<% } %></td>
                                         <td width="92" align="left" class="FontText"><%: row["WinnerTeam"] %></td>
                                     </tr>
                                     <% } //foreach %>

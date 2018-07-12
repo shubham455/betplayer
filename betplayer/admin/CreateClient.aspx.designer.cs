@@ -40,33 +40,6 @@ namespace betplayer.admin {
         protected global::System.Web.UI.WebControls.TextBox txtClientlimit;
         
         /// <summary>
-        /// txtAgentlimit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgentlimit;
-        
-        /// <summary>
-        /// txtAgentShare control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgentShare;
-        
-        /// <summary>
-        /// txtAgentShare2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgentShare2;
-        
-        /// <summary>
         /// txtClientShare control.
         /// </summary>
         /// <remarks>

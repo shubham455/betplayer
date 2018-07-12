@@ -49,15 +49,6 @@ namespace betplayer.admin {
         protected global::System.Web.UI.WebControls.TextBox txtAgentlimit;
         
         /// <summary>
-        /// txtSuperAgentlimit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSuperAgentlimit;
-        
-        /// <summary>
         /// txtAgentShare control.
         /// </summary>
         /// <remarks>
@@ -65,15 +56,6 @@ namespace betplayer.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAgentShare;
-        
-        /// <summary>
-        /// txtSuperAgentShare control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSuperAgentShare;
         
         /// <summary>
         /// txtMobileApp control.
@@ -112,15 +94,6 @@ namespace betplayer.admin {
         protected global::System.Web.UI.HtmlControls.HtmlInputText MatchCommissionAgent;
         
         /// <summary>
-        /// Text1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
-        
-        /// <summary>
         /// SessionCommissionAgent control.
         /// </summary>
         /// <remarks>
@@ -128,15 +101,6 @@ namespace betplayer.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText SessionCommissionAgent;
-        
-        /// <summary>
-        /// Text2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
         
         /// <summary>
         /// btnSave control.

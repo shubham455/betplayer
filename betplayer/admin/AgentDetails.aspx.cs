@@ -29,13 +29,16 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From AgentMaster where CreatedBy = '"+Session["Admincode"]+"'";
+                string s = "Select * From AgentMaster where CreatedBy = '" + Session["Admincode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 adp.Fill(dt);
-                DateTime DateFromDB = Convert.ToDateTime(dt.Rows[0]["Date"]);
-                Date(DateFromDB);
+                if (dt.Rows.Count > 0)
+                {
+                    DateTime DateFromDB = Convert.ToDateTime(dt.Rows[0]["Date"]);
+                    Date(DateFromDB);
+                }
             }
         }
 

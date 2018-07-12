@@ -16,36 +16,6 @@ namespace betplayer.admin
         {
 
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s3 = "Select agentshare,AgentLimit From AgentMaster where AgentID = '" + Session["AgentID"] + "'";
-                MySqlCommand cmd3 = new MySqlCommand(s3, cn);
-                MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);
-                DataTable dt3 = new DataTable();
-                adp3.Fill(dt3);
-
-                int AgentLimit = Convert.ToInt32(dt3.Rows[0]["Agentlimit"]);
-                decimal Total = 0;
-                string s4 = "Select * From ClientMaster where CreatedBy = '" + Session["Agentcode"] + "'";
-                MySqlCommand cmd4 = new MySqlCommand(s4, cn);
-                MySqlDataAdapter adp4 = new MySqlDataAdapter(cmd4);
-                DataTable dt4 = new DataTable();
-                adp4.Fill(dt4);
-
-                for (int i = 0; i < dt4.Rows.Count; i++)
-                {
-
-                    decimal ClientLimit = Convert.ToDecimal(dt4.Rows[i]["CurrentLimit"]);
-                    Total = Total + ClientLimit;
-
-                }
-
-                txtAgentlimit.Text = (AgentLimit - Total).ToString();
-
-                txtAgentShare2.Text = dt3.Rows[0]["agentshare"].ToString();
-            }
         }
 
             protected void Submit_Click(object sender, EventArgs e)
@@ -69,7 +39,7 @@ namespace betplayer.admin
                     else
                     {
                     rdr.Close();
-                    string s = "insert into ClientMaster(Name,ContactNo,Password,Client_limit,Currentlimit,FixLimit,Agent_Share,mobileApp,SessionCommisionType,Status,CreatedBy,Date,Mode,MatchCommision,SessionCommision) values (@Name,@Contact_No,@Password,@Clientlimit,@Currentlimit,@FixLimit,@Agentshare,@MobileAppAmount,@SessionType,@Status,@CreatedBy,@Date,@Mode); SELECT LAST_INSERT_ID()";
+                    string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Currentlimit,FixLimit,mobileApp,Session_Commision_Type,Status,CreatedBy,Date,Mode) values (@Name,@Contact_No,@Password,@Clientlimit,@Currentlimit,@FixLimit,@MobileApp,@SessionType,@Status,@CreatedBy,@Date,@Mode); SELECT LAST_INSERT_ID()";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
 
                     cmd.Parameters.AddWithValue("@Name", txtname.Text);
@@ -77,19 +47,19 @@ namespace betplayer.admin
                     cmd.Parameters.AddWithValue("@Password", strNewPassword1);
                     cmd.Parameters.AddWithValue("@Clientlimit", txtClientlimit.Text);
                     cmd.Parameters.AddWithValue("@CurrentLimit", txtClientlimit.Text);
-                    cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
                     cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
                     cmd.Parameters.AddWithValue("@Status", "Active");
                     cmd.Parameters.AddWithValue("@CreatedBy", Session["Admincode"]);
                     cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
                     cmd.Parameters.AddWithValue("@Mode", "Admin");
                     cmd.Parameters.AddWithValue("@FixLimit", txtClientlimit.Text);
+                    cmd.Parameters.AddWithValue("@MobileApp", "Yes" );
 
                     int ID = Convert.ToInt16(cmd.ExecuteScalar());
                     string update = "Update ClientMaster Set Code = 'C" + ID + "'where ClientID = '" + ID + "' ";
                     MySqlCommand cmd1 = new MySqlCommand(update, cn);
                     cmd1.ExecuteNonQuery();
-                    Response.Redirect("~/Agent/ClientDetails.aspx?msg=Add");
+                    Response.Redirect("~/Admin/ClientDetails.aspx?msg=Add");
                 }
                 }
             }

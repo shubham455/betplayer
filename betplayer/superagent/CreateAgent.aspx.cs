@@ -44,8 +44,9 @@ namespace betplayer.Super_Agent
                 }
 
                 txtSuperAgentlimit.Text = (SuperAgentLimit - Total).ToString();
-
                 txtSuperAgentShare.Text = dt3.Rows[0]["myshare"].ToString();
+                txtSuperAgentmobileapp.Text = dt3.Rows[0]["mymobAmount"].ToString();
+
                 Text1.Value = dt3.Rows[0]["MatchCommision"].ToString();
                 Text2.Value = dt3.Rows[0]["SessionCommision"].ToString();
             }

@@ -13,15 +13,29 @@ namespace betplayer.superagent
     public partial class MatchAndPositionSPosition : System.Web.UI.Page
     {
         private DataTable dt;
+        private DataTable ClientTable = new DataTable();
         private DataTable runTable;
-        public DataTable MatchesDataTable { get { return dt; } }
+        public DataTable MatchesDataTable { get { return ClientTable; } }
         public DataTable runTable1 { get { return runTable; } }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-           
+            ClientTable.Columns.Add(new DataColumn("SessionID"));
+            ClientTable.Columns.Add(new DataColumn("Session"));
+            ClientTable.Columns.Add(new DataColumn("Runs"));
+            ClientTable.Columns.Add(new DataColumn("Amount"));
+            ClientTable.Columns.Add(new DataColumn("rate"));
+            ClientTable.Columns.Add(new DataColumn("Mode"));
+            ClientTable.Columns.Add(new DataColumn("dateTime"));
+            ClientTable.Columns.Add(new DataColumn("Team"));
+            ClientTable.Columns.Add(new DataColumn("clientID"));
+            ClientTable.Columns.Add(new DataColumn("Name"));
+            DataRow Clientrow = ClientTable.NewRow();
+
+
+
             runTable = new DataTable();
             runTable.Columns.Add(new DataColumn("RUNS"));
             runTable.Columns.Add(new DataColumn("AMOUNT"));
@@ -39,8 +53,7 @@ namespace betplayer.superagent
                 adp.Fill(dt);
                 string TeamA1 = dt.Rows[0]["TeamA"].ToString();
                 string TeamB1 = dt.Rows[0]["TeamB"].ToString();
-                Team1.Value = TeamA1;
-                Team2.Value = TeamB1;
+                
 
                 string s11 = "Select AgentID,code From AgentMaster where CreatedBy = '" + Session["SuperAgentcode"] + "'";
                 MySqlCommand cmd11 = new MySqlCommand(s11, cn);
@@ -94,6 +107,16 @@ namespace betplayer.superagent
                                     runs, Amount,
                                     AgentShare1).ToString();
                                 runTable.Rows.Add(row.ItemArray);
+                            }
+
+                            if (dt.Rows.Count > 0)
+                            {
+                                IEnumerable<DataRow> orderedRows = dt.AsEnumerable();
+                                DataTable TempClientTable = orderedRows.CopyToDataTable();
+                                foreach (DataRow row in TempClientTable.Rows)
+                                {
+                                    ClientTable.Rows.Add(row.ItemArray);
+                                }
                             }
 
                         }
@@ -167,6 +190,8 @@ namespace betplayer.superagent
                                         Amount,
                                         AgentShare1).ToString();
                                 }
+                                
+
                             }
                         }
                     }

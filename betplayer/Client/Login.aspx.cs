@@ -73,7 +73,7 @@ namespace betplayer.Client
                         int ClientID = Convert.ToInt16(dt.Rows[0]["ClientID"]);
                         string  status = (dt.Rows[0]["status"]).ToString();
                         Decimal ClientLimit = Convert.ToDecimal(dt.Rows[0]["Client_Limit"]);
-                        if(ClientLimit > 200 && status == "active")
+                        if(ClientLimit > 200 && status == "Active")
                         {
                             Session["ClientID"] = ClientID;
                             Session["clientUsername"] = txtusername.Text;

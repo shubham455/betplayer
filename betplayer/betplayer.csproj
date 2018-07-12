@@ -82,6 +82,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\UpdateAgentlimit.aspx" />
+    <Content Include="admin\UpdateClientLimit.aspx" />
+    <Content Include="admin\Updatesuperagentlimit.aspx" />
     <Content Include="PowerUser\AddMatch.aspx" />
     <Content Include="PowerUser\AddMatchManually.aspx" />
     <Content Include="admin\AgentDetails.aspx" />
@@ -594,6 +597,7 @@
     <Content Include="admin\js\LiveMatch.js" />
     <Content Include="admin\js\RunnerUpdate.js" />
     <Content Include="admin\js\SessionUpdate.js" />
+    <Content Include="PowerUser\Homepage.aspx" />
     <Content Include="PowerUser\img\404.png" />
     <Content Include="PowerUser\img\500.png" />
     <Content Include="PowerUser\img\avatar-mini.png" />
@@ -2219,6 +2223,9 @@
     <Content Include="PowerUser\assets\jquery-slimscroll\slimScroll.jquery.json" />
     <Content Include="Agent\clientLimit.ashx" />
     <Content Include="PowerUser\Session.ashx" />
+    <Content Include="admin\clientlimit.ashx" />
+    <Content Include="admin\agentlimit.ashx" />
+    <Content Include="admin\superagentlimit.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <Content Include="superagent\Agentlimit.ashx" />
@@ -2319,6 +2326,36 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\agentlimit.ashx.cs">
+      <DependentUpon>agentlimit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\clientlimit.ashx.cs">
+      <DependentUpon>clientlimit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\superagentlimit.ashx.cs">
+      <DependentUpon>superagentlimit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\UpdateAgentlimit.aspx.cs">
+      <DependentUpon>UpdateAgentlimit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\UpdateAgentlimit.aspx.designer.cs">
+      <DependentUpon>UpdateAgentlimit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\UpdateClientLimit.aspx.cs">
+      <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\UpdateClientLimit.aspx.designer.cs">
+      <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Updatesuperagentlimit.aspx.cs">
+      <DependentUpon>Updatesuperagentlimit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Updatesuperagentlimit.aspx.designer.cs">
+      <DependentUpon>Updatesuperagentlimit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Agent\clientLimit.ashx.cs">
       <DependentUpon>clientLimit.ashx</DependentUpon>
     </Compile>
@@ -2404,6 +2441,13 @@
       <DependentUpon>EditMatches.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\KeyEventArgs.cs" />
+    <Compile Include="PowerUser\Homepage.aspx.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\Homepage.aspx.designer.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PowerUser\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
