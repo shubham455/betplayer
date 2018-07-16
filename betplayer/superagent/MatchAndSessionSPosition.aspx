@@ -270,7 +270,7 @@
     <script type="text/javascript">
          <!--
         function Redirect(value) {
-            var matchID = document.getElementById("ContentplaceHolder1_apiID").value;
+            var matchID = document.getElementById("ContentPlaceHolder_apiID").value;
             window.location = "MatchAndSessionPosition.aspx?MatchID=" + matchID;
     }
          //-->

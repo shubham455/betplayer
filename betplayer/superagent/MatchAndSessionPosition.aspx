@@ -256,11 +256,12 @@
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/LiveMatch.js"></script>
     <script type="text/javascript">
-         <!--
+         
         function Redirect(value) {
-            var matchid = document.getElementById("ContentPlaceholder1_apiID").value
-            window.location = "MatchAndSessionSPosition.aspx?MatchID="+matchid+" && Session=" + value;
+            var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
+            console.log(matchid);
+            window.location = "MatchAndSessionSPosition.aspx?MatchID="+matchid+"&&Session=" + value;
             }
-         //-->
+         
       </script>
 </asp:Content>

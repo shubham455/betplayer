@@ -16,7 +16,7 @@ namespace betplayer.Client
     /// </summary>
     public class AddDataToSession : IHttpHandler, IReadOnlySessionState
     {
-
+        private DataTable runTable;
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/json";
@@ -30,7 +30,7 @@ namespace betplayer.Client
                         status = "success",
                         Result = Result
                     }));
-               else if (Result == "unsuccess")
+                else if (Result == "unsuccess")
                     context.Response.Write(new JavaScriptSerializer().Serialize(new
                     {
                         status = "unsuccess",
@@ -70,6 +70,7 @@ namespace betplayer.Client
         }
         private string AddEntryToSession(HttpContext context, int ClientID)
         {
+
             string Session = context.Request["Session"].ToString();
             Decimal Amount = Convert.ToDecimal(context.Request["Amount"]);
             Decimal Rate = Convert.ToDecimal(context.Request["Rate"]);
@@ -93,7 +94,7 @@ namespace betplayer.Client
                     Decimal ClientLimit1 = Convert.ToDecimal(dt.Rows[0]["Client_Limit"]);
 
 
-                    string CheckSession = "Select * From Session where matchID = '" + MatchID + "' order by DateTime DESC";
+                    string CheckSession = "Select * From Session where matchID = '" + MatchID + "' and clientID = '" + ClientID + "' order by DateTime DESC";
                     MySqlCommand Sessioncmd = new MySqlCommand(CheckSession, cn);
                     MySqlDataAdapter Sessionadp = new MySqlDataAdapter(Sessioncmd);
                     DataTable Sessiondt = new DataTable();
@@ -109,95 +110,238 @@ namespace betplayer.Client
                         string mode = Sessiondt.Rows[0]["Mode"].ToString();
                         int run = Convert.ToInt16(Sessiondt.Rows[0]["Runs"]);
                         FinalAmount1 = Position;
-                        if (mode != Mode )
+                        if (mode != Mode)
                         {
                             if (run < Run)
                             {
-                                FinalAmount = lastAmount - Amount;
+                                FinalAmount = Position + Amount;
                             }
                             else if (run > Run)
                             {
-                                FinalAmount = lastAmount - Amount;
+                                FinalAmount = Position - Amount;
                             }
                             else if (run == Run)
                             {
-                                FinalAmount = lastAmount - Amount;
+                                FinalAmount = Position - Amount;
                             }
 
                         }
                         else if (mode == Mode)
                         {
-                            FinalAmount = lastAmount - Amount;
-                            
+                            FinalAmount = FinalAmount1 - Amount;
+
                         }
 
                     }
                     else
                     {
                         FinalAmount = Amount * -1;
-                        
+
+                    }
+                    Decimal CheckClientAmount = FinalAmount;
+
+
+
+
+
+                    string s = "Insert Into Session (ClientID,Session, Amount, Runs,Rate, Mode, DateTime, MatchID,Team,Position) values (@ClientID,@Session,@Amount,@Run,@Rate,@Mode,@DateTime,@MatchID,@Team,@Position); SELECT LAST_INSERT_ID()";
+                    MySqlCommand cmd = new MySqlCommand(s, cn);
+                    cmd.Parameters.AddWithValue("@ClientID", ClientID);
+                    cmd.Parameters.AddWithValue("@Session", Session);
+                    cmd.Parameters.AddWithValue("@Amount", Amount);
+                    cmd.Parameters.AddWithValue("@Run", Run);
+                    cmd.Parameters.AddWithValue("@Rate", Rate);
+                    cmd.Parameters.AddWithValue("@Mode", Mode);
+                    cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@MatchID", MatchID);
+                    cmd.Parameters.AddWithValue("@Team", Team);
+                    cmd.Parameters.AddWithValue("@Position", CheckClientAmount);
+
+                    int ID = Convert.ToInt16(cmd.ExecuteScalar());
+
+
+                    string s1 = "Select Client_Limit From ClientMaster where ClientID = '" + ClientID + "'";
+                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
+                    MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
+                    DataTable dt1 = new DataTable();
+                    adp1.Fill(dt1);
+
+                    decimal ClientLimit = Convert.ToDecimal(dt1.Rows[0]["Client_Limit"]);
+
+                    if (Mode == "Y")
+                    {
+                        decimal deductedAmount = ClientLimit - Amount;
+                        double dValue = double.Parse(deductedAmount.ToString());
+
+                        string s2 = "Update ClientMaster Set Client_Limit = '" + dValue + "' where ClientId = '" + ClientID + "'";
+                        MySqlCommand cmd2 = new MySqlCommand(s2, cn);
+                        cmd2.ExecuteNonQuery();
+                    }
+                    else if (Mode == "N")
+                    {
+                        decimal CalculateAmount = Rate * Amount;
+                        decimal deductedAmount = ClientLimit - CalculateAmount;
+                        double dValue = double.Parse(deductedAmount.ToString());
+
+                        string s2 = "Update ClientMaster Set Client_Limit = '" + dValue + "' where ClientId = '" + ClientID + "'";
+                        MySqlCommand cmd2 = new MySqlCommand(s2, cn);
+                        cmd2.ExecuteNonQuery();
                     }
 
-                   
+                    //SessionCalculation
 
-                    Decimal CheckClientAmount = FinalAmount1 - FinalAmount;
+                    runTable = new DataTable();
+                    runTable.Columns.Add(new DataColumn("RUNS"));
+                    runTable.Columns.Add(new DataColumn("AMOUNT"));
 
-                    
-                     string s = "Insert Into Session (ClientID,Session, Amount, Runs,Rate, Mode, DateTime, MatchID,Team,Position) values (@ClientID,@Session,@Amount,@Run,@Rate,@Mode,@DateTime,@MatchID,@Team,@Position)";
-                        MySqlCommand cmd = new MySqlCommand(s, cn);
-                        cmd.Parameters.AddWithValue("@ClientID", ClientID);
-                        cmd.Parameters.AddWithValue("@Session", Session);
-                        cmd.Parameters.AddWithValue("@Amount", Amount);
-                        cmd.Parameters.AddWithValue("@Run", Run);
-                        cmd.Parameters.AddWithValue("@Rate", Rate);
-                        cmd.Parameters.AddWithValue("@Mode", Mode);
-                        cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
-                        cmd.Parameters.AddWithValue("@MatchID", MatchID);
-                        cmd.Parameters.AddWithValue("@Team", Team);
-                        cmd.Parameters.AddWithValue("@Position", CheckClientAmount);
+                    string session = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.ClientID = '" + ClientID + "' && Session.MatchID = '" + MatchID + "' && Session.Session = '" + Session + "'";
+                    MySqlCommand sessioncmd = new MySqlCommand(session, cn);
+                    MySqlDataAdapter sessionadp1 = new MySqlDataAdapter(sessioncmd);
+                    DataTable sessiondt = new DataTable();
+                    sessionadp1.Fill(sessiondt);
 
-                        cmd.ExecuteNonQuery();
-
-
-                        string s1 = "Select Client_Limit From ClientMaster where ClientID = '" + ClientID + "'";
-                        MySqlCommand cmd1 = new MySqlCommand(s1, cn);
-                        MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
-                        DataTable dt1 = new DataTable();
-                        adp1.Fill(dt1);
-
-                        decimal ClientLimit = Convert.ToDecimal(dt1.Rows[0]["Client_Limit"]);
-
-                        if (Mode == "Y")
+                    for (int j = 0; j < sessiondt.Rows.Count; j++)
+                    {
+                        if (j == 0)
                         {
-                            decimal deductedAmount = ClientLimit - Amount;
-                            double dValue = double.Parse(deductedAmount.ToString());
 
-                            string s2 = "Update ClientMaster Set Client_Limit = '" + dValue + "' where ClientId = '" + ClientID + "'";
-                            MySqlCommand cmd2 = new MySqlCommand(s2, cn);
-                            cmd2.ExecuteNonQuery();
+                            int runs = Convert.ToInt16(sessiondt.Rows[j]["Runs"]);
+                            int SessionAmount = Convert.ToInt32(sessiondt.Rows[j]["Amount"]);
+                            Decimal SessionRate = Convert.ToDecimal(sessiondt.Rows[j]["Rate"]);
+                            string SessionMode = sessiondt.Rows[j]["Mode"].ToString();
+
+
+                            for (int i = runs + 5; i >= runs + 5; i--)
+                            {
+
+                                DataRow row = runTable.NewRow();
+                                row["RUNS"] = i.ToString();
+                                row["Amount"] = CalculateAmount(SessionMode,
+                                    i, 0,
+                                    SessionRate,
+                                    runs, SessionAmount).ToString();
+                                runTable.Rows.Add(row.ItemArray);
+                            }
+
                         }
-                        else if (Mode == "N")
+                        else
                         {
-                            decimal CalculateAmount = Rate * Amount;
-                            decimal deductedAmount = ClientLimit - CalculateAmount;
-                            double dValue = double.Parse(deductedAmount.ToString());
 
-                            string s2 = "Update ClientMaster Set Client_Limit = '" + dValue + "' where ClientId = '" + ClientID + "'";
-                            MySqlCommand cmd2 = new MySqlCommand(s2, cn);
-                            cmd2.ExecuteNonQuery();
+                            int runs = Convert.ToInt32(sessiondt.Rows[j]["Runs"]);
+                            int SessionAmount1 = Convert.ToInt32(sessiondt.Rows[j]["Amount"]);
+                            Decimal SessionRate1 = Convert.ToDecimal(sessiondt.Rows[j]["Rate"]);
+                            string SessionMode1 = sessiondt.Rows[j]["Mode"].ToString();
+
+
+                            int highVal = Convert.ToInt32(runTable.Rows[0]["Runs"]);
+                            int lowVal = Convert.ToInt32(runTable.Rows[runTable.Rows.Count - 1]["Runs"]);
+                            if (runs > highVal)
+                            {
+                                for (int i = runs + 5; i > highVal; i--)
+                                {
+                                    DataRow row = runTable.NewRow();
+                                    row["RUNS"] = i.ToString();
+                                    row["Amount"] = runTable.Rows[0]["Amount"];
+
+                                    runTable.Rows.InsertAt(row, (runs + 5 - i));
+                                }
+                            }
+                            else if ((runs - 5) < lowVal)
+                            {
+                                for (int i = lowVal - 1; i >= runs - 5; i--)
+                                {
+                                    DataRow row = runTable.NewRow();
+                                    row["RUNS"] = i.ToString();
+                                    row["Amount"] = runTable.Rows[runTable.Rows.Count - 1]["Amount"];
+
+                                    runTable.Rows.InsertAt(row, ((highVal - lowVal) + (lowVal - i)));
+                                }
+                            }
+
+                            for (int i = 0; i < runTable.Rows.Count; i++)
+                            {
+                                DataRow row = runTable.Rows[i];
+                                if (Convert.ToInt16(runTable.Rows[i]["Runs"]) >= Convert.ToInt16(sessiondt.Rows[0]["Runs"]) &&
+                                    Convert.ToInt16(runTable.Rows[i]["Runs"]) < Convert.ToInt16(sessiondt.Rows[j]["Runs"]))
+                                {
+
+
+                                    row["AMOUNT"] = CalculateAmount(SessionMode1,
+                                        Convert.ToInt16(runTable.Rows[i]["Runs"]),
+                                        Convert.ToDecimal(runTable.Rows[i]["Amount"]),
+                                        SessionRate1,
+                                        runs,
+                                        SessionAmount1
+                                        ).ToString();
+                                }
+                                else
+                                {
+                                    row["AMOUNT"] = CalculateAmount(SessionMode1,
+                                        Convert.ToInt16(runTable.Rows[i]["Runs"]),
+                                        Convert.ToDecimal(runTable.Rows[i]["Amount"]),
+                                        SessionRate1,
+                                        runs,
+                                        SessionAmount1
+                                        ).ToString();
+                                }
+                            }
                         }
-
-
-
-
-                        return "success";
                     }
-                
+                    decimal Amount12 = 0;
+                    for (int a = 0; a < runTable.Rows.Count; a++)
+                    {
+                        decimal runamount = Convert.ToDecimal(runTable.Rows[a]["Amount"]);
+                        if (runamount > Amount12)
+                        {
+                            Amount12 = runamount;
+                        }
+                    }
+                    string update = "update Session set position = '" + Amount12 + "' where SessionID = '" + ID + "' ";
+                    MySqlCommand updatecmd = new MySqlCommand(update, cn);
+                    updatecmd.ExecuteNonQuery();
+
+                }
             }
             catch (Exception e)
             {
                 return e.Message;
             }
+            return "success";
+        }
+        public Decimal CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount)
+        {
+
+
+            Decimal Difference = 0;
+
+            if (Initruns < runs)
+            {
+
+                if (Mode == "Y")
+                {
+                    Difference = Amount + InitAmount;
+                }
+                else if (Mode == "N")
+                {
+                    Difference = Amount * -1 + InitAmount;
+                }
+
+
+            }
+            if (Initruns >= runs)
+            {
+                if (Mode == "Y")
+                {
+                    Difference = Amount * Rate * -1 + InitAmount;
+                }
+                else if (Mode == "N")
+                {
+                    Difference = Amount * Rate + InitAmount;
+                }
+
+
+            }
+            return Difference;
         }
     }
 }

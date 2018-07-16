@@ -20,7 +20,7 @@ namespace betplayer.Client
             }
             else
             {
-            
+
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
@@ -47,6 +47,7 @@ namespace betplayer.Client
                         int Position2 = Convert.ToInt32(Runnerdt.Rows[0]["Position2"]);
 
                         int TotalPosition = 0;
+                        int SessionAmount = 0;
                         if (Position1 < 0 && Position2 < 0)
                         {
                             if (Position1 > Position2)
@@ -54,15 +55,18 @@ namespace betplayer.Client
                                 TotalPosition = Position2;
 
                                 int ClientLimit = (CurrentLimit + TotalPosition);
-                                lblAmount.InnerText = ClientLimit.ToString();
+                                SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
+                                int FinalClientLimit = ClientLimit - SessionAmount;
+                                lblAmount.InnerText = FinalClientLimit.ToString();
                                 updateClientlimit(ClientID, ClientLimit);
                             }
                             else if (Position2 > Position1)
                             {
                                 TotalPosition = Position1;
-
                                 int ClientLimit = (CurrentLimit + TotalPosition);
-                                lblAmount.InnerText = ClientLimit.ToString();
+                                SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
+                                int FinalClientLimit = ClientLimit - SessionAmount;
+                                lblAmount.InnerText = FinalClientLimit.ToString();
                                 updateClientlimit(ClientID, ClientLimit);
                             }
                         }
@@ -71,16 +75,19 @@ namespace betplayer.Client
                             if (Position1 < Position2)
                             {
                                 TotalPosition = CurrentLimit;
-                                int sessionamount =  Convert.ToInt32(SessionCalculation(ClientID));
-                                int ClientLimit = (CurrentLimit - sessionamount);
-                                lblAmount.InnerText = ClientLimit.ToString();
-                                updateClientlimit(ClientID, ClientLimit);
+                                int ClientLimit = (CurrentLimit);
+                                SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
+                                int FinalClientLimit = ClientLimit - SessionAmount;
+                                lblAmount.InnerText = FinalClientLimit.ToString();
+                                updateClientlimit(ClientID, ClientLimit); updateClientlimit(ClientID, ClientLimit);
                             }
                             else if (Position2 < Position1)
                             {
                                 TotalPosition = CurrentLimit;
                                 int ClientLimit = (CurrentLimit);
-                                lblAmount.InnerText = ClientLimit.ToString();
+                                SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
+                                int FinalClientLimit = ClientLimit - SessionAmount;
+                                lblAmount.InnerText = FinalClientLimit.ToString();
                                 updateClientlimit(ClientID, ClientLimit);
                             }
                         }
@@ -89,27 +96,33 @@ namespace betplayer.Client
                         {
                             TotalPosition = Position1;
                             int ClientLimit = (CurrentLimit + TotalPosition);
-                            lblAmount.InnerText = ClientLimit.ToString();
+                            SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
+                            int FinalClientLimit = ClientLimit - SessionAmount;
+                            lblAmount.InnerText = FinalClientLimit.ToString();
                             updateClientlimit(ClientID, ClientLimit);
                         }
                         else if (Position2 < 0)
                         {
                             TotalPosition = Position2;
                             int ClientLimit = (CurrentLimit + TotalPosition);
-                            lblAmount.InnerText = ClientLimit.ToString();
+                            SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
+                            int FinalClientLimit = ClientLimit - SessionAmount;
+                            lblAmount.InnerText = FinalClientLimit.ToString();
                             updateClientlimit(ClientID, ClientLimit);
                         }
                     }
                     else
                     {
+
                         int sessionamount = Convert.ToInt32(SessionCalculation(ClientID));
-                        int ClientLimit = (CurrentLimit - sessionamount);
-                        lblAmount.InnerText = (ClientLimit).ToString();
-                        updateClientlimit(ClientID, ClientLimit);
+                        int ClientLimit1 = (CurrentLimit - sessionamount);
+                        lblAmount.InnerText = (ClientLimit1).ToString();
+                        updateClientlimit(ClientID, ClientLimit1);
                     }
                 }
             }
         }
+
         public void updateClientlimit(int ClientID, int Amount)
         {
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
@@ -122,13 +135,13 @@ namespace betplayer.Client
 
             }
         }
-        public decimal  SessionCalculation(int ClientID)
+        public decimal SessionCalculation(int ClientID)
         {
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string CheckSession = "Select * From Session where ClientID = '" + ClientID + "' order by DateTime DESC";
+                string CheckSession = "Select * From Session where  ClientID = '" + ClientID + "' order by DateTime DESC";
                 MySqlCommand Sessioncmd = new MySqlCommand(CheckSession, cn);
                 MySqlDataAdapter Sessionadp = new MySqlDataAdapter(Sessioncmd);
                 DataTable Sessiondt = new DataTable();
@@ -136,7 +149,7 @@ namespace betplayer.Client
                 decimal Amount1 = 0;
                 if (Sessiondt.Rows.Count > 0)
                 {
-                    int lastAmount = Convert.ToInt32(Sessiondt.Rows[0]["Amount"]);
+                    decimal lastAmount = Convert.ToDecimal(Sessiondt.Rows[0]["Position"]);
                     Amount1 = lastAmount;
                 }
                 else

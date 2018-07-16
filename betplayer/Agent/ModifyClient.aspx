@@ -73,6 +73,9 @@
                                                             <td align="left" valign="middle">
                                                                 <asp:TextBox CssClass="textbox" ID="txtclientLimit" runat="server" /></td>
                                                             <td align="left" valign="middle">&nbsp;</td>
+                                                            <td>
+                                                             <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" Text="" PlaceHolder="305653&nbsp;&nbsp; से ज्यादा नहीं भर सकते। " ReadOnly="true" />
+                                                           </td>
                                                         </tr>
                                                         <tr>
                                                             <td height="30" align="left" class="welcome">&nbsp;</td>
@@ -120,9 +123,9 @@
                                                             <td align="left" class="welcome">&nbsp;</td>
                                                             <td height="30" align="left" valign="middle" class="welcome">Agent Share %</td>
                                                             <td align="left">
-                                                                <asp:TextBox CssClass="textbox" ID="txtAgentshare" runat="server" /></td>
+                                                                <asp:TextBox CssClass="textbox" ID="txtAgentshare" AutoPostBack="true" OnTextChanged="txtAgentshare_TextChanged" runat="server" /></td>
                                                             <td align="left" valign="middle">
-                                                                <input name="MatchShare2" type="text" class="textbox" id="MatchShare2" onblur="showCustomer(this.value)" value="50.00" readonly=""></td>
+                                                                <input name="MatchShare2" type="text" runat="server" class="textbox" id="txtAgentshare2"  onblur="showCustomer(this.value)" value="" readonly=""></td>
                                                         </tr>
                                                         <tr>
                                                             <td align="left" class="welcome">&nbsp;</td>

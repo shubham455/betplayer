@@ -10,6 +10,6 @@
 namespace betplayer.admin {
     
     
-    public partial class AllAgentLedger {
+    public partial class AllSuperAgentLedger {
     }
 }

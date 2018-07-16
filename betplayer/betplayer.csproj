@@ -82,6 +82,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\AgentLedger.aspx" />
+    <Content Include="admin\AllAgentLedger.aspx" />
+    <Content Include="admin\AllClientLedger.aspx" />
+    <Content Include="admin\ClientLedger.aspx" />
+    <Content Include="admin\MatchAndSessionSPosition.aspx" />
+    <Content Include="admin\MatchPlusMinusDisplay.aspx" />
+    <Content Include="admin\MatchplusminusSelect.aspx" />
+    <Content Include="admin\MatchSessionPlusminusDisplay.aspx" />
+    <Content Include="admin\MatchSessionPlusMinusSelect.aspx" />
+    <Content Include="admin\PlusMinusSelect.aspx" />
+    <Content Include="admin\SessionPlusMinusDisplay.aspx" />
+    <Content Include="admin\SessionPlusMinusSelect.aspx" />
     <Content Include="admin\UpdateAgentlimit.aspx" />
     <Content Include="admin\UpdateClientLimit.aspx" />
     <Content Include="admin\Updatesuperagentlimit.aspx" />
@@ -1236,7 +1248,6 @@
     <Content Include="admin\My_Ledger.aspx" />
     <Content Include="admin\NewCollection.aspx" />
     <Content Include="admin\SecureCodeReport.aspx" />
-    <Content Include="admin\SessionPlusMinusSelect.aspx" />
     <Content Include="admin\Settings.aspx" />
     <Content Include="admin\SportsBetting.aspx" />
     <Content Include="admin\SportsDetails.aspx" />
@@ -2326,11 +2337,95 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\AgentLedger.aspx.cs">
+      <DependentUpon>AgentLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AgentLedger.aspx.designer.cs">
+      <DependentUpon>AgentLedger.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\agentlimit.ashx.cs">
       <DependentUpon>agentlimit.ashx</DependentUpon>
     </Compile>
+    <Compile Include="admin\AllAgentLedger.aspx.cs">
+      <DependentUpon>AllAgentLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AllAgentLedger.aspx.designer.cs">
+      <DependentUpon>AllAgentLedger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AllClientLedger.aspx.cs">
+      <DependentUpon>AllClientLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AllClientLedger.aspx.designer.cs">
+      <DependentUpon>AllClientLedger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ClientLedger.aspx.cs">
+      <DependentUpon>ClientLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ClientLedger.aspx.designer.cs">
+      <DependentUpon>ClientLedger.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\clientlimit.ashx.cs">
       <DependentUpon>clientlimit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\MatchAndSessionSPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\MatchAndSessionSPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\MatchPlusMinusDisplay.aspx.cs">
+      <DependentUpon>MatchPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\MatchPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\MatchplusminusSelect.aspx.cs">
+      <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\MatchplusminusSelect.aspx.designer.cs">
+      <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\MatchSessionPlusminusDisplay.aspx.cs">
+      <DependentUpon>MatchSessionPlusminusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\MatchSessionPlusminusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusminusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\MatchSessionPlusMinusSelect.aspx.cs">
+      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\MatchSessionPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\PlusMinusSelect.aspx.cs">
+      <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\PlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\SessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\SessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\SessionPlusMinusSelect.aspx.cs">
+      <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\SessionPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\superagentlimit.ashx.cs">
       <DependentUpon>superagentlimit.ashx</DependentUpon>
@@ -2646,13 +2741,6 @@
     </Compile>
     <Compile Include="admin\SecureCodeReport.aspx.designer.cs">
       <DependentUpon>SecureCodeReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\SessionPlusMinusSelect.aspx.cs">
-      <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\SessionPlusMinusSelect.aspx.designer.cs">
-      <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Settings.aspx.cs">
       <DependentUpon>Settings.aspx</DependentUpon>

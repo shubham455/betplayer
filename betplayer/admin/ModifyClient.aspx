@@ -74,6 +74,20 @@
                                                                 <asp:TextBox CssClass="textbox" ID="txtFixedLimit" runat="server" /></td>
                                                             <td align="left" valign="middle">&nbsp;</td>
                                                         </tr>
+                                                         <tr>
+                                                            <td align="left" class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">Client Share %</td>
+                                                            <td align="left">
+                                                                <asp:TextBox CssClass="textbox" ID="txtClientshare" runat="server" /></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>&nbsp;</td>
+                                                            <td height="30" align="left">Password</td>
+                                                            <td align="left">
+                                                                <asp:TextBox CssClass="textbox" ID="txtPassword" runat="server" /></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
                                                         <tr>
                                                             <td height="30" align="left" class="welcome">&nbsp;</td>
                                                             <td height="30" align="left">Mobile App</td>
@@ -85,23 +99,10 @@
                                                                 </asp:DropDownList></td>
                                                             <td align="left">&nbsp;</td>
                                                         </tr>
-
+                                                       
                                                         <tr>
                                                             <td>&nbsp;</td>
-                                                            <td height="30" align="left" valign="middle"><strong>Settings</strong></td>
-                                                            <td>&nbsp;</td>
-                                                            <td>&nbsp;</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>&nbsp;</td>
-                                                            <td height="30" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password</td>
-                                                            <td align="left">
-                                                                <asp:TextBox CssClass="textbox" ID="txtPassword" runat="server" /></td>
-                                                            <td align="left">&nbsp;</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>&nbsp;</td>
-                                                            <td height="30" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status</td>
+                                                            <td height="30" align="left">Status</td>
                                                             <td align="left">
                                                                 <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" >
                                                                     <asp:ListItem Text="Please Select" Value="0">Commission Type</asp:ListItem>
@@ -110,38 +111,13 @@
                                                                 </asp:DropDownList></td>
                                                             <td align="left">&nbsp;</td>
                                                         </tr>
+                                                                                                                
+                                                        
+                                                       
+                                                        
                                                         <tr>
                                                             <td align="left" class="welcome">&nbsp;</td>
-                                                            <td height="30" align="left" valign="middle" class="welcome"><strong>Commission &amp; Share </strong></td>
-                                                            <td align="left">&nbsp;</td>
-                                                            <td align="left" valign="middle" style="font-size: 13px; color: #F00"><strong>My Share %</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align="left" class="welcome">&nbsp;</td>
-                                                            <td height="30" align="left" valign="middle" class="welcome">Agent Share %</td>
-                                                            <td align="left">
-                                                                <asp:TextBox CssClass="textbox" ID="txtAgentshare" runat="server" /></td>
-                                                            <td align="left" valign="middle">
-                                                                <input name="MatchShare2" type="text" class="textbox" id="MatchShare2" onblur="showCustomer(this.value)" value="50.00" readonly=""></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align="left" class="welcome">&nbsp;</td>
-                                                            <td height="30" align="left" valign="middle" class="welcome">Client Share %</td>
-                                                            <td align="left">
-                                                                <asp:TextBox CssClass="textbox" ID="txtClientshare" runat="server" /></td>
-                                                            <td align="left">&nbsp;</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align="left" class="welcome">
-                                                                <p>&nbsp;</p>
-                                                            </td>
-                                                            <td height="30" align="left" valign="middle" class="welcome"><strong>Client Commission Percentage</strong></td>
-                                                            <td align="left">&nbsp;</td>
-                                                            <td align="left">&nbsp;</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align="left" class="welcome">&nbsp;</td>
-                                                            <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session Commission Type</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">Session Commission Type</td>
                                                             <td align="left" valign="middle">
                                                                 <asp:DropDownList ID="SessionDropDown" runat="server" class="btn btn-primary dropdown-toggle" AppendDataBoundItems="True">
                                                                     <asp:ListItem Text="Please Select" Value="0">Commission Type</asp:ListItem>
@@ -152,22 +128,7 @@
                                                                 </td>
                                                             <td align="left" valign="middle">&nbsp;</td>
                                                         </tr>
-                                                        <tr id="divMatchCommission" style="visibility: visible;">
-                                                            <td align="left" class="welcome">&nbsp;</td>
-                                                            <td height="30" align="left" valign="middle" class="welcome">
-                                                                <span id="CommHeading">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Match Commission</span>
-                                                            </td>
-                                                            <td align="left">
-                                                                <input name="MatchCommissionClient" type="text" class="textbox" id="MatchCommissionClient" value="0.00"></td>
-                                                            <td align="left">&nbsp;</td>
-                                                        </tr>
-                                                        <tr id="divSessionCommission" style="visibility: visible;">
-                                                            <td align="left" class="welcome">&nbsp;</td>
-                                                            <td height="30" align="left" valign="middle" class="welcome">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session Commission</td>
-                                                            <td align="left">
-                                                                <input name="SessionCommissionClient" type="text" class="textbox" id="SessionCommissionClient" value="0.00"></td>
-                                                            <td align="left">&nbsp;</td>
-                                                        </tr>
+                                                       
                                                     </tbody>
                                                 </table>
                                             </td>

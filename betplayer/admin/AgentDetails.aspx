@@ -134,7 +134,7 @@
                                                 <div class="btn-group">
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="AgentDetailsModify.php?id=17"><i class="icon-pencil"></i>Edit</a></li>
+                                                        <li><a href="ModifyAgent.aspx?id=<%:row["AgentID"] %>"><i class="icon-pencil"></i>Edit</a></li>
                                                         <li><a onclick="CallHandler('<%:row["AgentID"] %>');"><i class="icon-trash"></i>Delete</a></li>
                                                         <li><a onclick="ChangesInStatus('<%:row["AgentID"] %>');"><i class="icon-ban-circle"></i>
                                                             InActive                              </a></li>
@@ -149,9 +149,33 @@
                                             <td align="left" class=" "><%:row["Name"] %></td>
                                             <td align="left" class=" "><%:row["ContactNO"] %></td>
                                             <td align="left" class=" "><%= Date(Convert.ToDateTime(row["Date"]))%></td>
-                                            <td align="left" class=" "><%:row["AgentID"] %></td>
+                                            <td align="left" class=" "><%:row["Agentshare"] %></td>
                                             <td align="left" class=" "><%:row["Password"] %></td>
-                                            <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
+                                             <% if (row["SessionCommisionType"].ToString() == "Bet By Bet") %>
+
+                                                <% { %>
+
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
+
+
+                                                <% } %>
+                                                <% else if (row["SessionCommisionType"].ToString() == "No Commision") %>
+
+                                                <% { %>
+
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">NOC</td>
+
+
+                                                <% } %>
+                                                <% else if (row["SessionCommisionType"].ToString() == "Only On Minus") %>
+
+                                                <% { %>
+
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">OOM</td>
+
+
+                                                <% } %>
+
                                             <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["MatchCommision"] %></td>
                                             <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["SessionCommision"] %></td>
                                             <td align="right" style="text-align: right;" class=" "><%:row["Fixlimit"] %></td>

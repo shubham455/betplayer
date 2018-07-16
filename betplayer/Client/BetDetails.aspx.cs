@@ -91,7 +91,7 @@ namespace betplayer.Client
                         lblAmount.Text = TotalAmount1.ToString();
                         if(Convert.ToInt32(lblAmount.Text) >0)
                         {
-                            lblAmount.ForeColor = System.Drawing.Color.Pink;
+                            lblAmount.ForeColor = System.Drawing.Color.Blue;
                         }
                         else if (Convert.ToInt32(lblAmount.Text) < 0)
                         {

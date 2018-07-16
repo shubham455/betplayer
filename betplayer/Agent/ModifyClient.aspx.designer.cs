@@ -49,6 +49,15 @@ namespace betplayer.Agent {
         protected global::System.Web.UI.WebControls.TextBox txtclientLimit;
         
         /// <summary>
+        /// txtAgentlimit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAgentlimit;
+        
+        /// <summary>
         /// DropDownMobileApp control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace betplayer.Agent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAgentshare;
+        
+        /// <summary>
+        /// txtAgentshare2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAgentshare2;
         
         /// <summary>
         /// txtClientshare control.

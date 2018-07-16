@@ -8,7 +8,7 @@ using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 
-namespace betplayer.Super_Agent
+namespace betplayer.SuperAgent
 {
     public partial class AllAgentLedger : System.Web.UI.Page
     {
@@ -64,7 +64,7 @@ namespace betplayer.Super_Agent
                 
                 for (int i = 0; i < SelectAgentdt.Rows.Count; i++)
                 {
-                    int AgentID = Convert.ToInt16(SelectAgentdt.Rows[i]["AgentID"]);
+                   int AgentID = Convert.ToInt16(SelectAgentdt.Rows[i]["AgentID"]);
 
                     string s = "Select * From AgentLedger where AgentID = '" + AgentID + "'";
                     MySqlCommand cmd = new MySqlCommand(s, cn);

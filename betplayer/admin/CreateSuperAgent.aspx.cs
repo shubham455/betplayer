@@ -44,7 +44,7 @@ namespace betplayer.admin
                     cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
                     cmd.Parameters.AddWithValue("@MobileAppAmount", txtMobileApp.Text);
                     cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
-                    cmd.Parameters.AddWithValue("@Status", "active");
+                    cmd.Parameters.AddWithValue("@Status", "Active");
                     cmd.Parameters.AddWithValue("@CreatedBy", Session["Admincode"]);
                     cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
                     cmd.Parameters.AddWithValue("@Mode", "Admin");

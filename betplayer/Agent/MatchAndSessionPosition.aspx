@@ -257,8 +257,8 @@
     <script type="text/javascript">
          <!--
         function Redirect(value) {
-            var MatchID = document.getElementById("ContentPlaceHolder1_apiID").value;
-            window.location = "MatchAndSessionSPosition.aspx?MatchID="+MatchID+" && Session=" + value;
+           var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
+            window.location = "MatchAndSessionSPosition.aspx?MatchID="+matchid+" &&Session=" + value;
             }
          //-->
       </script>
