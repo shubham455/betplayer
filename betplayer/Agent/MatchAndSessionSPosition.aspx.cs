@@ -43,7 +43,7 @@ namespace betplayer.Agent
                 string TeamB1 = dt.Rows[0]["TeamB"].ToString();
                
 
-                string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "'";
+                string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "' order by session.datetime DESC";
                 MySqlCommand cmd1 = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt = new DataTable();
@@ -74,7 +74,7 @@ namespace betplayer.Agent
 
 
 
-                        for (int i = runs + 5; i >= runs + 5; i--)
+                        for (int i = runs + 5; i >= runs - 5; i--)
                         {
 
                             DataRow row = runTable.NewRow();
@@ -109,7 +109,7 @@ namespace betplayer.Agent
                         Decimal AgentShare1 = AgentShare / 100;
                         int highVal = Convert.ToInt32(runTable.Rows[0]["Runs"]);
                         int lowVal = Convert.ToInt32(runTable.Rows[runTable.Rows.Count - 1]["Runs"]);
-                        if (runs > highVal)
+                        if ((runs+5) > highVal)
                         {
                             for (int i = runs + 5; i > highVal; i--)
                             {

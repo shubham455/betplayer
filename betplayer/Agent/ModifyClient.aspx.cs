@@ -97,29 +97,29 @@ namespace betplayer.Agent
                     MySqlDataReader rdr = Checkbetcmd.ExecuteReader();
                     if (rdr.Read())
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('You can not Edit Details During the Match.....');", true);
+                        rdr.Close();
+                        string s = "Select * From ClientMaster where ClientId = '" + Id + "' ";
+                        MySqlCommand cmd = new MySqlCommand(s, cn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adp.Fill(dt);
+                        string AgentShare = dt.Rows[0]["Agent_Share"].ToString();
+                        if (AgentShare == txtAgentshare.Text)
+                        {
+                            rdr.Close();
+                            Update();
 
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('You can not Edit Details During the Match.....');", true);
+                        }
                     }
                     else
                     {
                         rdr.Close();
 
-                        string s = "Update ClientMaster set Name = @Name,Contact_No= @Contact_No,Password=@Password,Client_limit=@Clientlimit,Agent_Share=@Agentshare,Client_Share=@Clientshare,Session_Commision_Type=@SessionType,Status=@Status,MobileApp = @MobileApp where ClientId = '" + Id + "' ";
-                        MySqlCommand cmd = new MySqlCommand(s, cn);
-
-
-                        cmd.Parameters.AddWithValue("@Name", txtName.Text);
-                        cmd.Parameters.AddWithValue("@Contact_No", txtContactNo.Text);
-                        cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                        cmd.Parameters.AddWithValue("@Clientlimit", txtclientLimit.Text);
-                        cmd.Parameters.AddWithValue("@Agentshare", txtAgentshare.Text);
-                        cmd.Parameters.AddWithValue("@Clientshare", txtClientshare.Text);
-                        cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
-                        cmd.Parameters.AddWithValue("@Status", DropDownstatus.SelectedItem.Text);
-                        cmd.Parameters.AddWithValue("@MobileApp", DropDownMobileApp.SelectedItem.Text);
-
-                        cmd.ExecuteNonQuery();
-                        Response.Redirect("ClientDetails.aspx?msg=Update");
+                        Update();
 
                     }
                 }
@@ -137,6 +137,31 @@ namespace betplayer.Agent
             {
                 txtAgentshare.Text = "";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Agent Share Do not Greater Than My Share.....');", true);
+            }
+        }
+        public void Update()
+        {
+            int Id = Convert.ToInt16(Request.QueryString["Id"]);
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+                string s = "Update ClientMaster set Name = @Name,Contact_No= @Contact_No,Password=@Password,Client_limit=@Clientlimit,Agent_Share=@Agentshare,Client_Share=@Clientshare,Session_Commision_Type=@SessionType,Status=@Status,MobileApp = @MobileApp where ClientId = '" + Id + "' ";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+
+
+                cmd.Parameters.AddWithValue("@Name", txtName.Text);
+                cmd.Parameters.AddWithValue("@Contact_No", txtContactNo.Text);
+                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                cmd.Parameters.AddWithValue("@Clientlimit", txtclientLimit.Text);
+                cmd.Parameters.AddWithValue("@Agentshare", txtAgentshare.Text);
+                cmd.Parameters.AddWithValue("@Clientshare", txtClientshare.Text);
+                cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@Status", DropDownstatus.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@MobileApp", DropDownMobileApp.SelectedItem.Text);
+
+                cmd.ExecuteNonQuery();
+                Response.Redirect("ClientDetails.aspx?msg=Update");
             }
         }
     }

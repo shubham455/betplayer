@@ -81,7 +81,7 @@ namespace betplayer.admin
             {
                 cn.Open();
                 string selected = Request.Form["checkbox"];
-                string s = "update  SuperAgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where superagentid in ("+selected+")";
+                string s = "update  SuperAgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' , Currentlimit = '0' where superagentid in ("+selected+")";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 cmd.ExecuteNonQuery();
                 BindData();

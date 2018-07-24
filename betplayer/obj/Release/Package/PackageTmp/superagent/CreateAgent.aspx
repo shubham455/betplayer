@@ -96,6 +96,9 @@
                                                         <td height="30" align="left" valign="middle" class="welcome">Mobile App</td>
                                                         <td align="left">
                                                             <asp:TextBox CssClass="textbox" ID="txtMobileApp" runat="server" Text="0" /></td>
+                                                      
+                                                         <td align="left">
+                                                            <asp:TextBox CssClass="textbox" ID="txtSuperAgentmobileapp" runat="server"  ReadOnly="true" /></td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr>

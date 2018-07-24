@@ -18,6 +18,7 @@ namespace betplayer.Client
         public DataTable LedgerTableOrdered;
         public DataTable runTable { get { return runtable; } }
         public DataTable runTable1 { get { return runtable1; } }
+        public Boolean emptyLedgerTable = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -191,26 +192,7 @@ namespace betplayer.Client
                 }
                 else
                 {
-                    string DateFromDB = "01-01-2000";
-                    DateTime oDate = DateTime.Parse(DateFromDB);
-                    row["Date"] = oDate;     //row["Date"] = datetime;
-                    
-                    row["Dabit"] = 0;
-                    row["Credit"] = 0;
-                    row["CollectionName"] = 0;
-                    row["Balance"] = 0;
-                    
-                    runTable.Rows.Add(row.ItemArray);
-
-                    DataTable LedgerTableOrdered = runtable;
-
-
-
-                    row1["TotalDabitAmount"] = 0;
-                    row1["TotalCreditAmount"] = 0;
-                    row1["TotalBalanceAmount"] = 0;
-                    runTable1.Rows.Add(row1.ItemArray);
-                    DataTable LedgerTableOrdered1 = runtable1;
+                    emptyLedgerTable = true;
 
                 }
             }

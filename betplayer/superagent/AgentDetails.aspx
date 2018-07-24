@@ -228,7 +228,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/superagent//Deleteagent.ashx', {
+            fetch('/superagent//Deleteagent.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -260,7 +260,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/superagent/Changestatus.ashx', {
+            fetch('/superagent/Changestatus.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

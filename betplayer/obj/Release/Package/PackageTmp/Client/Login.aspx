@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Crick20.com</title>
+    <title>Live Game 25</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -35,53 +35,55 @@
         <div class="sign-in">
             <div class="sign_in">
                 <h3>Login</h3>
-                <form id="Form1" runat="server">
-                    <span><i class="user"></i>
-                        <asp:TextBox ID="txtusername" runat="server" placeholder="Username"></asp:TextBox>
-                    </span><span><i class="lock"></i>
-                        <asp:TextBox ID="txtpassword" runat="server" TextMode="Password" placeholder="*********"></asp:TextBox>
-                    </span>
-                    <table style="width: 100%" border="0" cellspacing="0" cellpadding="0">
-                        <tbody>
+                <form id="Form1" runat="server" defaultfocus="btnSubmit">
+                    <asp:Panel DefaultButton="btnSubmit" runat="server">
+                        <span><i class="user"></i>
+                            <asp:TextBox ID="txtusername" runat="server" placeholder="Username"></asp:TextBox>
+                        </span><span><i class="lock"></i>
+                            <asp:TextBox ID="txtpassword" runat="server" TextMode="Password" placeholder="*********"></asp:TextBox>
+                        </span>
+                        <table style="width: 100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
 
-                            <tr>
+                                <tr>
 
-                                <asp:ScriptManager ID="SM1" runat="server">
-                                </asp:ScriptManager>
-                                <td>
-                                    <asp:UpdatePanel ID="UP1" runat="server">
+                                    <asp:ScriptManager ID="SM1" runat="server">
+                                    </asp:ScriptManager>
+                                    <td>
+                                        <asp:UpdatePanel ID="UP1" runat="server">
 
-                                        <ContentTemplate>
+                                            <ContentTemplate>
 
-                                            <table>
+                                                <table>
 
-                                                <tr>
+                                                    <tr>
 
-                                                    <td style="height: 50px; width: 100px;">
+                                                        <td style="height: 50px; width: 100px;">
 
-                                                        <asp:Image ID="imgCaptcha" Style="color: black; background-attachment: fixed;" runat="server" />
+                                                            <asp:Image ID="imgCaptcha" Style="color: black; background-attachment: fixed;" runat="server" />
 
-                                                    </td>
+                                                        </td>
 
-                                                    <td style="align-content: center"></td>
+                                                        <td style="align-content: center"></td>
 
-                                                </tr>
+                                                    </tr>
 
-                                            </table>
+                                                </table>
 
-                                        </ContentTemplate>
+                                            </ContentTemplate>
 
-                                    </asp:UpdatePanel>
-                                </td>
+                                        </asp:UpdatePanel>
+                                    </td>
 
 
-                            </tr>
-                        </tbody>
-                    </table>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                    <span><i class="FontText"></i>
-                        <asp:TextBox ID="txtCaptcha" Style="background: #FFF;" runat="server" placeholder="Text Captcha"></asp:TextBox>
-                    </span>
+                        <span><i class="FontText"></i>
+                            <asp:TextBox ID="txtCaptcha" Style="background: #FFF;" runat="server" placeholder="Text Captcha"></asp:TextBox>
+                        </span>
+                    </asp:Panel>
                     <br />
                     <br />
                     <br />

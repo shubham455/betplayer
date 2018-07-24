@@ -89,7 +89,7 @@
                                                 <th colspan="3" align="center" valign="middle" style="text-align: center; vertical-align: middle;" rowspan="1">Agent Commission %</th>
                                                 <th colspan="3" align="right" style="text-align: center; vertical-align: middle;" rowspan="1">Limit</th>
                                                 <th align="left" rowspan="1" colspan="1">&nbsp;</th>
-                                                <th align="left" rowspan="1" colspan="1">&nbsp;</th>
+                                                
                                             </tr>
                                             <tr role="row">
                                                 <th width="2%" align="center" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="
@@ -228,7 +228,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/superagent//Deleteagent.ashx', {
+            fetch('/superagent//Deleteagent.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -260,7 +260,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/superagent/Changestatus.ashx', {
+            fetch('/superagent/Changestatus.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

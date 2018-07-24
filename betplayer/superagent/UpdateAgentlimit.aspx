@@ -51,7 +51,7 @@
                                             <input name="ClientName1" type="text" class="TextBoxTransparent" id="ClientName1" style="text-align: right; text-align: left;" onblur="CheckTotalLimit('1')" value="<%: row["AgentID"] %><%: row["Name"] %>" readonly="">
                                         </td>
                                         <td align="left" class="TextBox100">
-                                            <input name="FixLimit1" id="FixLimit" style="text-align: right" readonly="" type="text" value="<%: row["Fixlimit"] %>" class="TextBox100"></td>
+                                            <input id="FixLimit" style="text-align: right"  type="text" value="<%: row["Fixlimit"] %>" class="TextBox100"></td>
                                         <td align="left" class="TextBox100">
                                             <input id="AgentID" type="hidden" value="<%: row["AgentID"] %>" />
                                             <input id="AgentLimit" style="text-align: right" type="text" value="<%: row["CurrentLimit"] %>" onchange="check()" onblur="CheckTotalLimit('1')" class="TextBox100"></td>
@@ -115,10 +115,12 @@
                 //iterate through rows
                 //rows would be accessed using the "row" variable assigned in the for loop
                 row = table.rows[i];
+                var Fixchildren = row.cells[2].getElementsByTagName('input');// any tag could be used here..
                 var children = row.cells[3].getElementsByTagName('input');// any tag could be used here..
                 valueArray.push({
                     AgentID: getValueByAttrName("AgentID", children),
-                    AgentLimit: getValueByAttrName("AgentLimit", children)
+                    AgentLimit: getValueByAttrName("AgentLimit", children),
+                    FixLimit: getValueByAttrName("FixLimit", Fixchildren)
                 })
             }
             var formBody = [];
@@ -134,7 +136,7 @@
             }
             console.log(formBody);
             formBody = formBody.join("&");
-            fetch('http://localhost:54034/superagent/agentLimit.ashx', {
+            fetch('/superagent/agentLimit.ashx', {
                 credentials: 'same-origin',
                 method: 'POST',
                 headers: {

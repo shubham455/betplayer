@@ -113,7 +113,7 @@
                                             <th align="right" style="text-align: center; width: 51px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="SuperAgent : activate to sort column ascending">SuperAgent </th>
                                             <th align="right" style="text-align: center; width: 44px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Client : activate to sort column ascending">Client </th>
                                             <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 45px;">Status</th>
-                                            <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Dead: activate to sort column ascending" style="width: 33px;">Dead</th>
+                                            <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Dead: activate to sort column ascending" style="width: 33px;">MobileApp</th>
                                         </tr>
                                     </thead>
                                     <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
@@ -179,7 +179,7 @@
                                             <td align="right" style="text-align: right;" class=" "><%:row["currentlimit"] %></td>
                                             <td align="right" style="text-align: right;" class=" ">0</td>
                                             <td align="left" class=" "><%:row["Status"] %></td>
-                                            <td align="left" class=" ">NO</td>
+                                            <td align="left" class=" "><%:row["mymobamount"] %></td>
                                         </tr>
 
                                     </tbody>
@@ -220,7 +220,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/Admin/Deletesuperagent.ashx', {
+            fetch('/Admin/Deletesuperagent.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -252,7 +252,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/Agent/ChangeStatus.ashx', {
+            fetch('/Agent/ChangeStatus.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

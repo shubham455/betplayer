@@ -36,8 +36,11 @@
                                                 <td width="10%" align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle; text-align: right;">BALANCE</td>
                                                 <td width="10%" align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle; text-align: right;">Remark</td>
                                             </tr>
-                                            <% foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
-                                                { %>
+                                            <%if (!emptyLedgerTable)
+                                                {
+                                                    foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
+                                                    { %>
+
                                             <tr>
                                                 <td height="35" align="left" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: left; padding-right: 5px;"><%: row["Date"] %></td>
                                                 <td height="35" align="left" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: left; padding-right: 5px;"><%: row["CollectionName"] %>  </td>
@@ -46,10 +49,26 @@
                                                 <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"><%: row["Balance"] %></td>
                                                 <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"><%: row["Remark"] %></td>
                                             </tr>
-                                            <% } //foreach %>
-                                            <% foreach (System.Data.DataRow row in runTable1.Rows)
+                                            <% } //foreach
+                                                }
+                                                else
                                                 { %>
-                                           
+                                            <tr>
+                                                <td height="35" align="left" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: left; padding-right: 5px;">NO</td>
+                                                <td height="35" align="left" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: left; padding-right: 5px;">DATA  </td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;">FOUND</td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"></td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"></td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"></td>
+                                            </tr>
+                                            <% } //else %>
+
+
+                                            <%if (!emptyLedgerTable)
+                                                {
+                                                    foreach (System.Data.DataRow row in runTable1.Rows)
+                                                    { %>
+
                                             <tr>
                                                 <td height="35" align="left" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: left; padding-right: 5px;"></td>
                                                 <td height="35" align="left" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: left; padding-right: 5px;">Total</td>
@@ -58,7 +77,19 @@
                                                 <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"><%:LedgerTableOrdered.Rows[LedgerTableOrdered.Rows.Count-1]["Balance"] %></td>
                                                 <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"></td>
                                             </tr>
-                                            <% } //foreach %>
+                                            <% } //foreach 
+                                                }
+                                                else
+                                                { %>
+                                            <tr>
+                                                <td height="35" align="left" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: left; padding-right: 5px;"></td>
+                                                <td height="35" align="left" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: left; padding-right: 5px;"> </td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"></td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"></td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"></td>
+                                                <td align="right" bgcolor="#CCFFFF" class="FontText" style="vertical-align: middle; text-align: right; padding-right: 5px;"></td>
+                                            </tr>
+                                            <% } //else %>
                                         </tbody>
                                     </table>
 

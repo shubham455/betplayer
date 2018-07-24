@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Crick20.com</title>
+    <title>Live Game 25</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="css/Homepage/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="navbar-header">
-                    <h1 class="navbar-brand"><a href="#">Crick20</a></h1>
+                    <h1 class="navbar-brand"><a href="#">livegame25</a></h1>
                 </div>
 
                 <!-- /.navbar-collapse -->

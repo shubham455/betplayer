@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
-    <title>Crick20 Dashboard</title>
+    <title>livegame25 Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
@@ -36,7 +36,7 @@
             <div class="container-fluid">
                 <!-- BEGIN LOGO -->
                 <a class="brand">
-                    <img src="../admin/img/logo.png" alt="crick20">
+                    <img src="../admin/img/logo.png" alt="livegame25">
                 </a>
                 <!-- END LOGO -->
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -126,10 +126,14 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="My_Ledger.aspx">My Ledger</a></li>
-                        <li><a class="" href="SuperAgentPlusMinus.aspx">SuperAgent Plus/Minus</a></li>
+                        <li><a class="" href="#">SuperAgent Plus/Minus</a></li>
                         <li><a class="" href="SuperAgentLedger.aspx">SuperAgent Ledger</a></li>
+                        <li><a class="" href="AgentLedger.aspx">Agent Ledger</a></li>
+                        <li><a class="" href="ClientLedger.aspx">Client Ledger</a></li>
                         <li><a class="" href="AllSuperAgentLedger.aspx">All SuperAgent Ledger</a></li>
-                        <li><a class="" href="DateWiseReport.aspx">Date Wise Report</a></li>
+                        <li><a class="" href="AllAgentLedger.aspx">All Agent Ledger</a></li>
+                        <li><a class="" href="AllClientLedger.aspx">All Client Ledger</a></li>
+                        
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -140,7 +144,7 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="SuperAgentLimitReport.aspx">SuperAgent Limit Report</a></li>
-                        <li><a class="" href="SecureCodeReport.aspx">Secure Code Report</a></li>
+                        
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -163,7 +167,7 @@
     </form>
 
     <div id="footer">
-        2018 © crick20 Dashboard.
+        2018 © livegame25 Dashboard.
 	
         <div class="span pull-right">
             <span class="go-top"><i class="icon-arrow-up"></i></span>

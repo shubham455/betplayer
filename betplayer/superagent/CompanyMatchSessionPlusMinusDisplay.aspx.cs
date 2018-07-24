@@ -248,13 +248,13 @@ namespace betplayer.superagent
                     if (TotalFinalAmount1 < 0)
                     {
                         Dabit = TotalFinalAmount1;
-                        Remark = "Agent Plus";
+                        Remark = "SuperAgent Plus";
 
                     }
                     else if (TotalFinalAmount1 > 0)
                     {
                         Credit = TotalFinalAmount1;
-                        Remark = "Agent Minus";
+                        Remark = "SuperAgent Minus";
                     }
 
                     string s9 = "Select * From  SuperAgentledger where SuperAgentID = '" + Session["SuperAgentID"] + "' && MatchID  = '" + MatchID + "'";

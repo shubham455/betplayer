@@ -32,6 +32,7 @@ namespace betplayer.superagent
             ClientTable.Columns.Add(new DataColumn("Team"));
             ClientTable.Columns.Add(new DataColumn("ClientID"));
             ClientTable.Columns.Add(new DataColumn("Name"));
+            ClientTable.Columns.Add(new DataColumn("Createdby"));
             ClientTable.Columns.Add(new DataColumn("Position1"));
             ClientTable.Columns.Add(new DataColumn("Position2"));
             DataRow Clientrow = ClientTable.NewRow();
@@ -69,7 +70,7 @@ namespace betplayer.superagent
                     DataRow row1 = ClientTable.NewRow();
                     string Agentcode = (dt11.Rows[i]["code"]).ToString();
 
-                    string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && runner.MatchID = '" + apiID.Value + "' order by DateTime DESC";
+                    string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,clientmaster.CreatedBy,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && runner.MatchID = '" + apiID.Value + "' order by DateTime DESC";
                     MySqlCommand cmd1 = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     dt1 = new DataTable();
@@ -176,25 +177,25 @@ namespace betplayer.superagent
 
 
                     }
-                    string selectSAshare = "select Agentshare From AgentMaster where AgentID = '" + ID + "'";
-                    MySqlCommand selectSAsharecmd = new MySqlCommand(selectSAshare, cn);
-                    MySqlDataAdapter selectSAshareadp = new MySqlDataAdapter(selectSAsharecmd);
-                    DataTable selectSAsharedt = new DataTable();
-                    selectSAshareadp.Fill(selectSAsharedt);
-                    TeamAposition1 = 0;
+                    //string selectSAshare = "select Agentshare From AgentMaster where AgentID = '" + ID + "'";
+                    //MySqlCommand selectSAsharecmd = new MySqlCommand(selectSAshare, cn);
+                    //MySqlDataAdapter selectSAshareadp = new MySqlDataAdapter(selectSAsharecmd);
+                    //DataTable selectSAsharedt = new DataTable();
+                    //selectSAshareadp.Fill(selectSAsharedt);
+                    //TeamAposition1 = 0;
 
-                    Decimal SAShare1 = Convert.ToDecimal(selectSAsharedt.Rows[0]["AgentShare"]);
+                    //Decimal SAShare1 = Convert.ToDecimal(selectSAsharedt.Rows[0]["AgentShare"]);
 
-                    Teampos = (Teampos * SAShare1) / 100;
-                    Team1Amt.Text = Teampos.ToString();
-                    if (Teampos > 0)
-                    {
-                        Team1Amt.ForeColor = System.Drawing.Color.Blue;
-                    }
-                    else if (Teampos < 0)
-                    {
-                        Team1Amt.ForeColor = System.Drawing.Color.Red;
-                    }
+                    //Teampos = (Teampos * SAShare1) / 100;
+                    //Team1Amt.Text = Teampos.ToString();
+                    //if (Teampos > 0)
+                    //{
+                    //    Team1Amt.ForeColor = System.Drawing.Color.Blue;
+                    //}
+                    //else if (Teampos < 0)
+                    //{
+                    //    Team1Amt.ForeColor = System.Drawing.Color.Red;
+                    //}
 
 
                     int k = 0;
@@ -275,25 +276,25 @@ namespace betplayer.superagent
                         }
                     }
 
-                    string selectSAshare1 = "select Agentshare From AgentMaster where AgentID = '" + ID + "'";
-                    MySqlCommand selectSAsharecmd1 = new MySqlCommand(selectSAshare1, cn);
-                    MySqlDataAdapter selectSAshareadp1 = new MySqlDataAdapter(selectSAsharecmd1);
-                    DataTable selectSAsharedt1 = new DataTable();
-                    selectSAshareadp1.Fill(selectSAsharedt1);
-                    TeamAposition1 = 0;
+                    //string selectSAshare1 = "select Agentshare From AgentMaster where AgentID = '" + ID + "'";
+                    //MySqlCommand selectSAsharecmd1 = new MySqlCommand(selectSAshare1, cn);
+                    //MySqlDataAdapter selectSAshareadp1 = new MySqlDataAdapter(selectSAsharecmd1);
+                    //DataTable selectSAsharedt1 = new DataTable();
+                    //selectSAshareadp1.Fill(selectSAsharedt1);
+                    //TeamAposition1 = 0;
 
-                    Decimal SAShare2 = Convert.ToDecimal(selectSAsharedt1.Rows[0]["AgentShare"]);
+                    //Decimal SAShare2 = Convert.ToDecimal(selectSAsharedt1.Rows[0]["AgentShare"]);
 
-                    TeamposB = (TeamposB * SAShare2) / 100;
-                    Team2Amt.Text = TeamposB.ToString();
-                    if (TeamposB > 0)
-                    {
-                        Team2Amt.ForeColor = System.Drawing.Color.Blue;
-                    }
-                    else if (TeamposB < 0)
-                    {
-                        Team2Amt.ForeColor = System.Drawing.Color.Red;
-                    }
+                    //TeamposB = (TeamposB * SAShare2) / 100;
+                    //Team2Amt.Text = TeamposB.ToString();
+                    //if (TeamposB > 0)
+                    //{
+                    //    Team2Amt.ForeColor = System.Drawing.Color.Blue;
+                    //}
+                    //else if (TeamposB < 0)
+                    //{
+                    //    Team2Amt.ForeColor = System.Drawing.Color.Red;
+                    //}
 
                     if (dt1.Rows.Count > 0)
                     {
@@ -353,7 +354,7 @@ namespace betplayer.superagent
                     DataTable dt5 = new DataTable();
                     adp1.Fill(dt5);
                     int j = 0;
-                    
+
                     Decimal TeamAposition1 = 0;
 
                     foreach (DataRow row in dt5.Rows)
@@ -425,9 +426,9 @@ namespace betplayer.superagent
                     }
 
                     int k = 0;
-                    
+
                     Decimal TeamBposition2 = 0;
-                   
+
                     foreach (DataRow row in dt5.Rows)
                     {
                         string selectteam = "select TeamA,TeamB From Matches where apiID = '" + apiID.Value + "'";
@@ -517,8 +518,8 @@ namespace betplayer.superagent
 
                 }
 
-                TeamAposition = TeamAposition - totalCalculation1;
-                TeamBposition = TeamBposition - totalCalculation2;
+                TeamAposition = totalCalculation1 - TeamAposition;
+                TeamBposition = totalCalculation2 - TeamBposition;
 
 
 
@@ -541,22 +542,22 @@ namespace betplayer.superagent
                 if (Team1Amt1 > 0)
                 {
                     Team1Amt.ForeColor = System.Drawing.Color.Blue;
-                    
+
                 }
                 else if (Team1Amt1 < 0)
                 {
                     Team1Amt.ForeColor = System.Drawing.Color.Red;
-                    
+
                 }
                 else if (Team2Amt1 > 0)
                 {
                     Team2Amt.ForeColor = System.Drawing.Color.Blue;
-                    
+
                 }
                 else if (Team2Amt1 < 0)
                 {
                     Team2Amt.ForeColor = System.Drawing.Color.Red;
-                   
+
                 }
             }
         }

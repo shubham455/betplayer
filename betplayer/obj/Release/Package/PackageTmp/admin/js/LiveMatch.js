@@ -27,7 +27,7 @@ if (matchIdElement !== null) {
                     var asterix = (team_1.Status === "Batting") ? ' *' : '';
                     console.log(team_1);
                     console.log(team_1.Name);
-                    document.getElementById("Team1").value = team_1.sName;
+                    document.getElementById("Team1").value = team_1.Name;
                     document.getElementById("LocalTeam").innerHTML = team_1.Name + ' ' + team_1.Runs
                         + '/' + team_1.Wickets + ' (' + team_1.Overs + ')' + asterix;
                 });
@@ -36,7 +36,7 @@ if (matchIdElement !== null) {
                     var team_2 = snapshot.val();
                     var asterix = (team_2.Status === "Batting") ? ' *' : '';
                     console.log(team_2);
-                    document.getElementById("Team2").value = team_2.sName;
+                    document.getElementById("Team2").value = team_2.Name;
                     document.getElementById("VisitorTeam").innerHTML = team_2.Name + ' ' + team_2.Runs
                         + '/' + team_2.Wickets + ' (' + team_2.Overs + ')' + asterix;
                 });

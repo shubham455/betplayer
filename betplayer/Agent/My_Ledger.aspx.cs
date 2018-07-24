@@ -22,7 +22,7 @@ namespace betplayer.Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "select matches.DateTime,matches.TeamA,matches.TeamB, agentledger.Amount,agentledger.Dabit,agentledger.credit,agentledger.remark from agentledger inner join matches on agentledger.matchID = matches.apiID  Where agentledger.AgentID = '" + Session["AgentID"] + "' ";
+                string s = "select matches.DateTime,matches.TeamA,matches.TeamB, agentledger.agentledgerID,agentledger.Amount,agentledger.Dabit,agentledger.credit,agentledger.remark from agentledger inner join matches on agentledger.matchID = matches.apiID  Where agentledger.AgentID = '" + Session["AgentID"] + "' ";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();

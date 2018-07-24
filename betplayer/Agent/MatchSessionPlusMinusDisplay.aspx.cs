@@ -58,7 +58,10 @@ namespace betplayer.Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "select clientmaster.clientID,clientmaster.Name from clientmaster inner join viewmatch on clientmaster.ClientID = viewmatch.ClientID  where MatchID = '" + MatchID + "' group by Name";
+
+
+
+                string s = "select clientmaster.clientID,clientmaster.Name from clientmaster inner join viewmatch on clientmaster.ClientID = viewmatch.ClientID  where MatchID = '" + MatchID + "' && clientmaster.createdBy = '" + Session["Agentcode"] + "' group by Name";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -350,50 +353,64 @@ namespace betplayer.Agent
                     decimal MatchAmount = Convert.ToDecimal(runtable.Rows[l]["FinalAmount"]);
                     TotalFinalAmount1 = TotalFinalAmount1 + MatchAmount;
                 }
-
                 row1["TotalFinalAmount"] = TotalFinalAmount1;
-                decimal Dabit = 0, Credit = 0;
-                string Remark = "";
 
-                if (TotalFinalAmount1 < 0)
-                {
-                    Dabit = TotalFinalAmount1;
-                    Remark = "Agent Plus";
 
-                }
-                else if (TotalFinalAmount1 > 0)
-                {
-                    Credit = TotalFinalAmount1;
-                    Remark = "Agent Minus";
-                }
 
-                string s9 = "Select * From  Agentledger where AgentID = '" + Session["AgentID"] + "' && MatchID  = '" + MatchID + "'";
-                MySqlCommand cmd9 = new MySqlCommand(s9, cn);
-                MySqlDataReader rdr = cmd9.ExecuteReader();
-                if (rdr.Read())
+                string matchdeclare = "Select * From matches where apiID = '" + MatchID + "'";
+                MySqlCommand matchdeclarecmd = new MySqlCommand(matchdeclare, cn);
+                MySqlDataAdapter matchdeclareadp = new MySqlDataAdapter(matchdeclarecmd);
+                DataTable matchdeclaredt = new DataTable();
+                matchdeclareadp.Fill(matchdeclaredt);
+
+                int declear = Convert.ToInt16(matchdeclaredt.Rows[0]["declear"]);
+
+                if (declear == 1)
                 {
 
-                }
-                else
-                {
+                    decimal Dabit = 0, Credit = 0;
+                    string Remark = "";
 
-                    rdr.Close();
-                    string s8 = "Insert Into Agentledger (AgentID,MatchID,Amount,Dabit,Credit,Remark) Values(@AgentID,@MatchID,@Amount,@Dabit,@Credit,@Remark)";
-                    MySqlCommand cmd8 = new MySqlCommand(s8, cn);
-                    cmd8.Parameters.AddWithValue("@AgentID", Session["AgentID"]);
-                    cmd8.Parameters.AddWithValue("@MatchID", MatchID);
-                    cmd8.Parameters.AddWithValue("@Amount", TotalFinalAmount1);
-                    cmd8.Parameters.AddWithValue("@Dabit", Dabit);
-                    cmd8.Parameters.AddWithValue("@Credit", Credit);
-                    cmd8.Parameters.AddWithValue("@Remark", Remark);
+                    if (TotalFinalAmount1 < 0)
+                    {
+                        Dabit = TotalFinalAmount1;
+                        Remark = "Agent Plus";
 
-                    cmd8.ExecuteNonQuery();
+                    }
+                    else if (TotalFinalAmount1 > 0)
+                    {
+                        Credit = TotalFinalAmount1;
+                        Remark = "Agent Minus";
+                    }
+
+                    string s9 = "Select * From  Agentledger where AgentID = '" + Session["AgentID"] + "' && MatchID  = '" + MatchID + "'";
+                    MySqlCommand cmd9 = new MySqlCommand(s9, cn);
+                    MySqlDataReader rdr = cmd9.ExecuteReader();
+                    if (rdr.Read())
+                    {
+
+                    }
+                    else
+                    {
+
+                        rdr.Close();
+                        string s8 = "Insert Into Agentledger (AgentID,MatchID,Amount,Dabit,Credit,Remark) Values(@AgentID,@MatchID,@Amount,@Dabit,@Credit,@Remark)";
+                        MySqlCommand cmd8 = new MySqlCommand(s8, cn);
+                        cmd8.Parameters.AddWithValue("@AgentID", Session["AgentID"]);
+                        cmd8.Parameters.AddWithValue("@MatchID", MatchID);
+                        cmd8.Parameters.AddWithValue("@Amount", TotalFinalAmount1);
+                        cmd8.Parameters.AddWithValue("@Dabit", Dabit);
+                        cmd8.Parameters.AddWithValue("@Credit", Credit);
+                        cmd8.Parameters.AddWithValue("@Remark", Remark);
+
+                        cmd8.ExecuteNonQuery();
+                    }
                 }
+
+                runtable1.Rows.Add(row1.ItemArray);
+
+
             }
-
-            runtable1.Rows.Add(row1.ItemArray);
-
-
         }
     }
 }

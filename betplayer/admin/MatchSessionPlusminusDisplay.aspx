@@ -38,7 +38,7 @@
                                 <table width="99%" border="0" align="left" cellpadding="0" cellspacing="0" class="table table-striped table-bordered">
                                     <tbody>
                                         <tr>
-                                            <td width="11%" height="25" align="left" valign="middle"><strong>SUPER AGENT</strong></td>
+                                            <td width="11%" height="25" align="left" valign="middle"><strong>ADMIN</strong></td>
                                             <td width="89%" align="left" valign="middle"><strong>
                                                 <asp:Label ID="lblName" runat="server"></asp:Label>
                                             </strong></td>
@@ -52,79 +52,96 @@
                                                 <table width="99%" border="0" align="left" cellpadding="0" cellspacing="0" class="table table-striped table-bordered" style="margin-bottom: 10px !important;">
                                                     <tbody>
                                                         <tr>
-                                                            <td width="7%" height="25" align="left" valign="middle"><strong>AGENT</strong></td>
+                                                            <td width="7%" height="25" align="left" valign="middle"><strong>SUPERAGENT</strong></td>
                                                             <td width="93%" align="left" valign="middle"><strong><%:row1["AgentName"] %>   </strong></td>
                                                         </tr>
+
+                                                        <%foreach (System.Data.DataTable AgentData in AgentDataList[index])
+                                                            { %>
                                                         <tr>
                                                             <td height="25" colspan="2" align="left" valign="middle">
-
-                                                                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="2" class="table table-striped table-bordered" style="padding-bottom: 100px;">
+                                                                <table width="99%" border="0" align="left" cellpadding="0" cellspacing="0" class="table table-striped table-bordered" style="margin-bottom: 10px !important;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td height="25" align="left" valign="middle">&nbsp;</td>
-                                                                            <td colspan="10" align="right" valign="middle" style="text-align: center;"><strong>AGENT PLUS MINUS</strong></td>
-
+                                                                            <td width="7%" height="25" align="left" valign="middle"><strong>AGENT</strong></td>
+                                                                            <td width="93%" align="left" valign="middle"><strong><%:AgentData.Rows[0]["AgentName"] %>   </strong></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td width="180" height="25" align="left" valign="middle"><strong>CLIENT</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>M AMT</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>SESS.</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>TOT. AMT</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>M. COM</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>S. COM</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>TOL. COM</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>NET AMT</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>AGT SHR</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>SA Share</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>MOB. APP</strong></td>
+                                                                            <td height="25" colspan="2" align="left" valign="middle">
 
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>FINAL</strong></td>
+                                                                                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="2" class="table table-striped table-bordered" style="padding-bottom: 100px;">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td height="25" align="left" valign="middle">&nbsp;</td>
+                                                                                            <td colspan="10" align="right" valign="middle" style="text-align: center;"><strong>AGENT PLUS MINUS</strong></td>
 
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="180" height="25" align="left" valign="middle"><strong>CLIENT</strong></td>
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>M AMT</strong></td>
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>SESS.</strong></td>
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>TOT. AMT</strong></td>
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>M. COM</strong></td>
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>S. COM</strong></td>
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>TOL. COM</strong></td>
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>NET AMT</strong></td>
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>AGT SHR</strong></td>
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>SA Share</strong></td>
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>MOB. APP</strong></td>
+
+                                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>FINAL</strong></td>
+
+                                                                                        </tr>
+
+                                                                                        <% int rows = 0; foreach (System.Data.DataRow row in AgentData.Rows)
+                                                                                            { %>
+                                                                                        <% if (rows == AgentData.Rows.Count - 1)
+                                                                                            { %>
+                                                                                        <tr>
+                                                                                            <td height="25" align="left" valign="middle"><strong>TOTAL</strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MatchAmount"] %> </strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SessionAmount"] %></strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalAmount"] %></strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MatchCommision"] %></strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SessionCommision"] %> </strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalCommisionAmount"] %> </strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalNetAmount"] %> </strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalHalfAmount"] %> </strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SAAgentShare"] %></strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MOBAppAmount"] %></strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["FinalAmount"] %>  </strong></td>
+                                                                                        </tr>
+                                                                                        <% }
+                                                                                            else
+                                                                                            { %>
+                                                                                        <tr>
+                                                                                            <td height="25" align="left" valign="middle" class="FontText"><%:row["Name"] %></td>
+                                                                                            <td style="text-align: right;"><%:row["MatchAmount"] %></td>
+                                                                                            <td style="text-align: right;"><%:row["SessionAmount"] %></td>
+                                                                                            <td style="text-align: right;"><strong><%:row["TotalAmount"] %></strong></td>
+                                                                                            <td style="text-align: right;"><%:row["MatchCommision"] %></td>
+                                                                                            <td style="text-align: right;"><%:row["SessionCommision"] %></td>
+                                                                                            <td style="text-align: right;"><strong><%:row["TotalCommisionAmount"] %></strong></td>
+                                                                                            <td style="text-align: right;"><strong><%:row["TotalNetAmount"] %></strong></td>
+                                                                                            <td style="text-align: right;"><%:row["TotalHalfAmount"] %></td>
+                                                                                            <td style="text-align: right;"><%:row["SAAgentShare"] %></td>
+                                                                                            <td style="text-align: right;"><%:row["MOBAppAmount"] %></td>
+                                                                                            <td style="text-align: right;"><strong><%:row["FinalAmount"] %></strong></td>
+
+                                                                                        </tr>
+                                                                                        <% }
+                                                                                                rows++; //else
+                                                                                            } //foreach %>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
                                                                         </tr>
 
-                                                                        <% int rows = 0; foreach (System.Data.DataRow row in AgentDataList[index].Rows)
-                                                                            { %>
-                                                                        <% if (rows == AgentDataList[index].Rows.Count - 1)
-                                                                            { %>
-                                                                        <tr>
-                                                                            <td height="25" align="left" valign="middle"><strong>TOTAL</strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MatchAmount"] %> </strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SessionAmount"] %></strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalAmount"] %></strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MatchCommision"] %></strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SessionCommision"] %> </strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalCommisionAmount"] %> </strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalNetAmount"] %> </strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalHalfAmount"] %> </strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SAAgentShare"] %></strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MOBAppAmount"] %></strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["FinalAmount"] %>  </strong></td>
-                                                                        </tr>
-                                                                        <% }
-                                                                            else
-                                                                            { %>
-                                                                        <tr>
-                                                                            <td height="25" align="left" valign="middle" class="FontText"><%:row["Name"] %></td>
-                                                                            <td style="text-align: right;"><%:row["MatchAmount"] %></td>
-                                                                            <td style="text-align: right;"><%:row["SessionAmount"] %></td>
-                                                                            <td style="text-align: right;"><strong><%:row["TotalAmount"] %></strong></td>
-                                                                            <td style="text-align: right;"><%:row["MatchCommision"] %></td>
-                                                                            <td style="text-align: right;"><%:row["SessionCommision"] %></td>
-                                                                            <td style="text-align: right;"><strong><%:row["TotalCommisionAmount"] %></strong></td>
-                                                                            <td style="text-align: right;"><strong><%:row["TotalNetAmount"] %></strong></td>
-                                                                            <td style="text-align: right;"><%:row["TotalHalfAmount"] %></td>
-                                                                            <td style="text-align: right;"><%:row["SAAgentShare"] %></td>
-                                                                            <td style="text-align: right;"><%:row["MOBAppAmount"] %></td>
-                                                                            <td style="text-align: right;"><strong><%:row["FinalAmount"] %></strong></td>
-
-                                                                        </tr>
-                                                                        <% }
-                                                                                rows++; //else
-                                                                            } //foreach %>
                                                                     </tbody>
                                                                 </table>
                                                             </td>
                                                         </tr>
+                                                        <% } //foreach %>
                                                     </tbody>
                                                 </table>
                                                 <%  index++; totalindex++;

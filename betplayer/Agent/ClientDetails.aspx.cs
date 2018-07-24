@@ -85,9 +85,17 @@ namespace betplayer.Agent
                 cn.Open();
 
                 string selected = Request.Form["checkbox"];
-                string s = "update  ClientMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID in ("+selected+")";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                cmd.ExecuteNonQuery();
+                if(selected != null)
+                {
+                    string s = "update  ClientMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID in (" + selected + ")";
+                    MySqlCommand cmd = new MySqlCommand(s, cn);
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Please Select Anyone Client.....');", true);
+                }
+                
                 
                 BindData();
 

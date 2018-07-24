@@ -91,6 +91,7 @@
     <Content Include="admin\MatchplusminusSelect.aspx" />
     <Content Include="admin\MatchSessionPlusminusDisplay.aspx" />
     <Content Include="admin\MatchSessionPlusMinusSelect.aspx" />
+    <Content Include="admin\My_Ledger.aspx" />
     <Content Include="admin\PlusMinusSelect.aspx" />
     <Content Include="admin\SessionPlusMinusDisplay.aspx" />
     <Content Include="admin\SessionPlusMinusSelect.aspx" />
@@ -1245,7 +1246,6 @@
     <Content Include="admin\Login.aspx" />
     <Content Include="admin\MasterDetails.aspx" />
     <Content Include="admin\ModifySuperAgent.aspx" />
-    <Content Include="admin\My_Ledger.aspx" />
     <Content Include="admin\NewCollection.aspx" />
     <Content Include="admin\SecureCodeReport.aspx" />
     <Content Include="admin\Settings.aspx" />
@@ -2406,6 +2406,13 @@
     <Compile Include="admin\MatchSessionPlusMinusSelect.aspx.designer.cs">
       <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\My_Ledger.aspx.cs">
+      <DependentUpon>My_Ledger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\My_Ledger.aspx.designer.cs">
+      <DependentUpon>My_Ledger.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\PlusMinusSelect.aspx.cs">
       <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2720,13 +2727,6 @@
     </Compile>
     <Compile Include="admin\ModifySuperAgent.aspx.designer.cs">
       <DependentUpon>ModifySuperAgent.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\My_Ledger.aspx.cs">
-      <DependentUpon>My_Ledger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\My_Ledger.aspx.designer.cs">
-      <DependentUpon>My_Ledger.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\NewCollection.aspx.cs">
       <DependentUpon>NewCollection.aspx</DependentUpon>

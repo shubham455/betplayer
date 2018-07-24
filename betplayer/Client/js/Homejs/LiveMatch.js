@@ -187,7 +187,7 @@ function doneClick() {
                             }
                             formBody = formBody.join("&");
 
-                            fetch('http://localhost:54034/Client/AddDataToRunner.ashx', {
+                            fetch('/Client/AddDataToRunner.ashx', {
                                 credentials: 'same-origin',
                                 method: 'POST',
                                 headers: {
@@ -257,7 +257,7 @@ function doneClick() {
                             }
                             formBody = formBody.join("&");
 
-                            fetch('http://localhost:54034/Client/AddDataToSession.ashx', {
+                            fetch('/Client/AddDataToSession.ashx', {
                                 credentials: 'same-origin',
                                 method: 'POST',
                                 headers: {

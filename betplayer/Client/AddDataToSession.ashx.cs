@@ -106,7 +106,7 @@ namespace betplayer.Client
                     {
 
                         int lastAmount = Convert.ToInt32(Sessiondt.Rows[0]["Amount"]);
-                        int Position = Convert.ToInt32(Sessiondt.Rows[0]["Position"]);
+                        decimal Position = Convert.ToDecimal(Sessiondt.Rows[0]["Position"]);
                         string mode = Sessiondt.Rows[0]["Mode"].ToString();
                         int run = Convert.ToInt16(Sessiondt.Rows[0]["Runs"]);
                         FinalAmount1 = Position;
@@ -135,7 +135,7 @@ namespace betplayer.Client
                     }
                     else
                     {
-                        FinalAmount = Amount * -1;
+                        FinalAmount = Amount ;
 
                     }
                     Decimal CheckClientAmount = FinalAmount;
@@ -294,12 +294,12 @@ namespace betplayer.Client
                         if (runamount > Amount12)
                         {
                             Amount12 = runamount;
+                           
                         }
                     }
                     string update = "update Session set position = '" + Amount12 + "' where SessionID = '" + ID + "' ";
                     MySqlCommand updatecmd = new MySqlCommand(update, cn);
                     updatecmd.ExecuteNonQuery();
-
                 }
             }
             catch (Exception e)
@@ -336,7 +336,7 @@ namespace betplayer.Client
                 }
                 else if (Mode == "N")
                 {
-                    Difference = Amount * Rate + InitAmount;
+                    Difference = Amount * Rate  + InitAmount;
                 }
 
 

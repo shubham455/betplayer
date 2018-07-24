@@ -50,7 +50,7 @@
                                         <% foreach (System.Data.DataRow row in MatchesDatatable.Rows)
                                             { %>
                                         <tr bgcolor="#FFFFFF">
-                                            <td height="20" class="FontText">1</td>
+                                            <td height="20" class="FontText"><%: row["agentledgerID"] %></td>
                                             <td class="FontText"><%: row["DateTime"] %></td>
                                             <td class="FontText"></td>
                                             <td style="text-align: right;" class="FontText"><%:row["Dabit"] %></td>

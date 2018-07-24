@@ -211,11 +211,11 @@
                                         </strong></td>
                                         <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
                                     </tr>
-                                    <% foreach (System.Data.DataRow row in MatchesDataTable1.Rows)
+                                    <% foreach (System.Data.DataRow row in ClientDataTable1.Rows)
                                         { %>
                                     <tr>
                                         <td align="left" class="TableHeading">&nbsp;</td>
-                                        <td height="25" align="left" class="TableHeading"><strong>Sr.</strong></td>
+                                        <td height="25" align="left" class="TableHeading"><strong><%: row["RunnerID"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["rate"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Amount"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Mode"] %></strong></td>
@@ -258,7 +258,7 @@
          <!--
         function Redirect(value) {
             
-            window.location = "MatchAndSessionSPosition.aspx?MatchID=57298 && Session=" + value;
+            window.location = "MatchAndSessionSPosition.aspx?MatchID=57298&&Session=" + value;
             }
          //-->
       </script>

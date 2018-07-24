@@ -138,7 +138,7 @@
             }
             console.log(formBody);
             formBody = formBody.join("&");
-            fetch('http://localhost:54034/admin/clientLimit.ashx', {
+            fetch('/admin/clientLimit.ashx', {
                 credentials: 'same-origin',
                 method: 'POST',
                 headers: {

@@ -69,7 +69,7 @@
 
                                                     <tr>
                                                         <td align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">Agent Limit</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">SuperAgent Limit</td>
                                                         <td align="left" valign="middle">
                                                             <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" /></td>
                                                         <td align="left" valign="middle">&nbsp;</td>
@@ -77,7 +77,7 @@
 
                                                     <tr>
                                                         <td align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">Agent Share %</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">SuperAgent Share %</td>
                                                         <td align="left" valign="middle">
                                                             <asp:TextBox CssClass="textbox" ID="txtAgentShare" runat="server" /></td>
                                                     </tr>
@@ -93,7 +93,7 @@
                                                         <td align="left" class="welcome">
                                                             <p>&nbsp;</p>
                                                         </td>
-                                                        <td height="30" align="left" valign="middle" class="welcome"><strong>Agent Commission Percentage</strong></td>
+                                                        <td height="30" align="left" valign="middle" class="welcome"><strong>SuperAgent Commission Percentage</strong></td>
 
                                                         <td align="left">&nbsp;</td>
 

@@ -52,7 +52,7 @@
                                     <tbody>
                                         <tr>
                                             <td height="25" width="70%" style="text-align: center; vertical-align: middle;">
-                                                <strong>AGENT &amp; CLIENT OF
+                                                <strong>SUPERAGENT &amp; AGENT &amp; CLIENT OF
                                                     <asp:Label ID="lblTeamA" runat="server"></asp:Label>V
                                                     <asp:Label ID="lblTeamB" runat="server"></asp:Label>
                                                 </strong></td>

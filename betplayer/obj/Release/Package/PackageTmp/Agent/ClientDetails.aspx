@@ -45,7 +45,7 @@
                                     <div class="btn-group">
                                         <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" OnSelectedIndexChanged="DropDownstatus_SelectedIndexChanged" AutoPostBack="true">
 
-                                            <asp:ListItem Text="Active" Value="Active">active</asp:ListItem>
+                                            <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
                                             <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
                                         </asp:DropDownList>
 
@@ -236,7 +236,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/Agent/ChangeStatus.ashx', {
+            fetch('/Agent/ChangeStatus.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace betplayer.Super_Agent {
+namespace betplayer.SuperAgent {
     
     
     public partial class AllAgentLedger {

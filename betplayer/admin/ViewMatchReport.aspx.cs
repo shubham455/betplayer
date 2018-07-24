@@ -45,7 +45,7 @@ namespace betplayer.admin
                     lblTeam2.Text = TeamNamedt.Rows[0]["TeamB"].ToString();
 
 
-                    string s2 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where  Runner.MatchID = '" + MatchID + "'";
+                    string s2 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where  Runner.MatchID = '" + MatchID + "' order by Runner.DATETime DESC";
                     MySqlCommand cmd1 = new MySqlCommand(s2, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     dt2 = new DataTable();
@@ -85,7 +85,7 @@ namespace betplayer.admin
                 decimal PositionAAmount = 0, PositionBAmount = 0;
                 if (Dropdownclient.SelectedItem.Text == "All Client")
                 {
-                    string s2 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where Runner.MatchID = '" + MatchID + "'";
+                    string s2 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where Runner.MatchID = '" + MatchID + "' order by Runner.DateTime DESC";
                     MySqlCommand cmd1 = new MySqlCommand(s2, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     dt2 = new DataTable();
@@ -114,7 +114,7 @@ namespace betplayer.admin
                 }
                 else
                 {
-                    string s3 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where Runner.MatchID = '" + MatchID + "' && runner.ClientID = '" + Dropdownclient.SelectedValue + "'  ";
+                    string s3 = "select Runner.RunnerID,Runner.Amount,Runner.rate,Runner.Mode,Runner.DateTime,Runner.Team,Runner.Position1,Runner.Position2,Runner.clientID,clientmaster.Name from Runner inner join clientmaster on Runner.ClientID = clientmaster.ClientID where Runner.MatchID = '" + MatchID + "' && runner.ClientID = '" + Dropdownclient.SelectedValue + "' order by Runner.DateTime DESC   ";
                     MySqlCommand cmd = new MySqlCommand(s3, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     dt2 = new DataTable();

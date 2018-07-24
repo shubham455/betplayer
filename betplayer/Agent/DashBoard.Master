@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
-    <title>Crick20 Dashboard</title>
+    <title>livegame25 Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
@@ -99,7 +99,7 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="ClientDetails.aspx">Client Master</a></li>
-                        <li><a class="" href="CollectionDetails.aspx">Collection Master</a></li>
+                        <li><a class="" href="#">Collection Master</a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -118,10 +118,10 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="My_Ledger.aspx">My Ledger</a></li>
-                        <li><a class="" href="Clientplusminus.aspx">Client Plus/Minus</a></li>
+                        <li><a class="" href="#">Client Plus/Minus</a></li>
                         <li><a class="" href="ClientLedger.aspx">Client Ledger</a></li>
                         <li><a class="" href="AllClientLedger.aspx">All Client Ledger</a></li>
-                        <li><a class="" href="DateWiseReport.aspx">Date Wise Report</a></li>
+                        <li><a class="" href="#">Date Wise Report</a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -130,8 +130,7 @@
 					<span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="ClientLimitReport.aspx">Client Limit Report</a></li>
-                        <li><a class="" href="SecureCodeReport.aspx">Secure Code Report</a></li>
+                        <li><a class="" href="#">Client Limit Report</a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -153,7 +152,7 @@
     </form>
 
     <div id="footer">
-        2018 © Crick20.com
+        2018 © livegame25.com
 		<div class="span pull-right">
             <span class="go-top"><i class="icon-arrow-up"></i></span>
         </div>
@@ -184,7 +183,7 @@
     <script src="js/jquery.peity.min.js"></script>
     <script type="text/javascript" src="assets/uniform/jquery.uniform.min.js"></script>
     <script src="js/scripts.js"></script>
-  
+
 
     <script>
         jQuery(document).ready(function () {

@@ -17,9 +17,9 @@ namespace betplayer.poweruser
             if (!IsPostBack)
             {
 
-                if (Session["AdminID"] != null)
+                if (Session["poweruserID"] != null)
                 {
-                    Session.Remove("AdminID");
+                    Session.Remove("poweruserID");
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Logout Successfully.....');", true);
                 }
 
@@ -52,7 +52,7 @@ namespace betplayer.poweruser
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string SELECT = "Select * from AdminMaster Where Code = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
+                    string SELECT = "Select * from poweruserMaster Where Code = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
 
@@ -63,9 +63,9 @@ namespace betplayer.poweruser
                         MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
-                        int AdminID = Convert.ToInt16(dt.Rows[0]["AdminID"]);
+                        int poweruserID = Convert.ToInt16(dt.Rows[0]["poweruserID"]);
 
-                        Session["PoweruserID"] = AdminID;
+                        Session["PoweruserID"] = poweruserID;
 
                         Response.Redirect("ModifyMatches.aspx");
                     }

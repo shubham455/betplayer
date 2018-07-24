@@ -92,7 +92,7 @@
                                                             <td height="30" align="left" class="welcome">&nbsp;</td>
                                                             <td height="30" align="left">Mobile App</td>
                                                             <td align="left">
-                                                                <asp:DropDownList ID="DropDownMobileApp" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" >
+                                                                <asp:DropDownList ID="DropDownMobileApp" runat="server"  Width="150px" >
                                                                     <asp:ListItem Enabled ="true" Text="Please Select" Value="0">Commission Type</asp:ListItem>
                                                                     <asp:ListItem   Text="Yes" Value="1"></asp:ListItem>
                                                                     <asp:ListItem Text="No" Value="2"></asp:ListItem>
@@ -104,7 +104,7 @@
                                                             <td>&nbsp;</td>
                                                             <td height="30" align="left">Status</td>
                                                             <td align="left">
-                                                                <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" >
+                                                                <asp:DropDownList ID="DropDownstatus" runat="server"  Width="150px" >
                                                                     <asp:ListItem Text="Please Select" Value="0">Commission Type</asp:ListItem>
                                                                     <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
                                                                     <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
@@ -119,7 +119,7 @@
                                                             <td align="left" class="welcome">&nbsp;</td>
                                                             <td height="30" align="left" valign="middle" class="welcome">Session Commission Type</td>
                                                             <td align="left" valign="middle">
-                                                                <asp:DropDownList ID="SessionDropDown" runat="server" class="btn btn-primary dropdown-toggle" AppendDataBoundItems="True">
+                                                                <asp:DropDownList ID="SessionDropDown" runat="server"  AppendDataBoundItems="True">
                                                                     <asp:ListItem Text="Please Select" Value="0">Commission Type</asp:ListItem>
                                                                     <asp:ListItem Text="No Commission" Value="1">No Commission</asp:ListItem>
                                                                     <asp:ListItem Text=">Only On Minus" Value="2">Only On Minus</asp:ListItem>
@@ -140,18 +140,7 @@
                                     <asp:button ID="btnCancel" class="btn btn-success" Text="Cancel" OnClick="Button1_Click" runat="server"/>
                                 </div>
 
-                                <input name="MatchShareOld" type="hidden" class="textbox" id="MatchShareOld" value="50.00">
-                                <input name="SessionShareOld" type="hidden" class="textbox" id="SessionShareOld" value="0.00">
-                                <input name="ShareModifyChk" type="hidden" class="textbox" id="ShareModifyChk" value="Yes">
-                                <input name="MatchLimit" type="hidden" class="textbox" id="MatchLimit" value="0" readonly="">
-
-                                <input name="AutoNo" type="hidden" id="AutoNo" value="323230" readonly="">
-                                <input name="ModifyChk" type="hidden" id="ModifyChk" value="" readonly="">
-                                <input name="ClientName_Old" type="hidden" id="ClientName_Old" value="220 Shivam" readonly="">
-                                <input name="ClientName1" type="hidden" id="ClientName1" value="220 Shivam" readonly="">
-                                <input name="SessionCommissionTypeClientOld" type="hidden" id="SessionCommissionTypeClientOld" value="No Comm" readonly="">
-                         
-                            <!-- END FORM-->
+                               
                         </div>
                     </div>
                 </div>

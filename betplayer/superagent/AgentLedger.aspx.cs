@@ -18,6 +18,7 @@ namespace betplayer.Super_Agent
         public DataTable LedgerTableOrdered;
         public DataTable runTable { get { return runtable; } }
         public DataTable runTable1 { get { return runtable1; } }
+        public Boolean emptyLedgerTable = false;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -62,6 +63,7 @@ namespace betplayer.Super_Agent
         {
 
             runtable = new DataTable();
+            runtable.Columns.Add(new DataColumn("ID"));
             DataColumn colDateTime = new DataColumn("Date");
             colDateTime.DataType = System.Type.GetType("System.DateTime");
             runtable.Columns.Add(colDateTime);
@@ -86,7 +88,7 @@ namespace betplayer.Super_Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "select matches.TeamA,matches.teamB,matches.DateTime,agentledger.Dabit,agentledger.Credit from agentLedger inner join matches on agentledger.MatchID = matches.apiID where agentID = '" + dropdownAgent.SelectedValue + "'";
+                string s = "select matches.TeamA,matches.teamB,matches.DateTime,agentledger.agentledgerID,agentledger.Dabit,agentledger.Credit from agentLedger inner join matches on agentledger.MatchID = matches.apiID where agentID = '" + dropdownAgent.SelectedValue + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt1 = new DataTable();
@@ -95,6 +97,7 @@ namespace betplayer.Super_Agent
 
                 for (int i = 0; i < dt1.Rows.Count; i++)
                 {
+                    int ID = Convert.ToInt32(dt1.Rows[i]["agentledgerID"]);
                     string DateFromDB = dt1.Rows[i]["DateTime"].ToString();
                     DateTime oDate = DateTime.Parse(DateFromDB);
                     string datetime = oDate.Date.ToString().Substring(0, 10);
@@ -104,6 +107,7 @@ namespace betplayer.Super_Agent
                     decimal Dabit = Convert.ToDecimal(dt1.Rows[i]["Dabit"]);
                     decimal Credit = Convert.ToDecimal(dt1.Rows[i]["Credit"]);
 
+                    row["ID"] = ID;
                     row["Date"] = oDate;     //row["Date"] = datetime;
                     row["PaynmentDescription"] = TeamA + "VS" + TeamB;
                     row["Dabit"] = Dabit;
@@ -144,7 +148,7 @@ namespace betplayer.Super_Agent
 
                 for (int j = 0; j < dt.Rows.Count; j++)
                 {
-
+                    int CollectionID = Convert.ToInt32(dt.Rows[j]["CollectionID"]);
                     string CollectionDate = dt.Rows[j]["Date"].ToString();
                     DateTime date = DateTime.Parse(CollectionDate);
                     string Date1 = date.Date.ToString().Substring(0, 10);
@@ -155,6 +159,7 @@ namespace betplayer.Super_Agent
                     string PaynmentDescription = dt.Rows[j]["PaynmentType"].ToString();
                     string Remark = dt.Rows[j]["Remark"].ToString();
 
+                    row["ID"] = CollectionID;
                     row["Date"] = Date1;        //row["Date"] = Date1;
                     row["CollectionName"] = CollectionName;
                     row["Remark"] = Remark;
@@ -232,19 +237,8 @@ namespace betplayer.Super_Agent
             }
             else
             {
-                string DateFromDB = "01-01-2000";
-                DateTime oDate = DateTime.Parse(DateFromDB);
-                row["Date"] = oDate;     //row["Date"] = datetime;
-                row["PaynmentDescription"] = 0;
-                row["Dabit"] = 0;
-                row["Credit"] = 0;
-                row["CollectionName"] = 0;
-                row["Balance"] = 0;
-                row["Remark"] = 0;
-                runTable.Rows.Add(row.ItemArray);
-
-                DataTable LedgerTableOrdered = runtable;
-
+                emptyLedgerTable = true;
+                
 
 
                 row1["TotalDabitAmount"] = 0;

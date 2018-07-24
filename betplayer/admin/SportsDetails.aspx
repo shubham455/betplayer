@@ -55,7 +55,7 @@
                                             <div class="btn-group">
                                                 <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="MatchAndSessionPosition.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-film"></i>Match &amp; Session Position</a></li>
+                                                    <li><a href="<%if (Convert.ToInt16(row["Declear"]) == 1) {%>#<% }else{%>MatchAndSessionPosition.aspx?MatchID=<%: row["apiID"] %><% } %>"><i class="icon-film"></i>Match &amp; Session Position</a></li>
                                                     <li><a href="MatchPlusMinusSelect.php?MT=243"><i class="icon-tasks"></i>Match Plus Minus</a></li>
                                                     <li><a href="SessionPlusMinusSelect.php?MT=243"><i class="icon-bolt"></i>Session Plus Minus</a></li>
                                                     <li><a href="PlusMinusSelect.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-filter"></i>Match &amp; Session Plus Minus</a></li>

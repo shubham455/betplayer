@@ -43,7 +43,7 @@
                                         </asp:DropDownList>
                                     </div>
 
-                                    <a href="SuperAgentLimit.php">
+                                    <a href="Updatesuperagentlimit.aspx">
                                         <button class="btn btn-primary" type="button">Update Limit</button></a>
                                 </div>
                                 <div class="space15"></div>
@@ -113,7 +113,7 @@
                                             <th align="right" style="text-align: center; width: 51px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="SuperAgent : activate to sort column ascending">SuperAgent </th>
                                             <th align="right" style="text-align: center; width: 44px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Client : activate to sort column ascending">Client </th>
                                             <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 45px;">Status</th>
-                                            <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Dead: activate to sort column ascending" style="width: 33px;">Dead</th>
+                                            <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Dead: activate to sort column ascending" style="width: 33px;">MobileApp</th>
                                         </tr>
                                     </thead>
                                     <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
@@ -124,14 +124,14 @@
                                             <td align="center" class="  sorting_1">
                                                 <div class="checker" id="uniform-1">
                                                     <span>
-                                                        <input type="checkbox" class="checkboxes" name="1" id="1" value="17" style="opacity: 0;"></span>
+                                                        <input type="checkbox" class="checkboxes" name="checkbox" id="check" onclick="ChangesInStatus('<%:row["SuperAgentID"] %>" value ="<%:row["SuperAgentID"] %>" style="opacity: 0;"></span>
                                                 </div>
                                             </td>
                                             <td align="left" class=" ">
                                                 <div class="btn-group">
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="SuperAgentDetailsModify.php?id=17"><i class="icon-pencil"></i>Edit</a></li>
+                                                        <li><a href="ModifySuperAgent.aspx?id=<%:row["SuperAgentID"] %>"><i class="icon-pencil"></i>Edit</a></li>
                                                         <li><a onclick="CallHandler('<%:row["SuperAgentID"] %>');"><i class="icon-trash"></i>Delete</a></li>
                                                         <li><a onclick="ChangesInStatus('<%:row["SuperAgentID"] %>');"><i class="icon-ban-circle"></i>
                                                             InActive                              </a></li>
@@ -146,16 +146,40 @@
                                             <td align="left" class=" "><%:row["Name"] %></td>
                                             <td align="left" class=" "><%:row["ContactNO"] %></td>
                                             <td align="left" class=" "><%= Date(Convert.ToDateTime(row["Date"]))%></td>
-                                            <td align="left" class=" "><%:row["SuperAgentID"] %></td>
+                                            <td align="left" class=" "><%:row["myshare"] %></td>
                                             <td align="left" class=" "><%:row["Password"] %></td>
-                                            <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
-                                            <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["SuperAgentID"] %></td>
-                                            <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["SuperAgentID"] %></td>
-                                            <td align="right" style="text-align: right;" class=" ">0</td>
-                                            <td align="right" style="text-align: right;" class=" ">0</td>
+                                             <% if (row["SessionCommisionType"].ToString() == "Bet By Bet") %>
+
+                                                <% { %>
+
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
+
+
+                                                <% } %>
+                                                <% else if (row["SessionCommisionType"].ToString() == "No Commision") %>
+
+                                                <% { %>
+
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">NOC</td>
+
+
+                                                <% } %>
+                                                <% else if (row["SessionCommisionType"].ToString() == "Only On Minus") %>
+
+                                                <% { %>
+
+                                                <td align="right" bgcolor="#FFFFFF" class="FontText ">OOM</td>
+
+
+                                                <% } %>
+
+                                            <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["matchcommision"] %></td>
+                                            <td align="right" bgcolor="#FFFFFF" class="FontText " style="text-align: right;"><%:row["sessioncommision"] %></td>
+                                            <td align="right" style="text-align: right;" class=" "><%:row["FixLimit"] %></td>
+                                            <td align="right" style="text-align: right;" class=" "><%:row["currentlimit"] %></td>
                                             <td align="right" style="text-align: right;" class=" ">0</td>
                                             <td align="left" class=" "><%:row["Status"] %></td>
-                                            <td align="left" class=" ">NO</td>
+                                            <td align="left" class=" "><%:row["mymobamount"] %></td>
                                         </tr>
 
                                     </tbody>
@@ -196,7 +220,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/Admin/Deletesuperagent.ashx', {
+            fetch('/Admin/Deletesuperagent.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -228,7 +252,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/Agent/ChangeStatus.ashx', {
+            fetch('/Agent/ChangeStatus.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

@@ -296,7 +296,8 @@
     <asp:HiddenField ID="apiID" runat="server" />
     <script>
         function ShowReport() {
-            window.location = "MatchSessionPlusMinusDisplay.aspx?MatchID=57296"
+            var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
+            window.location = "MatchSessionPlusMinusDisplay.aspx?MatchID=" + matchid;
         }
     </script>
 </asp:Content>

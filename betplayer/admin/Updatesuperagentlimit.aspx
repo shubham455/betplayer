@@ -134,7 +134,7 @@
             }
             console.log(formBody);
             formBody = formBody.join("&");
-            fetch('http://localhost:54034/admin/superagentLimit.ashx', {
+            fetch('/admin/superagentLimit.ashx', {
                 credentials: 'same-origin',
                 method: 'POST',
                 headers: {

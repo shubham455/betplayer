@@ -2,7 +2,7 @@
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tbody>
             <tr>
                 <td valign="top">
@@ -11,7 +11,7 @@
                             <tr>
                                 <td align="left" valign="top">
 
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <table width="100%" border="0" cellspacing="2" cellpadding="2">
                                         <tbody>
                                             <tr>
                                                 <!--<td colspan="2" height="35" align="center" class="TeamCombo">
@@ -54,10 +54,10 @@
                                     <table width="100%" border="0" cellpadding="2" cellspacing="2">
                                         <tbody>
                                             <tr>
-                                                <td width="25%" height="35" align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle">RUNNER</td>
-                                                <td width="20%" align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle">LAGAI</td>
-                                                <td width="20%" align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle">KHAI</td>
-                                                <td width="35%" align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle">POSITION</td>
+                                                <td  height="35" align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle">RUNNER</td>
+                                                <td  align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle">LAGAI</td>
+                                                <td align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle">KHAI</td>
+                                                <td  align="center" valign="middle" bgcolor="#2DA5DA" class="FontTextWhite" style="vertical-align: middle">POSITION</td>
                                             </tr>
 
                                             <tr>

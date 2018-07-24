@@ -86,7 +86,7 @@
                                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                                             { %>
                                                         <tr>
-                                                            <td align="left" class="TableHeading"><%: row["SessionID"] %></td>
+                                                            <td align="left" class="TableHeading"><strong><%: row["SessionID"] %></strong></td>
                                                             <td height="25" align="left" class="TableHeading"><strong><%: row["Session"] %></strong></td>
                                                             <td align="left" class="TableHeading"><strong> <%: row["ClientID"] %> <%: row["Name"] %></strong></td>
                                                             <td align="left" class="TableHeading"><strong><%: row["rate"] %></strong></td>

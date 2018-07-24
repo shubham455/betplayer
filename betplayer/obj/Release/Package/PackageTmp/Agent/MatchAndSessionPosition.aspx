@@ -215,7 +215,7 @@
                                         { %>
                                     <tr>
                                         <td align="left" class="TableHeading">&nbsp;</td>
-                                        <td height="25" align="left" class="TableHeading"><strong>Sr.</strong></td>
+                                        <td height="25" align="left" class="TableHeading"><strong><%: row["runnerID"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["rate"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Amount"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Mode"] %></strong></td>
@@ -257,9 +257,11 @@
     <script type="text/javascript">
          <!--
         function Redirect(value) {
-            var MatchID = document.getElementById("ContentPlaceHolder1_apiID").value;
-            window.location = "MatchAndSessionSPosition.aspx?MatchID="+MatchID+" && Session=" + value;
+            if (value != "NONE") {
+                var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
+                window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + " &&Session=" + value;
             }
+        }
          //-->
       </script>
 </asp:Content>

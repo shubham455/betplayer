@@ -20,7 +20,7 @@ namespace betplayer.superagent
 
 
         protected void Page_Load(object sender, EventArgs e)
-            {
+        {
 
             ClientTable.Columns.Add(new DataColumn("SessionID"));
             ClientTable.Columns.Add(new DataColumn("Session"));
@@ -53,7 +53,7 @@ namespace betplayer.superagent
                 adp.Fill(dt);
                 string TeamA1 = dt.Rows[0]["TeamA"].ToString();
                 string TeamB1 = dt.Rows[0]["TeamB"].ToString();
-                
+
 
 
 
@@ -66,10 +66,10 @@ namespace betplayer.superagent
 
                 for (int o = 0; o < dt11.Rows.Count; o++)
                 {
-                    int  AgentID = Convert.ToInt16(dt11.Rows[o]["AgentID"]);
-                    string  Agentcode = (dt11.Rows[o]["code"]).ToString();
+                    int AgentID = Convert.ToInt16(dt11.Rows[o]["AgentID"]);
+                    string Agentcode = (dt11.Rows[o]["code"]).ToString();
 
-                    string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "'";
+                    string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "' order by Session.DateTime DESC";
                     MySqlCommand cmd1 = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     dt = new DataTable();
@@ -79,7 +79,7 @@ namespace betplayer.superagent
 
                     for (int j = 0; j < dt.Rows.Count; j++)
                     {
-                        string selectAgentshare = "select CreatedBy,Agent_share From ClientMaster where ClientID = '" + ClientID + "'";
+                        string selectAgentshare = "select CreatedBy,Agent_share From ClientMaster where Createdby = '" + Agentcode + "'";
                         MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
                         MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
                         DataTable selectAgentsharedt = new DataTable();
@@ -107,11 +107,11 @@ namespace betplayer.superagent
                             string Mode = dt.Rows[j]["Mode"].ToString();
                             string ClientID = dt.Rows[j]["ClientID"].ToString();
 
-                           
 
 
 
-                            for (int i = runs + 5; i >= runs + 5; i--)
+
+                            for (int i = runs + 5; i >= runs - 5; i--)
                             {
 
                                 DataRow row = runTable.NewRow();
@@ -120,7 +120,7 @@ namespace betplayer.superagent
                                     i, 0,
                                     Rate,
                                     runs, Amount,
-                                    AgentShare1,AgentShare2).ToString();
+                                    AgentShare1, AgentShare2).ToString();
                                 runTable.Rows.Add(row.ItemArray);
                             }
 
@@ -145,10 +145,10 @@ namespace betplayer.superagent
                             string ClientID = dt.Rows[j]["ClientID"].ToString();
 
 
-                           
+
                             int highVal = Convert.ToInt32(runTable.Rows[0]["Runs"]);
                             int lowVal = Convert.ToInt32(runTable.Rows[runTable.Rows.Count - 1]["Runs"]);
-                            if (runs > highVal)
+                            if ((runs+5) > highVal)
                             {
                                 for (int i = runs + 5; i > highVal; i--)
                                 {
@@ -185,7 +185,7 @@ namespace betplayer.superagent
                                         Rate,
                                         runs,
                                         Amount,
-                                        AgentShare1,AgentShare2).ToString();
+                                        AgentShare1, AgentShare2).ToString();
                                 }
                                 else
                                 {
@@ -195,9 +195,9 @@ namespace betplayer.superagent
                                         Rate,
                                         runs,
                                         Amount,
-                                        AgentShare1,AgentShare2).ToString();
+                                        AgentShare1, AgentShare2).ToString();
                                 }
-                                
+
 
                             }
                         }
@@ -205,41 +205,41 @@ namespace betplayer.superagent
                 }
             }
         }
-            public Decimal CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount, Decimal AgentShare1,Decimal AgentShare2)
+        public Decimal CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount, Decimal AgentShare1, Decimal AgentShare2)
+        {
+            Decimal Difference = 0;
+
+            if (Initruns < runs)
             {
-                Decimal Difference = 0;
 
-                if (Initruns < runs)
+                if (Mode == "Y")
                 {
-
-                    if (Mode == "Y")
-                    {
-                        Difference = Amount * AgentShare1 * AgentShare2 + InitAmount;
-                    }
-                    else if (Mode == "N")
-                    {
-                        Difference = Amount * -1 * AgentShare1  * AgentShare2 + InitAmount;
-                    }
-
-
+                    Difference = Amount * AgentShare1 * AgentShare2 + InitAmount;
                 }
-                if (Initruns >= runs)
+                else if (Mode == "N")
                 {
-                    if (Mode == "Y")
-                    {
-                        Difference = Amount * Rate * -1 * AgentShare1 * AgentShare2 + InitAmount;
-                    }
-                    else if (Mode == "N")
-                    {
-                        Difference = Amount * Rate * AgentShare1 * AgentShare2 + InitAmount;
-                    }
-
-
+                    Difference = Amount * -1 * AgentShare1 * AgentShare2 + InitAmount;
                 }
-                return Difference;
+
+
             }
+            if (Initruns >= runs)
+            {
+                if (Mode == "Y")
+                {
+                    Difference = Amount * Rate * -1 * AgentShare1 * AgentShare2 + InitAmount;
+                }
+                else if (Mode == "N")
+                {
+                    Difference = Amount * Rate * AgentShare1 * AgentShare2 + InitAmount;
+                }
 
+
+            }
+            return Difference;
         }
+
     }
+}
 
 

@@ -1,6 +1,6 @@
 ﻿<html>
 <head>
-    <title>Crick20.com</title>
+    <title>Live Game 25</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -111,7 +111,7 @@
             <div id="stuck_container" class="stuck_container">
                 <div class="container">
                     <div class="brand">
-                        <a href="Login.php">
+                        <a href="Login.aspx">
                             <img src="images/HomeImg/logo.png" alt="">
 
                             <h1 class="brand_name">हमारे बारे में !
@@ -127,18 +127,18 @@
                     <div class="wrap_cnt">
                         <div class="wrap_cnt_ins" style="text-align: justify !important;">
                             <!--<h2>हमारे बारे में !</h2>-->
-                            <h4><a href="#">crick20 सट्टेबाजी की साइट नहीं है।</a></h4>
+                            <h4><a href="#">livegame25 सट्टेबाजी की साइट नहीं है।</a></h4>
                             <br>
                             <strong>असली सट्टेबाजी जिंदगी को बर्बाद कर देती है। आभासी सट्टेबाजी अद्भुत रोमांच देती है। </strong>
                             <br>
                             <br>
-                            crick20 उपयोगकर्ताओं के लिए आभासी सट्टेबाजी का खेल (INSTANT BETTING SPORTS) है और हमारे आभासी खेल (VIRTUAL  SPORTS) पर शर्त लगाने का एक मुफ्त सामाजिक सट्टेबाजी मंच है।
+                            livegame25 उपयोगकर्ताओं के लिए आभासी सट्टेबाजी का खेल (INSTANT BETTING SPORTS) है और हमारे आभासी खेल (VIRTUAL  SPORTS) पर शर्त लगाने का एक मुफ्त सामाजिक सट्टेबाजी मंच है।
                            
                             <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;crick20 में हम अपने उपयोगकर्ताओं को सट्टेबाजी, मनोरंजन के रूप में, एक सुरक्षित और कानूनी वातावरण से मुक्त तरीके से प्रदान करना चाहते हैं। खिलाड़ियों को एक आभासी मुद्रा (VIRTUAL CURRENCY) कोइंस  (Coins) दिए जाते है  जिससे वह भाव देख सकते है एवं सौदे कर सकते है । इसमें दिखने वाले भाव भी आभासी होते है।  crick20 में किये गए किसी भी सौदे का किसी भी तरह से रूपये के रूप में लेन देन नहीं होता है।
+                            &nbsp;&nbsp;&nbsp;&nbsp;livegame25 में हम अपने उपयोगकर्ताओं को सट्टेबाजी, मनोरंजन के रूप में, एक सुरक्षित और कानूनी वातावरण से मुक्त तरीके से प्रदान करना चाहते हैं। खिलाड़ियों को एक आभासी मुद्रा (VIRTUAL CURRENCY) कोइंस  (Coins) दिए जाते है  जिससे वह भाव देख सकते है एवं सौदे कर सकते है । इसमें दिखने वाले भाव भी आभासी होते है।  livegame25 में किये गए किसी भी सौदे का किसी भी तरह से रूपये के रूप में लेन देन नहीं होता है।
                            
                             <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;crick20 केवल एक  मुफ्त, मनोरंजन साइट है जहां केवल आभासी मुद्राओं (Coins) का उपयोग किया जाता है।  crick20 में आप ना तो रूपये जमा कर सकते हे और ना ही निकाल सकते हे।
+                            &nbsp;&nbsp;&nbsp;&nbsp;livegame25 केवल एक  मुफ्त, मनोरंजन साइट है जहां केवल आभासी मुद्राओं (Coins) का उपयोग किया जाता है।  livegame25 में आप ना तो रूपये जमा कर सकते हे और ना ही निकाल सकते हे।
                            
                             <br>
                             &nbsp;&nbsp;&nbsp;&nbsp;एक पूरी तरह से नए स्तर पर अपने पसंदीदा खेल की आभासी सट्टेबाजी करे। कैसे खेले जानने के लिए <a href="HowToPlay.html">यहाँ क्लिक करे। </a>
@@ -393,7 +393,7 @@
             </div>
 
             <div class="copyright">
-                Copy Right © crick20 <span id="copyright-year">2018</span> •
+                Copy Right © livegame25 <span id="copyright-year">2018</span> •
                 
                
             </div>

@@ -226,7 +226,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/Admin/DeleteAgent.ashx', {
+            fetch('/Admin/DeleteAgent.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -258,7 +258,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://localhost:54034/Admin/ChangeStatus.ashx', {
+            fetch('/Admin/ChangeStatus.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

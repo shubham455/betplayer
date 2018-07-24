@@ -25,12 +25,18 @@ namespace betplayer.Client
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string SELECT = "Select ClientID,Name,Currentlimit From ClientMaster where ClientID = '" + Session["ClientID"] + "'";
+                    string SELECT = "Select ClientID,Name,status,Currentlimit From ClientMaster where ClientID = '" + Session["ClientID"] + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     lblName.InnerText = dt.Rows[0]["Name"].ToString();
+                    string status = dt.Rows[0]["status"].ToString();
+
+                    if(status  == "Inactive")
+                    {
+                        Response.Redirect("login.aspx");
+                    }
 
                     int ClientID = Convert.ToInt32(dt.Rows[0]["ClientID"]);
                     int CurrentLimit = Convert.ToInt32(dt.Rows[0]["CurrentLimit"]);

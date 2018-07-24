@@ -24,12 +24,18 @@ namespace betplayer.SuperAgent
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string SELECT = "Select Name From SuperAgentMAster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
+                    string SELECT = "Select Name,status From SuperAgentMAster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     lbl1.Text = dt.Rows[0]["Name"].ToString();
+                    string status = dt.Rows[0]["status"].ToString();
+
+                    if(status == "Inactive")
+                    {
+                        Response.Redirect("login.aspx");
+                    }
 
                 }
             }

@@ -43,8 +43,10 @@
                                 <tbody>
                                     <tr class="MainHeading">
                                         <td width="181" height="35" align="left" valign="middle" class="MainHeading1 textTeamHead">
-                                            <asp:Label ID="lblTeamA" runat="server"></asp:Label></td>
-                                        <td width="193" style="text-align: right; color: #000" valign="middle" class="MainHeading1 textTeamHead"><strong><asp:Label ID="lblPositionA" runat="server"></asp:Label></strong></td>
+                                            <strong>
+                                                <asp:Label ID="lblTeamA" runat="server" /></strong></td>
+                                        <td width="193" style="text-align: right; color: #000" valign="middle" class="MainHeading1 textTeamHead"><strong>
+                                            <asp:Label ID="lblPositionA" runat="server"></asp:Label></strong></td>
                                         <td width="118" align="center" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
                                         <td width="199" height="35" align="center" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
                                         <td width="398" align="center" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
@@ -52,8 +54,10 @@
                                     </tr>
                                     <tr class="MainHeading">
                                         <td height="35" align="left" valign="middle" class="MainHeading1 textTeamHead">
-                                            <asp:Label ID="lblTeamB" runat="server"></asp:Label></td>
-                                        <td style="text-align: right; color: #000" valign="middle" class="MainHeading1 textTeamHead"><strong><asp:Label ID="lblPositionB" runat="server"></asp:Label></strong></td>
+                                            <strong>
+                                                <asp:Label ID="lblTeamB" runat="server"></asp:Label></strong></td>
+                                        <td style="text-align: right; color: #000" valign="middle" class="MainHeading1 textTeamHead"><strong>
+                                            <asp:Label ID="lblPositionB" runat="server"></asp:Label></strong></td>
                                         <td align="center" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
                                         <td align="center" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
                                         <td align="center" valign="middle" class="MainHeading">&nbsp;</td>
@@ -86,8 +90,8 @@
                                         <td width="90" style="text-align: right;" class="TableHeading"><strong>
                                             <asp:Label ID="lblTeam1" runat="server"></asp:Label>
                                         </strong></td>
-                                        <td width="90" style="text-align: right;" class="TableHeading">
-                                            <asp:Label ID="lblTeam2" runat="server" /></td>
+                                        <td width="90" style="text-align: right;" class="TableHeading"><strong>
+                                            <asp:Label ID="lblTeam2" runat="server" /></strong></td>
                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                             { %>
                                     <tr>
@@ -98,15 +102,18 @@
                                         <td width="60" align="left" class="TableHeading"><strong><%:row["Team"] %> </strong></td>
                                         <td align="left" class="TableHeading"><strong><%:row["ClientID"] %><%:row["Name"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%:row["DateTime"] %></strong></td>
-                                        <td width="90" style="text-align: right;" class="TableHeading"><%:row["Position1"] %></td>
-                                        <td width="90" style="text-align: right;" class="TableHeading"><%:row["Position2"] %></td>
+                                        <td width="90" style="text-align: right;" class="TableHeading"><strong><%:row["Position1"] %></strong></td>
+                                        <td width="90" style="text-align: right;" class="TableHeading"><strong><%:row["Position2"] %></strong></td>
                                     </tr>
                                     <% } //foreach %>
                                     <tr>
                                         <td height="25" colspan="6" style="text-align: right;" class="TableHeading">&nbsp;</td>
                                         <td style="text-align: right;" class="TableHeading"><strong>TOTAL AMOUNT</strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong><asp:Label ID="lblTotalPosition1" runat="server"></asp:Label></strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong><asp:Label ID="lblTotalPosition2" runat="server"></asp:Label>  </strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong>
+                                            <asp:Label ID="lblTotalPosition1" runat="server"></asp:Label></strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong>
+                                            <asp:Label ID="lblTotalPosition2" runat="server"></asp:Label>
+                                        </strong></td>
                                     </tr>
                                 </tbody>
                             </table>

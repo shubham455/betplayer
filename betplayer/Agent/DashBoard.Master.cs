@@ -25,12 +25,21 @@ namespace betplayer.Agent
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string SELECT = "Select Name From AgentMaster where AgentID = '" + Session["AgentID"] + "'";
+                    string SELECT = "Select Name,status From AgentMaster where AgentID = '" + Session["AgentID"] + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     lbl1.Text = dt.Rows[0]["Name"].ToString();
+
+                    string Status = dt.Rows[0]["Status"].ToString();
+
+                    if(Status == "Inactive")
+                    {
+                        Response.Redirect("login.aspx");
+                    }
+
+
 
                 }
             }

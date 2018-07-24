@@ -19,7 +19,7 @@
 <body id="login-body">
     <div class="login-header">
         <div id="logo" class="center">
-            <a href="agent.crick20.com">Crick20</a>
+            <a href="#">livegame25</a>
         </div>
     </div>
     <div id="login">
@@ -32,7 +32,7 @@
             <div class="controls">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
-                    <asp:TextBox ID="txtusername" runat="server" placeholder="Username" />
+                    <asp:TextBox ID="txtusername" runat="server" placeholder="Username"  />
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <div class="controls">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-key"></i></span>
-                    <asp:TextBox ID="txtpassword" runat="server" placeholder="Password" />
+                    <asp:TextBox ID="txtpassword" runat="server" placeholder="**********" TextMode="Password" />
                 </div>
                 <div class="mtop10">
                     <div class="block-hint pull-left small">
@@ -56,7 +56,7 @@
     <asp:Button ID="btnsubmit" CssClass="btn btn-block login-btn" runat="server" Text="Login" OnClick="Submitbtn_Click" />
     </form>
     </div>
-    <div id="login-copyright">2018 &copy; Crick20.com </div>
+    <div id="login-copyright">2018 &copy; livegame25.com </div>
 
 
 </body>

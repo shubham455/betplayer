@@ -215,7 +215,7 @@ function declareSession() {
     }
     formBody = formBody.join("&");
 
-    fetch('http://localhost:54034/PowerUser/Session.ashx', {
+    fetch('/PowerUser/Session.ashx', {
         credentials: 'same-origin',
         method: 'POST',
         headers: {
