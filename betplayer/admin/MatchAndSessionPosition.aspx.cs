@@ -23,7 +23,7 @@ namespace betplayer.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
 
             ClientTable.Columns.Add(new DataColumn("runnerID"));
             ClientTable.Columns.Add(new DataColumn("Amount"));
@@ -41,6 +41,7 @@ namespace betplayer.admin
 
 
             apiID.Value = Request.QueryString["MatchID"];
+            firebasekey.Value = Request.QueryString["fk"];
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {

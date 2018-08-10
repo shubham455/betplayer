@@ -139,7 +139,25 @@
 
                                     </tr>
                                 </table>
+                            </div>
+                            <div class="widget-body form">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td width="14%" align="left" valign="middle">
+                                            <input id="minBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="minBetKeyPress(event)" type="text" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Min Bet">
+                                        </td>
+                                        <td width="14%" align="left" valign="middle">
+                                            <input id="maxBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="maxBetKeyPress(event)" type="text" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Max Bet">
+                                        </td>
 
+                                        <td width="14%" align="left" valign="middle">
+                                            <button id="btnminmaxUpdate" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Update</button>
+                                        </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -147,7 +165,7 @@
             </div>
         </div>
     </div>
-    <asp:HiddenField ID="apiid" runat="server" />
+    <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/RunnerUpdate.js"></script>
 </asp:Content>

@@ -34,11 +34,10 @@
                                     <tr>
 
                                         <td>
-
-                                            <asp:CheckBox ID="ChkAutomatic" AutoPostBack="true" Width="150px" runat="server" Text="Automatic" />
-                                        </td>
-                                        <td>
-                                            <asp:CheckBox ID="ChkManual" AutoPostBack="true" Width="150px" runat="server" Text="Manual" />
+                                            <asp:RadioButton ID="rdrAutomatic" GroupName="gender"   runat="server" Text="Automatic" />
+                                        
+                                        
+                                            <asp:RadioButton ID="rdrManual"  GroupName="gender"  runat="server" Text="Manual" />
                                         </td>
                                         <td>
                                             <select name="ctl00$ContentPlaceHolder$DropStatus" id="team_selector" class="btn btn-primary dropdown-toggle" style="width: 200px;">
@@ -62,13 +61,13 @@
                                             <p style="font-size: large; font: 100">Score Board</p>
                                         </td>
                                         <td>
-                                            <input id="InputRun" type="text" name="Runs" value="" onkeydown="return focusOnNext(event, 'jsTxt2')" placeholder="Run">
+                                            <input id="InputRun" type="text" name="Runs" value="" onkeydown="focusNextElementOnEnterKeyPress(event)"  placeholder="Run">
                                         </td>
                                         <td>
-                                            <input id="InputWicket" type="text" name="Wickets" value="" onkeydown="return focusOnNext(event, 'jsTxt3')" placeholder="Wicket">
+                                            <input id="InputWicket" type="text" name="Wickets" value="" onkeydown="focusNextElementOnEnterKeyPress(event)"  placeholder="Wicket">
                                         </td>
                                         <td>
-                                            <input id="InputOver" type="text" name="Overs" value="" placeholder="Over">
+                                            <input id="InputOver" type="text" name="Overs" value="" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Over">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -148,7 +147,7 @@
             </div>
         </div>
     </div>
-    <asp:HiddenField ID="apiid" runat="server" />
+    <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/ManualMatch.js"></script>
     <script lang="javascript">

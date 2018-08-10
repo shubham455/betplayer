@@ -27,7 +27,7 @@
             <div class="row-fluid circle-state-overview">
                 <div style="float: left; padding-left: 20px; padding-right: 20px;">
                     <div class="circle-wrap">
-                        <a href="ScoreBoard.aspx?Matchid=<%=apiID%>">
+                        <a href="ScoreBoard.aspx?Matchid=<%=apiID%>&fk=<%=firebasekey %>">
                             <div class="stats-circle turquoise-color">
                                 <i class="icon-user"></i>
                             </div>
@@ -40,7 +40,7 @@
                 <div class="row-fluid circle-state-overview">
                     <div style="float: left; padding-left: 20px; padding-right: 20px;">
                         <div class="circle-wrap">
-                            <a href="MatchRates.aspx?Matchid=<%=apiID%>">
+                            <a href="MatchRates.aspx?Matchid=<%=apiID%>&fk=<%=firebasekey%>">
                                 <div class="stats-circle turquoise-color">
                                     <i class="icon-user"></i>
                                 </div>
@@ -53,7 +53,7 @@
                     <div class="row-fluid circle-state-overview">
                         <div style="float: left; padding-left: 20px; padding-right: 20px;">
                             <div class="circle-wrap">
-                                <a href="SessionRate.aspx?Matchid=<%=apiID%>">
+                                <a href="SessionRate.aspx?Matchid=<%=apiID%>&fk=<%=firebasekey%>"">
                                     <div class="stats-circle turquoise-color">
                                         <i class="icon-user"></i>
                                     </div>

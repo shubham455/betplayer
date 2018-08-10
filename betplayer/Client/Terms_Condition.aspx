@@ -125,7 +125,7 @@
                 <div class="content">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                            
-                    <label class="container">
+                    <label class="container" style="color:black">
                         मैंने सभी नियम व शर्तों को अच्छे से पढ़ लिया है और मुझे सभी नियम व शर्ते मंजूर है।
                              
                         <input type="checkbox" name="Terms" id="Terms">

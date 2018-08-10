@@ -69,7 +69,7 @@ namespace betplayer.superagent
                         DropDownClient.DataValueField = "ClientID";
                         DropDownClient.DataBind();
 
-                        string s1 = "Select SessionID,Session From Session where MatchID = '" + MatchID + "'";
+                        string s1 = "Select SessionID,Session From Session where MatchID = '" + MatchID + "' group by Session";
                         MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                         MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                         DataTable dt1 = new DataTable();
@@ -127,35 +127,55 @@ namespace betplayer.superagent
 
         protected void btnview_Click(object sender, EventArgs e)
         {
+            runTable = new DataTable();
+            runTable.Columns.Add(new DataColumn("RUNS"));
+            runTable.Columns.Add(new DataColumn("AMOUNT"));
             int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
 
-                string Agent = "Select Code,Name From AgentMaster where Createdby = '" + Session["SuperAgentCode"] + "'";
-                MySqlCommand Agentcmd = new MySqlCommand(Agent, cn);
-                MySqlDataAdapter Agentadp = new MySqlDataAdapter(Agentcmd);
-                DataTable Agentdt = new DataTable();
-                Agentadp.Fill(Agentdt);
-                for (int a = 0; a < Agentdt.Rows.Count; a++)
+                string s11 = "Select AgentID,code From AgentMaster where CreatedBy = '" + Session["SuperAgentcode"] + "'";
+                MySqlCommand cmd11 = new MySqlCommand(s11, cn);
+                MySqlDataAdapter adp11 = new MySqlDataAdapter(cmd11);
+                DataTable dt11 = new DataTable();
+                adp11.Fill(dt11);
+
+                for (int o = 0; o < dt11.Rows.Count; o++)
                 {
-                    string Agentcode = Agentdt.Rows[a]["code"].ToString();
-                    string AgentName = Agentdt.Rows[a]["Name"].ToString();
+                    int AgentID = Convert.ToInt16(dt11.Rows[o]["AgentID"]);
+                    string Agentcode = (dt11.Rows[o]["code"]).ToString();
 
-
-                    string s2 = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name,ClientMaster.CreatedBy from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' &&  Session.ClientID = '" + DropDownClient.SelectedItem.Value + "' && Session.MatchID = '" + MatchID + "' && Session.Session = '" + DropDownSession.SelectedItem.Text + "'";
-                    MySqlCommand cmd2 = new MySqlCommand(s2, cn);
-                    MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
+                    string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name,clientmaster.createdby from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Session.MatchID = '" + MatchID + "' && Session.Session = '" + DropDownSession.SelectedItem.Text  + "' order by Session.DateTime DESC";
+                    MySqlCommand cmd1 = new MySqlCommand(s, cn);
+                    MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     dt = new DataTable();
-                    adp2.Fill(dt);
 
-                    runTable = new DataTable();
-                    runTable.Columns.Add(new DataColumn("RUNS"));
-                    runTable.Columns.Add(new DataColumn("AMOUNT"));
+                    adp1.Fill(dt);
+
 
                     for (int j = 0; j < dt.Rows.Count; j++)
                     {
+                        string selectAgentshare = "select CreatedBy,Agent_share From ClientMaster where Createdby = '" + Agentcode + "'";
+                        MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
+                        MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
+                        DataTable selectAgentsharedt = new DataTable();
+                        selectAgentshareadp.Fill(selectAgentsharedt);
+                        Decimal AgentShare = Convert.ToDecimal(selectAgentsharedt.Rows[0]["Agent_Share"]);
+                        Decimal AgentShare1 = AgentShare / 100;
+
+                        string CreatedBy = selectAgentsharedt.Rows[0]["CreatedBy"].ToString();
+
+                        string selectAgentshare1 = "select Agentshare From AgentMaster where Code = '" + CreatedBy + "'";
+                        MySqlCommand selectAgentshare1cmd = new MySqlCommand(selectAgentshare1, cn);
+                        MySqlDataAdapter selectAgentshare1adp = new MySqlDataAdapter(selectAgentshare1cmd);
+                        DataTable selectAgentshare1dt = new DataTable();
+                        selectAgentshare1adp.Fill(selectAgentshare1dt);
+
+                        Decimal Agentshare = Convert.ToInt16(selectAgentshare1dt.Rows[0]["Agentshare"]);
+                        Decimal AgentShare2 = AgentShare / 100;
+
                         if (j == 0)
                         {
 
@@ -165,19 +185,11 @@ namespace betplayer.superagent
                             string Mode = dt.Rows[j]["Mode"].ToString();
                             string ClientID = dt.Rows[j]["ClientID"].ToString();
 
-                            string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + DropDownClient.SelectedItem.Value + "'";
-                            MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
-                            MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
-                            DataTable selectAgentsharedt = new DataTable();
-                            selectAgentshareadp.Fill(selectAgentsharedt);
-
-
-                            Decimal AgentShare = Convert.ToDecimal(selectAgentsharedt.Rows[j]["Agent_Share"]);
-                            Decimal AgentShare1 = AgentShare / 100;
 
 
 
-                            for (int i = runs + 5; i >= runs + 5; i--)
+
+                            for (int i = runs + 5; i >= runs - 5; i--)
                             {
 
                                 DataRow row = runTable.NewRow();
@@ -186,9 +198,11 @@ namespace betplayer.superagent
                                     i, 0,
                                     Rate,
                                     runs, Amount,
-                                    AgentShare1).ToString();
+                                    AgentShare1, AgentShare2).ToString();
                                 runTable.Rows.Add(row.ItemArray);
                             }
+
+                            
 
                         }
                         else
@@ -201,18 +215,10 @@ namespace betplayer.superagent
                             string ClientID = dt.Rows[j]["ClientID"].ToString();
 
 
-                            string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + DropDownClient.SelectedItem.Value + "'";
-                            MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
-                            MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
-                            DataTable selectAgentsharedt = new DataTable();
-                            selectAgentshareadp.Fill(selectAgentsharedt);
 
-
-                            Decimal AgentShare = Convert.ToDecimal(selectAgentsharedt.Rows[0]["Agent_Share"]);
-                            Decimal AgentShare1 = AgentShare / 100;
                             int highVal = Convert.ToInt32(runTable.Rows[0]["Runs"]);
                             int lowVal = Convert.ToInt32(runTable.Rows[runTable.Rows.Count - 1]["Runs"]);
-                            if (runs > highVal)
+                            if ((runs + 5) > highVal)
                             {
                                 for (int i = runs + 5; i > highVal; i--)
                                 {
@@ -249,7 +255,7 @@ namespace betplayer.superagent
                                         Rate,
                                         runs,
                                         Amount,
-                                        AgentShare1).ToString();
+                                        AgentShare1, AgentShare2).ToString();
                                 }
                                 else
                                 {
@@ -259,16 +265,17 @@ namespace betplayer.superagent
                                         Rate,
                                         runs,
                                         Amount,
-                                        AgentShare1).ToString();
+                                        AgentShare1, AgentShare2).ToString();
                                 }
+
+
                             }
                         }
                     }
                 }
             }
         }
-
-        public Decimal CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount, Decimal AgentShare1)
+        public Decimal CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount, Decimal AgentShare1, Decimal AgentShare2)
         {
             Decimal Difference = 0;
 
@@ -277,11 +284,11 @@ namespace betplayer.superagent
 
                 if (Mode == "Y")
                 {
-                    Difference = Amount * AgentShare1 + InitAmount;
+                    Difference = Amount * AgentShare1 * AgentShare2 + InitAmount;
                 }
                 else if (Mode == "N")
                 {
-                    Difference = Amount * -1 * AgentShare1 + InitAmount;
+                    Difference = Amount * -1 * AgentShare1 * AgentShare2 + InitAmount;
                 }
 
 
@@ -290,11 +297,11 @@ namespace betplayer.superagent
             {
                 if (Mode == "Y")
                 {
-                    Difference = Amount * Rate * -1 * AgentShare1 + InitAmount;
+                    Difference = Amount * Rate * -1 * AgentShare1 * AgentShare2 + InitAmount;
                 }
                 else if (Mode == "N")
                 {
-                    Difference = Amount * Rate * AgentShare1 + InitAmount;
+                    Difference = Amount * Rate * AgentShare1 * AgentShare2 + InitAmount;
                 }
 
 
@@ -304,5 +311,4 @@ namespace betplayer.superagent
 
     }
 }
-
 

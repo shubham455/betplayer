@@ -86,18 +86,28 @@
     <Content Include="admin\AllAgentLedger.aspx" />
     <Content Include="admin\AllClientLedger.aspx" />
     <Content Include="admin\ClientLedger.aspx" />
+    <Content Include="admin\Createpoweruser.aspx" />
+    <Content Include="admin\DeleteBets.aspx" />
     <Content Include="admin\MatchAndSessionSPosition.aspx" />
     <Content Include="admin\MatchPlusMinusDisplay.aspx" />
     <Content Include="admin\MatchplusminusSelect.aspx" />
     <Content Include="admin\MatchSessionPlusminusDisplay.aspx" />
     <Content Include="admin\MatchSessionPlusMinusSelect.aspx" />
+    <Content Include="admin\ModifyBets.aspx" />
+    <Content Include="admin\Modifypoweruser.aspx" />
     <Content Include="admin\My_Ledger.aspx" />
     <Content Include="admin\PlusMinusSelect.aspx" />
+    <Content Include="admin\poweruserdetails.aspx" />
     <Content Include="admin\SessionPlusMinusDisplay.aspx" />
     <Content Include="admin\SessionPlusMinusSelect.aspx" />
     <Content Include="admin\UpdateAgentlimit.aspx" />
     <Content Include="admin\UpdateClientLimit.aspx" />
     <Content Include="admin\Updatesuperagentlimit.aspx" />
+    <Content Include="Client\images\InplayImg\avatar.png" />
+    <Content Include="Client\images\MainMenuImg\game.png" />
+    <Content Include="Client\images\MainMenuImg\password.png" />
+    <Content Include="Client\images\MainMenuImg\play.png" />
+    <Content Include="Client\images\MainMenuImg\terms.png" />
     <Content Include="PowerUser\AddMatch.aspx" />
     <Content Include="PowerUser\AddMatchManually.aspx" />
     <Content Include="admin\AgentDetails.aspx" />
@@ -2237,6 +2247,7 @@
     <Content Include="admin\clientlimit.ashx" />
     <Content Include="admin\agentlimit.ashx" />
     <Content Include="admin\superagentlimit.ashx" />
+    <Content Include="PowerUser\ScheduleMatch.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <Content Include="superagent\Agentlimit.ashx" />
@@ -2371,6 +2382,20 @@
     <Compile Include="admin\clientlimit.ashx.cs">
       <DependentUpon>clientlimit.ashx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Createpoweruser.aspx.cs">
+      <DependentUpon>Createpoweruser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Createpoweruser.aspx.designer.cs">
+      <DependentUpon>Createpoweruser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\DeleteBets.aspx.cs">
+      <DependentUpon>DeleteBets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\DeleteBets.aspx.designer.cs">
+      <DependentUpon>DeleteBets.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\MatchAndSessionSPosition.aspx.cs">
       <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2406,6 +2431,20 @@
     <Compile Include="admin\MatchSessionPlusMinusSelect.aspx.designer.cs">
       <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\ModifyBets.aspx.cs">
+      <DependentUpon>ModifyBets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ModifyBets.aspx.designer.cs">
+      <DependentUpon>ModifyBets.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Modifypoweruser.aspx.cs">
+      <DependentUpon>Modifypoweruser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Modifypoweruser.aspx.designer.cs">
+      <DependentUpon>Modifypoweruser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\My_Ledger.aspx.cs">
       <DependentUpon>My_Ledger.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2419,6 +2458,13 @@
     </Compile>
     <Compile Include="admin\PlusMinusSelect.aspx.designer.cs">
       <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\poweruserdetails.aspx.cs">
+      <DependentUpon>poweruserdetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\poweruserdetails.aspx.designer.cs">
+      <DependentUpon>poweruserdetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\SessionPlusMinusDisplay.aspx.cs">
       <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
@@ -2605,6 +2651,9 @@
     </Compile>
     <Compile Include="PowerUser\ScoreBoard.aspx.designer.cs">
       <DependentUpon>ScoreBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PowerUser\ScheduleMatch.ashx.cs">
+      <DependentUpon>ScheduleMatch.ashx</DependentUpon>
     </Compile>
     <Compile Include="PowerUser\Session.ashx.cs">
       <DependentUpon>Session.ashx</DependentUpon>

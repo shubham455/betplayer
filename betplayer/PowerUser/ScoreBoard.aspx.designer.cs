@@ -13,22 +13,22 @@ namespace betplayer.poweruser {
     public partial class ScoreBoard {
         
         /// <summary>
-        /// ChkAutomatic control.
+        /// rdrAutomatic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkAutomatic;
+        protected global::System.Web.UI.WebControls.RadioButton rdrAutomatic;
         
         /// <summary>
-        /// ChkManual control.
+        /// rdrManual control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkManual;
+        protected global::System.Web.UI.WebControls.RadioButton rdrManual;
         
         /// <summary>
         /// btnsave control.
@@ -40,12 +40,12 @@ namespace betplayer.poweruser {
         protected global::System.Web.UI.WebControls.Button btnsave;
         
         /// <summary>
-        /// apiid control.
+        /// firebasekey control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField apiid;
+        protected global::System.Web.UI.WebControls.HiddenField firebasekey;
     }
 }

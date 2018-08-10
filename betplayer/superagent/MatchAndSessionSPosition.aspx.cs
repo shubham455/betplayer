@@ -41,6 +41,7 @@ namespace betplayer.superagent
             runTable.Columns.Add(new DataColumn("AMOUNT"));
             string Session1 = Request.QueryString["Session"];
             apiID.Value = Request.QueryString["MatchID"];
+            firebasekey.Value = Request.QueryString["fk"];
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {

@@ -14,7 +14,7 @@
                     <h3 class="page-title">Modify Matches </h3>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
-                        
+
                         <li>Modify Match<span class="divider">&nbsp;</span></li>
                         <li><a href="ModifyMatch.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="widget-body form">
                             <!-- BEGIN FORM-->
-                             <table width="100%" class="table table-striped table-hover table-bordered">
+                            <table width="100%" class="table table-striped table-hover table-bordered" id="matchesTable">
                                 <tbody>
                                     <tr>
                                         <td width="20" align="center" class="TableHeadingCheckBox">&nbsp;</td>
@@ -46,19 +46,21 @@
 
                                     </tr>
                                     <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
-                                        { %>
+                                        {
+                                            string MatchesID = row["MatchesID"].ToString(); %>
                                     <tr style="background-color: #FFFFFF">
-                                      
-                                         <td align="left" class=" ">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="EditMatches.aspx?Matchid=<%:row["MatchesID"] %>"><i class="icon-pencil"></i>Edit</a></li>
-                                                         <li><a href="ManuallyUpdation.aspx?Matchid=<%:row["apiID"] %>"><i class="icon-pencil"></i>Manually Updataion</a></li>
-                                                       
-                                                    </ul>
-                                                </div>
-                                            </td>
+
+                                        <td align="left" class=" ">
+                                            <div class="btn-group">
+                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="EditMatches.aspx?Matchid=<%:row["MatchesID"] %>"><i class="icon-pencil"></i>Edit</a></li>
+                                                    <li><a href="ManuallyUpdation.aspx?Matchid=<%:row["apiID"] %>&fk=<%:row["firebasekey"] %>"><i class="icon-pencil"></i>Manually Updataion</a></li>
+                                                    <li><a onclick="schedulematch(<%:row["apiID"] %>,<%:row["MatchesID"] %>)"><i class="icon-pencil"></i>Schedule</a></li>
+
+                                                </ul>
+                                            </div>
+                                        </td>
 
                                         <td height="20" align="left" class="FontText"><%:row["MatchesID"] %></td>
                                         <td align="left" class="FontText"><%:row["apiID"] %></td>
@@ -71,8 +73,45 @@
                                     <% } //foreach %>
                                 </tbody>
                             </table>
+                            <script>
+                                function schedulematch(apiID, matchesID) {
+                                    var params = {
+                                        apiId: apiID,
+                                        matchesId: matchesID
+                                    };
 
-                           
+                                    var formBody = [];
+                                    for (var property in params) {
+                                        var encodedKey = encodeURIComponent(property);
+                                        var encodedValue = encodeURIComponent(params[property]);
+                                        formBody.push(encodedKey + "=" + encodedValue);
+                                    }
+                                    formBody = formBody.join("&");
+
+                                    fetch('/PowerUser/ScheduleMatch.ashx', {
+                                        credentials: 'same-origin',
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                                        },
+                                        body: formBody
+                                    }).then(function (responce) {
+                                        return responce.json();
+                                    }).then(function (data) {
+                                        console.log(data);
+                                        if (data.status) {
+                                            alert("Scheduled Successfully");
+                                        }
+                                        else alert("Schedule Rejected By server!!!");
+                                    }).then(function () {
+
+                                    }).catch(function (err) {
+                                        console.log(err);
+                                    });
+                                }
+
+                            </script>
+
                         </div>
                     </div>
                 </div>

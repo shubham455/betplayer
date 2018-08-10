@@ -18,7 +18,7 @@ namespace betplayer.poweruser
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            apiid.Value = Request.QueryString["MatchID"];
+            firebasekey.Value = Request.QueryString["fk"];
             string MatchID = Request.QueryString["MatchID"];
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
@@ -32,11 +32,11 @@ namespace betplayer.poweruser
                  Manual =dt.Rows[0]["Manual"].ToString();
                 if(Manual == "False")
                 {
-                    ChkAutomatic.Checked = true;
+                   rdrAutomatic.Checked = true;
                 }
                 else if(Manual == "True")
                 {
-                    ChkManual.Checked = true;
+                    rdrManual.Checked = true;
                 }
 
 

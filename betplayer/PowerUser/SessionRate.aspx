@@ -48,7 +48,7 @@
                                         <td>
                                             <input id="notrate1" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
                                         <td>
-                                            <button id="UpdateButton1" onclick="updateSession(1)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                            <button id="UpdateButton1" customdata="" onclick="updateSession(this, 1)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
@@ -73,7 +73,7 @@
                                         <td>
                                             <input id="notrate2" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
                                         <td>
-                                            <button id="UpdateButton2" onclick="updateSession(2)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                            <button id="UpdateButton2" customdata="" onclick="updateSession(this, 2)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
@@ -97,7 +97,7 @@
                                         <td>
                                             <input id="notrate3" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
                                         <td>
-                                            <button id="UpdateButton3" onclick="updateSession(3)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                            <button id="UpdateButton3" customdata="" onclick="updateSession(this, 3)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
@@ -121,7 +121,7 @@
                                         <td>
                                             <input id="notrate4" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
                                         <td>
-                                            <button id="UpdateButton4" onclick="updateSession(4)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                            <button id="UpdateButton4" customdata="" onclick="updateSession(this, 4)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
@@ -133,61 +133,62 @@
                                 </tbody>
                             </table>
 
-                            <div class="widget-body form">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <select name="ctl00$ContentPlaceHolder$DropStatus" id="team_selector" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large" onchange="sessionTeamChanged()">
-                                                <option id="team1_name" style="font-size: large" value="team_1" >Team1</option>
-                                                <option id="team2_name" style="font-size: large" value="team_2" >Team2</option>
-                                            </select>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <select name="ctl00$ContentPlaceHolder$DropStatus" id="team_selector" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large" onchange="sessionTeamChanged()">
+                                            <option id="team1_name" style="font-size: large" value="team_1">Team1</option>
+                                            <option id="team2_name" style="font-size: large" value="team_2">Team2</option>
+                                        </select>
 
-                                        </td>
-                                        <td style="margin-left: 20px;"></td>
-                                        <td>
-                                            <input id="Over" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
-                                        <td>
-                                        <td style="margin-left: 30px;"></td>
-                                        <td>
-                                            <button id="btnAdd" type="button" class="btn btn-success" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Add</button>
-                                        </td>
+                                    </td>
+                                    <td style="margin-left: 20px;"></td>
+                                    <td>
+                                        <input id="Over" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
+                                    <td>
+                                    <td style="margin-left: 30px;"></td>
+                                    <td>
+                                        <button id="btnAdd" type="button" class="btn btn-success" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Add</button>
+                                    </td>
 
-                                        <br />
-                                        <td style="margin-left: 30px;"></td>
-                                        <td>
-                                            <select name="ctl00$ContentPlaceHolder$DropStatus" id="session_selector" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large">
-                                            </select>
+                                    <br />
+                                    <td style="margin-left: 30px;"></td>
+                                    <td>
+                                        <select name="ctl00$ContentPlaceHolder$DropStatus" id="session_selector" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large">
+                                        </select>
 
-                                        </td>
-                                        <td style="margin-left: 30px;"></td>
-                                        <td>
-                                            <input id="Declear" onkeydown="focusDeclareElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 40px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Declare"></td>
-                                        <td style="margin-left: 30px;"></td>
-                                        <td>
-                                            <button id="btnDeclear" type="button" class="btn btn-success" onclick="declareSession()" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Declare</button>
-                                        </td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <select name="ctl00$ContentPlaceHolder$DropStatus" id="session_selector1" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large">
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <button id="btnDelete" type="button" class="btn btn-success" onclick="deleteSession()" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Declare</button>
-                                  
-                                        </td>
-                                    </tr>
-                                </table>
+                                    </td>
+                                    <td style="margin-left: 30px;"></td>
+                                    <td>
+                                        <input id="Declear" onkeydown="focusDeclareElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 40px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Declare"></td>
+                                    <td style="margin-left: 30px;"></td>
+                                    <td>
+                                        <button id="btnDeclear" type="button" class="btn btn-success" onclick="declareSession()" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Declare</button>
+                                    </td>
 
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="ctl00$ContentPlaceHolder$DropStatus" id="session_selector1" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large">
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button id="btnDelete" type="button" class="btn btn-success" onclick="deleteSession()" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Declare</button>
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <div id="sessionsDiv" style="margin-top: 10vh;font-size:1em;">
+                                
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <asp:HiddenField ID="apiid" runat="server" />
+    <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/SessionUpdate.js"></script>
 </asp:Content>

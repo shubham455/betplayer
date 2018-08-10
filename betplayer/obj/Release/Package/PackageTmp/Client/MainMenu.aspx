@@ -1,84 +1,124 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Client/Menu.Master" AutoEventWireup="true" CodeBehind="MainMenu.aspx.cs" Inherits="betplayer.Client.MainMenu" %>
+
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-   
-        <!----- Content ------------->
-        <div class="content_top">
-            <div class="content_top-grid3"></div>
+
+    <!----- Content ------------->
+    <div class="content_top-grid3"></div>
             <div class="clear"></div>
+        
+
+    <div class="col-sm-4 col-lg-3 gritter-demo gritter-item-wrapper" style="width: 100%; margin-top: 50px; text-align: left;">
+        <a href="inplay.aspx">
+            <div role="alert" style="background-color: rgba(37, 157, 171, 0.9); height: 70px;">
+                <div style="margin-top: -35px;">
+                    <div>
+                        <br>
+                        <div style="float: left">
+                            <img src="images/MainMenuImg/play.png" height="50px;" style="margin-left: 10px;">
+                        </div>
+
+                        <div style="margin-left: 100px !important">
+                            <span class="gritter-title">In Play</span>
+                        </div>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+            <br>
+            <div style="float: left">
+                <img src="images/MainMenuImg/game.png" height="50px;" style="margin-top: 14px; margin-left: 10px;">
+            </div>
+        </a>
+        <a href="AllGamesList.aspx"></a>
+        <div role="alert" style="background-color: lightgreen; height: 70px;">
+            <a href="AllGamesList.aspx">
+                <div>
+                    <div>
+                        <br>
+                        <div style="margin-left: 100px !important">
+                            <span class="gritter-title">All Games</span>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </a>
+            <br>
+            <div style="float: left">
+                <img src="images/MainMenuImg/ledger.png" height="50px;" style="margin-top: 14px; margin-left: 10px;">
+            </div>
+
+            <a href="MyLedger.aspx">
+                <div role="alert" style="background-color: #FFBAD3; height: 70px;">
+                    <div>
+                        <div>
+                            <br>
+                            <div style="margin-left: 100px !important">
+                                <span class="gritter-title">My Ledger</span>
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </a>
+            <br>
+            <div style="float: left">
+                <img src="images/MainMenuImg/password.png" height="50px;" style="margin-top: 14px; margin-left: 10px;">
+            </div>
+
+            <a href="Change_Password.aspx">
+                <div role="alert" style="background-color: #2574ab; height: 70px;">
+                    <div>
+                        <div>
+                            <br>
+                            <div style="margin-left: 100px !important">
+                                <span class="gritter-title">Change Password</span>
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </a>
+            <br>
+            <div style="float: left">
+                <img src="images/MainMenuImg/terms.png" height="50px;" style="margin-top: 14px; margin-left: 10px;">
+            </div>
+
+            <a href="Terms_Condition.aspx">
+                <div role="alert" style="background-color: #313745; height: 70px;">
+                    <div>
+                        <div>
+                            <br>
+                            <div style="margin-left: 100px !important">
+                                <span class="gritter-title">Terms And Condition</span>
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </a>
+            <br>
+            <div style="float: left">
+                <img src="images/MainMenuImg/logout.png" height="50px;" style="margin-top: 14px; margin-left: 10px;">
+            </div>
+
+            <a href="Login.aspx">
+                <div role="alert" style="background-color: #464f63; height: 70px;">
+                    <div>
+                        <div>
+                            <br>
+                            <div style="margin-left: 100px !important">
+                                <span class="gritter-title">Logout</span>
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </a>
         </div>
-        <div class="metro_icons">
-            <ul>
-                <li>
-                    <a href="inplay.aspx">
-                        <div class="games-icon">
-                            <img src="images/MainMenuImg/games.png" alt="">
-                            <p align="center">In Play</p>
-                        </div>
-                    </a>
-                    <a href="AllGamesList.aspx">
-                        <div class="Privacy-icon">
-                            <img src="images/MainMenuImg/AllGame.png" alt="">
-                            <p align="center">All Games</p>
-                        </div>
-                    </a>
-                    <a href="Change_Password.aspx">
-                        <div class="login-icon" style="padding-bottom: 10px;">
-                            <img src="images/MainMenuImg/Settings.png" alt="">
-                            <p align="center" style="padding-top: 10px;">Password</p>
-                        </div>
-                    </a>
-                    <a href="MyLedger.aspx">
-                        <div class="contact-icon">
-                            <img src="images/MainMenuImg/Ledger.png" alt="">
-                            <p align="center">Ledger </p>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="games-icon">
-                            <img src="images/MainMenuImg/Rules.png" alt="">
-                            <p align="center">Rules</p>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="Privacy-icon">
-                            <img src="images/MainMenuImg/HowTo.png" alt="">
-                            <p align="center">How To Play</p>
-                        </div>
-                    </a>
-                    <a href="Terms_Condition.aspx">
-                        <div class="login-icon" style="padding-bottom: 10px;">
-                            <img src="images/MainMenuImg/TC.png" alt="">
-                            <p align="center" style="padding-top: 10px;">Terms &amp;
-                                <br>
-                                Conditions</p>
-                        </div>
-                    </a>
-                    <a href="Login.aspx">
-                        <div class="contact-icon" style="padding-bottom: 10px;">
-                            <img src="images/MainMenuImg/Logout.png" alt="">
-                            <p align="center" style="padding-bottom: 5px;">
-                                <br>
-                                Logout</p>
-                        </div>
-                    </a>
 
 
-                    <div class="clear"></div>
-                </li>
-                <!--<li> <a href="#">
-		                <div class="portfolio-icon"><img src="images/MainMenuImg/portfolio-icon.png" alt="" />
-		                  <p>Portfolio</p>
-	                  </div>
-		                </a> </li>-->
-            </ul>
-        </div>
-        <div class="content_bottom">
-            <div class="clear"></div>
-        </div>
- 
-   
-  
 
+    </div>
 
 </asp:Content>

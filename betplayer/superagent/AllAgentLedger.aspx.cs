@@ -96,7 +96,7 @@ namespace betplayer.SuperAgent
                                 Balance1 = Balance1 - Dabit;
                                 Balance1 = Balance1 + Credit;
 
-                                LedgerAmount = LedgerAmount + Balance1;
+                                LedgerAmount =  Balance1;
                             }
                         }
                         else

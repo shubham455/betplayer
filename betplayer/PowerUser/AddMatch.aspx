@@ -13,9 +13,9 @@
                     <h3 class="page-title">Add Match</h3>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
-                        
+
                         <li><a href="#">Add Match</a><span class="divider">&nbsp;</span></li>
-                        
+
                         <li><a href="CreateMatch.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
                     <!-- END PAGE TITLE & BREADCRUMB-->
@@ -55,7 +55,7 @@
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">TeamA</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtname" CssClass="textbox" ReadOnly="true" runat="server" /></td>
+                                                            <asp:TextBox ID="txtTeamA" CssClass="textbox" ReadOnly="true" runat="server" /></td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
@@ -63,7 +63,7 @@
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">TeamB</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtDate" ReadOnly="true" CssClass="textbox" runat="server" /></td>
+                                                            <asp:TextBox ID="txtTeamB" ReadOnly="true" CssClass="textbox" runat="server" /></td>
 
 
                                                     </tr>
@@ -86,6 +86,16 @@
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr>
+                                                        <td class="welcome">&nbsp;</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Select Lotus Match</td>
+                                                        <td align="left" valign="middle">
+                                                            <asp:DropDownList ID="matchdropdown"  AutoPostBack="true" AppendDataBoundItems="true" runat="server"></asp:DropDownList>
+                                                        </td>
+                                                        <td align="left" valign="middle">&nbsp;</td>
+                                                        <td align="left" valign="middle">&nbsp;</td>
+                                                        <td align="left">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
                                                 </tbody>
                                             </table>
                                         </td>
@@ -103,4 +113,6 @@
             </div>
         </div>
     </div>
+
+    
 </asp:Content>

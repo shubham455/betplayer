@@ -8,27 +8,16 @@ var config = {
     messagingSenderId: "98790187004"
 };
 firebase.initializeApp(config);
-var matchIdElement = document.getElementById("ContentPlaceHolder_apiid");
+var matchIdElement = document.getElementById("ContentPlaceHolder_firebasekey");
 console.log("firebase connecting to match: " + matchIdElement.value.toString());
-var matchKey;
+var matchKey = matchIdElement.value;
 if (matchIdElement !== null) {
-    firebase.database().ref('/currentMatches').once("value", // runs on page runder
+    firebase.database().ref('/currentMatches/' + matchKey).once("value", // runs on page runder
         function (snapshot) {
-            var match,
-                matches = snapshot.val();
-            for (var key of Object.keys(matches)) {
-                if (matches[key]['match_id'].toString() === matchIdElement.value) {
-                    match = matches[key];
-                    matchKey = key;
-                    document.getElementById('team1_name').text = matches[key]['team_1']['Name'];
-                    document.getElementById('team2_name').text = matches[key]['team_2']['Name'];
-                }
-            }
+            var match = snapshot.val();
+            document.getElementById('team1_name').text = match['team_1']['Name'];
+            document.getElementById('team2_name').text = match['team_2']['Name'];
         }).then(() => {
-            //Attching EventListener on Input Element
-            document.getElementById('InputRun').addEventListener("change", updatetextvalue);
-            document.getElementById('InputWicket').addEventListener("change", updatetextvalue);
-            document.getElementById('InputOver').addEventListener("change", updatetextvalue);
 
             //Attching EventListener on Input Element   
             document.getElementById('ball_start').addEventListener("click", updateScore);
@@ -54,39 +43,29 @@ if (matchIdElement !== null) {
             document.getElementById('btnclearrate').addEventListener("click", (event) => {
                 var emptysession = {
                     Runner: {
-                        Khai: "0",
-                        Lagai: "0"
-                    },
-                    Session: {
-                        Not: "0",
-                        NotRate: "0",
-                        Yes: "0",
-                        YesRate: "0"
+                        Khai: "0.00",
+                        Lagai: "0.00"
                     }
                 };
                 firebase.database().ref('/currentMatches/' + matchKey + '/team_1').update(emptysession);
                 firebase.database().ref('/currentMatches/' + matchKey + '/team_2').update(emptysession);
-            });
-            document.getElementById('btnteam1update').addEventListener("click", (event) => {
-                var team = document.getElementById('team_1').value
-                var khai = document.getElementById('team1_Khai').value
-                var Lagai = document.getElementById('team1_Lagai').value
-                console.log()
-                var runner = {
-                    Runner: {
-                        Khai: khai,
-                        Lagai: Lagai
-                    }
-                };
-                firebase.database().ref('/currentMatches/' + matchKey).update(
-                    {
-                        team_1: runner
+                firebase.database().ref('/currentMatches/' + matchKey + '/sessions').once("value", function (snapshot) {
+                    var currentsessions = snapshot.val();
+                    currentsessions.forEach(function (session) {
+                        session['suspended'] = true;
                     });
+                    firebase.database().ref('/currentMatches/' + matchKey).update({ sessions: currentsessions });
+                })
             });
-
-
+            firebase.database().ref('/currentMatches/' + matchKey).on("value", // runs on page runder
+                function (snapshot) {
+                    var match = snapshot.val();
+                    var team = document.getElementById('team_selector').value;
+                    document.getElementById('InputRun').value = match[team]["Runs"];
+                    document.getElementById('InputWicket').value = match[team]["Wickets"];
+                    document.getElementById('InputOver').value = match[team]["Overs"];
+                });
         });
-
 
 }
 
@@ -107,4 +86,26 @@ function updatetextvalue(event) {
     else if (event.srcElement.name === "Wickets") toUpdate = { Wickets: event.srcElement.value };
     else if (event.srcElement.name === "Overs") toUpdate = { Overs: event.srcElement.value };
     firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update(toUpdate);
+}
+
+function focusNextElementOnEnterKeyPress(event) {
+    if (event.keyCode === 13) {
+        var toUpdate;
+        var team = document.getElementById('team_selector').value
+        console.log(event.srcElement.value);
+        console.log(event.srcElement.name);
+        if (event.srcElement.name === "Runs") {
+            toUpdate = { Runs: event.srcElement.value };
+            document.getElementById('InputWicket').focus(); 
+        }
+        else if (event.srcElement.name === "Wickets") {
+            toUpdate = { Wickets: event.srcElement.value };
+            document.getElementById('InputOver').focus(); 
+        }
+        else if (event.srcElement.name === "Overs") {
+            toUpdate = { Overs: event.srcElement.value };
+            document.getElementById('InputRun').focus();    
+        }
+        firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update(toUpdate);
+    }
 }

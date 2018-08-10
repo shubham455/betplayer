@@ -38,7 +38,7 @@ namespace betplayer.Agent
                     DropDownClient.DataValueField = "ClientID";
                     DropDownClient.DataBind();
 
-                    string s1 = "Select SessionID,Session From Session where MatchID = '" + MatchID + "'";
+                    string s1 = "Select SessionID,Session From Session where MatchID = '" + MatchID + "' group by session";
                     MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     DataTable dt1 = new DataTable();

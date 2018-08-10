@@ -6,33 +6,40 @@
     storageBucket: "betplayer-197014.appspot.com",
     messagingSenderId: "98790187004"
 };
-var matchKey;
+var matchKey, activeSessionsLength;
 var timer = setTimeout(function () { }, 0);
+var sessionsDiv = document.getElementById('sessionsDiv');
+var sessionsTable = sessionsDiv.appendChild(document.createElement("table")),
+    thead = sessionsTable.createTHead(), // thead element
+    thRow = thead.insertRow(), // trow element
+    tbody = sessionsTable.createTBody(); // tbody element
+    thRow.insertCell(0).innerText = "Name";
+    thRow.insertCell(1).innerText = "Active";
+thRow.insertCell(2).innerText = "Suspended";
+sessionsTable.classList.add("table")
+document.addEventListener("DOMContentLoaded", function (event) {
+    firebase.database().ref('/currentMatches/' + matchKey + "/sessions").on("value", // runs on page runder
+        function (snapshot) {
+            updateSessionTable(snapshot.val());
+            UpdateSessionsTable(snapshot.val());
+
+        });
+});
 (function () {
     firebase.initializeApp(config);
-    var matchIdElement = document.getElementById("ContentPlaceHolder_apiid");
+    var matchIdElement = document.getElementById("ContentPlaceHolder_firebasekey");
     console.log("firebase connecting to match: " + matchIdElement.value.toString());
+    matchKey = matchIdElement.value;
     var timer = setTimeout(function () { }, 0);
-
     if (matchIdElement !== null) {
-        firebase.database().ref('/currentMatches').once("value", // runs on page runder
+        firebase.database().ref('/currentMatches/' + matchKey).once("value", // runs on page runder
             function (snapshot) {
-                var match,
-                    matches = snapshot.val();
-
-                for (var key of Object.keys(matches)) {
-                    if (matches[key]['match_id'].toString() === matchIdElement.value) {
-
-                        console.log("match found with id: " + matches[key]['match_id'].toString());
-                        match = matches[key];
-                        matchKey = key;
-                        document.getElementById('team1_name').text = matches[key]['team_1']['Name'];
-                        document.getElementById('team2_name').text = matches[key]['team_2']['Name'];
-                        var team = document.getElementById('team_selector').value;
-                        updateSessionTable(team);
-                    }
-                }
-            }).then(() => {
+                var match = snapshot.val();
+                document.getElementById('team1_name').text = match['team_1']['Name'];
+                document.getElementById('team2_name').text = match['team_2']['Name'];
+                var team = document.getElementById('team_selector').value;
+                return match;
+            }).then((match) => {
                 document.getElementById('btnAdd').addEventListener("click", (event) => {
                     var team = document.getElementById('team_selector').value
                     var teamName = (document.getElementById('team1_name').value === team) ?
@@ -40,26 +47,23 @@ var timer = setTimeout(function () { }, 0);
                         document.getElementById('team2_name').innerHTML;
                     var Over = document.getElementById('Over').value;
                     console.log(Over);
-                    firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString() + '/Session').once("value", function (snapshot) {
-                        sessions = snapshot.val();
-                        if (sessions === null || Object.keys(sessions).length <= 4)
-                            firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString() + '/Session').child(Over + " " + teamName).set({
-                                "not": "",
-                                "yes": "",
-                                "notRate": "",
-                                "yesRate": "",
-                                "created_at": new Date().getTime()
-                            }, function (error) {
-                                if (error) alert("Session failed to be added to database");
-                                else updateSessionTable(team);
-                            });
-                        else alert("Session cannot be more than 4");
+                    firebase.database().ref('/currentMatches/' + matchKey + '/sessions').push({
+                        "id": "manual",
+                        "name": Over + " " + teamName,
+                        "yes": "",
+                        "not": "",
+                        "yesRate": "",
+                        "notRate": "",
+                        "suspended": true,
+                        "active": false
+                    }, function (error) {
+                        if (error) alert("Session failed to be added to database");
+                        else updateSessionTable(match['session']);
                     });
                 });
             });
-
+        
     }
-
 })()
 
 function focusNextElementOnEnterKeyPress(event) {
@@ -94,34 +98,90 @@ function focusDeclareElementOnEnterKeyPress(event) {
     }
 }
 
-function updateSessionTable(Team) {
-    firebase.database().ref('/currentMatches/' + matchKey + '/' + Team.toString() + '/Session').orderByChild('created_at').once("value", function (snapshot) {
-        var sessions = snapshot.val();
-        if (sessions) {
-            console.log(sessions);
-            sessionKeys = Object.keys(sessions);
-            sessionKeys.sort(function (a, b) {
-                aCreatedAt = parseInt(sessions[a]['created_at']);
-                bCreatedAt = parseInt(sessions[b]['created_at']);
-                if (aCreatedAt < bCreatedAt) return -1;
-                if (aCreatedAt > bCreatedAt) return 1;
-                return 0;
+function UpdateSessionsTable(sessions, dataTable) {
+    if (sessions) {
+        console.log(sessions);
+        if (typeof (sessions) === "object") {
+            sessions = Object.keys(sessions).map(function (key) {
+                Object.assign(sessions[key], { key: key });
+                return [sessions[key]["key"], sessions[key]["name"], sessions[key]["active"], sessions[key]["suspended"]];
             });
+        } else if (typeof (sessions) === "Array") {
+            sessions.map(function (session) {
+                return [session["id"],session["name"], session["active"], session["suspended"]]
+            })
+        }
+        console.log(sessions);
+        clearSessionsTable();
+        for (i = 0; i < sessions.length; i++) {
+            var row = tbody.insertRow();
+            var nameCell = row.insertCell(0);
+            var activeCell = row.insertCell(1)
+            var suspendedCell = row.insertCell(2)
+            var activeButton = activeCell.appendChild(document.createElement("a"));
+            activeButton.style = (sessions[i][2]) ? "background-color:red;width:100%;height:100%;color:white;" : "background-color:green;width:100%;height:100%;color:white;";
+            activeButton.innerText = (sessions[i][2]) ? "Active" : "Inactive";
+            activeButton.setAttribute("sessionID", sessions[i][0]);
+            activeButton.setAttribute("sessionValue", sessions[i][2]);
+            activeButton.addEventListener("click", function (event) {
+                console.log(activeSessionsLength);
+                if (parseInt(activeSessionsLength) < 4 || (event.srcElement.getAttribute("sessionValue").toString() === "true"))
+                firebase.database().ref('/currentMatches/' + matchKey + '/sessions/' + event.srcElement.getAttribute("sessionID").toString()).update({
+                    active: (event.srcElement.getAttribute("sessionValue").toString() === "true") ? false : true
+                    });
+                else alert("Active Sessions cannot be More than 7!!")
+            });
+            var suspendedButton = suspendedCell.appendChild(document.createElement("a"));
+            suspendedButton.style = (sessions[i][3]) ? "background-color:red;width:100%;height:100%;color:white;" : "background-color:green;width:100%;height:100%;color:white;";
+            suspendedButton.innerText = (sessions[i][3]) ? "Suspended" : "Not Suspended";
+            suspendedButton.setAttribute("sessionID", sessions[i][0]);
+            suspendedButton.setAttribute("sessionValue", sessions[i][3]);
+            suspendedButton.addEventListener("click", function (event) {
+                console.log(event.srcElement.getAttribute("sessionValue").toString());
+                firebase.database().ref('/currentMatches/' + matchKey + '/sessions/' + event.srcElement.getAttribute("sessionID").toString()).update({
+                    suspended: (event.srcElement.getAttribute("sessionValue").toString() === "true") ? false : true
+                });
+            });
+            nameCell.innerHTML = sessions[i][1];
+        }
 
-            document.getElementById("session_selector").innerHTML = "";
-            clearSessionTable();
-            for (var i = 1; i <= sessionKeys.length; i++) {
-                var session = sessions[sessionKeys[i - 1]];
-                console.log(sessionKeys[i - 1], session);
-                appendToSessionSelector(sessionKeys[i - 1]);
-                document.getElementById('Session' + i).value = sessionKeys[i - 1];
-                document.getElementById('not' + i).value = session['not'];
-                document.getElementById('yes' + i).value = session['yes'];
-                document.getElementById('notrate' + i).value = session['notRate'];
-                document.getElementById('yesrate' + i).value = session['yesRate'];
+    }
+}
+
+function updateSessionTable(sessions) {
+    if (sessions) {
+        if (typeof (sessions) === "object") {
+            sessions = Object.keys(sessions).map(function (key) {
+                Object.assign(sessions[key], { key: key });
+                return sessions[key];
+            });
+        }
+        console.log(sessions);
+        var displayableSessions = sessions.filter(function (session) { return session['active'] });
+        activeSessionsLength = displayableSessions.length;
+        clearSessionTable();
+        for (var i = 1; i <= displayableSessions.length; i++) {
+            var session = displayableSessions[i - 1];
+            console.log(session);
+            document.getElementById("Session" + i).value = session['name'];
+            document.getElementById("UpdateButton" + i).setAttribute("customData", session['key']);
+            if (session['suspended'] === false) {
+                document.getElementById("not" + i).value =
+                    session["not"] !== "" ? session["not"] : "0.00";
+                document.getElementById("yes" + i).value =
+                    session["yes"] !== "" ? session["yes"] : "0.00";
+                document.getElementById("notrate" + i).value =
+                    session["notRate"] !== "" ? session["notRate"] : "0.00";
+                document.getElementById("yesrate" + i).value =
+                    session["yesRate"] !== "" ? session["yesRate"] : "0.00";
+            } else {
+                document.getElementById("not" + i).value = "0.00";
+                document.getElementById("yes" + i).value = "0.00";
+                document.getElementById("notrate" + i).value = "0.00";
+                document.getElementById("yesrate" + i).value = "0.00";
             }
         }
-    })
+    }
 }
 
 function appendToSessionSelector(sessionValue) {
@@ -142,18 +202,25 @@ function clearSessionTable() {
         document.getElementById('yesrate' + i).value = "";
     }
 }
-function sessionTeamChanged() {
-    var selector = document.getElementById('team_selector');
-    updateSessionTable(selector.value);
+
+function clearSessionsTable() {
+    console.log(tbody.rows.length)
+    tbody.innerHTML = "";
 }
 
-function updateSession(sessionId) {
-    var sessionKey = document.getElementById('Session' + sessionId).value;
+function sessionTeamChanged() {
+    var selector = document.getElementById('team_selector');
+    // updateSessionTable(selector.value);
+}
+
+function updateSession(srcElement, sessionId) {
+    var sessionKey = srcElement.getAttribute("customData");
+    console.log(sessionKey);
     var Team = document.getElementById('team_selector').value;
     if (sessionKey !== "") {
         if (parseInt(document.getElementById('not' + sessionId).value) <=
             parseInt(document.getElementById('yes' + sessionId).value)) {
-            firebase.database().ref('/currentMatches/' + matchKey + '/' + Team.toString() + '/Session/' + sessionKey).update({
+            firebase.database().ref('/currentMatches/' + matchKey + '/sessions/' + sessionKey).update({
                 "not": document.getElementById('not' + sessionId).value,
                 "yes": document.getElementById('yes' + sessionId).value,
                 "notRate": toCorrectFormat(document.getElementById('notrate' + sessionId).value),
@@ -165,7 +232,7 @@ function updateSession(sessionId) {
                 clearTimeout(timer);
                 timer = setTimeout(function () {
                     console.log("Running timer");
-                    firebase.database().ref('/currentMatches/' + matchKey + '/' + Team.toString() + '/Session/' + sessionKey).update({
+                    firebase.database().ref('/currentMatches/' + matchKey + '/sessions/' + sessionKey).update({
                         "not": "0.00",
                         "yes": "0.00",
                         "notRate": "0.00",

@@ -8,29 +8,21 @@ var config = {
     messagingSenderId: "98790187004"
 };
 firebase.initializeApp(config);
-var matchIdElement = document.getElementById("ContentPlaceHolder_apiid");
+var matchIdElement = document.getElementById("ContentPlaceHolder_firebasekey");
 console.log("firebase connecting to match: " + matchIdElement.value.toString());
-var matchKey;
+var matchKey = matchIdElement.value;
 var timer = setTimeout(function () { }, 0);
 if (matchIdElement !== null) {
-    firebase.database().ref('/currentMatches').once("value", // runs on page runder
+    firebase.database().ref('/currentMatches/'+matchKey).once("value", // runs on page runder
         function (snapshot) {
-            var match,
-                matches = snapshot.val();
-            for (var key of Object.keys(matches)) {
-                if (matches[key]['match_id'].toString() === matchIdElement.value) {
-                    match = matches[key];
-                    matchKey = key;
-                    document.getElementById('team1_name').text = matches[key]['team_1']['Name'];
-                    document.getElementById('team2_name').text = matches[key]['team_2']['Name'];
-                    document.getElementById('team1_name1').text = matches[key]['team_1']['Name'];
-                    document.getElementById('team2_name2').text = matches[key]['team_2']['Name'];
-
-                }
-            }
+            var match = snapshot.val();
+                    document.getElementById('team1_name').text = match['team_1']['Name'];
+                    document.getElementById('team2_name').text = match['team_2']['Name'];
+                    document.getElementById('team1_name1').text = match['team_1']['Name'];
+                    document.getElementById('team2_name2').text = match['team_2']['Name'];
         }).then(() => {
             document.getElementById('btnteamupdate').addEventListener("click", (event) => {
-                var team = document.getElementById('team_selector').value
+                var team = document.getElementById('team_selector').value;
                 var KhaiElement = document.getElementById('team_Khai');
                 var LagaiElement = document.getElementById('team_Lagai');
                 var Khai = parseFloat(KhaiElement.value);
@@ -66,52 +58,33 @@ if (matchIdElement !== null) {
                 } else alert("Lagai is greater than Khai.");
             });
             document.getElementById('btnLock').addEventListener("click", (event) => {
-                var emptysession = {
-                    Runner: {
-                        Khai: "0.00",
-                        Lagai: "0.00"
-                    },
-                    Session: {
 
-                    }
-                };
-                firebase.database().ref('/currentMatches/' + matchKey + "/team_1/Session").once("value", // runs on change
-                    function (snapshot) {
-                        var session = snapshot.val();
-                        for (var key in session) {
-                            for (var property in session[key]) {
-                                if (property !== "created_at")
-                                    session[key][property] = "0.00";
-                            }
-                        }
-                        firebase.database().ref('/currentMatches/' + matchKey + '/team_1').update({
-                            Runner: {
-                                Khai: "0.00",
-                                Lagai: "0.00"
-                            },
-                            Session: session
-                        });
+                var team = document.getElementById('team_selector').value;
+                firebase.database().ref('/currentMatches/' + matchKey + '/' + team).update({
+                        RunnerUnLocked: false
+                }).then(function () {
+                    console.log("In Lock.");
+                });
+            });
+            document.getElementById('btnUnLock').addEventListener("click", (event) => {
+
+                var team = document.getElementById('team_selector').value;
+                firebase.database().ref('/currentMatches/' + matchKey + '/' + team).update({
+                    RunnerUnLocked: true
+                }).then(function () {
+                        console.log("In UnLock.");
                     });
-                firebase.database().ref('/currentMatches/' + matchKey + "/team_2/Session").once("value", // runs on change
-                    function (snapshot) {
-                        var session = snapshot.val();
-                        for (var key in session) {
-                            for (var property in session[key]) {
-                                if (property !== "created_at")
-                                    session[key][property] = "0.00";
-                            }
-                        }
-                        firebase.database().ref('/currentMatches/' + matchKey + '/team_2').update({
-                            Runner: {
-                                Khai: "0.00",
-                                Lagai: "0.00"
-                            },
-                            Session: session
-                        });
-                    });
-                console.log("In Lock.")
-                //firebase.database().ref('/currentMatches/' + matchKey + '/team_1').update(emptysession);
-                //firebase.database().ref('/currentMatches/' + matchKey + '/team_2').update(emptysession);
+            });
+            document.getElementById('btnminmaxUpdate').addEventListener("click", (event) => {
+
+                var minBet = document.getElementById('minBet').value;
+                var maxBet = document.getElementById('maxBet').value;
+                firebase.database().ref('/currentMatches/' + matchKey).update({
+                    minBet: minBet,
+                    maxBet: maxBet
+                }).then(function () {
+                    console.log("In UnLock.");
+                });
             });
             document.getElementById('ball_start').addEventListener("click", updateScore);
             document.getElementById('1run').addEventListener("click", updateScore);
@@ -146,5 +119,15 @@ function lagaiKeyPress(event) {
 function khaiKeyPress(event) {
     if (event.keyCode === 13) {
         document.getElementById('btnteamupdate').focus();
+    }
+}
+function minBetKeyPress(event) {
+    if (event.keyCode === 13) {
+        document.getElementById('maxBet').focus();
+    }
+}
+function maxBetKeyPress(event) {
+    if (event.keyCode === 13) {
+        document.getElementById('btnminmaxUpdate').focus();
     }
 }

@@ -12,8 +12,7 @@ namespace betplayer.Client
 {
     public partial class BetDetails : System.Web.UI.Page
     {
-
-
+        
         private DataTable dt;
         private DataTable dt1;
         private DataTable dt2;
@@ -35,6 +34,7 @@ namespace betplayer.Client
             else
             {
                 apiID.Value = Request.QueryString["id"];
+                firebasekey.Value = Request.QueryString["fk"];
                 int ClientID = Convert.ToInt16(Session["ClientID"]);
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
@@ -70,26 +70,27 @@ namespace betplayer.Client
                     dt5 = new DataTable();
                     sessionadp.Fill(dt5);
 
-                    string Amount = "Select TotalAmount from SessionCalculation where ClientID = '" + ClientID + "' && MatchID = '"+apiID.Value+"'";
+                    string Amount = "Select TotalAmount from SessionCalculation where ClientID = '" + ClientID + "' && MatchID = '" + apiID.Value + "'";
                     MySqlCommand Amountcmd = new MySqlCommand(Amount, cn);
                     MySqlDataAdapter Amountadp = new MySqlDataAdapter(Amountcmd);
                     DataTable Amountdt = new DataTable();
                     Amountadp.Fill(Amountdt);
-                    if(Amountdt.Rows.Count > 0)
+                    if (Amountdt.Rows.Count > 0)
                     {
                         int TotalAmount = 0;
-                        int TotalAmount1 =0;
+                        int TotalAmount1 = 0;
 
-                        for(int i =0; i < Amountdt.Rows.Count; i++)
+                        for (int i = 0; i < Amountdt.Rows.Count; i++)
                         {
                             TotalAmount = Convert.ToInt32(Amountdt.Rows[i]["TotalAmount"]);
                             TotalAmount1 = TotalAmount1 + TotalAmount;
-                        }TotalAmount = 0;
+                        }
+                        TotalAmount = 0;
 
-                        
-                        
+
+
                         lblAmount.Text = TotalAmount1.ToString();
-                        if(Convert.ToInt32(lblAmount.Text) >0)
+                        if (Convert.ToInt32(lblAmount.Text) > 0)
                         {
                             lblAmount.ForeColor = System.Drawing.Color.Blue;
                         }
@@ -101,7 +102,7 @@ namespace betplayer.Client
                     }
 
 
-                    
+
                     string runner = "Select *  from runner  where ClientID = '" + ClientID + "' and MatchID = '" + apiID.Value + "' order by DateTime DESC";
                     MySqlCommand cmd3 = new MySqlCommand(runner, cn);
                     MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);
@@ -123,7 +124,7 @@ namespace betplayer.Client
                     MySqlDataReader rdr = resultcmd.ExecuteReader();
                     if (rdr.Read())
                     {
-                        
+
                     }
                     else
                     {
@@ -166,7 +167,7 @@ namespace betplayer.Client
                         }
                         else
                         {
-                           
+
                         }
                     }
                 }

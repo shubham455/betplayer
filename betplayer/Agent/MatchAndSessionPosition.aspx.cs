@@ -19,13 +19,16 @@ namespace betplayer.Agent
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            apiID.Value = Request.QueryString["MatchID"];
+
+           firebasekey.Value = (Request.QueryString["fk"]);
+           apiID.Value= (Request.QueryString["MatchID"]);
+           
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
 
-                string SELECT = "Select * from Matches Where apiID = '" + apiID.Value + "'";
+                string SELECT = "Select * from Matches Where apiID= '" + apiID.Value + "'";
                 MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();

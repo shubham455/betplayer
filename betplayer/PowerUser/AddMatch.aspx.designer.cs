@@ -22,22 +22,22 @@ namespace betplayer.poweruser {
         protected global::System.Web.UI.WebControls.TextBox txtcode;
         
         /// <summary>
-        /// txtname control.
+        /// txtTeamA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtname;
+        protected global::System.Web.UI.WebControls.TextBox txtTeamA;
         
         /// <summary>
-        /// txtDate control.
+        /// txtTeamB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        protected global::System.Web.UI.WebControls.TextBox txtTeamB;
         
         /// <summary>
         /// txtTime control.
@@ -56,6 +56,15 @@ namespace betplayer.poweruser {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMatchType;
+        
+        /// <summary>
+        /// matchdropdown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList matchdropdown;
         
         /// <summary>
         /// btnsave control.

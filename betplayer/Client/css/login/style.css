@@ -23,7 +23,7 @@ img{max-width:100%;}
 /*end reset*/
 body{
 	font-family:Arial, Helvetica, sans-serif;
-	 background:#154A9E;
+	 background: #2EF3FF;
 }
 /*---start-wrap-----*/
 .wrap{
@@ -46,8 +46,8 @@ body{
 	float:left;
 	width:100%;
 }
-.top-left-grid{
-	background:#2da5da;
+.top-left-grid {
+    background: #0BF200;
 }
 .header-left-bottom{
 	margin-top:10px;
@@ -78,7 +78,7 @@ body{
 }
 .nav li a:hover,.nav li.active a{
 	color:#FFF;
-	background:#1985B4;
+	background:#838792;
 }
 /*---start-top-search-box-----*/
 .top-search-box{
@@ -959,7 +959,7 @@ body{
     max-height: 400px;
 }
 .drag_drop{
-	background:#3467a5;
+	background:#838792;
 	padding:.5em .5em;
 }
 .drag_drop p{
@@ -1428,11 +1428,11 @@ body{
 .profile{
 	margin-bottom:10px;
 }
-.profile-details{
-	float:left;
-	width:100%;
-	margin-right:3%;
-	background:#366eab;
+.profile-details {
+    float: left;
+    width: 100%;
+    margin-right: 3%;
+    background: #00bfff;
 }
 .glossy-social-buttons{
 	float:left;
@@ -1513,11 +1513,11 @@ body{
 }
 .profile_picture_name h2 a{
 	font-size:1.2em;
-	color:#FFF;
+	color:#000;
 }
 .profile_picture_name p a,.profile_picture p a{
 	font-size:0.75em;
-	color:#76CDFF;
+	color:#000;
 	line-height:1.6em;
 }
 .profile_picture_name p a:hover,.profile_picture p a:hover{
@@ -1541,14 +1541,15 @@ body{
 	background:#0B223A;
 }
 
-.TeamName{
-	background:#264a7e;
-	padding:.3em 0;
-	border-top:1px solid #497CB1;
-	text-align:center;
-	border-radius: 7px 7px 0px 0px;
-	font-weight:bold;
-	font-size:1.1em;
+.TeamName {
+    background: #00bfff;
+    color:black;
+    padding: .3em 0;
+    border-top: 1px solid #497CB1;
+    text-align: center;
+    border-radius: 7px 7px 0px 0px;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 .TeamName a{
 	/*background:#4884bf;*/
@@ -1583,7 +1584,7 @@ body{
 .sign-in{
 	margin-top:10px;
 	padding:15px;
-	background:#2da5da;
+	background:#838792;
  }
 .sign_in h3{
 	color: #FFF;
@@ -1641,18 +1642,18 @@ body{
        background:#004769 url(../../images/loginimg/login-arrow.png) no-repeat 10px;
 }
 
-.HomeButton{
-	float:right;
-	padding:15px 3em 15px 3.5em;
-	color:#D7E9F5;
-	font-size:0.85em;
-	font-weight:200;
-	cursor:pointer;
-	border:none;
-	outline:none;
-    background:#025a85 url(../../images/loginimg/login-arrow-left.png) no-repeat 10px;       
-	-webkit-apperance:none;
-	font-family:Arial, Helvetica, sans-serif;
+.HomeButton {
+    float: right;
+    padding: 15px 3em 15px 3.5em;
+    color: #FFBAD3;
+    font-size: 0.85em;
+    font-weight: 200;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: #025a85 url(../../images/loginimg/login-arrow-left.png) no-repeat 10px;
+    -webkit-apperance: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .HomeButton:hover{
 	   color:#FFF;
@@ -1663,7 +1664,7 @@ body{
 .skills{
 	margin-top:10px;
 	padding:15px;
-	background:#2da5da;
+	background:#FFBAD3;
 }
 .skills h3{
 	font-size:1.2em;
@@ -2262,7 +2263,7 @@ body{
 	background:#2b9dcf;
 }
 .price-btn-blue{
-  background:#2486b2;
+  background:#838792;
   border-top:1px solid #57B4DD;	
 }
 .price-btn-blue:hover{
@@ -2436,7 +2437,7 @@ body{
 }
 
 .GameList{
-	color:#FFF;
+	color:black;
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:.8em;
 	line-height:22px;
@@ -2444,7 +2445,7 @@ body{
 }
 
 .FontText{
-	color:#2486B2;
+	color:#838792;
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:10px;
 	line-height:20px;
@@ -2486,7 +2487,7 @@ body{
 	background-position:3px 3px;
 	background-color:transparent;
 	border: 0px solid;   
-	color:#00F;
+	color:#000;
 	border-color: #696 #363 #363 #696; 
 	height:30px;
 	width:60px;
@@ -2517,7 +2518,7 @@ body{
 	background-position:3px 3px;
 	background-color:transparent;
 	border: 0px solid;   
-	color:#F00;
+	color:#000;
 	border-color: #696 #363 #363 #696; 
 	height:30px;
 	width:60px;
@@ -2559,7 +2560,7 @@ body{
 	font-size:24px;
 	text-align:center;
 	/*color:#CCFFFF;*/
-	color:#2486B2;
+	color:#838792;
 	width:35px;
 	font-weight:bolder;
 	background-color:transparent;
@@ -2613,30 +2614,31 @@ body{
 }
 
 .AmountTime{
-	background:#2486B2;
+	background:#838792;
 	color:#FFF;
 	font-weight:bold;
 	font-size:18px;
 	font-family:Verdana, Geneva, sans-serif;
 }
 
-.ScoreCard{
-	background:#3467a5;
-	padding:.2em .2em;
+.ScoreCard {
+    background: #2EF3FF;
+    padding: .2em .2em;
 }
-.ScoreCard p{
-	font-size: 0.6em;
-	color: #FFF;
-	padding:5px 5px;
-    height:83px;
-	text-transform:uppercase;
-	border:3px dashed #2e9ad1;
-	font-family:Verdana, Geneva, sans-serif;
-	font-weight:bold;
+.ScoreCard p {
+    font-size: 0.6em;
+    color: #000;
+    padding: 5px 5px;
+    height: 83px;
+    text-transform: uppercase;
+    border: 3px dashed #2e9ad1;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    font-size:1.5em;
 }
 
 .ScoreCard p #LastBall{
-    font-size: 4em;
+    font-size: 2em;
     line-height: 1em;
 }
 

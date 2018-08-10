@@ -41,6 +41,7 @@ namespace betplayer.admin
             runTable.Columns.Add(new DataColumn("AMOUNT"));
             string Session1 = Request.QueryString["Session"];
             apiID.Value = Request.QueryString["MatchID"];
+            firebasekey.Value = Request.QueryString["fk"];
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
@@ -74,7 +75,7 @@ namespace betplayer.admin
                 //    {
 
                 //        string Agentcode = (dt11.Rows[o]["code"]).ToString();
-                string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where  Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "' order by DateTime DECS";
+                string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where  Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "' order by DateTime DESC";
                 MySqlCommand cmd1 = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt = new DataTable();

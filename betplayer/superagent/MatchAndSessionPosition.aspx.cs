@@ -40,6 +40,7 @@ namespace betplayer.superagent
 
 
             apiID.Value = Request.QueryString["MatchID"];
+            firebasekey.Value = Request.QueryString["fk"];
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
@@ -177,26 +178,7 @@ namespace betplayer.superagent
 
 
                     }
-                    //string selectSAshare = "select Agentshare From AgentMaster where AgentID = '" + ID + "'";
-                    //MySqlCommand selectSAsharecmd = new MySqlCommand(selectSAshare, cn);
-                    //MySqlDataAdapter selectSAshareadp = new MySqlDataAdapter(selectSAsharecmd);
-                    //DataTable selectSAsharedt = new DataTable();
-                    //selectSAshareadp.Fill(selectSAsharedt);
-                    //TeamAposition1 = 0;
-
-                    //Decimal SAShare1 = Convert.ToDecimal(selectSAsharedt.Rows[0]["AgentShare"]);
-
-                    //Teampos = (Teampos * SAShare1) / 100;
-                    //Team1Amt.Text = Teampos.ToString();
-                    //if (Teampos > 0)
-                    //{
-                    //    Team1Amt.ForeColor = System.Drawing.Color.Blue;
-                    //}
-                    //else if (Teampos < 0)
-                    //{
-                    //    Team1Amt.ForeColor = System.Drawing.Color.Red;
-                    //}
-
+                    
 
                     int k = 0;
                     Decimal TeamBposition = 0;
@@ -276,26 +258,7 @@ namespace betplayer.superagent
                         }
                     }
 
-                    //string selectSAshare1 = "select Agentshare From AgentMaster where AgentID = '" + ID + "'";
-                    //MySqlCommand selectSAsharecmd1 = new MySqlCommand(selectSAshare1, cn);
-                    //MySqlDataAdapter selectSAshareadp1 = new MySqlDataAdapter(selectSAsharecmd1);
-                    //DataTable selectSAsharedt1 = new DataTable();
-                    //selectSAshareadp1.Fill(selectSAsharedt1);
-                    //TeamAposition1 = 0;
-
-                    //Decimal SAShare2 = Convert.ToDecimal(selectSAsharedt1.Rows[0]["AgentShare"]);
-
-                    //TeamposB = (TeamposB * SAShare2) / 100;
-                    //Team2Amt.Text = TeamposB.ToString();
-                    //if (TeamposB > 0)
-                    //{
-                    //    Team2Amt.ForeColor = System.Drawing.Color.Blue;
-                    //}
-                    //else if (TeamposB < 0)
-                    //{
-                    //    Team2Amt.ForeColor = System.Drawing.Color.Red;
-                    //}
-
+                    
                     if (dt1.Rows.Count > 0)
                     {
                         IEnumerable<DataRow> orderedRows = dt1.AsEnumerable();

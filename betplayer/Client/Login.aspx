@@ -94,11 +94,11 @@
                             <tr>
                                 <td>
 
-                                    <asp:Button ID="btnHOME" CssClass="HomeButton" runat="server" Text="Home" class="HomeButton" OnClick="btnHOME_Click" />
+                                    <asp:Button ID="btnHOME" CssClass="HomeButton" style="background-color:#FFBAD3;color:black" runat="server" Text="Home" class="HomeButton" OnClick="btnHOME_Click" />
                                 </td>
                                 <td></td>
                                 <td>
-                                    <asp:Button ID="btnSubmit" CssClass="LoginButton" runat="server" Text="Login" class="LoginButton" OnClick="Submitbtn_Click" />
+                                    <asp:Button ID="btnSubmit" CssClass="LoginButton" runat="server" style="background-color:lightgreen;color:black" Text="Login" class="LoginButton" OnClick="Submitbtn_Click" />
                                 </td>
 
                             </tr>

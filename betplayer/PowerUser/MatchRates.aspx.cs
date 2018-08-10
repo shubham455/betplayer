@@ -14,7 +14,7 @@ namespace betplayer.poweruser
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            apiid.Value = Request.QueryString["MatchID"];
+            firebasekey.Value = Request.QueryString["fk"];
         }
 
         protected void btnDeclare_ServerClick(object sender, EventArgs e)

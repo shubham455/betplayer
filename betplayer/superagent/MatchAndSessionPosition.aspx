@@ -232,15 +232,7 @@
                                     </tr>
                                     <% } //foreach %>
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <input type="text" class="grdtot" value="" id="total" name="" /></td>
-                                    </tr>
-                                </tfoot>
+                                
                             </table>
 
 
@@ -257,19 +249,22 @@
         <!-- END PAGE CONTAINER-->
     </div>
     <asp:HiddenField ID="apiID" runat="server" />
+    <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/LiveMatch.js"></script>
     <script type="text/javascript">
 
         function Redirect(value) {
             var matchID = document.getElementById("ContentPlaceHolder_apiID").value;
-            window.location = "MatchAndSessionPosition.aspx?MatchID=" + matchID;
+            var firebasekey = document.getElementById("ContentPlaceHolder_firebasekey").value;
+            window.location = "MatchAndSessionPosition.aspx?MatchID=" + matchID + "&&fk="+firebasekey;
         }
         function Redirect1(value) {
             var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
+            var firebasekey = document.getElementById("ContentPlaceHolder_firebasekey").value;
             console.log(matchid);
             if (value != "NONE") {
-                window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + "&&Session=" + value;
+                window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + "&&Session=" + value + "&&fk=" + firebasekey;
             }
 
         }

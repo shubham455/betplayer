@@ -214,15 +214,24 @@
                                     <% foreach (System.Data.DataRow row in ClientDataTable1.Rows)
                                         { %>
                                     <tr>
-                                        <td align="left" class="TableHeading">&nbsp;</td>
+                                        <td align="center">
+                                            <div class="btn-group">
+                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="ModifyBets.aspx?BetID=<%: row["RunnerID"] %>&&type=Runner&&matchId=<%: apiID.Value %>"><i class="icon-pencil"></i>Edit</a></li>
+                                                    <li><a href="DeleteBets.aspx?BetID=<%: row["RunnerID"] %>&&type=Runner&&matchId=<%: apiID.Value %>"><i class="icon-trash"></i>Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        
                                         <td height="25" align="left" class="TableHeading"><strong><%: row["RunnerID"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["rate"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Amount"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Mode"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Team"] %> </strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["ClientID"] %>  <%: row["Name"] %></strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong><%: row["Position1"] %>                        </strong></td>
-                                        <td style="text-align: right;" class="TableHeading"><strong><%: row["Position2"] %>                        </strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong><%: row["Position1"] %> </strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong><%: row["Position2"] %>  </strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Datetime"] %></strong></td>
                                     </tr>
                                     <% } //foreach %>
@@ -251,15 +260,22 @@
         </div>
         <!-- END PAGE CONTAINER-->
     </div>
-    <asp:HiddenField ID="apiID" runat="server" />
+     <asp:HiddenField ID="apiID" runat="server" />
+    <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/LiveMatch.js"></script>
     <script type="text/javascript">
          <!--
-        function Redirect(value) {
-            
-            window.location = "MatchAndSessionSPosition.aspx?MatchID=57298&&Session=" + value;
-            }
+   
+    function Redirect(value) {
+        var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
+        var firebasekey = document.getElementById("ContentPlaceHolder_firebasekey").value;
+        console.log(matchid);
+        if (value != "NONE") {
+            window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + "&&Session=" + value + "&&fk=" + firebasekey;
+        }
+
+    }
          //-->
       </script>
 </asp:Content>
