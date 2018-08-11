@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Client/Menu.Master" AutoEventWireup="true" CodeBehind="BetDetails.aspx.cs" Inherits="betplayer.Client.BetDetails" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-    <table width="100%"  border="0" cellpadding="0" cellspacing="0">
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tbody>
             <tr>
                 <td valign="top">
@@ -54,36 +54,36 @@
                                     <table width="100%" border="0" cellpadding="2" cellspacing="2">
                                         <tbody>
                                             <tr>
-                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle;width:390px">RUNNER</td>
-                                                <td align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle;width:10vw;">MIN/MAX BET</td>
-                                                <td align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle">POSITION</td>
-                                                <td align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle">LAGAI</td>
-                                                <td align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle">KHAI</td>
-                                                
+                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle; width: 30%">RUNNER</td>
+                                                <td align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle; width: 10%;">MIN/MAX BET</td>
+                                                <td align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle; width: 20%;">POSITION</td>
+                                                <td align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle; width: 20%;">LAGAI</td>
+                                                <td align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle; width: 20%;">KHAI</td>
+
                                             </tr>
 
                                             <tr>
                                                 <td height="35" id="TeamA" align="center" valign="middle" bgcolor="#FFF" style="vertical-align: middle"><%: row["TeamA"] %></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; vertical-align: middle">
-                                                   <Label id="matchMinBet" style="color:red;"></Label>
+                                                    <label id="matchMinBet" style="color: red;"></label>
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; vertical-align: middle">
-                                                   <asp:Label id="PositionTeam1" runat="server" ></asp:Label>
+                                                    <asp:Label ID="PositionTeam1" runat="server"></asp:Label>
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#79C1F8" style="vertical-align: middle">
                                                     <input type="button" name="ButtonL" id="LRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_1', 'Runner', 'Lagai')"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFBAD3" class="textTeamHead" style="vertical-align: middle; color: #000">
                                                     <input type="button" name="ButtonK" id="KRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_1', 'Runner', 'Khai')"></td>
-                                   
+
                                             </tr>
 
                                             <tr>
                                                 <td height="35" id="TeamB" align="center" valign="middle" bgcolor="#FFF" style="vertical-align: middle"><%: row["TeamB"] %></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; vertical-align: middle">
-                                                   <Label id="matchMaxBet" style="color:red;"></Label>
+                                                    <label id="matchMaxBet" style="color: red;"></label>
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; vertical-align: middle">
-                                                    <asp:Label id="PositionTeam2"  runat="server" ></asp:Label>
+                                                    <asp:Label ID="PositionTeam2" runat="server"></asp:Label>
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#79C1F8" class="textTeamHead" style="vertical-align: middle">
                                                     <input type="button" name="ButtonL" id="LRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_2', 'Runner', 'Lagai')"></td>
@@ -110,7 +110,8 @@
                                                 <td class="FontTextWhite">&nbsp;<span style="color: #00F"></span>/<span style="color: #F00"></span></td>
                                                 <td width="100" style="font-size: 14px; font-family: Verdana, Geneva, sans-serif; font-weight: bold;">
                                                     <td class="FontTextWhite">&nbsp;<span style="color: #00F;">Session Position</span>
-                                                    <span style="color: #00F"><asp:Label ID ="lblAmount" runat="server" Font-Size="13pt" Font-Bold="true" ></asp:Label></span>                 </td>
+                                                        <span style="color: #00F">
+                                                            <asp:Label ID="lblAmount" runat="server" Font-Size="13pt" Font-Bold="true"></asp:Label></span>                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -121,20 +122,21 @@
                                     <table width="100%" border="0" cellpadding="0" cellspacing="2">
                                         <tbody>
                                             <tr>
-                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle;width:390px">
+                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle; width: 30%">
                                                     <h3>SESSION</h3>
                                                 </td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle;width:10vw">MIN/MAX BET</td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle;width:175px">NOTRATE</td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle;width:175px">YESRATE</td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle">NOT</td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle">YES</td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle; width: 10%">MIN/MAX BET</td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle; width: 10%">NRATE</td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle; width: 10%">YRATE</td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle; width: 20%">NOT</td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle; width: 20%">YES</td>
                                             </tr>
-                                            <tr>
+                                            <tr id="row1">
                                                 <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000;">
-                                                    <input type="button" name="Session1" id="Session1" style="width:110px" value="NONE" class="ButtonSess" onclick="ShowSession(1)"></td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000;">
-                                                    <input type="button" name="Session1" id="maxmin1" style="width:70px" value="" class="ButtonSess" onclick="ShowSession(1)"></td>
+                                                    <input type="button" name="Session1" id="Session1" value="NONE" class="ButtonSess" onclick="ShowSession(1)"></td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #F00;">
+                                                    <label id="maxmin1"></label>
+                                                </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000;">
                                                     <input type="button" name="NotRate1" id="notrate1" value="0.00" class="ButtonNRate" onfocus="this.className='ButtonNRate_hover'" onblur="this.className='ButtonNRate'" onmouseover="this.className='ButtonNRate_hover'" onmouseout="this.className='ButtonNRate'" disabled="disabled"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000;">
@@ -144,26 +146,28 @@
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000;">
                                                     <input type="button" name="Yes1" id="yes1" value="0.00" class="ButtonYRun" onfocus="this.className='ButtonYRun_hover'" onblur="this.className='ButtonYRun'" onmouseover="this.className='ButtonYRun_hover'" onmouseout="this.className='ButtonYRun'" onclick="enableBetting(event, 'team_1', 'Session', 'Yes')"></td>
                                             </tr>
-                                            <tr>
+                                            <tr id="row2">
                                                 <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="Session2" style="width:110px" value="NONE" class="ButtonSess" onclick="ShowSession(2)"></td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="maxmin2" style="width:70px" value="" class="ButtonSess" onclick="ShowSession(2)"></td>
+                                                    <input type="button" name="Session2" id="Session2" class="ButtonSess" value="NONE" onclick="ShowSession(2)"></td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #F00">
+                                                    <label id="maxmin2"></label>
+                                                </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="NotRate2" id="notrate2" value="0.00" class="ButtonNRate" onfocus="this.className='ButtonNRate_hover'" onblur="this.className='ButtonNRate'" onmouseover="this.className='ButtonNRate_hover'" onmouseout="this.className='ButtonNRate'" disabled="disabled"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="YesRate2" id="yesrate2" value="0.00" class="ButtonYRate" onfocus="this.className='ButtonYRate_hover'" onblur="this.className='ButtonYRate'" onmouseover="this.className='ButtonYRate_hover'" onmouseout="this.className='ButtonYRate'" disabled="disabled"></td>
-                                                
+
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="Not2" id="not2" value="0.00" class="ButtonNRun" onfocus="this.className='ButtonNRun_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_1', 'Session', 'Not')"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="Yes2" id="yes2" value="0.00" class="ButtonYRun" onfocus="this.className='ButtonYRun_hover'" onblur="this.className='ButtonYRun'" onmouseover="this.className='ButtonYRun_hover'" onmouseout="this.className='ButtonYRun'" onclick="enableBetting(event, 'team_1', 'Session', 'Yes')"></td>
                                             </tr>
-                                            <tr>
+                                            <tr id="row3">
                                                 <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="Session3" style="width:110px" value="NONE" class="ButtonSess" onclick="ShowSession(3)"></td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="maxmin3" style="width:70px" value="" class="ButtonSess" onclick="ShowSession(3)"></td>
+                                                    <input type="button" name="Session2" id="Session3" value="NONE" class="ButtonSess" onclick="ShowSession(3)"></td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #F00">
+                                                    <label id="maxmin3"></label>
+                                                </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="NotRate3" id="notrate3" value="0.00" class="ButtonNRate" onfocus="this.className='ButtonNRate_hover'" onblur="this.className='ButtonNRate'" onmouseover="this.className='ButtonNRate_hover'" onmouseout="this.className='ButtonNRate'" disabled="disabled"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
@@ -173,11 +177,12 @@
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="Not2" id="yes3" value="0.00" class="ButtonNRun" onfocus="this.className='ButtonNRun_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_1', 'Session', 'Not')"></td>
                                             </tr>
-                                            <tr>
+                                            <tr id="row4">
                                                 <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="Session4" style="width:110px" value="NONE" class="ButtonSess" onclick="ShowSession(4)"></td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="maxmin4" style="width:70px" value="" class="ButtonSess" onclick="ShowSession(4)"></td>
+                                                    <input type="button" name="Session2" id="Session4" value="NONE" class="ButtonSess" onclick="ShowSession(4)"></td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #F00">
+                                                    <label id="maxmin4"></label>
+                                                </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="notrate4" id="notrate4" value="0.00" class="ButtonNRate" onfocus="this.className='ButtonNRate_hover'" onblur="this.className='ButtonNRate'" onmouseover="this.className='ButtonNRate_hover'" onmouseout="this.className='ButtonNRate'" disabled="disabled"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
@@ -187,11 +192,12 @@
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="yes4" id="yes4" value="0.00" class="ButtonYRun" onfocus="this.className='ButtonYRun_hover'" onblur="this.className='ButtonYRun'" onmouseover="this.className='ButtonYRun_hover'" onmouseout="this.className='ButtonYRun'" onclick="enableBetting(event, 'team_1', 'Session', 'Yes')"></td>
                                             </tr>
-                                            <tr>
+                                            <tr id="row5">
                                                 <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="Session5" style="width:110px" value="NONE" class="ButtonSess" onclick="ShowSession(4)"></td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="maxmin5" style="width:70px" value="" class="ButtonSess" onclick="ShowSession(4)"></td>
+                                                    <input type="button" name="Session2" id="Session5" value="NONE" class="ButtonSess" onclick="ShowSession(5)"></td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #F00">
+                                                    <label id="maxmin5"></label>
+                                                </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="notrate4" id="notrate5" value="0.00" class="ButtonNRate" onfocus="this.className='ButtonNRate_hover'" onblur="this.className='ButtonNRate'" onmouseover="this.className='ButtonNRate_hover'" onmouseout="this.className='ButtonNRate'" disabled="disabled"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
@@ -201,11 +207,12 @@
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="yes4" id="yes5" value="0.00" class="ButtonYRun" onfocus="this.className='ButtonYRun_hover'" onblur="this.className='ButtonYRun'" onmouseover="this.className='ButtonYRun_hover'" onmouseout="this.className='ButtonYRun'" onclick="enableBetting(event, 'team_1', 'Session', 'Yes')"></td>
                                             </tr>
-                                            <tr>
+                                            <tr id="row6">
                                                 <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="Session6" style="width:110px" value="NONE" class="ButtonSess" onclick="ShowSession(4)"></td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="maxmin6" style="width:70px" value="" class="ButtonSess" onclick="ShowSession(4)"></td>
+                                                    <input type="button" name="Session2" id="Session6" value="NONE" class="ButtonSess" onclick="ShowSession(6)"></td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #F00">
+                                                    <label id="maxmin6"></label>
+                                                </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="notrate4" id="notrate6" value="0.00" class="ButtonNRate" onfocus="this.className='ButtonNRate_hover'" onblur="this.className='ButtonNRate'" onmouseover="this.className='ButtonNRate_hover'" onmouseout="this.className='ButtonNRate'" disabled="disabled"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
@@ -215,11 +222,12 @@
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="yes4" id="yes6" value="0.00" class="ButtonYRun" onfocus="this.className='ButtonYRun_hover'" onblur="this.className='ButtonYRun'" onmouseover="this.className='ButtonYRun_hover'" onmouseout="this.className='ButtonYRun'" onclick="enableBetting(event, 'team_1', 'Session', 'Yes')"></td>
                                             </tr>
-                                            <tr>
+                                            <tr id="row7">
                                                 <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="Session7" style="width:110px" value="NONE" class="ButtonSess" onclick="ShowSession(4)"></td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="maxmin7" style="width:70px" value="" class="ButtonSess" onclick="ShowSession(4)"></td>
+                                                    <input type="button" name="Session2" id="Session7" value="NONE" class="ButtonSess" onclick="ShowSession(7)"></td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #F00">
+                                                    <label id="maxmin7"></label>
+                                                </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="notrate4" id="notrate7" value="0.00" class="ButtonNRate" onfocus="this.className='ButtonNRate_hover'" onblur="this.className='ButtonNRate'" onmouseover="this.className='ButtonNRate_hover'" onmouseout="this.className='ButtonNRate'" disabled="disabled"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
@@ -228,11 +236,13 @@
                                                     <input type="button" name="not4" id="not7" value="0.00" class="ButtonNRun" onfocus="this.className='ButtonNRun_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_1', 'Session', 'Not')"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="yes4" id="yes7" value="0.00" class="ButtonYRun" onfocus="this.className='ButtonYRun_hover'" onblur="this.className='ButtonYRun'" onmouseover="this.className='ButtonYRun_hover'" onmouseout="this.className='ButtonYRun'" onclick="enableBetting(event, 'team_1', 'Session', 'Yes')"></td>
-                                                <tr>
+                                            </tr>
+                                            <tr id="row8">
                                                 <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="Session8" style="width:110px" value="NONE" class="ButtonSess" onclick="ShowSession(4)"></td>
-                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="">
-                                                    <input type="button" name="Session2" id="maxmin8" style="width:70px" value="" class="ButtonSess" onclick="ShowSession(4)"></td>
+                                                    <input type="button" name="Session2" id="Session8" value="NONE" class="ButtonSess" onclick="ShowSession(8)"></td>
+                                                <td height="35" align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #F00">
+                                                    <label id="maxmin8"></label>
+                                                </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
                                                     <input type="button" name="notrate4" id="notrate8" value="0.00" class="ButtonNRate" onfocus="this.className='ButtonNRate_hover'" onblur="this.className='ButtonNRate'" onmouseover="this.className='ButtonNRate_hover'" onmouseout="this.className='ButtonNRate'" disabled="disabled"></td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="textTeamHead" style="color: #000">
@@ -256,7 +266,7 @@
                                                 <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite" style="vertical-align: middle">AMOUNT</td>
                                                 <td align="center" valign="middle" bgcolor="#838792" style="vertical-align: middle">
 
-                                                    <input type="text" id="matchAmount" disabled="" style="width:100px"  />
+                                                    <input type="text" id="matchAmount" disabled="" style="width: 100px" />
 
                                                     <label id="timerLabel" style="margin-left: 50px; font-family: Verdana; font-weight: bold; color: black; visibility: hidden;"></label>
 
@@ -300,23 +310,23 @@
     </table>
     <br />
 
-    <table style="width:100%;" border="0" cellspacing="2" cellpadding="2">
+    <table style="width: 100%;" border="0" cellspacing="2" cellpadding="2">
         <tbody>
             <tr>
-                <td style="height:25px;" align="right" valign="middle" bgcolor="#838792" class="FontTextWhite10px">Rate</td>
+                <td style="height: 25px;" align="right" valign="middle" bgcolor="#838792" class="FontTextWhite10px">Rate</td>
                 <td align="right" valign="middle" bgcolor="#838792" class="FontTextWhite10px">Amount</td>
-                <td align="right" bgcolor="#838792" style="text-align:center;" class="FontTextWhite10px">Mode</td>
-                <td align="center" bgcolor="#838792" style="text-align:center;" class="FontTextWhite10px">Team</td>
+                <td align="right" bgcolor="#838792" style="text-align: center;" class="FontTextWhite10px">Mode</td>
+                <td align="center" bgcolor="#838792" style="text-align: center;" class="FontTextWhite10px">Team</td>
             </tr>
 
             <% foreach (System.Data.DataRow row in MatchesDataTable3.Rows)
                 { %>
             <tr>
-               
-                <td  align="left" style="background:#FFF;color:black; text-align:right; height:25px;" class="FontTextWhite10px "><%:row["Rate"] %></td>
-                <td align="left"  style="background:#FFF;color:black; text-align:right;" class="FontTextWhite10px "><%:row["Amount"] %></td>
-                <td align="left"  style="background:#FFF;color:black; text-align:center;" class="FontTextWhite10px "><%:row["Mode"] %></td>
-                <td align="left"   style="background:#FFF;color:black; text-align:center;" class="FontTextWhite10px "><%:row["Team"] %></td>
+
+                <td align="left" style="background: #FFF; color: black; text-align: right; height: 25px;" class="FontTextWhite10px "><%:row["Rate"] %></td>
+                <td align="left" style="background: #FFF; color: black; text-align: right;" class="FontTextWhite10px "><%:row["Amount"] %></td>
+                <td align="left" style="background: #FFF; color: black; text-align: center;" class="FontTextWhite10px "><%:row["Mode"] %></td>
+                <td align="left" style="background: #FFF; color: black; text-align: center;" class="FontTextWhite10px "><%:row["Team"] %></td>
             </tr>
             <% } //foreach %>
         </tbody>
@@ -334,23 +344,22 @@
                 <td align="right" valign="middle" bgcolor="#838792" class="FontTextWhite10px">Amount</td>
                 <td align="right" bgcolor="#838792" class="FontTextWhite10px">Runs</td>
                 <td align="center" bgcolor="#838792" class="FontTextWhite10px">Mode</td>
-                 <td align="center" bgcolor="#838792" class="FontTextWhite10px">Dec</td>
+                <td align="center" bgcolor="#838792" class="FontTextWhite10px">Dec</td>
             </tr>
 
-           
-               <% foreach (System.Data.DataRow row in MatchesDataTable5.Rows)
+
+            <% foreach (System.Data.DataRow row in MatchesDataTable5.Rows)
                 { %>
             <tr>
-               
-                <td  align="left" style="background:#FFF;color:black; text-align:right; height:25px; width:250px" class="FontTextWhite10px "><%:row["Session"] %></td>
-                <td align="left"  style="background:#FFF;color:black; text-align:right;" class="FontTextWhite10px "><%:row["Rate"] %></td>
-                <td align="left"  style="background:#FFF;color:black; text-align:center;" class="FontTextWhite10px "><%:row["Amount"] %></td>
-                <td align="left"   style="background:#FFF;color:black; text-align:center;" class="FontTextWhite10px "><%:row["Runs"] %></td>
-                 <td align="left"   style="background:#FFF;color:black; text-align:center;" class="FontTextWhite10px "><%:row["Mode"] %></td>
+
+                <td align="left" style="background: #FFF; color: black; text-align: right; height: 25px; width: 250px" class="FontTextWhite10px "><%:row["Session"] %></td>
+                <td align="left" style="background: #FFF; color: black; text-align: right;" class="FontTextWhite10px "><%:row["Rate"] %></td>
+                <td align="left" style="background: #FFF; color: black; text-align: center;" class="FontTextWhite10px "><%:row["Amount"] %></td>
+                <td align="left" style="background: #FFF; color: black; text-align: center;" class="FontTextWhite10px "><%:row["Runs"] %></td>
+                <td align="left" style="background: #FFF; color: black; text-align: center;" class="FontTextWhite10px "><%:row["Mode"] %></td>
+                <td align="left" style="background: #FFF; color: black; text-align: center;" class="FontTextWhite10px "></td>
             </tr>
             <% } //foreach %>
-           
-           
         </tbody>
     </table>
 
@@ -358,5 +367,5 @@
     <asp:HiddenField ID="apiID" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/Homejs/LiveMatch.js"></script>
-    
+
 </asp:Content>

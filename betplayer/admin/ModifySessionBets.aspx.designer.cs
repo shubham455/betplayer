@@ -10,7 +10,7 @@
 namespace betplayer.admin {
     
     
-    public partial class ModifyBets {
+    public partial class ModifySessionBets {
         
         /// <summary>
         /// txtcode control.
@@ -20,6 +20,15 @@ namespace betplayer.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcode;
+        
+        /// <summary>
+        /// txtSession control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSession;
         
         /// <summary>
         /// txtRate control.
@@ -40,6 +49,15 @@ namespace betplayer.admin {
         protected global::System.Web.UI.WebControls.TextBox txtAmount;
         
         /// <summary>
+        /// txtruns control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtruns;
+        
+        /// <summary>
         /// txtMode control.
         /// </summary>
         /// <remarks>
@@ -56,24 +74,6 @@ namespace betplayer.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTeam;
-        
-        /// <summary>
-        /// txtPosition1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPosition1;
-        
-        /// <summary>
-        /// txtposition2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtposition2;
         
         /// <summary>
         /// txtDate control.

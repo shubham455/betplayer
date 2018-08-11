@@ -27,7 +27,7 @@
                 <div class="span12">
                     <div class="widget">
                         <div class="widget-title">
-                            <h4><i class="icon-globe"></i>Add Match</h4>
+                            <h4><i class="icon-globe"></i>Modify Match</h4>
                             <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a><a href="javascript:;" class="icon-remove"></a></span>
                         </div>
                         <div class="widget-body form">
@@ -141,29 +141,47 @@
                                 </table>
                             </div>
                             <div class="widget-body form">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td width="14%" align="left" valign="middle">
-                                            <input id="minBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="minBetKeyPress(event)" type="text" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Min Bet">
-                                        </td>
-                                        <td width="14%" align="left" valign="middle">
-                                            <input id="maxBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="maxBetKeyPress(event)" type="text" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Max Bet">
-                                        </td>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td width="25%" align="left" valign="middle">
+                                               <span>Runner Min/Max: </span> 
+                                            </td>
+                                            <td width="30%" align="left" valign="middle">
+                                                <input id="minBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="minBetKeyPress(event)" type="text" style="width: 90%; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Min Bet">
+                                            </td>
+                                            <td width="30%" align="left" valign="middle">
+                                                <input id="maxBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="maxBetKeyPress(event)" type="text" style="width: 90%; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Max Bet">
+                                            </td>
 
-                                        <td width="14%" align="left" valign="middle">
-                                            <button id="btnminmaxUpdate" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Update</button>
-                                        </td>
+                                            <td width="15%" align="left" valign="middle">
+                                                <button id="btnminmaxUpdate" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Update</button>
+                                            </td>
                                         </tr>
-                                </tbody>
-                            </table>
-                            </div>
+                                        <tr>
+                                            <td width="25%" align="left" valign="middle">
+                                               <span>Session Min/Max: </span> 
+                                            </td>
+                                            <td width="30%" align="left" valign="middle">
+                                                <input id="sessionMinBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="sessionMinBetKeyPress(event)" type="text" style="width: 90%; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Min Bet">
+                                            </td>
+                                            <td width="30%" align="left" valign="middle">
+                                                <input id="sessionMaxBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="sessionMaxBetKeyPress(event)" type="text" style="width: 90%; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Max Bet">
+                                            </td>
+
+                                            <td width="15%" align="left" valign="middle">
+                                                <button id="btnsessionMinMaxUpdate" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Update</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>

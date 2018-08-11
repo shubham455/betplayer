@@ -125,11 +125,11 @@ function UpdateSessionsTable(sessions, dataTable) {
             activeButton.setAttribute("sessionValue", sessions[i][2]);
             activeButton.addEventListener("click", function (event) {
                 console.log(activeSessionsLength);
-                if (parseInt(activeSessionsLength) < 4 || (event.srcElement.getAttribute("sessionValue").toString() === "true"))
+                if (parseInt(activeSessionsLength) < 8 || (event.srcElement.getAttribute("sessionValue").toString() === "true"))
                 firebase.database().ref('/currentMatches/' + matchKey + '/sessions/' + event.srcElement.getAttribute("sessionID").toString()).update({
                     active: (event.srcElement.getAttribute("sessionValue").toString() === "true") ? false : true
                     });
-                else alert("Active Sessions cannot be More than 7!!")
+                else alert("Active Sessions cannot be More than 8!!")
             });
             var suspendedButton = suspendedCell.appendChild(document.createElement("a"));
             suspendedButton.style = (sessions[i][3]) ? "background-color:red;width:100%;height:100%;color:white;" : "background-color:green;width:100%;height:100%;color:white;";

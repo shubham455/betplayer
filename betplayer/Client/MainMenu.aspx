@@ -15,7 +15,7 @@
                     <div>
                         <br>
                         <div style="float: left">
-                            <img src="images/MainMenuImg/play.png" height="50px;" style="margin-left: 10px;">
+                            <img src="images/MainMenuImg/play.png" height="50px;" style="margin-left: 10px; margin-top:-5px;">
                         </div>
 
                         <div style="margin-left: 100px !important">

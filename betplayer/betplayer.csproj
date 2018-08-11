@@ -95,6 +95,7 @@
     <Content Include="admin\MatchSessionPlusMinusSelect.aspx" />
     <Content Include="admin\ModifyBets.aspx" />
     <Content Include="admin\Modifypoweruser.aspx" />
+    <Content Include="admin\ModifySessionBets.aspx" />
     <Content Include="admin\My_Ledger.aspx" />
     <Content Include="admin\PlusMinusSelect.aspx" />
     <Content Include="admin\poweruserdetails.aspx" />
@@ -102,6 +103,8 @@
     <Content Include="admin\SessionPlusMinusSelect.aspx" />
     <Content Include="admin\UpdateAgentlimit.aspx" />
     <Content Include="admin\UpdateClientLimit.aspx" />
+    <Content Include="admin\UpdatedRunnerBets.aspx" />
+    <Content Include="admin\UpdatedSessionBets.aspx" />
     <Content Include="admin\Updatesuperagentlimit.aspx" />
     <Content Include="Client\images\InplayImg\avatar.png" />
     <Content Include="Client\images\MainMenuImg\game.png" />
@@ -2248,6 +2251,8 @@
     <Content Include="admin\agentlimit.ashx" />
     <Content Include="admin\superagentlimit.ashx" />
     <Content Include="PowerUser\ScheduleMatch.ashx" />
+    <Content Include="admin\DeleteRunnerBets.ashx" />
+    <Content Include="admin\DeleteSessionBets.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <Content Include="superagent\Agentlimit.ashx" />
@@ -2396,6 +2401,12 @@
     <Compile Include="admin\DeleteBets.aspx.designer.cs">
       <DependentUpon>DeleteBets.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\DeleteRunnerBets.ashx.cs">
+      <DependentUpon>DeleteRunnerBets.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\DeleteSessionBets.ashx.cs">
+      <DependentUpon>DeleteSessionBets.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\MatchAndSessionSPosition.aspx.cs">
       <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2444,6 +2455,13 @@
     </Compile>
     <Compile Include="admin\Modifypoweruser.aspx.designer.cs">
       <DependentUpon>Modifypoweruser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ModifySessionBets.aspx.cs">
+      <DependentUpon>ModifySessionBets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ModifySessionBets.aspx.designer.cs">
+      <DependentUpon>ModifySessionBets.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\My_Ledger.aspx.cs">
       <DependentUpon>My_Ledger.aspx</DependentUpon>
@@ -2496,6 +2514,20 @@
     </Compile>
     <Compile Include="admin\UpdateClientLimit.aspx.designer.cs">
       <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\UpdatedRunnerBets.aspx.cs">
+      <DependentUpon>UpdatedRunnerBets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\UpdatedRunnerBets.aspx.designer.cs">
+      <DependentUpon>UpdatedRunnerBets.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\UpdatedSessionBets.aspx.cs">
+      <DependentUpon>UpdatedSessionBets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\UpdatedSessionBets.aspx.designer.cs">
+      <DependentUpon>UpdatedSessionBets.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Updatesuperagentlimit.aspx.cs">
       <DependentUpon>Updatesuperagentlimit.aspx</DependentUpon>

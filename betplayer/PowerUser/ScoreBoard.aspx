@@ -151,6 +151,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/ManualMatch.js"></script>
     <script lang="javascript">
+        
 function Tab()
 {
     var tb1=document.getElementById(InputWicket);
@@ -162,30 +163,15 @@ function Tab()
  
 
     <script type="text/javascript"  lang="js">
-
-        $(function()
-
-        {
-
-               $("input[type=text]").keypress(function(){
-
-                  alert("Wow; Its Work!.")
-
-               
-
-           });
-
-                    });
-
-    </script>
-    function focusOnNext(e, nextControl) {
+        function focusOnNext(e, nextControl) {
             alert(e.keyCode);
             if (e.keyCode == 13) {
                 $("." + nextControl).focus();
                 return false;
             }
-            
         }
+    </script>
+    
 
 
 </asp:Content>

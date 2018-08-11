@@ -69,7 +69,7 @@ namespace betplayer.Client
         }
         private string AddEntryToLedger(HttpContext context, int ClientID)
         {
-            
+
             Decimal Amount = Convert.ToDecimal(context.Request["Amount"]);
             Decimal Rate = Convert.ToDecimal(context.Request["Rate"]);
             string Team = context.Request["Team"].ToString();
@@ -129,6 +129,8 @@ namespace betplayer.Client
                     }
                     else
                     {
+
+
                         string s = "Insert Into runner (ClientID, Amount, Rate, Mode, DateTime, MatchID,Team,Position1,Position2) values (@ClientID,@Amount,@Rate,@Mode,@DateTime,@MatchID,@Team,@Position1,@Position2)";
                         MySqlCommand cmd = new MySqlCommand(s, cn);
                         cmd.Parameters.AddWithValue("@ClientID", ClientID);
@@ -182,7 +184,60 @@ namespace betplayer.Client
                         }
 
 
+                        string check = "Select * from Sharetable where clientID = '" + ClientID + "' && MatchID = '" + MatchID + "'";
+                        MySqlCommand checkcmd = new MySqlCommand(check, cn);
+                        MySqlDataReader rdr = checkcmd.ExecuteReader();
+                        if (rdr.Read())
+                        {
 
+                        }
+                        else
+                        {
+                            rdr.Close();
+                            string s3 = "Select Agent_Share,Createdby from ClientMaster where ClientID = '" + ClientID + "'";
+                            MySqlCommand cmd3 = new MySqlCommand(s3, cn);
+                            MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);
+                            DataTable dt3 = new DataTable();
+                            adp3.Fill(dt3);
+                            string ClientShare = dt3.Rows[0]["Agent_Share"].ToString();
+                            string Agentcode = dt3.Rows[0]["CreatedBy"].ToString();
+
+
+                            string s4 = "Select AgentShare,Createdby,MatchCommision,SessionCommision from AgentMaster where code = '" + Agentcode + "'";
+                            MySqlCommand cmd4 = new MySqlCommand(s4, cn);
+                            MySqlDataAdapter adp4 = new MySqlDataAdapter(cmd4);
+                            DataTable dt4 = new DataTable();
+                            adp4.Fill(dt4);
+                            string AgentShare = dt4.Rows[0]["AgentShare"].ToString();
+                            string AgentMatchCommision = dt4.Rows[0]["MatchCommision"].ToString();
+                            string AgentSessionCommision = dt4.Rows[0]["SessionCommision"].ToString();
+                            string SuperAgentCode = dt4.Rows[0]["CreatedBy"].ToString();
+
+
+                            string s5 = "Select AgentShare,Createdby,MatchCommision,SessionCommision from SuperAgentMaster where code = '" + SuperAgentCode + "'";
+                            MySqlCommand cmd5 = new MySqlCommand(s5, cn);
+                            MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
+                            DataTable dt5 = new DataTable();
+                            adp5.Fill(dt5);
+                            string SAgentShare = dt5.Rows[0]["AgentShare"].ToString();
+                            string SAgentMatchCommision = dt5.Rows[0]["MatchCommision"].ToString();
+                            string SAgentSessionCommision = dt5.Rows[0]["SessionCommision"].ToString();
+
+
+                            string s6 = "Insert into sharetable (ClientID,MatchID,AgentShare,SAgentshare,ClientShare,AgentMatchComm,AgentSessionComm,SAgentMatchComm,SAgentSessionComm) values(@ClientID,@MatchID,@AgentShare,@SAgentShare,@ClientShare,@AgentMatchComm,@AgentSessionComm,@SAgentMatchComm,@SAgentSessionComm)";
+                            MySqlCommand cmd6 = new MySqlCommand(s6, cn);
+                            cmd6.Parameters.AddWithValue("@ClientID", ClientID);
+                            cmd6.Parameters.AddWithValue("@MatchID", MatchID);
+                            cmd6.Parameters.AddWithValue("@AgentShare", AgentShare);
+                            cmd6.Parameters.AddWithValue("@SAgentShare", SAgentShare);
+                            cmd6.Parameters.AddWithValue("@ClientShare", ClientShare);
+                            cmd6.Parameters.AddWithValue("@AgentMatchComm", AgentMatchCommision);
+                            cmd6.Parameters.AddWithValue("@AgentSessionComm", AgentSessionCommision);
+                            cmd6.Parameters.AddWithValue("@SAgentMatchComm", SAgentMatchCommision);
+                            cmd6.Parameters.AddWithValue("@SAgentSessionComm", SAgentSessionCommision);
+                            cmd6.ExecuteNonQuery();
+
+                        }
 
                         BindData(ClientID);
                     }

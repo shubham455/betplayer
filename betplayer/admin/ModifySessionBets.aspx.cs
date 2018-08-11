@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace betplayer.admin
 {
-    public partial class ModifyBets : System.Web.UI.Page
+    public partial class ModifySessionBets : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,35 +22,36 @@ namespace betplayer.admin
                 int Id = Convert.ToInt16(Request.QueryString["BetID"]);
                 string type = Request.QueryString["type"];
 
+
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
-                    string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,clientmaster.CreatedBy,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where  Runner.RunnerID = '" + Id + "' ";
+                    string s = "select Session.SessionID,session.session,session.rate,session.Amount,session.runs,session.Mode,session.DateTime,session.Team,session.clientID,clientmaster.Name,clientmaster.CreatedBy from Session inner join clientmaster on session.ClientID = clientmaster.ClientID where  Session.SessionID = '" + Id + "' ";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
-                    txtcode.Text = dt.Rows[0]["RunnerID"].ToString();
+                    txtcode.Text = dt.Rows[0]["SessionID"].ToString();
+                    txtSession.Text = dt.Rows[0]["session"].ToString();
                     txtRate.Text = dt.Rows[0]["Rate"].ToString();
                     txtAmount.Text = dt.Rows[0]["Amount"].ToString();
+                    txtruns.Text = dt.Rows[0]["runs"].ToString();
                     txtMode.Text = dt.Rows[0]["Mode"].ToString();
                     txtTeam.Text = dt.Rows[0]["Team"].ToString();
-
-                    txtPosition1.Text = dt.Rows[0]["Position1"].ToString();
-                    txtposition2.Text = dt.Rows[0]["Position2"].ToString();
                     txtDate.Text = DateTime.Parse(dt.Rows[0]["DateTime"].ToString()).ToString("yyyy-MM-dd HH:mm:ss");
 
                 }
             }
-        }
 
+        }
 
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             int Id = Convert.ToInt16(Request.QueryString["BetId"]);
             int matchId = Convert.ToInt32(Request.QueryString["matchId"]);
-            string firebasekey = Request.QueryString["fk"].ToString();
+            string firebasekey = Request.QueryString["fk"];
+            string Session = Request.QueryString["Session"];
             string type = (Request.QueryString["type"]);
 
 
@@ -58,46 +59,42 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Update Runner set Rate= @Rate,Amount=@Amount,Mode=@Mode,Team=@Team,Position1 = @Position1,Position2=@Position2,DateTime= @DateTime  where RunnerID = '" + Id + "' ";
+                string s = "Update Session set Rate= @Rate,Amount=@Amount,Mode=@Mode,Team=@Team,DateTime= @DateTime  where SessionID = '" + Id + "' ";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 cmd.Parameters.AddWithValue("@Rate", txtRate.Text);
                 cmd.Parameters.AddWithValue("@Amount", txtAmount.Text);
                 cmd.Parameters.AddWithValue("@Mode", txtMode.Text);
                 cmd.Parameters.AddWithValue("@Team", txtTeam.Text);
-                cmd.Parameters.AddWithValue("@Position1", txtPosition1.Text);
-                cmd.Parameters.AddWithValue("@Position2", txtposition2.Text);
-
                 cmd.Parameters.AddWithValue("@DateTime", (txtDate.Text));
-
                 cmd.ExecuteNonQuery();
 
-                string s1 = "insert into updatedRunnerBets (RunnerID,Rate,Amount,Mode,Team,Position1,Position2,DateTime,Remark) values(@RunnerID,@Rate1,@Amount,@Mode,@Team,@Position1,@Position2,@DateTime,@Remark)";
+                string s1 = "insert into updatedSessionBets (SessionID,Session,Rate,Amount,Mode,Team,DateTime,Remark) values(@SessionID,@Session,@Rate,@Amount,@Mode,@Team,@DateTime,@Remark)";
                 MySqlCommand cmd1 = new MySqlCommand(s1, cn);
-                cmd1.Parameters.AddWithValue("@RunnerID", Id);
-                cmd1.Parameters.AddWithValue("@Rate1", txtRate.Text);
+                cmd1.Parameters.AddWithValue("@SessionID", Id);
+                cmd1.Parameters.AddWithValue("@Session", txtSession.Text);
+                cmd1.Parameters.AddWithValue("@Rate", txtRate.Text);
                 cmd1.Parameters.AddWithValue("@Amount", txtAmount.Text);
                 cmd1.Parameters.AddWithValue("@Mode", txtMode.Text);
                 cmd1.Parameters.AddWithValue("@Team", txtTeam.Text);
-                cmd1.Parameters.AddWithValue("@Position1", txtPosition1.Text);
-                cmd1.Parameters.AddWithValue("@Position2", txtposition2.Text);
                 cmd1.Parameters.AddWithValue("@DateTime", (txtDate.Text));
                 cmd1.Parameters.AddWithValue("@Remark", (txtRemark.Text));
                 cmd1.ExecuteNonQuery();
 
                 if (type == "Match")
                 {
-                    Response.Redirect("MatchAndSessionPosition.aspx?MatchID=" + matchId + "&&fk=" + firebasekey);
-
+                    Response.Redirect("MatchAndSessionSPosition.aspx?MatchID=" + matchId + "&&Session=" + Session + "&&fk=" + firebasekey);
                 }
             }
         }
 
 
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             int matchId = Convert.ToInt32(Request.QueryString["matchId"]);
-            string firebasekey = Request.QueryString["fk"].ToString();
-            Response.Redirect("MatchAndSessionPosition.aspx?MatchID=" + matchId + "&&fk=" + firebasekey);
+            string firebasekey = Request.QueryString["fk"];
+            string Session = Request.QueryString["Session"];
+            Response.Redirect("MatchAndSessionSPosition.aspx?MatchID=" + matchId + "&&Session=" + Session + "&&fk=" + firebasekey);
         }
     }
 }

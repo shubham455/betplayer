@@ -88,7 +88,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Team1"  id="Team1" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="Redirect();" style="width: 120px;"></td>
+                                                                                                <input type="button" name="Team1" id="Team1" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="Redirect();" style="width: 120px;"></td>
                                                                                             <td align="center" valign="middle" style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="KRate1" id="KRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(1)"></td>
                                                                                             <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><span style="color: ">
@@ -216,7 +216,16 @@
                                                     <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                                         { %>
                                                     <tr>
-                                                        <td align="left" class="TableHeading">&nbsp;</td>
+                                                        <td align="center">
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a href="ModifySessionBets.aspx?BetID=<%: row["SessionID"] %>&&type=Match&&matchId=<%: apiID.Value %>&&fk=<%: firebasekey.Value %>&&Session=<%: row["Session"] %>"><i class="icon-pencil"></i>Edit</a></li>
+                                                                    <li><a onclick="DeleteBet('<%: row["SessionID"] %>');"><i class="icon-trash"></i>Delete</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                        
                                                         <td height="25" align="left" class="TableHeading"><strong><%: row["SessionID"] %></strong></td>
                                                         <td align="left" class="TableHeading"><strong><%: row["Session"] %> </strong></td>
                                                         <td align="left" class="TableHeading"><strong><%: row["ClientID"] %> <%: row["Name"] %></strong></td>
@@ -243,11 +252,12 @@
                                                 </tr>
 
                                                 <% foreach (System.Data.DataRow row in runTable1.Rows)
-                                                    
+
                                                     { %>
                                                 <tr>
-                                                <td width="50" height="25" align="right" style="text-align: right;"><strong><%:row["Runs"] %></strong></td>
-                                                <td width="100" align="right" style="text-align: right;"><strong><%:row["Amount"] %></strong></td></tr>
+                                                    <td width="50" height="25" align="right" style="text-align: right;"><strong><%:row["Runs"] %></strong></td>
+                                                    <td width="100" align="right" style="text-align: right;"><strong><%:row["Amount"] %></strong></td>
+                                                </tr>
                                                 <% } //foreach %>
                                             </table>
                                         </td>
@@ -264,7 +274,7 @@
         </div>
         <!-- END PAGE CONTAINER-->
     </div>
-     <asp:HiddenField ID="apiID" runat="server" />
+    <asp:HiddenField ID="apiID" runat="server" />
     <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/LiveMatch.js"></script>
@@ -285,5 +295,37 @@
 
     }
          //-->
+    </script>
+    <script>
+        function DeleteBet(SessionID) {
+            var params = {
+                SessionID: SessionID
+            };
+
+            var formBody = [];
+            for (var property in params) {
+                var encodedKey = encodeURIComponent(property);
+                var encodedValue = encodeURIComponent(params[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
+
+            fetch('/Admin/DeleteSessionBets.ashx', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: formBody
+            }).then(function (responce) {
+                return responce.json();
+            }).then(function (data) {
+                if (data.status) alert("Bet with ID: " + data.userDeletedId + " Successfully Deleted.");
+                else alert("Bet Delete Failed!!!" + "\r\n" + data.error);
+            }).then(function () {
+                location.reload();
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
     </script>
 </asp:Content>

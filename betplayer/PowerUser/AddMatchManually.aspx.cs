@@ -87,8 +87,10 @@ namespace betplayer.poweruser
                         description = "",
                         message = "",
                         status = "",
-                        minBet = "",
-                        maxBet = "",
+                        minBet = "2000",
+                        maxBet = "200000",
+                        sessionMinBet = "1000",
+                        sessionMaxBet = "200000",
                         team_1 = new
                         {
                             Name = txtTeamA.Text,

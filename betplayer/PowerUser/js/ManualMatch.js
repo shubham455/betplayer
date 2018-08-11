@@ -18,6 +18,16 @@ if (matchIdElement !== null) {
             document.getElementById('team1_name').text = match['team_1']['Name'];
             document.getElementById('team2_name').text = match['team_2']['Name'];
         }).then(() => {
+            //Attching EventListner or Global Key presses
+            document.onkeydown = function (event) {
+                console.log(event.keyCode);
+                if (111 < event.keyCode && event.keyCode < 124) {
+                    event.preventDefault();
+                    if (event.keyCode === 119) {
+                        document.getElementById('ball_start').click();
+                    }
+                }
+            }
 
             //Attching EventListener on Input Element   
             document.getElementById('ball_start').addEventListener("click", updateScore);
@@ -30,6 +40,8 @@ if (matchIdElement !== null) {
             document.getElementById('noball').addEventListener("click", updateScore);
             document.getElementById('freehit').addEventListener("click", updateScore);
             document.getElementById('wideplus4').addEventListener("click", updateScore);
+            document.getElementById('timeout').addEventListener("click", updateScore);
+            document.getElementById('thirdumpire').addEventListener("click", updateScore);
 
             document.getElementById('btnmessage').addEventListener("click", (event) => {
                 var team = document.getElementById('team_selector').value

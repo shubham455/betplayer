@@ -144,7 +144,8 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="SuperAgentLimitReport.aspx">SuperAgent Limit Report</a></li>
+                        <li><a class="" href="UpdatedRunnerBets.aspx">UpdatedRunner Bets </a></li>
+                        <li><a class="" href="UpdatedSessionBets.aspx">UpdatedSession Bets </a></li>
                         
                     </ul>
                 </li>

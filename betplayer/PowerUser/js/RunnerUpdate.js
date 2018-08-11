@@ -21,6 +21,14 @@ if (matchIdElement !== null) {
                     document.getElementById('team1_name1').text = match['team_1']['Name'];
                     document.getElementById('team2_name2').text = match['team_2']['Name'];
         }).then(() => {
+            firebase.database().ref('/currentMatches/' + matchKey).on("value", // runs on page runder
+                function (snapshot) {
+                    var match = snapshot.val();
+                    document.getElementById('minBet').text = match['minBet'];
+                    document.getElementById('maxBet').text = match['maxBet'];
+                    document.getElementById('sessionMinBet').text = match['sessionMinBet'];
+                    document.getElementById('sessionMaxBet').text = match['sessionMaxBet'];
+                })
             document.getElementById('btnteamupdate').addEventListener("click", (event) => {
                 var team = document.getElementById('team_selector').value;
                 var KhaiElement = document.getElementById('team_Khai');
@@ -86,6 +94,17 @@ if (matchIdElement !== null) {
                     console.log("In UnLock.");
                 });
             });
+            document.getElementById('btnminmaxUpdate').addEventListener("click", (event) => {
+
+                var minBet = document.getElementById('sessionMinBet').value;
+                var maxBet = document.getElementById('sessionMaxBet').value;
+                firebase.database().ref('/currentMatches/' + matchKey).update({
+                    sessionMinBet: minBet,
+                    sessionMaxBet: maxBet
+                }).then(function () {
+                    console.log("In UnLock.");
+                });
+            });
             document.getElementById('ball_start').addEventListener("click", updateScore);
             document.getElementById('1run').addEventListener("click", updateScore);
             document.getElementById('2run').addEventListener("click", updateScore);
@@ -129,5 +148,16 @@ function minBetKeyPress(event) {
 function maxBetKeyPress(event) {
     if (event.keyCode === 13) {
         document.getElementById('btnminmaxUpdate').focus();
+    }
+}
+
+function sessionMinBetKeyPress(event) {
+    if (event.keyCode === 13) {
+        document.getElementById('sessionMaxBet').focus();
+    }
+}
+function sessionMaxBetKeyPress(event) {
+    if (event.keyCode === 13) {
+        document.getElementById('btnsessionMinMaxUpdate').focus();
     }
 }

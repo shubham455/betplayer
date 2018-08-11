@@ -94,16 +94,34 @@ if (matchIdElement !== null) {
         .on(
             "value", // runs on change
             function (snapshot) {
-                console.log(snapshot.val());
                 var min = snapshot.val();
                 firebase
                     .database()
                     .ref("/currentMatches/" + matchKey + "/maxBet")
                     .on(
                         "value", // runs on change
-                        function (snapshot) {
+                    function (snapshot) {
                             document.getElementById("matchMaxBet").innerHTML = min + " / " + snapshot.val();
                             document.getElementById("matchMinBet").innerHTML = min + " / " + snapshot.val();
+                        });
+            });
+    firebase
+        .database()
+        .ref("/currentMatches/" + matchKey + "/sessionMinBet")
+        .on(
+            "value", // runs on change
+            function (snapshot) {
+                var min = snapshot.val();
+                firebase
+                    .database()
+                    .ref("/currentMatches/" + matchKey + "/sessionMaxBet")
+                    .on(
+                        "value", // runs on change
+                    function (snapshot) {
+                        for (var j = 1; j <= 8; j++) {
+                            document.getElementById("maxmin" + j).innerHTML = min + " / " + snapshot.val();
+                            document.getElementById("maxmin" + j).innerHTML = min + " / " + snapshot.val();
+                            }
                         });
             });
     firebase
@@ -203,7 +221,11 @@ function clearSessionTable() {
 }
 
 function doneClick() {
-    if (!doneClicked) {
+    var isballstart = (document.getElementById("LastBall").innerHTML === "Ball Start") ? true : false;
+    if (isballstart) {
+        alert("Can not place bet during the ball start");
+    }
+    if (!doneClicked && !isballstart) {
         console.log(team + " " + runnerSession + " " + betType);
         if (runnerSession === "Runner") {
             if (!matchKey) alert("No FireBase Match.");
@@ -223,9 +245,9 @@ function doneClick() {
                             if (betValue !== match[team][runnerSession][betType]) {
                                 alert("Bet Not Accepted Because Rate Not Found");
                                 clearTimer();
-                            } else if (2000 >= betAmount || betAmount >= 100000) {
+                            } else if (parseInt(match['minBet'])>= betAmount || betAmount >= parseInt(match['maxBet'])) {
                                 alert(
-                                    "The Amount Should not be less than 2000 or greater than 1 Lakh."
+                                    "The Amount Should not be less than " + match['minBet'] + " or greater than " + match['maxBet']+"."
                                 );
                                 clearTimer();
                             } else {
@@ -237,7 +259,7 @@ function doneClick() {
                                 } else if (betType === "Lagai") {
                                     Mode = "L";
                                 }
-                                var apiid = document.getElementById("ContentPlaceHolder1_apiID"); 
+                                var apiid = document.getElementById("ContentPlaceHolder1_apiID");
                                 var params = {
                                     Amount: betAmount,
                                     Rate: betValue,
@@ -293,7 +315,7 @@ function doneClick() {
                         }
                     );
             }
-        } else if (runnerSession === "Session") {
+        } else if (runnerSession === "Session" && !isballstart) {
             if (!matchKey) alert("No FireBase Match.");
             else {
                 doneClicked = true;
@@ -308,9 +330,9 @@ function doneClick() {
                             betAmount = parseInt(
                                 document.getElementById("matchAmount").value
                             );
-                            if (500 >= betAmount || betAmount >= 100000) {
+                            if (parseInt(match['sessionMinBet']) >= betAmount || betAmount >= parseInt(match['sessionMaxBet'])) {
                                 alert(
-                                    "The Amount Should not be less than 500 or greater than 1 Lakh."
+                                    "The Amount Should not be less than " + match['sessionMinBet'] + " or greater than " + match['sessionMaxBet']+"."
                                 );
                                 clearTimer();
                             } else {

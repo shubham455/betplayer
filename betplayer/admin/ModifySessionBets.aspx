@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"  MasterPageFile="~/admin/Dashboard.Master" AutoEventWireup="true" CodeBehind="ModifyBets.aspx.cs" Inherits="betplayer.admin.ModifyBets" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin/Dashboard.Master" AutoEventWireup="true" CodeBehind="ModifySessionBets.aspx.cs" Inherits="betplayer.admin.ModifySessionBets" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">
@@ -52,6 +52,13 @@
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
 
+                                                     <tr>
+                                                        <td class="welcome">&nbsp;</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Session</td>
+                                                        <td align="left">
+                                                            <asp:TextBox CssClass="textbox" ID="txtSession" runat="server" ReadOnly="true" /></td>
+                                                        <td align="left">&nbsp;</td>
+                                                    </tr>
                                                     <tr>
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Rate</td>
@@ -64,6 +71,13 @@
                                                         <td height="30" align="left" valign="middle" class="welcome">Amount</td>
                                                         <td align="left">
                                                             <asp:TextBox runat="server" CssClass="textbox"  ID="txtAmount" /></td>
+                                                        <td align="left">&nbsp;</td>
+                                                    </tr>
+                                                     <tr>
+                                                        <td class="welcome">&nbsp;</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Runs</td>
+                                                        <td align="left">
+                                                            <asp:TextBox CssClass="textbox" ID="txtruns" runat="server"  /></td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr>
@@ -80,24 +94,6 @@
                                                         <td align="left" valign="middle">
                                                             <asp:TextBox CssClass="textbox" ID="txtTeam" runat="server" /></td>
                                                         <td align="left" valign="middle">&nbsp;</td>
-                                                    </tr>
-
-                                                   
-
-                                                    <tr>
-                                                        <td align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">Position1</td>
-                                                        <td align="left">
-                                                            <asp:TextBox CssClass="textbox" ID="txtPosition1" runat="server"  /></td>
-                                                        <td align="left">&nbsp;</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">Position2</td>
-                                                        <td align="left">
-                                                            <asp:TextBox CssClass="textbox" ID="txtposition2" runat="server"  /></td>
-                                                        <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr>
                                                         <td align="left" class="welcome">&nbsp;</td>
@@ -135,3 +131,4 @@
     </div>
 
 </asp:Content>
+
