@@ -43,22 +43,22 @@
                                         <td align="left" class="TableHeading">Current Limit</td>
                                         <td align="left" class="TableHeading">Client Limit</td>
                                     </tr>
-                                    <% foreach (System.Data.DataRow row in UpdateDataTable.Rows)
+                                    <% int index = 2; foreach (System.Data.DataRow row in UpdateDataTable.Rows)
                                         { %>
                                     <tr bgcolor="#FFFFFF">
                                         <td height="25" align="left" class="FontText">1</td>
                                         <td align="left" class="FontText">
-                                            <input name="ClientName1" type="text" class="TextBoxTransparent" id="ClientName1" style="text-align: right; text-align: left;" onblur="CheckTotalLimit('1')" value="<%: row["AgentID"] %><%: row["Name"] %>" readonly="">
+                                            <input name="ClientName1" type="text" class="TextBoxTransparent" id="ClientName1" style="text-align: right; text-align: left;" value="<%: row["AgentID"] %><%: row["Name"] %>" readonly="">
                                         </td>
                                         <td align="left" class="TextBox100">
-                                            <input name="FixLimit1" id="FixLimit" style="text-align: right" readonly="" type="text" value="<%: row["Fixlimit"] %>" class="TextBox100"></td>
+                                            <input name="FixLimit1" id="FixLimit" style="text-align: right"  type="text" value="<%: row["Fixlimit"] %>" class="TextBox100"></td>
                                         <td align="left" class="TextBox100">
                                             <input id="AgentID" type="hidden" value="<%: row["AgentID"] %>" />
-                                            <input id="AgentLimit" style="text-align: right" type="text" value="<%: row["CurrentLimit"] %>" onchange="check()" onblur="CheckTotalLimit('1')" class="TextBox100"></td>
+                                            <input id="AgentLimit" style="text-align: right" type="text" value="<%: row["CurrentLimit"] %>" onchange="check('<%: index %>')"  class="TextBox100"></td>
                                         <td align="left" class="FontText">
                                             <input name="ULimit1" type="text" id="ULimit1" style="text-align: right" value="0" class="TextBox100" readonly="" disabled=""></td>
                                     </tr>
-                                    <% } //foreach %>
+                                    <% index++; } //foreach %>
 
                                     <tr bgcolor="#E9F3FD" class="TableHeading">
                                         <td height="25" align="center" bgcolor="#FFFFFF"><strong>Limit</strong></td>
@@ -66,7 +66,7 @@
                                             <input runat="server" name="SuperAgentLimit" type="text" id="SuperAgentLimit" style="text-align: right" value="" readonly=""></td>
                                         <td align="left" bgcolor="#FFFFFF" class="FontText">&nbsp;</td>
                                         <td align="left" bgcolor="#FFFFFF" class="FontText">
-                                            <input runat="server" name="TotalLimit" type="text" class="TextBox100" readonly="" onchange="checkTotallimit()" id="TotalLimit" style="text-align: right" value=""></td>
+                                            <input runat="server" name="TotalLimit" type="text" class="TextBox100" readonly=""  id="TotalLimit" style="text-align: right" value=""></td>
                                         <td align="left" bgcolor="#FFFFFF" class="FontText">&nbsp;</td>
                                     </tr>
                                 </tbody>
@@ -91,14 +91,14 @@
     </div>
     <script>
         function check() {
-            var input1 = Number(document.getElementById("FixLimit").value);
-            var input2 = Number(document.getElementById("AgentLimit").value);
+            var input1 = Number(table.rows[rowID].cells[2].children[0].value);
+            var input2 = Number(table.rows[rowID].cells[3].children[1].value);
 
             if (input1 >= input2) {
                
             }
             else {
-               document.getElementById("AgentLimit").value = 0
+                table.rows[rowID].cells[3].children[1].value = 0;
                 alert("Current Limit Is Not greater than Fix Limit")
             }
         }
@@ -115,10 +115,12 @@
                 //iterate through rows
                 //rows would be accessed using the "row" variable assigned in the for loop
                 row = table.rows[i];
+                var Fixchildren = row.cells[2].getElementsByTagName('input');// any tag could be used here..
                 var children = row.cells[3].getElementsByTagName('input');// any tag could be used here..
                 valueArray.push({
                     AgentID: getValueByAttrName("AgentID", children),
-                    AgentLimit: getValueByAttrName("AgentLimit", children)
+                    AgentLimit: getValueByAttrName("AgentLimit", children),
+                    FixLimit: getValueByAttrName("FixLimit", Fixchildren)
                 })
             }
             var formBody = [];

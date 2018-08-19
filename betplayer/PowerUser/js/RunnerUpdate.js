@@ -24,10 +24,10 @@ if (matchIdElement !== null) {
             firebase.database().ref('/currentMatches/' + matchKey).on("value", // runs on page runder
                 function (snapshot) {
                     var match = snapshot.val();
-                    document.getElementById('minBet').text = match['minBet'];
-                    document.getElementById('maxBet').text = match['maxBet'];
-                    document.getElementById('sessionMinBet').text = match['sessionMinBet'];
-                    document.getElementById('sessionMaxBet').text = match['sessionMaxBet'];
+                    document.getElementById('minBet').value = match['minBet'];
+                    document.getElementById('maxBet').value = match['maxBet'];
+                    document.getElementById('sessionMinBet').value = match['sessionMinBet'];
+                    document.getElementById('sessionMaxBet').value = match['sessionMaxBet'];
                 })
             document.getElementById('btnteamupdate').addEventListener("click", (event) => {
                 var team = document.getElementById('team_selector').value;
@@ -94,7 +94,7 @@ if (matchIdElement !== null) {
                     console.log("In UnLock.");
                 });
             });
-            document.getElementById('btnminmaxUpdate').addEventListener("click", (event) => {
+            document.getElementById('btnsessionMinMaxUpdate').addEventListener("click", (event) => {
 
                 var minBet = document.getElementById('sessionMinBet').value;
                 var maxBet = document.getElementById('sessionMaxBet').value;
@@ -102,7 +102,7 @@ if (matchIdElement !== null) {
                     sessionMinBet: minBet,
                     sessionMaxBet: maxBet
                 }).then(function () {
-                    console.log("In UnLock.");
+                    console.log("Updating Session Rate.");
                 });
             });
             document.getElementById('ball_start').addEventListener("click", updateScore);

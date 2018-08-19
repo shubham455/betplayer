@@ -115,7 +115,7 @@
                                             foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
                                             { %>
                                     <tr>
-                                        <td height="20" class="FontText"><%: row["ID"] %></td>
+                                        <td height="20" class="FontText"><%: row["CollectionID"] %></td>
                                         <td class="FontText"><%: row["Date"] %></td>
                                         <td class="FontText"><%: row["CollectionName"] %></td>
                                         <td align="right" class="FontText" style="text-align: right;"><%: row["Dabit"] %></td>

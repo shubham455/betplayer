@@ -19,13 +19,13 @@ namespace betplayer.Super_Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s3 = "Select *From SuperAgentMaster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
+                string s3 = "Select * From SuperAgentMaster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
                 MySqlCommand cmd3 = new MySqlCommand(s3, cn);
                 MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);
                 DataTable dt3 = new DataTable();
                 adp3.Fill(dt3);
 
-                int SuperAgentLimit = Convert.ToInt32(dt3.Rows[0]["Agentlimit"]);
+                int SuperAgentLimit = Convert.ToInt32(dt3.Rows[0]["Currentlimit"]);
                 decimal Total = 0;
 
                 string SuperAgentCode = dt3.Rows[0]["Agentlimit"].ToString();

@@ -13,8 +13,8 @@ var sessionsTable = sessionsDiv.appendChild(document.createElement("table")),
     thead = sessionsTable.createTHead(), // thead element
     thRow = thead.insertRow(), // trow element
     tbody = sessionsTable.createTBody(); // tbody element
-    thRow.insertCell(0).innerText = "Name";
-    thRow.insertCell(1).innerText = "Active";
+thRow.insertCell(0).innerText = "Name";
+thRow.insertCell(1).innerText = "Active";
 thRow.insertCell(2).innerText = "Suspended";
 sessionsTable.classList.add("table")
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -55,14 +55,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         "yesRate": "",
                         "notRate": "",
                         "suspended": true,
-                        "active": false
-                    }, function (error) {
+                        "active": true
+                    }, 
+                        function (error) {
                         if (error) alert("Session failed to be added to database");
                         else updateSessionTable(match['session']);
-                    });
+                        });
+                    document.getElementById('Over').value = "";
                 });
             });
-        
+
     }
 })()
 
@@ -108,7 +110,7 @@ function UpdateSessionsTable(sessions, dataTable) {
             });
         } else if (typeof (sessions) === "Array") {
             sessions.map(function (session) {
-                return [session["id"],session["name"], session["active"], session["suspended"]]
+                return [session["id"], session["name"], session["active"], session["suspended"]]
             })
         }
         console.log(sessions);
@@ -126,8 +128,8 @@ function UpdateSessionsTable(sessions, dataTable) {
             activeButton.addEventListener("click", function (event) {
                 console.log(activeSessionsLength);
                 if (parseInt(activeSessionsLength) < 8 || (event.srcElement.getAttribute("sessionValue").toString() === "true"))
-                firebase.database().ref('/currentMatches/' + matchKey + '/sessions/' + event.srcElement.getAttribute("sessionID").toString()).update({
-                    active: (event.srcElement.getAttribute("sessionValue").toString() === "true") ? false : true
+                    firebase.database().ref('/currentMatches/' + matchKey + '/sessions/' + event.srcElement.getAttribute("sessionID").toString()).update({
+                        active: (event.srcElement.getAttribute("sessionValue").toString() === "true") ? false : true
                     });
                 else alert("Active Sessions cannot be More than 8!!")
             });
@@ -160,37 +162,46 @@ function updateSessionTable(sessions) {
         var displayableSessions = sessions.filter(function (session) { return session['active'] });
         activeSessionsLength = displayableSessions.length;
         clearSessionTable();
-        for (var i = 1; i <= displayableSessions.length; i++) {
+        clearSessionSelector();
+        for (var i = 1; i <= activeSessionsLength && i <= 8; i++) {
             var session = displayableSessions[i - 1];
             console.log(session);
-            document.getElementById("Session" + i).value = session['name'];
-            document.getElementById("UpdateButton" + i).setAttribute("customData", session['key']);
-            if (session['suspended'] === false) {
-                document.getElementById("not" + i).value =
-                    session["not"] !== "" ? session["not"] : "0.00";
-                document.getElementById("yes" + i).value =
-                    session["yes"] !== "" ? session["yes"] : "0.00";
-                document.getElementById("notrate" + i).value =
-                    session["notRate"] !== "" ? session["notRate"] : "0.00";
-                document.getElementById("yesrate" + i).value =
-                    session["yesRate"] !== "" ? session["yesRate"] : "0.00";
-            } else {
-                document.getElementById("not" + i).value = "0.00";
-                document.getElementById("yes" + i).value = "0.00";
-                document.getElementById("notrate" + i).value = "0.00";
-                document.getElementById("yesrate" + i).value = "0.00";
+            appendToSessionSelector(session['name'], session['key']);
+            if (i < 5) {
+                document.getElementById("Session" + i).value = session['name'];
+                document.getElementById("UpdateButton" + i).setAttribute("customData", session['key']);
+                if (session['suspended'] === false) {
+                    document.getElementById("not" + i).value =
+                        session["not"] !== "" ? session["not"] : "0.00";
+                    document.getElementById("yes" + i).value =
+                        session["yes"] !== "" ? session["yes"] : "0.00";
+                    document.getElementById("notrate" + i).value =
+                        session["notRate"] !== "" ? session["notRate"] : "0.00";
+                    document.getElementById("yesrate" + i).value =
+                        session["yesRate"] !== "" ? session["yesRate"] : "0.00";
+                } else {
+                    document.getElementById("not" + i).value = "0.00";
+                    document.getElementById("yes" + i).value = "0.00";
+                    document.getElementById("notrate" + i).value = "0.00";
+                    document.getElementById("yesrate" + i).value = "0.00";
+                }
+
             }
         }
     }
 }
 
-function appendToSessionSelector(sessionValue) {
+function appendToSessionSelector(sessionName, sessionValue) {
     var option = document.createElement("option");
-    option.text = sessionValue;
+    option.text = sessionName;
     option.value = sessionValue;
     option.style = "font-size: large;";
     var select = document.getElementById("session_selector");
     select.appendChild(option);
+}
+
+function clearSessionSelector() {
+    document.getElementById("session_selector").innerHTML = "";
 }
 
 function clearSessionTable() {
@@ -262,49 +273,59 @@ function toCorrectFormat(value) {
 }
 
 function declareSession() {
-    var matchId = document.getElementById("ContentPlaceHolder_apiid");
-    var sessionkey = document.getElementById('session_selector').value;
-    var team = document.getElementById('team_selector').value;
 
-    var params = {
-        sessionKey: sessionkey,
-        declareValue: document.getElementById('Declear').value,
-        team: team,
-        MatchID: matchId.value
+    var result = confirm("Want to declare?");
+    if (result) {
+        var matchId = document.getElementById("ContentPlaceHolder_apiID");
+        var fk = document.getElementById("ContentPlaceHolder_firebasekey");
+        var sessionkey = document.getElementById('session_selector').value;
+        var sessionName = document.getElementById('session_selector').selectedOptions[0].text;
+        var team = document.getElementById('team_selector').value;
+        firebase.database().ref('/currentMatches/' + matchKey + '/sessions/' + sessionkey.toString()).update({
+            active: false
+        });
+        var params = {
+            sessionKey: sessionName,
+            declareValue: document.getElementById('Declear').value,
+            team: team,
+            MatchID: matchId.value
 
-    };
+        };
 
-    var formBody = [];
-    for (var property in params) {
-        var encodedKey = encodeURIComponent(property);
-        var encodedValue = encodeURIComponent(params[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
-    }
-    formBody = formBody.join("&");
-
-    fetch('/PowerUser/Session.ashx', {
-        credentials: 'same-origin',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        body: formBody
-    }).then(function (responce) {
-        return responce.json();
-    }).then(function (data) {
-        console.log(data);
-        if (data.status) {
-            firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString() + '/Session/' + sessionkey).remove().then(function () {
-                updateSessionTable(team);
-            });
-            alert("Declared Successfully");
+        var formBody = [];
+        for (var property in params) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(params[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
         }
-        else alert("Declare Rejected By server!!!");
-    }).then(function () {
+        formBody = formBody.join("&");
 
-    }).catch(function (err) {
-        console.log(err);
-    });
+        fetch('/PowerUser/Session.ashx', {
+            credentials: 'same-origin',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: formBody
+        }).then(function (responce) {
+            return responce.json();
+        }).then(function (data) {
+            console.log(data);
+            if (data.status) {
+                firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString() + '/Session/' + sessionkey).remove().then(function () {
+                    updateSessionTable(team);
+                });
+                document.getElementById('Declear').value = "";
+                alert("Declared Successfully");
+                
+            }
+            else alert("Session Already Declared !!!");
+        }).then(function () {
+
+        }).catch(function (err) {
+            console.log(err);
+        });
+    }
 }
 function deleteSession() {
 

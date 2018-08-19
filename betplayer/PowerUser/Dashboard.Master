@@ -15,6 +15,7 @@
     <link href="../poweruser/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="../poweruser/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../poweruser/css/style.css" rel="stylesheet">
+    <link href="../poweruser/css/customGrid.css" rel="stylesheet">
     <link href="../poweruser/css/style_responsive.css" rel="stylesheet">
     <link href="../poweruser/css/style_default.css" rel="stylesheet" id="style_color">
 
@@ -36,7 +37,7 @@
             <div class="container-fluid">
                 <!-- BEGIN LOGO -->
                 <a class="brand">
-                    <img src="../poweruser/img/logo.png" alt="crick20">
+                    <img src="../poweruser/img/logo.png" alt="livegame25">
                 </a>
                 <!-- END LOGO -->
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->

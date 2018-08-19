@@ -50,25 +50,25 @@
                                         <td align="left" class="TableHeading">Current Limit</td>
                                         <td align="left" class="TableHeading">Used Limit</td>
                                     </tr>
-                                    <% foreach (System.Data.DataRow row in UpdateDataTable.Rows)
+                                    <% int index = 2; foreach (System.Data.DataRow row in UpdateDataTable.Rows)
                                         { %>
 
                                     <tr bgcolor="#FFFFFF">
 
                                         <td height="25" align="left" class="FontText">1</td>
                                         <td align="left" class="FontText">
-                                            <input name="ClientName1" type="text" class="TextBoxTransparent" id="ClientName1" style="text-align: right; text-align: left;" onblur="CheckTotalLimit('1')" value="<%: row["ClientID"] %><%: row["Name"] %>" readonly="">
+                                            <input name="ClientName1" type="text" class="TextBoxTransparent" id="ClientName1" style="text-align: right; text-align: left;"  value="<%: row["ClientID"] %><%: row["Name"] %>" readonly="">
                                         </td>
                                         <td align="left" class="TextBox100">
                                             <input id="FixLimit" style="text-align: right" type="text" value="<%: row["FixLimit"] %>" class="TextBox100"></td>
                                         <td align="left" class="TextBox100">
                                             <input id="ClientID" type="hidden" value="<%: row["ClientID"] %>" />
-                                            <input id="ClientLimit" style="text-align: right" type="text" onchange="check()" value="<%: row["CurrentLimit"] %>" onblur="CheckTotalLimit('1')" class="TextBox100"></td>
+                                            <input id="ClientLimit" style="text-align: right" type="text" onchange="check('<%: index %>')" value="<%: row["CurrentLimit"] %>"  class="TextBox100"></td>
                                         <td align="left" class="FontText">
                                             <input name="ULimit1" type="text" id="ULimit1" style="text-align: right" value="<%: row["UsedLimit"] %>" class="TextBox100" readonly="" disabled=""></td>
                                     </tr>
 
-                                    <% } //foreach %>
+                                    <% index++; }//foreach  %>
 
 
                                     <tr bgcolor="#E9F3FD" class="TableHeading">
@@ -77,7 +77,7 @@
                                             <input runat="server" name="AgentLimit" type="text" id="agentlimit" style="text-align: right" value="" readonly=""></td>
                                         <td align="left" bgcolor="#FFFFFF" class="FontText">&nbsp;</td>
                                         <td align="left" bgcolor="#FFFFFF" class="FontText">
-                                            <input runat="server" name="TotalLimit" type="text" class="TextBox100" readonly="" onchange="checkTotallimit()" id="TotalLimit" style="text-align: right" value=""></td>
+                                            <input runat="server" name="TotalLimit" type="text" class="TextBox100" readonly=""  id="TotalLimit" style="text-align: right" value=""></td>
                                         <td align="left" bgcolor="#FFFFFF" class="FontText">&nbsp;</td>
                                     </tr>
 
@@ -102,15 +102,17 @@
         <!-- END PAGE CONTAINER-->
     </div>
     <script>
-        function check() {
-            var input1 = Number(document.getElementById("FixLimit1").value);
-            var input2 = Number(document.getElementById("ClientLimit").value);
+        function check(rowID) {
+            var table = document.getElementById('ClientLimitTable');
+
+            var input1 = Number(table.rows[rowID].cells[2].children[0].value);
+            var input2 = Number(table.rows[rowID].cells[3].children[1].value);
 
             if (input1 >= input2) {
                
             }
             else {
-               document.getElementById("ClientLimit").value = 0
+                table.rows[rowID].cells[3].children[1].value = 0;
                 alert("Current Limit Is Not greater than Fix Limit")
             }
         }

@@ -100,7 +100,7 @@ namespace betplayer.Agent
                         }
                         else
                         {
-                            LedgerAmount = Balance * -1;
+                            LedgerAmount = Balance ;
 
                         }
                         

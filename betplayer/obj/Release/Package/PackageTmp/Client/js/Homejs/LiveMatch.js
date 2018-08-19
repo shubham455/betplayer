@@ -10,6 +10,7 @@ var config = {
 firebase.initializeApp(config);
 var matchIdElement = document.getElementById("ContentPlaceHolder1_firebasekey");
 var matchKey = matchIdElement.value;
+var sessions, lastBall;
 if (matchIdElement !== null) {
     firebase
         .database()
@@ -31,9 +32,22 @@ if (matchIdElement !== null) {
                     ")" +
                     asterix;
                 var runner = team_1.Runner;
-
+                if (document.getElementById("KRate1").value !== runner.Khai.toString()) {
+                    document.getElementById("KRate1").parentElement.className = "flash"
+                    setTimeout(function () {
+                        document.getElementById("KRate1").parentElement.className = ""
+                    }, 500)
+                }
+                if (document.getElementById("LRate1").value !== runner.Lagai.toString()) {
+                    document.getElementById("LRate1").parentElement.className = "flash"
+                    setTimeout(function () {
+                        document.getElementById("LRate1").parentElement.className = ""
+                    }, 500)
+                }
                 document.getElementById("KRate1").value = (team_1.RunnerUnLocked || !team_1.hasOwnProperty("RunnerUnLocked")) ? runner.Khai.toString() : "0.00";
                 document.getElementById("LRate1").value = (team_1.RunnerUnLocked || !team_1.hasOwnProperty("RunnerUnLocked")) ? runner.Lagai.toString() : "0.00";
+
+
             }
         );
     firebase
@@ -56,19 +70,57 @@ if (matchIdElement !== null) {
                     ")" +
                     asterix;
                 var runner = team_2.Runner;
-
+                if (runner.Khai.length === 3) {
+                    runner.Khai = runner.Khai+"0"
+                }
+                if (runner.Lagai.length === 3) {
+                    runner.Lagai = runner.Lagai + "0"
+                }
+                if (document.getElementById("KRate2").value !== runner.Khai.toString()) {
+                    document.getElementById("KRate2").parentElement.className = "flash"
+                    setTimeout(function () {
+                        document.getElementById("KRate2").parentElement.className = ""
+                    }, 500)
+                }
+                if (document.getElementById("LRate2").value !== runner.Lagai.toString()) {
+                    document.getElementById("LRate2").parentElement.className = "flash"
+                    setTimeout(function () {
+                        document.getElementById("LRate2").parentElement.className = ""
+                    }, 500)
+                }
                 document.getElementById("KRate2").value = (team_2.RunnerUnLocked || !team_2.hasOwnProperty("RunnerUnLocked")) ? runner.Khai.toString() : "0.00";
                 document.getElementById("LRate2").value = (team_2.RunnerUnLocked || !team_2.hasOwnProperty("RunnerUnLocked")) ? runner.Lagai.toString() : "0.00";
+                
+              
             });
+    firebase
+        .database()
+        .ref("/currentMatches/" + matchKey + "/message")
+        .on(
+            "value", // runs on change
+            function (snapshot) {
+                message = snapshot.val();
+                console.log(ScoreMsg);
+                document.getElementById("ScoreMsg").innerHTML = message;
+                
+            }
+    );
     firebase
         .database()
         .ref("/currentMatches/" + matchKey + "/lastBall")
         .on(
             "value", // runs on change
             function (snapshot) {
-                var lastBall = snapshot.val();
+                lastBall = snapshot.val();
                 console.log(lastBall);
-                document.getElementById("LastBall").innerHTML = lastBall.event;
+                document.getElementById("LastBall").src = "/client/images/LastBall/"+lastBall.event.replace(" ", "_")+".jpg";
+                ballRunning();
+                if (!(lastBall.event === "Ball Start" || lastBall.event === "3 Run" || lastBall.event === "FOUR" || lastBall.event === "SIX" || lastBall.event === "Review" || lastBall.event === "Third Umpire" || lastBall.event === "OUT" || lastBall.event === "FREE HIT" || lastBall.event === "NO BALL"))
+                    for (var i = 1; i <= 8; i++) {
+                    document.getElementById("float" + i).style = "display:none;";
+                    document.getElementById("float" + i).innerHTML = ""
+                }
+                updateSessionTable(sessions);
             }
         );
     firebase
@@ -129,7 +181,8 @@ if (matchIdElement !== null) {
         .ref("/currentMatches/" + matchKey + "/sessions")
         .on(
             "value", // runs on change
-            function (snapshot) {
+        function (snapshot) {
+                sessions = snapshot.val();
                 updateSessionTable(snapshot.val());
             }
         );
@@ -157,7 +210,7 @@ function enableBetting(event, teamValue, runnerSessionValue, betTypeValue) {
             ).value;
             Session = document.getElementById(
                 "Session" + elementId.charAt(event.srcElement.id.length - 1)
-            ).value;
+            ).innerHTML;
         }
         document.getElementById("matchAmount").disabled = false;
         document.getElementById("timerLabel").innerHTML = seconds;
@@ -190,8 +243,9 @@ function updateSessionTable(sessions) {
         for (var i = 1; i <= displayableSessions.length; i++) {
             var session = displayableSessions[i - 1];
             console.log(session);
-            document.getElementById("Session" + i).value = session['name'];
+            document.getElementById("Session" + i).innerHTML = session['name'];
             if (session['suspended'] === false) {
+                document.getElementById("float" + i).style = "";
                 document.getElementById("not" + i).value =
                     session["not"] !== "" ? session["not"] : "0.00";
                 document.getElementById("yes" + i).value =
@@ -201,13 +255,24 @@ function updateSessionTable(sessions) {
                 document.getElementById("yesrate" + i).value =
                     session["yesRate"] !== "" ? session["yesRate"] : "0.00";
             } else {
+                document.getElementById("float" + i).innerHTML = "Suspended.";
+                document.getElementById("float" + i).style = "display:block;";
                 document.getElementById("not" + i).value = "0.00";
                 document.getElementById("yes" + i).value = "0.00";
                 document.getElementById("notrate" + i).value = "0.00";
                 document.getElementById("yesrate" + i).value = "0.00";
             }
         }
+        ballRunning();
     }
+}
+
+function ballRunning() {
+    if (lastBall.event === "Ball Start" || lastBall.event === "3 Run" || lastBall.event === "FOUR" || lastBall.event === "SIX" || lastBall.event === "Review" || lastBall.event === "Third Umpire" || lastBall.event === "OUT" || lastBall.event === "FREE HIT" || lastBall.event === "NO BALL")
+        for (var i = 1; i <= 8; i++) {
+            document.getElementById("float" + i).style = "display:block;";
+            document.getElementById("float" + i).innerHTML = "Ball Running."
+        }
 }
 
 function clearSessionTable() {
@@ -245,7 +310,7 @@ function doneClick() {
                             if (betValue !== match[team][runnerSession][betType]) {
                                 alert("Bet Not Accepted Because Rate Not Found");
                                 clearTimer();
-                            } else if (parseInt(match['minBet'])>= betAmount || betAmount >= parseInt(match['maxBet'])) {
+                            } else if (parseInt(match['minBet']) > betAmount || betAmount > parseInt(match['maxBet'])) {
                                 alert(
                                     "The Amount Should not be less than " + match['minBet'] + " or greater than " + match['maxBet']+"."
                                 );
@@ -330,7 +395,7 @@ function doneClick() {
                             betAmount = parseInt(
                                 document.getElementById("matchAmount").value
                             );
-                            if (parseInt(match['sessionMinBet']) >= betAmount || betAmount >= parseInt(match['sessionMaxBet'])) {
+                            if (parseInt(match['sessionMinBet']) > betAmount || betAmount > parseInt(match['sessionMaxBet'])) {
                                 alert(
                                     "The Amount Should not be less than " + match['sessionMinBet'] + " or greater than " + match['sessionMaxBet']+"."
                                 );

@@ -57,7 +57,7 @@ namespace betplayer.Agent
                     DataTable Agentlimitdt = new DataTable();
                     Agentlimitadp.Fill(Agentlimitdt);
 
-                    agentlimit.Value = Agentlimitdt.Rows[0]["Agentlimit"].ToString();
+                    agentlimit.Value = Agentlimitdt.Rows[0]["Currentlimit"].ToString();
 
                     for (int j = 0; j < dt.Rows.Count;)
                     {

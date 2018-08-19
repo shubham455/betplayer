@@ -71,13 +71,13 @@ namespace betplayer.superagent
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string checkAgentlimit = "Select AgentLimit From SuperAgentMaster where SuperAgentID = '" + SuperAgentID + "'";
+                    string checkAgentlimit = "Select CurrentLimit From SuperAgentMaster where SuperAgentID = '" + SuperAgentID + "'";
                     MySqlCommand cmd1 = new MySqlCommand(checkAgentlimit, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd1);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
 
-                    int AgentLimit = Convert.ToInt32(dt.Rows[0]["AgentLimit"]);
+                    int AgentLimit = Convert.ToInt32(dt.Rows[0]["CurrentLimit"]);
 
 
                     int Total = 0;

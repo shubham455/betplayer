@@ -67,6 +67,8 @@ namespace betplayer.Super_Agent
             DataColumn colDateTime = new DataColumn("Date");
             colDateTime.DataType = System.Type.GetType("System.DateTime");
             runtable.Columns.Add(colDateTime);
+
+            runtable.Columns.Add(new DataColumn("CollectionID"));
             runtable.Columns.Add(new DataColumn("CollectionName"));
             runtable.Columns.Add(new DataColumn("Dabit"));
             runtable.Columns.Add(new DataColumn("Credit"));
@@ -107,7 +109,7 @@ namespace betplayer.Super_Agent
                     decimal Dabit = Convert.ToDecimal(dt1.Rows[i]["Dabit"]);
                     decimal Credit = Convert.ToDecimal(dt1.Rows[i]["Credit"]);
 
-                    row["ID"] = ID;
+                    row["CollectionID"] = ID;
                     row["Date"] = oDate;     //row["Date"] = datetime;
                     row["PaynmentDescription"] = TeamA + "VS" + TeamB;
                     row["Dabit"] = Dabit;
@@ -159,7 +161,7 @@ namespace betplayer.Super_Agent
                     string PaynmentDescription = dt.Rows[j]["PaynmentType"].ToString();
                     string Remark = dt.Rows[j]["Remark"].ToString();
 
-                    row["ID"] = CollectionID;
+                    row["CollectionID"] = CollectionID;
                     row["Date"] = Date1;        //row["Date"] = Date1;
                     row["CollectionName"] = CollectionName;
                     row["Remark"] = Remark;

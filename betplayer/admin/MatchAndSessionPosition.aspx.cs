@@ -394,13 +394,13 @@ namespace betplayer.admin
                                 }
                                 else if (TeamB == team && Mode1 == "L")
                                 {
-                                    Position = Amount;
+                                    Position = Amount ;
                                 }
 
                                 decimal AgentShare1 = Agentshare / 100;
                                 
                                 TeamAposition1 = (Position * AgentShare1);
-                                decimal Finalshare = TeamAposition1 / SuperAgentshare1;
+                                decimal Finalshare = TeamAposition1 * SuperAgentshare1;
                                 row["Position1"] = Finalshare;
 
                                 TeamAposition = TeamAposition + Position;
@@ -434,7 +434,7 @@ namespace betplayer.admin
                                 string team = selectteamdt1.Rows[k]["Team"].ToString();
 
                                 string Mode1 = "";
-                                Decimal Position = 0;
+                                Decimal Position1 = 0;
                                 Decimal Amount = Convert.ToDecimal(dt5.Rows[k]["Amount"]);
                                 Decimal Rate = Convert.ToDecimal(dt5.Rows[k]["Rate"]);
                                 string Mode = dt5.Rows[k]["Mode"].ToString();
@@ -452,29 +452,29 @@ namespace betplayer.admin
 
                                 if (TeamA == team && Mode1 == "K")
                                 {
-                                    Position = Amount * -1;
+                                    Position1 = Amount * -1;
                                 }
                                 else if (TeamA == team && Mode1 == "L")
                                 {
-                                    Position = Amount;
+                                    Position1 = Amount;
                                 }
                                 else if (TeamB == team && Mode1 == "K")
                                 {
-                                    Position = Amount * Rate;
+                                    Position1 = Amount * Rate;
                                 }
                                 else if (TeamB == team && Mode1 == "L")
                                 {
-                                    Position = Amount * Rate * -1;
+                                    Position1 = Amount * Rate *-1 ;
                                 }
 
 
                                 decimal AgentShare1 = Agentshare / 100;
 
-                                TeamBposition2 = (Position * AgentShare1);
+                                TeamBposition2 = (Position1 * AgentShare1);
+                                decimal Finalshare1 = TeamBposition2 * SuperAgentshare1;
+                                row["Position2"] = Finalshare1;
 
-                                row["Position2"] = TeamBposition2;
-
-                                TeamBposition = TeamBposition + Position;
+                                TeamBposition = TeamBposition + Position1;
 
 
                             }
@@ -498,28 +498,18 @@ namespace betplayer.admin
                     {
                         decimal total1 = Convert.ToDecimal(ClientTable1.Rows[d]["Position1"]);
                         decimal total2 = Convert.ToDecimal(ClientTable1.Rows[d]["Position2"]);
-                        totalCalculation1 = totalCalculation1 + total1;
-                        totalCalculation2 = totalCalculation2 + total2;
+                        totalCalculation1 = totalCalculation1 - total1;
+                        totalCalculation2 = totalCalculation2 - total2;
 
                     }
 
-                    TeamAposition = TeamAposition - totalCalculation1;
-                    TeamBposition = TeamBposition - totalCalculation2;
 
 
 
 
-                    string share = "Select myshare From SuperAgentMaster where CreatedBy = '" + Session["Admincode"] + "'";
-                    MySqlCommand sharecmd = new MySqlCommand(share, cn);
-                    MySqlDataAdapter shareadp = new MySqlDataAdapter(sharecmd);
-                    DataTable sharedt = new DataTable();
-                    shareadp.Fill(sharedt);
 
-
-                    decimal myshare = Convert.ToDecimal(sharedt.Rows[0]["myshare"]);
-                    decimal myshare1 = myshare / 100;
-                    decimal Team1Amt1 = Convert.ToDecimal(TeamAposition * myshare1);
-                    decimal Team2Amt1 = Convert.ToDecimal(TeamBposition * myshare1);
+                    decimal Team1Amt1 = totalCalculation1;
+                    decimal Team2Amt1 = totalCalculation2;
 
                     double dValue1 = double.Parse(Team1Amt1.ToString());
                     double dValue2 = double.Parse(Team2Amt1.ToString());

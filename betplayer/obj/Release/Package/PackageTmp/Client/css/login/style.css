@@ -2621,6 +2621,22 @@ body{
 	font-family:Verdana, Geneva, sans-serif;
 }
 
+.flash {
+    background-color: #FAFAD2;
+}
+
+.float {
+    display:none;
+    background: #D7D7D7;
+    opacity: 0.9;
+    width: 55vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    line-height:100%;
+}
+
 .ScoreCard {
     background: #2EF3FF;
     padding: .2em .2em;
@@ -2649,7 +2665,7 @@ body{
 	background-position:3px 3px;
 	background-color:transparent;
 	border: 0px solid;   
-	color:#F00;
+	color:black;
 	border-color: #696 #363 #363 #696; 
 	height:30px;
 	width:50px;
@@ -2708,7 +2724,7 @@ body{
 	background-position:3px 3px;
 	background-color:transparent;
 	border: 0px solid;   
-	color:#009;
+	color:black;
 	border-color: #696 #363 #363 #696; 
 	height:30px;
 	width:50px;

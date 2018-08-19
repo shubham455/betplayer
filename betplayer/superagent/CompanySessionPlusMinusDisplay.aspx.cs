@@ -314,19 +314,25 @@ namespace betplayer.superagent
                             TotalAmount = TotalAmount + Amount;
                         }
                     }
+                    string s55 = "Select * from sharetable where MatchID = '" + MatchID + "'";
+                    MySqlCommand cmd55 = new MySqlCommand(s55, cn);
+                    MySqlDataAdapter adp55 = new MySqlDataAdapter(cmd55);
+                    DataTable dt55 = new DataTable();
+                    adp55.Fill(dt55);
+
                     string s5 = "Select SessionCommision,MatchCommision,Name  From SuperAgentMaster where SuperAgentID = '" + Session["SuperAgentID"] + "' ";
                     MySqlCommand cmd5 = new MySqlCommand(s5, cn);
                     MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
                     DataTable dt5 = new DataTable();
                     adp5.Fill(dt5);
 
-                    Decimal SessionCommision1 = Convert.ToDecimal(dt5.Rows[0]["SessionCommision"]);
+                    Decimal SessionCommision1 = Convert.ToDecimal(dt55.Rows[0]["SAgentSessionComm"]);
                     Decimal SessionCommision2 = SessionCommision1 / 100;
                     Decimal SessionCommision = TotalAmount * SessionCommision2;
 
                     row["SessionCommision"] = SessionCommision;
                     decimal TotalMatchCommision1 = 0;
-                    Decimal MatchCommision = Convert.ToDecimal(dt5.Rows[0]["MatchCommision"]);
+                    Decimal MatchCommision = Convert.ToDecimal(dt55.Rows[0]["SAgentMatchComm"]);
                     Decimal MatchCommision1 = MatchCommision / 100;
 
                     string s6 = "Select Amount From MatchCalculation where MatchID = '" + MatchID + "' && ClientID = '" + ID + "'";
@@ -340,21 +346,21 @@ namespace betplayer.superagent
                         if (MatchAmount > 0)
                         {
                             MatchAmount = MatchAmount * -1;
-                            row["MatchCommision"] = TotalMatchCommision1;
+                            row["MatchCommision"] = 0;
                         }
                         else if (MatchAmount < 0)
                         {
                             MatchAmount = MatchAmount * -1;
                             TotalMatchCommision1 = MatchCommision1 * MatchAmount;
-                            row["MatchCommision"] = TotalMatchCommision1;
+                            row["MatchCommision"] = 0;
                         }
                     }
                     else { row["MatchCommision"] = 0; }
-                    decimal totalcommision = TotalMatchCommision1 + SessionCommision;
+                    decimal totalcommision = 0 + SessionCommision;
                     row["TotalCommisionAmount"] = totalcommision;
 
                     Decimal Match = SessionTotalAmount;
-                    Decimal Commision = SessionCommision + TotalMatchCommision1;
+                    Decimal Commision = SessionCommision + 0;
                     Decimal To = 0;
 
                     if (Match > 0)
@@ -374,7 +380,7 @@ namespace betplayer.superagent
                     DataTable ClientSharedt = new DataTable();
                     ClientShareadp.Fill(ClientSharedt);
 
-                    decimal ClientShare1 = Convert.ToDecimal(ClientSharedt.Rows[i]["Agent_Share"]);
+                    decimal ClientShare1 = Convert.ToDecimal(dt55.Rows[i]["ClientShare"]);
                     decimal ClientMaster2 = 100 / ClientShare1;
                     Decimal TotalHalfAmount = TotalNetAmouunt / ClientMaster2;
 
@@ -388,7 +394,7 @@ namespace betplayer.superagent
                     DataTable SuperAgentSharedt = new DataTable();
                     SuperAgentShareadp.Fill(SuperAgentSharedt);
 
-                    decimal SuperAgentShare1 = Convert.ToDecimal(SuperAgentSharedt.Rows[0]["AgentShare"]);
+                    decimal SuperAgentShare1 = Convert.ToDecimal(dt55.Rows[0]["SAgentShare"]);
                     decimal SuperAgentShare2 = 100 / SuperAgentShare1;
                     Decimal TotalSAShareAmount = TotalHalfAmount / ClientMaster2;
                     row["SAAgentShare"] = TotalSAShareAmount;

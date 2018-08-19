@@ -70,13 +70,13 @@ namespace betplayer.Agent
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
-                    string checkAgentlimit = "Select AgentLimit From AgentMaster where AgentID = '"+ AgentID+"'";
+                    string checkAgentlimit = "Select CurrentLimit From AgentMaster where AgentID = '"+ AgentID+"'";
                     MySqlCommand cmd1 = new MySqlCommand(checkAgentlimit, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd1);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
 
-                    int AgentLimit = Convert.ToInt32(dt.Rows[0]["AgentLimit"]);
+                    int AgentLimit = Convert.ToInt32(dt.Rows[0]["CurrentLimit"]);
                     
 
                     int Total = 0;

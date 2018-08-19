@@ -29,6 +29,7 @@ namespace betplayer.admin
                 {
                     ClientID = context.Request["ClientID" + i.ToString()],
                     ClientLimit = context.Request["ClientLimit" + i.ToString()],
+                    FixLimit = context.Request["FixLimit" + i.ToString()],
                 });
             }
             int AdminID = Convert.ToInt16(context.Session["AdminID"]);
@@ -73,8 +74,9 @@ namespace betplayer.admin
                     {
                         string clientID = client.GetType().GetProperty("ClientID").GetValue(client, null).ToString();
                         string clientLimit = client.GetType().GetProperty("ClientLimit").GetValue(client, null).ToString();
+                        string fixlimit = client.GetType().GetProperty("FixLimit").GetValue(client, null).ToString();
 
-                        string updatelimit = "Update ClientMaster set  CurrentLimit= '" + clientLimit + "'  Where ClientID = '" + clientID + "'";
+                        string updatelimit = "Update ClientMaster set FixLimit= '"+fixlimit+"', CurrentLimit= '" + clientLimit + "'  Where ClientID = '" + clientID + "'";
                         MySqlCommand cmd = new MySqlCommand(updatelimit, cn);
                         cmd.ExecuteNonQuery();
 

@@ -130,11 +130,11 @@
                                         </td>
                                         <td style="margin-left: 30px;"></td>
                                         <td>
-                                            <button id="btnDeclare" type="button" runat="server" onserverclick="btnDeclare_ServerClick" class="btn btn-success" style="height: 50px; width: 120px; font-size: x-large; font-weight: bold; color: black">Declare</button>
+                                            <asp:button id="btnDeclare" runat="server"  onclick="btnDeclare_ServerClick" OnClientClick="Confirm()" Text="Declare" class="btn btn-success" style="height: 50px; width: 120px; font-size: x-large; font-weight: bold; color: black" />
                                         </td>
                                         <td style="margin-left: 30px;"></td>
                                         <td>
-                                            <button id="btnUnDeclare" type="button" class="btn btn-success" runat="server" onserverclick="btnUnDeclare_ServerClick" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">UnDeclare</button>
+                                            <asp:button id="btnnDeclare" class="btn btn-success" runat="server" onclick="btnUnDeclare_ServerClick"  OnClientClick="ConfirmUnDeclare()"  Text="UnDeclare" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black" />
                                         </td>
 
                                     </tr>
@@ -182,8 +182,32 @@
             </div>
         </div>
     </div>
-    </div>
+    
     <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/RunnerUpdate.js"></script>
+     <script type = "text/javascript">
+        function Confirm() {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Do you want to Declare this Match?")) {
+                confirm_value.value = "Yes";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+         }
+          function ConfirmUnDeclare() {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Do you want to UnDeclare this Match?")) {
+                confirm_value.value = "Yes";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+    </script>
 </asp:Content>

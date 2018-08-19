@@ -128,6 +128,94 @@
                                         <td width="2%" align="left">&nbsp;</td>
                                     </tr>
 
+                                     <tr>
+                                        <td width="2%" class="welcome">&nbsp;</td>
+                                        <td>
+                                            <input id="Session5" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
+                                        <td width="5%" align="left" valign="middle"></td>
+                                        <td>
+                                            <input id="not5" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Not"></td>
+                                        <td>
+                                            <input id="yes5" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Yes"></td>
+
+                                        <td>
+                                            <input id="yesrate5" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
+                                        <td>
+                                            <input id="notrate5" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
+                                        <td>
+                                            <button id="UpdateButton5" customdata="" onclick="updateSession(this, 4)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                        </td>
+                                        <td width="24%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="24%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="2%" align="left">&nbsp;</td>
+                                    </tr>
+
+                                     <tr>
+                                        <td width="2%" class="welcome">&nbsp;</td>
+                                        <td>
+                                            <input id="Session6 " onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
+                                        <td width="5%" align="left" valign="middle"></td>
+                                        <td>
+                                            <input id="not6" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Not"></td>
+                                        <td>
+                                            <input id="yes6" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Yes"></td>
+
+                                        <td>
+                                            <input id="yesrate6" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
+                                        <td>
+                                            <input id="notrate6" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
+                                        <td>
+                                            <button id="UpdateButton6" customdata="" onclick="updateSession(this, 4)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                        </td>
+                                        <td width="24%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="24%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="2%" align="left">&nbsp;</td>
+                                    </tr>
+
+                                     <tr>
+                                        <td width="2%" class="welcome">&nbsp;</td>
+                                        <td>
+                                            <input id="Session7" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
+                                        <td width="5%" align="left" valign="middle"></td>
+                                        <td>
+                                            <input id="not7" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Not"></td>
+                                        <td>
+                                            <input id="yes7" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Yes"></td>
+
+                                        <td>
+                                            <input id="yesrate7" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
+                                        <td>
+                                            <input id="notrate7" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
+                                        <td>
+                                            <button id="UpdateButton7" customdata="" onclick="updateSession(this, 4)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                        </td>
+                                        <td width="24%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="24%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="2%" align="left">&nbsp;</td>
+                                    </tr>
+
+                                     <tr>
+                                        <td width="2%" class="welcome">&nbsp;</td>
+                                        <td>
+                                            <input id="Session8" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
+                                        <td width="5%" align="left" valign="middle"></td>
+                                        <td>
+                                            <input id="not8" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Not"></td>
+                                        <td>
+                                            <input id="yes8" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Yes"></td>
+
+                                        <td>
+                                            <input id="yesrate8" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="YesRate"></td>
+                                        <td>
+                                            <input id="notrate8" onfocus="this.setSelectionRange(0, this.value.length)" readonly="" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="NotRate"></td>
+                                        <td>
+                                            <button id="UpdateButton8" customdata="" onclick="updateSession(this, 4)" type="button" class="btn btn-success" style="height: 60px; width: 120px; font-size: x-large; font-weight: bold; color: black">Update</button>
+                                        </td>
+                                        <td width="24%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="24%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="2%" align="left">&nbsp;</td>
+                                    </tr>
+
 
 
                                 </tbody>
@@ -163,7 +251,7 @@
                                         <input id="Declear" onkeydown="focusDeclareElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 40px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Declare"></td>
                                     <td style="margin-left: 30px;"></td>
                                     <td>
-                                        <button id="btnDeclear" type="button" class="btn btn-success" onclick="declareSession()" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Declare</button>
+                                        <button id="btnDeclear" type="button" class="btn btn-success" onclick="declareSession()"  style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Declare</button>
                                     </td>
 
                                 </tr>
@@ -189,6 +277,20 @@
         </div>
     </div>
     <asp:HiddenField ID="firebasekey" runat="server" />
+    <asp:HiddenField ID="apiID" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/SessionUpdate.js"></script>
+    <script type = "text/javascript">
+        function Confirm() {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Do you want to save data?")) {
+                confirm_value.value = "Yes";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+    </script>
 </asp:Content>

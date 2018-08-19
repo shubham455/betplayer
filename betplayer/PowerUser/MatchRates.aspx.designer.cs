@@ -28,16 +28,16 @@ namespace betplayer.poweruser {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnDeclare;
+        protected global::System.Web.UI.WebControls.Button btnDeclare;
         
         /// <summary>
-        /// btnUnDeclare control.
+        /// btnnDeclare control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnUnDeclare;
+        protected global::System.Web.UI.WebControls.Button btnnDeclare;
         
         /// <summary>
         /// firebasekey control.

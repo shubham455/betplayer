@@ -50,7 +50,7 @@
                                         <td align="left" class="TableHeading">Current Limit</td>
                                         <td align="left" class="TableHeading">Used Limit</td>
                                     </tr>
-                                    <% foreach (System.Data.DataRow row in ClientDatatable.Rows)
+                                    <% int index = 2; foreach (System.Data.DataRow row in ClientDatatable.Rows)
                                         { %>
 
                                     <tr bgcolor="#FFFFFF">
@@ -60,15 +60,15 @@
                                             <input name="ClientName1" type="text" class="TextBoxTransparent" id="ClientName1" style="text-align: right; text-align: left;" onblur="CheckTotalLimit('1')" value="<%: row["ClientID"] %><%: row["Name"] %>" readonly="">
                                         </td>
                                         <td align="left" class="TextBox100">
-                                            <input name="FixLimit1" id="FixLimit1" style="text-align: right" type="text" value="<%: row["FixLimit"] %>" class="TextBox100"></td>
+                                            <input  id="FixLimit" style="text-align: right" type="text" value="<%: row["FixLimit"] %>" class="TextBox100"></td>
                                         <td align="left" class="TextBox100">
                                             <input id="ClientID" type="hidden" value="<%: row["ClientID"] %>" />
-                                            <input id="ClientLimit" style="text-align: right" type="text" onchange="check()" value="<%: row["CurrentLimit"] %>" onblur="CheckTotalLimit('1')" class="TextBox100"></td>
+                                            <input id="ClientLimit" style="text-align: right" type="text" onchange="check('<%: index %>')" value="<%: row["CurrentLimit"] %>"  class="TextBox100"></td>
                                         <td align="left" class="FontText">
                                             <input name="ULimit1" type="text" id="ULimit1" style="text-align: right" value="0" class="TextBox100" readonly="" disabled=""></td>
                                     </tr>
 
-                                    <% } //foreach %>
+                                    <% index++; } //foreach %>
 
 
                                     
@@ -93,14 +93,13 @@
     </div>
     <script>
         function check() {
-            var input1 = Number(document.getElementById("FixLimit1").value);
-            var input2 = Number(document.getElementById("ClientLimit").value);
-
+            var input1 = Number(table.rows[rowID].cells[2].children[0].value);
+            var input2 = Number(table.rows[rowID].cells[3].children[1].value);
             if (input1 >= input2) {
                
             }
             else {
-               document.getElementById("ClientLimit").value = 0
+                table.rows[rowID].cells[3].children[1].value = 0;
                 alert("Current Limit Is Not greater than Fix Limit")
             }
         }
@@ -118,11 +117,13 @@
                 //iterate through rows
                 //rows would be accessed using the "row" variable assigned in the for loop
                 row = table.rows[i];
+                var Fixchildren = row.cells[2].getElementsByTagName('input');// any tag could be used here..
                 var children = row.cells[3].getElementsByTagName('input');// any tag could be used here..
                 valueArray.push({
                     
                     ClientID: getValueByAttrName("ClientID", children),
-                    ClientLimit: getValueByAttrName("ClientLimit", children)
+                    ClientLimit: getValueByAttrName("ClientLimit", children),
+                    FixLimit: getValueByAttrName("FixLimit", Fixchildren)
                 })
             }
             var formBody = [];

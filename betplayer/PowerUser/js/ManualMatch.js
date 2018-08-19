@@ -11,6 +11,12 @@ firebase.initializeApp(config);
 var matchIdElement = document.getElementById("ContentPlaceHolder_firebasekey");
 console.log("firebase connecting to match: " + matchIdElement.value.toString());
 var matchKey = matchIdElement.value;
+document.addEventListener("DOMContentLoaded", function (event) {
+    firebase.database().ref('/currentMatches/' + matchKey + "/sessions").on("value", // runs on page runder
+        function (snapshot) {
+            UpdateSessionsTable(snapshot.val());
+        });
+});
 if (matchIdElement !== null) {
     firebase.database().ref('/currentMatches/' + matchKey).once("value", // runs on page runder
         function (snapshot) {
@@ -26,22 +32,37 @@ if (matchIdElement !== null) {
                     if (event.keyCode === 119) {
                         document.getElementById('ball_start').click();
                     }
+                    if (event.keyCode === 120) {
+                        document.getElementById('bet_open').click();
+                    }
+                    if (event.keyCode === 112) {
+                        document.getElementById('btnclearrate').click();
+                    }
+                    if (event.keyCode === 113) {
+                        document.getElementById('btnUnclearrate').click();
+                    }
                 }
             }
 
             //Attching EventListener on Input Element   
             document.getElementById('ball_start').addEventListener("click", updateScore);
+            document.getElementById('bet_open').addEventListener("click", updateScore);
+            document.getElementById('bet_closed').addEventListener("click", updateScore);
+            document.getElementById('NoRun').addEventListener("click", updateScore);
             document.getElementById('1run').addEventListener("click", updateScore);
             document.getElementById('2run').addEventListener("click", updateScore);
             document.getElementById('3run').addEventListener("click", updateScore);
             document.getElementById('four').addEventListener("click", updateScore);
             document.getElementById('six').addEventListener("click", updateScore);
+            document.getElementById('out').addEventListener("click", updateScore);
             document.getElementById('wide').addEventListener("click", updateScore);
             document.getElementById('noball').addEventListener("click", updateScore);
             document.getElementById('freehit').addEventListener("click", updateScore);
             document.getElementById('wideplus4').addEventListener("click", updateScore);
             document.getElementById('timeout').addEventListener("click", updateScore);
             document.getElementById('thirdumpire').addEventListener("click", updateScore);
+            document.getElementById('Review').addEventListener("click", updateScore);
+            document.getElementById('Inningsbreak').addEventListener("click", updateScore);
 
             document.getElementById('btnmessage').addEventListener("click", (event) => {
                 var team = document.getElementById('team_selector').value
@@ -53,22 +74,24 @@ if (matchIdElement !== null) {
                     });
             });
             document.getElementById('btnclearrate').addEventListener("click", (event) => {
-                var emptysession = {
-                    Runner: {
-                        Khai: "0.00",
-                        Lagai: "0.00"
-                    }
-                };
-                firebase.database().ref('/currentMatches/' + matchKey + '/team_1').update(emptysession);
-                firebase.database().ref('/currentMatches/' + matchKey + '/team_2').update(emptysession);
-                firebase.database().ref('/currentMatches/' + matchKey + '/sessions').once("value", function (snapshot) {
-                    var currentsessions = snapshot.val();
-                    currentsessions.forEach(function (session) {
-                        session['suspended'] = true;
-                    });
-                    firebase.database().ref('/currentMatches/' + matchKey).update({ sessions: currentsessions });
-                })
+                
+                firebase.database().ref('/currentMatches/' + matchKey + '/team_1').update({
+                    RunnerUnLocked: false
+                });
+                firebase.database().ref('/currentMatches/' + matchKey + '/team_2').update({
+                    RunnerUnLocked: false
+                });
             });
+            document.getElementById('btnUnclearrate').addEventListener("click", (event) => {
+
+                firebase.database().ref('/currentMatches/' + matchKey + '/team_1').update({
+                    RunnerUnLocked: true
+                });
+                firebase.database().ref('/currentMatches/' + matchKey + '/team_2').update({
+                    RunnerUnLocked: true
+                });
+            });
+
             firebase.database().ref('/currentMatches/' + matchKey).on("value", // runs on page runder
                 function (snapshot) {
                     var match = snapshot.val();
@@ -88,6 +111,22 @@ function updateScore(event) {
         {
             event: event.srcElement.innerHTML
         });
+    var lastBall = event.srcElement.innerHTML;
+    if (!(lastBall === "Ball Start" || lastBall === "3 Run" || lastBall === "FOUR" || lastBall === "SIX" || lastBall === "Review" || lastBall === "Third Umpire" || lastBall === "OUT" || lastBall === "FREE HIT" || lastBall === "NO BALL")) {
+        firebase.database().ref('/currentMatches/' + matchKey + '/sessions').once("value", function (snapshot) {
+            var currentsessions = snapshot.val();
+            if (typeof (currentsessions) === "object") {
+                Object.keys(currentsessions).forEach(function (key) {
+                    currentsessions[key]['suspended'] = true;
+                });
+            } else if (typeof (currentsessions) === "Array") {
+                currentsessions.forEach(function (session) {
+                    session['suspended'] = true;
+                });
+            }
+            firebase.database().ref('/currentMatches/' + matchKey).update({ sessions: currentsessions });
+        })
+    }
 }
 function updatetextvalue(event) {
     var toUpdate;
@@ -98,6 +137,48 @@ function updatetextvalue(event) {
     else if (event.srcElement.name === "Wickets") toUpdate = { Wickets: event.srcElement.value };
     else if (event.srcElement.name === "Overs") toUpdate = { Overs: event.srcElement.value };
     firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update(toUpdate);
+}
+
+function UpdateSessionsTable(sessions) {
+    var sessionsTable = document.getElementById('Sessions');
+    if (sessions) {
+        console.log(sessions);
+        if (typeof (sessions) === "object") {
+            sessions = Object.keys(sessions).filter(function (key) { return sessions[key]['active']}).map(function (key) {
+                Object.assign(sessions[key], { key: key });
+                return [sessions[key]["key"], sessions[key]["name"], sessions[key]["suspended"]];
+            });
+        } else if (typeof (sessions) === "Array") {
+            sessions.filter(function (session) { return session['active'] }).map(function (session) {
+                return [session["id"], session["name"], session["suspended"]]
+            })
+        }
+        console.log(sessions);
+        clearSessionsTable();
+        for (i = 0; i < sessions.length; i++) {
+            var nameCell = document.createElement("span");
+            nameCell.innerHTML = sessions[i][1];
+            sessionsTable.appendChild(nameCell);
+            var suspendedCell = sessionsTable.appendChild(document.createElement("span"));
+            var suspendedButton = suspendedCell.appendChild(document.createElement("a"));
+            suspendedButton.className = "btn";
+            suspendedButton.style = (sessions[i][2]) ? "background-color:red;width:100%;height:100%;color:white;" : "background-color:green;width:100%;height:100%;color:white;";
+            suspendedButton.innerText = (sessions[i][2]) ? "Suspended" : "Not Suspended";
+            suspendedButton.setAttribute("sessionID", sessions[i][0]);
+            suspendedButton.setAttribute("sessionValue", sessions[i][2]);
+            suspendedButton.addEventListener("click", function (event) {
+                console.log(event.srcElement.getAttribute("sessionValue").toString());
+                firebase.database().ref('/currentMatches/' + matchKey + '/sessions/' + event.srcElement.getAttribute("sessionID").toString()).update({
+                    suspended: (event.srcElement.getAttribute("sessionValue").toString() === "true") ? false : true
+                });
+            });
+        }
+
+    }
+}
+
+function clearSessionsTable() {
+    document.getElementById('Sessions').innerHTML = "<span>Name</span><span>Suspended</span >";
 }
 
 function focusNextElementOnEnterKeyPress(event) {
@@ -121,3 +202,4 @@ function focusNextElementOnEnterKeyPress(event) {
         firebase.database().ref('/currentMatches/' + matchKey + '/' + team.toString()).update(toUpdate);
     }
 }
+

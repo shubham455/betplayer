@@ -82,7 +82,7 @@ namespace betplayer.superagent
                     DataTable Agentlimitdt = new DataTable();
                     Agentlimitadp.Fill(Agentlimitdt);
 
-                    SuperAgentLimit.Value = Agentlimitdt.Rows[0]["Agentlimit"].ToString();
+                    SuperAgentLimit.Value = Agentlimitdt.Rows[0]["Currentlimit"].ToString();
 
 
 

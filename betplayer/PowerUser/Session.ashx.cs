@@ -79,86 +79,111 @@ namespace betplayer.PowerUser
                 {
                     cn.Open();
 
-                    string s1 = "select * from Session where Session = @SessionKey && matchID= @MatchID  ORDER BY ClientID DESC;";
-                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
-                    cmd1.Parameters.AddWithValue("@SessionKey", SessionKey);
-                    cmd1.Parameters.AddWithValue("@MatchID", MatchID);
-                    MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
-                    DataTable dt1 = new DataTable();
-                    adp1.Fill(dt1);
-
-                    for (int i = 0; i < dt1.Rows.Count; i++)
+                    string checkSession = "Select * From DeclaredSession where Session = '" + SessionKey + "' && MatchID = '" + MatchID + "'";
+                    MySqlCommand checkSessioncmd = new MySqlCommand(checkSession, cn);
+                    MySqlDataReader rdr = checkSessioncmd.ExecuteReader();
+                    if (rdr.Read())
                     {
-                        int Amount = Convert.ToInt32(dt1.Rows[i]["Amount"]);
-                        string Mode = dt1.Rows[i]["Mode"].ToString();
-                        int Runs = Convert.ToInt16(dt1.Rows[i]["Runs"]);
-                        Decimal Rate = Convert.ToDecimal(dt1.Rows[i]["Rate"]);
-                        int clientID = Convert.ToInt32(dt1.Rows[i]["ClientID"]);
+                        return "Match Declared";
+                    }
+                    else
+                    {
 
-                        if (declarevalue == Runs)
+                        rdr.Close();
+                        string s1 = "select * from Session where Session = @SessionKey && matchID= @MatchID  ORDER BY ClientID DESC;";
+                        MySqlCommand cmd1 = new MySqlCommand(s1, cn);
+                        cmd1.Parameters.AddWithValue("@SessionKey", SessionKey);
+                        cmd1.Parameters.AddWithValue("@MatchID", MatchID);
+                        MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
+                        DataTable dt1 = new DataTable();
+                        adp1.Fill(dt1);
+
+                        for (int i = 0; i < dt1.Rows.Count; i++)
                         {
-                            if (Mode == "Y")
-                            {
-                                Amount1 = Amount * Rate;
-                                TotalAmount = TotalAmount + Amount1;
+                            int Amount = Convert.ToInt32(dt1.Rows[i]["Amount"]);
+                            string Mode = dt1.Rows[i]["Mode"].ToString();
+                            int Runs = Convert.ToInt16(dt1.Rows[i]["Runs"]);
+                            Decimal Rate = Convert.ToDecimal(dt1.Rows[i]["Rate"]);
+                            int clientID = Convert.ToInt32(dt1.Rows[i]["ClientID"]);
 
-                            }
-                            else if (Mode == "N")
+                            if (declarevalue == Runs)
                             {
-                                Amount1 = Amount * Rate;
-                                TotalAmount = TotalAmount - Amount1;
-                            }
-
-                        }
-                        else if (declarevalue < Runs)
-                        {
-                            if (Mode == "Y")
-                            {
-                                Amount1 = Amount * Rate;
-                                TotalAmount = TotalAmount - Amount1;
-
-                            }
-                            else if (Mode == "N")
-                            {
-                                Amount1 = Amount * Rate;
-                                TotalAmount = TotalAmount + Amount1;
-                            }
-
-                        }
-                        else if (declarevalue > Runs)
-                        {
-                            if (Mode == "Y")
-                            {
-                                Amount1 = Amount * Rate;
-                                TotalAmount = TotalAmount + Amount1;
-
-                            }
-                            else if (Mode == "N")
-                            {
-                                Amount1 = Amount * Rate;
-                                TotalAmount = TotalAmount - Amount1;
-                            }
-
-                        }
-
-                        string s2 = "select * from Session where Session = @SessionKey && matchID= @MatchID  ORDER BY ClientID DESC;";
-                        MySqlCommand cmd2 = new MySqlCommand(s2, cn);
-                        cmd2.Parameters.AddWithValue("@SessionKey", SessionKey);
-                        cmd2.Parameters.AddWithValue("@MatchID", MatchID);
-                        MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd1);
-                        DataTable dt2 = new DataTable();
-                        adp1.Fill(dt2);
-                        for (int j = i + 1; j <= dt2.Rows.Count;)
-                        {
-                            if (dt2.Rows.Count > j)
-                            {
-                                int ClientID = Convert.ToInt32(dt2.Rows[j]["ClientID"]);
-                                if (clientID == ClientID)
+                                if (Mode == "Y")
                                 {
+                                    Amount1 = Amount * Rate;
+                                    TotalAmount = TotalAmount + Amount1;
 
+                                }
+                                else if (Mode == "N")
+                                {
+                                    Amount1 = Amount * Rate;
+                                    TotalAmount = TotalAmount - Amount1;
+                                }
+
+                            }
+                            else if (declarevalue < Runs)
+                            {
+                                if (Mode == "Y")
+                                {
+                                    Amount1 = Amount * Rate;
+                                    TotalAmount = TotalAmount - Amount1;
+
+                                }
+                                else if (Mode == "N")
+                                {
+                                    Amount1 = Amount * Rate;
+                                    TotalAmount = TotalAmount + Amount1;
+                                }
+
+                            }
+                            else if (declarevalue > Runs)
+                            {
+                                if (Mode == "Y")
+                                {
+                                    Amount1 = Amount * Rate;
+                                    TotalAmount = TotalAmount + Amount1;
+
+                                }
+                                else if (Mode == "N")
+                                {
+                                    Amount1 = Amount * Rate;
+                                    TotalAmount = TotalAmount - Amount1;
+                                }
+
+                            }
+
+                            string s2 = "select * from Session where Session = @SessionKey && matchID= @MatchID  ORDER BY ClientID DESC;";
+                            MySqlCommand cmd2 = new MySqlCommand(s2, cn);
+                            cmd2.Parameters.AddWithValue("@SessionKey", SessionKey);
+                            cmd2.Parameters.AddWithValue("@MatchID", MatchID);
+                            MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd1);
+                            DataTable dt2 = new DataTable();
+                            adp1.Fill(dt2);
+                            for (int j = i + 1; j <= dt2.Rows.Count;)
+                            {
+                                if (dt2.Rows.Count > j)
+                                {
+                                    int ClientID = Convert.ToInt32(dt2.Rows[j]["ClientID"]);
+                                    if (clientID == ClientID)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        string StoreAmount = "Insert Into sessioncalculation (Session,ClientID,MatchID,TotalAmount) Values (@Session,@ClientID,@MatchID,@TotalAmount)";
+                                        MySqlCommand cmd3 = new MySqlCommand(StoreAmount, cn);
+                                        cmd3.Parameters.AddWithValue("@Session", SessionKey);
+                                        cmd3.Parameters.AddWithValue("@ClientID", clientID);
+                                        cmd3.Parameters.AddWithValue("@MatchID", MatchID);
+                                        cmd3.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+                                        cmd3.ExecuteNonQuery();
+                                        TotalAmount = 0;
+                                    }
+                                    break;
                                 }
                                 else
                                 {
+
                                     string StoreAmount = "Insert Into sessioncalculation (Session,ClientID,MatchID,TotalAmount) Values (@Session,@ClientID,@MatchID,@TotalAmount)";
                                     MySqlCommand cmd3 = new MySqlCommand(StoreAmount, cn);
                                     cmd3.Parameters.AddWithValue("@Session", SessionKey);
@@ -170,33 +195,20 @@ namespace betplayer.PowerUser
                                 }
                                 break;
                             }
-                            else
-                            {
-
-                                string StoreAmount = "Insert Into sessioncalculation (Session,ClientID,MatchID,TotalAmount) Values (@Session,@ClientID,@MatchID,@TotalAmount)";
-                                MySqlCommand cmd3 = new MySqlCommand(StoreAmount, cn);
-                                cmd3.Parameters.AddWithValue("@Session", SessionKey);
-                                cmd3.Parameters.AddWithValue("@ClientID", clientID);
-                                cmd3.Parameters.AddWithValue("@MatchID", MatchID);
-                                cmd3.Parameters.AddWithValue("@TotalAmount", TotalAmount);
-                                cmd3.ExecuteNonQuery();
-                                TotalAmount = 0;
-                            }
-                            break;
                         }
+
+
+                        string s = "Insert Into DeclaredSession (Session, declareRun,MatchID) values (@Session,@declareRun,@MatchID)";
+                        MySqlCommand cmd = new MySqlCommand(s, cn);
+
+                        cmd.Parameters.AddWithValue("@Session", SessionKey);
+                        cmd.Parameters.AddWithValue("@declareRun", declarevalue);
+                        cmd.Parameters.AddWithValue("@MatchID", MatchID);
+
+
+                        cmd.ExecuteNonQuery();
+                        return "success";
                     }
-
-
-                    string s = "Insert Into DeclaredSession (Session, declareRun,MatchID) values (@Session,@declareRun,@MatchID)";
-                    MySqlCommand cmd = new MySqlCommand(s, cn);
-
-                    cmd.Parameters.AddWithValue("@Session", SessionKey);
-                    cmd.Parameters.AddWithValue("@declareRun", declarevalue);
-                    cmd.Parameters.AddWithValue("@MatchID", MatchID);
-
-
-                    cmd.ExecuteNonQuery();
-                    return "success";
                 }
             }
 

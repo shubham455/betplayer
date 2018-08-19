@@ -55,196 +55,199 @@ namespace betplayer.admin
                 string TeamA1 = dt.Rows[0]["TeamA"].ToString();
                 string TeamB1 = dt.Rows[0]["TeamB"].ToString();
 
-                //string superagent = "Select SuperAgentID,code From SuperAgentMaster where CreatedBy = '" + Session["Admincode"] + "'";
-                //MySqlCommand superagentcmd = new MySqlCommand(superagent, cn);
-                //MySqlDataAdapter superagentadp = new MySqlDataAdapter(superagentcmd);
-                //DataTable superagentdt = new DataTable();
-                //superagentadp.Fill(superagentdt);
+                string superagent = "Select SuperAgentID,code From SuperAgentMaster where CreatedBy = '" + Session["Admincode"] + "'";
+                MySqlCommand superagentcmd = new MySqlCommand(superagent, cn);
+                MySqlDataAdapter superagentadp = new MySqlDataAdapter(superagentcmd);
+                DataTable superagentdt = new DataTable();
+                superagentadp.Fill(superagentdt);
 
-                //for (int a = 0; a < superagentdt.Rows.Count; a++)
-                //{
-                //    string SuperAgentcode = (superagentdt.Rows[a]["code"]).ToString();
-
-                //    string s11 = "Select AgentID,code From AgentMaster where CreatedBy = '" + SuperAgentcode + "'";
-                //    MySqlCommand cmd11 = new MySqlCommand(s11, cn);
-                //    MySqlDataAdapter adp11 = new MySqlDataAdapter(cmd11);
-                //    DataTable dt11 = new DataTable();
-                //    adp11.Fill(dt11);
-
-                //    for (int o = 0; o < dt11.Rows.Count; o++)
-                //    {
-
-                //        string Agentcode = (dt11.Rows[o]["code"]).ToString();
-                string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where  Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "' order by DateTime DESC";
-                MySqlCommand cmd1 = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
-                dt = new DataTable();
-
-                adp1.Fill(dt);
-
-
-                for (int j = 0; j < dt.Rows.Count; j++)
+                for (int a = 0; a < superagentdt.Rows.Count; a++)
                 {
-                    if (j == 0)
+                    string SuperAgentcode = (superagentdt.Rows[a]["code"]).ToString();
+
+                    string s11 = "Select AgentID,code From AgentMaster where CreatedBy = '" + SuperAgentcode + "'";
+                    MySqlCommand cmd11 = new MySqlCommand(s11, cn);
+                    MySqlDataAdapter adp11 = new MySqlDataAdapter(cmd11);
+                    DataTable dt11 = new DataTable();
+                    adp11.Fill(dt11);
+
+                    for (int o = 0; o < dt11.Rows.Count; o++)
                     {
+                        int AgentID = Convert.ToInt16(dt11.Rows[o]["AgentID"]);
+                        string Agentcode = (dt11.Rows[o]["code"]).ToString();
 
-                        int runs = Convert.ToInt16(dt.Rows[j]["Runs"]);
-                        int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
-                        Decimal Rate = Convert.ToDecimal(dt.Rows[j]["Rate"]);
-                        string Mode = dt.Rows[j]["Mode"].ToString();
-                        string ClientID = dt.Rows[j]["ClientID"].ToString();
+                        string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "' order by Session.DateTime DESC";
+                        MySqlCommand cmd1 = new MySqlCommand(s, cn);
+                        MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
+                        dt = new DataTable();
 
-                        string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + ClientID + "'";
-                        MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
-                        MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
-                        DataTable selectAgentsharedt = new DataTable();
-                        selectAgentshareadp.Fill(selectAgentsharedt);
+                        adp1.Fill(dt);
 
 
-                        Decimal AgentShare = Convert.ToDecimal(selectAgentsharedt.Rows[j]["Agent_Share"]);
-                        Decimal AgentShare1 = AgentShare / 100;
-
-
-
-                        for (int i = runs + 5; i >= runs + 5; i--)
+                        for (int j = 0; j < dt.Rows.Count; j++)
                         {
+                            string selectAgentshare = "select CreatedBy,Agent_share From ClientMaster where Createdby = '" + Agentcode + "'";
+                            MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
+                            MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
+                            DataTable selectAgentsharedt = new DataTable();
+                            selectAgentshareadp.Fill(selectAgentsharedt);
+                            Decimal AgentShare = Convert.ToDecimal(selectAgentsharedt.Rows[0]["Agent_Share"]);
+                            Decimal AgentShare1 = AgentShare / 100;
 
-                            DataRow row = runTable.NewRow();
-                            row["RUNS"] = i.ToString();
-                            row["Amount"] = CalculateAmount(Mode,
-                                i, 0,
-                                Rate,
-                                runs, Amount,
-                                AgentShare1).ToString();
-                            runTable.Rows.Add(row.ItemArray);
-                        }
+                            string CreatedBy = selectAgentsharedt.Rows[0]["CreatedBy"].ToString();
 
-                        if (dt.Rows.Count > 0)
-                        {
-                            IEnumerable<DataRow> orderedRows = dt.AsEnumerable();
-                            DataTable TempClientTable = orderedRows.CopyToDataTable();
-                            foreach (DataRow row in TempClientTable.Rows)
-                            {
-                                ClientTable.Rows.Add(row.ItemArray);
-                            }
-                        }
+                            string selectAgentshare1 = "select Agentshare From AgentMaster where Code = '" + CreatedBy + "'";
+                            MySqlCommand selectAgentshare1cmd = new MySqlCommand(selectAgentshare1, cn);
+                            MySqlDataAdapter selectAgentshare1adp = new MySqlDataAdapter(selectAgentshare1cmd);
+                            DataTable selectAgentshare1dt = new DataTable();
+                            selectAgentshare1adp.Fill(selectAgentshare1dt);
 
+                            Decimal Agentshare = Convert.ToInt16(selectAgentshare1dt.Rows[0]["Agentshare"]);
+                            Decimal AgentShare2 = AgentShare / 100;
 
-                    }
-                    else
-                    {
-
-                        int runs = Convert.ToInt32(dt.Rows[j]["Runs"]);
-                        int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
-                        Decimal Rate = Convert.ToDecimal(dt.Rows[j]["Rate"]);
-                        string Mode = dt.Rows[j]["Mode"].ToString();
-                        string ClientID = dt.Rows[j]["ClientID"].ToString();
-
-
-                        string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + ClientID + "'";
-                        MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
-                        MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
-                        DataTable selectAgentsharedt = new DataTable();
-                        selectAgentshareadp.Fill(selectAgentsharedt);
-
-
-                        Decimal AgentShare = Convert.ToDecimal(selectAgentsharedt.Rows[0]["Agent_Share"]);
-                        Decimal AgentShare1 = AgentShare / 100;
-                        int highVal = Convert.ToInt32(runTable.Rows[0]["Runs"]);
-                        int lowVal = Convert.ToInt32(runTable.Rows[runTable.Rows.Count - 1]["Runs"]);
-                        if (runs > highVal)
-                        {
-                            for (int i = runs + 5; i > highVal; i--)
-                            {
-                                DataRow row = runTable.NewRow();
-                                row["RUNS"] = i.ToString();
-                                row["Amount"] = runTable.Rows[0]["Amount"];
-
-                                runTable.Rows.InsertAt(row, (runs + 5 - i));
-                            }
-                        }
-                        else if ((runs - 5) < lowVal)
-                        {
-                            for (int i = lowVal - 1; i >= runs - 5; i--)
-                            {
-                                DataRow row = runTable.NewRow();
-                                row["RUNS"] = i.ToString();
-                                row["Amount"] = runTable.Rows[runTable.Rows.Count - 1]["Amount"];
-
-                                runTable.Rows.InsertAt(row, ((highVal - lowVal) + (lowVal - i)));
-                            }
-                        }
-
-                        for (int i = 0; i < runTable.Rows.Count; i++)
-                        {
-                            DataRow row = runTable.Rows[i];
-                            if (Convert.ToInt16(runTable.Rows[i]["Runs"]) >= Convert.ToInt16(dt.Rows[0]["Runs"]) &&
-                                Convert.ToInt16(runTable.Rows[i]["Runs"]) < Convert.ToInt16(dt.Rows[j]["Runs"]))
+                            if (j == 0)
                             {
 
+                                int runs = Convert.ToInt16(dt.Rows[j]["Runs"]);
+                                int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
+                                Decimal Rate = Convert.ToDecimal(dt.Rows[j]["Rate"]);
+                                string Mode = dt.Rows[j]["Mode"].ToString();
+                                string ClientID = dt.Rows[j]["ClientID"].ToString();
 
-                                row["AMOUNT"] = CalculateAmount(Mode,
-                                    Convert.ToInt16(runTable.Rows[i]["Runs"]),
-                                    Convert.ToDecimal(runTable.Rows[i]["Amount"]),
-                                    Rate,
-                                    runs,
-                                    Amount,
-                                    AgentShare1).ToString();
+
+
+
+
+                                for (int i = runs + 5; i >= runs - 5; i--)
+                                {
+
+                                    DataRow row = runTable.NewRow();
+                                    row["RUNS"] = i.ToString();
+                                    row["Amount"] = CalculateAmount(Mode,
+                                        i, 0,
+                                        Rate,
+                                        runs, Amount,
+                                        AgentShare1, AgentShare2).ToString();
+                                    runTable.Rows.Add(row.ItemArray);
+                                }
+
+                                if (dt.Rows.Count > 0)
+                                {
+                                    IEnumerable<DataRow> orderedRows = dt.AsEnumerable();
+                                    DataTable TempClientTable = orderedRows.CopyToDataTable();
+                                    foreach (DataRow row in TempClientTable.Rows)
+                                    {
+                                        ClientTable.Rows.Add(row.ItemArray);
+                                    }
+                                }
+
                             }
                             else
                             {
-                                row["AMOUNT"] = CalculateAmount(Mode,
-                                    Convert.ToInt16(runTable.Rows[i]["Runs"]),
-                                    Convert.ToDecimal(runTable.Rows[i]["Amount"]),
-                                    Rate,
-                                    runs,
-                                    Amount,
-                                    AgentShare1).ToString();
+
+                                int runs = Convert.ToInt32(dt.Rows[j]["Runs"]);
+                                int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
+                                Decimal Rate = Convert.ToDecimal(dt.Rows[j]["Rate"]);
+                                string Mode = dt.Rows[j]["Mode"].ToString();
+                                string ClientID = dt.Rows[j]["ClientID"].ToString();
+
+
+
+                                int highVal = Convert.ToInt32(runTable.Rows[0]["Runs"]);
+                                int lowVal = Convert.ToInt32(runTable.Rows[runTable.Rows.Count - 1]["Runs"]);
+                                if ((runs + 5) > highVal)
+                                {
+                                    for (int i = runs + 5; i > highVal; i--)
+                                    {
+                                        DataRow row = runTable.NewRow();
+                                        row["RUNS"] = i.ToString();
+                                        row["Amount"] = runTable.Rows[0]["Amount"];
+
+                                        runTable.Rows.InsertAt(row, (runs + 5 - i));
+                                    }
+                                }
+                                else if ((runs - 5) < lowVal)
+                                {
+                                    for (int i = lowVal - 1; i >= runs - 5; i--)
+                                    {
+                                        DataRow row = runTable.NewRow();
+                                        row["RUNS"] = i.ToString();
+                                        row["Amount"] = runTable.Rows[runTable.Rows.Count - 1]["Amount"];
+
+                                        runTable.Rows.InsertAt(row, ((highVal - lowVal) + (lowVal - i)));
+                                    }
+                                }
+
+                                for (int i = 0; i < runTable.Rows.Count; i++)
+                                {
+                                    DataRow row = runTable.Rows[i];
+                                    if (Convert.ToInt16(runTable.Rows[i]["Runs"]) >= Convert.ToInt16(dt.Rows[0]["Runs"]) &&
+                                        Convert.ToInt16(runTable.Rows[i]["Runs"]) < Convert.ToInt16(dt.Rows[j]["Runs"]))
+                                    {
+
+
+                                        row["AMOUNT"] = CalculateAmount(Mode,
+                                            Convert.ToInt16(runTable.Rows[i]["Runs"]),
+                                            Convert.ToDecimal(runTable.Rows[i]["Amount"]),
+                                            Rate,
+                                            runs,
+                                            Amount,
+                                            AgentShare1, AgentShare2).ToString();
+                                    }
+                                    else
+                                    {
+                                        row["AMOUNT"] = CalculateAmount(Mode,
+                                            Convert.ToInt16(runTable.Rows[i]["Runs"]),
+                                            Convert.ToDecimal(runTable.Rows[i]["Amount"]),
+                                            Rate,
+                                            runs,
+                                            Amount,
+                                            AgentShare1, AgentShare2).ToString();
+                                    }
+
+
+                                }
                             }
-
-
                         }
                     }
                 }
             }
         }
-
-
-        public Decimal CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount, Decimal AgentShare1)
-        {
-            Decimal Difference = 0;
-
-            if (Initruns < runs)
+            public Decimal CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount, Decimal AgentShare1, Decimal AgentShare2)
             {
+                Decimal Difference = 0;
 
-                if (Mode == "Y")
+                if (Initruns < runs)
                 {
-                    Difference = Amount * AgentShare1 + InitAmount;
+
+                    if (Mode == "Y")
+                    {
+                        Difference = Amount * AgentShare1 * AgentShare2 + InitAmount;
+                    }
+                    else if (Mode == "N")
+                    {
+                        Difference = Amount * -1 * AgentShare1 * AgentShare2 + InitAmount;
+                    }
+
+
                 }
-                else if (Mode == "N")
+                if (Initruns >= runs)
                 {
-                    Difference = Amount * -1 * AgentShare1 + InitAmount;
+                    if (Mode == "Y")
+                    {
+                        Difference = Amount * Rate * -1 * AgentShare1 * AgentShare2 + InitAmount;
+                    }
+                    else if (Mode == "N")
+                    {
+                        Difference = Amount * Rate * AgentShare1 * AgentShare2 + InitAmount;
+                    }
+
+
                 }
-
-
+                return Difference;
             }
-            if (Initruns >= runs)
-            {
-                if (Mode == "Y")
-                {
-                    Difference = Amount * Rate * -1 * AgentShare1 + InitAmount;
-                }
-                else if (Mode == "N")
-                {
-                    Difference = Amount * Rate * AgentShare1 + InitAmount;
-                }
 
-
-            }
-            return Difference;
         }
-
     }
-}
 
 

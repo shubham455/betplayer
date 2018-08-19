@@ -65,6 +65,7 @@ namespace betplayer.Agent
             DataColumn colDateTime = new DataColumn("Date");
             colDateTime.DataType = System.Type.GetType("System.DateTime");
             runtable.Columns.Add(colDateTime);
+            runtable.Columns.Add(new DataColumn("CollectionID"));
             runtable.Columns.Add(new DataColumn("CollectionName"));
             runtable.Columns.Add(new DataColumn("Dabit"));
             runtable.Columns.Add(new DataColumn("Credit"));
@@ -86,7 +87,7 @@ namespace betplayer.Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "select matches.TeamA,matches.teamB,matches.DateTime,clientledger.Dabit,clientledger.Credit from ClientLedger inner join matches on clientledger.MatchID = matches.apiID where ClientID = '" + dropdownClient.SelectedValue + "'";
+                string s = "select matches.TeamA,matches.teamB,matches.DateTime,clientledger.Dabit,clientledger.Credit,clientledger.clientledgerID from ClientLedger inner join matches on clientledger.MatchID = matches.apiID where ClientID = '" + dropdownClient.SelectedValue + "'";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt1 = new DataTable();
@@ -99,12 +100,14 @@ namespace betplayer.Agent
                     DateTime oDate = DateTime.Parse(DateFromDB);
                     string datetime = oDate.Date.ToString().Substring(0, 10);
 
+                    string ID = dt1.Rows[i]["ClientledgerID"].ToString();
                     string TeamA = dt1.Rows[i]["TeamA"].ToString();
                     string TeamB = dt1.Rows[i]["TeamB"].ToString();
                     decimal Dabit = Convert.ToDecimal(dt1.Rows[i]["Dabit"]);
                     decimal Credit = Convert.ToDecimal(dt1.Rows[i]["Credit"]);
 
                     row["Date"] = oDate;     //row["Date"] = datetime;
+                    row["CollectionID"] = ID;     //row["Date"] = datetime;
                     row["PaynmentDescription"] = TeamA + "VS" + TeamB;
                     row["Dabit"] = Dabit;
                     row["Credit"] = Credit * -1;
@@ -150,12 +153,14 @@ namespace betplayer.Agent
                     string Date1 = date.Date.ToString().Substring(0, 10);
 
 
+                    string ID = dt.Rows[j]["CollectionID"].ToString();
                     string CollectionName = dt.Rows[j]["CollectionType"].ToString();
                     int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
                     string PaynmentDescription = dt.Rows[j]["PaynmentType"].ToString();
                     string Remark = dt.Rows[j]["Remark"].ToString();
 
                     row["Date"] = date;        //row["Date"] = Date1;
+                    row["CollectionID"] = ID;
                     row["CollectionName"] = CollectionName;
                     row["Remark"] = Remark;
                     if(PaynmentDescription == "Payment Received")

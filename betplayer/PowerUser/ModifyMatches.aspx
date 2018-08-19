@@ -99,10 +99,10 @@
                                         return responce.json();
                                     }).then(function (data) {
                                         console.log(data);
-                                        if (data.status) {
+                                        if (data.status)
                                             alert("Scheduled Successfully");
-                                        }
-                                        else alert("Schedule Rejected By server!!!");
+                                        else
+                                            alert(data.error);
                                     }).then(function () {
 
                                     }).catch(function (err) {

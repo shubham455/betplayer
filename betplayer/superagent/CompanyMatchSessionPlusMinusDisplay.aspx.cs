@@ -388,19 +388,26 @@ namespace betplayer.superagent
                             TotalAmount = TotalAmount + Amount;
                         }
                     }
+
+                    string s55 = "Select * from sharetable where MatchID = '" + MatchID + "'";
+                    MySqlCommand cmd55 = new MySqlCommand(s55, cn);
+                    MySqlDataAdapter adp55 = new MySqlDataAdapter(cmd55);
+                    DataTable dt55 = new DataTable();
+                    adp55.Fill(dt55);
+
                     string s5 = "Select SessionCommision,MatchCommision,Name  From SuperAgentMaster where SuperAgentID = '" + Session["SuperAgentID"] + "' ";
                     MySqlCommand cmd5 = new MySqlCommand(s5, cn);
                     MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
                     DataTable dt5 = new DataTable();
                     adp5.Fill(dt5);
 
-                    Decimal SessionCommision1 = Convert.ToDecimal(dt5.Rows[0]["SessionCommision"]);
+                    Decimal SessionCommision1 = Convert.ToDecimal(dt55.Rows[0]["SAgentSessionComm"]);
                     Decimal SessionCommision2 = SessionCommision1 / 100;
                     Decimal SessionCommision = TotalAmount * SessionCommision2;
 
                     row["SessionCommision"] = SessionCommision;
                     decimal TotalMatchCommision1 = 0;
-                    Decimal MatchCommision = Convert.ToDecimal(dt5.Rows[0]["MatchCommision"]);
+                    Decimal MatchCommision = Convert.ToDecimal(dt55.Rows[0]["SAgentMatchComm"]);
                     Decimal MatchCommision1 = MatchCommision / 100;
 
                     string s6 = "Select Amount From MatchCalculation where MatchID = '" + MatchID + "' && ClientID = '" + ID + "'";
@@ -449,9 +456,9 @@ namespace betplayer.superagent
                     DataTable ClientSharedt = new DataTable();
                     ClientShareadp.Fill(ClientSharedt);
 
-                    decimal ClientShare1 = Convert.ToDecimal(ClientSharedt.Rows[i]["Agent_Share"]);
-                    decimal ClientMaster2 = 100 / ClientShare1;
-                    Decimal TotalHalfAmount = TotalNetAmouunt / ClientMaster2;
+                    decimal ClientShare1 = Convert.ToDecimal(dt55.Rows[i]["AgentShare"]);
+                    decimal ClientMaster2 = ClientShare1/100;
+                    Decimal TotalHalfAmount = TotalNetAmouunt*ClientMaster2;
 
                     row["TotalNetAmount"] = TotalNetAmouunt;
 
@@ -464,9 +471,9 @@ namespace betplayer.superagent
                     DataTable SuperAgentSharedt = new DataTable();
                     SuperAgentShareadp.Fill(SuperAgentSharedt);
 
-                    decimal SuperAgentShare1 = Convert.ToDecimal(SuperAgentSharedt.Rows[0]["myShare"]);
-                    decimal SuperAgentShare2 = 100 / SuperAgentShare1;
-                    Decimal TotalSAShareAmount = TotalHalfAmount / SuperAgentShare2;
+                    decimal SuperAgentShare1 = Convert.ToDecimal(dt55.Rows[0]["SAgentshare"]);
+                    decimal SuperAgentShare2 =  SuperAgentShare1/100;
+                    Decimal TotalSAShareAmount = TotalHalfAmount * SuperAgentShare2;
                     Decimal TotalSAShareAmount1 = TotalHalfAmount - TotalSAShareAmount;
 
 

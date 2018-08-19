@@ -40,7 +40,7 @@
             <div class="controls">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-key"></i></span>
-                    <asp:TextBox ID="txtpassword" runat="server" placeholder="Password" />
+                    <asp:TextBox ID="txtpassword" runat="server" placeholder="Password" TextMode="Password" />
                 </div>
                 <div class="mtop10">
                     <div class="block-hint pull-left small">

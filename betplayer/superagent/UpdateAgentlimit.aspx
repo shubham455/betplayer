@@ -43,7 +43,7 @@
                                         <td align="left" class="TableHeading">Current Limit</td>
                                         <td align="left" class="TableHeading">Client Limit</td>
                                     </tr>
-                                    <% foreach (System.Data.DataRow row in UpdateDataTable.Rows)
+                                    <% int index = 2; foreach (System.Data.DataRow row in UpdateDataTable.Rows)
                                         { %>
                                     <tr bgcolor="#FFFFFF">
                                         <td height="25" align="left" class="FontText">1</td>
@@ -54,11 +54,11 @@
                                             <input id="FixLimit" style="text-align: right"  type="text" value="<%: row["Fixlimit"] %>" class="TextBox100"></td>
                                         <td align="left" class="TextBox100">
                                             <input id="AgentID" type="hidden" value="<%: row["AgentID"] %>" />
-                                            <input id="AgentLimit" style="text-align: right" type="text" value="<%: row["CurrentLimit"] %>" onchange="check()" onblur="CheckTotalLimit('1')" class="TextBox100"></td>
+                                            <input id="AgentLimit" style="text-align: right" type="text" value="<%: row["CurrentLimit"] %>" onchange="check('<%: index %>')"  class="TextBox100"></td>
                                         <td align="left" class="FontText">
                                             <input name="ULimit1" type="text" id="ULimit1" style="text-align: right" value="<%: row["UsedLimit"] %>" class="TextBox100" readonly="" disabled=""></td>
                                     </tr>
-                                    <% } //foreach %>
+                                    <% index++; } //foreach %>
 
                                     <tr bgcolor="#E9F3FD" class="TableHeading">
                                         <td height="25" align="center" bgcolor="#FFFFFF"><strong>Limit</strong></td>
@@ -91,14 +91,15 @@
     </div>
     <script>
         function check() {
-            var input1 = Number(document.getElementById("FixLimit").value);
-            var input2 = Number(document.getElementById("AgentLimit").value);
+            var table = document.getElementById('AgentLimitTable');
+            var input1 = Number(table.rows[rowID].cells[2].children[0].value);
+            var input2 = Number(table.rows[rowID].cells[3].children[1].value);
 
             if (input1 >= input2) {
                
             }
             else {
-               document.getElementById("AgentLimit").value = 0
+                table.rows[rowID].cells[3].children[1].value = 0;
                 alert("Current Limit Is Not greater than Fix Limit")
             }
         }

@@ -1,0 +1,60 @@
+﻿.main-container {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-column-gap: 2vw;
+}
+
+.match-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr 1fr 1fr;
+    grid-row-gap: 2vh;
+}
+
+.lastball-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 1vh 1vh;
+}
+
+.runner-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    grid-column-gap: 1vh;
+    justify-items: center;
+    align-items: center;
+}
+
+.session-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-auto-rows: 40px;
+    justify-items: start;
+}
+
+.session-container > span {
+    display: grid;
+    padding: 8px 4px;
+    border-bottom: 1px solid black;
+    font-size: large;
+}
+
+.session-container > span > a {
+    justify-self: start;
+} 
+
+.score-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1vw;
+    justify-items: center;
+    align-items: center;
+}
+
+.message-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-column-gap: 1vw;
+    justify-items: center;
+    align-items: center;
+}

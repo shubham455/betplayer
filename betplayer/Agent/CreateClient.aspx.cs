@@ -25,13 +25,13 @@ namespace Panchayat_System.Admin
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string s3 = "Select agentshare,AgentLimit From AgentMaster where AgentID = '"+Session["AgentID"]+"'";
+                    string s3 = "Select agentshare,AgentLimit,Currentlimit From AgentMaster where AgentID = '"+Session["AgentID"]+"'";
                     MySqlCommand cmd3 = new MySqlCommand(s3, cn);
                     MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);
                     DataTable dt3 = new DataTable();
                     adp3.Fill(dt3);
 
-                    int AgentLimit = Convert.ToInt32(dt3.Rows[0]["Agentlimit"]);
+                    int AgentLimit = Convert.ToInt32(dt3.Rows[0]["Currentlimit"]);
                     decimal Total = 0;
                     string s4 = "Select * From ClientMaster where CreatedBy = '" + Session["Agentcode"] + "'";
                     MySqlCommand cmd4 = new MySqlCommand(s4, cn);
