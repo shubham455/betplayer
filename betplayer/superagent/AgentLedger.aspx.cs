@@ -113,16 +113,16 @@ namespace betplayer.Super_Agent
                     row["Date"] = oDate;     //row["Date"] = datetime;
                     row["PaynmentDescription"] = TeamA + "VS" + TeamB;
                     row["Dabit"] = Dabit;
-                    row["Credit"] = Credit * -1;
+                    row["Credit"] = Credit;
 
                     decimal Balance = 0, Balance1 = 0;
                     if (Dabit != 0)
                     {
-                        Balance = Dabit;
+                        Balance = Dabit *-1;
                     }
                     else if (Credit != 0)
                     {
-                        Balance = Credit * -1;
+                        Balance = Credit;
                     }
                     if (runtable.Rows.Count > 0)
                     {

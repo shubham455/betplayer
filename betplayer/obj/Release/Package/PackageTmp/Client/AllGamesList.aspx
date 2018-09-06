@@ -12,7 +12,7 @@
     </div>
     <div class="profile-details">
         
-        <a href="<%if (Convert.ToInt16(row["status"]) == 1) {%>BetDetails.aspx?iD=<%: row["apiID"] %><% }else{%>BetDetails_Declare.aspx?iD=<%: row["apiID"] %><% } %>">
+        <a href="<%if (Convert.ToInt16(row["status"]) == 1) {%>BetDetails.aspx?iD=<%: row["apiID"] %>&&fk=<%: row["firebasekey"] %><% }else{%>BetDetails_Declare.aspx?iD=<%: row["apiID"] %><% } %>">
 
             <table width="100%" border="0" cellspacing="2" cellpadding="2">
                 <tbody>
@@ -22,7 +22,7 @@
 
                             <div class="profile_picture">
                                 <p align="center">
-                                    <img src="<%=TeamtoImgpath(row["TeamA"].ToString()) %>" alt="team image" style="height:100px"></p>
+                                    <img src="images/Inplayimg/mark1.png" alt="team image" style="height:100px"></p>
                             </div>
 
                         </td>
@@ -40,7 +40,7 @@
                                         <td class="GameList" align="center">Session Bets : <asp:Label ID="lblSession" runat="server" Text="0"/></td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Declared :<%: row["Status"] %></td>
+                                        <td class="GameList" align="center">Declared :<%if(Convert.ToInt16( row["Status"]) == 1) {%>NO<% }else{%>Yes<% } %> </td>
                                     </tr>
                                     <tr>
                                         <td class="GameList" align="center">Won By : <%: row["winnerTeam"] %></td>
@@ -51,7 +51,7 @@
                         </td>
                         <td align="center" style="vertical-align: middle;">
                             <p align="center">
-                                <img src="<%=TeamtoImgpath(row["TeamB"].ToString()) %>"alt="team image" style="height:100px"></p>
+                                <img src="images/Inplayimg/mark1.png"alt="team image" style="height:100px"></p>
                         </td>
                         <td width="1%">&nbsp;</td>
                     </tr>
@@ -63,19 +63,5 @@
     &nbsp;<br>
     
     <% } //foreach %>
-
-
-    <div class="content_bottom">
-        <div class="clear"></div>
-    </div>
-   
-     
-
-      <script lang="javascript">
-          function RedirectPage(MatchID)
-          {
-               
-          }
-          </script>
 
 </asp:Content>

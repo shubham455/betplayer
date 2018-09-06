@@ -99,7 +99,7 @@ namespace betplayer.Client
                     MySqlDataAdapter Sessionadp = new MySqlDataAdapter(Sessioncmd);
                     DataTable Sessiondt = new DataTable();
                     Sessionadp.Fill(Sessiondt);
-                    decimal Amount1 = 0;
+                    
                     decimal FinalAmount = 0;
                     decimal FinalAmount1 = 0;
                     if (Sessiondt.Rows.Count > 0)
@@ -189,7 +189,7 @@ namespace betplayer.Client
                     }
 
 
-                    string check = "Select * from Sharetable where clientID = '" + ClientID + "' && MatchID = '" + MatchID + "'";
+                    string check = "Select * from Sharetable where  MatchID = '" + MatchID + "' && ClientID = '"+ClientID+"'";
                     MySqlCommand checkcmd = new MySqlCommand(check, cn);
                     MySqlDataReader rdr = checkcmd.ExecuteReader();
                     if (rdr.Read())
@@ -219,18 +219,19 @@ namespace betplayer.Client
                         string SuperAgentCode = dt4.Rows[0]["CreatedBy"].ToString();
 
 
-                        string s5 = "Select AgentShare,Createdby,MatchCommision,SessionCommision from SuperAgentMaster where code = '" + SuperAgentCode + "'";
+                        string s5 = "Select myshare,Createdby,MatchCommision,SessionCommision from SuperAgentMaster where code = '" + SuperAgentCode + "'";
                         MySqlCommand cmd5 = new MySqlCommand(s5, cn);
                         MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
                         DataTable dt5 = new DataTable();
                         adp5.Fill(dt5);
-                        string SAgentShare = dt5.Rows[0]["AgentShare"].ToString();
+                        string SAgentShare = dt5.Rows[0]["myshare"].ToString();
                         string SAgentMatchCommision = dt5.Rows[0]["MatchCommision"].ToString();
                         string SAgentSessionCommision = dt5.Rows[0]["SessionCommision"].ToString();
 
 
                         string s6 = "Insert into sharetable (ClientID,MatchID,AgentShare,SAgentshare,ClientShare,AgentMatchComm,AgentSessionComm,SAgentMatchComm,SAgentSessionComm) values(@ClientID,@MatchID,@AgentShare,@SAgentShare,@ClientShare,@AgentMatchComm,@AgentSessionComm,@SAgentMatchComm,@SAgentSessionComm)";
                         MySqlCommand cmd6 = new MySqlCommand(s6, cn);
+                        
                         cmd6.Parameters.AddWithValue("@ClientID", ClientID);
                         cmd6.Parameters.AddWithValue("@MatchID", MatchID);
                         cmd6.Parameters.AddWithValue("@AgentShare", AgentShare);
@@ -389,7 +390,7 @@ namespace betplayer.Client
             {
                 if (Mode == "Y")
                 {
-                    Difference = Amount * Rate * -1 + InitAmount;
+                    Difference = Amount * Rate  + InitAmount;
                 }
                 else if (Mode == "N")
                 {

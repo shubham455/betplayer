@@ -104,6 +104,17 @@
                         <li><a class="" href="ModifyMatches.aspx">Modify Matches</a></li>
                     </ul>
                 </li>
+                <li class="has-sub">
+                    <a href="javascript:;" class="">
+                        <span class="icon-box"><i class="icon-cogs"></i></span>Change Password
+				
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="ChangePassword.aspx">Change Password</a></li>
+                        
+                    </ul>
+                </li>
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>

@@ -38,7 +38,15 @@
 
                                     <a href="AddMatchManually.aspx">
                                         <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create</button></a>
+
+                                    <a href="AddFromLotus.aspx">
+                                        <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create From Lotus</button></a>
+                                
+                                     <a href="AddfromDiamond.aspx">
+                                        <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create From Diamond</button></a>
+                                
                                 </div>
+                                
                             </div>
                             <br />
 
@@ -54,8 +62,12 @@
                                         <td width="110" align="left" class="TableHeading">Match Type </td>
 
                                     </tr>
-                                    <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
-                                        { %>
+
+                                    <%if (!emptyLedgerTable)
+                                        {
+                                            foreach (System.Data.DataRow row in MatchesDataTable.Rows)
+                                            { %>
+
                                     <tr style="background-color: #FFFFFF">
                                         <td align="center">
 
@@ -71,7 +83,17 @@
                                         <td width="110" align="left" class="FontText"><%:row["Type"] %></td>
 
                                     </tr>
-                                    <% } //foreach %>
+                                    <% } //foreach
+                                        }
+                                        else
+                                        { %>
+                                    <td height="20" align="left" class="FontText"></td>
+                                    <td align="left" class="FontText"></td>
+                                    <td align="left" class="FontText">There is no any match</td>
+                                    <td align="left" class="FontText"></td>
+                                    <td width="110" align="left" class="FontText"></td>
+                                    <td width="110" align="left" class="FontText"></td>
+                                    <% } //else %>
                                 </tbody>
                             </table>
                         </div>

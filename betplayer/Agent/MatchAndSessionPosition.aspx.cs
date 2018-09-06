@@ -20,9 +20,9 @@ namespace betplayer.Agent
         protected void Page_Load(object sender, EventArgs e)
         {
 
-           firebasekey.Value = (Request.QueryString["fk"]);
-           apiID.Value= (Request.QueryString["MatchID"]);
-           
+            firebasekey.Value = (Request.QueryString["fk"]);
+            apiID.Value = (Request.QueryString["MatchID"]);
+
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
@@ -35,12 +35,12 @@ namespace betplayer.Agent
                 adp.Fill(dt);
                 string TeamA1 = dt.Rows[0]["TeamA"].ToString();
                 string TeamB1 = dt.Rows[0]["TeamB"].ToString();
-                
 
 
 
 
-                string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && runner.MatchID = '"+ apiID.Value + "' order by DateTime DESC";
+
+                string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && runner.MatchID = '" + apiID.Value + "' order by DateTime DESC";
                 MySqlCommand cmd1 = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt1 = new DataTable();
@@ -142,8 +142,8 @@ namespace betplayer.Agent
 
 
                 }
-
-                Team1Amt.Text = Teampos.ToString();
+                double dValue1 = double.Parse(Teampos.ToString());
+                Team1Amt.Text = dValue1.ToString();
                 if (Teampos > 0)
                 {
                     Team1Amt.ForeColor = System.Drawing.Color.Blue;
@@ -230,7 +230,8 @@ namespace betplayer.Agent
                     TeamBposition2 = (Position * AgentShare) / 100;
                     TeamposB = TeamposB + TeamBposition2;
                 }
-                Team2Amt.Text = TeamposB.ToString();
+                double dValue2 = double.Parse(TeamposB.ToString());
+                Team2Amt.Text = dValue2.ToString();
                 if (TeamposB > 0)
                 {
                     Team2Amt.ForeColor = System.Drawing.Color.Blue;

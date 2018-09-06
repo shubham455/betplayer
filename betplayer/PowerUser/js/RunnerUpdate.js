@@ -132,32 +132,38 @@ function updateScore(event) {
 }
 function lagaiKeyPress(event) {
     if (event.keyCode === 13) {
+        event.preventDefault();
         document.getElementById('team_Khai').focus();
     }
 }
 function khaiKeyPress(event) {
     if (event.keyCode === 13) {
+        event.preventDefault();
         document.getElementById('btnteamupdate').focus();
     }
 }
 function minBetKeyPress(event) {
     if (event.keyCode === 13) {
+        event.preventDefault();
         document.getElementById('maxBet').focus();
     }
 }
 function maxBetKeyPress(event) {
     if (event.keyCode === 13) {
+        event.preventDefault();
         document.getElementById('btnminmaxUpdate').focus();
     }
 }
 
 function sessionMinBetKeyPress(event) {
     if (event.keyCode === 13) {
+        event.preventDefault();
         document.getElementById('sessionMaxBet').focus();
     }
 }
 function sessionMaxBetKeyPress(event) {
     if (event.keyCode === 13) {
+        event.preventDefault();
         document.getElementById('btnsessionMinMaxUpdate').focus();
     }
 }

@@ -62,7 +62,7 @@ namespace betplayer.poweruser
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Update Matches set TeamA =@TeamA , TeamB =@TeamB, TeamC =@TeamC, apiID=@MatchesID, DateTime =@DateTime ,Type = @MatchType where MatchesId = @MatchesID";
+                string s = "Update Matches set TeamA =@TeamA , TeamB =@TeamB, TeamC =@TeamC, apiID=@MatchesID, DateTime =@DateTime ,Type = @MatchType,Status = @Status,Active =@Active where MatchesId = @MatchesID";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
 
 
@@ -72,6 +72,8 @@ namespace betplayer.poweruser
                 cmd.Parameters.AddWithValue("@TeamC", txtTeamC.Text);
                 cmd.Parameters.AddWithValue("@DateTime", txtdate1.Text + "T" + txtTime.Text + ":00.000Z");
                 cmd.Parameters.AddWithValue("@MatchType", DropdownMatchesType.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@Status", '1');
+                cmd.Parameters.AddWithValue("@Active", '1');
                 cmd.ExecuteNonQuery();
 
 

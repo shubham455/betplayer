@@ -107,6 +107,7 @@
     <Content Include="admin\UpdatedSessionBets.aspx" />
     <Content Include="admin\Updatesuperagentlimit.aspx" />
     <Content Include="Client\images\InplayImg\avatar.png" />
+    <Content Include="Client\images\InplayImg\mark1.png" />
     <Content Include="Client\images\LastBall\1_Run.jpg" />
     <Content Include="Client\images\LastBall\2_Run.jpg" />
     <Content Include="Client\images\LastBall\3_Run.jpg" />
@@ -115,16 +116,22 @@
     <Content Include="Client\images\LastBall\Bet_Open.jpg" />
     <Content Include="Client\images\LastBall\Four.jpg" />
     <Content Include="Client\images\LastBall\Free_Hit.jpg" />
-    <Content Include="Client\images\LastBall\Innings_Break.jpg" />
+    <Content Include="Client\images\LastBall\InningsBreak.jpg" />
+    <Content Include="Client\images\LastBall\No_Ball.jpg" />
     <Content Include="Client\images\LastBall\No_Run.jpg" />
     <Content Include="Client\images\LastBall\OUT.jpg" />
     <Content Include="Client\images\LastBall\Review.jpg" />
+    <Content Include="Client\images\LastBall\SIX.jpg" />
+    <Content Include="Client\images\LastBall\Third_Umpire.jpg" />
     <Content Include="Client\images\LastBall\Timeout.jpg" />
-    <Content Include="Client\images\LastBall\Wide+4.jpg" />
+    <Content Include="Client\images\LastBall\WIDE.jpg" />
+    <Content Include="Client\images\LastBall\Wide4.jpg" />
     <Content Include="Client\images\MainMenuImg\game.png" />
     <Content Include="Client\images\MainMenuImg\password.png" />
     <Content Include="Client\images\MainMenuImg\play.png" />
     <Content Include="Client\images\MainMenuImg\terms.png" />
+    <Content Include="PowerUser\AddfromDiamond.aspx" />
+    <Content Include="PowerUser\AddFromLotus.aspx" />
     <Content Include="PowerUser\AddMatch.aspx" />
     <Content Include="PowerUser\AddMatchManually.aspx" />
     <Content Include="admin\AgentDetails.aspx" />
@@ -623,6 +630,7 @@
     <Content Include="PowerUser\assets\uniform\images\sprite.png" />
     <Content Include="PowerUser\assets\uniform\jquery.uniform.js" />
     <Content Include="PowerUser\assets\uniform\jquery.uniform.min.js" />
+    <Content Include="PowerUser\ChangePassword.aspx" />
     <Content Include="PowerUser\CreateMatch.aspx" />
     <Content Include="PowerUser\css\customGrid.css" />
     <Content Include="PowerUser\css\Homepage\bootstrap.min.css" />
@@ -1524,7 +1532,7 @@
     <Content Include="Client\js\Homejs\jquery.rd-parallax.js" />
     <Content Include="Client\js\Homejs\jquery.simplr.smoothscroll.min.js" />
     <Content Include="Client\js\Homejs\jquery.ui.totop.js" />
-    <Content Include="Client\js\Homejs\LiveMatch.js" />
+    <Content Include="Client\js\Homejs\BetDetailsCustom.js" />
     <Content Include="Client\js\Homejs\owl.carousel.min.js" />
     <Content Include="Client\js\Homejs\script.js" />
     <Content Include="Client\js\Homejs\superfish.js" />
@@ -2554,6 +2562,20 @@
     <Compile Include="Agent\clientLimit.ashx.cs">
       <DependentUpon>clientLimit.ashx</DependentUpon>
     </Compile>
+    <Compile Include="PowerUser\AddfromDiamond.aspx.cs">
+      <DependentUpon>AddfromDiamond.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\AddfromDiamond.aspx.designer.cs">
+      <DependentUpon>AddfromDiamond.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PowerUser\AddFromLotus.aspx.cs">
+      <DependentUpon>AddFromLotus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\AddFromLotus.aspx.designer.cs">
+      <DependentUpon>AddFromLotus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PowerUser\AddMatch.aspx.cs">
       <DependentUpon>AddMatch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2604,6 +2626,13 @@
     </Compile>
     <Compile Include="admin\CreateClient.aspx.designer.cs">
       <DependentUpon>CreateClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PowerUser\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="PowerUser\CreateMatch.aspx.cs">
       <DependentUpon>CreateMatch.aspx</DependentUpon>

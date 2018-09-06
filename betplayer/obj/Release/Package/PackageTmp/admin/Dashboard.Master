@@ -22,9 +22,6 @@
     <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css">
     <link href="../admin/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet">
     <link href="../admin/assets/jqvmap/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
-
-   
-
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -102,11 +99,10 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="ClientDetails.aspx">Client Master</a></li>
-                        <li><a class="" href="AgentDetails.aspx">Agent Master</a></li>
+
                         <li><a class="" href="SuperAgentDetails.aspx">SuperAgent Master</a></li>
                         <li><a class="" href="poweruserdetails.aspx">Poweruser Master</a></li>
-                        <li><a class="" href="CollectionDetail.aspx">Collection Master</a></li>
+
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -127,14 +123,9 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="My_Ledger.aspx">My Ledger</a></li>
-                        <li><a class="" href="#">SuperAgent Plus/Minus</a></li>
                         <li><a class="" href="SuperAgentLedger.aspx">SuperAgent Ledger</a></li>
-                        <li><a class="" href="AgentLedger.aspx">Agent Ledger</a></li>
-                        <li><a class="" href="ClientLedger.aspx">Client Ledger</a></li>
                         <li><a class="" href="AllSuperAgentLedger.aspx">All SuperAgent Ledger</a></li>
-                        <li><a class="" href="AllAgentLedger.aspx">All Agent Ledger</a></li>
-                        <li><a class="" href="AllClientLedger.aspx">All Client Ledger</a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -146,7 +137,7 @@
                     <ul class="sub">
                         <li><a class="" href="UpdatedRunnerBets.aspx">UpdatedRunner Bets </a></li>
                         <li><a class="" href="UpdatedSessionBets.aspx">UpdatedSession Bets </a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="has-sub">

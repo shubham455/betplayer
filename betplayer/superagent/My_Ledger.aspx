@@ -35,35 +35,82 @@
                         <div class="widget-body form">
 
                             <!-- BEGIN FORM-->
-                              <table width="100%" border="0" cellspacing="2" cellpadding="0" class="table table-striped table-hover table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <td width="4%" height="25"><strong>SNo.</strong></td>
-                                            <td width="8%"><strong>Date</strong></td>
-                                            <td width="15%"><strong>Collection Name</strong></td>
-                                            <td width="9%" style="text-align: right;"><strong>Debit</strong></td>
-                                            <td width="9%" style="text-align: right;"><strong>Credit</strong></td>
-                                            <td width="9%" style="text-align: right;"><strong>Balance</strong></td>
-                                            <td width="13%"><strong>Description</strong></td>
-                                            <td width="13%"><strong>Remark</strong></td>
-                                        </tr>
-                                        <% foreach (System.Data.DataRow row in MatchesDatatable.Rows)
+                            <table width="100%" border="0" cellspacing="2" cellpadding="0" class="table table-striped table-hover table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td width="4%" height="25"><strong>SNo.</strong></td>
+                                        <td width="8%"><strong>Date</strong></td>
+                                        <td width="15%"><strong>Collection Name</strong></td>
+                                        <td width="9%" style="text-align: right;"><strong>Debit</strong></td>
+                                        <td width="9%" style="text-align: right;"><strong>Credit</strong></td>
+                                        <td width="9%" style="text-align: right;"><strong>Balance</strong></td>
+                                        <td width="13%"><strong>Description</strong></td>
+                                        <td width="13%"><strong>Remark</strong></td>
+                                    </tr>
+                                    <%if (!emptyLedgerTable)
+                                        {
+                                            foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
                                             { %>
-                                        <tr bgcolor="#FFFFFF">
-                                            <td height="20" class="FontText">1</td>
-                                            <td class="FontText"><%: row["DateTime"] %></td>
-                                            <td class="FontText"></td>
-                                            <td style="text-align: right;" class="FontText"><%:row["Dabit"] %></td>
-                                            <td style="text-align: right;" class="FontText"><%:row["Credit"] %></td>
-                                            <td style="text-align: right;" class="FontText"><%:row["Amount"] %></td>
-                                            <td class="FontText"><%:row["TeamA"] %>VS <%:row["TeamB"] %></td>
-                                            <td class="FontText"><%:row["Remark"] %></td>
-                                        </tr>
-                                         <% } //foreach %>
-                                    </tbody>
-                                </table>
-                               
-                                
+                                    <tr bgcolor="#FFFFFF">
+                                        <td height="20" class="FontText"><%: row["ID"] %></td>
+                                        <td class="FontText"><%: row["Date"] %></td>
+                                        <td class="FontText"></td>
+                                        <td style="text-align: right;" class="FontText"><%:row["Dabit"] %></td>
+                                        <td style="text-align: right;" class="FontText"><%:row["Credit"] %></td>
+                                        <td style="text-align: right;" class="FontText"><%:row["Balance"] %></td>
+                                        <td class="FontText"><%:row["CollectionName"] %></td>
+                                        <td class="FontText"><%:row["Remark"] %></td>
+                                    </tr>
+                                    <% } //foreach 
+                                        }
+                                        else
+                                        { %>
+                                    <tr bgcolor="#FFFFFF">
+                                        <td height="20" class="FontText"></td>
+                                        <td class="FontText">NO</td>
+                                        <td class="FontText">DATA</td>
+                                        <td style="text-align: right;" class="FontText">FOUND</td>
+                                        <td style="text-align: right;" class="FontText"></td>
+                                        <td style="text-align: right;" class="FontText"></td>
+                                        <td class="FontText"></td>
+                                        <td class="FontText"></td>
+                                    </tr>
+                                    <% } //else %>
+                                    <%if (!emptyLedgerTable)
+                                        {
+                                            foreach (System.Data.DataRow row in runTable1.Rows)
+                                            { %>
+                                    <tr>
+                                        <td height="25">&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td align="right"><strong>Total Amount</strong></td>
+                                        <td align="right" style="text-align: right;"><strong><%: row["TotalDabitAmount"] %> </strong></td>
+                                        <td align="right" style="text-align: right;"><strong><%: row["TotalcreditAmount"] %></strong></td>
+                                        <td align="right" style="text-align: right;"><strong>
+                                            <%:LedgerTableOrdered.Rows[LedgerTableOrdered.Rows.Count-1]["Balance"] %>
+                                        </strong></td>
+                                        <td align="right">&nbsp;</td>
+                                        <td align="right">&nbsp;</td>
+                                    </tr>
+                                    <% } //foreach 
+                                        }
+                                        else
+                                        { %>
+                                    <tr>
+                                        <td height="25">&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td align="right"><strong>Total Amount</strong></td>
+                                        <td align="right" style="text-align: right;"><strong>NO</strong></td>
+                                        <td align="right" style="text-align: right;"><strong>DATA</strong></td>
+                                        <td align="right" style="text-align: right;"><strong>FOUND</strong></td>
+                                        <td align="right">&nbsp;</td>
+                                        <td align="right">&nbsp;</td>
+                                    </tr>
+                                    <% } //else %>
+                                </tbody>
+                            </table>
+
+
                         </div>
                     </div>
                     <!-- END EXAMPLE TABLE widget-->

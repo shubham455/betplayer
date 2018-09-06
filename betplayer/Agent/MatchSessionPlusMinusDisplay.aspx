@@ -68,7 +68,7 @@
                                                                                             <td colspan="4" align="center" valign="middle" style="text-align: center; vertical-align: middle;"><strong>OTHERS</strong></td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td height="25" align="left" valign="middle"><strong>CLIENT NAME</strong></td>
+                                                                                            <td style="width:20%" height="25"  align="left" valign="middle"><strong>CLIENT NAME</strong></td>
                                                                                             <td width="70" align="right" valign="middle" style="text-align: right;"><strong>MATCH</strong></td>
                                                                                             <td width="70" align="right" valign="middle" style="text-align: right;"><strong>SESSION</strong></td>
                                                                                             <td width="70" align="right" valign="middle" style="text-align: right;"><strong>TOTAL</strong></td>

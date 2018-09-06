@@ -110,16 +110,16 @@ namespace betplayer.admin
                     row["Date"] = oDate;     //row["Date"] = datetime;
                     row["PaynmentDescription"] = TeamA + "VS" + TeamB;
                     row["Dabit"] = Dabit;
-                    row["Credit"] = Credit * -1;
+                    row["Credit"] = Credit;
 
                     decimal Balance = 0, Balance1 = 0;
                     if (Dabit != 0)
                     {
-                        Balance = Dabit;
+                        Balance = Dabit * -1;
                     }
                     else if (Credit != 0)
                     {
-                        Balance = Credit * -1;
+                        Balance = Credit;
                     }
                     if (runtable.Rows.Count > 0)
                     {
@@ -147,7 +147,7 @@ namespace betplayer.admin
 
                 for (int j = 0; j < dt.Rows.Count; j++)
                 {
-                    int CollectionID = Convert.ToInt32(dt.Rows[j]["collectionID"]);
+                    int CollectionID = Convert.ToInt32(dt.Rows[j]["superagentcollectionmasterID"]);
                     string CollectionDate = dt.Rows[j]["Date"].ToString();
                     DateTime date = DateTime.Parse(CollectionDate);
                     string Date1 = date.Date.ToString().Substring(0, 10);

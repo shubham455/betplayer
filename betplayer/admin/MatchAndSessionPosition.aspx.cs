@@ -23,7 +23,7 @@ namespace betplayer.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
 
             ClientTable.Columns.Add(new DataColumn("runnerID"));
             ClientTable.Columns.Add(new DataColumn("Amount"));
@@ -34,6 +34,7 @@ namespace betplayer.admin
             ClientTable.Columns.Add(new DataColumn("ClientID"));
             ClientTable.Columns.Add(new DataColumn("Name"));
             ClientTable.Columns.Add(new DataColumn("Createdby"));
+            ClientTable.Columns.Add(new DataColumn("AgentCreatedby"));
             ClientTable.Columns.Add(new DataColumn("Position1"));
             ClientTable.Columns.Add(new DataColumn("Position2"));
             DataRow Clientrow = ClientTable.NewRow();
@@ -58,7 +59,7 @@ namespace betplayer.admin
                 lblTeamB.Text = TeamB1;
 
 
-                string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,clientmaster.CreatedBy,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where  runner.MatchID = '" + apiID.Value + "' order by DateTime DESC";
+                string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,clientmaster.CreatedBy,AgentMaster.CreatedBy,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID inner join AgentMaster on  clientmaster.CreatedBy = AgentMaster.code where  runner.MatchID = '" + apiID.Value + "' order by DateTime DESC";
                 MySqlCommand cmd1 = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                 dt1 = new DataTable();
@@ -165,9 +166,9 @@ namespace betplayer.admin
 
 
                 }
-                
 
-                
+
+
                 Team1Amt.Text = Teampos.ToString();
                 if (Teampos > 0)
                 {
@@ -257,7 +258,7 @@ namespace betplayer.admin
                     }
                 }
 
-                
+
                 Team2Amt.Text = TeamposB.ToString();
                 if (TeamposB > 0)
                 {
@@ -302,6 +303,7 @@ namespace betplayer.admin
             DataRow Clientrow1 = ClientTable1.NewRow();
 
             apiID.Value = Request.QueryString["MatchID"];
+            decimal SuperAgentshare1 = 0;
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
@@ -317,8 +319,8 @@ namespace betplayer.admin
                 {
                     int ID = Convert.ToInt16(scodedt.Rows[a]["SuperAgentID"]);
                     string SuperAgentCode = scodedt.Rows[a]["Code"].ToString();
-                    decimal  SuperAgentshare = Convert.ToDecimal(scodedt.Rows[a]["myshare"]);
-                    decimal SuperAgentshare1 = SuperAgentshare / 100;
+                    decimal SuperAgentshare = Convert.ToDecimal(scodedt.Rows[a]["myshare"]);
+                    SuperAgentshare1 = SuperAgentshare / 100;
                     string s11 = "Select code,agentshare From AgentMaster where CreatedBy = '" + SuperAgentCode + "'";
                     MySqlCommand cmd11 = new MySqlCommand(s11, cn);
                     MySqlDataAdapter adp11 = new MySqlDataAdapter(cmd11);
@@ -333,7 +335,7 @@ namespace betplayer.admin
                         decimal Agentshare = Convert.ToDecimal(dt11.Rows[i]["Agentshare"]);
 
 
-                        string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' and clientmaster.createdBy = '"+Agentcode+"' and runner.MatchID = '" + apiID.Value + "' order by DateTime DESC";
+                        string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' and clientmaster.createdBy = '" + Agentcode + "' and runner.MatchID = '" + apiID.Value + "' order by DateTime DESC";
                         MySqlCommand cmd1 = new MySqlCommand(s, cn);
                         MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                         DataTable dt5 = new DataTable();
@@ -382,11 +384,11 @@ namespace betplayer.admin
 
                                 if (TeamA == team && Mode1 == "K")
                                 {
-                                    Position = Amount * Rate;
+                                    Position = Amount * Rate * -1;
                                 }
                                 else if (TeamA == team && Mode1 == "L")
                                 {
-                                    Position = Amount * Rate * -1;
+                                    Position = Amount * Rate ;
                                 }
                                 else if (TeamB == team && Mode1 == "K")
                                 {
@@ -394,16 +396,21 @@ namespace betplayer.admin
                                 }
                                 else if (TeamB == team && Mode1 == "L")
                                 {
-                                    Position = Amount ;
+                                    Position = Amount;
                                 }
 
-                                decimal AgentShare1 = Agentshare / 100;
-                                
-                                TeamAposition1 = (Position * AgentShare1);
-                                decimal Finalshare = TeamAposition1 * SuperAgentshare1;
-                                row["Position1"] = Finalshare;
 
-                                TeamAposition = TeamAposition + Position;
+                                decimal myshare = 100;
+                                decimal myshare1 = myshare / 100;
+                                decimal SAgentShare = SuperAgentshare1;
+                                Decimal FinalShare = myshare1 - SAgentShare;
+
+                                decimal Team1Amt = (Position * FinalShare);
+
+
+                                row["Position1"] = TeamAposition1;
+
+                                TeamAposition = TeamAposition + Team1Amt;
 
 
                             }
@@ -452,11 +459,11 @@ namespace betplayer.admin
 
                                 if (TeamA == team && Mode1 == "K")
                                 {
-                                    Position1 = Amount * -1;
+                                    Position1 = Amount;
                                 }
                                 else if (TeamA == team && Mode1 == "L")
                                 {
-                                    Position1 = Amount;
+                                    Position1 = Amount * -1;
                                 }
                                 else if (TeamB == team && Mode1 == "K")
                                 {
@@ -464,17 +471,23 @@ namespace betplayer.admin
                                 }
                                 else if (TeamB == team && Mode1 == "L")
                                 {
-                                    Position1 = Amount * Rate *-1 ;
+                                    Position1 = Amount * Rate * -1;
                                 }
 
 
-                                decimal AgentShare1 = Agentshare / 100;
+                                decimal myshare = 100;
+                                decimal myshare1 = myshare / 100;
+                                decimal SAgentShare = SuperAgentshare1;
+                                Decimal FinalShare = myshare1 - SAgentShare;
 
-                                TeamBposition2 = (Position1 * AgentShare1);
-                                decimal Finalshare1 = TeamBposition2 * SuperAgentshare1;
-                                row["Position2"] = Finalshare1;
+                                decimal Team1Amt = (Position1 * FinalShare);
 
-                                TeamBposition = TeamBposition + Position1;
+
+                                row["Position1"] = TeamBposition2;
+
+                                TeamBposition = TeamBposition + Team1Amt;
+
+
 
 
                             }
@@ -503,20 +516,31 @@ namespace betplayer.admin
 
                     }
 
+                    //if(TeamAposition > 0)
+                    //{
+                    //    TeamAposition = TeamAposition * -1;
+                    //} 
+                    //else if (TeamAposition < 0)
+                    //{
+                    //    TeamAposition = TeamAposition * -1;
+                    //}
+
+
+                    //if (TeamBposition > 0)
+                    //{
+                    //    TeamBposition = TeamBposition * -1;
+                    //}
+                    //else if (TeamBposition < 0)
+                    //{
+                    //    TeamBposition = TeamBposition * -1;
+                    //}
 
 
 
-
-
-                    decimal Team1Amt1 = totalCalculation1;
-                    decimal Team2Amt1 = totalCalculation2;
-
-                    double dValue1 = double.Parse(Team1Amt1.ToString());
-                    double dValue2 = double.Parse(Team2Amt1.ToString());
-
-
-                    Team1Amt.Text = dValue1.ToString();
-                    Team2Amt.Text = dValue2.ToString();
+                    double Team1Amt1 = double.Parse(TeamAposition.ToString());
+                    double Team2Amt1 = double.Parse(TeamBposition.ToString());
+                    Team1Amt.Text = Team1Amt1.ToString();
+                    Team2Amt.Text = Team2Amt1.ToString();
                     if (Team1Amt1 > 0)
                     {
                         Team1Amt.ForeColor = System.Drawing.Color.Blue;
@@ -527,7 +551,8 @@ namespace betplayer.admin
                         Team1Amt.ForeColor = System.Drawing.Color.Red;
 
                     }
-                    else if (Team2Amt1 > 0)
+                
+                    if (Team2Amt1 > 0)
                     {
                         Team2Amt.ForeColor = System.Drawing.Color.Blue;
 
@@ -542,4 +567,3 @@ namespace betplayer.admin
         }
     }
 }
-

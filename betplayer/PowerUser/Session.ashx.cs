@@ -207,6 +207,11 @@ namespace betplayer.PowerUser
 
 
                         cmd.ExecuteNonQuery();
+
+                        string ClearPosition = "Update Session Set Position = '0' where Session = '" + SessionKey + "'";
+                        MySqlCommand ClearPositioncmd = new MySqlCommand(ClearPosition, cn);
+                        ClearPositioncmd.ExecuteNonQuery();
+
                         return "success";
                     }
                 }

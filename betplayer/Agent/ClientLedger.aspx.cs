@@ -23,7 +23,7 @@ namespace betplayer.Agent
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
+            
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (!IsPostBack)
             {
@@ -110,16 +110,16 @@ namespace betplayer.Agent
                     row["CollectionID"] = ID;     //row["Date"] = datetime;
                     row["PaynmentDescription"] = TeamA + "VS" + TeamB;
                     row["Dabit"] = Dabit;
-                    row["Credit"] = Credit * -1;
+                    row["Credit"] = Credit;
 
                     decimal Balance = 0, Balance1 = 0;
                     if (Dabit != 0)
                     {
-                        Balance = Dabit;
+                        Balance = Dabit * -1;
                     }
                     else if (Credit != 0)
                     {
-                        Balance = Credit * -1;
+                        Balance = Credit;
                     }
                     if (runtable.Rows.Count > 0)
                     {
@@ -127,7 +127,7 @@ namespace betplayer.Agent
                         {
                             Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
                             Balance1 = Balance1 - Dabit;
-                            Balance1 = Balance1 + Credit;
+                            Balance1 = Balance1 + (Credit * -1);
                             row["Balance"] = Balance1;
                         }
                     }
@@ -163,7 +163,7 @@ namespace betplayer.Agent
                     row["CollectionID"] = ID;
                     row["CollectionName"] = CollectionName;
                     row["Remark"] = Remark;
-                    if(PaynmentDescription == "Payment Received")
+                    if (PaynmentDescription == "Payment Received")
                     {
                         row["Dabit"] = Amount;
                         row["Credit"] = 0;
@@ -176,69 +176,71 @@ namespace betplayer.Agent
                         row["Balance"] = Amount;
                     }
 
-                    
-                   
+
+
                     row["PaynmentDescription"] = PaynmentDescription;
 
                     runTable.Rows.Add(row.ItemArray);
 
                 }
-            }
-            if (runtable.Rows.Count > 0)
-            {
-                IEnumerable<DataRow> orderedRows = runTable.AsEnumerable()
-                .OrderBy(r => r.Field<DateTime>("Date"));
 
-                LedgerTableOrdered = orderedRows.CopyToDataTable();
-
-                for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
+                if (runtable.Rows.Count > 0)
                 {
-                    DateTime date = DateTime.Parse(LedgerTableOrdered.Rows[0]["Date"].ToString());
-                    LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
-                    if (l > 0)
-                    {
-                        LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
+                    IEnumerable<DataRow> orderedRows = runTable.AsEnumerable()
+                    .OrderBy(r => r.Field<DateTime>("Date"));
 
+                    LedgerTableOrdered = orderedRows.CopyToDataTable();
+
+                    for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
+                    {
+                        DateTime date = DateTime.Parse(LedgerTableOrdered.Rows[0]["Date"].ToString());
+                        LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
+                        if (l > 0)
+                        {
+                            LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
+
+
+                        }
 
                     }
 
+
+                    decimal TotalDabitAmount1 = 0;
+                    for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
+                    {
+                        decimal DabitAmount = Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]);
+                        TotalDabitAmount1 = TotalDabitAmount1 + DabitAmount;
+                    }
+
+                    row1["TotalDabitAmount"] = TotalDabitAmount1;
+
+                    decimal TotalCreditAmount1 = 0;
+                    for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
+                    {
+                        decimal MatchAmount = Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
+                        TotalCreditAmount1 = TotalCreditAmount1 + MatchAmount;
+                    }
+
+                    row1["TotalCreditAmount"] = TotalCreditAmount1;
+                    
+
+                    decimal TotalbalanceAmount1 = 0;
+                    for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
+                    {
+                        decimal TotalAmount = Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Balance"]);
+                        TotalbalanceAmount1 = TotalbalanceAmount1 + TotalAmount;
+                    }
+
+                    row1["TotalBalanceAmount"] = TotalbalanceAmount1;
+
+
+                    runTable1.Rows.Add(row1.ItemArray);
                 }
-
-
-                decimal TotalDabitAmount1 = 0;
-                for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
+                else
                 {
-                    decimal DabitAmount = Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]);
-                    TotalDabitAmount1 = TotalDabitAmount1 + DabitAmount;
+                    emptyLedgerTable = true;
+
                 }
-
-                row1["TotalDabitAmount"] = TotalDabitAmount1;
-
-                decimal TotalCreditAmount1 = 0;
-                for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
-                {
-                    decimal MatchAmount = Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
-                    TotalCreditAmount1 = TotalCreditAmount1 + MatchAmount;
-                }
-
-                row1["TotalCreditAmount"] = TotalCreditAmount1;
-
-                decimal TotalbalanceAmount1 = 0;
-                for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
-                {
-                    decimal TotalAmount = Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Balance"]);
-                    TotalbalanceAmount1 = TotalbalanceAmount1 + TotalAmount;
-                }
-
-                row1["TotalBalanceAmount"] = TotalbalanceAmount1;
-
-
-                runTable1.Rows.Add(row1.ItemArray);
-            }
-            else
-            {
-                emptyLedgerTable = true;
-
             }
         }
 
@@ -259,6 +261,10 @@ namespace betplayer.Agent
                 cmd.Parameters.AddWithValue("@Remark", Remark.Text);
                 cmd.Parameters.AddWithValue("@AgentID", Session["AgentID"]);
                 cmd.ExecuteNonQuery();
+
+
+                dropdownClient_SelectedIndexChanged(sender,e);
+                
             }
         }
     }

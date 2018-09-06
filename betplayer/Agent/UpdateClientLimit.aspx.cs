@@ -61,6 +61,9 @@ namespace betplayer.Agent
 
                     for (int j = 0; j < dt.Rows.Count;)
                     {
+
+                        
+
                         //int ClientID = Convert.ToInt32(dt.Rows[j]["ClientID"]);
                         string Runner = "Select Position1,Position2 From Runner where ClientID = '" + ClientID + "' order by DateTime DESC ";
                         MySqlCommand Runnercmd = new MySqlCommand(Runner, cn);
@@ -106,9 +109,10 @@ namespace betplayer.Agent
                                 TotalPosition = Position2;
                             }
 
+                           
+                             
 
-
-                            row["Usedlimit"] = TotalPosition;
+                            row["Usedlimit"] =  TotalPosition;
                         }
                         else
                         {

@@ -26,10 +26,16 @@ namespace betplayer.Client
         public DataTable MatchesDataTable2 { get { return dt2; } }
         public DataTable MatchesDataTable3 { get { return dt3; } }
         public DataTable MatchesDataTable5 { get { return dt6; } }
+        public Boolean emptyLedgerTable = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string type = Request.QueryString["Type"];
+            if (type == "Test" || type == "test")
+            {
+                emptyLedgerTable = true;
+            }
+            dt6.Columns.Add(new DataColumn("SessionID"));
             dt6.Columns.Add(new DataColumn("Session"));
             dt6.Columns.Add(new DataColumn("Rate"));
             dt6.Columns.Add(new DataColumn("Amount"));
@@ -67,58 +73,53 @@ namespace betplayer.Client
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     dt1 = new DataTable();
                     adp1.Fill(dt1);
+                    
 
-                    string TeamCMatches = "Select TeamC from Matches where Status = '1' && Active = '1'";
-                    MySqlCommand cmd2 = new MySqlCommand(TeamCMatches, cn);
-                    MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
-                    dt2 = new DataTable();
-                    adp2.Fill(dt2);
-
-
-                    //string selectSession = "select Session From Session  where ClientID  = @ClientID && MatchID = @MatchID group by Session ";
-                    //MySqlCommand selectSessioncmd = new MySqlCommand(selectSession, cn);
-                    //selectSessioncmd.Parameters.AddWithValue("@MatchID", apiID.Value);
-                    //selectSessioncmd.Parameters.AddWithValue("@ClientID", ClientID);
-                    //MySqlDataAdapter selectSessionadp = new MySqlDataAdapter(selectSessioncmd);
-                    //DataTable selectSessiondt = new DataTable();
-                    //selectSessionadp.Fill(selectSessiondt);
+                    string selectSession = "select Session From Session  where ClientID  = @ClientID && MatchID = @MatchID group by Session ";
+                    MySqlCommand selectSessioncmd = new MySqlCommand(selectSession, cn);
+                    selectSessioncmd.Parameters.AddWithValue("@MatchID", apiID.Value);
+                    selectSessioncmd.Parameters.AddWithValue("@ClientID", ClientID);
+                    MySqlDataAdapter selectSessionadp = new MySqlDataAdapter(selectSessioncmd);
+                    DataTable selectSessiondt = new DataTable();
+                    selectSessionadp.Fill(selectSessiondt);
 
 
-                    //for (int i = 0; i < selectSessiondt.Rows.Count; i++)
-                    //{
-                    //    string Sessionname = selectSessiondt.Rows[i]["Session"].ToString();
+                    for (int i = 0; i < selectSessiondt.Rows.Count; i++)
+                    {
+                        string Sessionname = selectSessiondt.Rows[i]["Session"].ToString();
 
-                    //    string selectDeclaredSession = "select * from declaredSession where Session = '" + Sessionname + "' && MatchID = '" + apiID.Value + "' ";
-                    //    MySqlCommand selectDeclaredSessioncmd = new MySqlCommand(selectDeclaredSession, cn);
-                    //    MySqlDataReader rdr1 = selectDeclaredSessioncmd.ExecuteReader();
+                        string selectDeclaredSession = "select * from declaredSession where Session = '" + Sessionname + "' && MatchID = '" + apiID.Value + "' ";
+                        MySqlCommand selectDeclaredSessioncmd = new MySqlCommand(selectDeclaredSession, cn);
+                        MySqlDataReader rdr1 = selectDeclaredSessioncmd.ExecuteReader();
 
-                    //    if (rdr1.Read())
-                    //    {
-                    //        rdr1.Close();
-                    //        string selectSession1 = "select Session.session,Session.rate , Session.Amount,Session.Runs,Session.Mode,DeclaredSession.DeclareRun from Session inner join declaredSession on Session.Session = DeclaredSession.Session where Session.Session = '" + Sessionname + "' && Session.MatchID = '" + apiID.Value + "'";
-                    //        MySqlCommand selectSessioncmd1 = new MySqlCommand(selectSession1, cn);
-                    //        MySqlDataAdapter selectSessionadp1 = new MySqlDataAdapter(selectSessioncmd1);
-                    //        dt5 = new DataTable();
-                    //        selectSessionadp1.Fill(dt5);
+                        if (rdr1.Read())
+                        {
+                            rdr1.Close();
+                            string selectSession1 = "select Session.SessionID, Session.session,Session.rate , Session.Amount,Session.Runs,Session.Mode,DeclaredSession.DeclareRun from Session inner join declaredSession on Session.Session = DeclaredSession.Session where Session.Session = '" + Sessionname + "' && Session.MatchID = '" + apiID.Value + "' && Session.ClientID = '" + Session["ClientID"] + "'";
+                            MySqlCommand selectSessioncmd1 = new MySqlCommand(selectSession1, cn);
+                            MySqlDataAdapter selectSessionadp1 = new MySqlDataAdapter(selectSessioncmd1);
+                            dt5 = new DataTable();
+                            selectSessionadp1.Fill(dt5);
 
-                    //    }
-                    //    else
-                    //    {
-                    //        rdr1.Close();
-                    string Session = "Select Session.session,Session.rate , Session.Amount,Session.Runs,Session.Mode from Session where ClientID  = @ClientID && MatchID = @MatchID order by DateTime DESC";
-                    MySqlCommand Sessioncmd = new MySqlCommand(Session, cn);
-                    Sessioncmd.Parameters.AddWithValue("@MatchID", apiID.Value);
-                    Sessioncmd.Parameters.AddWithValue("@ClientID", ClientID);
-                    MySqlDataAdapter sessionadp = new MySqlDataAdapter(Sessioncmd);
-                    dt6 = new DataTable();
-                    sessionadp.Fill(dt6);
-                    //}
-                    //IEnumerable<DataRow> orderedRows = dt5.AsEnumerable();
-                    //DataTable dt7 = orderedRows.CopyToDataTable();
-                    //foreach (DataRow row in dt7.Rows)
-                    //{
-                    //    dt6.Rows.Add(row.ItemArray);
-                    //}
+                        }
+                        else
+                        {
+                            rdr1.Close();
+                            string Session = "Select Session.SessionID, Session.session,Session.rate , Session.Amount,Session.Runs,Session.Mode from Session where ClientID  = @ClientID && MatchID = @MatchID && Session.session = '" + Sessionname + "'   order by DateTime DESC";
+                            MySqlCommand Sessioncmd = new MySqlCommand(Session, cn);
+                            Sessioncmd.Parameters.AddWithValue("@MatchID", apiID.Value);
+                            Sessioncmd.Parameters.AddWithValue("@ClientID", ClientID);
+                            MySqlDataAdapter sessionadp = new MySqlDataAdapter(Sessioncmd);
+                            dt5 = new DataTable();
+                            sessionadp.Fill(dt5);
+                        }
+                        IEnumerable<DataRow> orderedRows = dt5.AsEnumerable();
+                        DataTable dt7 = orderedRows.CopyToDataTable();
+                        foreach (DataRow row in dt7.Rows)
+                        {
+                            dt6.Rows.Add(row.ItemArray);
+                        }
+                    }
 
 
                     string Amount = "Select TotalAmount from SessionCalculation where ClientID = '" + ClientID + "' && MatchID = '" + apiID.Value + "'";
@@ -131,9 +132,9 @@ namespace betplayer.Client
                         int TotalAmount = 0;
                         int TotalAmount1 = 0;
 
-                        for (int i = 0; i < Amountdt.Rows.Count; i++)
+                        for (int j = 0; j < Amountdt.Rows.Count; j++)
                         {
-                            TotalAmount = Convert.ToInt32(Amountdt.Rows[i]["TotalAmount"]);
+                            TotalAmount = Convert.ToInt32(Amountdt.Rows[j]["TotalAmount"]);
                             TotalAmount1 = TotalAmount1 + TotalAmount;
                         }
                         TotalAmount = 0;

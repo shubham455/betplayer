@@ -42,7 +42,7 @@ namespace betplayer.Agent
                 adp.Fill(dt);
                 string TeamA1 = dt.Rows[0]["TeamA"].ToString();
                 string TeamB1 = dt.Rows[0]["TeamB"].ToString();
-               
+
 
                 string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "' order by session.datetime DESC";
                 MySqlCommand cmd1 = new MySqlCommand(s, cn);
@@ -50,8 +50,8 @@ namespace betplayer.Agent
                 dt = new DataTable();
 
                 adp1.Fill(dt);
-                
-                
+
+
                 for (int j = 0; j < dt.Rows.Count; j++)
                 {
                     if (j == 0)
@@ -87,7 +87,7 @@ namespace betplayer.Agent
                                 AgentShare1).ToString();
                             runTable.Rows.Add(row.ItemArray);
                         }
-                       
+
                     }
                     else
                     {
@@ -97,7 +97,7 @@ namespace betplayer.Agent
                         Decimal Rate = Convert.ToDecimal(dt.Rows[j]["Rate"]);
                         string Mode = dt.Rows[j]["Mode"].ToString();
                         string ClientID = dt.Rows[j]["ClientID"].ToString();
-                       
+
 
                         string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + ClientID + "'";
                         MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
@@ -110,7 +110,7 @@ namespace betplayer.Agent
                         Decimal AgentShare1 = AgentShare / 100;
                         int highVal = Convert.ToInt32(runTable.Rows[0]["Runs"]);
                         int lowVal = Convert.ToInt32(runTable.Rows[runTable.Rows.Count - 1]["Runs"]);
-                        if ((runs+5) > highVal)
+                        if ((runs + 5) > highVal)
                         {
                             for (int i = runs + 5; i > highVal; i--)
                             {
@@ -121,26 +121,26 @@ namespace betplayer.Agent
                                 runTable.Rows.InsertAt(row, (runs + 5 - i));
                             }
                         }
-                        else if ((runs-5) < lowVal)
+                        else if ((runs - 5) < lowVal)
                         {
-                            for (int i = lowVal-1; i >= runs - 5; i--)
+                            for (int i = lowVal - 1; i >= runs - 5; i--)
                             {
                                 DataRow row = runTable.NewRow();
                                 row["RUNS"] = i.ToString();
                                 row["Amount"] = runTable.Rows[runTable.Rows.Count - 1]["Amount"];
 
-                                runTable.Rows.InsertAt(row, ((highVal-lowVal) + (lowVal-i)));
+                                runTable.Rows.InsertAt(row, ((highVal - lowVal) + (lowVal - i)));
                             }
                         }
 
-                        for (int i=0; i < runTable.Rows.Count;  i++)
+                        for (int i = 0; i < runTable.Rows.Count; i++)
                         {
                             DataRow row = runTable.Rows[i];
-                            if (Convert.ToInt16(runTable.Rows[i]["Runs"])>= Convert.ToInt16(dt.Rows[0]["Runs"]) &&
+                            if (Convert.ToInt16(runTable.Rows[i]["Runs"]) >= Convert.ToInt16(dt.Rows[0]["Runs"]) &&
                                 Convert.ToInt16(runTable.Rows[i]["Runs"]) < Convert.ToInt16(dt.Rows[j]["Runs"]))
                             {
 
-                                
+
                                 row["AMOUNT"] = CalculateAmount(Mode,
                                     Convert.ToInt16(runTable.Rows[i]["Runs"]),
                                     Convert.ToDecimal(runTable.Rows[i]["Amount"]),
@@ -164,7 +164,7 @@ namespace betplayer.Agent
                 }
             }
         }
-       public Decimal CalculateAmount(string Mode,int Initruns,Decimal InitAmount,Decimal Rate, int runs, int Amount, Decimal AgentShare1)
+        public double CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount, Decimal AgentShare1)
         {
             Decimal Difference = 0;
 
@@ -173,11 +173,11 @@ namespace betplayer.Agent
 
                 if (Mode == "Y")
                 {
-                    Difference = Amount * AgentShare1+ InitAmount;
+                    Difference = Amount * AgentShare1 + InitAmount;
                 }
                 else if (Mode == "N")
                 {
-                    Difference = Amount *-1 * AgentShare1 + InitAmount;
+                    Difference = Amount * -1 * AgentShare1 + InitAmount;
                 }
 
 
@@ -186,19 +186,19 @@ namespace betplayer.Agent
             {
                 if (Mode == "Y")
                 {
-                    Difference =  Amount *Rate * -1 * AgentShare1 + InitAmount;
+                    Difference = Amount * Rate * -1 * AgentShare1 + InitAmount;
                 }
                 else if (Mode == "N")
                 {
-                    Difference = Amount *Rate * AgentShare1 + InitAmount;
+                    Difference = Amount * Rate * AgentShare1 + InitAmount;
                 }
 
 
             }
-            return Difference;
+            double dvalue = double.Parse(Difference.ToString());
+            return dvalue;
         }
 
     }
 }
-
 

@@ -117,11 +117,11 @@ function updateScore(event) {
             var currentsessions = snapshot.val();
             if (typeof (currentsessions) === "object") {
                 Object.keys(currentsessions).forEach(function (key) {
-                    currentsessions[key]['suspended'] = true;
+                    currentsessions[key]['manualLocked'] = true;
                 });
             } else if (typeof (currentsessions) === "Array") {
                 currentsessions.forEach(function (session) {
-                    session['suspended'] = true;
+                    session['manualLocked'] = true;
                 });
             }
             firebase.database().ref('/currentMatches/' + matchKey).update({ sessions: currentsessions });
@@ -146,11 +146,11 @@ function UpdateSessionsTable(sessions) {
         if (typeof (sessions) === "object") {
             sessions = Object.keys(sessions).filter(function (key) { return sessions[key]['active']}).map(function (key) {
                 Object.assign(sessions[key], { key: key });
-                return [sessions[key]["key"], sessions[key]["name"], sessions[key]["suspended"]];
+                return [sessions[key]["key"], sessions[key]["name"], sessions[key]["suspended"], sessions[key]['manualLocked']];
             });
         } else if (typeof (sessions) === "Array") {
             sessions.filter(function (session) { return session['active'] }).map(function (session) {
-                return [session["id"], session["name"], session["suspended"]]
+                return [session["id"], session["name"], session["suspended"], session['manualLocked']]
             })
         }
         console.log(sessions);
@@ -162,14 +162,14 @@ function UpdateSessionsTable(sessions) {
             var suspendedCell = sessionsTable.appendChild(document.createElement("span"));
             var suspendedButton = suspendedCell.appendChild(document.createElement("a"));
             suspendedButton.className = "btn";
-            suspendedButton.style = (sessions[i][2]) ? "background-color:red;width:100%;height:100%;color:white;" : "background-color:green;width:100%;height:100%;color:white;";
-            suspendedButton.innerText = (sessions[i][2]) ? "Suspended" : "Not Suspended";
+            suspendedButton.style = (sessions[i][3]) ? "background-color:red;width:100%;height:100%;color:white;" : "background-color:green;width:100%;height:100%;color:white;";
+            suspendedButton.innerText = (sessions[i][3]) ? "Locked" : "Not Locked";
             suspendedButton.setAttribute("sessionID", sessions[i][0]);
-            suspendedButton.setAttribute("sessionValue", sessions[i][2]);
+            suspendedButton.setAttribute("sessionValue", sessions[i][3]);
             suspendedButton.addEventListener("click", function (event) {
                 console.log(event.srcElement.getAttribute("sessionValue").toString());
                 firebase.database().ref('/currentMatches/' + matchKey + '/sessions/' + event.srcElement.getAttribute("sessionID").toString()).update({
-                    suspended: (event.srcElement.getAttribute("sessionValue").toString() === "true") ? false : true
+                    manualLocked: (event.srcElement.getAttribute("sessionValue").toString() === "true") ? false : true
                 });
             });
         }

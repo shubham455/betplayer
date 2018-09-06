@@ -104,6 +104,30 @@ namespace betplayer.poweruser
                                         AddMatchCalculationcmd.Parameters.AddWithValue("@MatchID", apiID);
                                         AddMatchCalculationcmd.Parameters.AddWithValue("@Amount", MatchtotalAmount);
                                         AddMatchCalculationcmd.ExecuteNonQuery();
+
+                                        string clearusedlimit = "update runner set Position1 = '0',Position2 = '0' where ClientID = '" + ClientID + "' && MatchID = '" + apiID + "' order by DateTime DESC ";
+                                        MySqlCommand clearusedlimitcmd = new MySqlCommand(clearusedlimit, cn);
+                                        clearusedlimitcmd.ExecuteNonQuery();
+
+
+                                        if (LedgerAmount < 0)
+                                        {
+                                            string Selectcurrentlimit = "Select * from ClientMaster where ClientID = '" + ClientID + "'";
+                                            MySqlCommand Selectcurrentlimitcmd = new MySqlCommand(Selectcurrentlimit, cn);
+                                            MySqlDataAdapter Selectcurrentlimitadp = new MySqlDataAdapter(Selectcurrentlimitcmd);
+                                            DataTable Selectcurrentlimitdt = new DataTable();
+                                            Selectcurrentlimitadp.Fill(Selectcurrentlimitdt);
+
+                                            decimal currentlimit = Convert.ToDecimal(Selectcurrentlimitdt.Rows[0]["CurrentLimit"]);
+
+                                            decimal finaldeductedamount = currentlimit + LedgerAmount;
+
+                                            string updateamount = "update clientmaster set Currentlimit = '" + finaldeductedamount + "' where ClientID = '" + ClientID + "' ";
+                                            MySqlCommand updateamountcmd = new MySqlCommand(updateamount, cn);
+                                            updateamountcmd.ExecuteNonQuery();
+                                        }
+
+
                                         string MatchBet = "select count(clientID) From runner where MatchID = '" + apiID + "' && ClientID = '" + ClientID + "' ";
                                         MySqlCommand MatchBetcmd = new MySqlCommand(MatchBet, cn);
                                         string MatchBetcount = MatchBetcmd.ExecuteScalar().ToString();
@@ -172,6 +196,29 @@ namespace betplayer.poweruser
                                     AddMatchCalculationcmd.Parameters.AddWithValue("@MatchID", apiID);
                                     AddMatchCalculationcmd.Parameters.AddWithValue("@Amount", MatchtotalAmount);
                                     AddMatchCalculationcmd.ExecuteNonQuery();
+
+                                    string clearusedlimit = "update runner set Position1 = '0',Position2 = '0' where ClientID = '" + ClientID + "' && MatchID = '" + apiID + "' order by DateTime DESC ";
+                                    MySqlCommand clearusedlimitcmd = new MySqlCommand(clearusedlimit, cn);
+                                    clearusedlimitcmd.ExecuteNonQuery();
+
+
+                                    if (LedgerAmount < 0)
+                                    {
+                                        string Selectcurrentlimit = "Select * from ClientMaster where ClientID = '" + ClientID + "'";
+                                        MySqlCommand Selectcurrentlimitcmd = new MySqlCommand(Selectcurrentlimit, cn);
+                                        MySqlDataAdapter Selectcurrentlimitadp = new MySqlDataAdapter(Selectcurrentlimitcmd);
+                                        DataTable Selectcurrentlimitdt = new DataTable();
+                                        Selectcurrentlimitadp.Fill(Selectcurrentlimitdt);
+
+                                        decimal currentlimit = Convert.ToDecimal(Selectcurrentlimitdt.Rows[0]["CurrentLimit"]);
+
+                                        decimal finaldeductedamount = currentlimit + LedgerAmount;
+
+                                        string updateamount = "update clientmaster set Currentlimit = '" + finaldeductedamount + "' where ClientID = '" + ClientID + "' ";
+                                        MySqlCommand updateamountcmd = new MySqlCommand(updateamount, cn);
+                                        updateamountcmd.ExecuteNonQuery();
+                                    }
+
 
                                     string MatchBet = "select count(clientID) From runner where MatchID = '" + apiID + "' && ClientID = '" + ClientID + "' ";
                                     MySqlCommand MatchBetcmd = new MySqlCommand(MatchBet, cn);
@@ -258,6 +305,29 @@ namespace betplayer.poweruser
                             AddMatchCalculationcmd.Parameters.AddWithValue("@Amount", MatchtotalAmount);
                             AddMatchCalculationcmd.ExecuteNonQuery();
 
+                            string clearusedlimit = "update runner set Position1 = '0',Position2 = '0' where ClientID = '"+ClientID+"' && MatchID = '"+apiID+"' order by DateTime DESC ";
+                            MySqlCommand clearusedlimitcmd = new MySqlCommand(clearusedlimit, cn);
+                            clearusedlimitcmd.ExecuteNonQuery();
+
+
+                           if(LedgerAmount < 0)
+                            {
+                                string Selectcurrentlimit = "Select * from ClientMaster where ClientID = '" + ClientID + "'";
+                                MySqlCommand Selectcurrentlimitcmd = new MySqlCommand(Selectcurrentlimit, cn);
+                                MySqlDataAdapter Selectcurrentlimitadp = new MySqlDataAdapter(Selectcurrentlimitcmd);
+                                DataTable Selectcurrentlimitdt = new DataTable();
+                                Selectcurrentlimitadp.Fill(Selectcurrentlimitdt);
+
+                                decimal currentlimit = Convert.ToDecimal(Selectcurrentlimitdt.Rows[0]["CurrentLimit"]);
+
+                                decimal finaldeductedamount = currentlimit + LedgerAmount;
+
+                                string updateamount = "update clientmaster set Currentlimit = '" + finaldeductedamount + "',client_limit= '"+finaldeductedamount+"' where ClientID = '" + ClientID + "' ";
+                                MySqlCommand updateamountcmd = new MySqlCommand(updateamount, cn);
+                                updateamountcmd.ExecuteNonQuery();
+                            }
+
+
                             string MatchBet = "select count(clientID) From runner where MatchID = '" + apiID + "' && ClientID = '" + ClientID + "' ";
                             MySqlCommand MatchBetcmd = new MySqlCommand(MatchBet, cn);
                             string MatchBetcount = MatchBetcmd.ExecuteScalar().ToString();
@@ -279,6 +349,7 @@ namespace betplayer.poweruser
                             Insertclientcmd.Parameters.AddWithValue("@SessionBets", SessionBetcount);
                             Insertclientcmd.ExecuteNonQuery();
                         }
+
 
                             string SELECT = "Update Matches Set Status = '11', Declear = '1', winnerTeam ='"+ team_selector1.Value+"'  Where apiID = '" + apiID + "'";
                             MySqlCommand cmd = new MySqlCommand(SELECT, cn);

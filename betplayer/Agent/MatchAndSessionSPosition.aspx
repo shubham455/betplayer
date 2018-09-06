@@ -295,7 +295,7 @@
 
                                                     { %>
                                                 <tr>
-                                                    <td width="50" height="25" align="right" style="text-align: right;"><strong><%:row["Runs"] %></strong></td>
+                                                    <td width="50" height="25" align="right" style="text-align: right;"><%:row["Runs"] %><strong></strong></td>
                                                     <td width="100" align="right" style="text-align: right;"><strong><%:row["Amount"] %></strong></td>
                                                 </tr>
                                                 <% } //foreach %>

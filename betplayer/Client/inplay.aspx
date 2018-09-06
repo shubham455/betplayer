@@ -11,7 +11,7 @@
         <a  style="color:black" href="#"><%: row["teamA"] %> VS <%: row["teamB"] %></a>
     </div>
     <div class="profile-details">
-        <a href="BetDetails.aspx?id=<%: row["apiID"] %>&fk=<%: row["firebasekey"] %>">
+        <a href="BetDetails.aspx?id=<%: row["apiID"] %>&fk=<%: row["firebasekey"] %>&Type=<%: row["Type"] %>">
             <table width="100%" border="0" cellspacing="2" cellpadding="2">
                 <tbody>
                     <tr style="color:black">
@@ -20,7 +20,7 @@
 
                             <div class="profile_picture">
                                 <p align="center">
-                                    <img src="<%=TeamtoImgpath(row["TeamA"].ToString()) %>" alt="team image" style="height:100px"/>
+                                    <img src="images/inplayImg/mark1.png" alt="team image" style="height:100px"/>
                                 </p>
                             </div>
 
@@ -38,19 +38,15 @@
                                     <tr>
                                         <td class="GameList" align="center">Session Bets : 0</td>
                                     </tr>
-                                    <tr>
-                                        <td class="GameList" align="center">Declared : </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="GameList" align="center">Won By : <%: row["winnerTeam"] %></td>
-                                    </tr>
+                                    
+                                    
                                 </tbody>
                             </table>
 
                         </td>
                         <td align="center" style="vertical-align: middle;">
                             <p align="center">
-                                <img src="<%=TeamtoImgpath(row["TeamB"].ToString()) %>" alt="team image" style="height:100px"/>
+                                <img src="images/inplayImg/mark1.png" alt="team image" style="height:100px"/>
                             </p>
                         </td>
                         <td width="1%">&nbsp;</td>

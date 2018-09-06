@@ -94,16 +94,16 @@ namespace betplayer.Agent
                                 Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
                                 Balance1 = Balance1 - Dabit;
                                 Balance1 = Balance1 + Credit;
-                                
+
                                 LedgerAmount = LedgerAmount + Balance1;
                             }
                         }
                         else
                         {
-                            LedgerAmount = Balance ;
+                            LedgerAmount = Balance;
 
                         }
-                        
+
 
 
                         string CollectionAmount = "Select * From ClientCollectionmaster where ClientID = '" + ClientID + "'";
@@ -126,10 +126,10 @@ namespace betplayer.Agent
                             {
                                 CollectionBalance = CollectionCredit;
                             }
-                            
+
                             CollectionBalance1 = CollectionBalance1 + CollectionBalance;
                         }
-                        
+
 
                         Decimal FinalAmount = CollectionBalance1 + LedgerAmount;
                         row["Balance"] = FinalAmount;

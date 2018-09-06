@@ -254,6 +254,7 @@
                                         <td align="left" class="TableHeading"><strong>Mode</strong></td>
                                         <td align="left" class="TableHeading"><strong>Team </strong></td>
                                         <td align="left" class="TableHeading"><strong>Client</strong></td>
+                                        <td align="left" class="TableHeading"><strong>User</strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong>
                                             <asp:Label ID="lblTeamA" runat="server"></asp:Label>
                                         </strong></td>
@@ -281,6 +282,7 @@
                                         <td align="left" class="TableHeading"><strong><%: row["Mode"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Team"] %> </strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["ClientID"] %>  <%: row["Name"] %></strong></td>
+                                        <td align="left" class="TableHeading"><strong> <%: row["AgentCreatedby"] %> / <%: row["CreatedBy"] %>  </strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Position1"] %> </strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Position2"] %>  </strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Datetime"] %></strong></td>

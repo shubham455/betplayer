@@ -75,7 +75,6 @@
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>TOL. COM</strong></td>
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>NET AMT</strong></td>
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>AGT SHR</strong></td>
-                                                                            <td width="100" align="right" style="text-align: right;" valign="middle"><strong>SA Share</strong></td>
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>MOB. APP</strong></td>
 
                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>FINAL</strong></td>
@@ -96,7 +95,6 @@
                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalCommisionAmount"] %> </strong></td>
                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalNetAmount"] %> </strong></td>
                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalHalfAmount"] %> </strong></td>
-                                                                            <td align="right" style="text-align: right;" valign="middle"><strong><%:row["SAAgentShare"] %></strong></td>
                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["MOBAppAmount"] %></strong></td>
                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["FinalAmount"] %>  </strong></td>
                                                                         </tr>
@@ -113,7 +111,6 @@
                                                                             <td style="text-align: right;"><strong><%:row["TotalCommisionAmount"] %></strong></td>
                                                                             <td style="text-align: right;"><strong><%:row["TotalNetAmount"] %></strong></td>
                                                                             <td style="text-align: right;"><%:row["TotalHalfAmount"] %></td>
-                                                                            <td style="text-align: right;"><%:row["SAAgentShare"] %></td>
                                                                             <td style="text-align: right;"><%:row["MOBAppAmount"] %></td>
                                                                             <td style="text-align: right;"><strong><%:row["FinalAmount"] %></strong></td>
 
@@ -158,8 +155,7 @@
                                                                 <asp:Label ID="SATotalNetAmount" runat="server"></asp:Label></strong></td>
                                                             <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
                                                                 <asp:Label ID="SATotalHalfAmount" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
-                                                                <asp:Label ID="SBSAAgentShare" runat="server"></asp:Label></strong></td>
+                                                            
                                                             <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
                                                                 <asp:Label ID="SAMOBAppAmount" runat="server"></asp:Label></strong></td>
 
@@ -206,9 +202,7 @@
                                                                 <asp:Label ID="Label7" runat="server"></asp:Label></strong></td>
                                                             <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
                                                                 <asp:Label ID="Label8" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
-                                                                <asp:Label ID="Label10" runat="server"></asp:Label></strong></td>
-                                                            <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
+                                                           <td width="80" align="right" style="text-align: right;" valign="middle"><strong>
                                                                 <asp:Label ID="Label9" runat="server"></asp:Label></strong></td>
 
                                                             <td width="80" align="right" style="text-align: right;" valign="middle"><strong>

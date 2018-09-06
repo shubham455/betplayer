@@ -46,8 +46,13 @@ if (matchIdElement !== null) {
                 }
                 document.getElementById("KRate1").value = (team_1.RunnerUnLocked || !team_1.hasOwnProperty("RunnerUnLocked")) ? runner.Khai.toString() : "0.00";
                 document.getElementById("LRate1").value = (team_1.RunnerUnLocked || !team_1.hasOwnProperty("RunnerUnLocked")) ? runner.Lagai.toString() : "0.00";
-
-
+                if (team_1.RunnerUnLocked || !team_1.hasOwnProperty("RunnerUnLocked")) {
+                    document.getElementById("runnerfloat1").style = "display:none;";
+                    document.getElementById("runnerfloat1").innerHTML = "";
+                } else {
+                    document.getElementById("runnerfloat1").style = "display:block;";
+                    document.getElementById("runnerfloat1").innerHTML = "Suspended";
+                }
             }
         );
     firebase
@@ -70,12 +75,6 @@ if (matchIdElement !== null) {
                     ")" +
                     asterix;
                 var runner = team_2.Runner;
-                if (runner.Khai.length === 3) {
-                    runner.Khai = runner.Khai+"0"
-                }
-                if (runner.Lagai.length === 3) {
-                    runner.Lagai = runner.Lagai + "0"
-                }
                 if (document.getElementById("KRate2").value !== runner.Khai.toString()) {
                     document.getElementById("KRate2").parentElement.className = "flash"
                     setTimeout(function () {
@@ -90,8 +89,45 @@ if (matchIdElement !== null) {
                 }
                 document.getElementById("KRate2").value = (team_2.RunnerUnLocked || !team_2.hasOwnProperty("RunnerUnLocked")) ? runner.Khai.toString() : "0.00";
                 document.getElementById("LRate2").value = (team_2.RunnerUnLocked || !team_2.hasOwnProperty("RunnerUnLocked")) ? runner.Lagai.toString() : "0.00";
-                
+                if (team_2.RunnerUnLocked || !team_2.hasOwnProperty("RunnerUnLocked")) {
+                    document.getElementById("runnerfloat2").style = "display:none;";
+                    document.getElementById("runnerfloat2").innerHTML = "";
+                } else {
+                    document.getElementById("runnerfloat2").style = "display:block;";
+                    document.getElementById("runnerfloat2").innerHTML = "Suspended";
+                }
               
+        });
+    firebase
+        .database()
+        .ref("/currentMatches/" + matchKey + "/team_c")
+        .on(
+            "value", // runs on change
+            function (snapshot) {
+                var team_c = snapshot.val();
+                var runner = team_c.Runner;
+                if (document.getElementById("KRate3").value !== runner.Khai.toString()) {
+                    document.getElementById("KRate3").parentElement.className = "flash"
+                    setTimeout(function () {
+                        document.getElementById("KRate3").parentElement.className = ""
+                    }, 500)
+                }
+                if (document.getElementById("LRate3").value !== runner.Lagai.toString()) {
+                    document.getElementById("LRate3").parentElement.className = "flash"
+                    setTimeout(function () {
+                        document.getElementById("LRate3").parentElement.className = ""
+                    }, 500)
+                }
+                document.getElementById("KRate3").value = (team_c.RunnerUnLocked || !team_c.hasOwnProperty("RunnerUnLocked")) ? runner.Khai.toString() : "0.00";
+                document.getElementById("LRate3").value = (team_c.RunnerUnLocked || !team_c.hasOwnProperty("RunnerUnLocked")) ? runner.Lagai.toString() : "0.00";
+                if (team_c.RunnerUnLocked || !team_c.hasOwnProperty("RunnerUnLocked")) {
+                    document.getElementById("runnerfloat2").style = "display:none;";
+                    document.getElementById("runnerfloat2").innerHTML = "";
+                } else {
+                    document.getElementById("runnerfloat2").style = "display:block;";
+                    document.getElementById("runnerfloat2").innerHTML = "Suspended";
+                }
+
             });
     firebase
         .database()
@@ -113,11 +149,11 @@ if (matchIdElement !== null) {
             function (snapshot) {
                 lastBall = snapshot.val();
                 console.log(lastBall);
-                document.getElementById("LastBall").src = "/client/images/LastBall/"+lastBall.event.replace(" ", "_")+".jpg";
+                document.getElementById("LastBall").src = "/client/images/LastBall/"+lastBall.event.replace(" ","_")+".jpg";
                 ballRunning();
                 if (!(lastBall.event === "Ball Start" || lastBall.event === "3 Run" || lastBall.event === "FOUR" || lastBall.event === "SIX" || lastBall.event === "Review" || lastBall.event === "Third Umpire" || lastBall.event === "OUT" || lastBall.event === "FREE HIT" || lastBall.event === "NO BALL"))
                     for (var i = 1; i <= 8; i++) {
-                    document.getElementById("float" + i).style = "display:none;";
+                    document.getElementById("runnerfloat1").style = "display:none;";
                     document.getElementById("float" + i).innerHTML = ""
                 }
                 updateSessionTable(sessions);
@@ -155,6 +191,7 @@ if (matchIdElement !== null) {
                     function (snapshot) {
                             document.getElementById("matchMaxBet").innerHTML = min + " / " + snapshot.val();
                             document.getElementById("matchMinBet").innerHTML = min + " / " + snapshot.val();
+                            
                         });
             });
     firebase
@@ -244,23 +281,32 @@ function updateSessionTable(sessions) {
             var session = displayableSessions[i - 1];
             console.log(session);
             document.getElementById("Session" + i).innerHTML = session['name'];
-            if (session['suspended'] === false) {
-                document.getElementById("float" + i).style = "";
-                document.getElementById("not" + i).value =
-                    session["not"] !== "" ? session["not"] : "0.00";
-                document.getElementById("yes" + i).value =
-                    session["yes"] !== "" ? session["yes"] : "0.00";
-                document.getElementById("notrate" + i).value =
-                    session["notRate"] !== "" ? session["notRate"] : "0.00";
-                document.getElementById("yesrate" + i).value =
-                    session["yesRate"] !== "" ? session["yesRate"] : "0.00";
-            } else {
-                document.getElementById("float" + i).innerHTML = "Suspended.";
+            if (session['manualLocked'] === true) {
+                document.getElementById("float" + i).innerHTML = "Ball Running.";
                 document.getElementById("float" + i).style = "display:block;";
                 document.getElementById("not" + i).value = "0.00";
                 document.getElementById("yes" + i).value = "0.00";
                 document.getElementById("notrate" + i).value = "0.00";
                 document.getElementById("yesrate" + i).value = "0.00";
+            } else {
+                if (session['suspended'] === false) {
+                    document.getElementById("float" + i).style = "";
+                    document.getElementById("not" + i).value =
+                        session["not"] !== "" ? session["not"] : "0.00";
+                    document.getElementById("yes" + i).value =
+                        session["yes"] !== "" ? session["yes"] : "0.00";
+                    document.getElementById("notrate" + i).value =
+                        session["notRate"] !== "" ? session["notRate"] : "0.00";
+                    document.getElementById("yesrate" + i).value =
+                        session["yesRate"] !== "" ? session["yesRate"] : "0.00";
+                } else {
+                    document.getElementById("float" + i).innerHTML = "Suspended.";
+                    document.getElementById("float" + i).style = "display:block;";
+                    document.getElementById("not" + i).value = "0.00";
+                    document.getElementById("yes" + i).value = "0.00";
+                    document.getElementById("notrate" + i).value = "0.00";
+                    document.getElementById("yesrate" + i).value = "0.00";
+                }
             }
         }
         ballRunning();
@@ -268,11 +314,14 @@ function updateSessionTable(sessions) {
 }
 
 function ballRunning() {
+    // var displayableSessions = sessions.filter(function (session) { return session['active'] });
     if (lastBall.event === "Ball Start" || lastBall.event === "3 Run" || lastBall.event === "FOUR" || lastBall.event === "SIX" || lastBall.event === "Review" || lastBall.event === "Third Umpire" || lastBall.event === "OUT" || lastBall.event === "FREE HIT" || lastBall.event === "NO BALL")
         for (var i = 1; i <= 8; i++) {
             document.getElementById("float" + i).style = "display:block;";
             document.getElementById("float" + i).innerHTML = "Ball Running."
         }
+    // for (var i = 1; i <= displayableSessions.length; i++)
+    // if (displayableSessions[i - 1]['manualLocked'] === true)
 }
 
 function clearSessionTable() {
@@ -476,8 +525,9 @@ function clearTimer() {
 function updatePosition(Bet, Amount, Team, Type) {
     var bet = parseFloat(Bet);
     var amount = parseInt(Amount);
-    Team1Position = document.getElementById("ContentPlaceHolder1_PositionTeam1");
-    Team2Position = document.getElementById("ContentPlaceHolder1_PositionTeam2");
+    Team1Position = document.getElementById("PositionTeam1");
+    Team2Position = document.getElementById("PositionTeam2");
+    TeamcPosition = document.getElementById("PositionTeam3");
 
     Team1PositionValue =
         Team1Position.innerHTML === "" ? 0 : parseInt(Team1Position.innerHTML);

@@ -85,15 +85,6 @@ namespace betplayer.admin {
         protected global::System.Web.UI.WebControls.Label SATotalNetAmount;
         
         /// <summary>
-        /// SATotalHalfAmount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SATotalHalfAmount;
-        
-        /// <summary>
         /// SBSAAgentShare control.
         /// </summary>
         /// <remarks>
@@ -191,15 +182,6 @@ namespace betplayer.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label8;
-        
-        /// <summary>
-        /// Label10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label10;
         
         /// <summary>
         /// Label9 control.

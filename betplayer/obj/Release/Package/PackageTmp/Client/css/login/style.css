@@ -2637,6 +2637,18 @@ body{
     line-height:100%;
 }
 
+.runnerfloat {
+    display: none;
+    background: #D7D7D7;
+    opacity: 0.9;
+    width: 30vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    line-height: 100%;
+}
+
 .ScoreCard {
     background: #2EF3FF;
     padding: .2em .2em;

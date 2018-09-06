@@ -183,6 +183,7 @@ namespace betplayer.poweruser
                     cmd.Parameters.AddWithValue("@lotusmatchId", matchId);
                     cmd.Parameters.AddWithValue("@Firebasekey", fkey);
                     cmd.Parameters.AddWithValue("@Autosession", '1');
+                    cmd.Parameters.AddWithValue("@ApiType", "ESPN-LOTUS");
 
                     cmd.ExecuteNonQuery();
 

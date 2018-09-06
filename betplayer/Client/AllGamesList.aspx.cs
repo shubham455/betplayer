@@ -57,43 +57,5 @@ namespace betplayer.Client
 
             }
         }
-        public string TeamtoImgpath(string TeamA)
-        {
-            if (TeamA == "Delhi Daredevils")
-            {
-                return "images/Teams_Image/DD.png";
-            }
-            else if (TeamA == "Royal Challengers Bangalore")
-            {
-                return "images/Teams_Image/RCB.png";
-            }
-            else if (TeamA == "Kolkata Knight Riders")
-            {
-                return "images/Teams_Image/KKR.png";
-            }
-            else if (TeamA == "Kings XI Punjab")
-            {
-                return "images/Teams_Image/KXIP.png";
-            }
-            else if (TeamA == "Mumbai Indians")
-            {
-                return "images/Teams_Image/MI.png";
-            }
-            else if (TeamA == "Chennai Super Kings")
-            {
-                return "images/Teams_Image/CSK.png";
-            }
-            else if (TeamA == "Sunrisers Hyderabad")
-            {
-                return "images/Teams_Image/SRH.png";
-            }
-            else if (TeamA == "Rajasthan Royals")
-            {
-                return "images/Teams_Image/RR.png";
-            }
-            return "";
-        }
-
-
     }
 }

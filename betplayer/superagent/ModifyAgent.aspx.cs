@@ -31,7 +31,7 @@ namespace betplayer.Super_Agent
                     txtname.Text = dt.Rows[0]["Name"].ToString();
                     txtContactno.Text = dt.Rows[0]["ContactNo"].ToString();
                     txtPassword.Text = dt.Rows[0]["Password"].ToString();
-                    txtAgentlimit.Text = dt.Rows[0]["AgentLimit"].ToString();
+                    txtAgentlimit.Text = dt.Rows[0]["FixLimit"].ToString();
                     txtAgentShare.Text = dt.Rows[0]["AgentShare"].ToString();
                     SessionDropDown.SelectedItem.Text = dt.Rows[0]["SessionCommisionType"].ToString();
                     DropDownstatus.SelectedItem.Text = dt.Rows[0]["status"].ToString();
@@ -61,14 +61,14 @@ namespace betplayer.Super_Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Update AgentMaster set Name = @Name,ContactNo= @ContactNo,Password=@Password,AgentLimit=@Agentlimit,AgentShare=@Agentshare,MobApp = @MobApp,SessionCommisionType=@SessionType,MatchCommision=@MatchCommision, SessionCommision=@SessionCommision,Status=@Status  where AgentId = '" + Id + "' ";
+                string s = "Update AgentMaster set Name = @Name,ContactNo= @ContactNo,Password=@Password,FixLimit=@FixLimit,AgentShare=@Agentshare,MobApp = @MobApp,SessionCommisionType=@SessionType,MatchCommision=@MatchCommision, SessionCommision=@SessionCommision,Status=@Status  where AgentId = '" + Id + "' ";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
 
 
                 cmd.Parameters.AddWithValue("@Name", txtname.Text);
                 cmd.Parameters.AddWithValue("@ContactNo", txtContactno.Text);
                 cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                cmd.Parameters.AddWithValue("@Agentlimit", txtAgentlimit.Text);
+                cmd.Parameters.AddWithValue("@FixLimit", txtAgentlimit.Text);
                 cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
                 cmd.Parameters.AddWithValue("@MobApp", txtMobileApp.Text);
                 cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
