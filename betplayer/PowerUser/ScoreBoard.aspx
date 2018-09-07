@@ -9,13 +9,13 @@
 
                     <div id="theme-change" class="hidden-phone"><i class="icon-cogs"></i><span class="settings"><span class="text">Theme:</span> <span class="colors"><span class="color-default" data-style="default"></span><span class="color-gray" data-style="gray"></span><span class="color-purple" data-style="purple"></span><span class="color-navy-blue" data-style="navy-blue"></span></span></span></div>
 
-                    <h3 class="page-title">Add Match</h3>
+                    <h3 class="page-title">Scoreboard</h3>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
 
-                        <li><a href="#">Add Match</a><span class="divider">&nbsp;</span></li>
+                        <li><a href="#">Modify Matches</a><span class="divider">&nbsp;</span></li>
 
-                        <li><a href="CreateMatch.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                        <li><a href="ModifyMatches.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 <div class="span12">
                     <div class="widget">
                         <div class="widget-title">
-                            <h4><i class="icon-globe"></i>Add Match</h4>
+                            <h4><i class="icon-globe"></i>Scoreboard</h4>
                             <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a><a href="javascript:;" class="icon-remove"></a></span>
                         </div>
                         <div class="widget-body form">

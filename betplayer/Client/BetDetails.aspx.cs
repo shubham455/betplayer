@@ -164,11 +164,13 @@ namespace betplayer.Client
                     {
                         PositionTeam1.Text = dt3.Rows[0]["Position1"].ToString();
                         PositionTeam2.Text = dt3.Rows[0]["Position2"].ToString();
+                        PositionTeam3.Text = dt3.Rows[0]["Position3"].ToString();
                     }
                     else
                     {
                         PositionTeam1.Text = "0.00";
                         PositionTeam2.Text = "0.00";
+                        PositionTeam3.Text = "0.00";
                     }
 
                     string result = "SELECT * FROM ViewMatch WHERE ClientID='" + ClientID + "' && MatchID = '" + apiID.Value + "'";

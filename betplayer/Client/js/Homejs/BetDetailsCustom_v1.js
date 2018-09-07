@@ -191,7 +191,7 @@ if (matchIdElement !== null) {
                     function (snapshot) {
                             document.getElementById("matchMaxBet").innerHTML = min + " / " + snapshot.val();
                             document.getElementById("matchMinBet").innerHTML = min + " / " + snapshot.val();
-                            
+                            document.getElementById("matchMinMaxBet").innerHTML = min + " / " + snapshot.val();
                         });
             });
     firebase
@@ -345,6 +345,9 @@ function doneClick() {
             if (!matchKey) alert("No FireBase Match.");
             else {
                 doneClicked = true;
+                betAmount = parseInt(
+                    document.getElementById("matchAmount").value
+                );
                 firebase
                     .database()
                     .ref("/currentMatches/" + matchKey)
@@ -353,9 +356,6 @@ function doneClick() {
                         function (snapshot) {
                             var match = snapshot.val();
                             console.log(betValue);
-                            betAmount = parseInt(
-                                document.getElementById("matchAmount").value
-                            );
                             if (betValue !== match[team][runnerSession][betType]) {
                                 alert("Bet Not Accepted Because Rate Not Found");
                                 clearTimer();
@@ -386,6 +386,9 @@ function doneClick() {
                                     ).innerHTML,
                                     Team2Position: document.getElementById(
                                         "ContentPlaceHolder1_PositionTeam2"
+                                    ).innerHTML,
+                                    TeamcPosition: document.getElementById(
+                                        "ContentPlaceHolder1_PositionTeam3"
                                     ).innerHTML
                                 };
                                 var formBody = [];
@@ -523,28 +526,72 @@ function clearTimer() {
 }
 
 function updatePosition(Bet, Amount, Team, Type) {
-    var bet = parseFloat(Bet);
-    var amount = parseInt(Amount);
-    Team1Position = document.getElementById("PositionTeam1");
-    Team2Position = document.getElementById("PositionTeam2");
-    TeamcPosition = document.getElementById("PositionTeam3");
+    var urlParams = new URLSearchParams(window.location.search);
+    var matchtype = urlParams.get('Type');
+    if (matchtype === "Test" || matchtype === "test" ) {
+        var bet = parseFloat(Bet);
+        var amount = parseInt(Amount);
+        Team1Position = document.getElementById("ContentPlaceHolder1_PositionTeam1");
+        Team2Position = document.getElementById("ContentPlaceHolder1_PositionTeam2");
+        TeamcPosition = document.getElementById("ContentPlaceHolder1_PositionTeam3");
 
-    Team1PositionValue =
-        Team1Position.innerHTML === "" ? 0 : parseInt(Team1Position.innerHTML);
-    Team2PositionValue =
-        Team2Position.innerHTML === "" ? 0 : parseInt(Team2Position.innerHTML);
-    console.log(Team1PositionValue, Team2PositionValue, bet, amount);
-    if (Team === "team_1" && Type === "Lagai") {
-        Team1Position.innerHTML = Team1PositionValue + bet * amount;
-        Team2Position.innerHTML = Team2PositionValue + -1 * amount;
-    } else if (Team === "team_1" && Type === "Khai") {
-        Team1Position.innerHTML = Team1PositionValue - bet * amount;
-        Team2Position.innerHTML = Team2PositionValue - -1 * amount;
-    } else if (Team === "team_2" && Type === "Lagai") {
-        Team1Position.innerHTML = Team1PositionValue + -1 * amount;
-        Team2Position.innerHTML = Team2PositionValue + bet * amount;
-    } else if (Team === "team_2" && Type === "Khai") {
-        Team1Position.innerHTML = Team1PositionValue - -1 * amount;
-        Team2Position.innerHTML = Team2PositionValue - bet * amount;
+        Team1PositionValue =
+            Team1Position.innerHTML === "" ? 0 : parseInt(Team1Position.innerHTML);
+        Team2PositionValue =
+            Team2Position.innerHTML === "" ? 0 : parseInt(Team2Position.innerHTML);
+        TeamcPositionValue =
+            TeamcPosition.innerHTML === "" ? 0 : parseInt(TeamcPosition.innerHTML);
+        console.log(Team1PositionValue, Team2PositionValue, bet, amount);
+        if (Team === "team_1" && Type === "Lagai") {
+            Team1Position.innerHTML = Team1PositionValue + bet * amount;
+            Team2Position.innerHTML = Team2PositionValue + -1 * amount;
+            TeamcPosition.innerHTML = TeamcPositionValue + -1 * amount;
+        } else if (Team === "team_1" && Type === "Khai") {
+            Team1Position.innerHTML = Team1PositionValue - bet * amount;
+            Team2Position.innerHTML = Team2PositionValue - -1 * amount;
+            TeamcPosition.innerHTML = TeamcPositionValue - -1 * amount;
+        } else if (Team === "team_2" && Type === "Lagai") {
+            Team1Position.innerHTML = Team1PositionValue + -1 * amount;
+            Team2Position.innerHTML = Team2PositionValue + bet * amount;
+            TeamcPosition.innerHTML = TeamcPositionValue + bet * amount;
+        } else if (Team === "team_2" && Type === "Khai") {
+            Team1Position.innerHTML = Team1PositionValue - -1 * amount;
+            Team2Position.innerHTML = Team2PositionValue - bet * amount;
+            TeamcPosition.innerHTML = TeamcPositionValue - bet * amount;
+        } else if (Team === "team_c" && Type === "Lagai") {
+            TeamcPosition.innerHTML = TeamcPositionValue + -1 * amount;
+            Team1Position.innerHTML = Team1PositionValue + bet * amount;
+            Team2Position.innerHTML = Team2PositionValue + bet * amount;
+        } else if (Team === "team_c" && Type === "Khai") {
+            TeamcPosition.innerHTML = TeamcPositionValue - -1 * amount;
+            Team1Position.innerHTML = Team1PositionValue - bet * amount;
+            Team2Position.innerHTML = Team2PositionValue - bet * amount;
+        }
+    }
+    else {
+        var bet = parseFloat(Bet);
+        var amount = parseInt(Amount);
+        Team1Position = document.getElementById("ContentPlaceHolder1_PositionTeam1");
+        Team2Position = document.getElementById("ContentPlaceHolder1_PositionTeam2");
+
+
+        Team1PositionValue =
+            Team1Position.innerHTML === "" ? 0 : parseInt(Team1Position.innerHTML);
+        Team2PositionValue =
+            Team2Position.innerHTML === "" ? 0 : parseInt(Team2Position.innerHTML);
+        console.log(Team1PositionValue, Team2PositionValue, bet, amount);
+        if (Team === "team_1" && Type === "Lagai") {
+            Team1Position.innerHTML = Team1PositionValue + bet * amount;
+            Team2Position.innerHTML = Team2PositionValue + -1 * amount;
+        } else if (Team === "team_1" && Type === "Khai") {
+            Team1Position.innerHTML = Team1PositionValue - bet * amount;
+            Team2Position.innerHTML = Team2PositionValue - -1 * amount;
+        } else if (Team === "team_2" && Type === "Lagai") {
+            Team1Position.innerHTML = Team1PositionValue + -1 * amount;
+            Team2Position.innerHTML = Team2PositionValue + bet * amount;
+        } else if (Team === "team_2" && Type === "Khai") {
+            Team1Position.innerHTML = Team1PositionValue - -1 * amount;
+            Team2Position.innerHTML = Team2PositionValue - bet * amount;
+        }
     }
 }

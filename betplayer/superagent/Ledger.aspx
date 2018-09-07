@@ -36,16 +36,7 @@
                         </div>
                     </div>
                 
-                    <div style="float:left;padding-left:20px;padding-right:20px;">
-                        <div class="circle-wrap">
-                            <a href="Agentplusminus.aspx">
-                                <div class="stats-circle red-color">
-                                    <i class="icon-tags"></i>
-                                </div>
-                                <strong><p style="color:#E17F90;">Agent Plus/Minus</p></strong>
-                            </a>
-                        </div>
-                    </div>
+                   
                     
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
@@ -69,16 +60,7 @@
                         </div>
                     </div>
                     
-                    <div style="float:left;padding-left:20px;padding-right:20px;">
-                        <div class="circle-wrap">
-                            <a href="DateWiseReport.aspx">
-                                <div class="stats-circle turquoise-color">
-                                    <i class="icon-user"></i>
-                                </div>
-                            <strong><p style="color:#4CC5CD;">Date Wise Report</p></strong>
-                            </a>
-                        </div>
-                    </div>
+                    
                 	
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">

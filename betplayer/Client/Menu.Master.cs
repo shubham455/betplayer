@@ -41,7 +41,7 @@ namespace betplayer.Client
                     int ClientID = Convert.ToInt32(dt.Rows[0]["ClientID"]);
                     int CurrentLimit = Convert.ToInt32(dt.Rows[0]["CurrentLimit"]);
 
-                    string Runner = "Select Position1,Position2 From Runner where ClientID = '" + ClientID + "' order by DateTime DESC ";
+                    string Runner = "Select Position1,Position2,position3 From Runner where ClientID = '" + ClientID + "' order by DateTime DESC ";
                     MySqlCommand Runnercmd = new MySqlCommand(Runner, cn);
                     MySqlDataAdapter Runneradp = new MySqlDataAdapter(Runnercmd);
                     DataTable Runnerdt = new DataTable();
@@ -51,6 +51,7 @@ namespace betplayer.Client
                     {
                         int Position1 = Convert.ToInt32(Runnerdt.Rows[0]["Position1"]);
                         int Position2 = Convert.ToInt32(Runnerdt.Rows[0]["Position2"]);
+                        string Position3 = (Runnerdt.Rows[0]["Position3"]).ToString();
 
                         int TotalPosition = 0;
                         int SessionAmount = 0;
@@ -105,6 +106,7 @@ namespace betplayer.Client
                                 updateClientlimit(ClientID, ClientLimit);
                             }
                         }
+
 
                         else if (Position1 < 0)
                         {

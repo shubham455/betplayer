@@ -118,21 +118,11 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="My_Ledger.aspx">My Ledger</a></li>
-                        <li><a class="" href="#">Client Plus/Minus</a></li>
                         <li><a class="" href="ClientLedger.aspx">Client Ledger</a></li>
                         <li><a class="" href="AllClientLedger.aspx">All Client Ledger</a></li>
-                        <li><a class="" href="#">Date Wise Report</a></li>
                     </ul>
                 </li>
-                <li class="has-sub">
-                    <a href="javascript:;" class="">
-                        <span class="icon-box"><i class="icon-cogs"></i></span>Reports
-					<span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="#">Client Limit Report</a></li>
-                    </ul>
-                </li>
+               
                 <li class="has-sub">
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-cogs"></i></span>Settings

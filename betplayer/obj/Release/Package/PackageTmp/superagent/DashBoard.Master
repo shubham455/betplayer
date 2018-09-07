@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
-    <title>Crick20 Dashboard</title>
+    <title>Livegame Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
@@ -121,23 +121,11 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="My_Ledger.aspx">My Ledger</a></li>
-                        <li><a class="" href="#">Agent Plus/Minus</a></li>
                         <li><a class="" href="AgentLedger.aspx">Agent Ledger</a></li>
                         <li><a class="" href="AllAgentLedger.aspx">All Agent Ledger</a></li>
-                        <li><a class="" href="#">Date Wise Report</a></li>
                     </ul>
                 </li>
-                <li class="has-sub">
-                    <a href="javascript:;" class="">
-                        <span class="icon-box"><i class="icon-cogs"></i></span>Reports
-				
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="#">Agent Limit Report</a></li>
-                        
-                    </ul>
-                </li>
+                
                 <li class="has-sub">
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-cogs"></i></span>Settings
@@ -158,7 +146,7 @@
     </form>
 
     <div id="footer">
-        2013 © Admin Lab Dashboard.
+        2018 © LiveGame25 Dashboard.
 	
         <div class="span pull-right">
             <span class="go-top"><i class="icon-arrow-up"></i></span>

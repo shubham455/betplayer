@@ -77,6 +77,7 @@ namespace betplayer.Client
             string MatchID = context.Request["MatchID"].ToString();
             int Position1 = Convert.ToInt32(context.Request["Team1Position"]);
             int Position2 = Convert.ToInt32(context.Request["Team2Position"]);
+            string Position3 = (context.Request["TeamcPosition"]).ToString();
 
             try
             {
@@ -114,14 +115,7 @@ namespace betplayer.Client
                     {
                         CheckClientAmount = ClientLimit1 + Position1;
                     }
-
-
-
-
-
-
-
-
+                    
 
                     if (CheckClientAmount == 0 || CheckClientAmount < 0)
                     {
@@ -131,7 +125,7 @@ namespace betplayer.Client
                     {
 
 
-                        string s = "Insert Into runner (ClientID, Amount, Rate, Mode, DateTime, MatchID,Team,Position1,Position2) values (@ClientID,@Amount,@Rate,@Mode,@DateTime,@MatchID,@Team,@Position1,@Position2)";
+                        string s = "Insert Into runner (ClientID, Amount, Rate, Mode, DateTime, MatchID,Team,Position1,Position2,Position3) values (@ClientID,@Amount,@Rate,@Mode,@DateTime,@MatchID,@Team,@Position1,@Position2,@Position3)";
                         MySqlCommand cmd = new MySqlCommand(s, cn);
                         cmd.Parameters.AddWithValue("@ClientID", ClientID);
                         cmd.Parameters.AddWithValue("@Amount", Amount);
@@ -142,6 +136,7 @@ namespace betplayer.Client
                         cmd.Parameters.AddWithValue("@Team", Team);
                         cmd.Parameters.AddWithValue("@Position1", Position1);
                         cmd.Parameters.AddWithValue("@Position2", Position2);
+                        cmd.Parameters.AddWithValue("@Position3", Position3);
                         cmd.ExecuteNonQuery();
 
 

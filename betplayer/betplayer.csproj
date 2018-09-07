@@ -1532,7 +1532,7 @@
     <Content Include="Client\js\Homejs\jquery.rd-parallax.js" />
     <Content Include="Client\js\Homejs\jquery.simplr.smoothscroll.min.js" />
     <Content Include="Client\js\Homejs\jquery.ui.totop.js" />
-    <Content Include="Client\js\Homejs\BetDetailsCustom.js" />
+    <Content Include="Client\js\Homejs\BetDetailsCustom_v1.js" />
     <Content Include="Client\js\Homejs\owl.carousel.min.js" />
     <Content Include="Client\js\Homejs\script.js" />
     <Content Include="Client\js\Homejs\superfish.js" />

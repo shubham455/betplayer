@@ -16,7 +16,7 @@
                                 <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
 							</li>
 							<li><a href="ModifyMatches.aspx">Modify Matches</a><span class="divider">&nbsp;</span></li>
-                            <li><a href="Dashboard.aspx"> <span style="color:#00F;"> <strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                            <li><a href="#"> <span style="color:#00F;"> <strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                             <li class="pull-right search-wrap">
                                 
                             </li>
@@ -40,7 +40,7 @@
                 	
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                            <a href="Dashboard.aspx">
+                            <a href="#">
                                 <div class="stats-circle gray-color">
                                     <i class="icon-comments-alt"></i>
                                 </div>

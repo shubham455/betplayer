@@ -17,7 +17,7 @@
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
                         <li>Sport's Betting <span class="divider">&nbsp;</span> </li>
                         <li>Session Plus Minus Selection<span class="divider">&nbsp;</span></li>
-                        <li><a href="SportDetails.php"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                        <li><a href="SportDetails.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
                     <!-- END PAGE TITLE & BREADCRUMB-->
                 </div>
