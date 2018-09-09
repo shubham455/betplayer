@@ -374,6 +374,7 @@ function doneClick() {
                                     Mode = "L";
                                 }
                                 var apiid = document.getElementById("ContentPlaceHolder1_apiID");
+
                                 var params = {
                                     Amount: betAmount,
                                     Rate: betValue,
@@ -387,9 +388,11 @@ function doneClick() {
                                     Team2Position: document.getElementById(
                                         "ContentPlaceHolder1_PositionTeam2"
                                     ).innerHTML,
-                                    TeamcPosition: document.getElementById(
+                                    TeamcPosition: ((document.getElementById(
                                         "ContentPlaceHolder1_PositionTeam3"
-                                    ).innerHTML
+                                    )) ? document.getElementById(
+                                        "ContentPlaceHolder1_PositionTeam3"
+                                    ).innerHTML : "0"
                                 };
                                 var formBody = [];
                                 for (var property in params) {
