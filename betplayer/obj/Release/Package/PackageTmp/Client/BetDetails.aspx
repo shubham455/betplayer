@@ -50,9 +50,9 @@
                             <tr>
                                 <td align="left" valign="top">
 
-                                    
-                                        
-                                    <table width="100%" border="0" border-color:#000; cellpadding="2" cellspacing="2">
+
+
+                                    <table style="width: 100%; border: 0; border-color: #000;" cellpadding="2" cellspacing="2">
                                         <tbody>
                                             <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                                 { %>
@@ -67,7 +67,7 @@
 
                                             <tr id="runnerrow1">
                                                 <td height="35" id="TeamA" align="center" valign="middle" bgcolor="#FFF" style="vertical-align: middle; font-weight: bold;"><%: row["TeamA"] %></td>
-                                                <td align="center" valign="middle" bgcolor="#FFF"  class="FontTextWhite" style="color: #000; bo vertical-align: middle">
+                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; bo vertical-align: middle">
                                                     <label id="matchMinBet" style="color: red;"></label>
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; vertical-align: middle">
@@ -75,9 +75,9 @@
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#79C1F8" style="vertical-align: middle; position: relative;">
                                                     <div id="runnerfloat1" class="runnerfloat"></div>
-                                                    <input type="button" name="ButtonL" id="LRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_1', 'Runner', 'Lagai')"/></td>
+                                                    <input type="button" name="ButtonL" id="LRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_1', 'Runner', 'Lagai')" /></td>
                                                 <td align="center" valign="middle" bgcolor="#FFBAD3" class="textTeamHead" style="vertical-align: middle; color: #000">
-                                                    <input type="button" name="ButtonK" id="KRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_1', 'Runner', 'Khai')"/></td>
+                                                    <input type="button" name="ButtonK" id="KRate1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_1', 'Runner', 'Khai')" /></td>
 
                                             </tr>
 
@@ -91,14 +91,14 @@
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#79C1F8" class="textTeamHead" style="vertical-align: middle; position: relative;">
                                                     <div id="runnerfloat2" class="runnerfloat"></div>
-                                                    <input type="button" name="ButtonL" id="LRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_2', 'Runner', 'Lagai')"/></td>
+                                                    <input type="button" name="ButtonL" id="LRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_2', 'Runner', 'Lagai')" /></td>
                                                 <td align="center" valign="middle" bgcolor="#FFBAD3" class="textTeamHead" style="vertical-align: middle; color: #000">
-                                                    <input type="button" name="ButtonK" id="KRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL _hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_2', 'Runner', 'Khai')"/></td>
+                                                    <input type="button" name="ButtonK" id="KRate2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL _hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_2', 'Runner', 'Khai')" /></td>
                                             </tr>
 
                                             <%if (emptyLedgerTable)
                                                 {
-                                             %>
+                                            %>
 
                                             <tr id="runnerrow3">
                                                 <td height="35" id="TeamB" align="center" valign="middle" bgcolor="#FFF" style="vertical-align: middle; font-weight: bold;"><%: row["TeamC"] %></td>
@@ -110,17 +110,17 @@
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#79C1F8" class="textTeamHead" style="vertical-align: middle; position: relative;">
                                                     <div id="runnerfloat3" class="runnerfloat"></div>
-                                                    <input type="button" name="ButtonL" id="LRate3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_c', 'Runner', 'Lagai')"/></td>
+                                                    <input type="button" name="ButtonL" id="LRate3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_c', 'Runner', 'Lagai')" /></td>
                                                 <td align="center" valign="middle" bgcolor="#FFBAD3" class="textTeamHead" style="vertical-align: middle; color: #000">
-                                                    <input type="button" name="ButtonK" id="KRate3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL _hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_c', 'Runner', 'Khai')"/></td>
+                                                    <input type="button" name="ButtonK" id="KRate3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL _hover'" onmouseout="this.className='ButtonL'" onclick="enableBetting(event, 'team_c', 'Runner', 'Khai')" /></td>
                                             </tr>
                                             <%  } //if
                                                 } //foreach
-                                      %>
+                                            %>
                                         </tbody>
                                     </table>
-                                    
-                                     
+
+
                                 </td>
                             </tr>
                             <tr>
@@ -392,10 +392,15 @@
             <% } //foreach %>
         </tbody>
     </table>
-
+    <link rel="stylesheet" href="css/Home/mss_v1.css" />
+    <div align="center" class="tv-container" style="margin: 15px 0">
+        <ul id="p1"></ul>
+    </div>
     <asp:HiddenField ID="firebasekey" runat="server" />
     <asp:HiddenField ID="apiID" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <!-- player !-->
+    <script src="js/Homejs/mss_v1.js" type="text/javascript"></script>
     <script src="js/Homejs/BetDetailsCustom_v1.js"></script>
 
 </asp:Content>

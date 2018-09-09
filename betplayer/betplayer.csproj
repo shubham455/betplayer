@@ -142,6 +142,7 @@
     <Content Include="Agent\img\LastBall\Timeout.jpg" />
     <Content Include="Agent\img\LastBall\WIDE.jpg" />
     <Content Include="Agent\img\LastBall\Wide4.jpg" />
+    <Content Include="Client\css\Home\mss_v1.css" />
     <Content Include="Client\images\InplayImg\avatar.png" />
     <Content Include="Client\images\InplayImg\mark1.png" />
     <Content Include="Client\images\LastBall\1_Run.jpg" />
@@ -166,6 +167,7 @@
     <Content Include="Client\images\MainMenuImg\password.png" />
     <Content Include="Client\images\MainMenuImg\play.png" />
     <Content Include="Client\images\MainMenuImg\terms.png" />
+    <Content Include="Client\js\Homejs\mss_v1.js" />
     <Content Include="PowerUser\AddfromDiamond.aspx" />
     <Content Include="PowerUser\AddFromLotus.aspx" />
     <Content Include="PowerUser\AddMatch.aspx" />
@@ -671,6 +673,7 @@
     <Content Include="PowerUser\css\customGrid.css" />
     <Content Include="PowerUser\css\Homepage\bootstrap.min.css" />
     <Content Include="PowerUser\css\Homepage\style.css" />
+    <Content Include="PowerUser\css\mss_v1.css" />
     <Content Include="PowerUser\css\style.css" />
     <Content Include="PowerUser\css\style.min.css" />
     <Content Include="PowerUser\css\style_default.css" />
@@ -736,10 +739,12 @@
     <Content Include="PowerUser\js\jquery.pulsate.min.js" />
     <Content Include="PowerUser\js\LiveMatch.js" />
     <Content Include="PowerUser\js\ManualMatch.js" />
+    <Content Include="PowerUser\js\mss_v1.js" />
     <Content Include="PowerUser\js\respond.js" />
     <Content Include="PowerUser\js\RunnerUpdate.js" />
     <Content Include="PowerUser\js\scripts.js" />
     <Content Include="PowerUser\js\SessionUpdate.js" />
+    <Content Include="PowerUser\LiveTV.aspx" />
     <Content Include="PowerUser\Login.aspx" />
     <Content Include="PowerUser\ManuallyUpdation.aspx" />
     <Content Include="admin\MatchAndSessionPosition.aspx" />
@@ -2729,6 +2734,13 @@
     </Compile>
     <Compile Include="PowerUser\Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PowerUser\LiveTV.aspx.cs">
+      <DependentUpon>LiveTV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\LiveTV.aspx.designer.cs">
+      <DependentUpon>LiveTV.aspx</DependentUpon>
     </Compile>
     <Compile Include="PowerUser\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
