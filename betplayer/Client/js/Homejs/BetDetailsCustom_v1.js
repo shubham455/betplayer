@@ -97,7 +97,8 @@ if (matchIdElement !== null) {
                     document.getElementById("runnerfloat2").innerHTML = "Suspended";
                 }
 
-            });
+        });
+    if (document.getElementById("ContentPlaceHolder1_PositionTeam3"))
     firebase
         .database()
         .ref("/currentMatches/" + matchKey + "/team_c")

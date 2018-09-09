@@ -81,6 +81,11 @@ namespace betplayer.PowerUser
                         maxBet = "200000",
                         sessionMinBet = "1000",
                         sessionMaxBet = "200000",
+                        livetv = new
+                        {
+                            enabled = false,
+                            channel = ""
+                        },
                         team_1 = new
                         {
                             Name = team1name,
