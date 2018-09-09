@@ -191,7 +191,7 @@ if (matchIdElement !== null) {
                     function (snapshot) {
                             document.getElementById("matchMaxBet").innerHTML = min + " / " + snapshot.val();
                             document.getElementById("matchMinBet").innerHTML = min + " / " + snapshot.val();
-                            document.getElementById("matchMinMaxBet").innerHTML = min + " / " + snapshot.val();
+                            
                         });
             });
     firebase
@@ -374,7 +374,6 @@ function doneClick() {
                                     Mode = "L";
                                 }
                                 var apiid = document.getElementById("ContentPlaceHolder1_apiID");
-
                                 var params = {
                                     Amount: betAmount,
                                     Rate: betValue,
@@ -388,11 +387,9 @@ function doneClick() {
                                     Team2Position: document.getElementById(
                                         "ContentPlaceHolder1_PositionTeam2"
                                     ).innerHTML,
-                                    TeamcPosition: ((document.getElementById(
+                                    TeamcPosition: document.getElementById(
                                         "ContentPlaceHolder1_PositionTeam3"
-                                    )) ? document.getElementById(
-                                        "ContentPlaceHolder1_PositionTeam3"
-                                    ).innerHTML : "0"
+                                    ).innerHTML
                                 };
                                 var formBody = [];
                                 for (var property in params) {

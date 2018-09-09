@@ -19,10 +19,15 @@ namespace betplayer.superagent
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
         public DataTable ClientDataTable1 { get { return ClientTable; } }
+        public Boolean emptyLedgerTable = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string type = Request.QueryString["Type"];
+            if (type == "Test" || type == "test")
+            {
+                emptyLedgerTable = true;
+            }
 
             ClientTable.Columns.Add(new DataColumn("runnerID"));
             ClientTable.Columns.Add(new DataColumn("Amount"));
@@ -321,7 +326,7 @@ namespace betplayer.superagent
                     string Agentcode = (dt11.Rows[i]["code"]).ToString();
                     Agentshare = Convert.ToDecimal(dt11.Rows[i]["Agentshare"]);
 
-                    string Clientshare = "Select code,Agent_Share From ClientMaster where CreatedBy = '" + Agentcode + "'";
+                    string Clientshare = "Select code,Agent_Share,ClientID From ClientMaster where CreatedBy = '" + Agentcode + "'";
                     MySqlCommand Clientsharecmd = new MySqlCommand(Clientshare, cn);
                     MySqlDataAdapter Clientshareadp = new MySqlDataAdapter(Clientsharecmd);
                     DataTable Clientsharedt = new DataTable();
@@ -329,13 +334,13 @@ namespace betplayer.superagent
 
                     for (int a = 0; a < Clientsharedt.Rows.Count; a++)
                     {
+                        int ClientID = Convert.ToInt16(Clientsharedt.Rows[a]["ClientID"]);
                         Clientshare1 = Convert.ToDecimal(Clientsharedt.Rows[a]["Agent_share"]);
                         string code = (Clientsharedt.Rows[a]["code"]).ToString();
 
+                        
 
-
-
-                        string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.Code = '" + code + "' && runner.MatchID = '" + apiID.Value + "' order by DateTime DESC";
+                        string s = "select runner.runnerID,runner.Amount,runner.rate,runner.Mode,runner.DateTime,runner.Team,runner.clientID,clientmaster.Name,runner.Position1,runner.Position2 from Runner inner join clientmaster on runner.ClientID = clientmaster.ClientID where clientmaster.ClientID = '"+ClientID+"'  && runner.MatchID = '" + apiID.Value + "' order by DateTime DESC";
                         MySqlCommand cmd1 = new MySqlCommand(s, cn);
                         MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                         DataTable dt5 = new DataTable();

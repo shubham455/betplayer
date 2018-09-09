@@ -262,6 +262,7 @@ namespace betplayer.Agent
                 cmd.Parameters.AddWithValue("@AgentID", Session["AgentID"]);
                 cmd.ExecuteNonQuery();
 
+                Amount.Text = "";
 
                 dropdownClient_SelectedIndexChanged(sender,e);
                 

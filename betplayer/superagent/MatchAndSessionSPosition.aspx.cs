@@ -17,11 +17,16 @@ namespace betplayer.superagent
         private DataTable runTable;
         public DataTable MatchesDataTable { get { return ClientTable; } }
         public DataTable runTable1 { get { return runTable; } }
+        public Boolean emptyLedgerTable = false;
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string type = Request.QueryString["Type"];
+            if (type == "Test" || type == "test")
+            {
+                emptyLedgerTable = true;
+            }
             ClientTable.Columns.Add(new DataColumn("SessionID"));
             ClientTable.Columns.Add(new DataColumn("Session"));
             ClientTable.Columns.Add(new DataColumn("Runs"));

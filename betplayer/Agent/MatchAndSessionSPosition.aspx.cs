@@ -19,11 +19,16 @@ namespace betplayer.Agent
         public DataTable MatchesDataTable { get { return dt; } }
 
         public DataTable runTable1 { get { return runTable; } }
+        public Boolean emptyLedgerTable = false;
 
 
         protected void Page_Load(object sender, EventArgs e)
-
         {
+            string type = Request.QueryString["Type"];
+            if (type == "Test" || type == "test")
+            {
+                emptyLedgerTable = true;
+            }
             runTable = new DataTable();
             runTable.Columns.Add(new DataColumn("RUNS"));
             runTable.Columns.Add(new DataColumn("AMOUNT"));

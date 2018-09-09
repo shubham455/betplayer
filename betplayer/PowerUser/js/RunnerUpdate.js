@@ -105,20 +105,7 @@ if (matchIdElement !== null) {
                     console.log("Updating Session Rate.");
                 });
             });
-            document.getElementById('ball_start').addEventListener("click", updateScore);
-            document.getElementById('1run').addEventListener("click", updateScore);
-            document.getElementById('2run').addEventListener("click", updateScore);
-            document.getElementById('3run').addEventListener("click", updateScore);
-            document.getElementById('four').addEventListener("click", updateScore);
-            document.getElementById('six').addEventListener("click", updateScore);
-            document.getElementById('wide').addEventListener("click", updateScore);
-            document.getElementById('noball').addEventListener("click", updateScore);
-            document.getElementById('freehit').addEventListener("click", updateScore);
-            document.getElementById('wideplus4').addEventListener("click", updateScore);
-            document.getElementById('timeout').addEventListener("click", updateScore);
-            document.getElementById('thirdumpire').addEventListener("click", updateScore);
-
-
+            
         });
 }
 function updateScore(event) {

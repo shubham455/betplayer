@@ -66,8 +66,7 @@
                                                                                             </div>
                                                                                         </td>
                                                                                         <td width="20%" style="text-align: center; vertical-align: middle;">
-                                                                                            <span id="LastBall" style="color: black; font-weight: bold; font-size: large"></span>
-                                                                                        </td>
+                                                                                             <img id="LastBall" style="height: 100%;" src="" /></td>
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>
@@ -111,6 +110,23 @@
                                                                                                 <asp:Label ID="Team2Amt" runat="server" Style="font-size: 13px; font-weight: bold"></asp:Label>
                                                                                             </td>
                                                                                         </tr>
+                                                                                        <%if (emptyLedgerTable)
+                                                                                            {
+                                                                                        %>
+                                                                                        <tr>
+                                                                                            <td height="35" align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;"><span>
+                                                                                                <input type="button" name="Team2" id="Teamc" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="ShowMatch()" style="width: 120px;">
+                                                                                            </span></td>
+                                                                                            <td align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;">
+                                                                                                <input type="button" name="KRate2" id="LRate3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(2)"></td>
+                                                                                            <td align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;"><span style="color: ">
+                                                                                                <input type="button" name="LRate2" id="KRate3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitL(2)">
+                                                                                            </span></td>
+                                                                                            <td align="center" valign="middle" style="text-align: center; vertical-align: middle;">
+                                                                                                <asp:Label ID="Label1" runat="server" Style="font-size: 13px; font-weight: bold"></asp:Label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <%  } %>
                                                                                     </tbody>
                                                                                 </table>
                                                                             </div>
@@ -126,7 +142,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session1" id="Session1" value="NONE" onclick="Redirect(this.value);" class="ButtonUserSession" style="width: 150px;"></td>
+                                                                                                <input type="button" name="Session1" id="Session1" value="NONE"  class="ButtonUserSession" style="width: 150px;" onclick="Redirect1(this.value);"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not1" id="not1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(1)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -138,7 +154,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session2" id="Session2" value="NONE" onclick="Redirect(this.value);" class="ButtonUserSession" style="width: 150px;"></td>
+                                                                                                <input type="button" name="Session2" id="Session2" value="NONE"  class="ButtonUserSession" style="width: 150px;" onclick="Redirect1(this.value);"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not2" id="not2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(2)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -150,7 +166,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width: 150px;" /></td>
+                                                                                                <input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect1(this.value);" /></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not3" id="not3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(3)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -162,7 +178,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width: 150px;" />
+                                                                                                <input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect1(this.value);" />
                                                                                             </td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not4" id="not4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(4)"></td>
@@ -282,7 +298,7 @@
                                         <td align="left" class="TableHeading"><strong><%: row["Mode"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Team"] %> </strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["ClientID"] %>  <%: row["Name"] %></strong></td>
-                                        <td align="left" class="TableHeading"><strong> <%: row["AgentCreatedby"] %> / <%: row["CreatedBy"] %>  </strong></td>
+                                        <td align="left" class="TableHeading"><strong><%: row["AgentCreatedby"] %> / <%: row["CreatedBy"] %>  </strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Position1"] %> </strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Position2"] %>  </strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Datetime"] %></strong></td>
@@ -312,15 +328,17 @@
     <script type="text/javascript">
          <!--
 
-    function Redirect(value) {
-        var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
-        var firebasekey = document.getElementById("ContentPlaceHolder_firebasekey").value;
-        console.log(matchid);
-        if (value != "NONE") {
-            window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + "&&Session=" + value + "&&fk=" + firebasekey;
-        }
 
-    }
+        function Redirect1(value) {
+            if (value != "NONE") {
+                var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
+                var firebasekey = document.getElementById("ContentPlaceHolder_firebasekey").value;
+                var urlParams = new URLSearchParams(window.location.search);
+                var matchtype = urlParams.get('Type');
+                window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + " &&Session=" + value + "&&fk=" + firebasekey + "&&Type=" + matchtype;
+            }
+        }
+    
          //-->
     </script>
     <script>

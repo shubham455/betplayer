@@ -88,6 +88,24 @@
     <Content Include="admin\ClientLedger.aspx" />
     <Content Include="admin\Createpoweruser.aspx" />
     <Content Include="admin\DeleteBets.aspx" />
+    <Content Include="admin\img\LastBall\1_Run.jpg" />
+    <Content Include="admin\img\LastBall\2_Run.jpg" />
+    <Content Include="admin\img\LastBall\3_Run.jpg" />
+    <Content Include="admin\img\LastBall\Ball_Start.jpg" />
+    <Content Include="admin\img\LastBall\Bet_Closed.jpg" />
+    <Content Include="admin\img\LastBall\Bet_Open.jpg" />
+    <Content Include="admin\img\LastBall\Four.jpg" />
+    <Content Include="admin\img\LastBall\Free_Hit.jpg" />
+    <Content Include="admin\img\LastBall\InningsBreak.jpg" />
+    <Content Include="admin\img\LastBall\No_Ball.jpg" />
+    <Content Include="admin\img\LastBall\No_Run.jpg" />
+    <Content Include="admin\img\LastBall\OUT.jpg" />
+    <Content Include="admin\img\LastBall\Review.jpg" />
+    <Content Include="admin\img\LastBall\SIX.jpg" />
+    <Content Include="admin\img\LastBall\Third_Umpire.jpg" />
+    <Content Include="admin\img\LastBall\Timeout.jpg" />
+    <Content Include="admin\img\LastBall\WIDE.jpg" />
+    <Content Include="admin\img\LastBall\Wide4.jpg" />
     <Content Include="admin\MatchAndSessionSPosition.aspx" />
     <Content Include="admin\MatchPlusMinusDisplay.aspx" />
     <Content Include="admin\MatchplusminusSelect.aspx" />
@@ -106,6 +124,24 @@
     <Content Include="admin\UpdatedRunnerBets.aspx" />
     <Content Include="admin\UpdatedSessionBets.aspx" />
     <Content Include="admin\Updatesuperagentlimit.aspx" />
+    <Content Include="Agent\img\LastBall\1_Run.jpg" />
+    <Content Include="Agent\img\LastBall\2_Run.jpg" />
+    <Content Include="Agent\img\LastBall\3_Run.jpg" />
+    <Content Include="Agent\img\LastBall\Ball_Start.jpg" />
+    <Content Include="Agent\img\LastBall\Bet_Closed.jpg" />
+    <Content Include="Agent\img\LastBall\Bet_Open.jpg" />
+    <Content Include="Agent\img\LastBall\Four.jpg" />
+    <Content Include="Agent\img\LastBall\Free_Hit.jpg" />
+    <Content Include="Agent\img\LastBall\InningsBreak.jpg" />
+    <Content Include="Agent\img\LastBall\No_Ball.jpg" />
+    <Content Include="Agent\img\LastBall\No_Run.jpg" />
+    <Content Include="Agent\img\LastBall\OUT.jpg" />
+    <Content Include="Agent\img\LastBall\Review.jpg" />
+    <Content Include="Agent\img\LastBall\SIX.jpg" />
+    <Content Include="Agent\img\LastBall\Third_Umpire.jpg" />
+    <Content Include="Agent\img\LastBall\Timeout.jpg" />
+    <Content Include="Agent\img\LastBall\WIDE.jpg" />
+    <Content Include="Agent\img\LastBall\Wide4.jpg" />
     <Content Include="Client\images\InplayImg\avatar.png" />
     <Content Include="Client\images\InplayImg\mark1.png" />
     <Content Include="Client\images\LastBall\1_Run.jpg" />
@@ -2049,6 +2085,24 @@
     <Content Include="superagent\CollectionDetails.aspx" />
     <Content Include="superagent\CompanymatchplusminusDisplay.aspx" />
     <Content Include="superagent\CompanymatchPlusminusSelect.aspx" />
+    <Content Include="superagent\img\LastBall\1_Run.jpg" />
+    <Content Include="superagent\img\LastBall\2_Run.jpg" />
+    <Content Include="superagent\img\LastBall\3_Run.jpg" />
+    <Content Include="superagent\img\LastBall\Ball_Start.jpg" />
+    <Content Include="superagent\img\LastBall\Bet_Closed.jpg" />
+    <Content Include="superagent\img\LastBall\Bet_Open.jpg" />
+    <Content Include="superagent\img\LastBall\Four.jpg" />
+    <Content Include="superagent\img\LastBall\Free_Hit.jpg" />
+    <Content Include="superagent\img\LastBall\InningsBreak.jpg" />
+    <Content Include="superagent\img\LastBall\No_Ball.jpg" />
+    <Content Include="superagent\img\LastBall\No_Run.jpg" />
+    <Content Include="superagent\img\LastBall\OUT.jpg" />
+    <Content Include="superagent\img\LastBall\Review.jpg" />
+    <Content Include="superagent\img\LastBall\SIX.jpg" />
+    <Content Include="superagent\img\LastBall\Third_Umpire.jpg" />
+    <Content Include="superagent\img\LastBall\Timeout.jpg" />
+    <Content Include="superagent\img\LastBall\WIDE.jpg" />
+    <Content Include="superagent\img\LastBall\Wide4.jpg" />
     <Content Include="superagent\MatchSessionPlusminusDisplay.aspx" />
     <Content Include="superagent\CompanymatchSessionplusMinusSelect.aspx" />
     <Content Include="superagent\CompanyPlusMinusSelect.aspx" />
@@ -2276,6 +2330,7 @@
     <Content Include="PowerUser\ScheduleMatch.ashx" />
     <Content Include="admin\DeleteRunnerBets.ashx" />
     <Content Include="admin\DeleteSessionBets.ashx" />
+    <Content Include="admin\UnDeclarematch.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <Content Include="superagent\Agentlimit.ashx" />
@@ -2523,6 +2578,9 @@
     </Compile>
     <Compile Include="admin\superagentlimit.ashx.cs">
       <DependentUpon>superagentlimit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\UnDeclarematch.ashx.cs">
+      <DependentUpon>UnDeclarematch.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\UpdateAgentlimit.aspx.cs">
       <DependentUpon>UpdateAgentlimit.aspx</DependentUpon>

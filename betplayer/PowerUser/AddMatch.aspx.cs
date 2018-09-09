@@ -175,7 +175,7 @@ namespace betplayer.poweruser
                 }
                 else
                 {
-                    string s = "Update Matches set Firebasekey  = @Firebasekey, lotusmatchid = @lotusmatchId,AutoSession = @Autosession, Active = @Active where matchesID = @MatchID";
+                    string s = "Update Matches set Firebasekey  = @Firebasekey, lotusmatchid = @lotusmatchId,AutoSession = @Autosession, Active = @Active,Apitype = @Apitype where matchesID = @MatchID";
 
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     cmd.Parameters.AddWithValue("@Active", '1');

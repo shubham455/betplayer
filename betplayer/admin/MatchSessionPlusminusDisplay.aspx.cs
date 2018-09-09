@@ -276,7 +276,7 @@ namespace betplayer.admin
                         if (Amount != TotalFinalAmount1)
                         {
 
-                            string s11 = "update AdminLedger set Amount = @Amount,Dabit =@Dabit,Credit=@Credit  where AdminID = '" + Session["AdminID"] + "'";
+                            string s11 = "update AdminLedger set Amount = @Amount,Dabit =@Dabit,Credit=@Credit  where AdminID = '" + Session["AdminID"] + "' && MatchID = '"+MatchID+"'";
                             MySqlCommand cmd11 = new MySqlCommand(s11, cn);
                             cmd11.Parameters.AddWithValue("@Amount", TotalFinalAmount1);
                             cmd11.Parameters.AddWithValue("@Dabit", Dabit);

@@ -16,13 +16,18 @@ namespace betplayer.Agent
         private DataTable dt1;
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
+        public Boolean emptyLedgerTable = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
             firebasekey.Value = (Request.QueryString["fk"]);
             apiID.Value = (Request.QueryString["MatchID"]);
-
+            string type = Request.QueryString["Type"];
+            if (type == "Test" || type == "test")
+            {
+                emptyLedgerTable = true;
+            }
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {

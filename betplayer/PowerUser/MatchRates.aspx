@@ -70,15 +70,15 @@
 
                                 </tbody>
                             </table>
-                            
-                            
-                           
+
+
+
                             <div class="widget-body form">
                                 <table>
                                     <tbody>
                                         <tr>
                                             <td width="25%" align="left" valign="middle">
-                                               <span>Runner Min/Max: </span> 
+                                                <span>Runner Min/Max: </span>
                                             </td>
                                             <td width="30%" align="left" valign="middle">
                                                 <input id="minBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="minBetKeyPress(event)" type="text" style="width: 90%; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Min Bet">
@@ -93,7 +93,7 @@
                                         </tr>
                                         <tr>
                                             <td width="25%" align="left" valign="middle">
-                                               <span>Session Min/Max: </span> 
+                                                <span>Session Min/Max: </span>
                                             </td>
                                             <td width="30%" align="left" valign="middle">
                                                 <input id="sessionMinBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="sessionMinBetKeyPress(event)" type="text" style="width: 90%; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Min Bet">
@@ -109,7 +109,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                             <div class="widget-body form">
+                            <div class="widget-body form">
                                 <table>
                                     <tr>
                                         <td>
@@ -121,13 +121,18 @@
                                         </td>
                                         <td style="margin-left: 30px;"></td>
                                         <td>
-                                            <asp:button id="btnDeclare" runat="server" onclick="btnDeclare_ServerClick" Text="Declare" class="btn btn-success" style="height: 50px; width: 120px; font-size: x-large; font-weight: bold; color: black" />
+                                            <asp:Button ID="btnDeclare" runat="server" OnClick="btnDeclare_ServerClick" OnClientClick="return matchDeclareConfirmation();" Text="Declare" class="btn btn-success" Style="height: 50px; width: 120px; font-size: x-large; font-weight: bold; color: black" />
                                         </td>
                                         <td style="margin-left: 30px;"></td>
                                         <td>
-                                            <asp:button id="btnnDeclare" class="btn btn-success"  runat="server" onclick="btnUnDeclare_ServerClick"  Text="UnDeclare" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black" />
+                                            <asp:Button ID="btntie" runat="server" OnClick="btntie_Click" OnClientClick="return matchDeclareConfirmation();" Text="Tie" class="btn btn-success" Style="height: 50px; width: 120px; font-size: x-large; font-weight: bold; color: black" />
                                         </td>
-
+                                        <td style="margin-left: 30px;"></td>
+                                        <td>
+                                            <asp:Button ID="btnabandoned" runat="server" OnClick="btnabandoned_Click" OnClientClick="return matchDeclareConfirmation();" Text="Abandoned" class="btn btn-success" Style="height: 50px; width: 150px; font-size: x-large; font-weight: bold; color: black" />
+                                        </td>
+                                        <td style="margin-left: 30px;"></td>
+                                        
                                     </tr>
                                 </table>
                             </div>
@@ -137,9 +142,18 @@
             </div>
         </div>
     </div>
-    
+
     <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="js/RunnerUpdate.js"></script>
-    
+
+    <script>
+        function matchDeclareConfirmation() {
+            if (confirm("Are you sure you want to declare this match?"))
+                return true;
+            else
+                return false;
+        }
+        
+    </script>
 </asp:Content>

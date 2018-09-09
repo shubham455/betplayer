@@ -16,14 +16,14 @@ namespace betplayer.Client
 
         private DataTable dt;
         private DataTable dt1;
-        private DataTable dt2;
+        
         private DataTable dt3;
         private DataTable dt4;
         private DataTable dt5;
         private DataTable dt6 = new DataTable();
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
-        public DataTable MatchesDataTable2 { get { return dt2; } }
+        
         public DataTable MatchesDataTable3 { get { return dt3; } }
         public DataTable MatchesDataTable5 { get { return dt6; } }
         public Boolean emptyLedgerTable = false;

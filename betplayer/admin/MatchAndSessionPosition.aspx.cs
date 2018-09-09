@@ -20,10 +20,14 @@ namespace betplayer.admin
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
         public DataTable ClientDataTable1 { get { return ClientTable; } }
-
+        public Boolean emptyLedgerTable = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string type = Request.QueryString["Type"];
+            if (type == "Test" || type == "test")
+            {
+                emptyLedgerTable = true;
+            }
 
             ClientTable.Columns.Add(new DataColumn("runnerID"));
             ClientTable.Columns.Add(new DataColumn("Amount"));
@@ -388,7 +392,7 @@ namespace betplayer.admin
                                 }
                                 else if (TeamA == team && Mode1 == "L")
                                 {
-                                    Position = Amount * Rate ;
+                                    Position = Amount * Rate;
                                 }
                                 else if (TeamB == team && Mode1 == "K")
                                 {
@@ -551,7 +555,7 @@ namespace betplayer.admin
                         Team1Amt.ForeColor = System.Drawing.Color.Red;
 
                     }
-                
+
                     if (Team2Amt1 > 0)
                     {
                         Team2Amt.ForeColor = System.Drawing.Color.Blue;

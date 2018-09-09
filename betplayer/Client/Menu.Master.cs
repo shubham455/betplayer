@@ -51,7 +51,7 @@ namespace betplayer.Client
                     {
                         int Position1 = Convert.ToInt32(Runnerdt.Rows[0]["Position1"]);
                         int Position2 = Convert.ToInt32(Runnerdt.Rows[0]["Position2"]);
-                        string Position3 = (Runnerdt.Rows[0]["Position3"]).ToString();
+                        int Position3 = Convert.ToInt32(Runnerdt.Rows[0]["Position3"]);
 
                         int TotalPosition = 0;
                         int SessionAmount = 0;
@@ -120,6 +120,17 @@ namespace betplayer.Client
                             updateClientlimit(ClientID, ClientLimit);
                         }
                         else if (Position2 < 0)
+                        {
+                            TotalPosition = Position2;
+                            int ClientLimit = (CurrentLimit + TotalPosition);
+                            SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
+                            int FinalClientLimit = ClientLimit - SessionAmount;
+                            int ClientLimit1 = declareSessionAmount(ClientID);
+                            int FinalClientLimit1 = FinalClientLimit + ClientLimit1;
+                            lblAmount.InnerText = FinalClientLimit1.ToString();
+                            updateClientlimit(ClientID, ClientLimit);
+                        }
+                        else if (Position3 < 0)
                         {
                             TotalPosition = Position2;
                             int ClientLimit = (CurrentLimit + TotalPosition);

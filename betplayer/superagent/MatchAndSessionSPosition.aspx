@@ -66,8 +66,7 @@
                                                                                             </div>
                                                                                         </td>
                                                                                         <td width="20%" style="text-align: center; vertical-align: middle;">
-                                                                                            <span id="LastBall" style="color: black; font-weight: bold; font-size: large"></span>
-                                                                                        </td>
+                                                                                             <img id="LastBall" style="height: 100%;" src="" /></td>
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>
@@ -109,6 +108,23 @@
                                                                                             <td align="center" valign="middle" style="text-align: center; vertical-align: middle;"><span class="ButtonL" id="Team2Amt"></span>
                                                                                             </td>
                                                                                         </tr>
+                                                                                        <%if (emptyLedgerTable)
+                                                                                            {
+                                                                                        %>
+                                                                                        <tr>
+                                                                                            <td height="35" align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;"><span>
+                                                                                                <input type="button" name="Team2" id="Teamc" value="" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="Redirect();" style="width: 120px;">
+                                                                                            </span></td>
+                                                                                            <td align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;">
+                                                                                                <input type="button" name="KRate2" id="LRate3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddMatchBitK(2)"></td>
+                                                                                            <td align="center" valign="middle" style="color: ; text-align: center; vertical-align: middle;"><span style="color: ">
+                                                                                                <input type="button" name="LRate2" id="KRate3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitL(2)">
+                                                                                            </span></td>
+                                                                                            <td align="center" valign="middle" style="text-align: center; vertical-align: middle;">
+                                                                                                <asp:Label ID="Label1" runat="server" Style="font-size: 13px; font-weight: bold"></asp:Label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <%  } %>
                                                                                     </tbody>
                                                                                 </table>
                                                                             </div>
@@ -322,14 +338,18 @@
     function Redirect(value) {
         var matchID = document.getElementById("ContentPlaceHolder_apiID").value;
         var firebasekey = document.getElementById("ContentPlaceHolder_firebasekey").value;
-        window.location = "MatchAndSessionPosition.aspx?MatchID=" + matchID + "&&fk=" + firebasekey;
+        var urlParams = new URLSearchParams(window.location.search);
+        var matchtype = urlParams.get('Type');
+        window.location = "MatchAndSessionPosition.aspx?MatchID=" + matchID + "&&fk=" + firebasekey + "&&Type=" + matchtype;
     }
     function Redirect1(value) {
         var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
         var firebasekey = document.getElementById("ContentPlaceHolder_firebasekey").value;
+        var urlParams = new URLSearchParams(window.location.search);
+        var matchtype = urlParams.get('Type');
         console.log(matchid);
         if (value != "NONE") {
-            window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + "&&Session=" + value + "&&fk=" + firebasekey;
+            window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + "&&Session=" + value + "&&fk=" + firebasekey+ "&&Type="+matchtype;
         }
 
     }

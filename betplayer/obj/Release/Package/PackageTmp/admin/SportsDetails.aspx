@@ -56,10 +56,11 @@
                                             <div class="btn-group">
                                                 <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="<%if (Convert.ToInt16(row["Declear"]) == 1) {%>#<% }else{%>MatchAndSessionPosition.aspx?MatchID=<%: row["apiID"] %>&fk=<%: row["firebasekey"] %><% } %>"><i class="icon-film"></i>Match &amp; Session Position</a></li>
+                                                    <li><a href="<%if (Convert.ToInt16(row["Declear"]) == 1){%>#<% }else{%>MatchAndSessionPosition.aspx?MatchID=<%: row["apiID"] %>&fk=<%: row["firebasekey"] %>&Type=<%: row["Type"] %><% } %>"><i class="icon-film"></i>Match &amp; Session Position</a></li>
                                                     <li><a href="PlusMinusSelect.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-filter"></i>Match &amp; Session Plus Minus</a></li>
                                                     <li><a href="ViewMatchReport.aspx?MatchID=<%: row["apiID"] %>""><i class="icon-pushpin"></i>Display Match Bets</a></li>
                                                     <li><a href="ViewSessionReport.aspx?MatchID=<%: row["apiID"] %>""><i class="icon-bullhorn"></i>Display Session Bets</a></li>
+                                                    <li><a onclick="undeclarematch(<%: row["apiID"] %>);"><i class="icon-bullhorn"></i>Undeclare Match</a></li>
                                                         
                                                 </ul>
                                             </div>
@@ -71,7 +72,7 @@
                                         <td align="left" class="FontText"><%: toDateString(row["DateTime"])%></td>
                                         <td width="110" align="left" class="FontText"><%: toTime(row["DateTime"]) %></td>
                                         <td width="110" align="left" class="FontText"><%: row["Type"] %></td>
-                                        <td width="100" align="left" class="FontText"><%if (Convert.ToInt16(row["Declear"]) == 1) {%>Yes<% }else{%>No<% } %></td>
+                                        <td width="100" align="left" class="FontText"><%if (Convert.ToInt16(row["Declear"]) == 1){%>Yes<% }else{%>No<% } %></td>
                                         <td width="92" align="left" class="FontText"><%: row["WinnerTeam"] %></td>
                                         <td width="92" align="left" class="FontText"><%: row["AdminAmount"] %></td>
                                     </tr>
@@ -93,4 +94,39 @@
         </div>
         <!-- END PAGE CONTAINER-->
     </div>
+    <script>
+        function undeclarematch(apiID) {
+            var result = confirm("Want to undeclare?");
+            if (result) {
+                var params = {
+                    apiID: apiID
+                };
+
+                var formBody = [];
+                for (var property in params) {
+                    var encodedKey = encodeURIComponent(property);
+                    var encodedValue = encodeURIComponent(params[property]);
+                    formBody.push(encodedKey + "=" + encodedValue);
+                }
+                formBody = formBody.join("&");
+
+                fetch('/Admin/UnDeclarematch.ashx', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                    },
+                    body: formBody
+                }).then(function (responce) {
+                    return responce.json();
+                }).then(function (data) {
+                    if (data.status) alert("Match Undeclare Successfully");
+                    else alert("Match Undeclare Failed!!!" + "\r\n" + data.error);
+                }).then(function () {
+                    location.reload();
+                }).catch(function (err) {
+                    console.log(err);
+                });
+            }
+        }
+    </script>
 </asp:Content>
