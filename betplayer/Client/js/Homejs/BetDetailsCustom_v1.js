@@ -96,8 +96,8 @@ if (matchIdElement !== null) {
                     document.getElementById("runnerfloat2").style = "display:block;";
                     document.getElementById("runnerfloat2").innerHTML = "Suspended";
                 }
-              
-        });
+
+            });
     firebase
         .database()
         .ref("/currentMatches/" + matchKey + "/team_c")
@@ -138,9 +138,9 @@ if (matchIdElement !== null) {
                 message = snapshot.val();
                 console.log(ScoreMsg);
                 document.getElementById("ScoreMsg").innerHTML = message;
-                
+
             }
-    );
+        );
     firebase
         .database()
         .ref("/currentMatches/" + matchKey + "/lastBall")
@@ -149,13 +149,13 @@ if (matchIdElement !== null) {
             function (snapshot) {
                 lastBall = snapshot.val();
                 console.log(lastBall);
-                document.getElementById("LastBall").src = "/client/images/LastBall/"+lastBall.event.replace(" ","_")+".jpg";
+                document.getElementById("LastBall").src = "/client/images/LastBall/" + lastBall.event.replace(" ", "_") + ".jpg";
                 ballRunning();
                 if (!(lastBall.event === "Ball Start" || lastBall.event === "3 Run" || lastBall.event === "FOUR" || lastBall.event === "SIX" || lastBall.event === "Review" || lastBall.event === "Third Umpire" || lastBall.event === "OUT" || lastBall.event === "FREE HIT" || lastBall.event === "NO BALL"))
                     for (var i = 1; i <= 8; i++) {
-                    document.getElementById("runnerfloat1").style = "display:none;";
-                    document.getElementById("float" + i).innerHTML = ""
-                }
+                        document.getElementById("runnerfloat1").style = "display:none;";
+                        document.getElementById("float" + i).innerHTML = ""
+                    }
                 updateSessionTable(sessions);
             }
         );
@@ -188,10 +188,13 @@ if (matchIdElement !== null) {
                     .ref("/currentMatches/" + matchKey + "/maxBet")
                     .on(
                         "value", // runs on change
-                    function (snapshot) {
+                        function (snapshot) {
                             document.getElementById("matchMaxBet").innerHTML = min + " / " + snapshot.val();
                             document.getElementById("matchMinBet").innerHTML = min + " / " + snapshot.val();
-                            
+                            if (document.getElementById("matchMinMaxBet")) {
+                                document.getElementById("matchMinMaxBet").innerHTML = min + " / " + snapshot.val();
+                            }
+
                         });
             });
     firebase
@@ -206,10 +209,11 @@ if (matchIdElement !== null) {
                     .ref("/currentMatches/" + matchKey + "/sessionMaxBet")
                     .on(
                         "value", // runs on change
-                    function (snapshot) {
-                        for (var j = 1; j <= 8; j++) {
-                            document.getElementById("maxmin" + j).innerHTML = min + " / " + snapshot.val();
-                            document.getElementById("maxmin" + j).innerHTML = min + " / " + snapshot.val();
+                        function (snapshot) {
+                            for (var j = 1; j <= 8; j++) {
+                                document.getElementById("maxmin" + j).innerHTML = min + " / " + snapshot.val();
+                                document.getElementById("maxmin" + j).innerHTML = min + " / " + snapshot.val();
+                                
                             }
                         });
             });
@@ -218,7 +222,7 @@ if (matchIdElement !== null) {
         .ref("/currentMatches/" + matchKey + "/sessions")
         .on(
             "value", // runs on change
-        function (snapshot) {
+            function (snapshot) {
                 sessions = snapshot.val();
                 updateSessionTable(snapshot.val());
             }
@@ -361,7 +365,7 @@ function doneClick() {
                                 clearTimer();
                             } else if (parseInt(match['minBet']) > betAmount || betAmount > parseInt(match['maxBet'])) {
                                 alert(
-                                    "The Amount Should not be less than " + match['minBet'] + " or greater than " + match['maxBet']+"."
+                                    "The Amount Should not be less than " + match['minBet'] + " or greater than " + match['maxBet'] + "."
                                 );
                                 clearTimer();
                             } else {
@@ -387,132 +391,133 @@ function doneClick() {
                                     Team2Position: document.getElementById(
                                         "ContentPlaceHolder1_PositionTeam2"
                                     ).innerHTML,
-                                    TeamcPosition: document.getElementById(
+                                    TeamcPosition: (document.getElementById(
                                         "ContentPlaceHolder1_PositionTeam3"
-                                    ).innerHTML
-                                };
-                                var formBody = [];
-                                for (var property in params) {
-                                    var encodedKey = encodeURIComponent(property);
-                                    var encodedValue = encodeURIComponent(params[property]);
-                                    formBody.push(encodedKey + "=" + encodedValue);
-                                }
-                                formBody = formBody.join("&");
-
-                                fetch("/Client/AddDataToRunner.ashx", {
-                                    credentials: "same-origin",
-                                    method: "POST",
-                                    headers: {
-                                        "Content-Type":
-                                            "application/x-www-form-urlencoded;charset=UTF-8"
-                                    },
-                                    body: formBody
-                                })
-                                    .then(function (responce) {
-                                        return responce.json();
-                                    })
-                                    .then(function (data) {
-                                        console.log(data);
-                                        if (data.status === "success") {
-                                            console.log(betValue, betAmount, team, betType);
-                                            alert("Bet Made Successfully");
-                                            location.reload();
-                                        } else if (data.status === "unsuccess") {
-                                            alert("You Do not have Coins For this Bet");
-                                            location.reload();
-                                        } else alert("Bet Rejected!!!");
-                                    })
-                                    .then(function () {
-                                        clearTimer();
-                                    })
-                                    .catch(function (err) {
-                                        console.log(err);
-                                    });
+                                    )) ? document.getElementById(                                        "ContentPlaceHolder1_PositionTeam3"                                    ).innerHTML : "0"
+                                        
+                            };
+                            var formBody = [];
+                            for (var property in params) {
+                                var encodedKey = encodeURIComponent(property);
+                                var encodedValue = encodeURIComponent(params[property]);
+                                formBody.push(encodedKey + "=" + encodedValue);
                             }
+                            formBody = formBody.join("&");
+
+                            fetch("/Client/AddDataToRunner.ashx", {
+                                credentials: "same-origin",
+                                method: "POST",
+                                headers: {
+                                    "Content-Type":
+                                        "application/x-www-form-urlencoded;charset=UTF-8"
+                                },
+                                body: formBody
+                            })
+                                .then(function (responce) {
+                                    return responce.json();
+                                })
+                                .then(function (data) {
+                                    console.log(data);
+                                    if (data.status === "success") {
+                                        console.log(betValue, betAmount, team, betType);
+                                        alert("Bet Made Successfully");
+                                        location.reload();
+                                    } else if (data.status === "unsuccess") {
+                                        alert("You Do not have Coins For this Bet");
+                                        location.reload();
+                                    } else alert("Bet Rejected!!!");
+                                })
+                                .then(function () {
+                                    clearTimer();
+                                })
+                                .catch(function (err) {
+                                    console.log(err);
+                                });
+                        }
                         }
                     );
-            }
-        } else if (runnerSession === "Session" && !isballstart) {
-            if (!matchKey) alert("No FireBase Match.");
-            else {
-                doneClicked = true;
-                firebase
-                    .database()
-                    .ref("/currentMatches/" + matchKey)
-                    .once(
-                        "value", // runs on change
-                        function (snapshot) {
-                            var match = snapshot.val();
-                            console.log(betValue);
-                            betAmount = parseInt(
-                                document.getElementById("matchAmount").value
+        }
+    } else if (runnerSession === "Session" && !isballstart) {
+        if (!matchKey) alert("No FireBase Match.");
+        else {
+            doneClicked = true;
+            firebase
+                .database()
+                .ref("/currentMatches/" + matchKey)
+                .once(
+                    "value", // runs on change
+                    function (snapshot) {
+                        var match = snapshot.val();
+                        console.log(betValue);
+                        betAmount = parseInt(
+                            document.getElementById("matchAmount").value
+                        );
+                        if (parseInt(match['sessionMinBet']) > betAmount || betAmount > parseInt(match['sessionMaxBet'])) {
+                            alert(
+                                "The Amount Should not be less than " + match['sessionMinBet'] + " or greater than " + match['sessionMaxBet'] + "."
                             );
-                            if (parseInt(match['sessionMinBet']) > betAmount || betAmount > parseInt(match['sessionMaxBet'])) {
-                                alert(
-                                    "The Amount Should not be less than " + match['sessionMinBet'] + " or greater than " + match['sessionMaxBet']+"."
-                                );
-                                clearTimer();
-                            } else {
-                                console.log(snapshot.val());
-                                updatePosition(betValue, betAmount, team, betType);
-                                var TeamName = match[team]["Name"];
-                                if (betType === "Not") {
-                                    Mode = "N";
-                                } else if (betType === "Yes") {
-                                    Mode = "Y";
-                                }
-                                var apiid = document.getElementById("ContentPlaceHolder1_apiID");
-                                var params = {
-                                    Session: Session,
-                                    Amount: betAmount,
-                                    Run: betValue,
-                                    Rate: betRate,
-                                    Mode: Mode,
-                                    Team: TeamName,
-                                    MatchID: apiid.value
-                                };
-                                var formBody = [];
-                                for (var property in params) {
-                                    var encodedKey = encodeURIComponent(property);
-                                    var encodedValue = encodeURIComponent(params[property]);
-                                    formBody.push(encodedKey + "=" + encodedValue);
-                                }
-                                formBody = formBody.join("&");
-
-                                fetch("/Client/AddDataToSession.ashx", {
-                                    credentials: "same-origin",
-                                    method: "POST",
-                                    headers: {
-                                        "Content-Type":
-                                            "application/x-www-form-urlencoded;charset=UTF-8"
-                                    },
-                                    body: formBody
-                                })
-                                    .then(function (responce) {
-                                        return responce.json();
-                                    })
-                                    .then(function (data) {
-                                        console.log(data);
-                                        if (data.status === "success") {
-                                            console.log(betValue, betAmount, team, betType);
-                                            alert("Bet Made Successfully");
-                                            location.reload();
-                                        } else if (data.status === "unsuccess") {
-                                            alert("You Do not have Coins For this Bet");
-                                        } else alert("Bet Rejected!!!");
-                                    })
-                                    .then(function () {
-                                        clearTimer();
-                                    })
-                                    .catch(function (err) {
-                                        console.log(err);
-                                    });
+                            clearTimer();
+                        } else {
+                            console.log(snapshot.val());
+                            updatePosition(betValue, betAmount, team, betType);
+                            var TeamName = match[team]["Name"];
+                            if (betType === "Not") {
+                                Mode = "N";
+                            } else if (betType === "Yes") {
+                                Mode = "Y";
                             }
+                            var apiid = document.getElementById("ContentPlaceHolder1_apiID");
+                            var params = {
+                                Session: Session,
+                                Amount: betAmount,
+                                Run: betValue,
+                                Rate: betRate,
+                                Mode: Mode,
+                                Team: TeamName,
+                                MatchID: apiid.value
+                            };
+                            var formBody = [];
+                            for (var property in params) {
+                                var encodedKey = encodeURIComponent(property);
+                                var encodedValue = encodeURIComponent(params[property]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                            formBody = formBody.join("&");
+
+                            fetch("/Client/AddDataToSession.ashx", {
+                                credentials: "same-origin",
+                                method: "POST",
+                                headers: {
+                                    "Content-Type":
+                                        "application/x-www-form-urlencoded;charset=UTF-8"
+                                },
+                                body: formBody
+                            })
+                                .then(function (responce) {
+                                    return responce.json();
+                                })
+                                .then(function (data) {
+                                    console.log(data);
+                                    if (data.status === "success") {
+                                        console.log(betValue, betAmount, team, betType);
+                                        alert("Bet Made Successfully");
+                                        location.reload();
+                                    } else if (data.status === "unsuccess") {
+                                        alert("You Do not have Coins For this Bet");
+                                    } else alert("Bet Rejected!!!");
+                                })
+                                .then(function () {
+                                    clearTimer();
+                                })
+                                .catch(function (err) {
+                                    console.log(err);
+                                });
                         }
-                    );
-            }
+                    }
+                );
         }
     }
+}
 }
 
 function clearTimer() {
@@ -528,7 +533,7 @@ function clearTimer() {
 function updatePosition(Bet, Amount, Team, Type) {
     var urlParams = new URLSearchParams(window.location.search);
     var matchtype = urlParams.get('Type');
-    if (matchtype === "Test" || matchtype === "test" ) {
+    if (matchtype === "Test" || matchtype === "test") {
         var bet = parseFloat(Bet);
         var amount = parseInt(Amount);
         Team1Position = document.getElementById("ContentPlaceHolder1_PositionTeam1");
