@@ -12,6 +12,25 @@ var matchIdElement = document.getElementById("ContentPlaceHolder1_firebasekey");
 var matchKey = matchIdElement.value;
 var sessions, lastBall;
 if (matchIdElement !== null) {
+    firebase        .database()        .ref("/currentMatches/" + matchKey + "/livetv")        .on(            "value", // runs on change            function (snapshot) {
+                var livetv = snapshot.val();
+                if (livetv.enabled) {
+                    var sw = screen.width, sh;
+                    if (sw > 800) {
+                        sw = sw - (sw * 0.10);
+                        sh = sw * 0.58;
+                    } else {
+                        sw = sw - (sw * 0.05);
+                        sh = sw * 0.62;
+                    }
+                    if ("MediaSource" in window && "WebSocket" in window)
+                        RunPlayer("p1", sw, sh, '93.115.28.85', '5119', false, livetv.channel, "", true, true, 0.01, "", false);
+                    else
+                        document.getElementById("p1").innerHTML = "Websockets are not supported in your browser.";
+                } else {
+                    document.getElementById("p1").innerHTML = "";
+                }
+            });
     firebase
         .database()
         .ref("/currentMatches/" + matchKey + "/team_1")
