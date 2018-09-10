@@ -88,7 +88,7 @@
                                             <th colspan="2" align="center" valign="middle" style="text-align: center; vertical-align: middle;" rowspan="1">Share %</th>
                                             <th colspan="2" align="center" style="text-align: center; vertical-align: middle;" rowspan="1">Other</th>
                                         </tr>
-                                       
+
                                         <tr role="row">
                                             <td width="2%" align="center" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label=" " style="width: 24px;">
                                                 <div class="checker" id="uniform-undefined">
@@ -97,30 +97,31 @@
                                                     </span>
                                                 </div>
                                             </td>
-                                            
 
 
-                                                <th width="5%" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="&amp;nbsp;: activate to sort column ascending" style="width: 36px;">&nbsp;</th>
-                                                <th height="25" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="SNo.: activate to sort column ascending" style="width: 30px;">SNo.</th>
-                                                <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Code: activate to sort column ascending" style="width: 33px;">Code</th>
-                                                <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 72px;">Name</th>
-                                                <th width="60" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Contact: activate to sort column ascending" style="width: 73px;">Contact</th>
-                                                <th width="60" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Password: activate to sort column ascending" style="width: 71px;">Password</th>
-                                                <th align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Type: activate to sort column ascending" style="width: 37px;">Type</th>
-                                                <th align="right" style="text-align: right; width: 38px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Match: activate to sort column ascending">Match</th>
-                                                <th align="right" style="text-align: right; width: 50px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Session: activate to sort column ascending">Session</th>
-                                                <th align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Type: activate to sort column ascending" style="width: 36px;">Type</th>
-                                                <th align="right" style="text-align: right; width: 38px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Match: activate to sort column ascending">Match</th>
-                                                <th align="right" style="text-align: right; width: 50px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Session: activate to sort column ascending">Session</th>
-                                                <th align="right" style="text-align: right; width: 37px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Agent: activate to sort column ascending">Agent</th>
-                                                <th align="right" style="text-align: right; width: 37px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Client: activate to sort column ascending">Client</th>
-                                                <th align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Limit: activate to sort column ascending" style="width: 62px;">Limit</th>
-                                                <th width="50" align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 50px;">Status</th>
-                                            </tr>
-                                        
+
+                                            <th width="5%" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="&amp;nbsp;: activate to sort column ascending" style="width: 36px;">&nbsp;</th>
+                                            <th height="25" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="SNo.: activate to sort column ascending" style="width: 30px;">SNo.</th>
+                                            <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Code: activate to sort column ascending" style="width: 33px;">Code</th>
+                                            <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Name: activate to sort column ascending" style="width: 72px;">Name</th>
+                                            <th width="60" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Contact: activate to sort column ascending" style="width: 73px;">Contact</th>
+                                            <th width="60" align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Password: activate to sort column ascending" style="width: 71px;">Password</th>
+                                            <th align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Type: activate to sort column ascending" style="width: 37px;">Type</th>
+                                            <th align="right" style="text-align: right; width: 38px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Match: activate to sort column ascending">Match</th>
+                                            <th align="right" style="text-align: right; width: 50px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Session: activate to sort column ascending">Session</th>
+                                            <th align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Type: activate to sort column ascending" style="width: 36px;">Type</th>
+                                            <th align="right" style="text-align: right; width: 38px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Match: activate to sort column ascending">Match</th>
+                                            <th align="right" style="text-align: right; width: 50px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Session: activate to sort column ascending">Session</th>
+                                            <th align="right" style="text-align: right; width: 37px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Agent: activate to sort column ascending">Agent</th>
+                                            <th align="right" style="text-align: right; width: 37px;" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Client: activate to sort column ascending">Client</th>
+                                            <th align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Limit: activate to sort column ascending" style="width: 62px;">Limit</th>
+                                            <th width="50" align="right" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 50px;">Status</th>
+                                        </tr>
+
                                     </thead>
 
                                     <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                         <%int i = 1; %>
                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                             { %>
 
@@ -128,8 +129,8 @@
                                             <td align="center" class="  sorting_1">
                                                 <div class="checker" id="uniform-2">
                                                     <span>
-                                                        
-                                                        <input type="checkbox" class="checkboxes" name="checkbox" id="check" onclick="ChangesInStatus('<%:row["ClientID"] %>" value ="<%:row["ClientID"] %>" style="opacity: 0;"></span>
+
+                                                        <input type="checkbox" class="checkboxes" name="checkbox" id="check" onclick="ChangesInStatus('<%:row["ClientID"] %>" value="<%:row["ClientID"] %>" style="opacity: 0;"></span>
                                                 </div>
                                             </td>
                                             <td align="left" class=" ">
@@ -137,15 +138,17 @@
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="ModifyClient.aspx?id=<%:row["ClientID"] %>"><i class="icon-pencil"></i>Edit</a></li>
-                                                        <li><a onclick ="CallHandler('<%:row["ClientID"] %>');" /> <i class="icon-trash"></i>Delete</li>
+                                                        <li><a onclick="CallHandler('<%:row["ClientID"] %>');" /><i class="icon-trash"></i>Delete</li>
                                                         <li><a onclick="ChangesInStatus('<%:row["ClientID"] %>');"><i class="icon-ban-circle"></i>
                                                             Inactive		                      </a></li>
                                                         <li><a href="javascript:SendLoginDetails('118');"><i class="icon-film"></i>Send Mobile Login Details</a></li>
                                                     </ul>
                                                 </div>
                                             </td>
-                                            <input id="id" type="hidden"  Value="<%:row["ClientID"] %>"/>
-                                            <td height="20" align="left" class="FontText "><%:row["ClientID"] %></td>
+                                            <input id="id" type="hidden" value="<%:row["ClientID"] %>" />
+                                           
+                                            <td height="20" align="left" class="FontText "><%=i %></td>
+                                             
                                             <td align="left" class="FontText "><%:row["Code"] %></td>
                                             <td align="left" class="FontText "><%:row["Name"] %></td>
                                             <td align="left" class="FontText "><%:row["Contact_No"] %></td>
@@ -161,7 +164,9 @@
                                             <td align="right" class="FontText " style="text-align: right;"><%:row["Fixlimit"] %></td>
                                             <td align="right" class="FontText "><%:row["Status"] %></td>
                                         </tr>
+                                        <% i++; %>
                                         <% } //foreach %>
+                                     
                                     </tbody>
                                 </table>
                                 <div class="row-fluid">
@@ -191,20 +196,20 @@
         <!-- END PAGE CONTAINER-->
     </div>
     <script>
-        function CallHandler(userId) {  
+        function CallHandler(userId) {
             var params = {
                 userId: userId
             };
 
             var formBody = [];
             for (var property in params) {
-              var encodedKey = encodeURIComponent(property);
-              var encodedValue = encodeURIComponent(params[property]);
-              formBody.push(encodedKey + "=" + encodedValue);
+                var encodedKey = encodeURIComponent(property);
+                var encodedValue = encodeURIComponent(params[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
             }
             formBody = formBody.join("&");
 
-            fetch('https://agent.crick20.com/Deleteclient.ashx', {
+            fetch('https://agent/Deleteclient.ashx', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -214,25 +219,25 @@
                 return responce.json();
             }).then(function (data) {
                 if (data.status) alert("User with ID: " + data.userDeletedId + " Successfully Deleted.");
-                else alert("User Delete Failed!!!"+"\r\n"+data.error);
+                else alert("User Delete Failed!!!" + "\r\n" + data.error);
             }).then(function () {
                 location.reload();
             }).catch(function (err) {
                 console.log(err);
             });
-        }  
+        }
     </script>
     <script>
-        function ChangesInStatus(userId) {  
+        function ChangesInStatus(userId) {
             var params = {
                 userId: userId
             };
 
             var formBody = [];
             for (var property in params) {
-              var encodedKey = encodeURIComponent(property);
-              var encodedValue = encodeURIComponent(params[property]);
-              formBody.push(encodedKey + "=" + encodedValue);
+                var encodedKey = encodeURIComponent(property);
+                var encodedValue = encodeURIComponent(params[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
             }
             formBody = formBody.join("&");
 
@@ -246,13 +251,17 @@
                 return responce.json();
             }).then(function (data) {
                 if (data.status) alert("Status Updated with ID: " + data.userDeletedId + " Successfully");
-                else alert("User Status Updated Failed!!!"+"\r\n"+data.error);
+                else alert("User Status Updated Failed!!!" + "\r\n" + data.error);
             }).then(function () {
                 location.reload();
             }).catch(function (err) {
                 console.log(err);
             });
-        }  
+        }
     </script>
+
+    
+    
+    
 </asp:Content>
 

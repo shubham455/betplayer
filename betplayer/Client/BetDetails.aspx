@@ -52,7 +52,7 @@
 
 
 
-                                    <table style="width: 100%; border: 0; border-color: #000;" cellpadding="2" cellspacing="2">
+                                    <table style="width: 100%;  border-color: #000;" border="1" cellpadding="2" cellspacing="2">
                                         <tbody>
                                             <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                                 { %>
@@ -67,10 +67,10 @@
 
                                             <tr id="runnerrow1">
                                                 <td height="35" id="TeamA" align="center" valign="middle" bgcolor="#FFF" style="vertical-align: middle; font-weight: bold;"><%: row["TeamA"] %></td>
-                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; bo vertical-align: middle">
+                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; border:1px solid black; bo vertical-align: middle" >
                                                     <label id="matchMinBet" style="color: red;"></label>
                                                 </td>
-                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; vertical-align: middle">
+                                                <td align="center" valign="middle" bgcolor="#FFF" border="1" class="FontTextWhite" style="color: #000;  border:1px solid black; vertical-align: middle">
                                                     <asp:Label ID="PositionTeam1" runat="server"></asp:Label>
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#79C1F8" style="vertical-align: middle; position: relative;">
@@ -83,10 +83,10 @@
 
                                             <tr id="runnerrow2">
                                                 <td height="35" id="TeamB" align="center" valign="middle" bgcolor="#FFF" style="vertical-align: middle; font-weight: bold;"><%: row["TeamB"] %></td>
-                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; vertical-align: middle">
+                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000;  border:1px solid black; vertical-align: middle">
                                                     <label id="matchMaxBet" style="color: red;"></label>
                                                 </td>
-                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; vertical-align: middle">
+                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000;  border:1px solid black; vertical-align: middle">
                                                     <asp:Label ID="PositionTeam2" runat="server"></asp:Label>
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#79C1F8" class="textTeamHead" style="vertical-align: middle; position: relative;">
@@ -102,10 +102,10 @@
 
                                             <tr id="runnerrow3">
                                                 <td height="35" id="TeamB" align="center" valign="middle" bgcolor="#FFF" style="vertical-align: middle; font-weight: bold;"><%: row["TeamC"] %></td>
-                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; vertical-align: middle">
+                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000;  border:1px solid black; vertical-align: middle">
                                                     <label id="matchMinMaxBet" style="color: red;"></label>
                                                 </td>
-                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; vertical-align: middle">
+                                                <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000;  border:1px solid black; vertical-align: middle">
                                                     <asp:Label ID="PositionTeam3" runat="server"></asp:Label>
                                                 </td>
                                                 <td align="center" valign="middle" bgcolor="#79C1F8" class="textTeamHead" style="vertical-align: middle; position: relative;">
@@ -143,7 +143,7 @@
                             </tr>
                             <tr>
                                 <td align="left" valign="top">
-                                    <table style="width: 100%;" border="0" cellpadding="0" cellspacing="2">
+                                    <table style="width: 100%;" border="1" cellpadding="0" cellspacing="2">
                                         <tbody>
                                             <tr>
                                                 <td height="35" align="center" valign="middle" bgcolor="#838792" class="FontTextWhite10px" style="vertical-align: middle; width: 30%;">
@@ -340,7 +340,7 @@
     </table>
     <br />
 
-    <table style="width: 100%;" border="0" cellspacing="2" cellpadding="2">
+    <table style="width: 100%;" border="1" cellspacing="0" cellpadding="0">
         <tbody>
             <tr>
                 <td style="height: 25px;" align="right" valign="middle" bgcolor="#838792" class="FontTextWhite10px">Rate</td>
@@ -363,12 +363,9 @@
     </table>
     <br />
     <br />
-    <table width="100%" border="0" cellspacing="2" cellpadding="2">
+    <table width="100%"  border="1" cellspacing="0" cellpadding="0">
         <tbody>
-
             <tr>
-
-
                 <td height="25" align="left" bgcolor="#838792" class="FontTextWhite10px">Session</td>
                 <td align="right" valign="middle" bgcolor="#838792" class="FontTextWhite10px">Rate</td>
                 <td align="right" valign="middle" bgcolor="#838792" class="FontTextWhite10px">Amount</td>

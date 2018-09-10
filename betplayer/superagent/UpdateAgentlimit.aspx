@@ -43,10 +43,11 @@
                                         <td align="left" class="TableHeading">Current Limit</td>
                                         <td align="left" class="TableHeading">Client Limit</td>
                                     </tr>
+                                    <%int i = 1; %>
                                     <% int index = 2; foreach (System.Data.DataRow row in UpdateDataTable.Rows)
                                         { %>
                                     <tr bgcolor="#FFFFFF">
-                                        <td height="25" align="left" class="FontText">1</td>
+                                        <td height="25" align="left" class="FontText"><%=i %></td>
                                         <td align="left" class="FontText">
                                             <input name="ClientName1" type="text" class="TextBoxTransparent" id="ClientName1" style="text-align: right; text-align: left;" onblur="CheckTotalLimit('1')" value="<%: row["AgentID"] %><%: row["Name"] %>" readonly="">
                                         </td>
@@ -58,6 +59,7 @@
                                         <td align="left" class="FontText">
                                             <input name="ULimit1" type="text" id="ULimit1" style="text-align: right" value="<%: row["UsedLimit"] %>" class="TextBox100" readonly="" disabled=""></td>
                                     </tr>
+                                    <%i++; %>
                                     <% index++; } //foreach %>
 
                                     <tr bgcolor="#E9F3FD" class="TableHeading">

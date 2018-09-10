@@ -117,6 +117,7 @@
                                                 <th align="left" class="sorting" role="columnheader" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 45px;">Status</th>
                                                 </tr>
                                         </thead>
+                                        <% int i = 1; %>
                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                             { %>
 
@@ -142,7 +143,7 @@
                                                         </ul>
                                                     </div>
                                                 </td>
-                                                <td height="20" align="left" class=" "><%:row["AgentID"] %></td>
+                                                <td height="20" align="left" class=" "><%=i %></td>
                                                 <td align="left" class=" "><%:row["Code"] %></td>
                                                 <td align="left" class=" "><%:row["Name"] %></td>
                                                 <td align="left" class=" "><%:row["ContactNO"] %></td>
@@ -184,6 +185,7 @@
                                             </tr>
 
                                         </tbody>
+                                        <%i++; %>
                                         <% } //foreach %>
                                     </table>
                                     <div class="row-fluid">

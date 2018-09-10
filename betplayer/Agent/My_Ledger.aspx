@@ -47,10 +47,11 @@
                                         <td width="13%"><strong>Description</strong></td>
                                         <td width="13%"><strong>Remark</strong></td>
                                     </tr>
+                                    <% int i = 1; %>
                                     <% foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
                                         { %>
                                     <tr bgcolor="#FFFFFF">
-                                        <td height="20" class="FontText"><%: row["ID"] %></td>
+                                        <td height="20" class="FontText"><%=i %></td>
                                         <td class="FontText"><%: row["Date"] %></td>
                                         <td class="FontText"></td>
                                         <td style="text-align: right;" class="FontText"><%:row["Dabit"] %></td>
@@ -59,6 +60,7 @@
                                         <td class="FontText"><%:row["CollectionName"] %></td>
                                         <td class="FontText"><%:row["Remark"] %></td>
                                     </tr>
+                                    <%i++; %>
                                     <% } //foreach %>
 
                                     <%if (!emptyLedgerTable)

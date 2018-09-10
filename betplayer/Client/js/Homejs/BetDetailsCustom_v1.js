@@ -12,7 +12,12 @@ var matchIdElement = document.getElementById("ContentPlaceHolder1_firebasekey");
 var matchKey = matchIdElement.value;
 var sessions, lastBall;
 if (matchIdElement !== null) {
-    firebase        .database()        .ref("/currentMatches/" + matchKey + "/livetv")        .on(            "value", // runs on change            function (snapshot) {
+    firebase
+        .database()
+        .ref("/currentMatches/" + matchKey + "/livetv")
+        .on(
+            "value", // runs on change
+            function (snapshot) {
                 var livetv = snapshot.val();
                 if (livetv.enabled) {
                     var sw = screen.width, sh;
@@ -413,7 +418,9 @@ function doneClick() {
                                     ).innerHTML,
                                     TeamcPosition: (document.getElementById(
                                         "ContentPlaceHolder1_PositionTeam3"
-                                    )) ? document.getElementById(                                        "ContentPlaceHolder1_PositionTeam3"                                    ).innerHTML : "0"
+                                    )) ? document.getElementById(
+                                        "ContentPlaceHolder1_PositionTeam3"
+                                    ).innerHTML : "0"
                                         
                             };
                             var formBody = [];
@@ -584,7 +591,7 @@ function updatePosition(Bet, Amount, Team, Type) {
             Team2Position.innerHTML = Team2PositionValue - bet * amount;
             TeamcPosition.innerHTML = TeamcPositionValue - bet * amount;
         } else if (Team === "team_c" && Type === "Lagai") {
-            TeamcPosition.innerHTML = TeamcPositionValue + -1 * amount;
+            TeamcPosition.innerHTML = TeamcPositionValue * amount;
             Team1Position.innerHTML = Team1PositionValue + bet * amount;
             Team2Position.innerHTML = Team2PositionValue + bet * amount;
         } else if (Team === "team_c" && Type === "Khai") {
