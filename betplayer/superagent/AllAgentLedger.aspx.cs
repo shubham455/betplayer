@@ -61,10 +61,10 @@ namespace betplayer.SuperAgent
                 DataTable SelectAgentdt = new DataTable();
                 SelectAgentadp.Fill(SelectAgentdt);
 
-                
+
                 for (int i = 0; i < SelectAgentdt.Rows.Count; i++)
                 {
-                   int AgentID = Convert.ToInt16(SelectAgentdt.Rows[i]["AgentID"]);
+                    int AgentID = Convert.ToInt16(SelectAgentdt.Rows[i]["AgentID"]);
 
                     string s = "Select * From AgentLedger where AgentID = '" + AgentID + "'";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
@@ -72,6 +72,7 @@ namespace betplayer.SuperAgent
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     decimal LedgerAmount = 0;
+
                     for (int j = 0; j < dt.Rows.Count; j++)
                     {
                         decimal Dabit = Convert.ToDecimal(dt.Rows[j]["Dabit"]);
@@ -93,19 +94,21 @@ namespace betplayer.SuperAgent
                             {
 
                                 Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
-                                Balance1 = Balance1 - Dabit;
+                                Balance1 = Balance1 + Dabit *-1;
                                 Balance1 = Balance1 + Credit;
 
-                                LedgerAmount =  Balance1;
+                                LedgerAmount = Balance1;
                             }
                         }
                         else
                         {
-                            LedgerAmount = Balance * -1;
+                            LedgerAmount = Balance;
 
                         }
+                        row["Balance"] = LedgerAmount;
+                        runtable.Rows.Add(row.ItemArray);
 
-
+                    }
 
                         string CollectionAmount = "Select * From AgentCollectionmaster where AgentID = '" + AgentID + "'";
                         MySqlCommand CollectionAmountcmd = new MySqlCommand(CollectionAmount, cn);
@@ -136,57 +139,57 @@ namespace betplayer.SuperAgent
                         row["Balance"] = FinalAmount;
                         runtable.Rows.Add(row.ItemArray);
 
-                    }
-                    decimal TotalbalanceAmount1 = 0;
-                    for (int l = 1; l <= runtable.Rows.Count; l++)
-                    {
 
-                        if (l == runtable.Rows.Count)
-                        {
-                            l = l - 1;
-                            decimal TotalAmount = Convert.ToDecimal(runtable.Rows[l]["Balance"]);
-                            TotalbalanceAmount1 = TotalAmount;
-                            l = l + 1;
-                        }
-                        else
+                        decimal TotalbalanceAmount1 = 0;
+                        for (int l = 1; l <= runtable.Rows.Count; l++)
                         {
 
+                            if (l == runtable.Rows.Count)
+                            {
+                                l = l - 1;
+                                decimal TotalAmount = Convert.ToDecimal(runtable.Rows[l]["Balance"]);
+                                TotalbalanceAmount1 = TotalAmount;
+                                l = l + 1;
+                            }
+                            else
+                            {
+
+                            }
                         }
+
+
+                        row1["TotalBalanceAmount"] = TotalbalanceAmount1;
+
+                        if (TotalbalanceAmount1 < 0)
+                        {
+                            TotalbalanceAmount1 = TotalbalanceAmount1 * -1;
+                            string Name = (SelectAgentdt.Rows[i]["Name"]).ToString();
+                            string ContactNo = (SelectAgentdt.Rows[i]["ContactNo"]).ToString();
+
+                            Giverow["AgentName"] = AgentID + "" + Name;
+                            Giverow["ContactNo"] = ContactNo;
+                            Giverow["OpenBalance"] = TotalbalanceAmount1;
+                            Giverow["CurrentBalance"] = 0;
+                            Giverow["CloseBalance"] = TotalbalanceAmount1;
+                            Give.Rows.Add(Giverow.ItemArray);
+
+                        }
+                        else if (TotalbalanceAmount1 > 0)
+                        {
+                            string Name = (SelectAgentdt.Rows[i]["Name"]).ToString();
+                            string ContactNo = (SelectAgentdt.Rows[i]["ContactNo"]).ToString();
+
+                            Receiverow["AgentName"] = AgentID + "" + Name;
+                            Receiverow["ContactNo"] = ContactNo;
+                            Receiverow["OpenBalance"] = TotalbalanceAmount1;
+                            Receiverow["CurrentBalance"] = 0;
+                            Receiverow["CloseBalance"] = TotalbalanceAmount1;
+
+                            Receive.Rows.Add(Receiverow.ItemArray);
+                        }
+                        runtable.Clear();
                     }
-
-
-                    row1["TotalBalanceAmount"] = TotalbalanceAmount1;
-
-                    if (TotalbalanceAmount1 < 0)
-                    {
-                        TotalbalanceAmount1 = TotalbalanceAmount1 * -1;
-                        string Name = (SelectAgentdt.Rows[i]["Name"]).ToString();
-                        string ContactNo = (SelectAgentdt.Rows[i]["ContactNo"]).ToString();
-
-                        Giverow["AgentName"] = AgentID + "" + Name;
-                        Giverow["ContactNo"] = ContactNo;
-                        Giverow["OpenBalance"] = TotalbalanceAmount1;
-                        Giverow["CurrentBalance"] = 0;
-                        Giverow["CloseBalance"] = TotalbalanceAmount1;
-                        Give.Rows.Add(Giverow.ItemArray);
-
-                    }
-                    else if (TotalbalanceAmount1 > 0)
-                    {
-                        string Name = (SelectAgentdt.Rows[i]["Name"]).ToString();
-                        string ContactNo = (SelectAgentdt.Rows[i]["ContactNo"]).ToString();
-
-                        Receiverow["AgentName"] = AgentID + "" + Name;
-                        Receiverow["ContactNo"] = ContactNo;
-                        Receiverow["OpenBalance"] = TotalbalanceAmount1;
-                        Receiverow["CurrentBalance"] = 0;
-                        Receiverow["CloseBalance"] = TotalbalanceAmount1;
-
-                        Receive.Rows.Add(Receiverow.ItemArray);
-                    }
-                    runtable.Clear();
                 }
             }
         }
     }
-}

@@ -250,7 +250,7 @@ namespace betplayer.admin
                     string Remark = "";
                     if (TotalFinalAmount1 < 0)
                     {
-                        Dabit = TotalFinalAmount1;
+                        Dabit = TotalFinalAmount1 *-1;
                         Remark = "Admin Plus";
 
                     }

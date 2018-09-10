@@ -247,7 +247,7 @@ namespace betplayer.superagent
                     string Remark = "";
                     if (TotalFinalAmount1 < 0)
                     {
-                        Dabit = TotalFinalAmount1;
+                        Dabit = TotalFinalAmount1 * -1;
                         Remark = "SuperAgent Plus";
 
                     }
@@ -273,7 +273,7 @@ namespace betplayer.superagent
                         if (Amount != TotalFinalAmount1)
                         {
 
-                            string s11 = "update SuperAgentledger set Amount = @Amount,Dabit =@Dabit,Credit=@Credit  where SuperAgentID = '" + Session["SuperAgentID"] + "'";
+                            string s11 = "update SuperAgentledger set Amount = @Amount,Dabit =@Dabit,Credit=@Credit  where SuperAgentID = '" + Session["SuperAgentID"] + "' && MatchID = '"+MatchID+"'";
                             MySqlCommand cmd11 = new MySqlCommand(s11, cn);
                             cmd11.Parameters.AddWithValue("@Amount", TotalFinalAmount1);
                             cmd11.Parameters.AddWithValue("@Dabit", Dabit);

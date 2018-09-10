@@ -401,7 +401,7 @@ namespace betplayer.Agent
 
                     if (TotalFinalAmount1 < 0)
                     {
-                        Dabit = TotalFinalAmount1;
+                        Dabit = TotalFinalAmount1 *-1;
                         Remark = "Agent Plus";
 
                     }
@@ -427,11 +427,12 @@ namespace betplayer.Agent
                         if(Amount != TotalFinalAmount1)
                         {
                             
-                            string s11 = "update Agentledger set Amount = @Amount,Dabit =@Dabit,Credit=@Credit  where AgentID = '" + Session["AgentID"] + "'";
+                            string s11 = "update Agentledger set Amount = @Amount,Dabit =@Dabit,Credit=@Credit,Remark=@Remark  where AgentID = '" + Session["AgentID"] + "' && matchID = '"+MatchID+"'";
                             MySqlCommand cmd11 = new MySqlCommand(s11, cn);
                             cmd11.Parameters.AddWithValue("@Amount", TotalFinalAmount1);
                             cmd11.Parameters.AddWithValue("@Dabit", Dabit);
                             cmd11.Parameters.AddWithValue("@Credit", Credit);
+                            cmd11.Parameters.AddWithValue("@Remark", Remark);
                             cmd11.ExecuteNonQuery();
                         }
 

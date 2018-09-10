@@ -55,7 +55,7 @@ namespace betplayer.admin
             {
                 cn.Open();
 
-                string SelectAgent = "Select AgentID,Name,ContactNo From AgentMaster where CreatedBy = '" + Session["SuperAgentcode"] + "'";
+                string SelectAgent = "Select SuperAgentID,Name,ContactNo From SuperAgentMaster where CreatedBy = '" + Session["Admincode"] + "'";
                 MySqlCommand SelectAgentcmd = new MySqlCommand(SelectAgent, cn);
                 MySqlDataAdapter SelectAgentadp = new MySqlDataAdapter(SelectAgentcmd);
                 DataTable SelectAgentdt = new DataTable();
@@ -64,9 +64,9 @@ namespace betplayer.admin
 
                 for (int i = 0; i < SelectAgentdt.Rows.Count; i++)
                 {
-                    int AgentID = Convert.ToInt16(SelectAgentdt.Rows[i]["AgentID"]);
+                    int SuperAgentID = Convert.ToInt16(SelectAgentdt.Rows[i]["SuperAgentID"]);
 
-                    string s = "Select * From AgentLedger where AgentID = '" + AgentID + "'";
+                    string s = "Select * From SuperAgentLedger where SuperAgentID = '" + SuperAgentID + "'";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -93,50 +93,52 @@ namespace betplayer.admin
                             {
 
                                 Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
-                                Balance1 = Balance1 - Dabit;
+                                Balance1 = Balance1 + Dabit * -1;
                                 Balance1 = Balance1 + Credit;
 
-                                LedgerAmount = LedgerAmount + Balance1;
+                                LedgerAmount = Balance1;
                             }
                         }
                         else
                         {
-                            LedgerAmount = Balance * -1;
+                            LedgerAmount = Balance;
 
                         }
-
-
-
-                        string CollectionAmount = "Select * From AgentCollectionmaster where AgentID = '" + AgentID + "'";
-                        MySqlCommand CollectionAmountcmd = new MySqlCommand(CollectionAmount, cn);
-                        MySqlDataAdapter CollectionAmountadp = new MySqlDataAdapter(CollectionAmountcmd);
-                        DataTable CollectionAmountdt = new DataTable();
-                        CollectionAmountadp.Fill(CollectionAmountdt);
-                        decimal CollectionBalance = 0, CollectionBalance1 = 0;
-                        for (int l = 0; l < CollectionAmountdt.Rows.Count; l++)
-                        {
-                            //decimal CollectionDabit = Convert.ToDecimal(CollectionAmountdt.Rows[l]["Dabit"]);
-                            decimal CollectionCredit = Convert.ToDecimal(CollectionAmountdt.Rows[l]["Amount"]);
-                            string PaynmentDescription = (CollectionAmountdt.Rows[l]["PaynmentType"]).ToString();
-
-                            if (PaynmentDescription == "Payment Received")
-                            {
-                                CollectionBalance = CollectionCredit * -1;
-                            }
-                            else if (PaynmentDescription == "Payment Paid")
-                            {
-                                CollectionBalance = CollectionCredit;
-                            }
-
-                            CollectionBalance1 = CollectionBalance1 + CollectionBalance;
-                        }
-
-
-                        Decimal FinalAmount = CollectionBalance1 + LedgerAmount;
-                        row["Balance"] = FinalAmount;
+                        row["Balance"] = Balance;
                         runtable.Rows.Add(row.ItemArray);
 
                     }
+
+                    string CollectionAmount = "Select * From SuperAgentCollectionmaster where SuperAgentID = '" + SuperAgentID + "'";
+                    MySqlCommand CollectionAmountcmd = new MySqlCommand(CollectionAmount, cn);
+                    MySqlDataAdapter CollectionAmountadp = new MySqlDataAdapter(CollectionAmountcmd);
+                    DataTable CollectionAmountdt = new DataTable();
+                    CollectionAmountadp.Fill(CollectionAmountdt);
+                    decimal CollectionBalance = 0, CollectionBalance1 = 0;
+                    for (int l = 0; l < CollectionAmountdt.Rows.Count; l++)
+                    {
+                        //decimal CollectionDabit = Convert.ToDecimal(CollectionAmountdt.Rows[l]["Dabit"]);
+                        decimal CollectionCredit = Convert.ToDecimal(CollectionAmountdt.Rows[l]["Amount"]);
+                        string PaynmentDescription = (CollectionAmountdt.Rows[l]["PaynmentType"]).ToString();
+
+                        if (PaynmentDescription == "Payment Received")
+                        {
+                            CollectionBalance = CollectionCredit * -1;
+                        }
+                        else if (PaynmentDescription == "Payment Paid")
+                        {
+                            CollectionBalance = CollectionCredit;
+                        }
+
+                        CollectionBalance1 = CollectionBalance1 + CollectionBalance;
+                    }
+
+
+                    Decimal FinalAmount = CollectionBalance1 + LedgerAmount;
+                    row["Balance"] = FinalAmount;
+                    runtable.Rows.Add(row.ItemArray);
+
+
                     decimal TotalbalanceAmount1 = 0;
                     for (int l = 1; l <= runtable.Rows.Count; l++)
                     {
@@ -163,7 +165,7 @@ namespace betplayer.admin
                         string Name = (SelectAgentdt.Rows[i]["Name"]).ToString();
                         string ContactNo = (SelectAgentdt.Rows[i]["ContactNo"]).ToString();
 
-                        Giverow["AgentName"] = AgentID + "" + Name;
+                        Giverow["AgentName"] = SuperAgentID + "" + Name;
                         Giverow["ContactNo"] = ContactNo;
                         Giverow["OpenBalance"] = TotalbalanceAmount1;
                         Giverow["CurrentBalance"] = 0;
@@ -176,7 +178,7 @@ namespace betplayer.admin
                         string Name = (SelectAgentdt.Rows[i]["Name"]).ToString();
                         string ContactNo = (SelectAgentdt.Rows[i]["ContactNo"]).ToString();
 
-                        Receiverow["AgentName"] = AgentID + "" + Name;
+                        Receiverow["AgentName"] = SuperAgentID + "" + Name;
                         Receiverow["ContactNo"] = ContactNo;
                         Receiverow["OpenBalance"] = TotalbalanceAmount1;
                         Receiverow["CurrentBalance"] = 0;

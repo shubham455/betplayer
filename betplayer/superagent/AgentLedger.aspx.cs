@@ -255,27 +255,28 @@ namespace betplayer.Super_Agent
 
         protected void btnSave_ServerClick(object sender, EventArgs e)
         {
+          
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s = "Insert Into AgentCollectionMaster (AgentID,CollectionType,Date,Amount,PaynmentType,Remark,SuperAgentID) values(@ClientID,@CollectionType,@Date,@Amount,@PaynmentType,@Remark,@AgentID)";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                cmd.Parameters.AddWithValue("@ClientID", dropdownAgent.Text);
-                cmd.Parameters.AddWithValue("@CollectionType", Collection.Value);
-                cmd.Parameters.AddWithValue("@Date", BillDate.Text);
-                cmd.Parameters.AddWithValue("@Amount", Amount.Text);
-                cmd.Parameters.AddWithValue("@PaynmentType", PaymentType.Value);
-                cmd.Parameters.AddWithValue("@Remark", Remark.Text);
-                cmd.Parameters.AddWithValue("@AgentID", Session["SuperAgentID"]);
-                cmd.ExecuteNonQuery();
+                using (MySqlConnection cn = new MySqlConnection(CN))
+                {
+                    cn.Open();
+                    string s = "Insert Into AgentCollectionMaster (AgentID,CollectionType,Date,Amount,PaynmentType,Remark,SuperAgentID) values(@ClientID,@CollectionType,@Date,@Amount,@PaynmentType,@Remark,@AgentID)";
+                    MySqlCommand cmd = new MySqlCommand(s, cn);
+                    cmd.Parameters.AddWithValue("@ClientID", dropdownAgent.Text);
+                    cmd.Parameters.AddWithValue("@CollectionType", Collection.Value);
+                    cmd.Parameters.AddWithValue("@Date", BillDate.Text);
+                    cmd.Parameters.AddWithValue("@Amount", Amount.Text);
+                    cmd.Parameters.AddWithValue("@PaynmentType", PaymentType.Value);
+                    cmd.Parameters.AddWithValue("@Remark", Remark.Text);
+                    cmd.Parameters.AddWithValue("@AgentID", Session["SuperAgentID"]);
+                    cmd.ExecuteNonQuery();
 
-                Amount.Text = "";
-                Remark.Text = "";
-                BillDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    Amount.Text = "";
+                    Remark.Text = "";
+                    BillDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
-                dropdownAgent_SelectedIndexChanged(sender, e);
-
+                    dropdownAgent_SelectedIndexChanged(sender, e);
+                
 
 
             }
