@@ -113,10 +113,11 @@
                                     </tr>
                                     <%if (!emptyLedgerTable)
                                         {
+                                            int i = 1;
                                             foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
                                             { %>
                                     <tr>
-                                        <td height="20" class="FontText"><%: row["ID"] %></td>
+                                        <td height="20" class="FontText"><%= i %></td>
                                         <td class="FontText"><%: row["Date"] %></td>
                                         <td class="FontText"><%: row["CollectionName"] %></td>
                                         <td align="right" class="FontText" style="text-align: right;"><%: row["Dabit"] %></td>
@@ -124,6 +125,7 @@
                                         <td align="right" class="FontText" style="text-align: right;"><strong><%: row["Balance"] %> </strong></td>
                                         <td align="right" class="FontText"><%:row["PaynmentDescription"] %></td>
                                     </tr>
+                                    <%i++; %>
 
                                     <% } //foreach 
                                         }

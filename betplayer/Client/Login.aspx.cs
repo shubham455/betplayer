@@ -75,6 +75,13 @@ namespace betplayer.Client
                         Decimal ClientLimit = Convert.ToDecimal(dt.Rows[0]["Client_Limit"]);
                         if(ClientLimit > 200 && status == "Active")
                         {
+                            string ht = (string)HttpContext.Current.Application["SESSION_LIST"];
+                            string sID = HttpContext.Current.Session.SessionID;
+                            if (ht == sID)
+                            {
+                                HttpContext.Current.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+                                Session.Remove("ClientID");
+                            }
                             Session["ClientID"] = ClientID;
                             Session["clientUsername"] = txtusername.Text;
                             Response.Redirect("~/Client/Terms_Condition.aspx");

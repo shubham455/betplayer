@@ -591,7 +591,7 @@ function updatePosition(Bet, Amount, Team, Type) {
             Team2Position.innerHTML = Team2PositionValue - bet * amount;
             TeamcPosition.innerHTML = TeamcPositionValue - bet * amount;
         } else if (Team === "team_c" && Type === "Lagai") {
-            TeamcPosition.innerHTML = TeamcPositionValue * amount;
+            TeamcPosition.innerHTML = TeamcPositionValue + bet * amount;
             Team1Position.innerHTML = Team1PositionValue + bet * amount;
             Team2Position.innerHTML = Team2PositionValue + bet * amount;
         } else if (Team === "team_c" && Type === "Khai") {

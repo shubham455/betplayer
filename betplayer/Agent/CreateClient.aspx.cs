@@ -78,7 +78,7 @@ namespace Panchayat_System.Admin
 
                     cmd.Parameters.AddWithValue("@Name", txtname.Text);
                     cmd.Parameters.AddWithValue("@Contact_No", txtContactno.Text);
-                    cmd.Parameters.AddWithValue("@Password", strNewPassword1);
+                    cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
                     cmd.Parameters.AddWithValue("@Clientlimit", txtClientlimit.Text);
                     cmd.Parameters.AddWithValue("@CurrentLimit", txtClientlimit.Text);
                     cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);

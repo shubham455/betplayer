@@ -30,7 +30,10 @@ namespace betplayer.Client
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
-                    lblName.InnerText = dt.Rows[0]["Name"].ToString();
+                    string ClientID1 = dt.Rows[0]["ClientID"].ToString();
+                    string ClientName = dt.Rows[0]["Name"].ToString();
+
+                    lblName.InnerText = ClientID1 + ClientName;
                     string status = dt.Rows[0]["status"].ToString();
 
                     if (status == "Inactive")

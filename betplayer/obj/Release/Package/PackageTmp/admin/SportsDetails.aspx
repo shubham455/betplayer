@@ -49,6 +49,7 @@
                                         <td width="92" align="left" class="TableHeading">Won By</td>
                                         <td width="92" align="left" class="TableHeading">Remark</td>
                                     </tr>
+                                    <%int i = 1; %>
                                     <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                         { %>
                                     <tr style="background-color: #FFFFFF">
@@ -66,7 +67,7 @@
                                             </div>
                                         </td>
 
-                                        <td height="20" align="left" class="FontText"><%: row["matchesID"] %></td>
+                                        <td height="20" align="left" class="FontText"><%= i %></td>
                                         <td align="left" class="FontText"><%: row["MatchesID"] %></td>
                                         <td align="left" class="FontText"><%: row["TeamA"] %> v <%: row["TeamB"] %>(<%: row["Type"] %>)</td>
                                         <td align="left" class="FontText"><%: toDateString(row["DateTime"])%></td>
@@ -76,6 +77,7 @@
                                         <td width="92" align="left" class="FontText"><%: row["WinnerTeam"] %></td>
                                         <td width="92" align="left" class="FontText"><%: row["AdminAmount"] %></td>
                                     </tr>
+                                    <%i++; %>
                                     <% } //foreach %>
                                     
 

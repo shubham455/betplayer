@@ -64,6 +64,13 @@
                                                                 <asp:TextBox runat="server" CssClass="textbox" MaxLength="10" ID="txtContactno" /></td>
                                                             <td align="left">&nbsp;</td>
                                                         </tr>
+                                                         <tr>
+                                                            <td class="welcome">&nbsp;</td>
+                                                            <td height="30" align="left" valign="middle" class="welcome">Password</td>
+                                                            <td align="left">
+                                                                <asp:TextBox runat="server" CssClass="textbox" MaxLength="10" ID="txtPassword" /></td>
+                                                            <td align="left">&nbsp;</td>
+                                                        </tr>
 
                                                         <tr>
                                                             <td align="left" class="welcome">&nbsp;</td>

@@ -121,7 +121,7 @@
                                     </thead>
 
                                     <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                         <%int i = 1; %>
+                                        <%int i = 1; %>
                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                             { %>
 
@@ -146,9 +146,9 @@
                                                 </div>
                                             </td>
                                             <input id="id" type="hidden" value="<%:row["ClientID"] %>" />
-                                           
-                                            <td height="20" align="left" class="FontText "><%=i %></td>
-                                             
+
+                                            <td height="20" align="left" class="FontText "><%:row["ClientID"] %></td>
+
                                             <td align="left" class="FontText "><%:row["Code"] %></td>
                                             <td align="left" class="FontText "><%:row["Name"] %></td>
                                             <td align="left" class="FontText "><%:row["Contact_No"] %></td>
@@ -166,7 +166,6 @@
                                         </tr>
                                         <% i++; %>
                                         <% } //foreach %>
-                                     
                                     </tbody>
                                 </table>
                                 <div class="row-fluid">
@@ -260,8 +259,8 @@
         }
     </script>
 
-    
-    
-    
+
+
+
 </asp:Content>
 
