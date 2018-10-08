@@ -128,7 +128,7 @@
                                         <td width="2%" align="left">&nbsp;</td>
                                     </tr>
 
-                                     <tr>
+                                    <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td>
                                             <input id="Session5" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
@@ -150,7 +150,7 @@
                                         <td width="2%" align="left">&nbsp;</td>
                                     </tr>
 
-                                     <tr>
+                                    <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td>
                                             <input id="Session6 " onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
@@ -172,7 +172,7 @@
                                         <td width="2%" align="left">&nbsp;</td>
                                     </tr>
 
-                                     <tr>
+                                    <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td>
                                             <input id="Session7" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
@@ -194,7 +194,7 @@
                                         <td width="2%" align="left">&nbsp;</td>
                                     </tr>
 
-                                     <tr>
+                                    <tr>
                                         <td width="2%" class="welcome">&nbsp;</td>
                                         <td>
                                             <input id="Session8" onkeydown="focusNextElementOnEnterKeyPress(event)" type="text" readonly="" style="width: 250px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Session"></td>
@@ -251,7 +251,7 @@
                                         <input id="Declear" onkeydown="focusDeclareElementOnEnterKeyPress(event)" type="text" style="width: 120px; height: 40px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Declare"></td>
                                     <td style="margin-left: 30px;"></td>
                                     <td>
-                                        <button id="btnDeclear" type="button" class="btn btn-success" onclick="declareSession()"  style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Declare</button>
+                                        <button id="btnDeclear" type="button" class="btn btn-success" onclick="declareSession()" style="height: 50px; width: 140px; font-size: x-large; font-weight: bold; color: black">Declare</button>
                                     </td>
 
                                 </tr>
@@ -266,8 +266,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <div id="sessionsDiv" style="margin-top: 10vh;font-size:1em;">
-                                
+                            <div id="sessionsDiv" style="margin-top: 10vh; font-size: 1em;">
                             </div>
 
                         </div>
@@ -279,8 +278,8 @@
     <asp:HiddenField ID="firebasekey" runat="server" />
     <asp:HiddenField ID="apiID" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="js/SessionUpdate.js"></script>
-    <script type = "text/javascript">
+    <script src="js/SessionUpdate_v2.js"></script>
+    <script type="text/javascript">
         function Confirm() {
             var confirm_value = document.createElement("INPUT");
             confirm_value.type = "hidden";

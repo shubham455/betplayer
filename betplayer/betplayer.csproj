@@ -87,6 +87,7 @@
     <Content Include="admin\AllClientLedger.aspx" />
     <Content Include="admin\ClientLedger.aspx" />
     <Content Include="admin\Createpoweruser.aspx" />
+    <Content Include="admin\CreateSubAdmin.aspx" />
     <Content Include="admin\DeleteBets.aspx" />
     <Content Include="admin\img\LastBall\1_Run.jpg" />
     <Content Include="admin\img\LastBall\2_Run.jpg" />
@@ -114,11 +115,13 @@
     <Content Include="admin\ModifyBets.aspx" />
     <Content Include="admin\Modifypoweruser.aspx" />
     <Content Include="admin\ModifySessionBets.aspx" />
+    <Content Include="admin\ModifySubAdmin.aspx" />
     <Content Include="admin\My_Ledger.aspx" />
     <Content Include="admin\PlusMinusSelect.aspx" />
     <Content Include="admin\poweruserdetails.aspx" />
     <Content Include="admin\SessionPlusMinusDisplay.aspx" />
     <Content Include="admin\SessionPlusMinusSelect.aspx" />
+    <Content Include="admin\SubAdmindetails.aspx" />
     <Content Include="admin\UpdateAgentlimit.aspx" />
     <Content Include="admin\UpdateClientLimit.aspx" />
     <Content Include="admin\UpdatedRunnerBets.aspx" />
@@ -163,11 +166,15 @@
     <Content Include="Client\images\LastBall\Timeout.jpg" />
     <Content Include="Client\images\LastBall\WIDE.jpg" />
     <Content Include="Client\images\LastBall\Wide4.jpg" />
+    <Content Include="Client\images\loginimg\bk4.jpg" />
     <Content Include="Client\images\MainMenuImg\game.png" />
     <Content Include="Client\images\MainMenuImg\password.png" />
     <Content Include="Client\images\MainMenuImg\play.png" />
     <Content Include="Client\images\MainMenuImg\terms.png" />
+    <Content Include="Client\js\Homejs\BetDetailsCustom_v4.5.js" />
+    <Content Include="Client\js\Homejs\money.js" />
     <Content Include="Client\js\Homejs\mss_v1.js" />
+    <Content Include="Client\js\Homejs\jsbn.js" />
     <Content Include="PowerUser\AddfromDiamond.aspx" />
     <Content Include="PowerUser\AddFromLotus.aspx" />
     <Content Include="PowerUser\AddMatch.aspx" />
@@ -743,7 +750,7 @@
     <Content Include="PowerUser\js\respond.js" />
     <Content Include="PowerUser\js\RunnerUpdate.js" />
     <Content Include="PowerUser\js\scripts.js" />
-    <Content Include="PowerUser\js\SessionUpdate.js" />
+    <Content Include="PowerUser\js\SessionUpdate_v2.js" />
     <Content Include="PowerUser\LiveTV.aspx" />
     <Content Include="PowerUser\Login.aspx" />
     <Content Include="PowerUser\ManuallyUpdation.aspx" />
@@ -1515,7 +1522,7 @@
     <Content Include="Client\css\Home\style.css" />
     <Content Include="Client\css\Home\subscribe-form.css" />
     <Content Include="Client\css\login\clndr.css" />
-    <Content Include="Client\css\login\style.css" />
+    <Content Include="Client\css\login\style_v2.css" />
     <Content Include="Client\fonts\arrows.woff" />
     <Content Include="Client\GenerateCaptcha.aspx" />
     <Content Include="Client\Homepage.aspx" />
@@ -1573,7 +1580,6 @@
     <Content Include="Client\js\Homejs\jquery.rd-parallax.js" />
     <Content Include="Client\js\Homejs\jquery.simplr.smoothscroll.min.js" />
     <Content Include="Client\js\Homejs\jquery.ui.totop.js" />
-    <Content Include="Client\js\Homejs\BetDetailsCustom_v1.js" />
     <Content Include="Client\js\Homejs\owl.carousel.min.js" />
     <Content Include="Client\js\Homejs\script.js" />
     <Content Include="Client\js\Homejs\superfish.js" />
@@ -1588,6 +1594,667 @@
     <Content Include="PowerUser\ModifyMatch.aspx" />
     <Content Include="packages.config" />
     <Content Include="Agent\DashBoard.Master" />
+    <Content Include="SubAdmin\AllSuperAgentLedger.aspx" />
+    <Content Include="SubAdmin\assets\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="SubAdmin\assets\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="SubAdmin\assets\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="SubAdmin\assets\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="SubAdmin\assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="SubAdmin\assets\bootstrap-colorpicker\less\colorpicker.less" />
+    <Content Include="SubAdmin\assets\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="SubAdmin\assets\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="SubAdmin\assets\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="SubAdmin\assets\bootstrap-daterangepicker\date.js" />
+    <Content Include="SubAdmin\assets\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="SubAdmin\assets\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="SubAdmin\assets\bootstrap-daterangepicker\examples.html" />
+    <Content Include="SubAdmin\assets\bootstrap-inputmask\bootstrap-inputmask.js" />
+    <Content Include="SubAdmin\assets\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="SubAdmin\assets\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="SubAdmin\assets\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="SubAdmin\assets\bootstrap-timepicker\less\timepicker.less" />
+    <Content Include="SubAdmin\assets\bootstrap-toggle-buttons\LICENSE" />
+    <Content Include="SubAdmin\assets\bootstrap-toggle-buttons\static\config.rb" />
+    <Content Include="SubAdmin\assets\bootstrap-toggle-buttons\static\js\jquery.min.js" />
+    <Content Include="SubAdmin\assets\bootstrap-toggle-buttons\static\js\jquery.toggle.buttons.js" />
+    <Content Include="SubAdmin\assets\bootstrap-toggle-buttons\static\sass\bootstrap-toggle-buttons.scss" />
+    <Content Include="SubAdmin\assets\bootstrap-toggle-buttons\static\stylesheets\bootstrap-toggle-buttons.css" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\bootstrap\css\bootstrap.min.css" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\bootstrap\js\bootstrap.min.js" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\basic-custombuttons.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\basic-custombuttonsfirstlast.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\basic-disabletabclick.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\basic-finishbutton.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\basic-formvalidation.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\basic-inverse.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\basic-pills.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\basic-progressbar.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\basic-tabsleft.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\basic.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\examples\multiple.html" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\jquery.bootstrap.wizard.js" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\prettify.css" />
+    <Content Include="SubAdmin\assets\bootstrap-wizard\prettify.js" />
+    <Content Include="SubAdmin\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="SubAdmin\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="SubAdmin\assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="SubAdmin\assets\bootstrap\css\bootstrap-fileupload.css" />
+    <Content Include="SubAdmin\assets\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="SubAdmin\assets\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="SubAdmin\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="SubAdmin\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="SubAdmin\assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="SubAdmin\assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="SubAdmin\assets\bootstrap\js\bootstrap-fileupload.js" />
+    <Content Include="SubAdmin\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="SubAdmin\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\Cakefile" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\chosen\chosen-sprite.png" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\chosen\chosen.css" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\chosen\chosen.jquery.js" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\chosen\chosen.jquery.min.js" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\chosen\chosen.proto.js" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\chosen\chosen.proto.min.js" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\chosen\lib\chosen.less" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\coffee\chosen.jquery.coffee" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\coffee\chosen.proto.coffee" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\coffee\lib\abstract-chosen.coffee" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\coffee\lib\select-parser.coffee" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\example.jquery.html" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\example.proto.html" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\LICENSE.md" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\package.json" />
+    <Content Include="SubAdmin\assets\chosen-bootstrap\VERSION" />
+    <Content Include="SubAdmin\assets\ckeditor\build-config.js" />
+    <Content Include="SubAdmin\assets\ckeditor\CHANGES.md" />
+    <Content Include="SubAdmin\assets\ckeditor\ckeditor.js" />
+    <Content Include="SubAdmin\assets\ckeditor\config.js" />
+    <Content Include="SubAdmin\assets\ckeditor\contents.css" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\af.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\ar.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\bg.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\bn.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\bs.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\ca.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\cs.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\cy.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\da.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\de.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\el.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\en-au.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\en-ca.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\en-gb.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\en.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\eo.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\es.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\et.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\eu.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\fa.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\fi.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\fo.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\fr-ca.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\fr.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\gl.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\gu.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\he.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\hi.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\hr.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\hu.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\is.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\it.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\ja.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\ka.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\km.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\ko.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\ku.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\lt.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\lv.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\mk.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\mn.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\ms.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\nb.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\nl.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\no.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\pl.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\pt-br.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\pt.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\ro.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\ru.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\sk.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\sl.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\sr-latn.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\sr.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\sv.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\th.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\tr.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\ug.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\uk.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\vi.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\zh-cn.js" />
+    <Content Include="SubAdmin\assets\ckeditor\lang\zh.js" />
+    <Content Include="SubAdmin\assets\ckeditor\LICENSE.md" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\icons.png" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="SubAdmin\assets\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="SubAdmin\assets\ckeditor\README.md" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\ajax.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\api.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\appendto.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\divreplace.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\inlineall.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\inlinebycode.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\readonly.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\replacebyclass.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\replacebycode.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\sample.css" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\sample.js" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\tabindex.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\uicolor.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\uilanguages.html" />
+    <Content Include="SubAdmin\assets\ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\dialog.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\editor.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\icons.png" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\images\close.png" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\images\mini.png" />
+    <Content Include="SubAdmin\assets\ckeditor\skins\moono\readme.md" />
+    <Content Include="SubAdmin\assets\ckeditor\styles.js" />
+    <Content Include="SubAdmin\assets\clockface\CHANGELOG.txt" />
+    <Content Include="SubAdmin\assets\clockface\css\clockface.css" />
+    <Content Include="SubAdmin\assets\clockface\js\clockface.js" />
+    <Content Include="SubAdmin\assets\clockface\LICENSE-MIT" />
+    <Content Include="SubAdmin\assets\data-tables\DT_bootstrap.css" />
+    <Content Include="SubAdmin\assets\data-tables\DT_bootstrap.js" />
+    <Content Include="SubAdmin\assets\data-tables\images\sort_asc.png" />
+    <Content Include="SubAdmin\assets\data-tables\images\sort_both.png" />
+    <Content Include="SubAdmin\assets\data-tables\images\sort_desc.png" />
+    <Content Include="SubAdmin\assets\data-tables\jquery.dataTables.js" />
+    <Content Include="SubAdmin\assets\fancybox\CHANGELOG.md" />
+    <Content Include="SubAdmin\assets\fancybox\demo\1_b.jpg" />
+    <Content Include="SubAdmin\assets\fancybox\demo\1_s.jpg" />
+    <Content Include="SubAdmin\assets\fancybox\demo\2_b.jpg" />
+    <Content Include="SubAdmin\assets\fancybox\demo\2_s.jpg" />
+    <Content Include="SubAdmin\assets\fancybox\demo\3_b.jpg" />
+    <Content Include="SubAdmin\assets\fancybox\demo\3_s.jpg" />
+    <Content Include="SubAdmin\assets\fancybox\demo\4_b.jpg" />
+    <Content Include="SubAdmin\assets\fancybox\demo\4_s.jpg" />
+    <Content Include="SubAdmin\assets\fancybox\demo\5_b.jpg" />
+    <Content Include="SubAdmin\assets\fancybox\demo\5_s.jpg" />
+    <Content Include="SubAdmin\assets\fancybox\demo\ajax.txt" />
+    <Content Include="SubAdmin\assets\fancybox\demo\iframe.html" />
+    <Content Include="SubAdmin\assets\fancybox\lib\jquery-1.8.2.min.js" />
+    <Content Include="SubAdmin\assets\fancybox\lib\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="SubAdmin\assets\fancybox\source\blank.gif" />
+    <Content Include="SubAdmin\assets\fancybox\source\fancybox_loading.gif" />
+    <Content Include="SubAdmin\assets\fancybox\source\fancybox_overlay.png" />
+    <Content Include="SubAdmin\assets\fancybox\source\fancybox_sprite.png" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\fancybox_buttons.png" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\jquery.fancybox-buttons_cdea843f.css" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\jquery.fancybox-buttons_cdea843f.js" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\jquery.fancybox-media.js" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\jquery.fancybox-media_cdea843f.js" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\jquery.fancybox-thumbs_cdea843d.css" />
+    <Content Include="SubAdmin\assets\fancybox\source\helpers\jquery.fancybox-thumbs_cdea843d.js" />
+    <Content Include="SubAdmin\assets\fancybox\source\jquery.fancybox.css" />
+    <Content Include="SubAdmin\assets\fancybox\source\jquery.fancybox.js" />
+    <Content Include="SubAdmin\assets\fancybox\source\jquery.fancybox.pack.js" />
+    <Content Include="SubAdmin\assets\fancybox\source\jquery.fancybox_cdea77da.css" />
+    <Content Include="SubAdmin\assets\fancybox\source\jquery.fancybox_cdea77db.js" />
+    <Content Include="SubAdmin\assets\flot\API.txt" />
+    <Content Include="SubAdmin\assets\flot\examples\ajax.html" />
+    <Content Include="SubAdmin\assets\flot\examples\annotating.html" />
+    <Content Include="SubAdmin\assets\flot\examples\basic.html" />
+    <Content Include="SubAdmin\assets\flot\examples\data-eu-gdp-growth.json" />
+    <Content Include="SubAdmin\assets\flot\examples\data-japan-gdp-growth.json" />
+    <Content Include="SubAdmin\assets\flot\examples\data-usa-gdp-growth.json" />
+    <Content Include="SubAdmin\assets\flot\examples\graph-types.html" />
+    <Content Include="SubAdmin\assets\flot\examples\hs-2004-27-a-large_web.jpg" />
+    <Content Include="SubAdmin\assets\flot\examples\image.html" />
+    <Content Include="SubAdmin\assets\flot\examples\interacting-axes.html" />
+    <Content Include="SubAdmin\assets\flot\examples\interacting.html" />
+    <Content Include="SubAdmin\assets\flot\examples\layout.css" />
+    <Content Include="SubAdmin\assets\flot\examples\multiple-axes.html" />
+    <Content Include="SubAdmin\assets\flot\examples\navigate.html" />
+    <Content Include="SubAdmin\assets\flot\examples\percentiles.html" />
+    <Content Include="SubAdmin\assets\flot\examples\pie.html" />
+    <Content Include="SubAdmin\assets\flot\examples\realtime.html" />
+    <Content Include="SubAdmin\assets\flot\examples\resize.html" />
+    <Content Include="SubAdmin\assets\flot\examples\selection.html" />
+    <Content Include="SubAdmin\assets\flot\examples\setting-options.html" />
+    <Content Include="SubAdmin\assets\flot\examples\stacking.html" />
+    <Content Include="SubAdmin\assets\flot\examples\symbols.html" />
+    <Content Include="SubAdmin\assets\flot\examples\thresholding.html" />
+    <Content Include="SubAdmin\assets\flot\examples\time.html" />
+    <Content Include="SubAdmin\assets\flot\examples\tracking.html" />
+    <Content Include="SubAdmin\assets\flot\examples\turning-series.html" />
+    <Content Include="SubAdmin\assets\flot\examples\visitors.html" />
+    <Content Include="SubAdmin\assets\flot\examples\zooming.html" />
+    <Content Include="SubAdmin\assets\flot\excanvas.js" />
+    <Content Include="SubAdmin\assets\flot\excanvas.min.js" />
+    <Content Include="SubAdmin\assets\flot\FAQ.txt" />
+    <Content Include="SubAdmin\assets\flot\jquery.colorhelpers.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.crosshair.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.fillbetween.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.image.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.navigate.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.pie.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.resize.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.selection.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.stack.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.symbol.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.flot.threshold.js" />
+    <Content Include="SubAdmin\assets\flot\jquery.js" />
+    <Content Include="SubAdmin\assets\flot\LICENSE.txt" />
+    <Content Include="SubAdmin\assets\flot\Makefile" />
+    <Content Include="SubAdmin\assets\flot\NEWS.txt" />
+    <Content Include="SubAdmin\assets\flot\PLUGINS.txt" />
+    <Content Include="SubAdmin\assets\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="SubAdmin\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="SubAdmin\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\css\font-awesome-ie7.min.css" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\css\font-awesome.min.css" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\css\prettify.css" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\css\site.css" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\fontawesome-webfont.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\fontawesome-webfont.ttf" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\fontawesome-webfont.woff" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\fontawesome-webfont_162a16fe.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\museo_slab_300-webfont.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\museo_slab_300-webfont.ttf" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\museo_slab_300-webfont_162a16fe.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\museo_slab_500-webfont.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\museo_slab_500-webfont.ttf" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\museo_slab_500-webfont_162a16fe.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.ttf" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont_162a16fe.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\proximanova-webfont.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\proximanova-webfont.ttf" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\font\proximanova-webfont_162a16fe.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\ico\favicon.ico" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\img\contribution-sample.png" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\img\icon-flag.pdf" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\js\backbone.min.js" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\js\bootstrap-222.min.js" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\js\index\index.js" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\js\jquery-1.7.1.min.js" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\js\prettify.min.js" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\assets\js\underscore.min.js" />
+    <Content Include="SubAdmin\assets\font-awesome\docs\design.html" />
+    <Content Include="SubAdmin\assets\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="SubAdmin\assets\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="SubAdmin\assets\font-awesome\font\fontawesome-webfont_162a16fe.eot" />
+    <Content Include="SubAdmin\assets\font-awesome\font\FontAwesome.otf" />
+    <Content Include="SubAdmin\assets\font-awesome\less\font-awesome-ie7.less" />
+    <Content Include="SubAdmin\assets\font-awesome\less\font-awesome.less" />
+    <Content Include="SubAdmin\assets\font-awesome\sass\font-awesome.sass" />
+    <Content Include="SubAdmin\assets\font-awesome\sass\font-awesome.scss" />
+    <Content Include="SubAdmin\assets\fullcalendar\changelog.txt" />
+    <Content Include="SubAdmin\assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="SubAdmin\assets\fullcalendar\fullcalendar\fullcalendar.css" />
+    <Content Include="SubAdmin\assets\fullcalendar\fullcalendar\fullcalendar.js" />
+    <Content Include="SubAdmin\assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
+    <Content Include="SubAdmin\assets\fullcalendar\fullcalendar\fullcalendar.print.css" />
+    <Content Include="SubAdmin\assets\fullcalendar\fullcalendar\gcal.js" />
+    <Content Include="SubAdmin\assets\fullcalendar\GPL-LICENSE.txt" />
+    <Content Include="SubAdmin\assets\fullcalendar\jquery\jquery-1.8.1.min.js" />
+    <Content Include="SubAdmin\assets\fullcalendar\jquery\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="SubAdmin\assets\fullcalendar\MIT-LICENSE.txt" />
+    <Content Include="SubAdmin\assets\gritter\css\jquery.gritter.css" />
+    <Content Include="SubAdmin\assets\gritter\images\gritter-light.png" />
+    <Content Include="SubAdmin\assets\gritter\images\gritter.png" />
+    <Content Include="SubAdmin\assets\gritter\images\ie-spacer.gif" />
+    <Content Include="SubAdmin\assets\gritter\images\trees.jpg" />
+    <Content Include="SubAdmin\assets\gritter\js\jquery.gritter.js" />
+    <Content Include="SubAdmin\assets\jquery-knob\js\jquery.knob.js" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\allow-page-scroll.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\chaining.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\disable-fade-out.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\height-width.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\libs\prettify\prettify.css" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\libs\prettify\prettify.js" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\mouse-wheel.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\multiple-elements.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\programmatic-scrolling.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\rail.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\scrollbar.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\start-position.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\style.css" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\examples\top-bottom-events.html" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="SubAdmin\assets\jquery-slimscroll\slimScroll.jquery.json" />
+    <Content Include="SubAdmin\assets\jquery-tags-input\example.html" />
+    <Content Include="SubAdmin\assets\jquery-tags-input\jquery.tagsinput.css" />
+    <Content Include="SubAdmin\assets\jquery-tags-input\jquery.tagsinput.js" />
+    <Content Include="SubAdmin\assets\jquery-tags-input\jquery.tagsinput.min.js" />
+    <Content Include="SubAdmin\assets\jquery-tags-input\test\fake_json_endpoint.html" />
+    <Content Include="SubAdmin\assets\jquery-tags-input\test\fake_plaintext_endpoint.html" />
+    <Content Include="SubAdmin\assets\jqvmap\jqvmap\data\jquery.vmap.sampledata.js" />
+    <Content Include="SubAdmin\assets\jqvmap\jqvmap\jquery.vmap.js" />
+    <Content Include="SubAdmin\assets\jqvmap\jqvmap\jquery.vmap.min.js" />
+    <Content Include="SubAdmin\assets\jqvmap\jqvmap\jquery.vmap.packed.js" />
+    <Content Include="SubAdmin\assets\jqvmap\jqvmap\jqvmap.css" />
+    <Content Include="SubAdmin\assets\jqvmap\jqvmap\maps\jquery.vmap.europe.js" />
+    <Content Include="SubAdmin\assets\jqvmap\jqvmap\maps\jquery.vmap.germany.js" />
+    <Content Include="SubAdmin\assets\jqvmap\jqvmap\maps\jquery.vmap.russia.js" />
+    <Content Include="SubAdmin\assets\jqvmap\jqvmap\maps\jquery.vmap.usa.js" />
+    <Content Include="SubAdmin\assets\jqvmap\jqvmap\maps\jquery.vmap.world.js" />
+    <Content Include="SubAdmin\assets\jqvmap\samples\europe.html" />
+    <Content Include="SubAdmin\assets\jqvmap\samples\germany.html" />
+    <Content Include="SubAdmin\assets\jqvmap\samples\multi.html" />
+    <Content Include="SubAdmin\assets\jqvmap\samples\russia.html" />
+    <Content Include="SubAdmin\assets\jqvmap\samples\usa.html" />
+    <Content Include="SubAdmin\assets\jqvmap\samples\world.html" />
+    <Content Include="SubAdmin\assets\jslider\css\jslider.blue.css" />
+    <Content Include="SubAdmin\assets\jslider\css\jslider.css" />
+    <Content Include="SubAdmin\assets\jslider\css\jslider.plastic.css" />
+    <Content Include="SubAdmin\assets\jslider\css\jslider.round.css" />
+    <Content Include="SubAdmin\assets\jslider\css\jslider.round.plastic.css" />
+    <Content Include="SubAdmin\assets\jslider\img\jslider.blue.png" />
+    <Content Include="SubAdmin\assets\jslider\img\jslider.plastic.png" />
+    <Content Include="SubAdmin\assets\jslider\img\jslider.png" />
+    <Content Include="SubAdmin\assets\jslider\img\jslider.round.plastic.png" />
+    <Content Include="SubAdmin\assets\jslider\img\jslider.round.png" />
+    <Content Include="SubAdmin\assets\jslider\js\draggable-0.1.js" />
+    <Content Include="SubAdmin\assets\jslider\js\jquery-1.7.1.js" />
+    <Content Include="SubAdmin\assets\jslider\js\jquery.dependClass-0.1.js" />
+    <Content Include="SubAdmin\assets\jslider\js\jquery.numberformatter-1.2.3.js" />
+    <Content Include="SubAdmin\assets\jslider\js\jquery.slider.js" />
+    <Content Include="SubAdmin\assets\jslider\js\jshashtable-2.1_src.js" />
+    <Content Include="SubAdmin\assets\jslider\js\tmpl.js" />
+    <Content Include="SubAdmin\assets\pre-loader\3D coffee cup.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\3D snake.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Atom.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Bouncing ball.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Broken ring.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Chasing blocks.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Clock with hands.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Drawing flower.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Drink in glass.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Fading squares.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Fancy pants.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Hourglass.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Kaleidoscope.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Linear star.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Moving blocks.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Nuclear alert.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Ovals in circle.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Pie chart.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\preview.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\preview2.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\preview3.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Radar.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Rounded blocks.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Rounded stripes.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Search with arrow.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Searching.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Snake.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Snakes chasing.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Snow with rain.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Spider web.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Spinning line.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Spinning spiral.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Storm.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Sun.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Surrounded segments.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Thin broken ring.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Thin fading line.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Tree on wind.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Triangles indicator.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Twirl.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Velocity.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Ventilator.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Water ripples.gif" />
+    <Content Include="SubAdmin\assets\pre-loader\Whirlpool.gif" />
+    <Content Include="SubAdmin\assets\uniform\css\uniform.default.css" />
+    <Content Include="SubAdmin\assets\uniform\demo\demo.html" />
+    <Content Include="SubAdmin\assets\uniform\images\bg-input-focus.png" />
+    <Content Include="SubAdmin\assets\uniform\images\bg-input.png" />
+    <Content Include="SubAdmin\assets\uniform\images\sprite.png" />
+    <Content Include="SubAdmin\assets\uniform\jquery.uniform.js" />
+    <Content Include="SubAdmin\assets\uniform\jquery.uniform.min.js" />
+    <Content Include="SubAdmin\ChangePassword.aspx" />
+    <Content Include="SubAdmin\CollectionDetail.aspx" />
+    <Content Include="SubAdmin\CreateSuperStockist.aspx" />
+    <Content Include="SubAdmin\css\Homepage\bootstrap.min.css" />
+    <Content Include="SubAdmin\css\Homepage\style.css" />
+    <Content Include="SubAdmin\css\style.css" />
+    <Content Include="SubAdmin\css\style.min.css" />
+    <Content Include="SubAdmin\css\style_default.css" />
+    <Content Include="SubAdmin\css\style_gray.css" />
+    <Content Include="SubAdmin\css\style_navy-blue.css" />
+    <Content Include="SubAdmin\css\style_purple.css" />
+    <Content Include="SubAdmin\css\style_responsive.css" />
+    <Content Include="SubAdmin\Dashboard.aspx" />
+    <Content Include="SubAdmin\Dashboard.Master" />
+    <Content Include="SubAdmin\DeleteSuperAgent.ashx" />
+    <Content Include="SubAdmin\Homepage.aspx" />
+    <Content Include="SubAdmin\img\404.png" />
+    <Content Include="SubAdmin\img\500.png" />
+    <Content Include="SubAdmin\img\avatar-mini.png" />
+    <Content Include="SubAdmin\img\avatar.png" />
+    <Content Include="SubAdmin\img\avatar1.jpg" />
+    <Content Include="SubAdmin\img\avatar1_small.jpg" />
+    <Content Include="SubAdmin\img\avatar2.jpg" />
+    <Content Include="SubAdmin\img\avatar3.jpg" />
+    <Content Include="SubAdmin\img\avatar3_small.jpg" />
+    <Content Include="SubAdmin\img\bg-default.jpg" />
+    <Content Include="SubAdmin\img\bg-grey.jpg" />
+    <Content Include="SubAdmin\img\bg-navy-blue.jpg" />
+    <Content Include="SubAdmin\img\bg-purple.jpg" />
+    <Content Include="SubAdmin\img\body-bg.png" />
+    <Content Include="SubAdmin\img\box-bg.png" />
+    <Content Include="SubAdmin\img\bread-crumb-bg.jpg" />
+    <Content Include="SubAdmin\img\bread-crumb-divider.jpg" />
+    <Content Include="SubAdmin\img\bread-crumb-last.jpg" />
+    <Content Include="SubAdmin\img\header_line.png" />
+    <Content Include="SubAdmin\img\Homepage\img1.jpg" />
+    <Content Include="SubAdmin\img\Homepage\img2.jpg" />
+    <Content Include="SubAdmin\img\Homepage\img3.jpg" />
+    <Content Include="SubAdmin\img\Homepage\line_bg_repeat.jpg" />
+    <Content Include="SubAdmin\img\Homepage\next.png" />
+    <Content Include="SubAdmin\img\Homepage\pic1.jpg" />
+    <Content Include="SubAdmin\img\Homepage\pic2.jpg" />
+    <Content Include="SubAdmin\img\Homepage\prev.png" />
+    <Content Include="SubAdmin\img\Homepage\slider.jpg" />
+    <Content Include="SubAdmin\img\Homepage\slider1.jpg" />
+    <Content Include="SubAdmin\img\LastBall\1_Run.jpg" />
+    <Content Include="SubAdmin\img\LastBall\2_Run.jpg" />
+    <Content Include="SubAdmin\img\LastBall\3_Run.jpg" />
+    <Content Include="SubAdmin\img\LastBall\Ball_Start.jpg" />
+    <Content Include="SubAdmin\img\LastBall\Bet_Closed.jpg" />
+    <Content Include="SubAdmin\img\LastBall\Bet_Open.jpg" />
+    <Content Include="SubAdmin\img\LastBall\Four.jpg" />
+    <Content Include="SubAdmin\img\LastBall\Free_Hit.jpg" />
+    <Content Include="SubAdmin\img\LastBall\InningsBreak.jpg" />
+    <Content Include="SubAdmin\img\LastBall\No_Ball.jpg" />
+    <Content Include="SubAdmin\img\LastBall\No_Run.jpg" />
+    <Content Include="SubAdmin\img\LastBall\OUT.jpg" />
+    <Content Include="SubAdmin\img\LastBall\Review.jpg" />
+    <Content Include="SubAdmin\img\LastBall\SIX.jpg" />
+    <Content Include="SubAdmin\img\LastBall\Third_Umpire.jpg" />
+    <Content Include="SubAdmin\img\LastBall\Timeout.jpg" />
+    <Content Include="SubAdmin\img\LastBall\WIDE.jpg" />
+    <Content Include="SubAdmin\img\LastBall\Wide4.jpg" />
+    <Content Include="SubAdmin\img\loading.gif" />
+    <Content Include="SubAdmin\img\login-btn.jpg" />
+    <Content Include="SubAdmin\img\logo.png" />
+    <Content Include="SubAdmin\img\menu-selected-bg.png" />
+    <Content Include="SubAdmin\img\overlay-icon.png" />
+    <Content Include="SubAdmin\img\photo.jpg" />
+    <Content Include="SubAdmin\img\profile-pic.jpg" />
+    <Content Include="SubAdmin\img\side-bar-list-bg.png" />
+    <Content Include="SubAdmin\img\submenu_border.png" />
+    <Content Include="SubAdmin\img\submenu_hover.png" />
+    <Content Include="SubAdmin\img\top-bg.jpg" />
+    <Content Include="SubAdmin\js\demo.gmaps.js" />
+    <Content Include="SubAdmin\js\excanvas.js" />
+    <Content Include="SubAdmin\js\gmaps.js" />
+    <Content Include="SubAdmin\js\Homepage\bootstrap.min.js" />
+    <Content Include="SubAdmin\js\Homepage\jquery.min.js" />
+    <Content Include="SubAdmin\js\jquery-1.8.2.min.js" />
+    <Content Include="SubAdmin\js\jquery-1.8.3.min.js" />
+    <Content Include="SubAdmin\js\jquery.blockui.js" />
+    <Content Include="SubAdmin\js\jquery.cookie.js" />
+    <Content Include="SubAdmin\js\jquery.peity.min.js" />
+    <Content Include="SubAdmin\js\jquery.pulsate.min.js" />
+    <Content Include="SubAdmin\js\LiveMatch.js" />
+    <Content Include="SubAdmin\js\ManualMatch.js" />
+    <Content Include="SubAdmin\js\respond.js" />
+    <Content Include="SubAdmin\js\RunnerUpdate.js" />
+    <Content Include="SubAdmin\js\scripts.js" />
+    <Content Include="SubAdmin\js\SessionUpdate.js" />
+    <Content Include="SubAdmin\Ledger.aspx" />
+    <Content Include="SubAdmin\Login.aspx" />
+    <Content Include="SubAdmin\MasterDetails.aspx" />
+    <Content Include="SubAdmin\MatchAndSessionPosition.aspx" />
+    <Content Include="SubAdmin\MatchAndSessionSPosition.aspx" />
+    <Content Include="SubAdmin\MatchPlusMinusDisplay.aspx" />
+    <Content Include="SubAdmin\MatchplusminusSelect.aspx" />
+    <Content Include="SubAdmin\MatchSessionPlusminusDisplay.aspx" />
+    <Content Include="SubAdmin\MatchSessionPlusMinusSelect.aspx" />
+    <Content Include="SubAdmin\ModifySuperAgent.aspx" />
+    <Content Include="SubAdmin\My_Ledger.aspx" />
+    <Content Include="SubAdmin\NewCollection.aspx" />
+    <Content Include="SubAdmin\PlusMinusSelect.aspx" />
+    <Content Include="SubAdmin\Settings.aspx" />
+    <Content Include="SubAdmin\SportsBetting.aspx" />
+    <Content Include="SubAdmin\SportsDetails.aspx" />
+    <Content Include="SubAdmin\SuperStockistDetails.aspx" />
+    <Content Include="SubAdmin\SuperAgentLedger.aspx" />
+    <Content Include="SubAdmin\superagentlimit.ashx" />
+    <Content Include="SubAdmin\TC.aspx" />
+    <Content Include="SubAdmin\Updatesuperagentlimit.aspx" />
+    <Content Include="SubAdmin\ViewMatchReport.aspx" />
+    <Content Include="SubAdmin\ViewSessionReport.aspx" />
     <Content Include="superagent\AgentDetails.aspx" />
     <Content Include="superagent\AgentLimitReport.aspx" />
     <Content Include="superagent\AgentPlusMinus.aspx" />
@@ -2270,7 +2937,7 @@
     <Content Include="admin\DeleteAgent.ashx" />
     <Content Include="admin\DeleteSuperAgent.ashx" />
     <Content Include="admin\changeclientstatus.ashx" />
-    <Content Include="admin\changeagentstatus.ashx" />
+    <Content Include="admin\changesubadminstatus.ashx" />
     <Content Include="admin\changesuperagentstatus.ashx" />
     <Content Include="PowerUser\Dashboard.Master" />
     <Content Include="PowerUser\assets\bootstrap-colorpicker\less\colorpicker.less" />
@@ -2336,11 +3003,14 @@
     <Content Include="admin\DeleteRunnerBets.ashx" />
     <Content Include="admin\DeleteSessionBets.ashx" />
     <Content Include="admin\UnDeclarematch.ashx" />
+    <Content Include="PowerUser\LiveTvInputData.ashx" />
+    <Content Include="admin\deletesubadmin.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <Content Include="superagent\Agentlimit.ashx" />
     <Content Include="superagent\deleteagent.ashx" />
     <Content Include="superagent\Changestatus.ashx" />
+    <Content Include="SuperStokist\superagentlimit.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2431,6 +3101,678 @@
     <Content Include="superagent\UpdateAgentlimit.aspx" />
     <Content Include="superagent\ViewMatchReport.aspx" />
     <Content Include="superagent\ViewSessionReport.aspx" />
+    <Content Include="SuperStokist\AgentDetails.aspx" />
+    <Content Include="SuperStokist\AgentLedger.aspx" />
+    <Content Include="SuperStokist\Agentlimit.ashx" />
+    <Content Include="SuperStokist\AgentPlusMinus.aspx" />
+    <Content Include="SuperStokist\AllAgentLedger.aspx" />
+    <Content Include="SuperStokist\assets\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="SuperStokist\assets\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="SuperStokist\assets\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="SuperStokist\assets\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="SuperStokist\assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="SuperStokist\assets\bootstrap-colorpicker\less\colorpicker.less" />
+    <Content Include="SuperStokist\assets\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="SuperStokist\assets\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="SuperStokist\assets\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="SuperStokist\assets\bootstrap-daterangepicker\date.js" />
+    <Content Include="SuperStokist\assets\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="SuperStokist\assets\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="SuperStokist\assets\bootstrap-daterangepicker\examples.html" />
+    <Content Include="SuperStokist\assets\bootstrap-inputmask\bootstrap-inputmask.js" />
+    <Content Include="SuperStokist\assets\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="SuperStokist\assets\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="SuperStokist\assets\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="SuperStokist\assets\bootstrap-timepicker\less\timepicker.less" />
+    <Content Include="SuperStokist\assets\bootstrap-toggle-buttons\LICENSE" />
+    <Content Include="SuperStokist\assets\bootstrap-toggle-buttons\static\config.rb" />
+    <Content Include="SuperStokist\assets\bootstrap-toggle-buttons\static\js\jquery.min.js" />
+    <Content Include="SuperStokist\assets\bootstrap-toggle-buttons\static\js\jquery.toggle.buttons.js" />
+    <Content Include="SuperStokist\assets\bootstrap-toggle-buttons\static\sass\bootstrap-toggle-buttons.scss" />
+    <Content Include="SuperStokist\assets\bootstrap-toggle-buttons\static\stylesheets\bootstrap-toggle-buttons.css" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\bootstrap\css\bootstrap.min.css" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\bootstrap\js\bootstrap.min.js" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\basic-custombuttons.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\basic-custombuttonsfirstlast.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\basic-disabletabclick.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\basic-finishbutton.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\basic-formvalidation.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\basic-inverse.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\basic-pills.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\basic-progressbar.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\basic-tabsleft.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\basic.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\examples\multiple.html" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\jquery.bootstrap.wizard.js" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\prettify.css" />
+    <Content Include="SuperStokist\assets\bootstrap-wizard\prettify.js" />
+    <Content Include="SuperStokist\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="SuperStokist\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="SuperStokist\assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="SuperStokist\assets\bootstrap\css\bootstrap-fileupload.css" />
+    <Content Include="SuperStokist\assets\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="SuperStokist\assets\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="SuperStokist\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="SuperStokist\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="SuperStokist\assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="SuperStokist\assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="SuperStokist\assets\bootstrap\js\bootstrap-fileupload.js" />
+    <Content Include="SuperStokist\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="SuperStokist\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\Cakefile" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\chosen\chosen-sprite.png" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\chosen\chosen.css" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\chosen\chosen.jquery.js" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\chosen\chosen.jquery.min.js" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\chosen\chosen.proto.js" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\chosen\chosen.proto.min.js" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\chosen\lib\chosen.less" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\coffee\chosen.jquery.coffee" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\coffee\chosen.proto.coffee" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\coffee\lib\abstract-chosen.coffee" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\coffee\lib\select-parser.coffee" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\example.jquery.html" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\example.proto.html" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\LICENSE.md" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\package.json" />
+    <Content Include="SuperStokist\assets\chosen-bootstrap\VERSION" />
+    <Content Include="SuperStokist\assets\ckeditor\build-config.js" />
+    <Content Include="SuperStokist\assets\ckeditor\CHANGES.md" />
+    <Content Include="SuperStokist\assets\ckeditor\ckeditor.js" />
+    <Content Include="SuperStokist\assets\ckeditor\config.js" />
+    <Content Include="SuperStokist\assets\ckeditor\contents.css" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\af.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\ar.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\bg.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\bn.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\bs.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\ca.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\cs.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\cy.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\da.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\de.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\el.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\en-au.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\en-ca.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\en-gb.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\en.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\eo.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\es.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\et.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\eu.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\fa.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\fi.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\fo.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\fr-ca.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\fr.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\gl.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\gu.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\he.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\hi.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\hr.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\hu.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\is.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\it.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\ja.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\ka.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\km.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\ko.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\ku.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\lt.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\lv.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\mk.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\mn.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\ms.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\nb.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\nl.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\no.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\pl.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\pt-br.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\pt.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\ro.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\ru.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\sk.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\sl.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\sr-latn.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\sr.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\sv.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\th.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\tr.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\ug.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\uk.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\vi.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\zh-cn.js" />
+    <Content Include="SuperStokist\assets\ckeditor\lang\zh.js" />
+    <Content Include="SuperStokist\assets\ckeditor\LICENSE.md" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\icons.png" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="SuperStokist\assets\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="SuperStokist\assets\ckeditor\README.md" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\ajax.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\api.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\appendto.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\divreplace.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\inlineall.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\inlinebycode.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\readonly.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\replacebyclass.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\replacebycode.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\sample.css" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\sample.js" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\tabindex.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\uicolor.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\uilanguages.html" />
+    <Content Include="SuperStokist\assets\ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\dialog.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\editor.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\icons.png" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\images\close.png" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\images\mini.png" />
+    <Content Include="SuperStokist\assets\ckeditor\skins\moono\readme.md" />
+    <Content Include="SuperStokist\assets\ckeditor\styles.js" />
+    <Content Include="SuperStokist\assets\clockface\CHANGELOG.txt" />
+    <Content Include="SuperStokist\assets\clockface\css\clockface.css" />
+    <Content Include="SuperStokist\assets\clockface\js\clockface.js" />
+    <Content Include="SuperStokist\assets\clockface\LICENSE-MIT" />
+    <Content Include="SuperStokist\assets\data-tables\DT_bootstrap.css" />
+    <Content Include="SuperStokist\assets\data-tables\DT_bootstrap.js" />
+    <Content Include="SuperStokist\assets\data-tables\images\sort_asc.png" />
+    <Content Include="SuperStokist\assets\data-tables\images\sort_both.png" />
+    <Content Include="SuperStokist\assets\data-tables\images\sort_desc.png" />
+    <Content Include="SuperStokist\assets\data-tables\jquery.dataTables.js" />
+    <Content Include="SuperStokist\assets\fancybox\CHANGELOG.md" />
+    <Content Include="SuperStokist\assets\fancybox\demo\1_b.jpg" />
+    <Content Include="SuperStokist\assets\fancybox\demo\1_s.jpg" />
+    <Content Include="SuperStokist\assets\fancybox\demo\2_b.jpg" />
+    <Content Include="SuperStokist\assets\fancybox\demo\2_s.jpg" />
+    <Content Include="SuperStokist\assets\fancybox\demo\3_b.jpg" />
+    <Content Include="SuperStokist\assets\fancybox\demo\3_s.jpg" />
+    <Content Include="SuperStokist\assets\fancybox\demo\4_b.jpg" />
+    <Content Include="SuperStokist\assets\fancybox\demo\4_s.jpg" />
+    <Content Include="SuperStokist\assets\fancybox\demo\5_b.jpg" />
+    <Content Include="SuperStokist\assets\fancybox\demo\5_s.jpg" />
+    <Content Include="SuperStokist\assets\fancybox\demo\ajax.txt" />
+    <Content Include="SuperStokist\assets\fancybox\demo\iframe.html" />
+    <Content Include="SuperStokist\assets\fancybox\lib\jquery-1.8.2.min.js" />
+    <Content Include="SuperStokist\assets\fancybox\lib\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="SuperStokist\assets\fancybox\source\blank.gif" />
+    <Content Include="SuperStokist\assets\fancybox\source\fancybox_loading.gif" />
+    <Content Include="SuperStokist\assets\fancybox\source\fancybox_overlay.png" />
+    <Content Include="SuperStokist\assets\fancybox\source\fancybox_sprite.png" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\fancybox_buttons.png" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\jquery.fancybox-buttons_cdea843f.css" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\jquery.fancybox-buttons_cdea843f.js" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\jquery.fancybox-media.js" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\jquery.fancybox-media_cdea843f.js" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\jquery.fancybox-thumbs_cdea843d.css" />
+    <Content Include="SuperStokist\assets\fancybox\source\helpers\jquery.fancybox-thumbs_cdea843d.js" />
+    <Content Include="SuperStokist\assets\fancybox\source\jquery.fancybox.css" />
+    <Content Include="SuperStokist\assets\fancybox\source\jquery.fancybox.js" />
+    <Content Include="SuperStokist\assets\fancybox\source\jquery.fancybox.pack.js" />
+    <Content Include="SuperStokist\assets\fancybox\source\jquery.fancybox_cdea77da.css" />
+    <Content Include="SuperStokist\assets\fancybox\source\jquery.fancybox_cdea77db.js" />
+    <Content Include="SuperStokist\assets\flot\API.txt" />
+    <Content Include="SuperStokist\assets\flot\examples\ajax.html" />
+    <Content Include="SuperStokist\assets\flot\examples\annotating.html" />
+    <Content Include="SuperStokist\assets\flot\examples\basic.html" />
+    <Content Include="SuperStokist\assets\flot\examples\data-eu-gdp-growth.json" />
+    <Content Include="SuperStokist\assets\flot\examples\data-japan-gdp-growth.json" />
+    <Content Include="SuperStokist\assets\flot\examples\data-usa-gdp-growth.json" />
+    <Content Include="SuperStokist\assets\flot\examples\graph-types.html" />
+    <Content Include="SuperStokist\assets\flot\examples\hs-2004-27-a-large_web.jpg" />
+    <Content Include="SuperStokist\assets\flot\examples\image.html" />
+    <Content Include="SuperStokist\assets\flot\examples\interacting-axes.html" />
+    <Content Include="SuperStokist\assets\flot\examples\interacting.html" />
+    <Content Include="SuperStokist\assets\flot\examples\layout.css" />
+    <Content Include="SuperStokist\assets\flot\examples\multiple-axes.html" />
+    <Content Include="SuperStokist\assets\flot\examples\navigate.html" />
+    <Content Include="SuperStokist\assets\flot\examples\percentiles.html" />
+    <Content Include="SuperStokist\assets\flot\examples\pie.html" />
+    <Content Include="SuperStokist\assets\flot\examples\realtime.html" />
+    <Content Include="SuperStokist\assets\flot\examples\resize.html" />
+    <Content Include="SuperStokist\assets\flot\examples\selection.html" />
+    <Content Include="SuperStokist\assets\flot\examples\setting-options.html" />
+    <Content Include="SuperStokist\assets\flot\examples\stacking.html" />
+    <Content Include="SuperStokist\assets\flot\examples\symbols.html" />
+    <Content Include="SuperStokist\assets\flot\examples\thresholding.html" />
+    <Content Include="SuperStokist\assets\flot\examples\time.html" />
+    <Content Include="SuperStokist\assets\flot\examples\tracking.html" />
+    <Content Include="SuperStokist\assets\flot\examples\turning-series.html" />
+    <Content Include="SuperStokist\assets\flot\examples\visitors.html" />
+    <Content Include="SuperStokist\assets\flot\examples\zooming.html" />
+    <Content Include="SuperStokist\assets\flot\excanvas.js" />
+    <Content Include="SuperStokist\assets\flot\excanvas.min.js" />
+    <Content Include="SuperStokist\assets\flot\FAQ.txt" />
+    <Content Include="SuperStokist\assets\flot\jquery.colorhelpers.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.crosshair.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.fillbetween.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.image.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.navigate.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.pie.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.resize.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.selection.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.stack.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.symbol.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.flot.threshold.js" />
+    <Content Include="SuperStokist\assets\flot\jquery.js" />
+    <Content Include="SuperStokist\assets\flot\LICENSE.txt" />
+    <Content Include="SuperStokist\assets\flot\Makefile" />
+    <Content Include="SuperStokist\assets\flot\NEWS.txt" />
+    <Content Include="SuperStokist\assets\flot\PLUGINS.txt" />
+    <Content Include="SuperStokist\assets\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="SuperStokist\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="SuperStokist\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\css\font-awesome-ie7.min.css" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\css\font-awesome.min.css" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\css\prettify.css" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\css\site.css" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\fontawesome-webfont.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\fontawesome-webfont.ttf" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\fontawesome-webfont.woff" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\fontawesome-webfont_162a16fe.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\museo_slab_300-webfont.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\museo_slab_300-webfont.ttf" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\museo_slab_300-webfont_162a16fe.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\museo_slab_500-webfont.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\museo_slab_500-webfont.ttf" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\museo_slab_500-webfont_162a16fe.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.ttf" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont_162a16fe.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\proximanova-webfont.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\proximanova-webfont.ttf" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\font\proximanova-webfont_162a16fe.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\ico\favicon.ico" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\img\contribution-sample.png" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\img\icon-flag.pdf" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\js\backbone.min.js" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\js\bootstrap-222.min.js" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\js\index\index.js" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\js\jquery-1.7.1.min.js" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\js\prettify.min.js" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\assets\js\underscore.min.js" />
+    <Content Include="SuperStokist\assets\font-awesome\docs\design.html" />
+    <Content Include="SuperStokist\assets\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="SuperStokist\assets\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="SuperStokist\assets\font-awesome\font\fontawesome-webfont_162a16fe.eot" />
+    <Content Include="SuperStokist\assets\font-awesome\font\FontAwesome.otf" />
+    <Content Include="SuperStokist\assets\font-awesome\less\font-awesome-ie7.less" />
+    <Content Include="SuperStokist\assets\font-awesome\less\font-awesome.less" />
+    <Content Include="SuperStokist\assets\font-awesome\sass\font-awesome.sass" />
+    <Content Include="SuperStokist\assets\font-awesome\sass\font-awesome.scss" />
+    <Content Include="SuperStokist\assets\fullcalendar\changelog.txt" />
+    <Content Include="SuperStokist\assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="SuperStokist\assets\fullcalendar\fullcalendar\fullcalendar.css" />
+    <Content Include="SuperStokist\assets\fullcalendar\fullcalendar\fullcalendar.js" />
+    <Content Include="SuperStokist\assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
+    <Content Include="SuperStokist\assets\fullcalendar\fullcalendar\fullcalendar.print.css" />
+    <Content Include="SuperStokist\assets\fullcalendar\fullcalendar\gcal.js" />
+    <Content Include="SuperStokist\assets\fullcalendar\GPL-LICENSE.txt" />
+    <Content Include="SuperStokist\assets\fullcalendar\jquery\jquery-1.8.1.min.js" />
+    <Content Include="SuperStokist\assets\fullcalendar\jquery\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="SuperStokist\assets\fullcalendar\MIT-LICENSE.txt" />
+    <Content Include="SuperStokist\assets\gritter\css\jquery.gritter.css" />
+    <Content Include="SuperStokist\assets\gritter\images\gritter-light.png" />
+    <Content Include="SuperStokist\assets\gritter\images\gritter.png" />
+    <Content Include="SuperStokist\assets\gritter\images\ie-spacer.gif" />
+    <Content Include="SuperStokist\assets\gritter\images\trees.jpg" />
+    <Content Include="SuperStokist\assets\gritter\js\jquery.gritter.js" />
+    <Content Include="SuperStokist\assets\jquery-knob\js\jquery.knob.js" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\allow-page-scroll.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\chaining.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\disable-fade-out.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\height-width.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\libs\prettify\prettify.css" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\libs\prettify\prettify.js" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\mouse-wheel.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\multiple-elements.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\programmatic-scrolling.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\rail.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\scrollbar.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\start-position.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\style.css" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\examples\top-bottom-events.html" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="SuperStokist\assets\jquery-slimscroll\slimScroll.jquery.json" />
+    <Content Include="SuperStokist\assets\jquery-tags-input\example.html" />
+    <Content Include="SuperStokist\assets\jquery-tags-input\jquery.tagsinput.css" />
+    <Content Include="SuperStokist\assets\jquery-tags-input\jquery.tagsinput.js" />
+    <Content Include="SuperStokist\assets\jquery-tags-input\jquery.tagsinput.min.js" />
+    <Content Include="SuperStokist\assets\jquery-tags-input\test\fake_json_endpoint.html" />
+    <Content Include="SuperStokist\assets\jquery-tags-input\test\fake_plaintext_endpoint.html" />
+    <Content Include="SuperStokist\assets\jqvmap\jqvmap\data\jquery.vmap.sampledata.js" />
+    <Content Include="SuperStokist\assets\jqvmap\jqvmap\jquery.vmap.js" />
+    <Content Include="SuperStokist\assets\jqvmap\jqvmap\jquery.vmap.min.js" />
+    <Content Include="SuperStokist\assets\jqvmap\jqvmap\jquery.vmap.packed.js" />
+    <Content Include="SuperStokist\assets\jqvmap\jqvmap\jqvmap.css" />
+    <Content Include="SuperStokist\assets\jqvmap\jqvmap\maps\jquery.vmap.europe.js" />
+    <Content Include="SuperStokist\assets\jqvmap\jqvmap\maps\jquery.vmap.germany.js" />
+    <Content Include="SuperStokist\assets\jqvmap\jqvmap\maps\jquery.vmap.russia.js" />
+    <Content Include="SuperStokist\assets\jqvmap\jqvmap\maps\jquery.vmap.usa.js" />
+    <Content Include="SuperStokist\assets\jqvmap\jqvmap\maps\jquery.vmap.world.js" />
+    <Content Include="SuperStokist\assets\jqvmap\samples\europe.html" />
+    <Content Include="SuperStokist\assets\jqvmap\samples\germany.html" />
+    <Content Include="SuperStokist\assets\jqvmap\samples\multi.html" />
+    <Content Include="SuperStokist\assets\jqvmap\samples\russia.html" />
+    <Content Include="SuperStokist\assets\jqvmap\samples\usa.html" />
+    <Content Include="SuperStokist\assets\jqvmap\samples\world.html" />
+    <Content Include="SuperStokist\assets\jslider\css\jslider.blue.css" />
+    <Content Include="SuperStokist\assets\jslider\css\jslider.css" />
+    <Content Include="SuperStokist\assets\jslider\css\jslider.plastic.css" />
+    <Content Include="SuperStokist\assets\jslider\css\jslider.round.css" />
+    <Content Include="SuperStokist\assets\jslider\css\jslider.round.plastic.css" />
+    <Content Include="SuperStokist\assets\jslider\img\jslider.blue.png" />
+    <Content Include="SuperStokist\assets\jslider\img\jslider.plastic.png" />
+    <Content Include="SuperStokist\assets\jslider\img\jslider.png" />
+    <Content Include="SuperStokist\assets\jslider\img\jslider.round.plastic.png" />
+    <Content Include="SuperStokist\assets\jslider\img\jslider.round.png" />
+    <Content Include="SuperStokist\assets\jslider\js\draggable-0.1.js" />
+    <Content Include="SuperStokist\assets\jslider\js\jquery-1.7.1.js" />
+    <Content Include="SuperStokist\assets\jslider\js\jquery.dependClass-0.1.js" />
+    <Content Include="SuperStokist\assets\jslider\js\jquery.numberformatter-1.2.3.js" />
+    <Content Include="SuperStokist\assets\jslider\js\jquery.slider.js" />
+    <Content Include="SuperStokist\assets\jslider\js\jshashtable-2.1_src.js" />
+    <Content Include="SuperStokist\assets\jslider\js\tmpl.js" />
+    <Content Include="SuperStokist\assets\pre-loader\3D coffee cup.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\3D snake.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Atom.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Bouncing ball.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Broken ring.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Chasing blocks.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Clock with hands.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Drawing flower.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Drink in glass.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Fading squares.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Fancy pants.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Hourglass.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Kaleidoscope.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Linear star.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Moving blocks.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Nuclear alert.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Ovals in circle.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Pie chart.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\preview.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\preview2.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\preview3.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Radar.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Rounded blocks.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Rounded stripes.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Search with arrow.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Searching.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Snake.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Snakes chasing.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Snow with rain.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Spider web.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Spinning line.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Spinning spiral.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Storm.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Sun.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Surrounded segments.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Thin broken ring.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Thin fading line.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Tree on wind.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Triangles indicator.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Twirl.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Velocity.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Ventilator.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Water ripples.gif" />
+    <Content Include="SuperStokist\assets\pre-loader\Whirlpool.gif" />
+    <Content Include="SuperStokist\assets\uniform\css\uniform.default.css" />
+    <Content Include="SuperStokist\assets\uniform\demo\demo.html" />
+    <Content Include="SuperStokist\assets\uniform\images\bg-input-focus.png" />
+    <Content Include="SuperStokist\assets\uniform\images\bg-input.png" />
+    <Content Include="SuperStokist\assets\uniform\images\sprite.png" />
+    <Content Include="SuperStokist\assets\uniform\jquery.uniform.js" />
+    <Content Include="SuperStokist\assets\uniform\jquery.uniform.min.js" />
+    <Content Include="SuperStokist\Changepassword.aspx" />
+    <Content Include="SuperStokist\Changestatus.ashx" />
+    <Content Include="SuperStokist\CollectionDetail.aspx" />
+    <Content Include="SuperStokist\CompanymatchplusminusDisplay.aspx" />
+    <Content Include="SuperStokist\CompanymatchPlusminusSelect.aspx" />
+    <Content Include="SuperStokist\CompanyMatchSessionPlusMinusDisplay.aspx" />
+    <Content Include="SuperStokist\CompanymatchSessionplusMinusSelect.aspx" />
+    <Content Include="SuperStokist\CompanyPlusMinusSelect.aspx" />
+    <Content Include="SuperStokist\CompanySessionPlusMinusDisplay.aspx" />
+    <Content Include="SuperStokist\CompanySessionPlusMinusSelect.aspx" />
+    <Content Include="SuperStokist\CreateAgent.aspx" />
+    <Content Include="SuperStokist\CreateNewCollection.aspx" />
+    <Content Include="SuperStokist\CreateSuperAgent.aspx" />
+    <Content Include="SuperStokist\css\Homepage\bootstrap.min.css" />
+    <Content Include="SuperStokist\css\Homepage\style.css" />
+    <Content Include="SuperStokist\css\style.css" />
+    <Content Include="SuperStokist\css\style.min.css" />
+    <Content Include="SuperStokist\css\style_default.css" />
+    <Content Include="SuperStokist\css\style_gray.css" />
+    <Content Include="SuperStokist\css\style_navy-blue.css" />
+    <Content Include="SuperStokist\css\style_purple.css" />
+    <Content Include="SuperStokist\css\style_responsive.css" />
+    <Content Include="SuperStokist\Dashboard.aspx" />
+    <Content Include="SuperStokist\DashBoard.Master" />
+    <Content Include="SuperStokist\deleteagent.ashx" />
+    <Content Include="SuperStokist\Homepage.aspx" />
+    <Content Include="SuperStokist\img\404.png" />
+    <Content Include="SuperStokist\img\500.png" />
+    <Content Include="SuperStokist\img\avatar-mini.png" />
+    <Content Include="SuperStokist\img\avatar.png" />
+    <Content Include="SuperStokist\img\avatar1.jpg" />
+    <Content Include="SuperStokist\img\avatar1_small.jpg" />
+    <Content Include="SuperStokist\img\avatar2.jpg" />
+    <Content Include="SuperStokist\img\avatar3.jpg" />
+    <Content Include="SuperStokist\img\avatar3_small.jpg" />
+    <Content Include="SuperStokist\img\bg-default.jpg" />
+    <Content Include="SuperStokist\img\bg-grey.jpg" />
+    <Content Include="SuperStokist\img\bg-navy-blue.jpg" />
+    <Content Include="SuperStokist\img\bg-purple.jpg" />
+    <Content Include="SuperStokist\img\body-bg.png" />
+    <Content Include="SuperStokist\img\box-bg.png" />
+    <Content Include="SuperStokist\img\bread-crumb-bg.jpg" />
+    <Content Include="SuperStokist\img\bread-crumb-divider.jpg" />
+    <Content Include="SuperStokist\img\bread-crumb-last.jpg" />
+    <Content Include="SuperStokist\img\header_line.png" />
+    <Content Include="SuperStokist\img\Homepage\img1.jpg" />
+    <Content Include="SuperStokist\img\Homepage\img2.jpg" />
+    <Content Include="SuperStokist\img\Homepage\img3.jpg" />
+    <Content Include="SuperStokist\img\Homepage\line_bg_repeat.jpg" />
+    <Content Include="SuperStokist\img\Homepage\next.png" />
+    <Content Include="SuperStokist\img\Homepage\pic1.jpg" />
+    <Content Include="SuperStokist\img\Homepage\pic2.jpg" />
+    <Content Include="SuperStokist\img\Homepage\prev.png" />
+    <Content Include="SuperStokist\img\Homepage\slider.jpg" />
+    <Content Include="SuperStokist\img\Homepage\slider1.jpg" />
+    <Content Include="SuperStokist\img\LastBall\1_Run.jpg" />
+    <Content Include="SuperStokist\img\LastBall\2_Run.jpg" />
+    <Content Include="SuperStokist\img\LastBall\3_Run.jpg" />
+    <Content Include="SuperStokist\img\LastBall\Ball_Start.jpg" />
+    <Content Include="SuperStokist\img\LastBall\Bet_Closed.jpg" />
+    <Content Include="SuperStokist\img\LastBall\Bet_Open.jpg" />
+    <Content Include="SuperStokist\img\LastBall\Four.jpg" />
+    <Content Include="SuperStokist\img\LastBall\Free_Hit.jpg" />
+    <Content Include="SuperStokist\img\LastBall\InningsBreak.jpg" />
+    <Content Include="SuperStokist\img\LastBall\No_Ball.jpg" />
+    <Content Include="SuperStokist\img\LastBall\No_Run.jpg" />
+    <Content Include="SuperStokist\img\LastBall\OUT.jpg" />
+    <Content Include="SuperStokist\img\LastBall\Review.jpg" />
+    <Content Include="SuperStokist\img\LastBall\SIX.jpg" />
+    <Content Include="SuperStokist\img\LastBall\Third_Umpire.jpg" />
+    <Content Include="SuperStokist\img\LastBall\Timeout.jpg" />
+    <Content Include="SuperStokist\img\LastBall\WIDE.jpg" />
+    <Content Include="SuperStokist\img\LastBall\Wide4.jpg" />
+    <Content Include="SuperStokist\img\loading.gif" />
+    <Content Include="SuperStokist\img\login-btn.jpg" />
+    <Content Include="SuperStokist\img\logo.png" />
+    <Content Include="SuperStokist\img\menu-selected-bg.png" />
+    <Content Include="SuperStokist\img\overlay-icon.png" />
+    <Content Include="SuperStokist\img\photo.jpg" />
+    <Content Include="SuperStokist\img\profile-pic.jpg" />
+    <Content Include="SuperStokist\img\side-bar-list-bg.png" />
+    <Content Include="SuperStokist\img\submenu_border.png" />
+    <Content Include="SuperStokist\img\submenu_hover.png" />
+    <Content Include="SuperStokist\img\top-bg.jpg" />
+    <Content Include="SuperStokist\js\demo.gmaps.js" />
+    <Content Include="SuperStokist\js\excanvas.js" />
+    <Content Include="SuperStokist\js\gmaps.js" />
+    <Content Include="SuperStokist\js\Homepage\bootstrap.min.js" />
+    <Content Include="SuperStokist\js\Homepage\jquery.min.js" />
+    <Content Include="SuperStokist\js\jquery-1.8.2.min.js" />
+    <Content Include="SuperStokist\js\jquery-1.8.3.min.js" />
+    <Content Include="SuperStokist\js\jquery.blockui.js" />
+    <Content Include="SuperStokist\js\jquery.cookie.js" />
+    <Content Include="SuperStokist\js\jquery.peity.min.js" />
+    <Content Include="SuperStokist\js\jquery.pulsate.min.js" />
+    <Content Include="SuperStokist\js\LiveMatch.js" />
+    <Content Include="SuperStokist\js\respond.js" />
+    <Content Include="SuperStokist\js\scripts.js" />
+    <Content Include="SuperStokist\Ledger.aspx" />
+    <Content Include="SuperStokist\Login.aspx" />
+    <Content Include="SuperStokist\MasterDetails.aspx" />
+    <Content Include="SuperStokist\MatchAndSessionPosition.aspx" />
+    <Content Include="SuperStokist\MatchAndSessionSPosition.aspx" />
+    <Content Include="SuperStokist\MatchPlusMinusDisplay.aspx" />
+    <Content Include="SuperStokist\MatchplusminusSelect.aspx" />
+    <Content Include="SuperStokist\MatchSessionPlusminusDisplay.aspx" />
+    <Content Include="SuperStokist\MatchSessionPlusMinusSelect.aspx" />
+    <Content Include="SuperStokist\ModifyAgent.aspx" />
+    <Content Include="SuperStokist\My_Ledger.aspx" />
+    <Content Include="SuperStokist\PlusMinusSelect.aspx" />
+    <Content Include="SuperStokist\SessionPlusMinusDisplay.aspx" />
+    <Content Include="SuperStokist\SessionPlusMinusSelect.aspx" />
+    <Content Include="SuperStokist\Settings.aspx" />
+    <Content Include="SuperStokist\SportsBetting.aspx" />
+    <Content Include="SuperStokist\SportsDetails.aspx" />
+    <Content Include="SuperStokist\SuperAgentDetails.aspx" />
+    <Content Include="SuperStokist\TC.aspx" />
+    <Content Include="SuperStokist\UpdateAgentlimit.aspx" />
+    <Content Include="SuperStokist\Updatesuperagentlimit.aspx" />
+    <Content Include="SuperStokist\ViewMatchReport.aspx" />
+    <Content Include="SuperStokist\ViewSessionReport.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2477,6 +3819,13 @@
     <Compile Include="admin\Createpoweruser.aspx.designer.cs">
       <DependentUpon>Createpoweruser.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\CreateSubAdmin.aspx.cs">
+      <DependentUpon>CreateSubAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CreateSubAdmin.aspx.designer.cs">
+      <DependentUpon>CreateSubAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\DeleteBets.aspx.cs">
       <DependentUpon>DeleteBets.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2489,6 +3838,9 @@
     </Compile>
     <Compile Include="admin\DeleteSessionBets.ashx.cs">
       <DependentUpon>DeleteSessionBets.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\deletesubadmin.ashx.cs">
+      <DependentUpon>deletesubadmin.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\MatchAndSessionSPosition.aspx.cs">
       <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
@@ -2546,6 +3898,13 @@
     <Compile Include="admin\ModifySessionBets.aspx.designer.cs">
       <DependentUpon>ModifySessionBets.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\ModifySubAdmin.aspx.cs">
+      <DependentUpon>ModifySubAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ModifySubAdmin.aspx.designer.cs">
+      <DependentUpon>ModifySubAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\My_Ledger.aspx.cs">
       <DependentUpon>My_Ledger.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2580,6 +3939,13 @@
     </Compile>
     <Compile Include="admin\SessionPlusMinusSelect.aspx.designer.cs">
       <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\SubAdmindetails.aspx.cs">
+      <DependentUpon>SubAdmindetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\SubAdmindetails.aspx.designer.cs">
+      <DependentUpon>SubAdmindetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\superagentlimit.ashx.cs">
       <DependentUpon>superagentlimit.ashx</DependentUpon>
@@ -2660,8 +4026,8 @@
     <Compile Include="admin\AgentDetails.aspx.designer.cs">
       <DependentUpon>AgentDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\changeagentstatus.ashx.cs">
-      <DependentUpon>changeagentstatus.ashx</DependentUpon>
+    <Compile Include="admin\changesubadminstatus.ashx.cs">
+      <DependentUpon>changesubadminstatus.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\changeclientstatus.ashx.cs">
       <DependentUpon>changeclientstatus.ashx</DependentUpon>
@@ -2741,6 +4107,9 @@
     </Compile>
     <Compile Include="PowerUser\LiveTV.aspx.designer.cs">
       <DependentUpon>LiveTV.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PowerUser\LiveTvInputData.ashx.cs">
+      <DependentUpon>LiveTvInputData.ashx</DependentUpon>
     </Compile>
     <Compile Include="PowerUser\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -3338,6 +4707,215 @@
       <DependentUpon>ModifyMatch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubAdmin\AllSuperAgentLedger.aspx.cs">
+      <DependentUpon>AllSuperAgentLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\AllSuperAgentLedger.aspx.designer.cs">
+      <DependentUpon>AllSuperAgentLedger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\CollectionDetail.aspx.cs">
+      <DependentUpon>CollectionDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\CollectionDetail.aspx.designer.cs">
+      <DependentUpon>CollectionDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\CreateSuperStockist.aspx.cs">
+      <DependentUpon>CreateSuperStockist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\CreateSuperStockist.aspx.designer.cs">
+      <DependentUpon>CreateSuperStockist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\Dashboard.Master.cs">
+      <DependentUpon>Dashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\Dashboard.Master.designer.cs">
+      <DependentUpon>Dashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\DeleteSuperAgent.ashx.cs">
+      <DependentUpon>DeleteSuperAgent.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\Homepage.aspx.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\Homepage.aspx.designer.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\Ledger.aspx.cs">
+      <DependentUpon>Ledger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\Ledger.aspx.designer.cs">
+      <DependentUpon>Ledger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\MasterDetails.aspx.cs">
+      <DependentUpon>MasterDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\MasterDetails.aspx.designer.cs">
+      <DependentUpon>MasterDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\MatchAndSessionPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\MatchAndSessionPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\MatchAndSessionSPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\MatchAndSessionSPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\MatchPlusMinusDisplay.aspx.cs">
+      <DependentUpon>MatchPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\MatchPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\MatchplusminusSelect.aspx.cs">
+      <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\MatchplusminusSelect.aspx.designer.cs">
+      <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\MatchSessionPlusminusDisplay.aspx.cs">
+      <DependentUpon>MatchSessionPlusminusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\MatchSessionPlusminusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusminusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\MatchSessionPlusMinusSelect.aspx.cs">
+      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\MatchSessionPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\ModifySuperAgent.aspx.cs">
+      <DependentUpon>ModifySuperAgent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\ModifySuperAgent.aspx.designer.cs">
+      <DependentUpon>ModifySuperAgent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\My_Ledger.aspx.cs">
+      <DependentUpon>My_Ledger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\My_Ledger.aspx.designer.cs">
+      <DependentUpon>My_Ledger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\NewCollection.aspx.cs">
+      <DependentUpon>NewCollection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\NewCollection.aspx.designer.cs">
+      <DependentUpon>NewCollection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\PlusMinusSelect.aspx.cs">
+      <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\PlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\SportsBetting.aspx.cs">
+      <DependentUpon>SportsBetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\SportsBetting.aspx.designer.cs">
+      <DependentUpon>SportsBetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\SportsDetails.aspx.cs">
+      <DependentUpon>SportsDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\SportsDetails.aspx.designer.cs">
+      <DependentUpon>SportsDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\SuperStockistDetails.aspx.cs">
+      <DependentUpon>SuperStockistDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\SuperStockistDetails.aspx.designer.cs">
+      <DependentUpon>SuperStockistDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\SuperAgentLedger.aspx.cs">
+      <DependentUpon>SuperAgentLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\SuperAgentLedger.aspx.designer.cs">
+      <DependentUpon>SuperAgentLedger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\superagentlimit.ashx.cs">
+      <DependentUpon>superagentlimit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\TC.aspx.cs">
+      <DependentUpon>TC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\TC.aspx.designer.cs">
+      <DependentUpon>TC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\Updatesuperagentlimit.aspx.cs">
+      <DependentUpon>Updatesuperagentlimit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\Updatesuperagentlimit.aspx.designer.cs">
+      <DependentUpon>Updatesuperagentlimit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\ViewMatchReport.aspx.cs">
+      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\ViewMatchReport.aspx.designer.cs">
+      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin\ViewSessionReport.aspx.cs">
+      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin\ViewSessionReport.aspx.designer.cs">
+      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="superagent\AgentDetails.aspx.cs">
       <DependentUpon>AgentDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3653,6 +5231,312 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="superagent\ViewSessionReport.aspx.designer.cs">
+      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\AgentDetails.aspx.cs">
+      <DependentUpon>AgentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\AgentDetails.aspx.designer.cs">
+      <DependentUpon>AgentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\AgentLedger.aspx.cs">
+      <DependentUpon>AgentLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\AgentLedger.aspx.designer.cs">
+      <DependentUpon>AgentLedger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\Agentlimit.ashx.cs">
+      <DependentUpon>Agentlimit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\AgentPlusMinus.aspx.cs">
+      <DependentUpon>AgentPlusMinus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\AgentPlusMinus.aspx.designer.cs">
+      <DependentUpon>AgentPlusMinus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\AllAgentLedger.aspx.cs">
+      <DependentUpon>AllAgentLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\AllAgentLedger.aspx.designer.cs">
+      <DependentUpon>AllAgentLedger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\Changepassword.aspx.cs">
+      <DependentUpon>Changepassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\Changepassword.aspx.designer.cs">
+      <DependentUpon>Changepassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\Changestatus.ashx.cs">
+      <DependentUpon>Changestatus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CollectionDetail.aspx.cs">
+      <DependentUpon>CollectionDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CollectionDetail.aspx.designer.cs">
+      <DependentUpon>CollectionDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CompanymatchplusminusDisplay.aspx.cs">
+      <DependentUpon>CompanymatchplusminusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CompanymatchplusminusDisplay.aspx.designer.cs">
+      <DependentUpon>CompanymatchplusminusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CompanymatchPlusminusSelect.aspx.cs">
+      <DependentUpon>CompanymatchPlusminusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CompanymatchPlusminusSelect.aspx.designer.cs">
+      <DependentUpon>CompanymatchPlusminusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CompanyMatchSessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>CompanyMatchSessionPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CompanyMatchSessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>CompanyMatchSessionPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CompanymatchSessionplusMinusSelect.aspx.cs">
+      <DependentUpon>CompanymatchSessionplusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CompanymatchSessionplusMinusSelect.aspx.designer.cs">
+      <DependentUpon>CompanymatchSessionplusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CompanyPlusMinusSelect.aspx.cs">
+      <DependentUpon>CompanyPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CompanyPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>CompanyPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CompanySessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>CompanySessionPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CompanySessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>CompanySessionPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CompanySessionPlusMinusSelect.aspx.cs">
+      <DependentUpon>CompanySessionPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CompanySessionPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>CompanySessionPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CreateAgent.aspx.cs">
+      <DependentUpon>CreateAgent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CreateAgent.aspx.designer.cs">
+      <DependentUpon>CreateAgent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CreateNewCollection.aspx.cs">
+      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CreateNewCollection.aspx.designer.cs">
+      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\CreateSuperAgent.aspx.cs">
+      <DependentUpon>CreateSuperAgent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\CreateSuperAgent.aspx.designer.cs">
+      <DependentUpon>CreateSuperAgent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\DashBoard.Master.cs">
+      <DependentUpon>DashBoard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\DashBoard.Master.designer.cs">
+      <DependentUpon>DashBoard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\deleteagent.ashx.cs">
+      <DependentUpon>deleteagent.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\Homepage.aspx.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\Homepage.aspx.designer.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\Ledger.aspx.cs">
+      <DependentUpon>Ledger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\Ledger.aspx.designer.cs">
+      <DependentUpon>Ledger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\MasterDetails.aspx.cs">
+      <DependentUpon>MasterDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\MasterDetails.aspx.designer.cs">
+      <DependentUpon>MasterDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\MatchAndSessionPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\MatchAndSessionPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\MatchAndSessionSPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\MatchAndSessionSPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\MatchPlusMinusDisplay.aspx.cs">
+      <DependentUpon>MatchPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\MatchPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\MatchplusminusSelect.aspx.cs">
+      <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\MatchplusminusSelect.aspx.designer.cs">
+      <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\MatchSessionPlusminusDisplay.aspx.cs">
+      <DependentUpon>MatchSessionPlusminusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\MatchSessionPlusminusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusminusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\MatchSessionPlusMinusSelect.aspx.cs">
+      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\MatchSessionPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\ModifyAgent.aspx.cs">
+      <DependentUpon>ModifyAgent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\ModifyAgent.aspx.designer.cs">
+      <DependentUpon>ModifyAgent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\My_Ledger.aspx.cs">
+      <DependentUpon>My_Ledger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\My_Ledger.aspx.designer.cs">
+      <DependentUpon>My_Ledger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\PlusMinusSelect.aspx.cs">
+      <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\PlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\SessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\SessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\SessionPlusMinusSelect.aspx.cs">
+      <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\SessionPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\SportsBetting.aspx.cs">
+      <DependentUpon>SportsBetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\SportsBetting.aspx.designer.cs">
+      <DependentUpon>SportsBetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\SportsDetails.aspx.cs">
+      <DependentUpon>SportsDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\SportsDetails.aspx.designer.cs">
+      <DependentUpon>SportsDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\SuperAgentDetails.aspx.cs">
+      <DependentUpon>SuperAgentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\SuperAgentDetails.aspx.designer.cs">
+      <DependentUpon>SuperAgentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\superagentlimit.ashx.cs">
+      <DependentUpon>superagentlimit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\TC.aspx.cs">
+      <DependentUpon>TC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\TC.aspx.designer.cs">
+      <DependentUpon>TC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\UpdateAgentlimit.aspx.cs">
+      <DependentUpon>UpdateAgentlimit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\UpdateAgentlimit.aspx.designer.cs">
+      <DependentUpon>UpdateAgentlimit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\Updatesuperagentlimit.aspx.cs">
+      <DependentUpon>Updatesuperagentlimit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\Updatesuperagentlimit.aspx.designer.cs">
+      <DependentUpon>Updatesuperagentlimit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\ViewMatchReport.aspx.cs">
+      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\ViewMatchReport.aspx.designer.cs">
+      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperStokist\ViewSessionReport.aspx.cs">
+      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperStokist\ViewSessionReport.aspx.designer.cs">
       <DependentUpon>ViewSessionReport.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

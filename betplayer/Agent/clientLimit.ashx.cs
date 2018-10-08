@@ -93,10 +93,18 @@ namespace betplayer.Agent
                         foreach (Object client in clientValues)
                         {
                             string clientID = client.GetType().GetProperty("ClientID").GetValue(client, null).ToString();
-                            string clientLimit = client.GetType().GetProperty("ClientLimit").GetValue(client, null).ToString();
+                            decimal currentlimit = Convert.ToDecimal(client.GetType().GetProperty("ClientLimit").GetValue(client, null));
                             string Fixlimit = client.GetType().GetProperty("FixLimit").GetValue(client, null).ToString();
 
-                            string updatelimit = "Update ClientMaster set  CurrentLimit= '" + clientLimit + "',FixLimit = '"+Fixlimit+"'  Where ClientID = '" + clientID + "'";
+                            string Clientlimit = "Select Client_Limit From ClientMaster where ClientID = '" + clientID + "'";
+                            MySqlCommand Clientlimitcmd = new MySqlCommand(Clientlimit, cn);
+                            MySqlDataAdapter Clientlimitadp = new MySqlDataAdapter(Clientlimitcmd);
+                            DataTable Clientlimitdt = new DataTable();
+                            Clientlimitadp.Fill(Clientlimitdt);
+                            Decimal ClientLimit1 = Convert.ToDecimal(Clientlimitdt.Rows[0]["Client_Limit"]);
+                            decimal finalclientlimit = currentlimit - ClientLimit1;
+
+                            string updatelimit = "Update ClientMaster set Client_Limit = '"+ finalclientlimit+"', CurrentLimit = '" + currentlimit + "',FixLimit = '"+Fixlimit+"'  Where ClientID = '" + clientID + "'";
                             MySqlCommand cmd = new MySqlCommand(updatelimit, cn);
                             cmd.ExecuteNonQuery();
 

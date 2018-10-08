@@ -125,13 +125,13 @@ namespace betplayer.PowerUser
                             {
                                 if (Mode == "Y")
                                 {
-                                    Amount1 = Amount * Rate;
+                                    Amount1 = Amount;
                                     TotalAmount = TotalAmount - Amount1;
 
                                 }
                                 else if (Mode == "N")
                                 {
-                                    Amount1 = Amount * Rate;
+                                    Amount1 = Amount;
                                     TotalAmount = TotalAmount + Amount1;
                                 }
 

@@ -7,7 +7,7 @@
     <title>Terms &amp; Conditions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link href="css/login/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/login/style_v2.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/login/clndr.css" rel="stylesheet" type="text/css" media="all">
 
     <style>
@@ -39,7 +39,7 @@
             left: 0;
             height: 25px;
             width: 25px;
-            background-color: #eee;
+            background-color: black;
         }
 
         /* On mouse-over, add a grey background color */
@@ -134,7 +134,7 @@
                     <label class="container" style="color:black">
                         मैंने सभी नियम व शर्तों को अच्छे से पढ़ लिया है और मुझे सभी नियम व शर्ते मंजूर है।
                              
-                        <input type="checkbox" name="Terms" id="Terms">
+                        <input type="checkbox" name="Terms" id="Terms" style="color:black">
                         <span class="checkmark"></span>
                     </label>
 

@@ -32,6 +32,7 @@ namespace betplayer.poweruser
                 DataTable Matchdt = new DataTable();
                 Matchadp.Fill(Matchdt);
                 string Declear = Matchdt.Rows[0]["Declear"].ToString();
+                string session1 = "";
                 if (Declear == "False")
                 {
                     string session = "Select Session From Session where MatchID ='" + apiID + "'  group by Session";
@@ -42,15 +43,18 @@ namespace betplayer.poweruser
                     Boolean check = false;
                     for (int s = 0; s < sessiondt.Rows.Count; s++)
                     {
-                        string session1 = sessiondt.Rows[s]["Session"].ToString();
+                         session1 = sessiondt.Rows[s]["Session"].ToString();
 
                         string declaredsession = "Select Session From DeclaredSession where '" + apiID + "' and Session = '" + session1 + "'";
                         MySqlCommand declaredsessioncmd = new MySqlCommand(declaredsession, cn);
                         MySqlDataReader rdr = declaredsessioncmd.ExecuteReader();
                         if (!rdr.Read())
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('First Declare All Session of this match.....');", true);
+                            DataTable dt = new DataTable();
+                            dt.Load(rdr);
+
                             check = true;
+                            break;
                         }
                         rdr.Close();
                     }
@@ -429,7 +433,7 @@ namespace betplayer.poweruser
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('First Declare All Session of this match.....');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('First Declare "+session1+" session of this match');", true);
                     }
                 }
 

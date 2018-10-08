@@ -1,11 +1,11 @@
 ﻿// Initialize Firebase
 var config = {
-    apiKey: "AIzaSyDeJEW2OK0RnL0A4OjYF6oTj04xQhgpb40",
-    authDomain: "betplayer-197014.firebaseapp.com",
-    databaseURL: "https://betplayer-197014.firebaseio.com",
-    projectId: "betplayer-197014",
-    storageBucket: "betplayer-197014.appspot.com",
-    messagingSenderId: "98790187004"
+    apiKey: "AIzaSyCE_FlNqI6V1D2a7SL6hHUDtyHiP4TbKpM",
+    authDomain: "livegame-25.firebaseapp.com",
+    databaseURL: "https://livegame-25.firebaseio.com",
+    projectId: "livegame-25",
+    storageBucket: "livegame-25.appspot.com",
+    messagingSenderId: "1057323073701"
 };
 firebase.initializeApp(config);
 var matchIdElement = document.getElementById("ContentPlaceHolder1_firebasekey");

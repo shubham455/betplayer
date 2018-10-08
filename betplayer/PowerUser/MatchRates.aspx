@@ -144,7 +144,7 @@
     </div>
 
     <asp:HiddenField ID="firebasekey" runat="server" />
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
     <script src="js/RunnerUpdate.js"></script>
 
     <script>

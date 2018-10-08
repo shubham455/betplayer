@@ -14,9 +14,8 @@ namespace betplayer.admin
     /// <summary>
     /// Summary description for superagentlimit
     /// </summary>
-    public class superagentlimit : IHttpHandler,IReadOnlySessionState
+    public class superagentlimit : IHttpHandler, IReadOnlySessionState
     {
-
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/json";
@@ -75,7 +74,7 @@ namespace betplayer.admin
                         string clientLimit = client.GetType().GetProperty("AgentLimit").GetValue(client, null).ToString();
                         string fixlimit = client.GetType().GetProperty("FixLimit").GetValue(client, null).ToString();
 
-                        string updatelimit = "Update SuperAgentMaster set  Fixlimit = '"+fixlimit+"',CurrentLimit= '" + clientLimit + "'  Where SuperagentID = '" + clientID + "'";
+                        string updatelimit = "Update SuperAgentMaster set  Fixlimit = '" + fixlimit + "',CurrentLimit= '" + clientLimit + "'  Where SuperagentID = '" + clientID + "'";
                         MySqlCommand cmd = new MySqlCommand(updatelimit, cn);
                         cmd.ExecuteNonQuery();
 

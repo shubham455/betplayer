@@ -74,14 +74,19 @@ namespace betplayer.Client
             string Session = context.Request["Session"].ToString();
             Decimal Amount = Convert.ToDecimal(context.Request["Amount"]);
             Decimal Rate = Convert.ToDecimal(context.Request["Rate"]);
+            Decimal AccurateRate = Rate / 100;
             int Run = Convert.ToInt16(context.Request["Run"]);
             string Team = context.Request["Team"].ToString();
             string Mode = context.Request["Mode"].ToString();
             string MatchID = context.Request["MatchID"].ToString();
 
 
+
+
             try
             {
+                System.Threading.Thread.Sleep(4000);
+
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
@@ -92,14 +97,17 @@ namespace betplayer.Client
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     Decimal ClientLimit1 = Convert.ToDecimal(dt.Rows[0]["Client_Limit"]);
+                    decimal finalposition = Amount * Rate;
+                    decimal checkClientLimit = ClientLimit1 - finalposition;
 
 
-                    string CheckSession = "Select * From Session where matchID = '" + MatchID + "' and clientID = '" + ClientID + "' order by DateTime DESC";
+
+                    string CheckSession = "Select * From Session where matchID = '" + MatchID + "' and clientID = '" + ClientID + "' and  Session = '" + Session + "' order by DateTime DESC";
                     MySqlCommand Sessioncmd = new MySqlCommand(CheckSession, cn);
                     MySqlDataAdapter Sessionadp = new MySqlDataAdapter(Sessioncmd);
                     DataTable Sessiondt = new DataTable();
                     Sessionadp.Fill(Sessiondt);
-                    
+
                     decimal FinalAmount = 0;
                     decimal FinalAmount1 = 0;
                     if (Sessiondt.Rows.Count > 0)
@@ -110,39 +118,46 @@ namespace betplayer.Client
                         string mode = Sessiondt.Rows[0]["Mode"].ToString();
                         int run = Convert.ToInt16(Sessiondt.Rows[0]["Runs"]);
                         FinalAmount1 = Position;
+
+
                         if (mode != Mode)
                         {
+
                             if (run < Run)
                             {
-                                FinalAmount = Position + Amount;
+                                FinalAmount = checkClientLimit;
                             }
                             else if (run > Run)
                             {
-                                FinalAmount = Position - Amount;
+                                FinalAmount = Position - Amount * Rate;
                             }
                             else if (run == Run)
                             {
-                                FinalAmount = Position - Amount;
+                                FinalAmount = Position - (Amount * Rate);
+
                             }
+
 
                         }
                         else if (mode == Mode)
                         {
-                            FinalAmount = FinalAmount1 - Amount;
+                            FinalAmount = checkClientLimit;
 
                         }
 
                     }
                     else
                     {
-                        FinalAmount = Amount ;
+                        FinalAmount = checkClientLimit;
 
                     }
                     Decimal CheckClientAmount = FinalAmount;
 
-
-
-
+                    if (CheckClientAmount < 0)
+                    {
+                        return "unsuccess";
+                    }
+                    
 
                     string s = "Insert Into Session (ClientID,Session, Amount, Runs,Rate, Mode, DateTime, MatchID,Team,Position) values (@ClientID,@Session,@Amount,@Run,@Rate,@Mode,@DateTime,@MatchID,@Team,@Position); SELECT LAST_INSERT_ID()";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
@@ -160,36 +175,9 @@ namespace betplayer.Client
                     int ID = Convert.ToInt16(cmd.ExecuteScalar());
 
 
-                    string s1 = "Select Client_Limit From ClientMaster where ClientID = '" + ClientID + "'";
-                    MySqlCommand cmd1 = new MySqlCommand(s1, cn);
-                    MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
-                    DataTable dt1 = new DataTable();
-                    adp1.Fill(dt1);
+                    
 
-                    decimal ClientLimit = Convert.ToDecimal(dt1.Rows[0]["Client_Limit"]);
-
-                    if (Mode == "Y")
-                    {
-                        decimal deductedAmount = ClientLimit - Amount;
-                        double dValue = double.Parse(deductedAmount.ToString());
-
-                        string s2 = "Update ClientMaster Set Client_Limit = '" + dValue + "' where ClientId = '" + ClientID + "'";
-                        MySqlCommand cmd2 = new MySqlCommand(s2, cn);
-                        cmd2.ExecuteNonQuery();
-                    }
-                    else if (Mode == "N")
-                    {
-                        decimal CalculateAmount = Rate * Amount;
-                        decimal deductedAmount = ClientLimit - CalculateAmount;
-                        double dValue = double.Parse(deductedAmount.ToString());
-
-                        string s2 = "Update ClientMaster Set Client_Limit = '" + dValue + "' where ClientId = '" + ClientID + "'";
-                        MySqlCommand cmd2 = new MySqlCommand(s2, cn);
-                        cmd2.ExecuteNonQuery();
-                    }
-
-
-                    string check = "Select * from Sharetable where  MatchID = '" + MatchID + "' && ClientID = '"+ClientID+"'";
+                    string check = "Select * from Sharetable where  MatchID = '" + MatchID + "' && ClientID = '" + ClientID + "'";
                     MySqlCommand checkcmd = new MySqlCommand(check, cn);
                     MySqlDataReader rdr = checkcmd.ExecuteReader();
                     if (rdr.Read())
@@ -231,7 +219,7 @@ namespace betplayer.Client
 
                         string s6 = "Insert into sharetable (ClientID,MatchID,AgentShare,SAgentshare,ClientShare,AgentMatchComm,AgentSessionComm,SAgentMatchComm,SAgentSessionComm) values(@ClientID,@MatchID,@AgentShare,@SAgentShare,@ClientShare,@AgentMatchComm,@AgentSessionComm,@SAgentMatchComm,@SAgentSessionComm)";
                         MySqlCommand cmd6 = new MySqlCommand(s6, cn);
-                        
+
                         cmd6.Parameters.AddWithValue("@ClientID", ClientID);
                         cmd6.Parameters.AddWithValue("@MatchID", MatchID);
                         cmd6.Parameters.AddWithValue("@AgentShare", AgentShare);
@@ -252,7 +240,7 @@ namespace betplayer.Client
                     runTable.Columns.Add(new DataColumn("RUNS"));
                     runTable.Columns.Add(new DataColumn("AMOUNT"));
 
-                    string session = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.ClientID = '" + ClientID + "' && Session.MatchID = '" + MatchID + "' && Session.Session = '" + Session + "'";
+                    string session = "select Session.sessionID,Session.session,Session.Position,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.ClientID = '" + ClientID + "' && Session.MatchID = '" + MatchID + "' && Session.Session = '" + Session + "'";
                     MySqlCommand sessioncmd = new MySqlCommand(session, cn);
                     MySqlDataAdapter sessionadp1 = new MySqlDataAdapter(sessioncmd);
                     DataTable sessiondt = new DataTable();
@@ -269,7 +257,7 @@ namespace betplayer.Client
                             string SessionMode = sessiondt.Rows[j]["Mode"].ToString();
 
 
-                            for (int i = runs + 5; i >= runs + 5; i--)
+                            for (int i = runs+5; i >= runs -5; i--)
                             {
 
                                 DataRow row = runTable.NewRow();
@@ -352,10 +340,10 @@ namespace betplayer.Client
                         if (runamount > Amount12)
                         {
                             Amount12 = runamount;
-                           
+
                         }
                     }
-                    string update = "update Session set position = '" + Amount12 + "' where SessionID = '" + ID + "' ";
+                    string update = "update Session set position = '" + Amount12 + "' where SessionID = '" + ID + "'  ";
                     MySqlCommand updatecmd = new MySqlCommand(update, cn);
                     updatecmd.ExecuteNonQuery();
                 }
@@ -372,16 +360,19 @@ namespace betplayer.Client
 
             Decimal Difference = 0;
 
+
+
             if (Initruns < runs)
             {
 
+
                 if (Mode == "Y")
                 {
-                    Difference = Amount + InitAmount;
+                    Difference = (Amount) + InitAmount;
                 }
                 else if (Mode == "N")
                 {
-                    Difference = Amount * -1 + InitAmount;
+                    Difference = (Amount * -1) + InitAmount;
                 }
 
 
@@ -390,15 +381,14 @@ namespace betplayer.Client
             {
                 if (Mode == "Y")
                 {
-                    Difference = Amount * Rate  + InitAmount;
+                    Difference = Amount * Rate * -1 + InitAmount;
                 }
                 else if (Mode == "N")
                 {
-                    Difference = Amount * Rate  + InitAmount;
+                    Difference = (Amount * Rate) + InitAmount;
                 }
-
-
             }
+           
             return Difference;
         }
     }

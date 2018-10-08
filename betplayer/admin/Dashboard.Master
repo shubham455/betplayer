@@ -102,6 +102,7 @@
 
                         <li><a class="" href="SuperAgentDetails.aspx">SuperAgent Master</a></li>
                         <li><a class="" href="poweruserdetails.aspx">Poweruser Master</a></li>
+                        <li><a class="" href="SubAdminDetails.aspx">SubAdmin Master</a></li>
 
                     </ul>
                 </li>

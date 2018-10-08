@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -81,6 +82,7 @@ namespace betplayer.Client
 
             try
             {
+                System.Threading.Thread.Sleep(4000);
 
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
@@ -104,27 +106,24 @@ namespace betplayer.Client
                     String TeamA = SelectTeamdt.Rows[0]["TeamA"].ToString();
                     String TeamB = SelectTeamdt.Rows[0]["TeamB"].ToString();
 
-
                     Decimal CheckClientAmount = 0;
-                    if (Team != TeamB)
-                    {
-                        CheckClientAmount = ClientLimit1 + Position2;
-                    }
 
-                    else if (Team != TeamA)
+                    if (Position1 < 0)
                     {
                         CheckClientAmount = ClientLimit1 + Position1;
                     }
-                    
-
-                    if (CheckClientAmount == 0 || CheckClientAmount < 0)
+                    else if (Position2 < 0)
+                    {
+                        CheckClientAmount = ClientLimit1 + Position2;
+                    }
+                    if (CheckClientAmount < 0)
                     {
                         return "unsuccess";
                     }
+
                     else
                     {
-
-
+                        
                         string s = "Insert Into runner (ClientID, Amount, Rate, Mode, DateTime, MatchID,Team,Position1,Position2,Position3) values (@ClientID,@Amount,@Rate,@Mode,@DateTime,@MatchID,@Team,@Position1,@Position2,@Position3)";
                         MySqlCommand cmd = new MySqlCommand(s, cn);
                         cmd.Parameters.AddWithValue("@ClientID", ClientID);
@@ -179,7 +178,7 @@ namespace betplayer.Client
                         }
 
 
-                        string check = "Select * from Sharetable where  MatchID = '" + MatchID + "' && ClientID = '"+ClientID+"'";
+                        string check = "Select * from Sharetable where  MatchID = '" + MatchID + "' && ClientID = '" + ClientID + "'";
                         MySqlCommand checkcmd = new MySqlCommand(check, cn);
                         MySqlDataReader rdr = checkcmd.ExecuteReader();
                         if (rdr.Read())

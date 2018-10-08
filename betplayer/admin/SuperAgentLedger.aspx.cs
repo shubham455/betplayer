@@ -196,7 +196,7 @@ namespace betplayer.admin
                     LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
                     if (l > 0)
                     {
-                        LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
+                        LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToDecimal(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
 
 
                     }

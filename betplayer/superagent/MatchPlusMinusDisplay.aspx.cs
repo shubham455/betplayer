@@ -352,6 +352,7 @@ namespace betplayer.superagent
                             double TotalMatchCommisionvalue1 = double.Parse(TotalMatchCommision1.ToString());
                             row["MatchCommision"] = TotalMatchCommisionvalue1;
                         }
+                        else { row["MatchCommision"] = 0; }
                     }
                     else { row["MatchCommision"] = 0; }
                     decimal totalcommision = TotalMatchCommision1 ;

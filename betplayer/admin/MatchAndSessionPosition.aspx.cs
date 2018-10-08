@@ -318,7 +318,8 @@ namespace betplayer.admin
                 DataTable scodedt = new DataTable();
                 scodeadp.Fill(scodedt);
 
-
+                Decimal TeamAposition = 0;
+                Decimal TeamBposition = 0;
                 for (int a = 0; a < scodedt.Rows.Count; a++)
                 {
                     int ID = Convert.ToInt16(scodedt.Rows[a]["SuperAgentID"]);
@@ -330,8 +331,7 @@ namespace betplayer.admin
                     MySqlDataAdapter adp11 = new MySqlDataAdapter(cmd11);
                     DataTable dt11 = new DataTable();
                     adp11.Fill(dt11);
-                    Decimal TeamAposition = 0;
-                    Decimal TeamBposition = 0;
+
                     for (int i = 0; i < dt11.Rows.Count; i++)
                     {
 
@@ -500,74 +500,58 @@ namespace betplayer.admin
 
 
 
-                        if (dt5.Rows.Count > 0)
-                        {
-                            IEnumerable<DataRow> orderedRows = dt5.AsEnumerable();
-                            DataTable TempClientTable = orderedRows.CopyToDataTable();
-                            foreach (DataRow row11 in TempClientTable.Rows)
-                            {
-                                ClientTable1.Rows.Add(row11.ItemArray);
-                            }
-                        }
-                    }
-                    decimal totalCalculation1 = 0, totalCalculation2 = 0;
-                    for (int d = 0; d < ClientTable1.Rows.Count; d++)
-                    {
-                        decimal total1 = Convert.ToDecimal(ClientTable1.Rows[d]["Position1"]);
-                        decimal total2 = Convert.ToDecimal(ClientTable1.Rows[d]["Position2"]);
-                        totalCalculation1 = totalCalculation1 - total1;
-                        totalCalculation2 = totalCalculation2 - total2;
 
                     }
+                }
 
-                    //if(TeamAposition > 0)
-                    //{
-                    //    TeamAposition = TeamAposition * -1;
-                    //} 
-                    //else if (TeamAposition < 0)
-                    //{
-                    //    TeamAposition = TeamAposition * -1;
-                    //}
-
-
-                    //if (TeamBposition > 0)
-                    //{
-                    //    TeamBposition = TeamBposition * -1;
-                    //}
-                    //else if (TeamBposition < 0)
-                    //{
-                    //    TeamBposition = TeamBposition * -1;
-                    //}
+                if (TeamAposition > 0)
+                {
+                    TeamAposition = TeamAposition * -1;
+                }
+                else if (TeamAposition < 0)
+                {
+                    TeamAposition = TeamAposition * -1;
+                }
 
 
+                if (TeamBposition > 0)
+                {
+                    TeamBposition = TeamBposition * -1;
+                }
+                else if (TeamBposition < 0)
+                {
+                    TeamBposition = TeamBposition * -1;
+                }
 
-                    double Team1Amt1 = double.Parse(TeamAposition.ToString());
-                    double Team2Amt1 = double.Parse(TeamBposition.ToString());
-                    Team1Amt.Text = Team1Amt1.ToString();
-                    Team2Amt.Text = Team2Amt1.ToString();
-                    if (Team1Amt1 > 0)
-                    {
-                        Team1Amt.ForeColor = System.Drawing.Color.Blue;
 
-                    }
-                    else if (Team1Amt1 < 0)
-                    {
-                        Team1Amt.ForeColor = System.Drawing.Color.Red;
 
-                    }
+                double Team1Amt1 = double.Parse(TeamAposition.ToString());
+                double Team2Amt1 = double.Parse(TeamBposition.ToString());
+                Team1Amt.Text = Team1Amt1.ToString();
+                Team2Amt.Text = Team2Amt1.ToString();
+                if (Team1Amt1 > 0)
+                {
+                    Team1Amt.ForeColor = System.Drawing.Color.Blue;
 
-                    if (Team2Amt1 > 0)
-                    {
-                        Team2Amt.ForeColor = System.Drawing.Color.Blue;
+                }
+                else if (Team1Amt1 < 0)
+                {
+                    Team1Amt.ForeColor = System.Drawing.Color.Red;
 
-                    }
-                    else if (Team2Amt1 < 0)
-                    {
-                        Team2Amt.ForeColor = System.Drawing.Color.Red;
+                }
 
-                    }
+                if (Team2Amt1 > 0)
+                {
+                    Team2Amt.ForeColor = System.Drawing.Color.Blue;
+
+                }
+                else if (Team2Amt1 < 0)
+                {
+                    Team2Amt.ForeColor = System.Drawing.Color.Red;
+
                 }
             }
         }
     }
 }
+

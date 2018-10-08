@@ -25,7 +25,7 @@ namespace betplayer.Client
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string SELECT = "Select ClientID,Name,status,Currentlimit From ClientMaster where ClientID = '" + Session["ClientID"] + "'";
+                    string SELECT = "Select ClientID,Name,status,Currentlimit,Client_Limit From ClientMaster where ClientID = '" + Session["ClientID"] + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -41,8 +41,14 @@ namespace betplayer.Client
                         Response.Redirect("login.aspx");
                     }
 
-                    int ClientID = Convert.ToInt32(dt.Rows[0]["ClientID"]);
-                    int CurrentLimit = Convert.ToInt32(dt.Rows[0]["CurrentLimit"]);
+                    Decimal ClientID = Convert.ToDecimal(dt.Rows[0]["ClientID"]);
+                    Decimal CurrentLimit = Convert.ToDecimal(dt.Rows[0]["CurrentLimit"]);
+                    Decimal CheckClientLimit = Convert.ToDecimal(dt.Rows[0]["Client_Limit"]);
+
+                    if (CheckClientLimit < 0)
+                    {
+                        Response.Redirect("login.aspx");
+                    }
 
                     string Runner = "Select Position1,Position2,position3 From Runner where ClientID = '" + ClientID + "' order by DateTime DESC ";
                     MySqlCommand Runnercmd = new MySqlCommand(Runner, cn);
@@ -52,36 +58,46 @@ namespace betplayer.Client
 
                     if (Runnerdt.Rows.Count > 0)
                     {
-                        int Position1 = Convert.ToInt32(Runnerdt.Rows[0]["Position1"]);
-                        int Position2 = Convert.ToInt32(Runnerdt.Rows[0]["Position2"]);
-                        int Position3 = Convert.ToInt32(Runnerdt.Rows[0]["Position3"]);
+                        Decimal Position1 = Convert.ToDecimal(Runnerdt.Rows[0]["Position1"]);
+                        Decimal Position2 = Convert.ToDecimal(Runnerdt.Rows[0]["Position2"]);
+                        Decimal Position3 = Convert.ToDecimal(Runnerdt.Rows[0]["Position3"]);
 
-                        int TotalPosition = 0;
-                        int SessionAmount = 0;
+                        Decimal TotalPosition = 0;
+                        Decimal SessionAmount = 0;
                         if (Position1 < 0 && Position2 < 0)
                         {
                             if (Position1 > Position2)
                             {
                                 TotalPosition = Position2;
 
-                                int ClientLimit = (CurrentLimit + TotalPosition);
-                                SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
-                                int FinalClientLimit = ClientLimit - SessionAmount;
-                                int ClientLimit1 = declareSessionAmount(ClientID);
-                                int FinalClientLimit1 = FinalClientLimit - ClientLimit1;
-                                lblAmount.InnerText = FinalClientLimit1.ToString();
-                                updateClientlimit(ClientID, ClientLimit);
+                                Decimal ClientLimit = (CurrentLimit + TotalPosition);
+                                SessionAmount = Convert.ToDecimal(SessionCalculation(ClientID));
+                                Decimal FinalClientLimit = ClientLimit - SessionAmount;
+                                Decimal ClientLimit1 = declareSessionAmount(ClientID);
+                                Decimal FinalClientLimit1 = 0;
+                                if (ClientLimit1 < 0)
+                                {
+                                    FinalClientLimit1 = FinalClientLimit + ClientLimit1;
+                                }
+                                else
+                                {
+                                    FinalClientLimit1 = FinalClientLimit + ClientLimit1;
+                                }
+                                double dValue = double.Parse(FinalClientLimit1.ToString());
+                                lblAmount.InnerText = dValue.ToString();
+                                updateClientlimit(ClientID, FinalClientLimit1);
                             }
                             else if (Position2 > Position1)
                             {
                                 TotalPosition = Position1;
-                                int ClientLimit = (CurrentLimit + TotalPosition);
-                                SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
-                                int FinalClientLimit = ClientLimit - SessionAmount;
-                                int ClientLimit1 = declareSessionAmount(ClientID);
-                                int FinalClientLimit1 = FinalClientLimit + ClientLimit1;
-                                lblAmount.InnerText = FinalClientLimit1.ToString();
-                                updateClientlimit(ClientID, ClientLimit);
+                                Decimal ClientLimit = (CurrentLimit + TotalPosition);
+                                SessionAmount = Convert.ToDecimal(SessionCalculation(ClientID));
+                                Decimal FinalClientLimit = ClientLimit - SessionAmount;
+                                Decimal ClientLimit1 = declareSessionAmount(ClientID);
+                                Decimal FinalClientLimit1 = FinalClientLimit + ClientLimit1;
+                                double dValue = double.Parse(FinalClientLimit1.ToString());
+                                lblAmount.InnerText = dValue.ToString();
+                                updateClientlimit(ClientID, FinalClientLimit1);
                             }
                         }
                         else if (Position1 > 0 && Position2 > 0)
@@ -89,24 +105,26 @@ namespace betplayer.Client
                             if (Position1 < Position2)
                             {
                                 TotalPosition = CurrentLimit;
-                                int ClientLimit = (CurrentLimit);
-                                SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
-                                int FinalClientLimit = ClientLimit - SessionAmount;
-                                int ClientLimit1 = declareSessionAmount(ClientID);
-                                int FinalClientLimit1 = FinalClientLimit + ClientLimit1;
-                                lblAmount.InnerText = FinalClientLimit1.ToString();
-                                updateClientlimit(ClientID, ClientLimit); updateClientlimit(ClientID, ClientLimit);
+                                Decimal ClientLimit = (CurrentLimit);
+                                SessionAmount = Convert.ToDecimal(SessionCalculation(ClientID));
+                                Decimal FinalClientLimit = ClientLimit - SessionAmount;
+                                Decimal ClientLimit1 = declareSessionAmount(ClientID);
+                                Decimal FinalClientLimit1 = FinalClientLimit + ClientLimit1;
+                                double dValue = double.Parse(FinalClientLimit1.ToString());
+                                lblAmount.InnerText = dValue.ToString();
+                                updateClientlimit(ClientID, FinalClientLimit1); updateClientlimit(ClientID, ClientLimit);
                             }
                             else if (Position2 < Position1)
                             {
                                 TotalPosition = CurrentLimit;
-                                int ClientLimit = (CurrentLimit);
-                                SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
-                                int FinalClientLimit = ClientLimit - SessionAmount;
-                                int ClientLimit1 = declareSessionAmount(ClientID);
-                                int FinalClientLimit1 = FinalClientLimit + ClientLimit1;
-                                lblAmount.InnerText = FinalClientLimit1.ToString();
-                                updateClientlimit(ClientID, ClientLimit);
+                                Decimal ClientLimit = (CurrentLimit);
+                                SessionAmount = Convert.ToDecimal(SessionCalculation(ClientID));
+                                Decimal FinalClientLimit = ClientLimit - SessionAmount;
+                                Decimal ClientLimit1 = declareSessionAmount(ClientID);
+                                Decimal FinalClientLimit1 = FinalClientLimit + ClientLimit1;
+                                double dValue = double.Parse(FinalClientLimit1.ToString());
+                                lblAmount.InnerText = dValue.ToString();
+                                updateClientlimit(ClientID, FinalClientLimit1);
                             }
                         }
 
@@ -114,58 +132,64 @@ namespace betplayer.Client
                         else if (Position1 < 0)
                         {
                             TotalPosition = Position1;
-                            int ClientLimit = (CurrentLimit + TotalPosition);
-                            SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
-                            int FinalClientLimit = ClientLimit - SessionAmount;
-                            int ClientLimit1 = declareSessionAmount(ClientID);
-                            int FinalClientLimit1 = FinalClientLimit + ClientLimit1;
-                            lblAmount.InnerText = FinalClientLimit1.ToString();
-                            updateClientlimit(ClientID, ClientLimit);
+                            Decimal ClientLimit = (CurrentLimit + TotalPosition);
+                            SessionAmount = Convert.ToDecimal(SessionCalculation(ClientID));
+                            Decimal FinalClientLimit = ClientLimit - SessionAmount;
+                            Decimal ClientLimit1 = declareSessionAmount(ClientID);
+                            Decimal FinalClientLimit1 = FinalClientLimit + ClientLimit1;
+                            double dValue = double.Parse(FinalClientLimit1.ToString());
+                            lblAmount.InnerText = dValue.ToString();
+                            updateClientlimit(ClientID, FinalClientLimit1);
                         }
                         else if (Position2 < 0)
                         {
                             TotalPosition = Position2;
-                            int ClientLimit = (CurrentLimit + TotalPosition);
-                            SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
-                            int FinalClientLimit = ClientLimit - SessionAmount;
-                            int ClientLimit1 = declareSessionAmount(ClientID);
-                            int FinalClientLimit1 = FinalClientLimit + ClientLimit1;
-                            lblAmount.InnerText = FinalClientLimit1.ToString();
-                            updateClientlimit(ClientID, ClientLimit);
+                            Decimal ClientLimit = (CurrentLimit + TotalPosition);
+                            SessionAmount = Convert.ToDecimal(SessionCalculation(ClientID));
+                            Decimal FinalClientLimit = ClientLimit - SessionAmount;
+                            Decimal ClientLimit1 = declareSessionAmount(ClientID);
+                            Decimal FinalClientLimit1 = FinalClientLimit + ClientLimit1;
+                            double dValue = double.Parse(FinalClientLimit1.ToString());
+                            lblAmount.InnerText = dValue.ToString();
+                            updateClientlimit(ClientID, FinalClientLimit1);
                         }
                         else if (Position3 < 0)
                         {
                             TotalPosition = Position2;
-                            int ClientLimit = (CurrentLimit + TotalPosition);
-                            SessionAmount = Convert.ToInt32(SessionCalculation(ClientID));
-                            int FinalClientLimit = ClientLimit - SessionAmount;
-                            int ClientLimit1 = declareSessionAmount(ClientID);
-                            int FinalClientLimit1 = FinalClientLimit + ClientLimit1;
-                            lblAmount.InnerText = FinalClientLimit1.ToString();
-                            updateClientlimit(ClientID, ClientLimit);
+                            Decimal ClientLimit = (CurrentLimit + TotalPosition);
+                            SessionAmount = Convert.ToDecimal(SessionCalculation(ClientID));
+                            Decimal FinalClientLimit = ClientLimit - SessionAmount;
+                            Decimal ClientLimit1 = declareSessionAmount(ClientID);
+                            Decimal FinalClientLimit1 = FinalClientLimit + ClientLimit1;
+                            double dValue = double.Parse(FinalClientLimit1.ToString());
+                            lblAmount.InnerText = dValue.ToString();
+                            updateClientlimit(ClientID, FinalClientLimit1);
                         }
                         else if (Position2 == 0)
                         {
-                            lblAmount.InnerText = CurrentLimit.ToString();
+                            double dValue = double.Parse(CurrentLimit.ToString());
+                            lblAmount.InnerText = dValue.ToString();
+                            
                         }
                     }
                     else
                     {
 
-                        int sessionamount = Convert.ToInt32(SessionCalculation(ClientID));
-                        int ClientLimit1 = (CurrentLimit - sessionamount);
-                        int TotalAMount = declareSessionAmount(ClientID);
-                        int ClientLimit2 = ClientLimit1 + TotalAMount;
-
-                        lblAmount.InnerText = (ClientLimit2).ToString();
-                        updateClientlimit(ClientID, ClientLimit1);
+                        Decimal sessionamount = Convert.ToDecimal(SessionCalculation(ClientID));
+                        Decimal ClientLimit1 = (CurrentLimit - sessionamount);
+                        Decimal TotalAMount = declareSessionAmount(ClientID);
+                        Decimal ClientLimit2 = ClientLimit1 + TotalAMount;
+                        double dValue = double.Parse(ClientLimit2.ToString());
+                        lblAmount.InnerText = dValue.ToString();
+                        
+                        updateClientlimit(ClientID, ClientLimit2);
                     }
-                    
+
                 }
             }
         }
 
-        public void updateClientlimit(int ClientID, int Amount)
+        public void updateClientlimit(Decimal ClientID, Decimal Amount)
         {
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
@@ -177,13 +201,13 @@ namespace betplayer.Client
 
             }
         }
-        public decimal SessionCalculation(int ClientID)
+        public decimal SessionCalculation(Decimal ClientID)
         {
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string CheckSession = "Select * From Session where  ClientID = '" + ClientID + "' order by DateTime DESC";
+                string CheckSession = "Select * From Session where  ClientID = '" + ClientID + "' Group By Session";
                 MySqlCommand Sessioncmd = new MySqlCommand(CheckSession, cn);
                 MySqlDataAdapter Sessionadp = new MySqlDataAdapter(Sessioncmd);
                 DataTable Sessiondt = new DataTable();
@@ -191,8 +215,21 @@ namespace betplayer.Client
                 decimal Amount1 = 0;
                 if (Sessiondt.Rows.Count > 0)
                 {
-                    decimal lastAmount = Convert.ToDecimal(Sessiondt.Rows[0]["Position"]);
-                    Amount1 = lastAmount;
+                    for (int i = 0; i < Sessiondt.Rows.Count; i++)
+                    {
+                        string session = (Sessiondt.Rows[i]["Session"]).ToString();
+
+                        string CheckSession1 = "Select * From Session where  ClientID = '" + ClientID + "' && Session = '" + session + "' order by  DATETIME DESC";
+                        MySqlCommand Sessioncmd1 = new MySqlCommand(CheckSession1, cn);
+                        MySqlDataAdapter Sessionadp1 = new MySqlDataAdapter(Sessioncmd1);
+                        DataTable Sessiondt1 = new DataTable();
+                        Sessionadp1.Fill(Sessiondt1);
+                        if (Sessiondt1.Rows.Count > 0)
+                        {
+                            decimal lastAmount = Convert.ToDecimal(Sessiondt1.Rows[0]["Position"]);
+                            Amount1 = Amount1 + lastAmount;
+                        }
+                    }
                 }
                 else
                 {
@@ -202,9 +239,9 @@ namespace betplayer.Client
 
             }
         }
-        public int declareSessionAmount(int ClientID)
+        public Decimal declareSessionAmount(Decimal ClientID)
         {
-            int TotalAmount1 = 0;
+            Decimal TotalAmount1 = 0;
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
@@ -216,11 +253,11 @@ namespace betplayer.Client
                 Amountadp.Fill(Amountdt);
                 if (Amountdt.Rows.Count > 0)
                 {
-                    int TotalAmount = 0;
-                    
+                    Decimal TotalAmount = 0;
+
                     for (int i = 0; i < Amountdt.Rows.Count; i++)
                     {
-                        TotalAmount = Convert.ToInt32(Amountdt.Rows[i]["TotalAmount"]);
+                        TotalAmount = Convert.ToDecimal(Amountdt.Rows[i]["TotalAmount"]);
                         TotalAmount1 = TotalAmount1 + TotalAmount;
                     }
                     TotalAmount = 0;

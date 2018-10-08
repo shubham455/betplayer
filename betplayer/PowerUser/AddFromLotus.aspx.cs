@@ -65,7 +65,7 @@ namespace betplayer.PowerUser
             {
                 cn.Open();
 
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://betplayer-197014.firebaseio.com/currentMatches.json");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://livegame-25.firebaseio.com/currentMatches.json");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
@@ -81,10 +81,18 @@ namespace betplayer.PowerUser
                         maxBet = "200000",
                         sessionMinBet = "1000",
                         sessionMaxBet = "200000",
+                        fancyminbet = "500",
+                        fancymaxbet = "20000",
+                        lastBall = new
+                        {
+                            @event = "Bet Open"
+                        },
                         livetv = new
                         {
                             enabled = false,
-                            channel = ""
+                            channel = "",
+                            ip = "",
+                            port = ""
                         },
                         team_1 = new
                         {
