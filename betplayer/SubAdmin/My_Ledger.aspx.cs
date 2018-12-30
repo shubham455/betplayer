@@ -52,7 +52,7 @@ namespace betplayer.SubAdmin
 
 
 
-                    string s = "select matches.TeamA,matches.teamB,matches.DateTime ,AdminLedger.AdminLedgerID,AdminLedger.Dabit,AdminLedger.Credit from AdminLedger inner join matches on AdminLedger.MatchID = matches.apiID where AdminLedger.AdminID = '" + Session["AdminID"] + "'";
+                    string s = "select matches.TeamA,matches.teamB,matches.DateTime ,AdminLedger.AdminLedgerID,AdminLedger.Dabit,AdminLedger.Credit from AdminLedger inner join matches on AdminLedger.MatchID = matches.apiID ";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     dt1 = new DataTable();

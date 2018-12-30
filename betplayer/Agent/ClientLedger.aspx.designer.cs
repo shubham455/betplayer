@@ -31,13 +31,31 @@ namespace betplayer.Agent {
         protected global::System.Web.UI.WebControls.DropDownList dropdownClient;
         
         /// <summary>
-        /// Collection control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect Collection;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// dropdowncollection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropdowncollection;
+        
+        /// <summary>
+        /// reqcollection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqcollection;
         
         /// <summary>
         /// BillDate control.
@@ -49,6 +67,15 @@ namespace betplayer.Agent {
         protected global::System.Web.UI.WebControls.TextBox BillDate;
         
         /// <summary>
+        /// reqdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqdate;
+        
+        /// <summary>
         /// Amount control.
         /// </summary>
         /// <remarks>
@@ -58,13 +85,31 @@ namespace betplayer.Agent {
         protected global::System.Web.UI.WebControls.TextBox Amount;
         
         /// <summary>
-        /// PaymentType control.
+        /// RequiredAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect PaymentType;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredAmount;
+        
+        /// <summary>
+        /// PaymentType1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList PaymentType1;
+        
+        /// <summary>
+        /// RequiredPaynmenttype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredPaynmenttype;
         
         /// <summary>
         /// Remark control.

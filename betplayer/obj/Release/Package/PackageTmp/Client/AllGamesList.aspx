@@ -8,11 +8,11 @@
     </div>
     
     <div class="TeamName">
-        <a href="#"><%: row["teamA"] %> v <%: row["teamB"] %></a>
+        <a href="#"><%: row["teamname"] %> </a>
     </div>
     <div class="profile-details">
         
-        <a href="<%if (Convert.ToInt16(row["status"]) == 1) {%>BetDetails.aspx?iD=<%: row["apiID"] %>&&fk=<%: row["firebasekey"] %><% }else{%>BetDetails_Declare.aspx?iD=<%: row["apiID"] %><% } %>">
+        <a href="<%if (Convert.ToInt16(row["status"]) == 1 || Convert.ToInt16(row["status"]) == 0) {%>BetDetails.aspx?iD=<%: row["apiID"] %>&&fk=<%: row["firebasekey"] %><% }else{%>BetDetails_Declare.aspx?iD=<%: row["apiID"] %><% } %>">
 
             <table width="100%" border="0" cellspacing="2" cellpadding="2">
                 <tbody>
@@ -31,13 +31,13 @@
                             <table width="99%" border="0" cellspacing="0" cellpadding="0">
                                 <tbody>
                                     <tr>
-                                        <td class="GameList" align="center"><%: row["DateTime"] %> </td>
+                                        <td class="GameList" align="center"><%: row["Date"] %> </td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Match Bets : <asp:Label ID="lblmatch" runat="server" Text="0"></asp:Label></td>
+                                        <td class="GameList" align="center">Match Bets :<%: row["MatchBetCount"] %> </td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Session Bets : <asp:Label ID="lblSession" runat="server" Text="0"/></td>
+                                        <td class="GameList" align="center">Session Bets :<%: row["SessionBetCount"] %> </td>
                                     </tr>
                                     <tr>
                                         <td class="GameList" align="center">Declared :<%if(Convert.ToInt16( row["Status"]) == 1) {%>NO<% }else{%>Yes<% } %> </td>

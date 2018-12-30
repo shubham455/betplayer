@@ -32,7 +32,13 @@ namespace betplayer.Client
         }
         protected void Submitbtn_Click(object sender, EventArgs e)
         {
+            if ((Session["captcha"].ToString()) == null)
+            {
+                Response.Redirect(Request.RawUrl);
+
+            }
             string captcha = (Session["captcha"].ToString());
+
             if (txtusername.Text == "" && txtpassword.Text == "")
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Please Give Username & Password.....');", true);
@@ -66,14 +72,23 @@ namespace betplayer.Client
                     if (rdr.Read())
                     {
                         rdr.Close();
-
                         MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
                         int ClientID = Convert.ToInt16(dt.Rows[0]["ClientID"]);
                         string  status = (dt.Rows[0]["status"]).ToString();
+                        string  CreatedBy = (dt.Rows[0]["CreatedBy"]).ToString();
                         Decimal ClientLimit = Convert.ToDecimal(dt.Rows[0]["Client_Limit"]);
-                        if(ClientLimit > 200 && status == "Active")
+
+
+                        string Agentstatus = "Select Status From AgentMaster Where Code = '" + CreatedBy + "'";
+                        MySqlCommand Agentstatuscmd = new MySqlCommand(Agentstatus, cn);
+                        MySqlDataAdapter Agentstatusadp = new MySqlDataAdapter(Agentstatuscmd);
+                        DataTable Agentstatusdt = new DataTable();
+                        Agentstatusadp.Fill(Agentstatusdt);
+                        string IsAgentActive = Agentstatusdt.Rows[0]["Status"].ToString();
+
+                        if (ClientLimit >= 0 && status == "Active" && IsAgentActive == "Active")
                         {
                             string ht = (string)HttpContext.Current.Application["SESSION_LIST"];
                             string sID = HttpContext.Current.Session.SessionID;
@@ -88,7 +103,7 @@ namespace betplayer.Client
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('you Dont Enough Coins... ');", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Please Contact your Agent... ');", true);
                         }
 
                        

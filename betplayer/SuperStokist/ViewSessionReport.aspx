@@ -58,7 +58,7 @@
                                             <td align="center" valign="middle" style="text-align: center">
                                                 <asp:Button ID="btnview" runat="server" class="btn btn-success" OnClick="btnview_Click" Text="View" />
                                             </td>
-                                            <td width="17" align="center" valign="middle" class="MainHeading1 textTeamHead" style="color: #F00"><strong>0.00</strong></td>
+                                            <td width="17" align="center" valign="middle" class="MainHeading1 textTeamHead" style="color: #F00"><strong><asp:Label ID="lblrate" runat="server"></asp:Label></strong></td>
 
                                         </tr>
                                     </tbody>
@@ -72,7 +72,7 @@
                                                 <table width="100%" border="0" cellspacing="2" cellpadding="0" class="table table-striped table-hover table-bordered">
                                                     <tbody>
                                                         <tr>
-                                                            <td width="2%" align="center" class="TableHeadingCheckBox">&nbsp;</td>
+                                                            
                                                             <td height="25" align="left" class="TableHeading">Sr.</td>
                                                             <td align="left" class="TableHeading">Session </td>
                                                             <td align="left" class="TableHeading">Client</td>
@@ -80,8 +80,7 @@
                                                             <td align="right" class="TableHeading">Amount</td>
                                                             <td align="right" class="TableHeading">Runs</td>
                                                             <td align="center" class="TableHeading">Mode</td>
-                                                            <td align="right" class="TableHeading">No</td>
-                                                            <td align="right" class="TableHeading">Yes</td>
+                                                            
                                                             <td align="left" class="TableHeading">Date &amp; Time</td>
                                                             <td align="left" class="TableHeading">User Name</td>
                                                         </tr>
@@ -89,16 +88,7 @@
                                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                                             { %>
                                                         <tr bgcolor="#FFFFFF">
-                                                            <td align="center">
-                                                                <div class="btn-group">
-                                                                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                                                                    <ul class="dropdown-menu">
-                                                                        <li><a href="ModifySessionBet.php?id=3467&amp;MT=402" target="_blank"><i class="icon-pencil"></i>Modify</a></li>
-                                                                        <li><a href="DeleteSessionBet.php?id=3467&amp;MT=402" target="_blank"><i class="icon-pencil"></i>Delete</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </td>
-
+                                                           
 
                                                             <td align="left" class="TableHeading"><%: row["SessionID"] %></td>
                                                             <td height="25" align="left" class="TableHeading"><strong><%: row["Session"] %></strong></td>
@@ -107,9 +97,7 @@
                                                             <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["Amount"] %></strong></td>
                                                             <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["Runs"] %></strong></td>
                                                             <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["Mode"] %></strong></td>
-                                                            <td align="center" class="TableHeading"><strong>No</strong></td>
-                                                            <td align="right" class="TableHeading" style="text-align: right;"><strong>Yes</strong></td>
-
+                                                            
                                                             <td align="left" class="TableHeading"><strong><%: row["DateTime"] %></strong></td>
                                                             <td align="left" class="TableHeading"><strong><%: row["CreatedBy"] %></strong></td>
                                                         </tr>

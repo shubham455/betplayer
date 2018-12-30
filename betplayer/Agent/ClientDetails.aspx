@@ -138,10 +138,10 @@
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="ModifyClient.aspx?id=<%:row["ClientID"] %>"><i class="icon-pencil"></i>Edit</a></li>
-                                                        <li><a onclick="CallHandler('<%:row["ClientID"] %>');" /><i class="icon-trash"></i>Delete</li>
+                                                        <li><a onclick="#" /><i class="icon-trash"></i>Delete</li>
                                                         <li><a onclick="ChangesInStatus('<%:row["ClientID"] %>');"><i class="icon-ban-circle"></i>
                                                             Inactive		                      </a></li>
-                                                        <li><a href="javascript:SendLoginDetails('118');"><i class="icon-film"></i>Send Mobile Login Details</a></li>
+                                                        <li><a onclick="SendLoginDetails('<%:row["ClientID"] %>');"><i class="icon-film"></i>Send Mobile Login Details</a></li>
                                                     </ul>
                                                 </div>
                                             </td>
@@ -153,16 +153,64 @@
                                             <td align="left" class="FontText "><%:row["Name"] %></td>
                                             <td align="left" class="FontText "><%:row["Contact_No"] %></td>
                                             <td align="left" class="FontText "><%:row["Password"] %></td>
-                                            <td align="right" class="FontText ">Bet By Bet</td>
+                                           <% if (row["SessionCommisionType"].ToString() == "Bet By Bet") %>
+
+                                            <% { %>
+
+                                            <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
+
+
+                                            <% } %>
+                                            <% else if (row["SessionCommisionType"].ToString() == "No Commission") %>
+
+                                            <% { %>
+
+                                            <td align="right" bgcolor="#FFFFFF" class="FontText ">NOC</td>
+
+
+                                            <% } %>
+                                            <% else if (row["SessionCommisionType"].ToString() == "Only On Minus") %>
+
+                                            <% { %>
+
+                                            <td align="right" bgcolor="#FFFFFF" class="FontText ">OOM</td>
+
+
+                                            <% } %>
                                             <td align="right" class="FontText " style="text-align: right;"><%:row["MatchCommision"] %></td>
                                             <td align="right" class="FontText " style="text-align: right;"><%:row["SessionCommision"] %></td>
-                                            <td align="right" class="FontText "><%:row["Session_Commision_Type"] %></td>
-                                            <td align="right" class="FontText " style="text-align: right;">0.00</td>
-                                            <td align="right" class="FontText " style="text-align: right;">0.00</td>
+                                            <% if (row["Session_Commision_Type"].ToString() == "Bet By Bet") %>
+
+                                            <% { %>
+
+                                            <td align="right" bgcolor="#FFFFFF" class="FontText ">BBB</td>
+
+
+                                            <% } %>
+                                            <% else if (row["Session_Commision_Type"].ToString() == "No Commission") %>
+
+                                            <% { %>
+
+                                            <td align="right" bgcolor="#FFFFFF" class="FontText ">NOC</td>
+
+
+                                            <% } %>
+                                            <% else if (row["Session_Commision_Type"].ToString() == "Only On Minus") %>
+
+                                            <% { %>
+
+                                            <td align="right" bgcolor="#FFFFFF" class="FontText ">OOM</td>
+
+
+                                            <% } %>
+                                            <td align="right" class="FontText " style="text-align: right;"><%:row["MatchComm"] %></td>
+                                            <td align="right" class="FontText " style="text-align: right;"><%:row["SessionComm"] %></td>
+                                            <td align="right" class="FontText " style="text-align: right;"><%:row["agentshare"] %></td>
                                             <td align="right" class="FontText " style="text-align: right;"><%:row["agent_share"] %></td>
-                                            <td align="right" class="FontText " style="text-align: right;"><%:row["client_share"] %></td>
-                                            <td align="right" class="FontText " style="text-align: right;"><%:row["Fixlimit"] %></td>
+                                            <td align="right" class="FontText " style="text-align: right;"><%:row["Currentlimit"] %></td>
                                             <td align="right" class="FontText "><%:row["Status"] %></td>
+                                            
+
                                         </tr>
                                         <% i++; %>
                                         <% } //foreach %>
@@ -251,6 +299,39 @@
             }).then(function (data) {
                 if (data.status) alert("Status Updated with ID: " + data.userDeletedId + " Successfully");
                 else alert("User Status Updated Failed!!!" + "\r\n" + data.error);
+            }).then(function () {
+                location.reload();
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    </script>
+
+     <script>
+        function SendLoginDetails(userId) {
+            var params = {
+                userId: userId
+            };
+
+            var formBody = [];
+            for (var property in params) {
+                var encodedKey = encodeURIComponent(property);
+                var encodedValue = encodeURIComponent(params[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
+
+            fetch('/Agent/SendClientDetailssms.ashx', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: formBody
+            }).then(function (responce) {
+                return responce.json();
+            }).then(function (data) {
+                if (data.status) alert("Message Sent  with ID: " + data.userDeletedId + " Successfully");
+                else alert("Message sent Failed!!!" + "\r\n" + data.error);
             }).then(function () {
                 location.reload();
             }).catch(function (err) {

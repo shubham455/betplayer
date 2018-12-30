@@ -40,7 +40,7 @@ namespace betplayer.Super_Agent
                     if (rdr.Read())
                     {
                         rdr.Close();
-                        string Update = "Update SuperAgentMaster Set Password = '" + txtConfirmPassword.Text + "' where Password = '" + txtOldPassword.Text + "'";
+                        string Update = "Update SuperAgentMaster Set Password = '" + txtConfirmPassword.Text + "' where SuperAgentID = '" + Session["SuperAgentID"] + "'";
                         MySqlCommand cmd1 = new MySqlCommand(Update, cn);
                         cmd1.ExecuteNonQuery();
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Password Update Successfully...');", true);

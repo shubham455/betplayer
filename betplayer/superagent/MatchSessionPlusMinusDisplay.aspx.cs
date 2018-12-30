@@ -238,6 +238,7 @@ namespace betplayer.superagent
             ClientTable.Columns.Add(new DataColumn("SessionCommision"));
             ClientTable.Columns.Add(new DataColumn("TotalCommisionAmount"));
             ClientTable.Columns.Add(new DataColumn("TotalNetAmount"));
+            ClientTable.Columns.Add(new DataColumn("SHR"));
             ClientTable.Columns.Add(new DataColumn("TotalHalfAmount"));
             ClientTable.Columns.Add(new DataColumn("MOBAppAmount"));
             ClientTable.Columns.Add(new DataColumn("SAAgentShare"));
@@ -249,7 +250,7 @@ namespace betplayer.superagent
             {
                 cn.Open();
 
-                string s = "select clientmaster.clientID,clientmaster.Name from clientmaster inner join viewmatch on clientmaster.ClientID = viewmatch.ClientID  where MatchID = '" + MatchID + "' && CreatedBy = '" + AgentCode + "'  group by ClientMaster.Name";
+                string s = "select clientmaster.clientID,clientmaster.Name from clientmaster inner join viewmatch on clientmaster.ClientID = viewmatch.ClientID  where MatchID = '" + MatchID + "' && CreatedBy = '" + AgentCode + "'  group by ClientMaster.ClientID";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -334,6 +335,7 @@ namespace betplayer.superagent
                             TotalAmount = TotalAmount + Amount;
                         }
                     }
+                    Decimal TotalNetAmouunt = 0;
                     Decimal TotalHalfAmount = 0;
                     string s55 = "Select * from sharetable where MatchID = '" + MatchID + "' && ClientID = '" + ID + "'";
                     MySqlCommand cmd55 = new MySqlCommand(s55, cn);
@@ -395,18 +397,26 @@ namespace betplayer.superagent
                         {
                             To = Match - Commision;
                         }
+                        else
+                        {
+                            To = Commision  * -1;
+                        }
 
-                        Decimal TotalNetAmouunt = To;
+                       TotalNetAmouunt = To;
 
                         decimal ClientShare1 = Convert.ToDecimal(dt55.Rows[0]["Clientshare"]);
-                        decimal ClientMaster2 = ClientShare1 / 100;
-                         TotalHalfAmount = TotalNetAmouunt * ClientMaster2;
+                        decimal Clientshare2 = ClientShare1 / 100;
+                        decimal superagentshare1 = Convert.ToDecimal(dt55.Rows[0]["SAgentshare"]);
+                        decimal superagentshare2 = superagentshare1 / 100;
+                        decimal finalshare =  Clientshare2;
+                        TotalHalfAmount = TotalNetAmouunt * finalshare;
 
                         double TotalNetAmouuntvalue = double.Parse(TotalNetAmouunt.ToString());
                         row["TotalNetAmount"] = TotalNetAmouuntvalue;
 
                         double TotalHalfAmountvalue = double.Parse(TotalHalfAmount.ToString());
                         row["TotalHalfAmount"] = TotalHalfAmountvalue;
+                        row["SHR"] = ClientShare1 + "%";
                     }
                     else
                     {
@@ -417,6 +427,7 @@ namespace betplayer.superagent
                         row["TotalHalfAmount"] = 0;
                         row["SAAgentShare"] = 0;
                     }
+
 
 
                     Decimal MobileAppAmount = 0;
@@ -434,7 +445,7 @@ namespace betplayer.superagent
                     double MobileAppAmountvalue = double.Parse(MobileAppAmount.ToString());
                     row["MOBAppAmount"] = MobileAppAmountvalue;
 
-                    decimal finalamount = TotalHalfAmount + MobileAppAmount;
+                    decimal finalamount = (TotalNetAmouunt - TotalHalfAmount) + MobileAppAmount;
                     double finalamountvalue = double.Parse(finalamount.ToString());
                     row["FinalAmount"] = finalamountvalue;
 

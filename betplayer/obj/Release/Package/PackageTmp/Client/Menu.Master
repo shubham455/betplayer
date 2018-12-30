@@ -4,23 +4,24 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Live Game 25</title>
+    <title>cricfun</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="css/login/style_v2.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/login/style_v4.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/login/clndr.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/login/popup_css.css" rel="stylesheet" type="text/css" media="all" />
 
 </head>
 <body>
     <div class="wrap" style="margin-left: 10px; margin-top: 15px;">
 
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: #FFF dashed 1px;">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: #000 dashed 2px;">
             <tbody>
                 <tr>
                     <td width="55" align="center">
                         <div>
-                            <a href="">
-                                <img src="images/InplayImg/avatar.png" alt="">
+                            <a href="RateDifference.aspx">
+                                <img src="images/RateDifferenceImage/num<%: RateDifference %>.png" alt="">
                             </a>
 
                         </div>
@@ -37,20 +38,28 @@
                     </td>
                     <td width="55" align="center" style="padding: 8px;">
                         <div>
+                            <a href="MainMenu.aspx">
+                                <img src="images/InplayImg/Logout.png" alt="" width="40" height="40"></a>
+                             
+                        </div>
+                        Back
+                    </td>
+                    
+                    <td width="55" align="center" style="padding: 8px;">
+                        <div>
                             <a href="Login.aspx">
                                 <img src="images/InplayImg/Logout.png" alt="" width="40" height="40"></a>
                         </div>
                         Logout
                     </td>
+                    
                 </tr>
                 <tr>
                     <td colspan="2"></td>
                 </tr>
             </tbody>
         </table>
-        <div class="top-left-grid" style="padding-top: 5px;">
-            <div class="clear"></div>
-        </div>
+        
         <div class="content_top">
             <div class="content_top-grid3"></div>
             <div class="clear"></div>
@@ -58,13 +67,10 @@
 
         <div class="menu" id="menu" align="center">
             <ul class="nav">
-                <li class="active"><a href="MainMenu.aspx">BACK</a></li>
+               
             </ul>
         </div>
-
         <br />
-
-
         <form id="form1" runat="server">
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -77,11 +83,11 @@
     <br />
     <br />
 
-
     <h4 align="center" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">Copy Right @ Khai Lagai</h4>
 
     <!----- End Content ------------->
 
     <!---//End-wrap---->
 </body>
+    
 </html>

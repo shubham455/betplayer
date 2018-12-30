@@ -65,8 +65,8 @@ namespace betplayer.SubAdmin
                         int SubAdminID = Convert.ToInt16(dt.Rows[0]["SubAdminID"]);
                         string Admincode = (dt.Rows[0]["code"]).ToString();
 
-                        Session["AdminID"] = SubAdminID;
-                        Session["Admincode"] = Admincode;
+                        Session["subAdminID"] = SubAdminID;
+                        Session["subAdmincode"] = Admincode;
 
                         Response.Redirect("TC.aspx");
                     }

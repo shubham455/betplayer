@@ -43,6 +43,7 @@ namespace betplayer.Super_Agent
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     DataTable dt1 = new DataTable();
                     adp1.Fill(dt1);
+                    txtSuperAgentlimit.Text = dt1.Rows[0]["Currentlimit"].ToString();
                     txtSuperAgentShare.Text = dt1.Rows[0]["myshare"].ToString();
                     Text1.Value = dt1.Rows[0]["MatchCommision"].ToString();
                     Text2.Value = dt1.Rows[0]["SessionCommision"].ToString();
@@ -72,6 +73,14 @@ namespace betplayer.Super_Agent
                 cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
                 cmd.Parameters.AddWithValue("@MobApp", txtMobileApp.Text);
                 cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
+                if(MatchCommissionAgent.Value == "")
+                {
+                    MatchCommissionAgent.Value = "0";
+                }
+                if (SessionCommissionAgent.Value == "")
+                {
+                    SessionCommissionAgent.Value = "0";
+                }
                 cmd.Parameters.AddWithValue("@MatchCommision", MatchCommissionAgent.Value);
                 cmd.Parameters.AddWithValue("@SessionCommision", SessionCommissionAgent.Value);
                 cmd.Parameters.AddWithValue("@status", DropDownstatus.SelectedItem.Text);
@@ -84,15 +93,26 @@ namespace betplayer.Super_Agent
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ClientDetails.aspx");
+            Response.Redirect("AgentDetails.aspx");
         }
 
         protected void txtAgentShare_TextChanged(object sender, EventArgs e)
         {
-            if (Convert.ToDecimal(txtSuperAgentShare.Text) < Convert.ToDecimal(txtAgentShare.Text))
+            if (txtAgentShare.Text != "")
             {
-                txtAgentShare.Text = "";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Agent Share Do not Greater Than My Share.....');", true);
+                if (Convert.ToDecimal(txtSuperAgentShare.Text) < Convert.ToDecimal(txtAgentShare.Text))
+                {
+                    txtAgentShare.Text = "0";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Agent Share Do not Greater Than My Share.....');", true);
+                }
+            }
+        }
+        protected void txtAgentlimit_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToDecimal(txtSuperAgentlimit.Text) < Convert.ToDecimal(txtAgentlimit.Text))
+            {
+                txtAgentlimit.Text = "0";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Agent Limit Do not Greater Than SuperAgent Limit.....');", true);
             }
         }
     }

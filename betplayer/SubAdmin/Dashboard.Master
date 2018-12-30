@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
-    <title>livegame25 Dashboard</title>
+    <title>cricfun Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
@@ -17,6 +17,7 @@
     <link href="../admin/css/style.css" rel="stylesheet">
     <link href="../admin/css/style_responsive.css" rel="stylesheet">
     <link href="../admin/css/style_default.css" rel="stylesheet" id="style_color">
+    <link href="../admin/css/style_session.css" rel="stylesheet">
 
     <link href="../admin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css">
@@ -33,7 +34,7 @@
             <div class="container-fluid">
                 <!-- BEGIN LOGO -->
                 <a class="brand">
-                    <img src="../admin/img/logo.png" alt="livegame25">
+                    <img src="../admin/img/logo.png" alt="cricfun">
                 </a>
                 <!-- END LOGO -->
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -64,7 +65,7 @@
                                 <li><a href="#"><i class="icon-tasks"></i>My Tasks</a></li>
                                 <li><a href="#"><i class="icon-calendar"></i>Calendar</a></li>
                                 <li class="divider"></li>
-                                <li><a href="Login.aspx"><i class="icon-key"></i>Log Out</a></li>
+                                <li><a href="../Agent/Login.aspx"><i class="icon-key"></i>Log Out</a></li>
                             </ul>
                         </li>
                         <!-- END USER LOGIN DROPDOWN -->
@@ -100,7 +101,8 @@
                     </a>
                     <ul class="sub">
 
-                        <li><a class="" href="SuperStockistDetails.aspx">Superstoke Master</a></li>
+                        <li><a class="" href="SuperStockistDetails.aspx">Superstockist Master</a></li>
+                        <li><a class="" href="CollectionDetails.aspx">Collection Master</a></li>
                         
                     </ul>
                 </li>
@@ -122,8 +124,8 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="My_Ledger.aspx">My Ledger</a></li>
-                        <li><a class="" href="SuperAgentLedger.aspx">SuperAgent Ledger</a></li>
-                        <li><a class="" href="AllSuperAgentLedger.aspx">All SuperAgent Ledger</a></li>
+                        <li><a class="" href="SuperstockistLedger.aspx">SuperStockist Ledger</a></li>
+                        <li><a class="" href="#">All SuperStockist Ledger</a></li>
 
                     </ul>
                 </li>
@@ -155,7 +157,7 @@
     </form>
 
     <div id="footer">
-        2018 © livegame25 Dashboard.
+        2018 © cricfun Dashboard.
 	
         <div class="span pull-right">
             <span class="go-top"><i class="icon-arrow-up"></i></span>

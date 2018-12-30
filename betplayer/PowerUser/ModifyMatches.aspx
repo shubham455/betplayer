@@ -57,7 +57,7 @@
                                                 <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="EditMatches.aspx?Matchid=<%:row["MatchesID"] %>"><i class="icon-pencil"></i>Edit</a></li>
-                                                    <li><a href="ManuallyUpdation.aspx?Matchid=<%:row["apiID"] %>&fk=<%:row["firebasekey"] %>"><i class="icon-pencil"></i>Manually Updataion</a></li>
+                                                    <li><a href="ManuallyUpdation.aspx?Matchid=<%:row["apiID"] %>&fk=<%:row["firebasekey"] %>&Type=<%:row["Type"] %>"><i class="icon-pencil"></i>Manually Updataion</a></li>
                                                     <li><a onclick="schedulematch(<%:row["apiID"] %>,<%:row["MatchesID"] %>)"><i class="icon-pencil"></i>Schedule</a></li>
 
                                                 </ul>

@@ -51,7 +51,7 @@
                                             <input name="ClientName1" type="text" class="TextBoxTransparent" id="ClientName1" style="text-align: right; text-align: left;" value="<%: row["SuperAgentID"] %><%: row["Name"] %>" readonly="">
                                         </td>
                                         <td align="left" class="TextBox100">
-                                            <input id="FixLimit" style="text-align: right" type="text" value="<%: row["Fixlimit"] %>" class="TextBox100"></td>
+                                            <input id="FixLimit" style="text-align: right" type="text" onchange ="validateForm('<%: index %>')" value="<%: row["Fixlimit"] %>" class="TextBox100"></td>
                                         <td align="left" class="TextBox100">
                                             <input id="AgentID" type="hidden" value="<%: row["superAgentID"] %>" />
                                             <input id="AgentLimit" style="text-align: right" type="text" value="<%: row["CurrentLimit"] %>" onchange="check('<%: index %>')" class="TextBox100"></td>
@@ -75,7 +75,7 @@
                             <div class="form-actions">
                                 <button type="button" class="btn btn-success" onclick="updateLimits()">Update</button>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="AgentDetails.aspx">
+                    <a href="SuperAgentDetails.aspx">
                         <button type="button" class="btn">Cancel</button></a>
                             </div>
 
@@ -92,15 +92,30 @@
     </div>
     <script>
         function check() {
+            var table = document.getElementById('AgentLimitTable');
             var input1 = Number(table.rows[rowID].cells[2].children[0].value);
             var input2 = Number(table.rows[rowID].cells[3].children[1].value);
 
-            if (input1 >= input2) {
+           if (input2 == "") {
+                table.rows[rowID].cells[3].children[1].value = 0;
+                
+                return false;
+            }
+            else if (input1 >= input2) {
 
             }
             else {
                 table.rows[rowID].cells[3].children[1].value = 0;
                 alert("Current Limit Is Not greater than Fix Limit")
+            }
+        }
+        function validateForm(rowID) {
+             var table = document.getElementById('AgentLimitTable');
+
+           var input1 = Number(table.rows[rowID].cells[2].children[0].value);
+            if (input1 == "") {
+                table.rows[rowID].cells[2].children[0].value = 0;
+                return false;
             }
         }
         function getValueByAttrName(attrName, children) {
@@ -137,7 +152,7 @@
             }
             console.log(formBody);
             formBody = formBody.join("&");
-            fetch('/admin/superagentLimit.ashx', {
+            fetch('superagentLimit.ashx', {
                 credentials: 'same-origin',
                 method: 'POST',
                 headers: {

@@ -12,13 +12,13 @@
                     <div id="theme-change" class="hidden-phone"><i class="icon-cogs"></i><span class="settings"><span class="text">Theme:</span> <span class="colors"><span class="color-default" data-style="default"></span><span class="color-gray" data-style="gray"></span><span class="color-purple" data-style="purple"></span><span class="color-navy-blue" data-style="navy-blue"></span></span></span></div>
                     <!-- END THEME CUSTOMIZER-->
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-                    <h3 class="page-title">Create New Client</h3>
+                    <h3 class="page-title">Create New SuperStrokist</h3>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
                         <li>Master Details <span class="divider">&nbsp;</span> </li>
                         <li><a href="SuperStrokist.aspx">SuperStrokist Details</a><span class="divider">&nbsp;</span></li>
-                        <li>Create New Client<span class="divider">&nbsp;</span></li>
-                        <li><a href="ClientDetails.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
+                        <li>Create New SuperStrokist<span class="divider">&nbsp;</span></li>
+                        <li><a href="SuperStrokistDetails.aspx"><span style="color: #00F;"><strong>Back</strong></span></a><span class="divider-last">&nbsp;</span></li>
                     </ul>
                     <!-- END PAGE TITLE & BREADCRUMB-->
                 </div>
@@ -121,7 +121,7 @@
                                                             <span id="CommHeading">Match Commission</span>
                                                         </td>
                                                         <td align="left">
-                                                            <input runat="server" name="MatchCommissionClient" type="text" class="textbox" id="MatchCommissionAgent" onblur="showCustomer(this.value)" value="0"></td>
+                                                            <input runat="server" name="MatchCommissionSuperStrokist" type="text" class="textbox" id="MatchCommissionAgent" onblur="showCustomer(this.value)" value="0"></td>
 
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
@@ -129,7 +129,7 @@
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Session Commission</td>
                                                         <td align="left">
-                                                            <input name="SessionCommissionClient" runat="server" type="text" class="textbox" id="SessionCommissionAgent" onblur="showCustomer(this.value)" value="0"></td>
+                                                            <input name="SessionCommissionSuperStrokist" runat="server" type="text" class="textbox" id="SessionCommissionAgent" onblur="showCustomer(this.value)" value="0"></td>
 
                                                         <td align="left">&nbsp;</td>
                                                     </tr>

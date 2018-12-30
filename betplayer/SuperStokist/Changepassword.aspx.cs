@@ -34,13 +34,13 @@ namespace betplayer.SuperStokist
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string SELECT = "Select * from SuperAgentMaster Where Password= '" + txtOldPassword.Text + "'";
+                    string SELECT = "Select * from SuperstockistMaster Where Password= '" + txtOldPassword.Text + "' And SuperstockistID = '" + Session["SuperstockistID"] + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     if (rdr.Read())
                     {
                         rdr.Close();
-                        string Update = "Update SuperAgentMaster Set Password = '" + txtConfirmPassword.Text + "' where Password = '" + txtOldPassword.Text + "'";
+                        string Update = "Update SuperstockistMaster Set Password = '" + txtConfirmPassword.Text + "' where SuperstockistID = '" + Session["SuperstockistID"] + "'";
                         MySqlCommand cmd1 = new MySqlCommand(Update, cn);
                         cmd1.ExecuteNonQuery();
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Password Update Successfully...');", true);

@@ -58,18 +58,19 @@
 
                                         <td height="25" align="left" class="FontText"><%=i %></td>
                                         <td align="left" class="FontText">
-                                            <input name="ClientName1" type="text" class="TextBoxTransparent" id="ClientName1" style="text-align: right; text-align: left;"  value="<%: row["ClientID"] %><%: row["Name"] %>" readonly="">
+                                            <input name="ClientName1" type="text" class="TextBoxTransparent" id="ClientName1"  style="text-align: right; text-align: left;" value="<%: row["ClientID"] %><%: row["Name"] %>" readonly="">
                                         </td>
                                         <td align="left" class="TextBox100">
-                                            <input id="FixLimit" style="text-align: right" type="text" value="<%: row["FixLimit"] %>" class="TextBox100"></td>
+                                            <input id="FixLimit" style="text-align: right" type="text" onchange="validateForm('<%: index %>')" value="<%: row["FixLimit"] %>" class="TextBox100"></td>
                                         <td align="left" class="TextBox100">
                                             <input id="ClientID" type="hidden" value="<%: row["ClientID"] %>" />
-                                            <input id="ClientLimit" style="text-align: right" type="text" onchange="check('<%: index %>')" value="<%: row["CurrentLimit"] %>"  class="TextBox100"></td>
+                                            <input id="ClientLimit" style="text-align: right" type="text" onchange="check('<%: index %>')" value="<%: row["CurrentLimit"] %>" class="TextBox100"></td>
                                         <td align="left" class="FontText">
                                             <input name="ULimit1" type="text" id="ULimit1" style="text-align: right" value="<%: row["UsedLimit"] %>" class="TextBox100" readonly="" disabled=""></td>
                                     </tr>
                                     <%i++; %>
-                                    <% index++; }//foreach  %>
+                                    <% index++;
+                                    }//foreach  %>
 
 
                                     <tr bgcolor="#E9F3FD" class="TableHeading">
@@ -78,12 +79,12 @@
                                             <input runat="server" name="AgentLimit" type="text" id="agentlimit" style="text-align: right" value="" readonly=""></td>
                                         <td align="left" bgcolor="#FFFFFF" class="FontText">&nbsp;</td>
                                         <td align="left" bgcolor="#FFFFFF" class="FontText">
-                                            <input runat="server" name="TotalLimit" type="text" class="TextBox100" readonly=""  id="TotalLimit" style="text-align: right" value=""></td>
+                                            <input runat="server" name="TotalLimit" type="text" class="TextBox100" readonly="" id="TotalLimit" style="text-align: right" value=""></td>
                                         <td align="left" bgcolor="#FFFFFF" class="FontText">&nbsp;</td>
                                     </tr>
 
                                     <tr bgcolor="#E9F3FD" class="TableHeading">
-                                        <td height="25" colspan="5" align="center" bgcolor="#FFFFFF" class="ButtonL" style="background: #FFF;">नोट : लिमिट को अपडेट करने के लिए अपडेट बटन को दो बार क्लिक करे।</td>
+                                        <td height="25" colspan="5" align="center" bgcolor="#FFFFFF" class="ButtonL" style="background: #FFF;"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -108,16 +109,30 @@
 
             var input1 = Number(table.rows[rowID].cells[2].children[0].value);
             var input2 = Number(table.rows[rowID].cells[3].children[1].value);
+            if (input2 == "") {
+                table.rows[rowID].cells[3].children[1].value = 0;
+                
+                return false;
+            }
+            else if (input1 >= input2) {
 
-            if (input1 >= input2) {
-               
             }
             else {
                 table.rows[rowID].cells[3].children[1].value = 0;
                 alert("Current Limit Is Not greater than Fix Limit")
             }
         }
-       
+        function validateForm(rowID) {
+             var table = document.getElementById('ClientLimitTable');
+
+           var input1 = Number(table.rows[rowID].cells[2].children[0].value);
+            if (input1 == "") {
+                table.rows[rowID].cells[2].children[0].value = 0;
+                
+                return false;
+            }
+        }
+
         function getValueByAttrName(attrName, children) {
             for (var i = 0; i < children.length; i++) {
                 if (children[i].getAttribute('id') == attrName) // any attribute could be used here
@@ -134,7 +149,7 @@
                 var Fixchildren = row.cells[2].getElementsByTagName('input');// any tag could be used here..
                 var children = row.cells[3].getElementsByTagName('input');// any tag could be used here..
                 valueArray.push({
-                    
+
                     ClientID: getValueByAttrName("ClientID", children),
                     ClientLimit: getValueByAttrName("ClientLimit", children),
                     FixLimit: getValueByAttrName("FixLimit", Fixchildren)

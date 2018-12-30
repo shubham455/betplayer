@@ -34,6 +34,7 @@ namespace betplayer.Agent
                 });
             }
             int AgentID = Convert.ToInt16(context.Session["AgentID"]);
+             
             
             string result = UpdateclientLimit(clientLimits, AgentID);
             if (result == "success")
@@ -70,19 +71,20 @@ namespace betplayer.Agent
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
-                    string checkAgentlimit = "Select CurrentLimit From AgentMaster where AgentID = '"+ AgentID+"'";
+                    string checkAgentlimit = "Select CurrentLimit,code From AgentMaster where AgentID = '"+ AgentID+"'";
                     MySqlCommand cmd1 = new MySqlCommand(checkAgentlimit, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd1);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
 
-                    int AgentLimit = Convert.ToInt32(dt.Rows[0]["CurrentLimit"]);
+                    decimal AgentLimit = Convert.ToDecimal(dt.Rows[0]["CurrentLimit"]);
+                    string  AgentCode = (dt.Rows[0]["Code"]).ToString();
                     
 
-                    int Total = 0;
+                    Decimal Total = 0;
                     foreach (Object client in clientValues)
                     {
-                        int ClientCurrentLimit = Convert.ToInt32(client.GetType().GetProperty("ClientLimit").GetValue(client, null));
+                        Decimal ClientCurrentLimit = Convert.ToDecimal(client.GetType().GetProperty("ClientLimit").GetValue(client, null));
 
                         Total = Total + ClientCurrentLimit;
                     }
@@ -94,17 +96,45 @@ namespace betplayer.Agent
                         {
                             string clientID = client.GetType().GetProperty("ClientID").GetValue(client, null).ToString();
                             decimal currentlimit = Convert.ToDecimal(client.GetType().GetProperty("ClientLimit").GetValue(client, null));
-                            string Fixlimit = client.GetType().GetProperty("FixLimit").GetValue(client, null).ToString();
+                            decimal Fixlimit = Convert.ToDecimal(client.GetType().GetProperty("FixLimit").GetValue(client, null));
 
-                            string Clientlimit = "Select Client_Limit From ClientMaster where ClientID = '" + clientID + "'";
-                            MySqlCommand Clientlimitcmd = new MySqlCommand(Clientlimit, cn);
-                            MySqlDataAdapter Clientlimitadp = new MySqlDataAdapter(Clientlimitcmd);
-                            DataTable Clientlimitdt = new DataTable();
-                            Clientlimitadp.Fill(Clientlimitdt);
-                            Decimal ClientLimit1 = Convert.ToDecimal(Clientlimitdt.Rows[0]["Client_Limit"]);
-                            decimal finalclientlimit = currentlimit - ClientLimit1;
+                            string Checkclientlimit = "Select Client_Limit From ClientMaster Where ClientID = '" + clientID + "'";
+                            MySqlCommand Checkclientlimitcmd = new MySqlCommand(Checkclientlimit, cn);
+                            MySqlDataAdapter Checkclientlimitadp = new MySqlDataAdapter(Checkclientlimitcmd);
+                            DataTable Checkclientlimitdt = new DataTable();
+                            Checkclientlimitadp.Fill(Checkclientlimitdt);
 
-                            string updatelimit = "Update ClientMaster set Client_Limit = '"+ finalclientlimit+"', CurrentLimit = '" + currentlimit + "',FixLimit = '"+Fixlimit+"'  Where ClientID = '" + clientID + "'";
+                            decimal  clientlimit = Convert.ToDecimal(Checkclientlimitdt.Rows[0]["Client_Limit"]);
+                            decimal finallimit = currentlimit ;
+
+
+                            string clientLimit = "Select * From ClientMaster Where ClientID = '" + clientID + "'";
+                            MySqlCommand clientLimitcmd = new MySqlCommand(clientLimit, cn);
+                            MySqlDataAdapter clientLimitadp = new MySqlDataAdapter(clientLimitcmd);
+                            DataTable clientLimitdt = new DataTable();
+                            clientLimitadp.Fill(clientLimitdt);
+
+                            decimal LastFixLimit = Convert.ToDecimal(clientLimitdt.Rows[0]["FixLimit"]);
+                            decimal LastCurrentLimit = Convert.ToDecimal(clientLimitdt.Rows[0]["CurrentLimit"]);
+
+                            if (LastFixLimit != Fixlimit || LastCurrentLimit != currentlimit)
+                            {
+                                string insert = "insert into ClientLimitWatch(ClientID,UpdatedBy,LastFixLimit,LastCurrentLimit,NewCurrentlimit,NewFixLimit,DateTime ) values (@ClientID,@UpdatedBy,@LastFixLimit,@LastCurrentLimit,@Currentlimit,@FixLimit,@DateTime)";
+                                MySqlCommand insertcmd = new MySqlCommand(insert, cn);
+
+                                insertcmd.Parameters.AddWithValue("@ClientID", clientID);
+                                insertcmd.Parameters.AddWithValue("@UpdatedBy", AgentCode);
+                                insertcmd.Parameters.AddWithValue("@LastFixLimit", LastFixLimit);
+                                insertcmd.Parameters.AddWithValue("@LastCurrentLimit", LastCurrentLimit);
+                                insertcmd.Parameters.AddWithValue("@Currentlimit", currentlimit);
+                                insertcmd.Parameters.AddWithValue("@Fixlimit", Fixlimit);
+                                insertcmd.Parameters.AddWithValue("@DateTime", DateTime.Now.ToString());
+                                insertcmd.ExecuteNonQuery();
+
+                            }
+
+
+                            string updatelimit = "Update ClientMaster set Client_Limit = '"+finallimit+"',   CurrentLimit= '" + currentlimit + "',FixLimit = '"+Fixlimit+"'  Where ClientID = '" + clientID + "'";
                             MySqlCommand cmd = new MySqlCommand(updatelimit, cn);
                             cmd.ExecuteNonQuery();
 
@@ -116,7 +146,7 @@ namespace betplayer.Agent
                 }
             }
 
-            catch (Exception e)
+            catch (Exception e) 
             {
                 return e.Message;
             }

@@ -16,19 +16,20 @@ namespace betplayer.SubAdmin
         public DataTable MatchesDataTable { get { return dt; } }
 
         protected void Page_Load(object sender, EventArgs e)
+
         {
             if (!IsPostBack)
             {
                 if (Request.QueryString["msg"] == "Add")
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('SuperAgent Added SuccessFully.....');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('SuperStrokist Added SuccessFully.....');", true);
                 }
             }
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From SuperStockistMaster where CreatedBy = '"+Session["Admincode"]+"'";
+                string s = "Select * From SuperStockistMaster ";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -49,7 +50,7 @@ namespace betplayer.SubAdmin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select* From SuperStockistMaster Where Name Like '%" + txtsearch.Text + "%' and  CreatedBy = '" + Session["Admincode"] + "'";
+                string s = "Select* From SuperStockistMaster Where Name Like '%" + txtsearch.Text + "%' ";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -64,7 +65,7 @@ namespace betplayer.SubAdmin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From SuperStockistMaster where CreatedBy = '" + Session["Admincode"] + "'";
+                string s = "Select * From SuperStockistMaster";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -81,7 +82,7 @@ namespace betplayer.SubAdmin
             {
                 cn.Open();
                 string selected = Request.Form["checkbox"];
-                string s = "update  SuperStockistMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' , Currentlimit = '0' where superagentid in ("+selected+")";
+                string s = "update  SuperStockistMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' , Currentlimit = '0' where SuperStrokistid in ("+selected+")";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 cmd.ExecuteNonQuery();
                 BindData();

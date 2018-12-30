@@ -18,7 +18,7 @@ namespace betplayer.poweruser
         JavaScriptSerializer js = new JavaScriptSerializer();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             int Id = Convert.ToInt32(Request.QueryString["ID"]);
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
@@ -33,12 +33,18 @@ namespace betplayer.poweruser
                 txtTeamB.Text = dt.Rows[0]["TeamB"].ToString();
                 txtTime.Text = dt.Rows[0]["DateTime"].ToString();
                 txtMatchType.Text = dt.Rows[0]["Type"].ToString();
+                
+
+                //string MyProxyHostString = "178.212.192.121";
+                //int MyProxyPort = 41158;
 
                 string html = string.Empty;
-                string url = @"https://www.lotusbook.com/api/exchange/eventType/4";
+                string url = @"https://www.lotusbook.com/api/exchange/odds/eventType/4";
 
+                
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.AutomaticDecompression = DecompressionMethods.GZip;
+               // request.Proxy = new WebProxy(MyProxyHostString, MyProxyPort);
+                //request.AutomaticDecompression = DecompressionMethods.GZip;
 
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 using (Stream stream = response.GetResponseStream())
@@ -79,6 +85,11 @@ namespace betplayer.poweruser
 
         protected void submit_Click(object sender, EventArgs e)
         {
+            string TeamC = "";
+            if (txtMatchType.Text == "Test")
+            {
+                TeamC = "Draw";
+            }
             string id = Request.QueryString["ID"];
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
@@ -86,7 +97,7 @@ namespace betplayer.poweruser
                 cn.Open();
                 string matchId = matchdropdown.SelectedItem.Value;
 
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://livegame-25.firebaseio.com/currentMatches.json");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://cricfun1.firebaseio.com/currentMatches.json");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
@@ -98,12 +109,12 @@ namespace betplayer.poweruser
                         description = "",
                         message = "",
                         status = "",
-                        minBet = "2000",
-                        maxBet = "200000",
-                        sessionMinBet = "1000",
-                        sessionMaxBet = "200000",
+                        minBet = "500",
+                        maxBet = "100000",
+                        sessionMinBet = "500",
+                        sessionMaxBet = "50000",
                         fancyminbet = "500",
-                        fancymaxbet = "20000",
+                        fancymaxbet = "25000",
                         lastBall = new
                         {
                             @event = "Bet Open"
@@ -187,7 +198,7 @@ namespace betplayer.poweruser
                 }
                 else
                 {
-                    string s = "Update Matches set Firebasekey  = @Firebasekey, lotusmatchid = @lotusmatchId,AutoSession = @Autosession, Active = @Active,Apitype = @Apitype where matchesID = @MatchID";
+                    string s = "Update Matches set Firebasekey  = @Firebasekey, lotusmatchid = @lotusmatchId,AutoSession = @Autosession, Active = @Active,Apitype = @Apitype , Status =@Status , TeamC = @TeamC where matchesID = @MatchID";
 
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     cmd.Parameters.AddWithValue("@Active", '1');
@@ -196,7 +207,8 @@ namespace betplayer.poweruser
                     cmd.Parameters.AddWithValue("@Firebasekey", fkey);
                     cmd.Parameters.AddWithValue("@Autosession", '1');
                     cmd.Parameters.AddWithValue("@ApiType", "ESPN-LOTUS");
-
+                    cmd.Parameters.AddWithValue("@Status", "1");
+                    cmd.Parameters.AddWithValue("@TeamC",TeamC );
                     cmd.ExecuteNonQuery();
 
 

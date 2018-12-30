@@ -7,12 +7,13 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace betplayer.admin
 {
-	public partial class Login1 : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
+    public partial class Login1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
@@ -47,32 +48,64 @@ namespace betplayer.admin
 
             else
             {
+                string username = "";
+                username = txtusername.Text;
+                username = Regex.Replace(username, @"\d", "");
+
 
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string SELECT = "Select * from AdminMaster Where Code = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
-                    MySqlCommand cmd = new MySqlCommand(SELECT, cn);
-                    MySqlDataReader rdr = cmd.ExecuteReader();
-                    if (rdr.Read())
+                    if (username == "AD")
                     {
-                        rdr.Close();
 
-                        MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        adp.Fill(dt);
-                        int AdminID = Convert.ToInt16(dt.Rows[0]["AdminID"]);
-                        string Admincode = (dt.Rows[0]["code"]).ToString();
+                        string SELECT = "Select * from AdminMaster Where Code = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
+                        MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        if (rdr.Read())
+                        {
+                            rdr.Close();
 
-                        Session["AdminID"] = AdminID;
-                        Session["Admincode"] = Admincode;
+                            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                            DataTable dt = new DataTable();
+                            adp.Fill(dt);
+                            int AdminID = Convert.ToInt16(dt.Rows[0]["AdminID"]);
+                            string Admincode = (dt.Rows[0]["code"]).ToString();
 
-                        Response.Redirect("TC.aspx");
+                            Session["AdminID"] = AdminID;
+                            Session["Admincode"] = Admincode;
+
+                            Response.Redirect("TC.aspx");
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Please Check Username & Password.....');", true);
+                        }
                     }
-                    else
+                    else if (username == "PU")
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Please Check Username & Password.....');", true);
+                        string SELECT = "Select * from poweruserMaster Where Code = '" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
+                        MySqlCommand cmd = new MySqlCommand(SELECT, cn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+
+                        if (rdr.Read())
+                        {
+                            rdr.Close();
+
+                            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                            DataTable dt = new DataTable();
+                            adp.Fill(dt);
+                            int poweruserID = Convert.ToInt16(dt.Rows[0]["poweruserID"]);
+
+                            Session["PoweruserID"] = poweruserID;
+
+                            Response.Redirect("../powerUser/ModifyMatches.aspx");
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Please Check Username & Password.....');", true);
+                        }
                     }
                 }
             }

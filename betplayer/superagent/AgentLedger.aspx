@@ -62,14 +62,21 @@
                                             <asp:DropDownList ID="dropdownAgent" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="dropdownAgent_SelectedIndexChanged">
                                                 <asp:ListItem Text="Select It.." Value="0"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" InitialValue="0" ControlToValidate="dropdownAgent" ErrorMessage="**"></asp:RequiredFieldValidator>
+
                                         <td>
-                                            <select runat="server" name="Collection" id="Collection" onchange="ShowLedgerCollection()">
-                                                <option value="CASH A/C" selected="">CASH A/C</option>
-                                            </select></td>
+                                            <asp:DropDownList ID="dropdowncollection" runat="server" AppendDataBoundItems="true" AutoPostBack="false">
+                                                <asp:ListItem Text="Select It.." Value="0"></asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" InitialValue="0" ControlToValidate="dropdowncollection" ErrorMessage="**"></asp:RequiredFieldValidator>
+
                                         <td>
                                             <div class="controls" style="vertical-align: middle; text-align: left; padding-top: 0px;">
-                                                <asp:TextBox runat="server" TextMode="Date" class=" m-ctrl-medium date-picker" size="16" name="BillDate" type="text" ID="BillDate" value="2018-06-09" />
+                                                <asp:TextBox runat="server" TextMode="Date" class=" m-ctrl-medium date-picker" size="16" name="BillDate" type="text" ID="BillDate" value="" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="BillDate" ErrorMessage="**"></asp:RequiredFieldValidator>
+
                                             </div>
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -79,14 +86,17 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:TextBox runat="server" ID="Amount" /></td>
+                                            <asp:TextBox runat="server" ID="Amount" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="Amount" ErrorMessage="**"></asp:RequiredFieldValidator>
+                                        </td>
+
                                         <td>
-                                            <select runat="server" name="PaymentType" id="PaymentType">
-                                                <option value="Payment Type" selected="">Payment Type</option>
-                                                <option value="Payment Paid">PAYMENT - DENA</option>
-                                                <option value="Payment Received">RECEIPT - LENA</option>
-                                            </select>
-                                            <asp:RequiredFieldValidator ID="required1" runat="server" ControlToValidate="PaymentType" ErrorMessage="**" InitialValue="Payment Type" ></asp:RequiredFieldValidator>
+                                            <asp:DropDownList ID="PaymentType1" runat="server" AppendDataBoundItems="true" AutoPostBack="false">
+                                                <asp:ListItem Text="Payment Type" Value="0"></asp:ListItem>
+                                                <asp:ListItem Text="PAYMENT - DENA/ac" Value="Payment Paid"></asp:ListItem>
+                                                <asp:ListItem Text="RECEIPT - LENA/ac" Value="Payment Received"></asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredPaynmenttype" runat="server" InitialValue="0" ControlToValidate="PaymentType1" ErrorMessage="**"></asp:RequiredFieldValidator>
                                         </td>
                                         <td>
                                             <asp:TextBox runat="server" ID="Remark" size="120" /></td>
@@ -111,11 +121,11 @@
                                         <td width="9%" align="right"><strong>Balance</strong></td>
                                         <td align="right"><strong>Payment Description</strong></td>
                                     </tr>
-                                     <%if (!emptyLedgerTable)
-                                         {
-                                             int i = 1;
-                                             foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
-                                             { %>
+                                    <%if (!emptyLedgerTable)
+                                        {
+                                            int i = 1;
+                                            foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
+                                            { %>
                                     <tr>
                                         <td height="20" class="FontText"><%=i%> </td>
                                         <td class="FontText"><%: row["Date"] %></td>
@@ -151,7 +161,9 @@
                                         <td align="right"><strong>Total Amount</strong></td>
                                         <td align="right" style="text-align: right;"><strong><%:row["TotalDabitAmount"] %>  </strong></td>
                                         <td align="right" style="text-align: right;"><strong><%:row["TotalCreditAmount"] %> </strong></td>
-                                        <td align="right" style="text-align: right;"<strong><%:LedgerTableOrdered.Rows[LedgerTableOrdered.Rows.Count-1]["Balance"] %></strong></td>
+                                        <td align="right" style="text-align: right;"><%:LedgerTableOrdered.Rows[LedgerTableOrdered.Rows.Count-1]["Balance"] %><strong>
+                                            <asp:Label ID="lblAmount" runat="server"></asp:Label>
+                                        </strong></td>
                                         <td align="right">&nbsp;</td>
                                     </tr>
                                     <% } //foreach
@@ -165,7 +177,7 @@
                                         <td align="right" style="text-align: right;"><strong></strong></td>
                                         <td align="right" style="text-align: right;"><strong></strong></td>
                                         <td align="right" style="text-align: right;"><strong>
-                                            
+                                            <asp:Label ID="Label1" runat="server"></asp:Label>
                                         </strong></td>
                                         <td align="right">&nbsp;</td>
                                     </tr>

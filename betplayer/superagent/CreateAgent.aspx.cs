@@ -25,7 +25,7 @@ namespace betplayer.Super_Agent
                 DataTable dt3 = new DataTable();
                 adp3.Fill(dt3);
 
-                int SuperAgentLimit = Convert.ToInt32(dt3.Rows[0]["Currentlimit"]);
+                decimal SuperAgentLimit = Convert.ToDecimal(dt3.Rows[0]["Currentlimit"]);
                 decimal Total = 0;
 
                 string SuperAgentCode = dt3.Rows[0]["Agentlimit"].ToString();
@@ -80,7 +80,7 @@ namespace betplayer.Super_Agent
                     cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
                     cmd.Parameters.AddWithValue("@MobileAppAmount", txtMobileApp.Text);
                     cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
-                    cmd.Parameters.AddWithValue("@Status", "active");
+                    cmd.Parameters.AddWithValue("@Status", "Active");
                     cmd.Parameters.AddWithValue("@CreatedBy", Session["SuperAgentcode"]);
                     cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
                     cmd.Parameters.AddWithValue("@Mode", "SuperAgent");
@@ -107,7 +107,7 @@ namespace betplayer.Super_Agent
 
         protected void txtClientlimit_TextChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(txtSuperAgentlimit.Text) < Convert.ToInt32(txtAgentlimit.Text))
+            if (Convert.ToDecimal(txtSuperAgentlimit.Text) < Convert.ToDecimal(txtAgentlimit.Text))
             {
                 txtAgentlimit.Text = "";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Limit Do not Greater Than Agent Limit.....');", true);

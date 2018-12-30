@@ -16,16 +16,18 @@ namespace betplayer.Client
 
         private DataTable dt;
         private DataTable dt1;
-        
+
         private DataTable dt3;
         private DataTable dt4;
         private DataTable dt5;
         private DataTable dt6 = new DataTable();
+        private DataTable dt9 = new DataTable();
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
-        
+
         public DataTable MatchesDataTable3 { get { return dt3; } }
         public DataTable MatchesDataTable5 { get { return dt6; } }
+        public DataTable MatchesDataTable6 { get { return dt9; } }
         public Boolean emptyLedgerTable = false;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -41,9 +43,22 @@ namespace betplayer.Client
             dt6.Columns.Add(new DataColumn("Amount"));
             dt6.Columns.Add(new DataColumn("Runs"));
             dt6.Columns.Add(new DataColumn("Mode"));
+            dt6.Columns.Add(new DataColumn("DateTime"));
             dt6.Columns.Add(new DataColumn("Dec"));
 
+            dt9.Columns.Add(new DataColumn("SessionID"));
+            dt9.Columns.Add(new DataColumn("Session"));
+            dt9.Columns.Add(new DataColumn("Rate"));
+            dt9.Columns.Add(new DataColumn("Amount"));
+            dt9.Columns.Add(new DataColumn("Runs"));
+            dt9.Columns.Add(new DataColumn("Mode"));
+            dt9.Columns.Add(new DataColumn("DateTime"));
+            dt9.Columns.Add(new DataColumn("Dec"));
+
+
+
             DataRow Clientrow = dt6.NewRow();
+            DataRow Clientrow1 = dt9.NewRow();
 
             if (Session["ClientID"] == null)
             {
@@ -58,24 +73,28 @@ namespace betplayer.Client
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-
-
-
-
                     string SELECT = "Select * from Matches Where apiID = '" + apiID.Value + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
                     adp.Fill(dt);
 
+
+                    string ratedifference = "Select RateDifference From ClientMaster where ClientID = '" + ClientID + "'";
+                    MySqlCommand cmd5 = new MySqlCommand(ratedifference, cn);
+                    MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
+                    DataTable dt5 = new DataTable();
+                    adp5.Fill(dt5);
+                    RateDifference.Value = (dt5.Rows[0]["RateDifference"]).ToString();
+
                     string SMatches = "Select * from Matches where Status = '1' && Active = '1'";
                     MySqlCommand cmd1 = new MySqlCommand(SMatches, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     dt1 = new DataTable();
                     adp1.Fill(dt1);
-                    
 
-                    string selectSession = "select Session From Session  where ClientID  = @ClientID && MatchID = @MatchID group by Session ";
+
+                    string selectSession = "select Session From Session  where ClientID  = @ClientID && MatchID = @MatchID && SessionBetType ='Session'  group by Session ";
                     MySqlCommand selectSessioncmd = new MySqlCommand(selectSession, cn);
                     selectSessioncmd.Parameters.AddWithValue("@MatchID", apiID.Value);
                     selectSessioncmd.Parameters.AddWithValue("@ClientID", ClientID);
@@ -95,7 +114,7 @@ namespace betplayer.Client
                         if (rdr1.Read())
                         {
                             rdr1.Close();
-                            string selectSession1 = "select Session.SessionID, Session.session,Session.rate , Session.Amount,Session.Runs,Session.Mode,DeclaredSession.DeclareRun from Session inner join declaredSession on Session.Session = DeclaredSession.Session where Session.Session = '" + Sessionname + "' && Session.MatchID = '" + apiID.Value + "' && Session.ClientID = '" + Session["ClientID"] + "'";
+                            string selectSession1 = "select Session.SessionID, Session.session,Session.rate,Session.Amount,Session.Runs,Session.Mode,Session.DateTime,DeclaredSession.DeclareRun from Session inner join declaredSession on Session.Session = DeclaredSession.Session && Session.MatchID  = DeclaredSession.MatchID where Session.Session = '" + Sessionname + "' && declaredsession.MatchID = '" + apiID.Value + "' && Session.ClientID = '" + Session["ClientID"] + "'";
                             MySqlCommand selectSessioncmd1 = new MySqlCommand(selectSession1, cn);
                             MySqlDataAdapter selectSessionadp1 = new MySqlDataAdapter(selectSessioncmd1);
                             dt5 = new DataTable();
@@ -105,7 +124,7 @@ namespace betplayer.Client
                         else
                         {
                             rdr1.Close();
-                            string Session = "Select Session.SessionID, Session.session,Session.rate , Session.Amount,Session.Runs,Session.Mode from Session where ClientID  = @ClientID && MatchID = @MatchID && Session.session = '" + Sessionname + "'   order by DateTime DESC";
+                            string Session = "Select Session.SessionID, Session.session,Session.rate, Session.Amount,Session.Runs,Session.Mode,Session.DateTime from Session where ClientID  = @ClientID && MatchID = @MatchID && Session.session = '" + Sessionname + "'   order by DateTime DESC";
                             MySqlCommand Sessioncmd = new MySqlCommand(Session, cn);
                             Sessioncmd.Parameters.AddWithValue("@MatchID", apiID.Value);
                             Sessioncmd.Parameters.AddWithValue("@ClientID", ClientID);
@@ -118,6 +137,51 @@ namespace betplayer.Client
                         foreach (DataRow row in dt7.Rows)
                         {
                             dt6.Rows.Add(row.ItemArray);
+                        }
+                    }
+                    string selectfancy = "select Session From Session  where ClientID  = @ClientID && MatchID = @MatchID && SessionBetType ='Fancy'  group by Session ";
+                    MySqlCommand selectfancycmd = new MySqlCommand(selectfancy, cn);
+                    selectfancycmd.Parameters.AddWithValue("@MatchID", apiID.Value);
+                    selectfancycmd.Parameters.AddWithValue("@ClientID", ClientID);
+                    MySqlDataAdapter selectfancyadp = new MySqlDataAdapter(selectfancycmd);
+                    DataTable selectfancydt = new DataTable();
+                    selectfancyadp.Fill(selectfancydt);
+
+
+                    for (int i = 0; i < selectfancydt.Rows.Count; i++)
+                    {
+                        string Sessionname = selectfancydt.Rows[i]["Session"].ToString();
+
+                        string selectDeclaredSession = "select * from declaredSession where Session = '" + Sessionname + "' && MatchID = '" + apiID.Value + "' ";
+                        MySqlCommand selectDeclaredSessioncmd = new MySqlCommand(selectDeclaredSession, cn);
+                        MySqlDataReader rdr1 = selectDeclaredSessioncmd.ExecuteReader();
+
+                        if (rdr1.Read())
+                        {
+                            rdr1.Close();
+                            string selectfancy1 = "select Session.SessionID, Session.session,Session.rate,Session.Amount,Session.Runs,Session.Mode,Session.DateTime,DeclaredSession.DeclareRun from Session inner join declaredSession on Session.Session = DeclaredSession.Session where Session.Session = '" + Sessionname + "' && declaredsession.MatchID = '" + apiID.Value + "' && Session.ClientID = '" + Session["ClientID"] + "'";
+                            MySqlCommand selectfancycmd1 = new MySqlCommand(selectfancy1, cn);
+                            MySqlDataAdapter selectfancyadp1 = new MySqlDataAdapter(selectfancycmd1);
+                            dt5 = new DataTable();
+                            selectfancyadp1.Fill(dt5);
+
+                        }
+                        else
+                        {
+                            rdr1.Close();
+                            string Session = "Select Session.SessionID, Session.session,Session.rate, Session.Amount,Session.Runs,Session.Mode,Session.DateTime from Session where ClientID  = @ClientID && MatchID = @MatchID && Session.session = '" + Sessionname + "'   order by DateTime DESC";
+                            MySqlCommand Sessioncmd = new MySqlCommand(Session, cn);
+                            Sessioncmd.Parameters.AddWithValue("@MatchID", apiID.Value);
+                            Sessioncmd.Parameters.AddWithValue("@ClientID", ClientID);
+                            MySqlDataAdapter sessionadp = new MySqlDataAdapter(Sessioncmd);
+                            dt5 = new DataTable();
+                            sessionadp.Fill(dt5);
+                        }
+                        IEnumerable<DataRow> orderedRows = dt5.AsEnumerable();
+                        DataTable dt8 = orderedRows.CopyToDataTable();
+                        foreach (DataRow row in dt8.Rows)
+                        {
+                            dt9.Rows.Add(row.ItemArray);
                         }
                     }
 
@@ -199,15 +263,15 @@ namespace betplayer.Client
                             int Isview = Convert.ToInt16(dt4.Rows[0]["Isview"]);
                             if (Isview == 0)
                             {
-                                string coinDeduct = "Select Client_limit From ClientMaster where ClientID = '" + ClientID + "'";
-                                MySqlCommand cmd5 = new MySqlCommand(coinDeduct, cn);
-                                MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
-                                DataTable dt = new DataTable();
-                                adp5.Fill(dt);
-                                int clientlimit = Convert.ToInt32(dt.Rows[0]["Client_Limit"]);
+                                string coinDeduct = "Select Client_limit,CurrentLimit From ClientMaster where ClientID = '" + ClientID + "'";
+                                MySqlCommand cmd15 = new MySqlCommand(coinDeduct, cn);
+                                MySqlDataAdapter adp15 = new MySqlDataAdapter(cmd15);
+                                DataTable dt15 = new DataTable();
+                                adp15.Fill(dt15);
+                                int clientlimit = Convert.ToInt32(dt15.Rows[0]["CurrentLimit"]);
                                 int Deductdlimit = clientlimit - 100;
 
-                                string update = "update clientmaster set client_Limit =@Deductdlimit where clientID = @ClientID";
+                                string update = "update clientmaster set Currentlimit =@Deductdlimit where clientID = @ClientID";
                                 MySqlCommand cmd6 = new MySqlCommand(update, cn);
                                 cmd6.Parameters.AddWithValue("@Deductdlimit", Deductdlimit);
                                 cmd6.Parameters.AddWithValue("@ClientID", ClientID);

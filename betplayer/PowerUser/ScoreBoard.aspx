@@ -50,7 +50,15 @@
                                         <button id="Review" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">Review</button>
                                         <button id="Inningsbreak" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">InningsBreak</button>
                                     </div>
-                                    <div class="runner-container">
+                                    <div>
+                                        <p style="font-size: large;" class="welcome">Set Runner & Session </p>
+                                         <asp:DropDownList Style="margin: 0;" ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="runnersessionAutoManualSystem_SelectedIndexChanged">
+                                            <asp:ListItem Text="Automatic" Value="0" />
+                                            <asp:ListItem Text="Manual" Value="1" />
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div>
+                                        <p style="font-size: large;" class="welcome">Set Soreboard </p>
                                         <asp:DropDownList Style="margin: 0;" ID="matchAutoManualSystem" runat="server" AutoPostBack="true" OnSelectedIndexChanged="matchAutoManualSystem_SelectedIndexChanged1">
                                             <asp:ListItem Text="Automatic" Value="0" />
                                             <asp:ListItem Text="Manual" Value="1" />
@@ -64,9 +72,9 @@
                                     </div>
                                     <div class="score-container">
                                         <p style="font-size: large;">Score Board</p>
-                                        <input style="width:150px;" id="InputRun" type="text" name="Runs" value="" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Run"/>
-                                        <input style="width:150px;" id="InputWicket" type="text" name="Wickets" value="" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Wicket"/>
-                                        <input style="width:150px;" id="InputOver" type="text" name="Overs" value="" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Over"/>
+                                        <input style="width:150px;" id="InputRun" type="text" name="Runs" value="" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Run"/>
+                                        <input style="width:150px;" id="InputWicket" type="text" name="Wickets" value="" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Wicket"/>
+                                        <input style="width:150px;" id="InputOver" type="text" name="Overs" value="" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Over"/>
                                     </div>
                                     <div  class="message-container">
                                         <p style="font-size: large;" class="welcome">Message</p>
@@ -87,7 +95,7 @@
     </div>
     <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
-    <script src="js/ManualMatch.js"></script>
+    <script src="js/ManualMatch_v1.1.js"></script>
     <script lang="javascript">
 
         function Tab() {

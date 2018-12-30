@@ -210,7 +210,7 @@ namespace betplayer.superagent
             SASessionCommision.Text = Session1Amount.ToString();
             SATotalCommisionAmount.Text = TotalCommisionAmount.ToString();
             SATotalNetAmount.Text = TotalNetAmount1.ToString();
-            SATotalHalfAmount.Text = TotalHalfAmount1.ToString();
+            
             SAMOBAppAmount.Text = TotalAppAmount1.ToString();
             SBSAAgentShare.Text = TotalSAAmount1.ToString();
             SAFinalAmount.Text = TotalFinalAmount1.ToString();
@@ -222,7 +222,7 @@ namespace betplayer.superagent
             Label5.Text = Session1Amount.ToString();
             Label6.Text = TotalCommisionAmount.ToString();
             Label7.Text = TotalNetAmount1.ToString();
-            Label8.Text = TotalHalfAmount1.ToString();
+            
             Label9.Text = TotalAppAmount1.ToString();
             Label10.Text = TotalSAAmount1.ToString();
             Label11.Text = TotalFinalAmount1.ToString();
@@ -240,20 +240,20 @@ namespace betplayer.superagent
                 adp.Fill(dt);
 
                 int declear = Convert.ToInt16(dt.Rows[0]["declear"]);
-
+                int Total = (int)Math.Round(TotalFinalAmount1, 0);
                 if (declear == 1)
                 {
                     decimal Dabit = 0, Credit = 0;
                     string Remark = "";
-                    if (TotalFinalAmount1 < 0)
+                    if (Total < 0)
                     {
-                        Dabit = TotalFinalAmount1 * -1;
+                        Dabit = Total * -1;
                         Remark = "SuperAgent Plus";
 
                     }
-                    else if (TotalFinalAmount1 > 0)
+                    else if (Total > 0)
                     {
-                        Credit = TotalFinalAmount1;
+                        Credit = Total;
                         Remark = "SuperAgent Minus";
                     }
 
@@ -270,12 +270,12 @@ namespace betplayer.superagent
                         adp10.Fill(dt10);
 
                         decimal Amount = Convert.ToDecimal(dt10.Rows[0]["Amount"]);
-                        if (Amount != TotalFinalAmount1)
+                        if (Amount != Total)
                         {
 
-                            string s11 = "update SuperAgentledger set Amount = @Amount,Dabit =@Dabit,Credit=@Credit  where SuperAgentID = '" + Session["SuperAgentID"] + "' && MatchID = '" + MatchID + "'";
+                            string s11 = "update SuperAgentledger set Amount = @Amount,Dabit =@Dabit,Credit=@Credit  where SuperAgentID = '" + Session["SuperAgentID"] + "' && MatchID = '"+MatchID+"'";
                             MySqlCommand cmd11 = new MySqlCommand(s11, cn);
-                            cmd11.Parameters.AddWithValue("@Amount", TotalFinalAmount1);
+                            cmd11.Parameters.AddWithValue("@Amount", Total);
                             cmd11.Parameters.AddWithValue("@Dabit", Dabit);
                             cmd11.Parameters.AddWithValue("@Credit", Credit);
                             cmd11.ExecuteNonQuery();
@@ -290,7 +290,7 @@ namespace betplayer.superagent
                         MySqlCommand cmd8 = new MySqlCommand(s8, cn);
                         cmd8.Parameters.AddWithValue("@SuperAgentID", Session["SuperAgentID"]);
                         cmd8.Parameters.AddWithValue("@MatchID", MatchID);
-                        cmd8.Parameters.AddWithValue("@Amount", TotalFinalAmount1);
+                        cmd8.Parameters.AddWithValue("@Amount", Total);
                         cmd8.Parameters.AddWithValue("@Dabit", Dabit);
                         cmd8.Parameters.AddWithValue("@Credit", Credit);
                         cmd8.Parameters.AddWithValue("@Remark", Remark);
@@ -313,6 +313,7 @@ namespace betplayer.superagent
             ClientTable.Columns.Add(new DataColumn("SessionCommision"));
             ClientTable.Columns.Add(new DataColumn("TotalCommisionAmount"));
             ClientTable.Columns.Add(new DataColumn("TotalNetAmount"));
+            ClientTable.Columns.Add(new DataColumn("SHR"));
             ClientTable.Columns.Add(new DataColumn("TotalHalfAmount"));
             ClientTable.Columns.Add(new DataColumn("MOBAppAmount"));
             ClientTable.Columns.Add(new DataColumn("SAAgentShare"));
@@ -324,7 +325,7 @@ namespace betplayer.superagent
             {
                 cn.Open();
 
-                string s = "select clientmaster.clientID,clientmaster.Name from clientmaster inner join viewmatch on clientmaster.ClientID = viewmatch.ClientID  where MatchID = '" + MatchID + "' && CreatedBy = '" + AgentCode + "'  group by ClientMaster.Name";
+                string s = "select clientmaster.clientID,clientmaster.Name from clientmaster inner join viewmatch on clientmaster.ClientID = viewmatch.ClientID  where MatchID = '" + MatchID + "' && CreatedBy = '" + AgentCode + "'  group by ClientMaster.ClientID";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -358,7 +359,6 @@ namespace betplayer.superagent
                     {
                         MatchTotalAmount = MatchTotalAmount * -1;
                     }
-                    
                     double MatchTotalAmountvalue = double.Parse(MatchTotalAmount.ToString());
                     row["MatchAmount"] = MatchTotalAmountvalue;
 
@@ -412,7 +412,7 @@ namespace betplayer.superagent
                         }
                     }
                     Decimal TotalSAShareAmount1 = 0;
-                    string s55 = "Select * from sharetable where MatchID = '" + MatchID + "' && ClientID = '" + ID + "'";
+                    string s55 = "Select * from sharetable where MatchID = '" + MatchID + "' && ClientID = '"+ID+"'";
                     MySqlCommand cmd55 = new MySqlCommand(s55, cn);
                     MySqlDataAdapter adp55 = new MySqlDataAdapter(cmd55);
                     DataTable dt55 = new DataTable();
@@ -473,6 +473,10 @@ namespace betplayer.superagent
                         {
                             To = Match - Commision;
                         }
+                        else
+                        {
+                            To = Commision * -1;
+                        }
 
                         Decimal TotalNetAmouunt = To;
 
@@ -495,7 +499,7 @@ namespace betplayer.superagent
                         TotalSAShareAmount1 = TotalNetAmouunt - TotalSAShareAmount;
 
                         double TotalSAShareAmountvalue = double.Parse(TotalSAShareAmount.ToString());
-
+                        row["SHR"] = SuperAgentShare1 +"%";
                         row["SAAgentShare"] = TotalSAShareAmountvalue;
                     }
                     else
@@ -527,7 +531,6 @@ namespace betplayer.superagent
                     row["FinalAmount"] = finalAmountvalue;
 
                     ClientTable.Rows.Add(row.ItemArray);
-
 
                 }
                 return ClientTable;

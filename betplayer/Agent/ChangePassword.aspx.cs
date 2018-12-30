@@ -40,7 +40,7 @@ namespace betplayer.Agent
                     if (rdr.Read())
                     {
                         rdr.Close();
-                        string Update = "Update AgentMaster Set Password = '" + txtConfirmPassword.Text + "' where Password = '" + txtOldPassword.Text + "'";
+                        string Update = "Update AgentMaster Set Password = '" + txtConfirmPassword.Text + "' where AgentID = '"+Session["AgentID"]+"' ";
                         MySqlCommand cmd1 = new MySqlCommand(Update, cn);
                         cmd1.ExecuteNonQuery();
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Password Update Successfully...');", true);

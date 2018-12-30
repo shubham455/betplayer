@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace betplayer.subadmin {
+namespace betplayer.admin {
     
     
     public partial class PlusMinusSelect {

@@ -58,22 +58,22 @@ namespace betplayer.admin {
         protected global::System.Web.UI.WebControls.DropDownList Dropdownclient;
         
         /// <summary>
-        /// lblTeam1 control.
+        /// lblTeamA1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTeam1;
+        protected global::System.Web.UI.WebControls.Label lblTeamA1;
         
         /// <summary>
-        /// lblTeam2 control.
+        /// lblTeamB1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTeam2;
+        protected global::System.Web.UI.WebControls.Label lblTeamB1;
         
         /// <summary>
         /// lblTotalPosition1 control.

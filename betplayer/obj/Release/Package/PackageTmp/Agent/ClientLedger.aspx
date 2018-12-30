@@ -53,7 +53,6 @@
                                             <div>
                                                 <button name="btnSave" runat="server" id="btnSave" type="button" class="btn btn-success" onserverclick="btnSave_ServerClick">Save</button>
 
-                                                <!--<button type="button" class="btn" onClick="SendSMS();">Send SMS</button>-->
                                             </div>
                                         </td>
                                     </tr>
@@ -62,13 +61,17 @@
                                             <asp:DropDownList ID="dropdownClient" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="dropdownClient_SelectedIndexChanged">
                                                 <asp:ListItem Text="Select It.." Value="0"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat ="server" InitialValue="0" ControlToValidate="dropdownClient" ErrorMessage="**" ></asp:RequiredFieldValidator>
+                                            
                                         <td>
-                                            <select runat="server" name="Collection" id="Collection" onchange="ShowLedgerCollection()">
-                                                <option value="CASH A/C" selected="">CASH A/C</option>
-                                            </select></td>
+                                            <asp:DropDownList ID="dropdowncollection" runat="server" AppendDataBoundItems="true" AutoPostBack="false">
+                                                <asp:ListItem Text="Cash/ac" Value="0"></asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="reqcollection"  runat="server" ControlToValidate ="dropdowncollection" InitialValue="0" ErrorMessage ="**"></asp:RequiredFieldValidator>
                                         <td>
                                             <div class="controls" style="vertical-align: middle; text-align: left; padding-top: 0px;">
-                                                <asp:TextBox runat="server" TextMode="Date" class=" m-ctrl-medium date-picker" size="16" name="BillDate" type="text" ID="BillDate" value="2018-06-09" />
+                                                <asp:TextBox runat="server" TextMode="Date" class=" m-ctrl-medium date-picker" size="16" name="BillDate" type="text" ID="BillDate" value="" />
+                                                <asp:RequiredFieldValidator ID="reqdate" runat ="server" ControlToValidate="BillDate" ErrorMessage="**" ></asp:RequiredFieldValidator>
                                             </div>
                                         </td>
                                     </tr>
@@ -79,31 +82,32 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:TextBox runat="server"  id="Amount"/></td>
+                                            <asp:TextBox runat="server"  id="Amount"/>
+                                            <asp:RequiredFieldValidator ID="RequiredAmount" runat ="server" ControlToValidate="Amount" ErrorMessage="**" ></asp:RequiredFieldValidator>
+                                           
+                                        </td>
                                         <td>
-                                            <select runat="server" name="PaymentType" id="PaymentType">
-                                                <option value="Payment Type" selected="">Payment Type</option>
-                                                <option value="Payment Paid">PAYMENT - DENA</option>
-                                                <option value="Payment Received">RECEIPT - LENA</option>
-                                            </select></td>
+                                            <asp:DropDownList ID="PaymentType1" runat="server" AppendDataBoundItems="true" AutoPostBack="false">
+                                                <asp:ListItem Text="Payment Type" Value="0"></asp:ListItem>
+                                                <asp:ListItem Text="PAYMENT - DENA/ac" Value="Payment Paid"></asp:ListItem>
+                                                <asp:ListItem Text="RECEIPT - LENA/ac" Value="Payment Received"></asp:ListItem>
+                                            </asp:DropDownList>
+                                            
+                                                
+                                        <asp:RequiredFieldValidator ID="RequiredPaynmenttype" runat ="server" InitialValue="0" ControlToValidate="PaymentType1" ErrorMessage="**" ></asp:RequiredFieldValidator>
+                                        
                                         <td>
                                             <asp:TextBox runat="server"  id="Remark" size="120"/></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
+                            
                             <table width="100%" border="0" cellspacing="2" cellpadding="0" class="table table-striped table-hover table-bordered">
                                 <tbody>
                                     <tr>
                                         <td width="4%" height="25"><strong>SNo.</strong></td>
                                         <td width="8%"><strong>Date</strong></td>
-                                        <td width="25%"><strong>Collection Name</strong></td>
+                                        <td width="10%"><strong>Collection Name</strong></td>
                                         <td width="9%" align="right"><strong>Debit</strong></td>
                                         <td width="9%" align="right"><strong>Credit</strong></td>
                                         <td width="9%" align="right"><strong>Balance</strong></td>
@@ -123,6 +127,7 @@
                                         <td align="right" class="FontText" style="text-align: right;"><%:row["Credit"] %></td>
                                         <td align="right" class="FontText" style="text-align: right;"><strong><%: row["Balance"] %> </strong></td>
                                         <td align="right" class="FontText"><%:row["PaynmentDescription"] %></td>
+                                        <td align="right" class="FontText"><%:row["Remark"] %></td>
                                     </tr>
                                     <%i++; %>
                                     <% } //foreach 
@@ -137,6 +142,7 @@
                                         <td align="right" class="FontText" style="text-align: right;">FOUND</td>
                                         <td align="right" class="FontText" style="text-align: right;"></td>
                                         <td align="right" class="FontText" style="text-align: right;"><strong></strong></td>
+                                        <td align="right" class="FontText"></td>
                                         <td align="right" class="FontText"></td>
                                     </tr>
                                     <% } //else %>
@@ -153,6 +159,7 @@
                                         <td align="right" style="text-align: right;"><%:LedgerTableOrdered.Rows[LedgerTableOrdered.Rows.Count-1]["Balance"] %><strong>
                                             <asp:Label ID="lblAmount" runat="server"></asp:Label>
                                         </strong></td>
+                                        <td align="right">&nbsp;</td>
                                         <td align="right">&nbsp;</td>
                                     </tr>
                                     <% } //foreach

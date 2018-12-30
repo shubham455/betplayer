@@ -76,12 +76,17 @@
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Agent Limit</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" /></td>
+                                                            <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" OnTextChanged="txtAgentlimit_TextChanged" AutoPostBack="true" />
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtAgentlimit" ErrorMessage="**"></asp:RequiredFieldValidator>
+                                                        
+                                                        </td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                     </tr>
                                                     <tr>
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">SuperAgent Current Limit</td>
+                                                         <td align="left" valign="middle">
+                                                            <asp:TextBox CssClass="textbox" ID="txtSuperAgentlimit" runat="server" ReadOnly="true" />
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td align="left" valign="middle" style="font-size: 13px; color: #F00"><strong>My Share %</strong></td>
 
@@ -90,7 +95,10 @@
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Agent Share %</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox CssClass="textbox" ID="txtAgentShare" OnTextChanged="txtAgentShare_TextChanged" AutoPostBack="true" runat="server" /></td>
+                                                            <asp:TextBox CssClass="textbox" ID="txtAgentShare" OnTextChanged="txtAgentShare_TextChanged" AutoPostBack="true" runat="server" />
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAgentShare" ErrorMessage="**"></asp:RequiredFieldValidator>
+                                                        
+                                                        </td>
                                                         <td align="left" valign="middle">
                                                             <asp:TextBox CssClass="textbox" ID="txtSuperAgentShare" runat="server" ReadOnly="true" /></td>
 
@@ -101,7 +109,10 @@
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Mobile App</td>
                                                         <td align="left">
-                                                            <asp:TextBox CssClass="textbox" ID="txtMobileApp" runat="server" Text="0" /></td>
+                                                            <asp:TextBox CssClass="textbox" ID="txtMobileApp" runat="server" Text="0" />
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtMobileApp" ErrorMessage="**"></asp:RequiredFieldValidator>
+                                                        
+                                                        </td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr>

@@ -8,7 +8,7 @@ using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 
-namespace betplayer.admin
+namespace betplayer.subadmin
 {
     public partial class PlusMinusSelect : System.Web.UI.Page
     {

@@ -40,7 +40,7 @@ namespace betplayer.SuperStokist
                 adp.Fill(dt);
 
 
-                string Name = "Select Name From SuperAgentMAster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
+                string Name = "Select Name From SuperAgentMAster where CreatedBy = '" + Session["Superstockistcode"] + "'";
                 MySqlCommand Namecmd = new MySqlCommand(Name, cn);
                 MySqlDataAdapter Nameadp = new MySqlDataAdapter(Namecmd);
                 DataTable Namedt = new DataTable();

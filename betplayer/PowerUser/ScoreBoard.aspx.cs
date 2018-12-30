@@ -37,9 +37,29 @@ namespace betplayer.poweruser
 
         }
 
-        protected void matchAutoManualSystem_SelectedIndexChanged(object sender, EventArgs e)
+        protected void runnersessionAutoManualSystem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            string MatchID = Request.QueryString["MatchID"];
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+                if (DropDownList1.SelectedItem.Text == "Automatic")
+                {
+                    string s = "Update Matches set AutoSession = '1' Where apiID = '" + MatchID + "'";
+                    MySqlCommand cmd = new MySqlCommand(s, cn);
+                    cmd.ExecuteNonQuery();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Runner & Session Set To Be Automatic Updation.....');", true);
+                }
+                else if (DropDownList1.SelectedItem.Text == "Manual")
+                {
+
+                    string s = "Update Matches set AutoSession = '0' Where apiID = '" + MatchID + "'";
+                    MySqlCommand cmd = new MySqlCommand(s, cn);
+                    cmd.ExecuteNonQuery();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Runner & Session Set To Be Manual Updation.....');", true);
+                }
+            }
         }
 
         protected void matchAutoManualSystem_SelectedIndexChanged1(object sender, EventArgs e)
@@ -54,6 +74,7 @@ namespace betplayer.poweruser
                     string s = "Update Matches set Manual = '0' Where apiID = '" + MatchID + "'";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     cmd.ExecuteNonQuery();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Match Score Set To Be Automatic Updation.....');", true);
                 }
                 else if (matchAutoManualSystem.SelectedItem.Text == "Manual")
                 {
@@ -61,6 +82,7 @@ namespace betplayer.poweruser
                     string s = "Update Matches set Manual = '1' Where apiID = '" + MatchID + "'";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     cmd.ExecuteNonQuery();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Match Score Set To Be Manual Updation.....');", true);
                 }
             }
         }

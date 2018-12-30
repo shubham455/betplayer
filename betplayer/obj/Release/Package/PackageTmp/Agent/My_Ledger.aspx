@@ -40,29 +40,42 @@
                                     <tr>
                                         <td width="4%" height="25"><strong>SNo.</strong></td>
                                         <td width="8%"><strong>Date</strong></td>
-                                        <td width="15%"><strong>Collection Name</strong></td>
-                                        <td width="9%" style="text-align: right;"><strong>Debit</strong></td>
-                                        <td width="9%" style="text-align: right;"><strong>Credit</strong></td>
-                                        <td width="9%" style="text-align: right;"><strong>Balance</strong></td>
-                                        <td width="13%"><strong>Description</strong></td>
-                                        <td width="13%"><strong>Remark</strong></td>
+                                        <td width="25%"><strong>Collection Name</strong></td>
+                                        <td width="9%" align="right"><strong>Debit</strong></td>
+                                        <td width="9%" align="right"><strong>Credit</strong></td>
+                                        <td width="9%" align="right"><strong>Balance</strong></td>
+                                        <td align="right"><strong>Remark</strong></td>
                                     </tr>
-                                    <% int i = 1; %>
-                                    <% foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
-                                        { %>
-                                    <tr bgcolor="#FFFFFF">
+                                    <%if (!emptyLedgerTable)
+                                        {%>
+                                            <%int i = 1;
+                                            foreach (System.Data.DataRow row in LedgerTableOrdered.Rows)
+                                            { %>
+                                    <tr>
                                         <td height="20" class="FontText"><%=i %></td>
                                         <td class="FontText"><%: row["Date"] %></td>
-                                        <td class="FontText"></td>
-                                        <td style="text-align: right;" class="FontText"><%:row["Dabit"] %></td>
-                                        <td style="text-align: right;" class="FontText"><%:row["Credit"] %></td>
-                                        <td style="text-align: right;" class="FontText"><%:row["Balance"] %></td>
-                                        <td class="FontText"><%:row["CollectionName"] %></td>
-                                        <td class="FontText"><%:row["Remark"] %></td>
+                                        <td class="FontText"><%: row["CollectionName"] %></td>
+                                        <td align="right" class="FontText" style="text-align: right;"><%: row["Dabit"] %></td>
+                                        <td align="right" class="FontText" style="text-align: right;"><%:row["Credit"] %></td>
+                                        <td align="right" class="FontText" style="text-align: right;"><strong><%: row["Balance"] %> </strong></td>
+                                        <td align="right" class="FontText"><%:row["Remark"] %></td>
                                     </tr>
                                     <%i++; %>
-                                    <% } //foreach %>
+                                    <% } //foreach 
+                                        }
+                                        else
+                                        { %>
 
+                                    <tr>
+                                        <td height="20" class="FontText">1</td>
+                                        <td class="FontText">NO</td>
+                                        <td class="FontText">DATA</td>
+                                        <td align="right" class="FontText" style="text-align: right;">FOUND</td>
+                                        <td align="right" class="FontText" style="text-align: right;"></td>
+                                        <td align="right" class="FontText" style="text-align: right;"><strong></strong></td>
+                                        <td align="right" class="FontText"></td>
+                                    </tr>
+                                    <% } //else %>
                                     <%if (!emptyLedgerTable)
                                         {
                                             foreach (System.Data.DataRow row in runTable1.Rows)
@@ -71,15 +84,14 @@
                                         <td height="25">&nbsp;</td>
                                         <td>&nbsp;</td>
                                         <td align="right"><strong>Total Amount</strong></td>
-                                        <td align="right" style="text-align: right;"><strong><%: row["TotalDabitAmount"] %> </strong></td>
-                                        <td align="right" style="text-align: right;"><strong><%: row["TotalcreditAmount"] %></strong></td>
-                                        <td align="right" style="text-align: right;"><strong>
-                                            <%:LedgerTableOrdered.Rows[LedgerTableOrdered.Rows.Count-1]["Balance"] %>
+                                        <td align="right" style="text-align: right;"><strong><%:row["TotalDabitAmount"] %>  </strong></td>
+                                        <td align="right" style="text-align: right;"><strong><%:row["TotalCreditAmount"] %> </strong></td>
+                                        <td align="right" style="text-align: right;"><%:LedgerTableOrdered.Rows[LedgerTableOrdered.Rows.Count-1]["Balance"] %><strong>
+                                            <asp:Label ID="lblAmount" runat="server"></asp:Label>
                                         </strong></td>
                                         <td align="right">&nbsp;</td>
-                                        <td align="right">&nbsp;</td>
                                     </tr>
-                                    <% } //foreach 
+                                    <% } //foreach
                                         }
                                         else
                                         { %>
@@ -87,10 +99,11 @@
                                         <td height="25">&nbsp;</td>
                                         <td>&nbsp;</td>
                                         <td align="right"><strong>Total Amount</strong></td>
-                                        <td align="right" style="text-align: right;"><strong>NO</strong></td>
-                                        <td align="right" style="text-align: right;"><strong>DATA</strong></td>
-                                        <td align="right" style="text-align: right;"><strong>FOUND</strong></td>
-                                        <td align="right">&nbsp;</td>
+                                        <td align="right" style="text-align: right;"><strong></strong></td>
+                                        <td align="right" style="text-align: right;"><strong></strong></td>
+                                        <td align="right" style="text-align: right;"><strong>
+                                            <asp:Label ID="Label1" runat="server"></asp:Label>
+                                        </strong></td>
                                         <td align="right">&nbsp;</td>
                                     </tr>
                                     <% } //else %>

@@ -78,15 +78,15 @@
                             <table width="100%" border="0" cellspacing="2" cellpadding="0" class="table table-striped table-hover table-bordered">
                                 <tbody>
                                     <tr>
-                                        <td width="2%" align="center" class="TableHeadingCheckBox">&nbsp;</td>
-                                        <td height="25" align="left" class="TableHeading"><strong>Sr.</strong></td>
+                                       <td height="25" align="left" class="TableHeading"><strong>Sr.</strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong>Rate</strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong>Amount</strong></td>
                                         <td align="left" class="TableHeading"><strong>Mode</strong></td>
                                         <td width="60" align="left" class="TableHeading"><strong>Team </strong></td>
                                         <td align="left" class="TableHeading"><strong>Client</strong></td>
-                                        <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
+                                        
                                         <td align="left" class="TableHeading"><strong>User</strong></td>
+                                        <td align="left" class="TableHeading"><strong>Date Time</strong></td>
                                         <td width="90" style="text-align: right;" class="TableHeading"><strong>
                                             <asp:Label ID="lblTeamA1" runat="server"></asp:Label>
                                         </strong></td>
@@ -96,37 +96,32 @@
                                     </tr>
 
 
-
+                                    <% int i = 1; %>
                                     <% foreach (System.Data.DataRow row in ClientDataTable1.Rows)
                                         { %>
                                     <tr>
-                                        <td align="center">
-                                            <div class="btn-group">
-                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="javascript:Modify('402','2463')"><i class="icon-pencil"></i>Edit</a></li>
-                                                    <li><a href="javascript:Delete('402','2463')"><i class="icon-trash"></i>Delete</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td height="25" align="left" class="TableHeading"><strong><%:row["RunnerID"] %></strong></td>
+                                       
+                                        <td height="25" align="left" class="TableHeading"><strong><%=i%></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%:row["Rate"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%:row["Amount"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%:row["Mode"] %></strong></td>
                                         <td width="60" align="left" class="TableHeading"><strong><%:row["Team"] %> </strong></td>
                                         <td align="left" class="TableHeading"><strong><%:row["ClientID"] %><%:row["Name"] %></strong></td>
+                                        <td align="left" class="TableHeading"><strong><%:row["CreatedBy1"] %>/<%:row["CreatedBy"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%:row["DateTime"] %></strong></td>
-                                        <td align="left" class="TableHeading"><strong><%:row["CreatedBy"] %></strong></td>
+                                        
                                         <td width="90" style="text-align: right;" class="TableHeading"><strong><%:row["Position1"] %></strong></td>
                                         <td width="90" style="text-align: right;" class="TableHeading"><strong><%:row["Position2"] %></strong></td>
                                     </tr>
+                                    <% i++; %>
                                     <% } //foreach %>
+                                    
 
 
                                     <tr>
                                         <td height="25" colspan="7" style="text-align: right;" class="TableHeading">&nbsp;</td>
                                         <td style="text-align: right;" class="TableHeading">TOTAL AMOUNT</td>
-                                        <td style="text-align: right;" class="TableHeading">&nbsp;</td>
+                                        
                                         
                                         <td style="text-align: right;" class="TableHeading"><strong><asp:Label ID="lblTotalPosition1" runat="server"></asp:Label></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><asp:Label ID="lblTotalPosition2" runat="server"></asp:Label></strong></td>

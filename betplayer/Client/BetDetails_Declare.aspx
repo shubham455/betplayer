@@ -39,23 +39,24 @@
                                             <% foreach (System.Data.DataRow row in MatchesDataTable1.Rows)
                                                 { %>
                                             <tr>
-                                                <td height="25" align="right" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Rate</td>
-                                                <td align="right" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Amount</td>
+                                                <td height="25" align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Rate</td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Amount</td>
                                                 <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Mode</td>
                                                 <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Team</td>
-                                                <td align="right" valign="middle" bgcolor="#006600" class="FontTextWhite10px"><%:row["TeamA"] %></td>
-                                                <td align="right" valign="middle" bgcolor="#006600" class="FontTextWhite10px"><%:row["TeamB"] %></td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px"><%:row["TeamA"] %></td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px"><%:row["TeamB"] %></td>
+                                                
                                             </tr>
                                             <%} //foreach %>
                                             <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                                 { %>
                                             <tr>
-                                                <td height="25" align="right" bgcolor="#CCFFFF" class="FontText"><%:row["Rate"] %></td>
-                                                <td align="right" bgcolor="#CCFFFF" class="FontText"><%:row["Amount"] %></td>
+                                                <td height="25" align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Rate"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Amount"] %></td>
                                                 <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Mode"] %></td>
                                                 <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Team"] %></td>
-                                                <td align="right" bgcolor="#CCFFFF" class="FontText"><%:row["Position1"] %></td>
-                                                <td align="right" bgcolor="#CCFFFF" class="FontText"><%:row["Position2"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Position1"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Position2"] %></td>
                                             </tr>
                                             <%} //foreach %>
                                         </tbody>
@@ -73,22 +74,59 @@
                                         <tbody>
                                            
                                             <tr>
-                                                <td height="25" align="right" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Session</td>
-                                                <td height="25" align="right" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Rate</td>
-                                                <td align="right" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Amount</td>
+                                                <td height="25" align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Session</td>
+                                                <td height="25" align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Rate</td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Amount</td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Run</td>
                                                 <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Mode</td>
-                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Team</td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">DEC</td>
                                                 
                                             </tr>
                                            
                                             <% foreach (System.Data.DataRow row in SessionDataTable.Rows)
                                                 { %>
                                             <tr>
-                                                <td height="25" align="right" bgcolor="#CCFFFF" class="FontText"><%:row["Session"] %></td>
-                                                <td height="25" align="right" bgcolor="#CCFFFF" class="FontText"><%:row["Rate"] %></td>
-                                                <td align="right" bgcolor="#CCFFFF" class="FontText"><%:row["Amount"] %></td>
+                                                <td height="25" align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Session"] %></td>
+                                                <td height="25" align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Rate"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Amount"] %></td>
+                                                 <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Runs"] %></td>
                                                 <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Mode"] %></td>
-                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Team"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Dec"] %></td>
+                                               
+                                            </tr>
+                                            <%} //foreach %>
+                                            
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" valign="top" style="padding-top: 5px;">
+                                    <p class="price-btn price-btn-blue popup-with-zoom-anim">Fancy Bet(s)</p>
+                                    <table width="100%" border="0" cellspacing="2" cellpadding="0">
+                                        <tbody>
+                                           
+                                            <tr>
+                                                <td height="25" align="Center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Fancy</td>
+                                                <td height="25" align="Center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Rate</td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Amount</td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Run</td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Mode</td>
+                                                <td align="center" valign="middle" bgcolor="#006600" class="FontTextWhite10px">Dec</td>
+                                                
+                                            </tr>
+                                           
+                                            <% foreach (System.Data.DataRow row in FancyDataTable.Rows)
+                                                { %>
+                                            <tr>
+                                                <td height="25" align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Session"] %></td>
+                                                <td height="25" align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Rate"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Amount"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Runs"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Mode"] %></td>
+                                                <td align="center" bgcolor="#CCFFFF" class="FontText"><%:row["Dec"] %></td>
                                                
                                             </tr>
                                             <%} //foreach %>
@@ -104,7 +142,16 @@
 
                             <tr>
                                 <td valign="top" align="center">
-                                    <p class="price-btn price-btn-blue popup-with-zoom-anim">Match Session Plus Minus</p>
+                                    <p class="price-btn price-btn-blue popup-with-zoom-anim">Match Plus Minus</p>
+                                </td>
+                            </tr>
+                            <tr bgcolor="">
+                                <td height="25" colspan="6" align="center" class="">
+                                    <asp:Label ID="lblMatch" runat="server"></asp:Label></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" align="center">
+                                    <p class="price-btn price-btn-blue popup-with-zoom-anim">Session Plus Minus</p>
                                 </td>
                             </tr>
                             <tr bgcolor="">
@@ -165,6 +212,10 @@
                                 </td>
                             </tr>
                             <tr bgcolor="">
+                                <td height="25" colspan="6" align="center" class="">
+                                    <asp:Label ID="lblfinalAmount" runat="server"></asp:Label></td>
+                            </tr>
+                            <tr bgcolor="">
                                 <td height="25" colspan="6" align="center" class=""></td>
                             </tr>
                             <tr>
@@ -191,7 +242,7 @@
                     <td>
                         <div class="menu" id="menu" align="center">
                             <ul class="nav">
-                                <li class="active"><a href="AllGamesList.php">BACK TO LIST</a></li>
+                                <li class="active"><a href="AllGamesList.aspx">BACK TO LIST</a></li>
 
                             </ul>
                         </div>

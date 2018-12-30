@@ -23,6 +23,10 @@ namespace betplayer.SuperStokist
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('SuperAgent Added SuccessFully.....');", true);
                 }
+                if (Request.QueryString["msg"] == "Update")
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('SuperAgent Data Updated SuccessFully.....');", true);
+                }
             }
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))

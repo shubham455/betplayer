@@ -67,14 +67,7 @@
 
 
                                                     </tr>
-                                                    <tr>
-                                                        <td class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">TeamC</td>
-                                                        <td align="left" valign="middle">
-                                                            <asp:TextBox ID="txtTeamC" CssClass="textbox" runat="server" /></td>
-
-
-                                                    </tr>
+                                                    
                                                     <tr>
                                                         <td class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Time</td>

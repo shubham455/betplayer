@@ -61,8 +61,7 @@
                                                     <li><a href="PlusMinusSelect.aspx?MatchID=<%: row["apiID"] %>"><i class="icon-filter"></i>Match &amp; Session Plus Minus</a></li>
                                                     <li><a href="ViewMatchReport.aspx?MatchID=<%: row["apiID"] %>""><i class="icon-pushpin"></i>Display Match Bets</a></li>
                                                     <li><a href="ViewSessionReport.aspx?MatchID=<%: row["apiID"] %>""><i class="icon-bullhorn"></i>Display Session Bets</a></li>
-                                                    <li><a onclick="undeclarematch(<%: row["apiID"] %>);"><i class="icon-bullhorn"></i>Undeclare Match</a></li>
-                                                        
+                                                       
                                                 </ul>
                                             </div>
                                         </td>

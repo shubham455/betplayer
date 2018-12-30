@@ -11,10 +11,12 @@ namespace betplayer.poweruser
     {
         protected string apiID { get; set; }
         protected string firebasekey { get; set; }
+        protected string Type { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             apiID = Request.QueryString["MatchId"];
             firebasekey = Request.QueryString["fk"];
+            Type = Request.QueryString["Type"];
         }
     }
 }

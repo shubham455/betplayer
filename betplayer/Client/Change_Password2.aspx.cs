@@ -15,7 +15,7 @@ namespace betplayer.Client
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            
+
         }
 
         protected void btnChangepass_Click(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace betplayer.Client
                     if (rdr.Read())
                     {
                         rdr.Close();
-                        string Update = "Update ClientMaster Set Password = '" + txtConfirmPassword.Text + "' where Password = '" + txtOldPassword.Text + "'";
+                        string Update = "Update ClientMaster Set Password = '" + txtConfirmPassword.Text + "' where ClientID = '" + Session["ClientID"] + "'";
                         MySqlCommand cmd1 = new MySqlCommand(Update, cn);
                         cmd1.ExecuteNonQuery();
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Password Update Successfully...');", true);
@@ -55,7 +55,7 @@ namespace betplayer.Client
 
 
 
-       
+
         protected void txtNewPassword_TextChanged(object sender, EventArgs e)
         {
             if (txtNewPassword.Text != txtConfirmPassword.Text)

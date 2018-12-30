@@ -49,6 +49,15 @@ namespace betplayer.Agent {
         protected global::System.Web.UI.WebControls.TextBox txtclientLimit;
         
         /// <summary>
+        /// Req1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Req1;
+        
+        /// <summary>
         /// txtAgentlimit control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace betplayer.Agent {
         protected global::System.Web.UI.WebControls.TextBox txtAgentshare;
         
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
         /// txtAgentshare2 control.
         /// </summary>
         /// <remarks>
@@ -101,15 +119,6 @@ namespace betplayer.Agent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtAgentshare2;
-        
-        /// <summary>
-        /// txtClientshare control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClientshare;
         
         /// <summary>
         /// SessionDropDown control.

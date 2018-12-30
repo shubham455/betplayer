@@ -10,7 +10,7 @@
 namespace betplayer.SubAdmin {
     
     
-    public partial class MatchSessionPlusMinusSelect {
+    public partial class MatchSessionplusMinusSelect {
         
         /// <summary>
         /// lblTeamA control.

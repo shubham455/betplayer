@@ -48,20 +48,20 @@ namespace betplayer.superagent
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string checkstatus = "Select Status From AgentMaster Where AgentID = '" + id + "'";
+                    string checkstatus = "Select Status,Code From AgentMaster Where AgentID = '" + id + "'";
                     MySqlCommand cmd1 = new MySqlCommand(checkstatus, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd1);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     string St = "";
                     string status = dt.Rows[0]["Status"].ToString();
-                    if (status == "active")
+                    if (status == "Active")
                     {
                         St = "Inactive";
                     }
                     else if (status == "Inactive")
                     {
-                        St = "active";
+                        St = "Active";
                     }
 
                     string s = "update agentmaster set Status = '" + St + "' where agentid = '" + id + "'";

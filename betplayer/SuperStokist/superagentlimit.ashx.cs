@@ -76,7 +76,7 @@ namespace betplayer.Superstokist
                         string clientLimit = client.GetType().GetProperty("AgentLimit").GetValue(client, null).ToString();
                         string fixlimit = client.GetType().GetProperty("FixLimit").GetValue(client, null).ToString();
 
-                        string updatelimit = "Update SuperAgentMaster set  Fixlimit = '"+fixlimit+"',CurrentLimit= '" + clientLimit + "'  Where SuperagentID = '" + clientID + "'";
+                        string updatelimit = "Update SuperAgentMaster set AgentLimit ='"+clientLimit+"', Fixlimit = '"+fixlimit+"',CurrentLimit= '" + clientLimit + "'  Where SuperagentID = '" + clientID + "'";
                         MySqlCommand cmd = new MySqlCommand(updatelimit, cn);
                         cmd.ExecuteNonQuery();
 

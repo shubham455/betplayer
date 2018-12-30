@@ -44,6 +44,17 @@ namespace betplayer.Agent
                     dropdownClient.DataBind();
 
 
+                    string ClientCollection = "Select * From ClientCollectionName where CreatedBy = '" + Session["Agentcode"] + "'";
+                    MySqlCommand ClientCollectioncmd = new MySqlCommand(ClientCollection, cn);
+                    MySqlDataAdapter ClientCollectionadp = new MySqlDataAdapter(ClientCollectioncmd);
+                    DataTable ClientCollectiondt = new DataTable();
+                    ClientCollectionadp.Fill(ClientCollectiondt);
+                    dropdowncollection.DataSource = ClientCollectiondt;
+                    dropdowncollection.DataTextField = "Name";
+                    dropdowncollection.DataValueField = "ClientCollectionnameID";
+                    dropdowncollection.DataBind();
+
+
                     string s1 = "Select * From Clientledger where ClientID = '" + dropdownClient.SelectedValue + "'";
                     MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
@@ -87,7 +98,7 @@ namespace betplayer.Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "select matches.TeamA,matches.teamB,matches.DateTime,clientledger.Dabit,clientledger.Credit,clientledger.clientledgerID from ClientLedger inner join matches on clientledger.MatchID = matches.apiID where ClientID = '" + dropdownClient.SelectedValue + "'";
+                string s = "select matches.TeamA,matches.teamB,matches.DateTime,clientledger.Dabit,clientledger.Credit,clientledger.clientledgerID from ClientLedger inner join matches on clientledger.MatchID = matches.apiID where ClientID = '" + dropdownClient.SelectedValue + "' order by Matches.DateTime ASC";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt1 = new DataTable();
@@ -109,7 +120,7 @@ namespace betplayer.Agent
                     row["Date"] = oDate;     //row["Date"] = datetime;
                     row["CollectionID"] = ID;     //row["Date"] = datetime;
                     row["PaynmentDescription"] = TeamA + "VS" + TeamB;
-                    row["Dabit"] = Dabit;
+                    row["Dabit"] = Dabit * -1;
                     row["Credit"] = Credit;
 
                     decimal Balance = 0, Balance1 = 0;
@@ -126,8 +137,8 @@ namespace betplayer.Agent
                         for (int k = 0; k < runtable.Rows.Count; k++)
                         {
                             Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
-                            Balance1 = Balance1 - Dabit;
-                            Balance1 = Balance1 + (Credit * -1);
+                            Balance1 = Balance1 + Balance;
+                            
                             row["Balance"] = Balance1;
                         }
                     }
@@ -155,7 +166,7 @@ namespace betplayer.Agent
 
                     string ID = dt.Rows[j]["CollectionID"].ToString();
                     string CollectionName = dt.Rows[j]["CollectionType"].ToString();
-                    int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
+                    decimal  Amount = Convert.ToDecimal(dt.Rows[j]["Amount"]);
                     string PaynmentDescription = dt.Rows[j]["PaynmentType"].ToString();
                     string Remark = dt.Rows[j]["Remark"].ToString();
 
@@ -165,7 +176,7 @@ namespace betplayer.Agent
                     row["Remark"] = Remark;
                     if (PaynmentDescription == "Payment Received")
                     {
-                        row["Dabit"] = Amount;
+                        row["Dabit"] = Amount * -1;
                         row["Credit"] = 0;
                         row["Balance"] = Amount * -1;
                     }
@@ -194,10 +205,10 @@ namespace betplayer.Agent
                     for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
                     {
                         DateTime date = DateTime.Parse(LedgerTableOrdered.Rows[0]["Date"].ToString());
-                        LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
+                        LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString();
                         if (l > 0)
                         {
-                            LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
+                            LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToDecimal(LedgerTableOrdered.Rows[l - 1]["Balance"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
 
 
                         }
@@ -254,18 +265,41 @@ namespace betplayer.Agent
                 string s = "Insert Into ClientCollectionMaster (ClientID,CollectionType,Date,Amount,PaynmentType,Remark,AgentID) values(@ClientID,@CollectionType,@Date,@Amount,@PaynmentType,@Remark,@AgentID)";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 cmd.Parameters.AddWithValue("@ClientID", dropdownClient.Text);
-                cmd.Parameters.AddWithValue("@CollectionType", Collection.Value);
+                cmd.Parameters.AddWithValue("@CollectionType", dropdowncollection.SelectedItem.Text);
                 cmd.Parameters.AddWithValue("@Date", BillDate.Text);
                 cmd.Parameters.AddWithValue("@Amount", Amount.Text);
-                cmd.Parameters.AddWithValue("@PaynmentType", PaymentType.Value);
+                cmd.Parameters.AddWithValue("@PaynmentType", PaymentType1.SelectedValue);
                 cmd.Parameters.AddWithValue("@Remark", Remark.Text);
                 cmd.Parameters.AddWithValue("@AgentID", Session["AgentID"]);
                 cmd.ExecuteNonQuery();
 
-                Amount.Text = "";
+                string Client = "select CurrentLimit From Clientmaster Where ClientID = '" + dropdownClient.Text + "'";
+                MySqlCommand Clientcmd = new MySqlCommand(Client, cn);
+                MySqlDataAdapter Clientadp = new MySqlDataAdapter(Clientcmd);
+                DataTable Clientdt = new DataTable();
+                Clientadp.Fill(Clientdt);
 
-                dropdownClient_SelectedIndexChanged(sender,e);
-                
+                decimal Clientcurrentlimit = Convert.ToDecimal(Clientdt.Rows[0]["CurrentLimit"]);
+                decimal FinalAmount = 0;
+                if (PaymentType1.SelectedItem.Text == "PAYMENT - DENA/ac")
+                {
+                    FinalAmount = Clientcurrentlimit - Convert.ToDecimal(Amount.Text);
+                }
+                else if (PaymentType1.SelectedItem.Text == "RECEIPT - LENA/ac")
+                {
+                    FinalAmount = Clientcurrentlimit + Convert.ToDecimal(Amount.Text);
+                }
+
+                string update = "Update Clientmaster Set CurrentLimit = '" + FinalAmount + "' where ClientID = '" + dropdownClient.Text + "'";
+                MySqlCommand updatecmd = new MySqlCommand(update, cn);
+                updatecmd.ExecuteNonQuery();
+
+
+                Amount.Text = "";
+                dropdownClient_SelectedIndexChanged(sender, e);
+                Response.Redirect("ClientLedger.aspx", true);
+
+
             }
         }
     }

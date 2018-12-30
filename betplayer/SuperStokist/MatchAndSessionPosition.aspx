@@ -66,7 +66,7 @@
                                                                                             </div>
                                                                                         </td>
                                                                                         <td width="20%" style="text-align: center; vertical-align: middle;">
-                                                                                             <img id="LastBall" style="height: 100%;" src="" /></td>
+                                                                                            <img id="LastBall" style="height: 100%;" src="" /></td>
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>
@@ -123,7 +123,7 @@
                                                                                                 <input type="button" name="LRate2" id="KRate3" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="AddMatchBitL(2)">
                                                                                             </span></td>
                                                                                             <td align="center" valign="middle" style="text-align: center; vertical-align: middle;">
-                                                                                                <asp:Label ID="Label1" runat="server" Style="font-size: 13px; font-weight: bold"></asp:Label>
+                                                                                                <asp:Label ID="Team3Amt" runat="server" Style="font-size: 13px; font-weight: bold"></asp:Label>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <%  } %>
@@ -277,26 +277,62 @@
                                         <td style="text-align: right;" class="TableHeading"><strong>
                                             <asp:Label ID="lblTeamB" runat="server"></asp:Label>
                                         </strong></td>
+                                        <%if (emptyLedgerTable)
+                                            {
+                                        %>
+                                        <td align="left" class="TableHeading"><strong>DRAW</strong></td>
+                                         <%  } %>
                                         <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
                                     </tr>
+                                    <%int i = 1; %>
                                     <% foreach (System.Data.DataRow row in ClientDataTable1.Rows)
                                         { %>
                                     <tr>
                                         <td align="left" class="TableHeading">&nbsp;</td>
-                                        <td height="25" align="left" class="TableHeading"><strong><%: row["runnerID"] %></strong></td>
+                                        <td height="25" align="left" class="TableHeading"><strong><%= i %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["rate"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Amount"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Mode"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Team"] %> </strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["ClientID"] %>  <%: row["Name"] %></strong></td>
-                                        <td align="left" class="TableHeading"><strong><%: row["Createdby"] %></strong></td>
+                                        <td align="left" class="TableHeading"><strong><%: row["Createdby1"] %>/<%: row["Createdby"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Position1"] %>  </strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Position2"] %>  </strong></td>
+                                        <%if (emptyLedgerTable)
+                                            {
+                                        %>
+                                        <td style="text-align: right;" class="TableHeading"><strong><%: row["Position3"] %></strong></td>
+                                        <%  } %>
                                         <td align="left" class="TableHeading"><strong><%: row["Datetime"] %></strong></td>
                                     </tr>
+                                    <% i++; %>
                                     <% } //foreach %>
+                                    <tr>
+                                        <td align="left" class="TableHeading">&nbsp;</td>
+                                        <td height="25" align="left" class="TableHeading"><strong></strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong></strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong></strong></td>
+                                        <td align="left" class="TableHeading"><strong></strong></td>
+                                        <td align="left" class="TableHeading"><strong></strong></td>
+                                        <td align="left" class="TableHeading"><strong></strong></td>
+                                        <td align="left" class="TableHeading"><strong>Total</strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong>
+                                            <asp:Label ID="finalposition1" runat="server"></asp:Label>
+                                        </strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong>
+                                            <asp:Label ID="finalposition2" runat="server"></asp:Label>
+                                        </strong></td>
+                                        <%if (emptyLedgerTable)
+                                            {
+                                        %>
+                                        <td style="text-align: right;" class="TableHeading"><strong>
+                                            <asp:Label ID="finalposition3" runat="server"></asp:Label>
+                                        </strong></td>
+                                        <%  } %>
+                                        <td align="left" class="TableHeading"><strong></strong></td>
+                                    </tr>
                                 </tbody>
-                                
+
                             </table>
 
 
@@ -315,22 +351,22 @@
     <asp:HiddenField ID="apiID" runat="server" />
     <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
-    <script src="js/LiveMatch.js"></script>
+    <script src="js/LiveMatch_v1.2.js"></script>
     <script type="text/javascript">
 
         function Redirect(value) {
             var matchID = document.getElementById("ContentPlaceHolder_apiID").value;
             var firebasekey = document.getElementById("ContentPlaceHolder_firebasekey").value;
-            window.location = "MatchAndSessionPosition.aspx?MatchID=" + matchID + "&&fk="+firebasekey;
+            window.location = "MatchAndSessionPosition.aspx?MatchID=" + matchID + "&&fk=" + firebasekey;
         }
         function Redirect1(value) {
             if (value != "NONE") {
-            var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
-            var firebasekey = document.getElementById("ContentPlaceHolder_firebasekey").value;
-            var urlParams = new URLSearchParams(window.location.search);
-            var matchtype = urlParams.get('Type');
-            window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + " &&Session=" + value + "&&fk=" + firebasekey+"&&Type="+matchtype;
-        }
+                var matchid = document.getElementById("ContentPlaceHolder_apiID").value;
+                var firebasekey = document.getElementById("ContentPlaceHolder_firebasekey").value;
+                var urlParams = new URLSearchParams(window.location.search);
+                var matchtype = urlParams.get('Type');
+                window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + " &&Session=" + value + "&&fk=" + firebasekey + "&&Type=" + matchtype;
+            }
 
         }
 

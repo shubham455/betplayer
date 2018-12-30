@@ -23,7 +23,11 @@ namespace betplayer.Super_Agent
             {
                 if (Request.QueryString["msg"] == "Add")
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Added SuccessFully.....');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Agent Added SuccessFully.....');", true);
+                }
+                if (Request.QueryString["msg"] == "Update")
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Agent Data Updated SuccessFully.....');", true);
                 }
             }
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
@@ -78,17 +82,26 @@ namespace betplayer.Super_Agent
 
         protected void DropDownstatus_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            { 
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
+                using (MySqlConnection cn = new MySqlConnection(CN))
+                {
+                    cn.Open();
 
-                string selected = Request.Form["checkbox"];
-                string s = "update  AgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "', CurrentLimit = '0' where AgentID in (" + selected + ")";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                cmd.ExecuteNonQuery();
-                BindData();
-
+                    string selected = Request.Form["checkbox"];
+                    if (selected == null)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Select Any Agent...');", true);
+                    }
+                    else
+                    {
+                        string s = "update  AgentMaster set Status = '" + DropDownstatus.SelectedItem.Text + "', CurrentLimit = '0' where AgentID in (" + selected + ")";
+                        MySqlCommand cmd = new MySqlCommand(s, cn);
+                        cmd.ExecuteNonQuery();
+                        BindData();
+                    }
+                }
             }
         }
         

@@ -136,6 +136,13 @@ namespace betplayer.SuperStokist
             {
                 cn.Open();
 
+                string declaresession = "Select * From DeclaredSession where Session = '" + DropDownSession.SelectedItem.Text + "'";
+                MySqlCommand declaresessioncmd = new MySqlCommand(declaresession, cn);
+                MySqlDataAdapter declaresessionadp = new MySqlDataAdapter(declaresessioncmd);
+                DataTable declaresessiondt = new DataTable();
+                declaresessionadp.Fill(declaresessiondt);
+                lblrate.Text = declaresessiondt.Rows[0]["DeclareRun"].ToString();
+
                 string s11 = "Select AgentID,code From AgentMaster where CreatedBy = '" + Session["SuperAgentcode"] + "'";
                 MySqlCommand cmd11 = new MySqlCommand(s11, cn);
                 MySqlDataAdapter adp11 = new MySqlDataAdapter(cmd11);

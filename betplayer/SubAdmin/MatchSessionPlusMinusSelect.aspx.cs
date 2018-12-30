@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace betplayer.SubAdmin
 {
-    public partial class MatchSessionPlusMinusSelect : System.Web.UI.Page
+    public partial class MatchSessionplusMinusSelect : System.Web.UI.Page
     {
         private DataTable dt;
         private DataTable dt1;
@@ -47,7 +47,7 @@ namespace betplayer.SubAdmin
                 MySqlDataAdapter Nameadp = new MySqlDataAdapter(Namecmd);
                 Namedt = new DataTable();
                 Nameadp.Fill(Namedt);
-               
+
 
                 string TeamName = "Select * from Matches Where apiID = '" + MatchID + "'";
                 MySqlCommand TeamNamecmd = new MySqlCommand(TeamName, cn);
@@ -87,7 +87,7 @@ namespace betplayer.SubAdmin
             }
         }
 
-        
+
         protected void btnshow_Click(object sender, EventArgs e)
         {
             int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);

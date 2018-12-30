@@ -24,7 +24,7 @@ namespace betplayer.SuperStokist
         {
             {
 
-                int AgentID = Convert.ToInt32(Session["AgentID"]);
+                int superstockistID = Convert.ToInt32(Session["superstockistID"]);
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
@@ -52,7 +52,7 @@ namespace betplayer.SuperStokist
 
 
 
-                    string s = "select matches.TeamA,matches.teamB,matches.DateTime ,SuperAgentledger.SuperAgentLedgerID,SuperAgentledger.Dabit,SuperAgentledger.Credit from SuperAgentledger inner join matches on SuperAgentledger.MatchID = matches.apiID where SuperAgentledger.SuperAgentID = '" + Session["SuperAgentID"] + "'";
+                    string s = "select matches.TeamA,matches.teamB,matches.DateTime ,superstockistLedger.superstockistLedgerID,superstockistLedger.Dabit,superstockistLedger.Credit from superstockistLedger inner join matches on superstockistLedger.MatchID = matches.apiID where superstockistLedger.superstockistID = '" + Session["superstockistID"] + "' order by matches.datetime ASC";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     dt1 = new DataTable();
@@ -66,7 +66,7 @@ namespace betplayer.SuperStokist
                         DateTime oDate = DateTime.Parse(DateFromDB);
                         string datetime = oDate.Date.ToString().Substring(0, 10);
 
-                        int ID = Convert.ToInt16(dt1.Rows[i]["SuperAgentLedgerID"]);
+                        int ID = Convert.ToInt16(dt1.Rows[i]["superstockistLedgerID"]);
                         string TeamA = dt1.Rows[i]["TeamA"].ToString();
                         string TeamB = dt1.Rows[i]["TeamB"].ToString();
                         decimal Dabit = Convert.ToDecimal(dt1.Rows[i]["Dabit"]);
@@ -105,7 +105,7 @@ namespace betplayer.SuperStokist
                         runTable.Rows.Add(row.ItemArray);
                     }
 
-                    string s1 = "Select * From SuperAgentCollectionMaster where SuperAgentID = '" + Session["SuperAgentID"] + "'";
+                    string s1 = "Select * From SuperstockistCollectionMaster where SuperstockistID = '" + Session["SuperstockistID"] + "'";
                     MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     DataTable dt = new DataTable();
@@ -119,7 +119,7 @@ namespace betplayer.SuperStokist
                         string Date1 = date.Date.ToString().Substring(0, 10);
 
 
-                        string CollectionID = dt.Rows[j]["superagentcollectionmasterID"].ToString();
+                        string CollectionID = dt.Rows[j]["SuperstockistcollectionmasterID"].ToString();
                         string CollectionName = dt.Rows[j]["CollectionType"].ToString();
                         int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
                         string PaynmentDescription = dt.Rows[j]["PaynmentType"].ToString();

@@ -43,7 +43,7 @@
                                         </asp:DropDownList>
                                     </div>
 
-                                    <a href="Updatesuperagentlimit.aspx">
+                                    <a href="Updatesuperstokistlimit.aspx">
                                         <button class="btn btn-primary" type="button">Update Limit</button></a>
                                 </div>
                                 <div class="space15"></div>
@@ -133,7 +133,7 @@
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="ModifySuperStokist.aspx?id=<%:row["SuperStockistID"] %>"><i class="icon-pencil"></i>Edit</a></li>
-                                                        <li><a onclick="CallHandler('<%:row["SuperStockistID"] %>');"><i class="icon-trash"></i>Delete</a></li>
+                                                        <li><a onclick="#"><i class="icon-trash"></i>Delete</a></li>
                                                         <li><a onclick="ChangesInStatus('<%:row["SuperStockistID"] %>');"><i class="icon-ban-circle"></i>
                                                             InActive                              </a></li>
                                                         <li class="divider"></li>

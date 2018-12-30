@@ -9,8 +9,8 @@
 
 
     <div class="col-sm-4 col-lg-3 gritter-demo gritter-item-wrapper" style="width: 100%; margin-top: 50px; text-align: left;">
-        <a href="inplay.aspx">
-            <div role="alert" style="background-color: #0000FF; height: 70px;">
+        <a href="inplay.aspx?Coins=True">
+            <div role="alert" style="background-color: #FFAB91; height: 70px;">
                 <div style="margin-top: -35px;">
                     <div>
                         <br/>
@@ -33,13 +33,13 @@
         </a>
         </div>
         <a href="AllGamesList.aspx"></a>
-        <div role="alert" style="background-color:#FF99FF; height: 70px;">
+        <div role="alert" style="background-color:#FFAB91; height: 70px;">
             <a href="AllGamesList.aspx">
                 <div>
                     <div>
                         <br />
                         <div style="margin-left: 100px !important">
-                            <span class="gritter-title">All Games</span>
+                            <span class="gritter-title" style="color:white;">All Games</span>
                         </div>
                         <div style="clear: both"></div>
                     </div>
@@ -52,12 +52,12 @@
         </div>
 
         <a href="MyLedger.aspx">
-            <div role="alert" style="background-color: yellow; height: 70px;">
+            <div role="alert" style="background-color: #FFAB91; height: 70px;">
                 <div>
                     <div>
                         <br>
                         <div style="margin-left: 100px !important">
-                            <span class="gritter-title">My Ledger</span>
+                            <span class="gritter-title" style="color:white;">My Ledger</span>
                         </div>
                     </div>
                     <div style="clear: both"></div>
@@ -70,12 +70,12 @@
         </div>
 
         <a href="Change_Password.aspx">
-            <div role="alert" style="background-color: #00FF00; height: 70px;">
+            <div role="alert" style="background-color: #FFAB91; height: 70px;">
                 <div>
                     <div>
                         <br>
                         <div style="margin-left: 100px !important">
-                            <span class="gritter-title">Change Password</span>
+                            <span class="gritter-title" style="color:white;">Change Password</span>
                         </div>
                     </div>
                     <div style="clear: both"></div>
@@ -88,12 +88,12 @@
         </div>
 
         <a href="Terms_Condition.aspx">
-            <div role="alert" style="background-color: #CC33FF; height: 70px;">
+            <div role="alert" style="background-color: #FFAB91; height: 70px;">
                 <div>
                     <div>
                         <br>
                         <div style="margin-left: 100px !important">
-                            <span class="gritter-title">Terms And Condition</span>
+                            <span class="gritter-title" style="color:white;">Terms And Condition</span>
                         </div>
                     </div>
                     <div style="clear: both"></div>
@@ -106,7 +106,7 @@
         </div>
 
         <a href="Login.aspx">
-            <div role="alert" style="background-color: #0000FF; height: 70px;">
+            <div role="alert" style="background-color: #FFAB91; height: 70px;">
                 <div>
                     <div>
                         <br>

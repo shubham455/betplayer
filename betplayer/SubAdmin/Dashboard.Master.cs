@@ -11,9 +11,9 @@ namespace betplayer.SubAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["AdminID"] == null)
+            if(Session["subAdminID"] == null)
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("../Agent/Login.aspx");
             }
         }
     }

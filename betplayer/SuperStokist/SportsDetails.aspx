@@ -47,6 +47,7 @@
                                         <td width="110" align="left" class="TableHeading">Match Type </td>
                                         <td width="100" align="left" class="TableHeading">Declare</td>
                                         <td width="92" align="left" class="TableHeading">Won By</td>
+                                        <td width="92" align="left" class="TableHeading">Plus/Minus</td>
                                     </tr>
                                     <%int i = 1; %>
                                     <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
@@ -74,6 +75,7 @@
                                         <td width="110" align="left" class="FontText"><%: row["Type"] %></td>
                                         <td width="100" align="left" class="FontText"><%if (Convert.ToInt16(row["Declear"]) == 1) {%>Yes<% }else{%>No<% } %></td>
                                         <td width="92" align="left" class="FontText"><%: row["WinnerTeam"] %></td>
+                                        <td width="92" align="left" class="FontText"><%: row["SuperstockistAmount"] %></td>
                                     </tr>
                                     <%i++; %>
                                     <% } //foreach %>

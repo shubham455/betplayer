@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/SubAdmin/DashBoard.Master" CodeBehind="MatchSessionPlusMinusSelect.aspx.cs" Inherits="betplayer.SubAdmin.MatchSessionPlusMinusSelect" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/SubAdmin/Dashboard.Master" AutoEventWireup="true" CodeBehind="MatchSessionplusMinusSelect.aspx.cs" Inherits="betplayer.SubAdmin.MatchSessionplusMinusSelect" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div id="main-content">

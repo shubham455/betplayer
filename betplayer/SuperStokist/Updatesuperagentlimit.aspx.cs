@@ -46,7 +46,7 @@ namespace betplayer.Superstokist
                 decimal Total = 0;
                 for (int i = 0; i < SuperAgentlimitdt.Rows.Count; i++)
                 {
-                    int Superagentlimit = Convert.ToInt32(SuperAgentlimitdt.Rows[0]["Currentlimit"]);
+                    decimal Superagentlimit = Convert.ToDecimal(SuperAgentlimitdt.Rows[0]["Currentlimit"]);
                     Total = Total + Superagentlimit;
 
                 }

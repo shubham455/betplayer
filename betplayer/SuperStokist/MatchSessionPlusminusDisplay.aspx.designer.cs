@@ -85,13 +85,22 @@ namespace betplayer.SuperStokist {
         protected global::System.Web.UI.WebControls.Label SATotalNetAmount;
         
         /// <summary>
-        /// SATotalHalfAmount control.
+        /// Label10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SATotalHalfAmount;
+        protected global::System.Web.UI.WebControls.Label Label10;
+        
+        /// <summary>
+        /// SBSAAgentShare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SBSAAgentShare;
         
         /// <summary>
         /// SAMOBAppAmount control.
@@ -173,6 +182,15 @@ namespace betplayer.SuperStokist {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label7;
+        
+        /// <summary>
+        /// Label12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label12;
         
         /// <summary>
         /// Label8 control.

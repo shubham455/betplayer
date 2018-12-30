@@ -22,7 +22,16 @@ namespace betplayer.Client
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            int ClientID = Convert.ToInt32(Session["ClientID"]);
+            string userName = Session["ClientID"] != null ? Session["ClientID"].ToString() : null;
+            if (userName != null)
+            {
+                int ClientID = Convert.ToInt32(Session["ClientID"]);
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
@@ -49,7 +58,7 @@ namespace betplayer.Client
 
 
 
-                string s = "select matches.TeamA,matches.teamB,matches.DateTime,clientledger.Dabit,clientledger.Credit from ClientLedger inner join matches on clientledger.MatchID = matches.apiID where ClientID = '" + Session["ClientID"] + "'";
+                string s = "select matches.TeamA,matches.teamB,matches.DateTime,clientledger.Dabit,clientledger.Credit from ClientLedger inner join matches on clientledger.MatchID = matches.apiID where ClientID = '" + Session["ClientID"] + "' order by matches.DateTime ASC ";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt1 = new DataTable();
@@ -87,8 +96,7 @@ namespace betplayer.Client
                         for (int k = 0; k < runtable.Rows.Count; k++)
                         {
                             Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
-                            Balance1 = Balance1 - Dabit;
-                            Balance1 = Balance1 + Credit;
+                            Balance1 = Balance1 + Balance;
                             row["Balance"] = Balance1;
                         }
                     }
@@ -111,7 +119,7 @@ namespace betplayer.Client
 
                     string CollectionDate = dt.Rows[j]["Date"].ToString();
                     DateTime date = DateTime.Parse(CollectionDate);
-                    string Date1 = date.Date.ToString().Substring(0, 10);
+                    string Date1 = date.Date.ToString();
 
 
                     string CollectionName = dt.Rows[j]["CollectionType"].ToString();
@@ -126,13 +134,13 @@ namespace betplayer.Client
                     {
                         row["Dabit"] = Amount;
                         row["Credit"] = 0;
-                        row["Balance"] = Amount * -1;
+                        row["Balance"] = Amount;
                     }
                     else if (PaynmentDescription == "Payment Paid")
                     {
-                        row["Credit"] = Amount;
+                        row["Credit"] = Amount * -1;
                         row["Dabit"] = 0;
-                        row["Balance"] = Amount;
+                        row["Balance"] = Amount * -1;
                     }
 
                     runTable.Rows.Add(row.ItemArray);
@@ -149,10 +157,10 @@ namespace betplayer.Client
                     for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
                     {
                         DateTime date = DateTime.Parse(LedgerTableOrdered.Rows[0]["Date"].ToString());
-                        LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
+                        LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString();
                         if (l > 0)
                         {
-                            LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
+                            LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
 
 
                         }

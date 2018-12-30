@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="Changestatus.ashx.cs" Class="betplayer.superagent.Changestatus" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="changestatus.ashx.cs" Class="betplayer.SuperStokist.changestatus" %>

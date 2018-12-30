@@ -29,11 +29,11 @@
                 <div class="row-fluid circle-state-overview">
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                            <a href="AgentDetails.aspx">
+                            <a href="SuperAgentDetails.aspx">
                                 <div class="stats-circle turquoise-color">
                                     <i class="icon-user"></i>
                                 </div>
-                            <strong><p style="color:#4CC5CD;">Agent Master</p></strong>
+                            <strong><p style="color:#4CC5CD;">SuperAgent Master</p></strong>
                             </a>
                         </div>
                     </div>

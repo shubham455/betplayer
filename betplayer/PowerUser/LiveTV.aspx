@@ -107,16 +107,16 @@
     <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
     <!-- Player -->
-    <script src = "js/mss_v1.js" type="text/javascript"></script>
+    <script src="js/mss_v1.js" type="text/javascript"></script>
     <script type="text/javascript">
         // Initialize Firebase
         var config = {
-            apiKey: "AIzaSyCE_FlNqI6V1D2a7SL6hHUDtyHiP4TbKpM",
-            authDomain: "livegame-25.firebaseapp.com",
-            databaseURL: "https://livegame-25.firebaseio.com",
-            projectId: "livegame-25",
-            storageBucket: "livegame-25.appspot.com",
-            messagingSenderId: "1057323073701"
+            apiKey: "AIzaSyC--iibJ_u5LOgf-TPVrQxpYJl-OEqVX7o",
+            authDomain: "cricfun1.firebaseapp.com",
+            databaseURL: "https://cricfun1.firebaseio.com",
+            projectId: "cricfun1",
+            storageBucket: "cricfun1.appspot.com",
+            messagingSenderId: "17574502370"
         };
         firebase.initializeApp(config);
         var fk = "<%= firebasekey.Value %>";

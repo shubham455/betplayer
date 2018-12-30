@@ -21,32 +21,34 @@ namespace betplayer.PowerUser
         JavaScriptSerializer js = new JavaScriptSerializer();
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-                string html = string.Empty;
-                string url = @"https://www.lotusbook.com/api/exchange/eventType/4";
 
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.AutomaticDecompression = DecompressionMethods.GZip;
+            
 
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    html = reader.ReadToEnd();
+            string html = string.Empty;
+            string url = @"https://www.lotusbook.com/api/exchange/odds/eventType/4";
 
-                    LotusResult = js.Deserialize<LotusResponse>(html);
 
-                    matchdropdown.DataSource = getMatches(LotusResult).ToList();
-                    matchdropdown.DataTextField = "name";
-                    matchdropdown.DataValueField = "id";
-                    matchdropdown.DataBind();
-                
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+
+                LotusResult = js.Deserialize<LotusResponse>(html);
+
+                matchdropdown.DataSource = getMatches(LotusResult).ToList();
+                matchdropdown.DataTextField = "name";
+                matchdropdown.DataValueField = "id";
+                matchdropdown.DataBind();
+
             }
         }
         protected void submit_Click(object sender, EventArgs e)
         {
             string matchId = matchdropdown.SelectedItem.Value;
-            string team1name = "", team2name = "", team3name = "", DateTimeGMT="", lotusMatchID="";
+            string team1name = "", team2name = "", team3name = "", DateTimeGMT = "", lotusMatchID = "";
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
             foreach (Result match in LotusResult.result)
             {
@@ -65,7 +67,7 @@ namespace betplayer.PowerUser
             {
                 cn.Open();
 
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://livegame-25.firebaseio.com/currentMatches.json");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://cricfun1.firebaseio.com/currentMatches.json");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
@@ -77,12 +79,12 @@ namespace betplayer.PowerUser
                         description = "",
                         message = "",
                         status = "",
-                        minBet = "2000",
-                        maxBet = "200000",
-                        sessionMinBet = "1000",
-                        sessionMaxBet = "200000",
+                        minBet = "500",
+                        maxBet = "100000",
+                        sessionMinBet = "500",
+                        sessionMaxBet = "50000",
                         fancyminbet = "500",
-                        fancymaxbet = "20000",
+                        fancymaxbet = "25000",
                         lastBall = new
                         {
                             @event = "Bet Open"

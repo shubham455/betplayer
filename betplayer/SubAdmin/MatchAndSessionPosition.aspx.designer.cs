@@ -31,13 +31,13 @@ namespace betplayer.SubAdmin {
         protected global::System.Web.UI.WebControls.Label Team2Amt;
         
         /// <summary>
-        /// Label1 control.
+        /// Team3Amt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label Team3Amt;
         
         /// <summary>
         /// lblTeamA control.
@@ -56,6 +56,33 @@ namespace betplayer.SubAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTeamB;
+        
+        /// <summary>
+        /// finalposition1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label finalposition1;
+        
+        /// <summary>
+        /// finalposition2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label finalposition2;
+        
+        /// <summary>
+        /// finalposition3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label finalposition3;
         
         /// <summary>
         /// apiID control.

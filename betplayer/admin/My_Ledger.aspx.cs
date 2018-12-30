@@ -52,7 +52,7 @@ namespace betplayer.admin
 
 
 
-                    string s = "select matches.TeamA,matches.teamB,matches.DateTime ,AdminLedger.AdminLedgerID,AdminLedger.Dabit,AdminLedger.Credit from AdminLedger inner join matches on AdminLedger.MatchID = matches.apiID where AdminLedger.AdminID = '" + Session["AdminID"] + "'";
+                    string s = "select matches.TeamA,matches.teamB,matches.DateTime ,AdminLedger.AdminLedgerID,AdminLedger.Dabit,AdminLedger.Credit from AdminLedger inner join matches on AdminLedger.MatchID = matches.apiID ";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     dt1 = new DataTable();
@@ -75,7 +75,7 @@ namespace betplayer.admin
                         row["Date"] = oDate;     //row["Date"] = datetime;
                         row["ID"] = ID;
                         row["CollectionName"] = TeamA + "VS" + TeamB;
-                        row["Dabit"] = Dabit;
+                        row["Dabit"] = Dabit *-1;
                         row["Credit"] = Credit;
 
                         decimal Balance = 0, Balance1 = 0;
@@ -92,8 +92,8 @@ namespace betplayer.admin
                             for (int k = 0; k < runtable.Rows.Count; k++)
                             {
                                 Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
-                                Balance1 = Balance1 - Dabit;
-                                Balance1 = Balance1 + Credit;
+                                Balance1 = Balance1 + Balance;
+                                
                                 row["Balance"] = Balance1;
                             }
                         }
@@ -120,7 +120,7 @@ namespace betplayer.admin
                             LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
                             if (l > 0)
                             {
-                                LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToDecimal(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
+                                LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToDecimal(LedgerTableOrdered.Rows[l - 1]["Balance"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
 
 
                             }

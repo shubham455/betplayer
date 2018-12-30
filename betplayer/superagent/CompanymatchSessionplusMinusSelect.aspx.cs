@@ -70,7 +70,7 @@ namespace betplayer.superagent
                 {
                     string Agentcode = dt1.Rows[i]["Code"].ToString();
 
-                    string s2 = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Session.MatchID = '" + MatchID + "' group by ClientMaster.Name ";
+                    string s2 = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "' && Session.MatchID = '" + MatchID + "' group by ClientMaster.ClientID ";
                     MySqlCommand cmd2 = new MySqlCommand(s2, cn);
                     MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
                     DataTable dt3 = new DataTable();

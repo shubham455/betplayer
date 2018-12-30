@@ -4,11 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Live Game 25</title>
+    <title>cricfun</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="css/login/style_v2.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/login/style_v4.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/login/clndr.css" rel="stylesheet" type="text/css" media="all" />
     <!--<link rel="stylesheet" type="text/css" href="captcha.css">-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -16,7 +16,7 @@
 
 
 </head>
-<body style="background-image:url(images/loginimg/bk4.jpg); background-repeat: no-repeat; background-size:100% 100%; height:100vh;">
+<body style ="background-color:cadetblue">
     <br />
     <br />
     <br />
