@@ -438,11 +438,11 @@ function updateSessionTable(sessions) {
         //clearSessionTable();
         tableRef.innerHTML = "";
         tableRef.innerHTML += '<tr>' +
-            '<td height = "35" align = "center" valign = "middle" bgcolor = "#FFAB91" class="FontTextWhite10px" style = "vertical-align: middle; width: 40%;" >' +
+            '<td height = "35" align = "center" valign = "middle" class="FontTextWhite10px" style = "vertical-align: middle; width: 40%; border: 1px solid black; style="background-color: rgb(117, 194, 253);"" >' +
             '<h3>SESSION</h3>' + '<p>Max:<span id="sessionmax">' + checkValueUndifined(sessionminMax) + '</span></p>' +
             '</td >' +
-            '<td height="35" align="center" valign="middle" bgcolor="#FFAB91" class="FontTextWhite10px" style="vertical-align: middle; width: 20%">NOT RATE</td>' +
-            '<td height="35" align="center" valign="middle" bgcolor="#FFAB91" class="FontTextWhite10px" style="vertical-align: middle; width: 20%">YES RATE</td>' +
+            '<td height="35" align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite10px" style="vertical-align: middle; width: 20%;border: 1px solid black;">NOT RATE</td>' +
+            '<td height="35" align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite10px" style="vertical-align: middle; width: 20%;border: 1px solid black;">YES RATE</td>' +
             '</tr >';
         for (var i = 1; i <= sessionDisplayableSessions.length; i++) {
             var session = sessionDisplayableSessions[i - 1];
@@ -451,11 +451,11 @@ function updateSessionTable(sessions) {
 
         }
         tableRef.innerHTML += '<tr>' +
-            '<td height = "35" align = "center" valign = "middle" bgcolor = "#FFAB91" class="FontTextWhite10px" style = "vertical-align: middle; width: 40%;" >' +
+            '<td height = "35" align = "center" valign = "middle" bgcolor = "#FFF" class="FontTextWhite10px" style = "vertical-align: middle;  border: 1px solid black; middle; width: 40%;" >' +
             '<h3>Fancy Meter</h3>' + '<p>Max:<span id="sessionmax">' + checkValueUndifined(fancyminMax) + '</span></p>' +
             '</td >' +
-            '<td height="35" align="center" valign="middle" bgcolor="#FFAB91" class="FontTextWhite10px" style="vertical-align: middle; width: 20%">NOT RATE</td>' +
-            '<td height="35" align="center" valign="middle" bgcolor="#FFAB91" class="FontTextWhite10px" style="vertical-align: middle; width: 20%">YES RATE</td>' +
+            '<td height="35" align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite10px" style="vertical-align: middle; border: 1px solid black; middle; width: 20%">NOT RATE</td>' +
+            '<td height="35" align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite10px" style="vertical-align: middle; border: 1px solid black; middle; width: 20%">YES RATE</td>' +
             '</tr >';
         for (var i = sessionDisplayableSessions.length + 1; i <= fancyDisplayableSessions.length + sessionDisplayableSessions.length; i++) {
             var session = fancyDisplayableSessions[i - 1 - sessionDisplayableSessions.length];
@@ -473,7 +473,7 @@ function addRowToSessionTable(id, type, key, name, not, notrate, yes, yesrate) {
     var row = '<tr id="row' + id + '">' +
         '<td height = "35" align = "center" valign = "middle" bgcolor = "#FFF" class="textTeamHead" style = "color: #FFF; text-align: center;" >' +
         '<label style="width: 100%;" id="Session' + id + '" class="ButtonSess">' + name + '</label></td >' +
-        '<td align="center" valign="middle" bgcolor="#1E90FF" class="textTeamHead" style="color: #000; position: relative;">' +
+        '<td align="center" valign="middle"  class="textTeamHead" style="color: #000; background-color: rgb(117, 194, 253);" position: relative;">' +
         '<div id="float' + id + '" class="float"></div>' +
         '<p>' +
         '<input type="button" name="Not' + id + '" id="not' + id + '" value="' + checkStringNonEmpty(not) + '" sessionID="' + key + '" class="ButtonNRun" onfocus="this.className=\'ButtonNRun_hover\'" onblur="this.className=\'ButtonNRun\'" onmouseover="this.className=\'ButtonNRun_hover\'" onmouseout="this.className=\'ButtonNRun\'" onclick="enableBetting(event, \'' + name + '\', \'' + type + '\', \'Not\')">' +
@@ -545,7 +545,9 @@ function doneClick() {
             document.getElementById("AmountTime").className = "AmountTime";
         if (time == 0) {
             if (lastBall.event === "Ball Start" || lastBall.event === "3 Run" || lastBall.event === "FOUR" || lastBall.event === "SIX" || lastBall.event === "Review" || lastBall.event === "Third Umpire" || lastBall.event === "OUT" || lastBall.event === "FREE HIT" || lastBall.event === "NO BALL" || lastBall.event === "Bet Closed") {
+                document.getElementById("PlaceBet").style.visibility = "hidden";
                 document.getElementById("PlaceBet").style.display = "none";
+                timmerRunning = false;
                 alert("Can not place bet during the ball running");
 
             }
@@ -572,11 +574,16 @@ function doneClick() {
                                     var diffbetValue = window.Money.cmp(betValue.toString(), match[team][runnerSession][betType].toString());
                                     if (!((-1 * rateDifference) <= diffbetValue && diffbetValue <= rateDifference)) {
                                         alert("Bet Not Accepted Because Rate Not Found");
+                                        document.getElementById("PlaceBet").style.visibility = "hidden";
                                         document.getElementById("PlaceBet").style.display = "none";
+                                        timmerRunning = false;
                                         clearTimer();
                                     }
                                     else if (checklastbetAmount === "0.00") {
                                         alert("Bet Not Accepted Because Rate Not Found");
+                                        document.getElementById("PlaceBet").style.visibility = "hidden";
+                                        document.getElementById("PlaceBet").style.display = "none";
+                                        timmerRunning = false;
                                         clearTimer();
                                     }
                                     else if (parseInt(match['minBet']) > betAmount || betAmount > parseInt(match['maxBet'])) {

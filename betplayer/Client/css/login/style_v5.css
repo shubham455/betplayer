@@ -78,7 +78,7 @@ body{
 }
 .nav li a:hover, .nav li.active a {
     color: #FFF;
-    background: #8C8CFD;
+    background: rgb(117, 194, 253);
 }
 /*---start-top-search-box-----*/
 .top-search-box{
@@ -1432,7 +1432,7 @@ body{
     float: left;
     width: 100%;
     margin-right: 3%;
-    background: #00bfff;
+    background: rgb(246, 148, 170);
 }
 .glossy-social-buttons{
 	float:left;
@@ -1542,7 +1542,7 @@ body{
 }
 
 .TeamName {
-    background: #00bfff;
+    background: #FFF;
     color:black;
     padding: .3em 0;
     border-top: 1px solid #497CB1;
@@ -1554,7 +1554,7 @@ body{
 .TeamName a{
 	/*background:#4884bf;*/
 	font-size:0.85em;
-	color:#FFF;
+	color:#000;
 	text-transform:uppercase;
 	display:inline-block;
 }
@@ -2262,7 +2262,7 @@ body{
 	background:#2b9dcf;
 }
 .price-btn-blue {
-    background: #fff;
+    background: #f694aa;
     border-top: 1px solid #fff;
 }
 .price-btn-blue:hover{
@@ -2828,10 +2828,10 @@ body{
 }
 
 .FontTextWhite {
-    color: #FFF;
+    color: #000;
     border: none;
     font-family: Verdana, Geneva, sans-serif;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: bold;
 }
 

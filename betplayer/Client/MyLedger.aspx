@@ -14,7 +14,7 @@
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tbody>
                                             <tr>
-                                                <td height="35" align="center" bgcolor="#CCFFCC" class="TeamCombo">
+                                                <td height="35" align="center" bgcolor="#f694aa" class="TeamCombo">
                                                     <p class="price-btn price-btn-blue popup-with-zoom-anim">MY LEDGER</p>
                                                 </td>
                                             </tr>

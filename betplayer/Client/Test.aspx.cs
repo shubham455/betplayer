@@ -292,12 +292,12 @@ namespace betplayer.Client
                     {
 
                         rdr.Close();
-                        string coinDeduct = "Select Client_limit,CurrentLimit,MobileAppAmount From ClientMaster where ClientID = '" + ClientID + "'";
+                        string coinDeduct = "Select Client_limit,CurrentLimit From ClientMaster where ClientID = '" + ClientID + "'";
                         MySqlCommand cmd15 = new MySqlCommand(coinDeduct, cn);
                         MySqlDataAdapter adp15 = new MySqlDataAdapter(cmd15);
                         DataTable dt15 = new DataTable();
                         adp15.Fill(dt15);
-                        int clientlimit = Convert.ToInt32(dt15.Rows[0]["CurrentLimit"]);
+                        Decimal clientlimit = Convert.ToDecimal(dt15.Rows[0]["CurrentLimit"]);
                         if (clientlimit < 500)
                         {
                             Response.Redirect("InPlay.aspx?Coins=False");
@@ -306,7 +306,7 @@ namespace betplayer.Client
                         else
                         {
                             
-                            int Deductdlimit = clientlimit - 100;
+                            decimal Deductdlimit = clientlimit - 100;
 
                             string update = "update clientmaster set Currentlimit =@Deductdlimit where clientID = @ClientID";
                             MySqlCommand cmd6 = new MySqlCommand(update, cn);

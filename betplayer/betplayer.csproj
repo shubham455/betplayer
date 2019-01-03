@@ -1443,7 +1443,7 @@
     <Content Include="Client\images\RateDifferenceImage\num4.png" />
     <Content Include="Client\images\RateDifferenceImage\num5.png" />
     <Content Include="Client\js\BetDetailsCustom.js" />
-    <Content Include="Client\js\Homejs\BetDetailsCustom_v4.8.3.js" />
+    <Content Include="Client\js\Homejs\BetDetailsCustom_v4.8.4.js" />
     <Content Include="Client\js\Homejs\bootstrap.min.js" />
     <Content Include="Client\js\Homejs\money.js" />
     <Content Include="Client\js\Homejs\mss_v1.js" />
@@ -2061,7 +2061,7 @@
     <Content Include="Client\css\Home\style.css" />
     <Content Include="Client\css\Home\subscribe-form.css" />
     <Content Include="Client\css\login\clndr.css" />
-    <Content Include="Client\css\login\style_v4.css" />
+    <Content Include="Client\css\login\style_v5.css" />
     <Content Include="Client\fonts\arrows.woff" />
     <Content Include="Client\GenerateCaptcha.aspx" />
     <Content Include="Client\Homepage.aspx" />

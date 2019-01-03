@@ -28,12 +28,11 @@
                     <table style="width: 100%" border="0" cellspacing="2" cellpadding="2">
                         <tbody>
                             <tr>
-                                
-                                    <marquee hspace="0" scrollamount="5" behavior="SCROLL" class="notifymark" onmouseover="this.stop();" onmouseout="this.start();"> <p class="price-btn price-btn-blue popup-with-zoom-anim" style="height: auto; font-size: 13px; font-weight: bold; text-decoration: blink;"><span id="ScoreMsg" style="text-decoration: blink !important;"></span></p>
-                                <p style="color:#fff;" id="shownews"></p></marquee>
-                                    <%--<td colspan="3" width="100%" align="center" class="TeamCombo" style="vertical-align: top; height: 10px;">--%>
-                                    <%--<p class="price-btn price-btn-blue popup-with-zoom-anim" style="height: auto; font-size: 13px; font-weight: bold; text-decoration: blink;"><span id="ScoreMsg" style="text-decoration: blink !important;"></span></p>--%>
 
+                                <marquee hspace="0" scrollamount="5" behavior="SCROLL" class="notifymark" onmouseover="this.stop();" onmouseout="this.start();"> <p class="price-btn price-btn-blue popup-with-zoom-anim" style="height: auto; font-size: 13px; font-weight: bold; text-decoration: blink;"><span id="ScoreMsg" style="text-decoration: blink !important;"></span></p>
+                                <p style="color:#fff;" id="shownews"></p></marquee>
+                                <%--<td colspan="3" width="100%" align="center" class="TeamCombo" style="vertical-align: top; height: 10px;">--%>
+                                <%--<p class="price-btn price-btn-blue popup-with-zoom-anim" style="height: auto; font-size: 13px; font-weight: bold; text-decoration: blink;"><span id="ScoreMsg" style="text-decoration: blink !important;"></span></p>--%>
                             </tr>
                             <tr>
                                 <td style="width: 40%; height: 20px;" align="center" class="TeamCombo">
@@ -79,11 +78,11 @@
                             <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                 { %>
                             <tr>
-                                <td height="35" align="center" valign="middle" bgcolor="#00b0ff" class="FontTextWhite" style="vertical-align: middle; width: 30%;">RUNNER</td>
-                                <td align="center" valign="middle" bgcolor="#00b0ff" class="FontTextWhite" style="vertical-align: middle; width: 10%;">MIN/MAX BET</td>
-                                <td align="center" valign="middle" bgcolor="#00b0ff" class="FontTextWhite" style="vertical-align: middle; width: 20%;">POSITION</td>
-                                <td align="center" valign="middle" bgcolor="#00b0ff" class="FontTextWhite" style="vertical-align: middle; width: 20%;">LAGAI</td>
-                                <td align="center" valign="middle" bgcolor="#00b0ff" class="FontTextWhite" style="vertical-align: middle; width: 20%;">KHAI</td>
+                                <td height="35" align="center" valign="middle" class="FontTextWhite" style="vertical-align: middle; background-color: #FFF; border: 1px solid black; width: 30%;">RUNNER</td>
+                                <td align="center" valign="middle" class="FontTextWhite" style="vertical-align: middle; background-color: #FFF; border: 1px solid black; width: 10%;">MIN/MAX BET</td>
+                                <td align="center" valign="middle" class="FontTextWhite" style="vertical-align: middle; background-color: #FFF; border: 1px solid black; width: 20%;">POSITION</td>
+                                <td align="center" valign="middle" class="FontTextWhite" style="vertical-align: middle; background-color: #FFF; border: 1px solid black; width: 20%;">LAGAI</td>
+                                <td align="center" valign="middle" class="FontTextWhite" style="vertical-align: middle; background-color: #FFF; border: 1px solid black; width: 20%;">KHAI</td>
 
                             </tr>
 
@@ -95,7 +94,7 @@
                                 <td align="center" valign="middle" bgcolor="#FFF" border="1" class="FontTextWhite" style="color: #000; border: 1px solid black; vertical-align: middle">
                                     <asp:Label ID="PositionTeam1" runat="server"></asp:Label>
                                 </td>
-                                <td align="center" valign="middle" bgcolor="#1E90FF" style="vertical-align: middle; position: relative;">
+                                <td align="center" valign="middle" style="vertical-align: middle; background-color: rgb(117, 194, 253); position: relative;">
                                     <div id="runnerfloat1" class="runnerfloat"></div>
                                     <input type="button" name="ButtonL" id="LRate1" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_1', 'Runner', 'Lagai')" /></td>
                                 <td align="center" valign="middle" bgcolor="#FF87A0" class="textTeamHead" style="vertical-align: middle; color: #000">
@@ -111,7 +110,7 @@
                                 <td align="center" valign="middle" bgcolor="#FFF" class="FontTextWhite" style="color: #000; border: 1px solid black; vertical-align: middle">
                                     <asp:Label ID="PositionTeam2" runat="server"></asp:Label>
                                 </td>
-                                <td align="center" valign="middle" bgcolor="#1E90FF" class="textTeamHead" style="vertical-align: middle; position: relative;">
+                                <td align="center" valign="middle" class="textTeamHead" style="vertical-align: middle; background-color: rgb(117, 194, 253); position: relative;">
                                     <div id="runnerfloat2" class="runnerfloat"></div>
                                     <input type="button" name="ButtonL" id="LRate2" value="0.00" class="ButtonK" onfocus="this.className='ButtonK_hover'" onblur="this.className='ButtonK'" onmouseover="this.className='ButtonK_hover'" onmouseout="this.className='ButtonK'" onclick="enableBetting(event, 'team_2', 'Runner', 'Lagai')" /></td>
                                 <td align="center" valign="middle" bgcolor="#FF87A0" class="textTeamHead" style="vertical-align: middle; color: #000">
@@ -271,7 +270,7 @@
                     <table width="99%" border="0" cellspacing="0" cellpadding="0">
                         <tbody>
                             <tr bgcolor="#FFF" height="35px;">
-                                <td class="FontTextWhite">&nbsp;<span style="color: #00F"></span>/<span style="color: #F00"></span></td>
+                                <td class="FontTextWhite">&nbsp;<span style="color: #00F"></span><span style="color: #F00"></span></td>
                                 <td width="100" style="font-size: 14px; font-family: Verdana, Geneva, sans-serif; font-weight: bold;">
                                     <td class="FontTextWhite">&nbsp;<span style="color: #00F;">Session Position</span>
                                         <span style="color: #00F">
@@ -323,10 +322,10 @@
     <table width="100%" border="1" cellpadding="2" cellspacing="2" id="MyBets">
         <tbody>
             <tr>
-                <td style="height: 25px;" align="center" valign="middle" bgcolor="#FFAB91" class="FontTextWhite10px">Rate</td>
-                <td align="center" valign="middle" bgcolor="#FFAB91" class="FontTextWhite10px">Amount</td>
-                <td align="center" bgcolor="#FFAB91" style="text-align: center;" class="FontTextWhite10px">Mode</td>
-                <td align="center" bgcolor="#FFAB91" style="text-align: center;" class="FontTextWhite10px">Team</td>
+                <td style="height: 25px; background-color: rgb(117, 194, 253);" align="center" valign="middle" class="FontTextWhite10px">Rate</td>
+                <td style="background-color: rgb(117, 194, 253);" align="center" valign="middle" class="FontTextWhite10px">Amount</td>
+                <td style="background-color: rgb(117, 194, 253);" align="center" style="text-align: center;" class="FontTextWhite10px">Mode</td>
+                <td style="background-color: rgb(117, 194, 253);" align="center" style="text-align: center;" class="FontTextWhite10px">Team</td>
             </tr>
 
             <% foreach (System.Data.DataRow row in lastbetRunner1.Rows)
@@ -345,12 +344,12 @@
     <table width="100%" border="1" cellspacing="0" cellpadding="0">
         <tbody>
             <tr>
-                <td height="25" align="center" bgcolor="#FFAB91" class="FontTextWhite10px">Session</td>
-                <td align="center" valign="middle" bgcolor="#FFAB91" class="FontTextWhite10px">Rate</td>
-                <td align="center" valign="middle" bgcolor="#FFAB91" class="FontTextWhite10px">Amount</td>
-                <td align="center" bgcolor="#FFAB91" class="FontTextWhite10px">Runs</td>
-                <td align="center" bgcolor="#FFAB91" class="FontTextWhite10px">Mode</td>
-                <td align="center" bgcolor="#FFAB91" class="FontTextWhite10px">Dec</td>
+                <td style="height: 25px; background-color: rgb(117, 194, 253);" align="center"  class="FontTextWhite10px">Session</td>
+                <td style="background-color: rgb(117, 194, 253);" align="center" valign="middle"  class="FontTextWhite10px">Rate</td>
+                <td style="background-color: rgb(117, 194, 253);" align="center" valign="middle"  class="FontTextWhite10px">Amount</td>
+                <td style="background-color: rgb(117, 194, 253);" align="center"  class="FontTextWhite10px">Runs</td>
+                <td style="background-color: rgb(117, 194, 253);" align="center"  class="FontTextWhite10px">Mode</td>
+                <td style="background-color: rgb(117, 194, 253);" align="center"  class="FontTextWhite10px">Dec</td>
             </tr>
 
 
@@ -526,7 +525,7 @@
     <script src="js/Homejs/mss_v1.js" type="text/javascript"></script>
     <script src="js/Homejs/jsbn.js"></script>
     <script src="js/Homejs/money.js"></script>
-    <script src="js/Homejs/BetDetailsCustom_v4.8.3.js"></script>
+    <script src="js/Homejs/BetDetailsCustom_v4.8.4.js"></script>
     <script>
         function ShowMatchBets(SessionName) {
             if (document.getElementById("MatchBook").style.visibility == "hidden") {
