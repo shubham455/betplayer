@@ -16,7 +16,7 @@ namespace betplayer.SuperStokist
         {
             if (Session["SuperStockistID"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("../Agent/login.aspx");
             }
             else
             {

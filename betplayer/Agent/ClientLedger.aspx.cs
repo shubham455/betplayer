@@ -109,7 +109,7 @@ namespace betplayer.Agent
                 {
                     string DateFromDB = dt1.Rows[i]["DateTime"].ToString();
                     DateTime oDate = DateTime.Parse(DateFromDB);
-                    string datetime = oDate.Date.ToString().Substring(0, 10);
+                    string datetime = oDate.Date.ToString();
 
                     string ID = dt1.Rows[i]["ClientledgerID"].ToString();
                     string TeamA = dt1.Rows[i]["TeamA"].ToString();
@@ -161,7 +161,7 @@ namespace betplayer.Agent
 
                     string CollectionDate = dt.Rows[j]["Date"].ToString();
                     DateTime date = DateTime.Parse(CollectionDate);
-                    string Date1 = date.Date.ToString().Substring(0, 10);
+                    string Date1 = date.Date.ToString();
 
 
                     string ID = dt.Rows[j]["CollectionID"].ToString();

@@ -70,7 +70,7 @@ namespace betplayer.Client
 
                     string DateFromDB = dt1.Rows[i]["DateTime"].ToString();
                     DateTime oDate = DateTime.Parse(DateFromDB);
-                    string datetime = oDate.Date.ToString().Substring(0, 10);
+                    string datetime = oDate.Date.ToString();
 
                     string TeamA = dt1.Rows[i]["TeamA"].ToString();
                     string TeamB = dt1.Rows[i]["TeamB"].ToString();

@@ -16,7 +16,7 @@ namespace betplayer.SuperAgent
         {
             if (Session["SuperAgentID"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("../Agent/login.aspx");
             }
             else
             {
@@ -34,7 +34,7 @@ namespace betplayer.SuperAgent
 
                     if(status == "Inactive")
                     {
-                        Response.Redirect("login.aspx");
+                        Response.Redirect("../Agent/login.aspx");
                     }
 
                 }

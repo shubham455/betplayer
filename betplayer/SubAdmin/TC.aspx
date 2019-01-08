@@ -16,7 +16,7 @@
 		        <ul class="breadcrumb">
 		          <li> <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span> </li>
 		          <li>Terms &amp; Conditions <span class="divider">&nbsp;</span> </li>
-		          <li><a href="Login.aspx"> <span style="color:#00F;"> <strong>Log Out</strong></span></a><span class="divider-last">&nbsp;</span></li>
+		          <li><a href="../Agent/Login.aspx"> <span style="color:#00F;"> <strong>Log Out</strong></span></a><span class="divider-last">&nbsp;</span></li>
 	            </ul>
 		        <!-- END PAGE TITLE & BREADCRUMB-->
 	          </div>
@@ -31,7 +31,6 @@
 		            <span class="tools"> <a href="javascript:;" class="icon-chevron-down"></a> <a href="javascript:;" class="icon-remove"></a> </span> </div>
 		          <div class="widget-body form"> 
                   <!-- BEGIN FORM-->
-                    <form name="BetPlayer" id="BetPlayer" method="post" action="ClientDetails.php" autocomplete="off">
                     <div class="alert alert-error" id="Error" style="visibility:hidden">
                             
                     </div>
@@ -65,12 +64,9 @@
                     
                       <div class="form-actions">
                           <a href="Dashboard.aspx"><button type="button" class="btn btn-success">NEXT =&gt; MAIN MENU</button></a>
-                          <a href="../agent/Login.aspx"><button type="button" class="btn">Log Out</button></a>
+                          <a href="../Agent/Login.aspx"><button type="button" class="btn">Log Out</button></a>
                       </div>
-                      
-                    <input name="PasswordModifyChk" type="hidden" id="PasswordModifyChk" value="" readonly="readonly">
-                    
-                    </form>
+                   
                     <!-- END FORM-->
                   </div>
 	            </div>
